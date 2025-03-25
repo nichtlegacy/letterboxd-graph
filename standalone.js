@@ -8,11 +8,14 @@ async function fetchLetterboxdData(username, year) {
   let page = 1
   let hasMorePages = true
 
+  console.log(`Fetching Letterboxd diary for user: ${username} for year: ${year}`)
+
   while (hasMorePages) {
     console.log(`Fetching page ${page} of diary entries...`)
 
     // Letterboxd diary URL structure
     const url = `https://letterboxd.com/${username}/films/diary/for/${year}/page/${page}/`
+    console.log(`URL: ${url}`)
 
     try {
       const response = await fetch(url)
@@ -23,55 +26,111 @@ async function fetchLetterboxdData(username, year) {
           hasMorePages = false
           break
         }
-        throw new Error(`Failed to fetch data: ${response.statusText}`)
+        throw new Error(`Failed to fetch data: ${response.statusText} (${response.status})`)
       }
 
       const html = await response.text()
+
+      // Debug: Save the HTML to a file for inspection
+      if (page === 1) {
+        fs.writeFileSync(`letterboxd-page-${page}.html`, html)
+        console.log(`Saved HTML to letterboxd-page-${page}.html for debugging`)
+      }
+
       const $ = cheerio.load(html)
 
       // Check if we found any entries on this page
-      const entryElements = $(".diary-entry-row")
+      // Letterboxd uses different selectors for diary entries
+      const entryElements = $(".diary-entry")
+
+      console.log(`Found ${entryElements.length} entry elements on page ${page}`)
 
       if (entryElements.length === 0) {
-        hasMorePages = false
-        break
-      }
+        // Try alternative selectors
+        const altEntryElements = $(".diary-entry-row")
+        console.log(`Found ${altEntryElements.length} alternative entry elements on page ${page}`)
 
-      // Parse each diary entry
-      entryElements.each((_, element) => {
-        try {
-          const dateStr = $(element).find(".diary-date").text().trim()
-          const title = $(element).find(".film-title").text().trim()
-          const year = $(element).find(".film-year").text().trim().replace(/[()]/g, "")
-          const url = $(element).find(".film-title").attr("href")
+        if (altEntryElements.length === 0) {
+          console.log("No entries found on this page, checking for empty diary message")
 
-          // Extract rating (0-5 stars)
-          const ratingClass = $(element).find(".rating").attr("class") || ""
-          const ratingMatch = ratingClass.match(/rated-(\d+)/)
-          const rating = ratingMatch ? Number.parseInt(ratingMatch[1]) / 2 : undefined
+          // Check if there's an empty diary message
+          const emptyMessage = $(".empty-diary-message").text()
+          if (emptyMessage) {
+            console.log(`Empty diary message found: "${emptyMessage.trim()}"`)
+          }
 
-          // Parse date (format: 2023-12-31)
-          const dateParts = dateStr.split("-").map((part) => Number.parseInt(part.trim()))
-          if (dateParts.length === 3) {
-            const date = new Date(dateParts[0], dateParts[1] - 1, dateParts[2])
+          hasMorePages = false
+          break
+        }
+
+        // Parse each diary entry using alternative selector
+        altEntryElements.each((_, element) => {
+          try {
+            const dateStr = $(element).find(".diary-date").text().trim()
+            const title = $(element).find(".film-title").text().trim()
+            const year = $(element).find(".film-year").text().trim().replace(/[()]/g, "")
+            const url = $(element).find(".film-title").attr("href")
+
+            console.log(`Found entry: ${dateStr} - ${title} (${year})`)
+
+            // Extract rating (0-5 stars)
+            const ratingClass = $(element).find(".rating").attr("class") || ""
+            const ratingMatch = ratingClass.match(/rated-(\d+)/)
+            const rating = ratingMatch ? Number.parseInt(ratingMatch[1]) / 2 : undefined
+
+            // Parse date (format: 2023-12-31)
+            const dateParts = dateStr.split("-").map((part) => Number.parseInt(part.trim()))
+            if (dateParts.length === 3) {
+              const date = new Date(dateParts[0], dateParts[1] - 1, dateParts[2])
+
+              entries.push({
+                date,
+                title,
+                year,
+                rating,
+                url: url ? `https://letterboxd.com${url}` : undefined,
+              })
+            }
+          } catch (err) {
+            console.warn(`Error parsing entry: ${err}`)
+          }
+        })
+      } else {
+        // Parse each diary entry using standard selector
+        entryElements.each((_, element) => {
+          try {
+            const dateStr = $(element).find(".date").text().trim()
+            const title = $(element).find(".film-title").text().trim()
+            const year = $(element).find(".year").text().trim().replace(/[()]/g, "")
+            const url = $(element).find(".film-title").attr("href")
+
+            console.log(`Found entry: ${dateStr} - ${title} (${year})`)
+
+            // Extract rating (0-5 stars)
+            const ratingClass = $(element).find(".rating").attr("class") || ""
+            const ratingMatch = ratingClass.match(/rated-(\d+)/)
+            const rating = ratingMatch ? Number.parseInt(ratingMatch[1]) / 2 : undefined
+
+            // Parse date (format: Dec 31, 2023 or 31 Dec 2023)
+            const dateObj = new Date(dateStr)
 
             entries.push({
-              date,
+              date: dateObj,
               title,
               year,
               rating,
               url: url ? `https://letterboxd.com${url}` : undefined,
             })
+          } catch (err) {
+            console.warn(`Error parsing entry: ${err}`)
           }
-        } catch (err) {
-          console.warn(`Error parsing entry: ${err}`)
-        }
-      })
+        })
+      }
 
       page++
 
       // Add a small delay to avoid rate limiting
-      await new Promise((resolve) => setTimeout(resolve, 500))
+      await new Promise((resolve) => setTimeout(resolve, 1000))
     } catch (error) {
       console.warn(`Error fetching page ${page}: ${error}`)
       hasMorePages = false
@@ -79,6 +138,33 @@ async function fetchLetterboxdData(username, year) {
   }
 
   return entries
+}
+
+async function tryFetchMultipleYears(username, startYear) {
+  let allEntries = []
+  const currentYear = new Date().getFullYear()
+
+  // Try the specified year first
+  let entries = await fetchLetterboxdData(username, startYear)
+  allEntries = allEntries.concat(entries)
+
+  // If no entries found, try previous years
+  if (allEntries.length === 0) {
+    console.log(`No entries found for ${startYear}, trying previous years...`)
+
+    for (let year = startYear - 1; year >= startYear - 2; year--) {
+      console.log(`Trying year ${year}...`)
+      entries = await fetchLetterboxdData(username, year)
+      allEntries = allEntries.concat(entries)
+
+      if (entries.length > 0) {
+        console.log(`Found ${entries.length} entries for year ${year}`)
+        break
+      }
+    }
+  }
+
+  return allEntries
 }
 
 function generateSvg(entries) {
@@ -273,11 +359,11 @@ async function main() {
     const year = Number.parseInt(process.argv[3] || process.env.INPUT_YEAR || new Date().getFullYear())
     const outputPath = process.argv[4] || process.env.INPUT_OUTPUT_PATH || "letterboxd-graph.svg"
 
-    console.log(`Fetching Letterboxd data for user: ${username} for year: ${year}`)
+    console.log(`Starting Letterboxd contribution graph generation for user: ${username}`)
 
-    // Fetch Letterboxd diary data
-    const filmEntries = await fetchLetterboxdData(username, year)
-    console.log(`Found ${filmEntries.length} film entries`)
+    // Try to fetch data for the specified year and previous years if needed
+    const filmEntries = await tryFetchMultipleYears(username, year)
+    console.log(`Found ${filmEntries.length} film entries in total`)
 
     // Generate the SVG
     const svg = generateSvg(filmEntries)
