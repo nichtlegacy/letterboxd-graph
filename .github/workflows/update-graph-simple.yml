@@ -19,20 +19,13 @@ jobs:
           node-version: '18'
       
       - name: Install dependencies
-        run: npm install
+        run: npm install node-fetch@2 cheerio
       
-      - name: Build TypeScript
-        run: npm run build
-      
-      - name: Create images directory if it doesn't exist
+      - name: Create images directory
         run: mkdir -p images
       
       - name: Generate Letterboxd contribution graph
-        id: generate-graph
-        run: node dist/index.js
-        env:
-          INPUT_LETTERBOXD_USERNAME: 'nichtlegacy'
-          INPUT_OUTPUT_PATH: 'images/letterboxd-graph.svg'
+        run: node standalone.js nichtlegacy 2024 images/letterboxd-graph.svg
       
       - name: Commit and push if changed
         run: |
