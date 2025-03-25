@@ -1,6 +1,5 @@
 import fetch from "node-fetch"
 import * as cheerio from "cheerio"
-import * as core from "@actions/core"
 
 export interface FilmEntry {
   date: Date
@@ -16,7 +15,7 @@ export async function fetchLetterboxdData(username: string, year: number): Promi
   let hasMorePages = true
 
   while (hasMorePages) {
-    core.info(`Fetching page ${page} of diary entries...`)
+    console.log(`Fetching page ${page} of diary entries...`)
 
     // Letterboxd diary URL structure
     const url = `https://letterboxd.com/${username}/films/diary/for/${year}/page/${page}/`
@@ -26,7 +25,7 @@ export async function fetchLetterboxdData(username: string, year: number): Promi
 
       if (!response.ok) {
         if (response.status === 404) {
-          core.info(`Page ${page} not found, finished fetching`)
+          console.log(`Page ${page} not found, finished fetching`)
           hasMorePages = false
           break
         }
@@ -71,7 +70,7 @@ export async function fetchLetterboxdData(username: string, year: number): Promi
             })
           }
         } catch (err) {
-          core.warning(`Error parsing entry: ${err}`)
+          console.warn(`Error parsing entry: ${err}`)
         }
       })
 
@@ -80,7 +79,7 @@ export async function fetchLetterboxdData(username: string, year: number): Promi
       // Add a small delay to avoid rate limiting
       await new Promise((resolve) => setTimeout(resolve, 500))
     } catch (error) {
-      core.warning(`Error fetching page ${page}: ${error}`)
+      console.warn(`Error fetching page ${page}: ${error}`)
       hasMorePages = false
     }
   }
