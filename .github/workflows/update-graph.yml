@@ -19,20 +19,20 @@ jobs:
           node-version: '16'
       
       - name: Install dependencies
-        run: npm ci
+        run: npm install
       
       - name: Build TypeScript
         run: npm run build
+      
+      - name: Create images directory if it doesn't exist
+        run: mkdir -p images
       
       - name: Generate Letterboxd contribution graph
         id: generate-graph
         run: node dist/index.js
         env:
-          INPUT_LETTERBOXD-USERNAME: 'nichtlegacy'
-          INPUT_OUTPUT-PATH: 'images/letterboxd-graph.svg'
-      
-      - name: Create images directory if it doesn't exist
-        run: mkdir -p images
+          INPUT_LETTERBOXD_USERNAME: 'nichtlegacy'
+          INPUT_OUTPUT_PATH: 'images/letterboxd-graph.svg'
       
       - name: Commit and push if changed
         run: |
