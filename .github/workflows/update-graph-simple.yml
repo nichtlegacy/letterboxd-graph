@@ -2,11 +2,9 @@ name: Update Letterboxd Contribution Graph
 
 on:
   schedule:
-    # Run daily at midnight
     - cron: "0 0 * * *"
-  workflow_dispatch: # Allow manual triggering
+  workflow_dispatch:
 
-# Add permissions at the top level
 permissions:
   contents: write
 
@@ -15,26 +13,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
-      
+        uses: actions/checkout@v4
+
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
-      
+          cache: 'npm'
+
       - name: Install dependencies
-        run: npm install node-fetch@2 cheerio
-      
-      - name: Create images directory
-        run: mkdir -p images
-      
+        run: npm install
+
       - name: Generate Letterboxd contribution graph
-        run: node standalone.js nichtlegacy -o images/letterboxd-graph.svg
-      
+        run: npm start nichtlegacy -o images/github-letterboxd
+
       - name: Commit and push if changed
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add images/letterboxd-graph.svg letterboxd-page-1.html
+          git add images/github-letterboxd-dark.svg images/github-letterboxd-light.svg
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update Letterboxd contribution graph" && git push)
-
