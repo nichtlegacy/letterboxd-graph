@@ -1,6 +1,7 @@
 # Letterboxd Contribution Graph
 
-![Letterboxd Contribution Graph](images/letterboxd-graph.svg)
+![Letterboxd Contribution Graph](images/github-letterboxd-dark.svg)
+![Letterboxd Contribution Graph](images/github-letterboxd-light.svg)
 
 This repository contains a GitHub Action that generates a GitHub-style contribution graph from your Letterboxd film diary.
 
