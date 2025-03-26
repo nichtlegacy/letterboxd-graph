@@ -21,7 +21,7 @@
   </style>
   <rect width="749" height="161" fill="#0d1117" rx="6" ry="6"/>
   <text x="10" y="15" class="title-text">Letterboxd 2025</text>
-  <text x="10" y="30" class="subtitle-text">123 movies watched</text>
+  <text x="10" y="30" class="subtitle-text">124 movies watched</text>
   
   <g transform="translate(589, 10)">
     <text x="0" y="10">Less</text>
@@ -2844,14 +2844,15 @@
         height="11"
         rx="2"
         ry="2"
-        fill="#161b22"
+        fill="#0e4429"
         data-date="2025-03-26"
-        data-count="0"
+        data-count="1"
       />
-      <g class="tooltip" transform="translate(67, -9)">
-        <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
+      <g class="tooltip" transform="translate(67, -27)">
+        <rect x="0" y="0" width="189" height="56" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-03-26: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-03-26: 1 film watched</tspan>
+          <tspan x="10" dy="18">• Trainspotting (1996) - 3★</tspan></text>
       </g>
       <rect
         x="169"
