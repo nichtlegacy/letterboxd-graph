@@ -31,6 +31,9 @@ Transform your Letterboxd film-watching history into a beautiful contribution gr
 - Creates SVG graphs in light and dark themes with embedded profile images and the Letterboxd logo.
 - Customizable year, week start, and output paths.
 - Automatic daily updates via GitHub Actions.
+- **Hover Support**: Hover over a cell to display additional information about the films watched on that specific day. (Visible only when the image is opened in a browser).
+
+
 
 ## Usage
 
