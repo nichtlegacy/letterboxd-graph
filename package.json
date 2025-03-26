@@ -1,0 +1,15 @@
+{
+  "name": "letterboxd-contribution-graph",
+  "version": "1.0.0",
+  "description": "Generates a GitHub-style contribution graph from Letterboxd diary entries",
+  "main": "standalone.js",
+  "scripts": {
+    "start": "node standalone.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "node-fetch": "^2.6.7"
+  },
+  "author": "Dein Name",
+  "license": "MIT"
+}
