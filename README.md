@@ -8,20 +8,24 @@
 
 Generates a GitHub-style contribution graph from your Letterboxd film diary.
 
-<picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="images/github-letterboxd-dark.svg"
-  />
-  <source
-    media="(prefers-color-scheme: light)"
-    srcset="images/github-letterboxd-light.svg"
-  />
-  <img
-    alt="Letterboxd contribution graph"
-    src="images/github-letterboxd-light.svg"
-  />
-</picture>
+<p align="left">
+  <a href="https://letterboxd.com/nichtlegacy/" target="_blank">
+    <picture>
+      <source
+        media="(prefers-color-scheme: dark)"
+        srcset="https://github.com/nichtlegacy/letterboxd-graph/blob/main/images/github-letterboxd-dark.svg"
+      />
+      <source
+        media="(prefers-color-scheme: light)"
+        srcset="https://github.com/nichtlegacy/letterboxd-graph/blob/main/images/github-letterboxd-light.svg"
+      />
+      <img
+        alt="Letterboxd contribution graph"
+        src="https://github.com/nichtlegacy/letterboxd-graph/blob/main/images/github-letterboxd-light.svg"
+      />
+    </picture>
+  </a>
+</p>
 
 Transform your Letterboxd film-watching history into a beautiful contribution graph, updated daily via GitHub Actions. Perfect for showcasing your cinematic journey in your GitHub profile README!
 
@@ -32,7 +36,6 @@ Transform your Letterboxd film-watching history into a beautiful contribution gr
 - Customizable year, week start, and output paths.
 - Automatic daily updates via GitHub Actions.
 - **Hover Support**: Hover over a cell to display additional information about the films watched on that specific day. (Visible only when the image is opened in a browser).
-
 
 
 ## Usage
@@ -85,30 +88,41 @@ jobs:
 
 4. **Customize (Optional)**:
    - Add options to the `npm start` command:
-     - `-y YEAR`: Specify a year (e.g., `-y 2023`).
+     - `-y YEAR`: Specify a year (e.g., `-y 2024`).
      - `-w monday`: Start weeks on Monday (default: `sunday`).
-     - `-o PATH`: Change the output path (e.g., `-o dist/my-graph`).
+     - `-o PATH`: Change the output path (e.g., `-o images/github-letterboxd`).
+     - `-g BOOLEAN`: Enable/disable username gradient (default: `true`; set to `false` for plain white).
      Example:
      ```yaml
-     run: npm start nichtlegacy -y 2023 -w monday -o dist/letterboxd
+     run: npm start nichtlegacy -y 2023 -w monday -o images/github-letterboxd -g false
      ```
 
-5. **Run the Action**:
+5. **Update the README**:
+   - Replace `nichtlegacy` in the `<picture>`-Tag with your GitHub username and Letterboxd username:
+     ```html
+     <p align="center">
+       <a href="https://letterboxd.com/YOUR_LETTERBOXD_USERNAME/" target="_blank">
+         <picture>
+           <source
+             media="(prefers-color-scheme: dark)"
+             srcset="https://github.com/YOUR_GITHUB_USERNAME/letterboxd-graph/blob/main/images/github-letterboxd-dark.svg"
+           />
+           <source
+             media="(prefers-color-scheme: light)"
+             srcset="https://github.com/YOUR_GITHUB_USERNAME/letterboxd-graph/blob/main/images/github-letterboxd-light.svg"
+           />
+           <img
+             alt="Letterboxd contribution graph"
+             src="https://github.com/YOUR_GITHUB_USERNAME/letterboxd-graph/blob/main/images/github-letterboxd-light.svg"
+           />
+         </picture>
+       </a>
+     </p>
+     ```
+
+6. **Run the Action**:
    - Wait for the daily run (midnight UTC) or trigger it manually via the "Actions" tab.
 
-#### Dark Mode Support
-
-To display your graph with theme switching in your README:
-
-```html
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/github-letterboxd-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="images/github-letterboxd-light.svg" />
-  <img alt="Letterboxd contribution graph" src="images/github-letterboxd-light.svg" />
-</picture>
-```
-
-Add this to your `README.md` and commit it to show off your graph!
 
 ### Alternative: New Repository
 
