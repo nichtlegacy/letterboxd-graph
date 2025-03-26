@@ -93,36 +93,15 @@ async function fetchLetterboxdData(username, year) {
           const filmYearElement = $row.find("td.td-released")
           const filmYear = filmYearElement.text().trim()
 
-          // Extract rating (if available) - Debug the HTML structure
-          const ratingCell = $row.find("td.td-rating")
-          console.log(`Rating cell found: ${ratingCell.length > 0}`)
-
+          // Extract rating (if available) - Direct approach
           let rating = null
 
-          // Try to find the rateit-range div directly
-          const rateitRange = ratingCell.find(".rateit-range")
+          // Find the rateit-range div directly and get aria-valuenow
+          const rateitRange = $row.find(".rateit-range")
           if (rateitRange.length > 0) {
-            console.log(`Found rateit-range: ${rateitRange.attr("class")}`)
             const ratingValue = rateitRange.attr("aria-valuenow")
-            console.log(`Rating value from aria-valuenow: ${ratingValue}`)
             if (ratingValue) {
               rating = Number(ratingValue) / 2 // Convert from 0-10 to 0-5 scale
-            }
-          } else {
-            // Alternative approach: look for the selected width
-            const rateitSelected = ratingCell.find(".rateit-selected")
-            if (rateitSelected.length > 0) {
-              const widthStyle = rateitSelected.attr("style")
-              console.log(`Rateit selected style: ${widthStyle}`)
-              if (widthStyle) {
-                const widthMatch = widthStyle.match(/width:\s*(\d+)px/)
-                if (widthMatch && widthMatch[1]) {
-                  const width = Number(widthMatch[1])
-                  // Assuming 80px is the full width (10 stars), so 8px per star
-                  rating = width / 16
-                  console.log(`Calculated rating from width: ${rating}`)
-                }
-              }
             }
           }
 
@@ -346,8 +325,6 @@ function generateSvg(entries, darkMode = true) {
     .text-start { text-anchor: start; }
     .text-middle { dominant-baseline: middle; }
     .text-end { text-anchor: end; }
-    .tooltip { opacity: 0; }
-    rect.day:hover + .tooltip { opacity: 1; }
   </style>
   
   <rect width="${SVG_WIDTH}" height="${SVG_HEIGHT}" fill="${bgColor}" rx="6" ry="6" />
@@ -355,6 +332,31 @@ function generateSvg(entries, darkMode = true) {
   <!-- Title -->
   <text x="10" y="14" class="font-sans text-lg font-semibold text-primary">Letterboxd Contribution Graph</text>
   <text x="10" y="30" class="font-sans text-base text-secondary">${totalFilms} films watched in ${year}</text>
+  
+  <!-- Legend (moved to top right) -->
+  <g transform="translate(${SVG_WIDTH - 150}, 20)">
+    <text x="0" y="7" class="font-sans text-xs text-secondary text-start text-middle">Less</text>
+`
+
+  // Add legend colors
+  for (let i = 0; i < 5; i++) {
+    svg += `
+    <rect
+      x="${30 + i * 15}"
+      y="0"
+      width="10"
+      height="10"
+      rx="2"
+      ry="2"
+      fill="${colors[i]}"
+      stroke="${i === 0 ? borderColor : "none"}"
+      stroke-width="1"
+    />`
+  }
+
+  svg += `
+    <text x="${30 + 5 * 15 + 5}" y="7" class="font-sans text-xs text-secondary text-start text-middle">More</text>
+  </g>
   
   <!-- Month labels -->
   <g transform="translate(30, 45)">`
@@ -387,10 +389,10 @@ function generateSvg(entries, darkMode = true) {
 
   svg += `</g>
   
-  <!-- Contribution cells -->
+  <!-- Contribution cells and tooltips -->
   <g transform="translate(30, 60)">`
 
-  // Add contribution cells
+  // First, add all the cells
   for (let day = 0; day < 7; day++) {
     for (let week = 0; week < totalWeeks; week++) {
       const count = grid[day][week]
@@ -408,82 +410,37 @@ function generateSvg(entries, darkMode = true) {
       const x = week * (CELL_SIZE + CELL_MARGIN)
       const y = day * (CELL_SIZE + CELL_MARGIN)
 
-      svg += `
-      <rect
-        x="${x}"
-        y="${y}"
-        width="${CELL_SIZE}"
-        height="${CELL_SIZE}"
-        rx="2"
-        ry="2"
-        fill="${color}"
-        stroke="${count === 0 ? borderColor : "none"}"
-        stroke-width="1"
-        class="day"
-      />`
+      // Add data attributes for tooltip content
+      const filmsForDay = filmsPerDay.get(dateStr) || []
+      let tooltipContent = `${dateStr}: ${count} film${count !== 1 ? "s" : ""} watched`
 
-      // Only add tooltip if there are films
-      if (count > 0) {
-        // Get films for this date
-        const filmsForDay = filmsPerDay.get(dateStr) || []
-
-        // Calculate tooltip position
-        let tooltipX = x - 100 // Default left position
-        const tooltipY = y - 5
-
-        // Adjust tooltip position if it would go off the left edge
-        if (tooltipX < 0) {
-          tooltipX = x + CELL_SIZE + 5
-        }
-
-        // Calculate tooltip height based on number of films
-        const tooltipHeight = 40 + filmsForDay.length * 15
-
-        svg += `
-        <g class="tooltip" transform="translate(${tooltipX}, ${tooltipY})">
-          <rect x="0" y="0" width="200" height="${tooltipHeight}" rx="4" fill="rgba(0, 0, 0, 0.8)" />
-          <text x="8" y="15" class="font-sans text-base font-semibold" fill="white">${dateStr}</text>
-          <text x="8" y="30" class="font-sans text-sm font-semibold" fill="white">${count} film${count !== 1 ? "s" : ""} watched</text>`
-
-        // Add film titles to tooltip
-        filmsForDay.forEach((film, index) => {
-          const filmTitle = escapeXml(film.title)
-          const filmYear = escapeXml(film.year)
-          const ratingText = film.rating ? ` - ${film.rating}★` : ""
-
-          svg += `<text x="8" y="${45 + index * 15}" class="font-sans text-xs" fill="white">• ${filmTitle} (${filmYear})${ratingText}</text>`
+      if (filmsForDay.length > 0) {
+        tooltipContent += "\\n" // Newline in tooltip
+        filmsForDay.forEach((film) => {
+          const ratingStr = film.rating ? ` - ${film.rating}★` : ""
+          tooltipContent += `\\n• ${escapeXml(film.title)} (${escapeXml(film.year)})${ratingStr}`
         })
-
-        svg += `</g>`
       }
+
+      svg += `
+      <g>
+        <title>${tooltipContent}</title>
+        <rect
+          x="${x}"
+          y="${y}"
+          width="${CELL_SIZE}"
+          height="${CELL_SIZE}"
+          rx="2"
+          ry="2"
+          fill="${color}"
+          stroke="${count === 0 ? borderColor : "none"}"
+          stroke-width="1"
+        />
+      </g>`
     }
   }
 
   svg += `</g>
-  
-  <!-- Legend (moved to bottom right) -->
-  <g transform="translate(${SVG_WIDTH - 150}, ${SVG_HEIGHT - 20})">
-    <text x="0" y="7" class="font-sans text-xs text-secondary text-start text-middle">Less</text>`
-
-  // Add legend colors
-  for (let i = 0; i < 5; i++) {
-    svg += `
-    <rect
-      x="${30 + i * 15}"
-      y="0"
-      width="10"
-      height="10"
-      rx="2"
-      ry="2"
-      fill="${colors[i]}"
-      stroke="${i === 0 ? borderColor : "none"}"
-      stroke-width="1"
-    />`
-  }
-
-  svg += `
-    <text x="${30 + 5 * 15 + 5}" y="7" class="font-sans text-xs text-secondary text-start text-middle">More</text>
-  </g>
 </svg>`
 
   return svg
