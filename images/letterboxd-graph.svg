@@ -16,12 +16,12 @@
   
   <rect width="696" height="144" fill="#0d1117" rx="6" ry="6" />
   
-  <!-- Title -->
-  <text x="10" y="14" class="font-sans text-lg font-semibold text-primary">Letterboxd Contribution Graph</text>
-  <text x="10" y="30" class="font-sans text-base text-secondary">123 films watched in 2025</text>
+  <!-- Title - CHANGED POSITION -->
+  <text x="348" y="20" class="font-sans text-lg font-semibold text-primary" text-anchor="middle">Letterboxd Contribution Graph - 2025</text>
+  <text x="348" y="40" class="font-sans text-base text-secondary" text-anchor="middle">123 films watched</text>
   
-  <!-- Legend (moved to top right) -->
-  <g transform="translate(546, 20)">
+  <!-- Legend - MOVED TO TOP CENTER -->
+  <g transform="translate(273, 55)">
     <text x="0" y="7" class="font-sans text-xs text-secondary text-start text-middle">Less</text>
 
     <rect
@@ -83,15 +83,17 @@
   </g>
   
   <!-- Month labels -->
-  <g transform="translate(30, 45)"><text x="0" y="0" class="font-sans text-sm text-secondary text-start">Jan</text><text x="48" y="0" class="font-sans text-sm text-secondary text-start">Feb</text><text x="96" y="0" class="font-sans text-sm text-secondary text-start">Mar</text><text x="156" y="0" class="font-sans text-sm text-secondary text-start">Apr</text><text x="204" y="0" class="font-sans text-sm text-secondary text-start">May</text><text x="264" y="0" class="font-sans text-sm text-secondary text-start">Jun</text><text x="312" y="0" class="font-sans text-sm text-secondary text-start">Jul</text><text x="360" y="0" class="font-sans text-sm text-secondary text-start">Aug</text><text x="420" y="0" class="font-sans text-sm text-secondary text-start">Sep</text><text x="468" y="0" class="font-sans text-sm text-secondary text-start">Oct</text><text x="516" y="0" class="font-sans text-sm text-secondary text-start">Nov</text><text x="576" y="0" class="font-sans text-sm text-secondary text-start">Dec</text></g>
+  <g transform="translate(30, 80)"><text x="0" y="0" class="font-sans text-sm text-secondary text-start">Jan</text><text x="48" y="0" class="font-sans text-sm text-secondary text-start">Feb</text><text x="96" y="0" class="font-sans text-sm text-secondary text-start">Mar</text><text x="156" y="0" class="font-sans text-sm text-secondary text-start">Apr</text><text x="204" y="0" class="font-sans text-sm text-secondary text-start">May</text><text x="264" y="0" class="font-sans text-sm text-secondary text-start">Jun</text><text x="312" y="0" class="font-sans text-sm text-secondary text-start">Jul</text><text x="360" y="0" class="font-sans text-sm text-secondary text-start">Aug</text><text x="420" y="0" class="font-sans text-sm text-secondary text-start">Sep</text><text x="468" y="0" class="font-sans text-sm text-secondary text-start">Oct</text><text x="516" y="0" class="font-sans text-sm text-secondary text-start">Nov</text><text x="576" y="0" class="font-sans text-sm text-secondary text-start">Dec</text></g>
   
   <!-- Day of week labels -->
-  <g transform="translate(20, 60)"><text x="0" y="17" class="font-sans text-xs text-secondary text-end text-middle">M</text><text x="0" y="41" class="font-sans text-xs text-secondary text-end text-middle">W</text><text x="0" y="65" class="font-sans text-xs text-secondary text-end text-middle">F</text></g>
+  <g transform="translate(20, 95)"><text x="0" y="17" class="font-sans text-xs text-secondary text-end text-middle">M</text><text x="0" y="41" class="font-sans text-xs text-secondary text-end text-middle">W</text><text x="0" y="65" class="font-sans text-xs text-secondary text-end text-middle">F</text></g>
   
-  <!-- Contribution cells and tooltips -->
-  <g transform="translate(30, 60)">
+  <!-- Contribution cells with native tooltips -->
+  <g transform="translate(30, 95)">
       <g>
-        <title>2025-01-05: 2 films watched\n\n• Half Baked (1998)\n• Rush Hour (1998)</title>
+        <title>2025-01-05: 2 films watched
+• Half Baked (1998)
+• Rush Hour (1998)</title>
         <rect
           x="12"
           y="0"
@@ -105,7 +107,10 @@
         />
       </g>
       <g>
-        <title>2025-01-12: 3 films watched\n\n• John Wick: Chapter 4 (2023)\n• Scary Movie 4 (2006)\n• The Dukes of Hazzard (2005)</title>
+        <title>2025-01-12: 3 films watched
+• John Wick: Chapter 4 (2023)
+• Scary Movie 4 (2006)
+• The Dukes of Hazzard (2005)</title>
         <rect
           x="24"
           y="0"
@@ -147,7 +152,8 @@
         />
       </g>
       <g>
-        <title>2025-02-02: 1 film watched\n\n• Orange County (2002)</title>
+        <title>2025-02-02: 1 film watched
+• Orange County (2002)</title>
         <rect
           x="60"
           y="0"
@@ -161,7 +167,10 @@
         />
       </g>
       <g>
-        <title>2025-02-09: 3 films watched\n\n• Detroit Rock City (1999)\n• Can&apos;t Hardly Wait (1998)\n• 21 Jump Street (2012)</title>
+        <title>2025-02-09: 3 films watched
+• Detroit Rock City (1999)
+• Can&apos;t Hardly Wait (1998)
+• 21 Jump Street (2012)</title>
         <rect
           x="72"
           y="0"
@@ -175,7 +184,8 @@
         />
       </g>
       <g>
-        <title>2025-02-16: 1 film watched\n\n• Click (2006)</title>
+        <title>2025-02-16: 1 film watched
+• Click (2006)</title>
         <rect
           x="84"
           y="0"
@@ -189,7 +199,8 @@
         />
       </g>
       <g>
-        <title>2025-02-23: 1 film watched\n\n• Employee of the Month (2006)</title>
+        <title>2025-02-23: 1 film watched
+• Employee of the Month (2006)</title>
         <rect
           x="96"
           y="0"
@@ -217,7 +228,8 @@
         />
       </g>
       <g>
-        <title>2025-03-09: 1 film watched\n\n• Smiley Face (2007)</title>
+        <title>2025-03-09: 1 film watched
+• Smiley Face (2007)</title>
         <rect
           x="120"
           y="0"
@@ -231,7 +243,8 @@
         />
       </g>
       <g>
-        <title>2025-03-16: 1 film watched\n\n• Matchstick Men (2003)</title>
+        <title>2025-03-16: 1 film watched
+• Matchstick Men (2003)</title>
         <rect
           x="132"
           y="0"
@@ -245,7 +258,8 @@
         />
       </g>
       <g>
-        <title>2025-03-23: 1 film watched\n\n• Top Secret! (1984)</title>
+        <title>2025-03-23: 1 film watched
+• Top Secret! (1984)</title>
         <rect
           x="144"
           y="0"
@@ -819,7 +833,9 @@
         />
       </g>
       <g>
-        <title>2025-01-06: 2 films watched\n\n• The Other Guys (2010)\n• Role Models (2008)</title>
+        <title>2025-01-06: 2 films watched
+• The Other Guys (2010)
+• Role Models (2008)</title>
         <rect
           x="12"
           y="12"
@@ -833,7 +849,9 @@
         />
       </g>
       <g>
-        <title>2025-01-13: 2 films watched\n\n• The Wrong Trousers (1993)\n• The Breakfast Club (1985)</title>
+        <title>2025-01-13: 2 films watched
+• The Wrong Trousers (1993)
+• The Breakfast Club (1985)</title>
         <rect
           x="24"
           y="12"
@@ -847,7 +865,9 @@
         />
       </g>
       <g>
-        <title>2025-01-20: 2 films watched\n\n• Anchorman: The Legend of Ron Burgundy (2004)\n• Toy Story 2 (1999)</title>
+        <title>2025-01-20: 2 films watched
+• Anchorman: The Legend of Ron Burgundy (2004)
+• Toy Story 2 (1999)</title>
         <rect
           x="36"
           y="12"
@@ -861,7 +881,9 @@
         />
       </g>
       <g>
-        <title>2025-01-27: 2 films watched\n\n• The SpongeBob SquarePants Movie (2004)\n• High School (2010)</title>
+        <title>2025-01-27: 2 films watched
+• The SpongeBob SquarePants Movie (2004)
+• High School (2010)</title>
         <rect
           x="48"
           y="12"
@@ -875,7 +897,8 @@
         />
       </g>
       <g>
-        <title>2025-02-03: 1 film watched\n\n• There&apos;s Something About Mary (1998)</title>
+        <title>2025-02-03: 1 film watched
+• There&apos;s Something About Mary (1998)</title>
         <rect
           x="60"
           y="12"
@@ -889,7 +912,9 @@
         />
       </g>
       <g>
-        <title>2025-02-10: 2 films watched\n\n• Detroit Rock City (1999)\n• Fast Times at Ridgemont High (1982)</title>
+        <title>2025-02-10: 2 films watched
+• Detroit Rock City (1999)
+• Fast Times at Ridgemont High (1982)</title>
         <rect
           x="72"
           y="12"
@@ -903,7 +928,8 @@
         />
       </g>
       <g>
-        <title>2025-02-17: 1 film watched\n\n• Keanu (2016)</title>
+        <title>2025-02-17: 1 film watched
+• Keanu (2016)</title>
         <rect
           x="84"
           y="12"
@@ -917,7 +943,9 @@
         />
       </g>
       <g>
-        <title>2025-02-24: 2 films watched\n\n• Raising Arizona (1987)\n• Ace Ventura: Pet Detective (1994)</title>
+        <title>2025-02-24: 2 films watched
+• Raising Arizona (1987)
+• Ace Ventura: Pet Detective (1994)</title>
         <rect
           x="96"
           y="12"
@@ -931,7 +959,9 @@
         />
       </g>
       <g>
-        <title>2025-03-03: 2 films watched\n\n• Your Name. (2016)\n• Not Another Teen Movie (2001)</title>
+        <title>2025-03-03: 2 films watched
+• Your Name. (2016)
+• Not Another Teen Movie (2001)</title>
         <rect
           x="108"
           y="12"
@@ -945,7 +975,8 @@
         />
       </g>
       <g>
-        <title>2025-03-10: 1 film watched\n\n• Bring It On (2000)</title>
+        <title>2025-03-10: 1 film watched
+• Bring It On (2000)</title>
         <rect
           x="120"
           y="12"
@@ -959,7 +990,8 @@
         />
       </g>
       <g>
-        <title>2025-03-17: 1 film watched\n\n• Shaun of the Dead (2004)</title>
+        <title>2025-03-17: 1 film watched
+• Shaun of the Dead (2004)</title>
         <rect
           x="132"
           y="12"
@@ -973,7 +1005,8 @@
         />
       </g>
       <g>
-        <title>2025-03-24: 1 film watched\n\n• Team America: World Police (2004)</title>
+        <title>2025-03-24: 1 film watched
+• Team America: World Police (2004)</title>
         <rect
           x="144"
           y="12"
@@ -1547,7 +1580,10 @@
         />
       </g>
       <g>
-        <title>2025-01-07: 3 films watched\n\n• Good Kids (2016)\n• The Stöned Age (1994)\n• Bill &amp; Ted&apos;s Excellent Adventure (1989)</title>
+        <title>2025-01-07: 3 films watched
+• Good Kids (2016)
+• The Stöned Age (1994)
+• Bill &amp; Ted&apos;s Excellent Adventure (1989)</title>
         <rect
           x="12"
           y="24"
@@ -1561,7 +1597,9 @@
         />
       </g>
       <g>
-        <title>2025-01-14: 2 films watched\n\n• Celebrity Sex Tape (2012)\n• Office Space (1999)</title>
+        <title>2025-01-14: 2 films watched
+• Celebrity Sex Tape (2012)
+• Office Space (1999)</title>
         <rect
           x="24"
           y="24"
@@ -1575,7 +1613,9 @@
         />
       </g>
       <g>
-        <title>2025-01-21: 2 films watched\n\n• Bridesmaids (2011)\n• Without a Paddle (2004)</title>
+        <title>2025-01-21: 2 films watched
+• Bridesmaids (2011)
+• Without a Paddle (2004)</title>
         <rect
           x="36"
           y="24"
@@ -1589,7 +1629,9 @@
         />
       </g>
       <g>
-        <title>2025-01-28: 2 films watched\n\n• Scooby-Doo (2002)\n• Happy Gilmore (1996)</title>
+        <title>2025-01-28: 2 films watched
+• Scooby-Doo (2002)
+• Happy Gilmore (1996)</title>
         <rect
           x="48"
           y="24"
@@ -1603,7 +1645,8 @@
         />
       </g>
       <g>
-        <title>2025-02-04: 1 film watched\n\n• The Big Lebowski (1998)</title>
+        <title>2025-02-04: 1 film watched
+• The Big Lebowski (1998)</title>
         <rect
           x="60"
           y="24"
@@ -1617,7 +1660,9 @@
         />
       </g>
       <g>
-        <title>2025-02-11: 2 films watched\n\n• American Pie (1999)\n• O Brother, Where Art Thou? (2000)</title>
+        <title>2025-02-11: 2 films watched
+• American Pie (1999)
+• O Brother, Where Art Thou? (2000)</title>
         <rect
           x="72"
           y="24"
@@ -1631,7 +1676,8 @@
         />
       </g>
       <g>
-        <title>2025-02-18: 1 film watched\n\n• Tropic Thunder (2008)</title>
+        <title>2025-02-18: 1 film watched
+• Tropic Thunder (2008)</title>
         <rect
           x="84"
           y="24"
@@ -1645,7 +1691,8 @@
         />
       </g>
       <g>
-        <title>2025-02-25: 1 film watched\n\n• Fargo (1996)</title>
+        <title>2025-02-25: 1 film watched
+• Fargo (1996)</title>
         <rect
           x="96"
           y="24"
@@ -1659,7 +1706,8 @@
         />
       </g>
       <g>
-        <title>2025-03-04: 1 film watched\n\n• Weathering with You (2019)</title>
+        <title>2025-03-04: 1 film watched
+• Weathering with You (2019)</title>
         <rect
           x="108"
           y="24"
@@ -1673,7 +1721,8 @@
         />
       </g>
       <g>
-        <title>2025-03-11: 1 film watched\n\n• DodgeBall: A True Underdog Story (2004)</title>
+        <title>2025-03-11: 1 film watched
+• DodgeBall: A True Underdog Story (2004)</title>
         <rect
           x="120"
           y="24"
@@ -1687,7 +1736,9 @@
         />
       </g>
       <g>
-        <title>2025-03-18: 2 films watched\n\n• What Happens in Vegas (2008)\n• Bad Santa (2003)</title>
+        <title>2025-03-18: 2 films watched
+• What Happens in Vegas (2008)
+• Bad Santa (2003)</title>
         <rect
           x="132"
           y="24"
@@ -2289,7 +2340,9 @@
         />
       </g>
       <g>
-        <title>2025-01-08: 2 films watched\n\n• Major Payne (1995)\n• Bill &amp; Ted&apos;s Bogus Journey (1991)</title>
+        <title>2025-01-08: 2 films watched
+• Major Payne (1995)
+• Bill &amp; Ted&apos;s Bogus Journey (1991)</title>
         <rect
           x="12"
           y="36"
@@ -2303,7 +2356,9 @@
         />
       </g>
       <g>
-        <title>2025-01-15: 2 films watched\n\n• The Naked Gun: From the Files of Police Squad! (1988)\n• Up in Smoke (1978)</title>
+        <title>2025-01-15: 2 films watched
+• The Naked Gun: From the Files of Police Squad! (1988)
+• Up in Smoke (1978)</title>
         <rect
           x="24"
           y="36"
@@ -2317,7 +2372,8 @@
         />
       </g>
       <g>
-        <title>2025-01-22: 1 film watched\n\n• Dogma (1999)</title>
+        <title>2025-01-22: 1 film watched
+• Dogma (1999)</title>
         <rect
           x="36"
           y="36"
@@ -2331,7 +2387,8 @@
         />
       </g>
       <g>
-        <title>2025-01-29: 1 film watched\n\n• Tommy Boy (1995)</title>
+        <title>2025-01-29: 1 film watched
+• Tommy Boy (1995)</title>
         <rect
           x="48"
           y="36"
@@ -2345,7 +2402,8 @@
         />
       </g>
       <g>
-        <title>2025-02-05: 1 film watched\n\n• Bio-Dome (1996)</title>
+        <title>2025-02-05: 1 film watched
+• Bio-Dome (1996)</title>
         <rect
           x="60"
           y="36"
@@ -2359,7 +2417,8 @@
         />
       </g>
       <g>
-        <title>2025-02-12: 1 film watched\n\n• Fear and Loathing in Las Vegas (1998)</title>
+        <title>2025-02-12: 1 film watched
+• Fear and Loathing in Las Vegas (1998)</title>
         <rect
           x="72"
           y="36"
@@ -2373,7 +2432,9 @@
         />
       </g>
       <g>
-        <title>2025-02-19: 2 films watched\n\n• Stand by Me (1986)\n• Your Highness (2011)</title>
+        <title>2025-02-19: 2 films watched
+• Stand by Me (1986)
+• Your Highness (2011)</title>
         <rect
           x="84"
           y="36"
@@ -2387,7 +2448,8 @@
         />
       </g>
       <g>
-        <title>2025-02-26: 1 film watched\n\n• Strange Brew (1983)</title>
+        <title>2025-02-26: 1 film watched
+• Strange Brew (1983)</title>
         <rect
           x="96"
           y="36"
@@ -2401,7 +2463,8 @@
         />
       </g>
       <g>
-        <title>2025-03-05: 1 film watched\n\n• Suzume (2022)</title>
+        <title>2025-03-05: 1 film watched
+• Suzume (2022)</title>
         <rect
           x="108"
           y="36"
@@ -2415,7 +2478,8 @@
         />
       </g>
       <g>
-        <title>2025-03-12: 1 film watched\n\n• School of Rock (2003)</title>
+        <title>2025-03-12: 1 film watched
+• School of Rock (2003)</title>
         <rect
           x="120"
           y="36"
@@ -2429,7 +2493,8 @@
         />
       </g>
       <g>
-        <title>2025-03-19: 1 film watched\n\n• Talladega Nights: The Ballad of Ricky Bobby (2006)</title>
+        <title>2025-03-19: 1 film watched
+• Talladega Nights: The Ballad of Ricky Bobby (2006)</title>
         <rect
           x="132"
           y="36"
@@ -3017,7 +3082,9 @@
         />
       </g>
       <g>
-        <title>2025-01-02: 2 films watched\n\n• Monsters, Inc. (2001)\n• Bad Teacher (2011)</title>
+        <title>2025-01-02: 2 films watched
+• Monsters, Inc. (2001)
+• Bad Teacher (2011)</title>
         <rect
           x="0"
           y="48"
@@ -3031,7 +3098,9 @@
         />
       </g>
       <g>
-        <title>2025-01-09: 2 films watched\n\n• Wallace &amp; Gromit: Vengeance Most Fowl (2024)\n• Mallrats (1995)</title>
+        <title>2025-01-09: 2 films watched
+• Wallace &amp; Gromit: Vengeance Most Fowl (2024)
+• Mallrats (1995)</title>
         <rect
           x="12"
           y="48"
@@ -3045,7 +3114,9 @@
         />
       </g>
       <g>
-        <title>2025-01-16: 2 films watched\n\n• Deuce Bigalow: European Gigolo (2005)\n• Anchorman: The Legend of Ron Burgundy (2004)</title>
+        <title>2025-01-16: 2 films watched
+• Deuce Bigalow: European Gigolo (2005)
+• Anchorman: The Legend of Ron Burgundy (2004)</title>
         <rect
           x="24"
           y="48"
@@ -3073,7 +3144,9 @@
         />
       </g>
       <g>
-        <title>2025-01-30: 2 films watched\n\n• Lammbock (2001)\n• Billy Madison (1995)</title>
+        <title>2025-01-30: 2 films watched
+• Lammbock (2001)
+• Billy Madison (1995)</title>
         <rect
           x="48"
           y="48"
@@ -3087,7 +3160,8 @@
         />
       </g>
       <g>
-        <title>2025-02-06: 1 film watched\n\n• Kingpin (1996)</title>
+        <title>2025-02-06: 1 film watched
+• Kingpin (1996)</title>
         <rect
           x="60"
           y="48"
@@ -3101,7 +3175,8 @@
         />
       </g>
       <g>
-        <title>2025-02-13: 1 film watched\n\n• Kid Cannabis (2014)</title>
+        <title>2025-02-13: 1 film watched
+• Kid Cannabis (2014)</title>
         <rect
           x="72"
           y="48"
@@ -3115,7 +3190,8 @@
         />
       </g>
       <g>
-        <title>2025-02-20: 1 film watched\n\n• Booksmart (2019)</title>
+        <title>2025-02-20: 1 film watched
+• Booksmart (2019)</title>
         <rect
           x="84"
           y="48"
@@ -3129,7 +3205,8 @@
         />
       </g>
       <g>
-        <title>2025-02-27: 1 film watched\n\n• Big Daddy (1999)</title>
+        <title>2025-02-27: 1 film watched
+• Big Daddy (1999)</title>
         <rect
           x="96"
           y="48"
@@ -3143,7 +3220,9 @@
         />
       </g>
       <g>
-        <title>2025-03-06: 2 films watched\n\n• Clerks II (2006)\n• 5 Centimeters per Second (2007)</title>
+        <title>2025-03-06: 2 films watched
+• Clerks II (2006)
+• 5 Centimeters per Second (2007)</title>
         <rect
           x="108"
           y="48"
@@ -3157,7 +3236,9 @@
         />
       </g>
       <g>
-        <title>2025-03-13: 2 films watched\n\n• Surfer, Dude (2008)\n• Forgetting Sarah Marshall (2008)</title>
+        <title>2025-03-13: 2 films watched
+• Surfer, Dude (2008)
+• Forgetting Sarah Marshall (2008)</title>
         <rect
           x="120"
           y="48"
@@ -3171,7 +3252,8 @@
         />
       </g>
       <g>
-        <title>2025-03-20: 1 film watched\n\n• Open Season (2006)</title>
+        <title>2025-03-20: 1 film watched
+• Open Season (2006)</title>
         <rect
           x="132"
           y="48"
@@ -3745,7 +3827,10 @@
         />
       </g>
       <g>
-        <title>2025-01-03: 3 films watched\n\n• The Prestige (2006)\n• Top Gun: Maverick (2022)\n• Idle Hands (1999)</title>
+        <title>2025-01-03: 3 films watched
+• The Prestige (2006)
+• Top Gun: Maverick (2022)
+• Idle Hands (1999)</title>
         <rect
           x="0"
           y="60"
@@ -3759,7 +3844,8 @@
         />
       </g>
       <g>
-        <title>2025-01-10: 1 film watched\n\n• Airplane! (1980)</title>
+        <title>2025-01-10: 1 film watched
+• Airplane! (1980)</title>
         <rect
           x="12"
           y="60"
@@ -3773,7 +3859,8 @@
         />
       </g>
       <g>
-        <title>2025-01-17: 1 film watched\n\n• Deuce Bigalow: Male Gigolo (1999)</title>
+        <title>2025-01-17: 1 film watched
+• Deuce Bigalow: Male Gigolo (1999)</title>
         <rect
           x="24"
           y="60"
@@ -3787,7 +3874,9 @@
         />
       </g>
       <g>
-        <title>2025-01-24: 2 films watched\n\n• Sonic the Hedgehog 2 (2022)\n• Geostorm (2017)</title>
+        <title>2025-01-24: 2 films watched
+• Sonic the Hedgehog 2 (2022)
+• Geostorm (2017)</title>
         <rect
           x="36"
           y="60"
@@ -3801,7 +3890,9 @@
         />
       </g>
       <g>
-        <title>2025-01-31: 2 films watched\n\n• Hot Rod (2007)\n• Harry Potter and the Order of the Phoenix (2007)</title>
+        <title>2025-01-31: 2 films watched
+• Hot Rod (2007)
+• Harry Potter and the Order of the Phoenix (2007)</title>
         <rect
           x="48"
           y="60"
@@ -3815,7 +3906,9 @@
         />
       </g>
       <g>
-        <title>2025-02-07: 2 films watched\n\n• Soul Plane (2004)\n• Dazed and Confused (1993)</title>
+        <title>2025-02-07: 2 films watched
+• Soul Plane (2004)
+• Dazed and Confused (1993)</title>
         <rect
           x="60"
           y="60"
@@ -3829,7 +3922,8 @@
         />
       </g>
       <g>
-        <title>2025-02-14: 1 film watched\n\n• Cheech &amp; Chong&apos;s Next Movie (1980)</title>
+        <title>2025-02-14: 1 film watched
+• Cheech &amp; Chong&apos;s Next Movie (1980)</title>
         <rect
           x="72"
           y="60"
@@ -3843,7 +3937,8 @@
         />
       </g>
       <g>
-        <title>2025-02-21: 1 film watched\n\n• Saving Grace (2000)</title>
+        <title>2025-02-21: 1 film watched
+• Saving Grace (2000)</title>
         <rect
           x="84"
           y="60"
@@ -3857,7 +3952,8 @@
         />
       </g>
       <g>
-        <title>2025-02-28: 1 film watched\n\n• Mr. Deeds (2002)</title>
+        <title>2025-02-28: 1 film watched
+• Mr. Deeds (2002)</title>
         <rect
           x="96"
           y="60"
@@ -3871,7 +3967,9 @@
         />
       </g>
       <g>
-        <title>2025-03-07: 2 films watched\n\n• Piece By Piece (2024)\n• Sex Drive (2008)</title>
+        <title>2025-03-07: 2 films watched
+• Piece By Piece (2024)
+• Sex Drive (2008)</title>
         <rect
           x="108"
           y="60"
@@ -3885,7 +3983,8 @@
         />
       </g>
       <g>
-        <title>2025-03-14: 1 film watched\n\n• This Is 40 (2012)</title>
+        <title>2025-03-14: 1 film watched
+• This Is 40 (2012)</title>
         <rect
           x="120"
           y="60"
@@ -3899,7 +3998,10 @@
         />
       </g>
       <g>
-        <title>2025-03-21: 3 films watched\n\n• I Want to Eat Your Pancreas (2018)\n• The Garden of Words (2013)\n• Your Name. (2016)</title>
+        <title>2025-03-21: 3 films watched
+• I Want to Eat Your Pancreas (2018)
+• The Garden of Words (2013)
+• Your Name. (2016)</title>
         <rect
           x="132"
           y="60"
@@ -4473,7 +4575,8 @@
         />
       </g>
       <g>
-        <title>2025-01-04: 1 film watched\n\n• Beerfest (2006)</title>
+        <title>2025-01-04: 1 film watched
+• Beerfest (2006)</title>
         <rect
           x="0"
           y="72"
@@ -4487,7 +4590,9 @@
         />
       </g>
       <g>
-        <title>2025-01-11: 2 films watched\n\n• Puff, Puff, Pass (2006)\n• PCU (1994)</title>
+        <title>2025-01-11: 2 films watched
+• Puff, Puff, Pass (2006)
+• PCU (1994)</title>
         <rect
           x="12"
           y="72"
@@ -4501,7 +4606,11 @@
         />
       </g>
       <g>
-        <title>2025-01-18: 4 films watched\n\n• Monty Python and the Holy Grail (1975)\n• Toy Story (1995)\n• Good Will Hunting (1997)\n• Pineapple Express (2008)</title>
+        <title>2025-01-18: 4 films watched
+• Monty Python and the Holy Grail (1975)
+• Toy Story (1995)
+• Good Will Hunting (1997)
+• Pineapple Express (2008)</title>
         <rect
           x="24"
           y="72"
@@ -4515,7 +4624,8 @@
         />
       </g>
       <g>
-        <title>2025-01-25: 1 film watched\n\n• Sonic the Hedgehog 3 (2024)</title>
+        <title>2025-01-25: 1 film watched
+• Sonic the Hedgehog 3 (2024)</title>
         <rect
           x="36"
           y="72"
@@ -4529,7 +4639,9 @@
         />
       </g>
       <g>
-        <title>2025-02-01: 2 films watched\n\n• My Neighbor Totoro (1988)\n• Airheads (1994)</title>
+        <title>2025-02-01: 2 films watched
+• My Neighbor Totoro (1988)
+• Airheads (1994)</title>
         <rect
           x="48"
           y="72"
@@ -4543,7 +4655,8 @@
         />
       </g>
       <g>
-        <title>2025-02-08: 1 film watched\n\n• Ferris Bueller&apos;s Day Off (1986)</title>
+        <title>2025-02-08: 1 film watched
+• Ferris Bueller&apos;s Day Off (1986)</title>
         <rect
           x="60"
           y="72"
@@ -4557,7 +4670,9 @@
         />
       </g>
       <g>
-        <title>2025-02-15: 2 films watched\n\n• The Emperor&apos;s New Groove (2000)\n• Out Cold (2001)</title>
+        <title>2025-02-15: 2 films watched
+• The Emperor&apos;s New Groove (2000)
+• Out Cold (2001)</title>
         <rect
           x="72"
           y="72"
@@ -4571,7 +4686,8 @@
         />
       </g>
       <g>
-        <title>2025-02-22: 1 film watched\n\n• Toy Story 3 (2010)</title>
+        <title>2025-02-22: 1 film watched
+• Toy Story 3 (2010)</title>
         <rect
           x="84"
           y="72"
@@ -4585,7 +4701,8 @@
         />
       </g>
       <g>
-        <title>2025-03-01: 1 film watched\n\n• The Wackness (2008)</title>
+        <title>2025-03-01: 1 film watched
+• The Wackness (2008)</title>
         <rect
           x="96"
           y="72"
@@ -4599,7 +4716,8 @@
         />
       </g>
       <g>
-        <title>2025-03-08: 1 film watched\n\n• Starsky &amp; Hutch (2004)</title>
+        <title>2025-03-08: 1 film watched
+• Starsky &amp; Hutch (2004)</title>
         <rect
           x="108"
           y="72"
@@ -4613,7 +4731,8 @@
         />
       </g>
       <g>
-        <title>2025-03-15: 1 film watched\n\n• Mac &amp; Devin Go to High School (2012)</title>
+        <title>2025-03-15: 1 film watched
+• Mac &amp; Devin Go to High School (2012)</title>
         <rect
           x="120"
           y="72"
@@ -4627,7 +4746,11 @@
         />
       </g>
       <g>
-        <title>2025-03-22: 4 films watched\n\n• The Nutty Professor (1996)\n• Extract (2009)\n• The Girl Who Leapt Through Time (2006)\n• A Silent Voice: The Movie (2016)</title>
+        <title>2025-03-22: 4 films watched
+• The Nutty Professor (1996)
+• Extract (2009)
+• The Girl Who Leapt Through Time (2006)
+• A Silent Voice: The Movie (2016)</title>
         <rect
           x="132"
           y="72"
