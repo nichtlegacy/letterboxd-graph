@@ -68,14 +68,13 @@ async function fetchLetterboxdData(username, year) {
           const filmYearElement = $row.find("td.td-released");
           const filmYear = filmYearElement.text().trim();
 
-          // Extract rating from <span class="rating rated-X">
           let rating = null;
           const ratingSpan = $row.find("td.td-rating .rating");
           if (ratingSpan.length > 0) {
             const ratingClass = ratingSpan.attr("class");
             const ratingMatch = ratingClass.match(/rated-(\d+)/);
             if (ratingMatch && ratingMatch[1]) {
-              rating = Number(ratingMatch[1]) / 2; // Convert 0-10 to 0-5 scale
+              rating = Number(ratingMatch[1]) / 2;
             }
           }
 
@@ -146,7 +145,6 @@ async function tryFetchMultipleYears(username, startYear) {
   return allEntries;
 }
 
-// Fixed escapeXml function (from new version)
 function escapeXml(unsafe) {
   if (unsafe === undefined || unsafe === null) return "";
   return String(unsafe).replace(/[<>&'"]/g, (c) => {
@@ -160,9 +158,9 @@ function escapeXml(unsafe) {
   });
 }
 
-function generateSvg(entries, darkMode = true) {
+function generateSvg(entries) {
   const sortedEntries = [...entries].sort((a, b) => a.date.getTime() - b.date.getTime());
-  if (sortedEntries.length === 0) return generateEmptySvg("No film entries found", darkMode);
+  if (sortedEntries.length === 0) return generateEmptySvg("No film entries found");
 
   const year = sortedEntries[0].date.getFullYear();
   const startDate = new Date(year, 0, 1);
@@ -194,23 +192,16 @@ function generateSvg(entries, darkMode = true) {
     }
   });
 
-  const CELL_SIZE = 10;
+  const CELL_SIZE = 11;
   const CELL_MARGIN = 2;
   const GRID_WIDTH = totalWeeks * (CELL_SIZE + CELL_MARGIN);
   const GRID_HEIGHT = 7 * (CELL_SIZE + CELL_MARGIN);
   const SVG_WIDTH = GRID_WIDTH + 60;
-  const SVG_HEIGHT = GRID_HEIGHT + 60;
+  const SVG_HEIGHT = GRID_HEIGHT + 60; // Increased height for more space below
 
   const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-  const colors = darkMode
-    ? ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"]
-    : ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"];
-  const textPrimary = darkMode ? "#e6edf3" : "#24292e";
-  const textSecondary = darkMode ? "#8b949e" : "#586069";
-  const bgColor = darkMode ? "#0d1117" : "transparent";
-  const borderColor = darkMode ? "#30363d" : "#eaecef";
+  const colors = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"];
 
   function getColor(count) {
     if (count === 0) return colors[0];
@@ -218,58 +209,59 @@ function generateSvg(entries, darkMode = true) {
     return colors[Math.min(level, 4)];
   }
 
-  let svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
+  let svg = `<svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
-    .text-secondary { fill: ${textSecondary}; }
-    .text-primary { fill: ${textPrimary}; }
-    .text-xs { font-size: 9px; }
-    .text-sm { font-size: 10px; }
-    .text-base { font-size: 12px; }
-    .text-lg { font-size: 14px; }
-    .font-semibold { font-weight: 600; }
-    .text-start { text-anchor: start; }
-    .text-middle { dominant-baseline: middle; }
-    .text-end { text-anchor: end; }
+    text {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      fill: #767676;
+    }
+    .title-text { font-size: 13px; fill: #24292e; }
+    .subtitle-text { font-size: 11px; fill: #767676; }
+    .tooltip {
+      opacity: 0;
+      pointer-events: none;
+    }
+    rect:hover + .tooltip {
+      opacity: 1;
+    }
   </style>
-  <rect width="${SVG_WIDTH}" height="${SVG_HEIGHT}" fill="${bgColor}" rx="6" ry="6" />
-  <text x="${SVG_WIDTH / 2}" y="20" class="font-sans text-lg font-semibold text-primary" text-anchor="middle">Letterboxd Contribution Graph - ${year}</text>
-  <text x="${SVG_WIDTH / 2}" y="40" class="font-sans text-base text-secondary" text-anchor="middle">${totalFilms} films watched</text>
-  <g transform="translate(${SVG_WIDTH / 2 - 75}, 55)">
-    <text x="0" y="7" class="font-sans text-xs text-secondary text-start text-middle">Less</text>`;
-
+  <!-- Title and films watched in top-left -->
+  <text x="10" y="15" class="title-text">Letterboxd ${year}</text>
+  <text x="10" y="30" class="subtitle-text">${totalFilms} films watched</text>
+  
+  <!-- Legend in top-right -->
+  <g transform="translate(${SVG_WIDTH - 140}, 10)">
+    <text x="0" y="10">Less</text>`;
   for (let i = 0; i < 5; i++) {
     svg += `
-    <rect x="${30 + i * 15}" y="0" width="10" height="10" rx="2" ry="2" fill="${colors[i]}" stroke="${i === 0 ? borderColor : "none"}" stroke-width="1"/>`;
+    <rect x="${40 + i * 15}" y="2" width="10" height="10" rx="2" ry="2" fill="${colors[i]}"/>`;
   }
-
   svg += `
-    <text x="${30 + 5 * 15 + 5}" y="7" class="font-sans text-xs text-secondary text-start text-middle">More</text>
+    <text x="${40 + 5 * 15 + 5}" y="10">More</text>
   </g>
-  <g transform="translate(30, 80)">`;
-
+  
+  <!-- Month labels -->
+  <g transform="translate(30, 50)">`;
   for (let i = 0; i < 12; i++) {
     const firstDayOfMonth = new Date(year, i, 1);
     const daysSinceStart = Math.floor((firstDayOfMonth.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
     if (daysSinceStart < 0) continue;
     const weekIndex = Math.floor(daysSinceStart / 7);
     const x = weekIndex * (CELL_SIZE + CELL_MARGIN);
-    svg += `<text x="${x}" y="0" class="font-sans text-sm text-secondary text-start">${MONTHS[i]}</text>`;
+    svg += `<text x="${x}" y="0">${MONTHS[i]}</text>`;
   }
 
   svg += `</g>
-  <g transform="translate(20, 95)">`;
-  const daysToShow = [1, 3, 5];
+  <!-- Day of week labels -->
+  <g transform="translate(10, 60)">`;
   for (let i = 0; i < 7; i++) {
-    if (daysToShow.includes(i)) {
-      svg += `<text x="0" y="${i * (CELL_SIZE + CELL_MARGIN) + CELL_SIZE / 2}" class="font-sans text-xs text-secondary text-end text-middle">${DAYS[i][0]}</text>`;
-    }
+    svg += `<text x="0" y="${i * (CELL_SIZE + CELL_MARGIN) + CELL_SIZE / 2 + 4}">${DAYS[i][0]}</text>`;
   }
 
   svg += `</g>
-  <g transform="translate(30, 95)">`;
-
+  <!-- Contribution cells -->
+  <g transform="translate(30, 60)">`;
   for (let day = 0; day < 7; day++) {
     for (let week = 0; week < totalWeeks; week++) {
       const count = grid[day][week];
@@ -277,23 +269,39 @@ function generateSvg(entries, darkMode = true) {
       const cellDate = new Date(startDate);
       cellDate.setDate(cellDate.getDate() + week * 7 + day);
 
-      if (cellDate.getFullYear() !== year) continue;
-
-      const dateStr = cellDate.toISOString().split("T")[0];
+      const tooltipDate = cellDate.toISOString().split("T")[0];
       const x = week * (CELL_SIZE + CELL_MARGIN);
       const y = day * (CELL_SIZE + CELL_MARGIN);
 
-      const filmsForDay = filmsPerDay.get(dateStr) || [];
-      let tooltipContent = `${dateStr}: ${count} film${count !== 1 ? "s" : ""} watched`;
-      filmsForDay.forEach((film) => {
-        const ratingStr = film.rating ? ` - ${film.rating}★` : "";
-        tooltipContent += `\n• ${escapeXml(film.title)} (${escapeXml(film.year)})${ratingStr}`;
-      });
+      const filmsForDay = filmsPerDay.get(tooltipDate) || [];
+      let tooltipContent = `${tooltipDate}: ${count} film${count !== 1 ? "s" : ""} watched`;
+      if (filmsForDay.length > 0) {
+        filmsForDay.forEach((film) => {
+          const ratingStr = film.rating ? ` - ${film.rating}★` : "";
+          tooltipContent += `\n${escapeXml(film.title)} (${escapeXml(film.year)})${ratingStr}`;
+        });
+      }
+
+      const tooltipLines = tooltipContent.split("\n").length;
+      const tooltipHeight = tooltipLines * 15;
+      const tooltipWidth = 150;
 
       svg += `
-      <g>
-        <title>${tooltipContent}</title>
-        <rect x="${x}" y="${y}" width="${CELL_SIZE}" height="${CELL_SIZE}" rx="2" ry="2" fill="${color}" stroke="${count === 0 ? borderColor : "none"}" stroke-width="1"/>
+      <rect
+        x="${x}"
+        y="${y}"
+        width="${CELL_SIZE}"
+        height="${CELL_SIZE}"
+        rx="2"
+        ry="2"
+        fill="${color}"
+        data-date="${tooltipDate}"
+        data-count="${count}"
+      />
+      <g class="tooltip" transform="translate(${x - 20}, ${y - tooltipHeight - 10})">
+        <rect x="0" y="0" width="${tooltipWidth}" height="${tooltipHeight}" rx="3" fill="black" opacity="0.8" />
+        <text x="5" y="15" fill="white">${tooltipContent.split("\n").map((line, i) => `
+          <tspan x="5" dy="${i === 0 ? 0 : 15}">${escapeXml(line)}</tspan>`).join("")}</text>
       </g>`;
     }
   }
@@ -302,19 +310,11 @@ function generateSvg(entries, darkMode = true) {
   return svg;
 }
 
-function generateEmptySvg(message, darkMode = true) {
-  const textColor = darkMode ? "#e6edf3" : "#24292e";
-  const bgColor = darkMode ? "#0d1117" : "#f6f8fa";
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="600" height="100" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
-    .text-primary { fill: ${textColor}; }
-    .text-center { text-anchor: middle; dominant-baseline: middle; }
-  </style>
-  <rect width="600" height="100" fill="${bgColor}" rx="4" ry="4" />
-  <text x="50%" y="50%" class="font-sans text-primary text-center" font-size="14">${escapeXml(message)}</text>
-</svg>`;
+function generateEmptySvg(message) {
+  return `<svg width="600" height="100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="600" height="100" fill="#f6f8fa" rx="3" ry="3" />
+    <text x="50%" y="50%" font-family="Arial" font-size="14" fill="#24292e" text-anchor="middle" dominant-baseline="middle">${escapeXml(message)}</text>
+  </svg>`;
 }
 
 async function main() {
@@ -322,13 +322,12 @@ async function main() {
     const username = process.argv[2] || process.env.INPUT_LETTERBOXD_USERNAME || "nichtlegacy";
     const year = Number.parseInt(process.argv[3] || process.env.INPUT_YEAR || new Date().getFullYear());
     const outputPath = process.argv[4] || process.env.INPUT_OUTPUT_PATH || "letterboxd-graph.svg";
-    const darkMode = true;
 
     console.log(`Starting Letterboxd contribution graph generation for user: ${username}`);
     const filmEntries = await tryFetchMultipleYears(username, year);
     console.log(`Found ${filmEntries.length} film entries in total`);
 
-    const svg = generateSvg(filmEntries, darkMode);
+    const svg = generateSvg(filmEntries);
     const dir = path.dirname(outputPath);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
