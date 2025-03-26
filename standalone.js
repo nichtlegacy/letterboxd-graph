@@ -93,20 +93,52 @@ async function fetchLetterboxdData(username, year) {
           const filmYearElement = $row.find("td.td-released")
           const filmYear = filmYearElement.text().trim()
 
-          // Extract rating (if available) - For non-logged-in view
-          let rating = null
+          // DETAILED RATING DEBUGGING
+          console.log(`\n--- RATING DEBUG for ${title} ---`)
 
-          // Find the span with class "rating rated-X"
-          const ratingSpan = $row.find("span[class^='rating rated-']")
-          if (ratingSpan.length > 0) {
-            // Extract the rating value from the class name
-            const ratingClass = ratingSpan.attr("class")
-            const ratingMatch = ratingClass.match(/rated-(\d+)/)
-            if (ratingMatch && ratingMatch[1]) {
-              rating = Number(ratingMatch[1]) / 2 // Convert from 0-10 to 0-5 scale
-              console.log(`Rating extracted from class: ${rating}`)
+          // Get the HTML of the rating cell for debugging
+          const ratingCell = $row.find("td.td-rating")
+          console.log(`Rating cell found: ${ratingCell.length > 0}`)
+          if (ratingCell.length > 0) {
+            console.log(`Rating cell HTML: ${ratingCell.html().substring(0, 200)}...`)
+          }
+
+          // Try to find all divs with class containing "rateit"
+          const rateitDivs = $row.find("div[class*='rateit']")
+          console.log(`Found ${rateitDivs.length} divs with 'rateit' in class`)
+
+          rateitDivs.each((i, el) => {
+            console.log(`Rateit div ${i + 1} class: ${$(el).attr("class")}`)
+            console.log(`Rateit div ${i + 1} aria-valuenow: ${$(el).attr("aria-valuenow")}`)
+          })
+
+          // Try a more direct approach - look for the specific div
+          const rateitRange = $row.find(".rateit-range")
+          console.log(`Found ${rateitRange.length} elements with class 'rateit-range'`)
+
+          // Extract rating
+          let rating = null
+          if (rateitRange.length > 0) {
+            const ratingValue = rateitRange.attr("aria-valuenow")
+            console.log(`Rating value from aria-valuenow: ${ratingValue}`)
+            if (ratingValue) {
+              rating = Number(ratingValue) / 2 // Convert from 0-10 to 0-5 scale
+              console.log(`Converted rating: ${rating}`)
             }
           }
+
+          // If still no rating, try another approach
+          if (rating === null) {
+            // Try to find the rating directly from the HTML
+            const html = $row.html()
+            const ratingMatch = html.match(/aria-valuenow="(\d+)"/)
+            if (ratingMatch && ratingMatch[1]) {
+              rating = Number(ratingMatch[1]) / 2
+              console.log(`Rating extracted from HTML: ${rating}`)
+            }
+          }
+
+          console.log(`--- END RATING DEBUG ---\n`)
 
           // Convert month name to month number
           const monthNames = {
