@@ -195,7 +195,8 @@ async function tryFetchMultipleYears(username, startYear) {
 
 // Helper function to escape special characters for XML
 function escapeXml(unsafe) {
-  return unsafe.replace(/[<>&'"]/g, (c) => {
+  if (unsafe === undefined || unsafe === null) return ""
+  return String(unsafe).replace(/[<>&'"]/g, (c) => {
     switch (c) {
       case "<":
         return "&lt;"
@@ -293,7 +294,9 @@ function generateSvg(entries) {
     return colors[Math.min(level, 4)]
   }
 
-  let svg = `<svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
+  // Start building the SVG
+  let svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
   <style>
     .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
     .text-secondary { fill: #586069; }
@@ -448,15 +451,16 @@ function generateSvg(entries) {
 }
 
 function generateEmptySvg(message) {
-  return `<svg width="600" height="100" xmlns="http://www.w3.org/2000/svg">
-    <style>
-      .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
-      .text-primary { fill: #24292e; }
-      .text-center { text-anchor: middle; dominant-baseline: middle; }
-    </style>
-    <rect width="600" height="100" fill="#f6f8fa" rx="4" ry="4" />
-    <text x="50%" y="50%" class="font-sans text-primary text-center" font-size="14">${escapeXml(message)}</text>
-  </svg>`
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="100" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .text-primary { fill: #24292e; }
+    .text-center { text-anchor: middle; dominant-baseline: middle; }
+  </style>
+  <rect width="600" height="100" fill="#f6f8fa" rx="4" ry="4" />
+  <text x="50%" y="50%" class="font-sans text-primary text-center" font-size="14">${escapeXml(message)}</text>
+</svg>`
 }
 
 async function main() {
