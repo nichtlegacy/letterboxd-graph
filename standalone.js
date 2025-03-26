@@ -10,6 +10,10 @@ async function fetchLetterboxdData(username, year) {
 
   console.log(`Fetching Letterboxd diary for user: ${username} for year: ${year}`)
 
+  // Keep track of the current month and year for entries that don't have this info
+  let currentMonth = null
+  let currentYear = year.toString()
+
   while (hasMorePages) {
     console.log(`Fetching page ${page} of diary entries...`)
 
@@ -62,11 +66,20 @@ async function fetchLetterboxdData(username, year) {
         try {
           const $row = $(row)
 
-          // Extract month and year
-          const monthElement = $row.find("td.td-calendar .date strong a")
-          const yearElement = $row.find("td.td-calendar .date small")
-          const month = monthElement.text().trim()
-          const yearText = yearElement.text().trim()
+          // Extract month and year if available
+          const calendarCell = $row.find("td.td-calendar")
+          const monthElement = calendarCell.find(".date strong a")
+          const yearElement = calendarCell.find(".date small")
+
+          // If month is available, update the current month
+          if (monthElement.length > 0) {
+            currentMonth = monthElement.text().trim()
+          }
+
+          // If year is available, update the current year
+          if (yearElement.length > 0) {
+            currentYear = yearElement.text().trim()
+          }
 
           // Extract day
           const dayElement = $row.find("td.td-day a")
@@ -106,11 +119,11 @@ async function fetchLetterboxdData(username, year) {
             Dec: 11,
           }
 
-          const monthNum = monthNames[month]
+          const monthNum = monthNames[currentMonth]
 
-          if (monthNum !== undefined && day && yearText) {
+          if (monthNum !== undefined && day && currentYear) {
             // Create date object
-            const date = new Date(Number.parseInt(yearText), monthNum, Number.parseInt(day))
+            const date = new Date(Number.parseInt(currentYear), monthNum, Number.parseInt(day))
 
             // Get film URL
             const filmUrl = titleElement.attr("href")
@@ -125,7 +138,9 @@ async function fetchLetterboxdData(username, year) {
               url: filmUrl ? `https://letterboxd.com${filmUrl}` : undefined,
             })
           } else {
-            console.warn(`Skipping entry with incomplete date: Month=${month}, Day=${day}, Year=${yearText}`)
+            console.warn(
+              `Skipping entry with incomplete date: Month=${currentMonth}, Day=${day}, Year=${currentYear}, MonthNum=${monthNum}`,
+            )
           }
         } catch (err) {
           console.warn(`Error parsing entry: ${err}`)
