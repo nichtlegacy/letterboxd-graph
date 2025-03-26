@@ -287,7 +287,7 @@ function generateSvg(entries, options = {}) {
   const textWidth = displayName.length * 8;
   const totalHeaderWidth = imageWidth + (profileImage ? 5 : 0) + textWidth;
 
-  const logoBase64 = options.logoBase64 || "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=="; // Fallback für Tests
+  const logoBase64 = options.logoBase64 || "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==";
   
   let svg = `<svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -318,7 +318,7 @@ function generateSvg(entries, options = {}) {
     .username-plain { 
       font-size: 13px; 
       font-weight: bold; 
-      fill: #ffffff; /* Weiß als Standard */
+      fill: #ffffff; /* White as default */
     }
     .subtitle-text { 
       font-size: 11px; 
