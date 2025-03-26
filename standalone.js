@@ -39,98 +39,109 @@ async function fetchLetterboxdData(username, year) {
 
       const $ = cheerio.load(html)
 
-      // Check if we found any entries on this page
-      // Letterboxd uses different selectors for diary entries
-      const entryElements = $(".diary-entry")
+      // Find the diary table
+      const diaryTable = $("#diary-table")
 
-      console.log(`Found ${entryElements.length} entry elements on page ${page}`)
-
-      if (entryElements.length === 0) {
-        // Try alternative selectors
-        const altEntryElements = $(".diary-entry-row")
-        console.log(`Found ${altEntryElements.length} alternative entry elements on page ${page}`)
-
-        if (altEntryElements.length === 0) {
-          console.log("No entries found on this page, checking for empty diary message")
-
-          // Check if there's an empty diary message
-          const emptyMessage = $(".empty-diary-message").text()
-          if (emptyMessage) {
-            console.log(`Empty diary message found: "${emptyMessage.trim()}"`)
-          }
-
-          hasMorePages = false
-          break
-        }
-
-        // Parse each diary entry using alternative selector
-        altEntryElements.each((_, element) => {
-          try {
-            const dateStr = $(element).find(".diary-date").text().trim()
-            const title = $(element).find(".film-title").text().trim()
-            const year = $(element).find(".film-year").text().trim().replace(/[()]/g, "")
-            const url = $(element).find(".film-title").attr("href")
-
-            console.log(`Found entry: ${dateStr} - ${title} (${year})`)
-
-            // Extract rating (0-5 stars)
-            const ratingClass = $(element).find(".rating").attr("class") || ""
-            const ratingMatch = ratingClass.match(/rated-(\d+)/)
-            const rating = ratingMatch ? Number.parseInt(ratingMatch[1]) / 2 : undefined
-
-            // Parse date (format: 2023-12-31)
-            const dateParts = dateStr.split("-").map((part) => Number.parseInt(part.trim()))
-            if (dateParts.length === 3) {
-              const date = new Date(dateParts[0], dateParts[1] - 1, dateParts[2])
-
-              entries.push({
-                date,
-                title,
-                year,
-                rating,
-                url: url ? `https://letterboxd.com${url}` : undefined,
-              })
-            }
-          } catch (err) {
-            console.warn(`Error parsing entry: ${err}`)
-          }
-        })
-      } else {
-        // Parse each diary entry using standard selector
-        entryElements.each((_, element) => {
-          try {
-            const dateStr = $(element).find(".date").text().trim()
-            const title = $(element).find(".film-title").text().trim()
-            const year = $(element).find(".year").text().trim().replace(/[()]/g, "")
-            const url = $(element).find(".film-title").attr("href")
-
-            console.log(`Found entry: ${dateStr} - ${title} (${year})`)
-
-            // Extract rating (0-5 stars)
-            const ratingClass = $(element).find(".rating").attr("class") || ""
-            const ratingMatch = ratingClass.match(/rated-(\d+)/)
-            const rating = ratingMatch ? Number.parseInt(ratingMatch[1]) / 2 : undefined
-
-            // Parse date (format: Dec 31, 2023 or 31 Dec 2023)
-            const dateObj = new Date(dateStr)
-
-            entries.push({
-              date: dateObj,
-              title,
-              year,
-              rating,
-              url: url ? `https://letterboxd.com${url}` : undefined,
-            })
-          } catch (err) {
-            console.warn(`Error parsing entry: ${err}`)
-          }
-        })
+      if (diaryTable.length === 0) {
+        console.log("No diary table found on this page")
+        hasMorePages = false
+        break
       }
 
-      page++
+      // Find all diary entry rows
+      const entryRows = diaryTable.find("tr.diary-entry-row")
+      console.log(`Found ${entryRows.length} diary entries on page ${page}`)
 
-      // Add a small delay to avoid rate limiting
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      if (entryRows.length === 0) {
+        hasMorePages = false
+        break
+      }
+
+      // Process each entry row
+      entryRows.each((_, row) => {
+        try {
+          const $row = $(row)
+
+          // Extract month and year
+          const monthElement = $row.find("td.td-calendar .date strong a")
+          const yearElement = $row.find("td.td-calendar .date small")
+          const month = monthElement.text().trim()
+          const yearText = yearElement.text().trim()
+
+          // Extract day
+          const dayElement = $row.find("td.td-day a")
+          const day = dayElement.text().trim()
+
+          // Extract film title
+          const titleElement = $row.find("h3.headline-3 a")
+          const title = titleElement.text().trim()
+
+          // Extract film year
+          const filmYearElement = $row.find("td.td-released")
+          const filmYear = filmYearElement.text().trim()
+
+          // Extract rating (if available)
+          const ratingElement = $row.find("td.td-rating .rateit-range")
+          let rating = null
+          if (ratingElement.length > 0) {
+            const ratingValue = ratingElement.attr("aria-valuenow")
+            if (ratingValue) {
+              rating = Number.parseInt(ratingValue) / 2 // Convert from 0-10 to 0-5 scale
+            }
+          }
+
+          // Convert month name to month number
+          const monthNames = {
+            Jan: 0,
+            Feb: 1,
+            Mar: 2,
+            Apr: 3,
+            May: 4,
+            Jun: 5,
+            Jul: 6,
+            Aug: 7,
+            Sep: 8,
+            Oct: 9,
+            Nov: 10,
+            Dec: 11,
+          }
+
+          const monthNum = monthNames[month]
+
+          if (monthNum !== undefined && day && yearText) {
+            // Create date object
+            const date = new Date(Number.parseInt(yearText), monthNum, Number.parseInt(day))
+
+            // Get film URL
+            const filmUrl = titleElement.attr("href")
+
+            console.log(`Found entry: ${date.toISOString().split("T")[0]} - ${title} (${filmYear}) - Rating: ${rating}`)
+
+            entries.push({
+              date,
+              title,
+              year: filmYear,
+              rating,
+              url: filmUrl ? `https://letterboxd.com${filmUrl}` : undefined,
+            })
+          } else {
+            console.warn(`Skipping entry with incomplete date: Month=${month}, Day=${day}, Year=${yearText}`)
+          }
+        } catch (err) {
+          console.warn(`Error parsing entry: ${err}`)
+        }
+      })
+
+      // Check if there's a next page
+      const nextPageLink = $(".paginate-nextprev .next")
+      if (nextPageLink.length === 0 || nextPageLink.hasClass("disabled")) {
+        console.log("No next page link found, finished fetching")
+        hasMorePages = false
+      } else {
+        page++
+        // Add a small delay to avoid rate limiting
+        await new Promise((resolve) => setTimeout(resolve, 1000))
+      }
     } catch (error) {
       console.warn(`Error fetching page ${page}: ${error}`)
       hasMorePages = false
