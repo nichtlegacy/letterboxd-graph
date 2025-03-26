@@ -223,6 +223,9 @@ function generateSvg(entries) {
   let totalFilms = 0
   let maxCount = 0
 
+  // Create a map to store film titles for each date
+  const filmsPerDay = new Map()
+
   sortedEntries.forEach((entry) => {
     const daysSinceStart = Math.floor((entry.date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24))
     const weekIndex = Math.floor(daysSinceStart / 7)
@@ -232,21 +235,32 @@ function generateSvg(entries) {
       grid[dayIndex][weekIndex]++
       totalFilms++
       maxCount = Math.max(maxCount, grid[dayIndex][weekIndex])
+
+      // Store film title for this date
+      const dateKey = entry.date.toISOString().split("T")[0]
+      if (!filmsPerDay.has(dateKey)) {
+        filmsPerDay.set(dateKey, [])
+      }
+      filmsPerDay.get(dateKey).push({
+        title: entry.title,
+        year: entry.year,
+        rating: entry.rating,
+      })
     }
   })
 
   // Generate SVG
-  const CELL_SIZE = 11
+  const CELL_SIZE = 10 // Smaller cells like GitHub
   const CELL_MARGIN = 2
   const GRID_WIDTH = totalWeeks * (CELL_SIZE + CELL_MARGIN)
   const GRID_HEIGHT = 7 * (CELL_SIZE + CELL_MARGIN)
   const SVG_WIDTH = GRID_WIDTH + 60 // Add space for labels
-  const SVG_HEIGHT = GRID_HEIGHT + 30 // Add space for labels
+  const SVG_HEIGHT = GRID_HEIGHT + 60 // Add space for labels and title
 
   const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
-  // GitHub-like color scheme
+  // GitHub-like color scheme (more accurate)
   const colors = [
     "#ebedf0", // 0 contributions
     "#9be9a8", // Level 1
@@ -263,25 +277,75 @@ function generateSvg(entries) {
 
   let svg = `<svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
   <style>
-    text {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      font-size: 9px;
-      fill: #767676;
+    :root {
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --text-color: #24292e;
+      --text-secondary: #586069;
+      --bg-color: #ffffff;
+      --border-color: #e1e4e8;
+      --tooltip-bg: rgba(0, 0, 0, 0.8);
+      --tooltip-color: #ffffff;
     }
+    
+    text {
+      font-family: var(--font-family);
+      fill: var(--text-secondary);
+      font-size: 9px;
+    }
+    
+    .title {
+      font-size: 14px;
+      font-weight: 600;
+      fill: var(--text-color);
+    }
+    
     .tooltip {
       opacity: 0;
       pointer-events: none;
+      transition: opacity 0.2s;
     }
-    rect:hover + .tooltip {
+    
+    .day:hover + .tooltip {
       opacity: 1;
+    }
+    
+    .tooltip-date {
+      font-weight: 600;
+      font-size: 12px;
+    }
+    
+    .tooltip-films {
+      font-size: 11px;
+    }
+    
+    .tooltip-count {
+      font-weight: 600;
+    }
+    
+    .month-label {
+      font-size: 10px;
+      text-anchor: start;
+    }
+    
+    .day-label {
+      font-size: 9px;
+      text-anchor: end;
+      dominant-baseline: middle;
+    }
+    
+    .legend-text {
+      font-size: 9px;
+      text-anchor: start;
+      dominant-baseline: middle;
     }
   </style>
   
   <!-- Title -->
-  <text x="10" y="10" font-size="12" fill="#24292e">Letterboxd Contribution Graph (${totalFilms} films watched in ${year})</text>
+  <text x="10" y="14" class="title">Letterboxd Contribution Graph</text>
+  <text x="10" y="30" font-size="12">${totalFilms} films watched in ${year}</text>
   
   <!-- Month labels -->
-  <g transform="translate(30, 20)">`
+  <g transform="translate(30, 45)">`
 
   // Add month labels
   for (let i = 0; i < 12; i++) {
@@ -293,23 +357,26 @@ function generateSvg(entries) {
     const weekIndex = Math.floor(daysSinceStart / 7)
     const x = weekIndex * (CELL_SIZE + CELL_MARGIN)
 
-    svg += `<text x="${x}" y="0">${MONTHS[i]}</text>`
+    svg += `<text x="${x}" y="0" class="month-label">${MONTHS[i]}</text>`
   }
 
   svg += `</g>
   
   <!-- Day of week labels -->
-  <g transform="translate(10, 30)">`
+  <g transform="translate(20, 60)">`
 
-  // Add day of week labels
+  // Add day of week labels (only Mon, Wed, Fri)
+  const daysToShow = [1, 3, 5] // Monday, Wednesday, Friday
   for (let i = 0; i < 7; i++) {
-    svg += `<text x="0" y="${i * (CELL_SIZE + CELL_MARGIN) + CELL_SIZE / 2 + 4}">${DAYS[i][0]}</text>`
+    if (daysToShow.includes(i)) {
+      svg += `<text x="0" y="${i * (CELL_SIZE + CELL_MARGIN) + CELL_SIZE / 2}" class="day-label">${DAYS[i][0]}</text>`
+    }
   }
 
   svg += `</g>
   
   <!-- Contribution cells -->
-  <g transform="translate(30, 30)">`
+  <g transform="translate(30, 60)">`
 
   // Add contribution cells
   for (let day = 0; day < 7; day++) {
@@ -320,9 +387,20 @@ function generateSvg(entries) {
       const cellDate = new Date(startDate)
       cellDate.setDate(cellDate.getDate() + week * 7 + day)
 
-      const tooltipDate = cellDate.toISOString().split("T")[0]
+      // Skip dates outside the year
+      if (cellDate.getFullYear() !== year) {
+        continue
+      }
+
+      const dateStr = cellDate.toISOString().split("T")[0]
       const x = week * (CELL_SIZE + CELL_MARGIN)
       const y = day * (CELL_SIZE + CELL_MARGIN)
+
+      // Get films for this date
+      const filmsForDay = filmsPerDay.get(dateStr) || []
+      const filmsText = filmsForDay
+        .map((film) => `${film.title} (${film.year})${film.rating ? ` - ${film.rating}★` : ""}`)
+        .join("\\n")
 
       svg += `
       <rect
@@ -333,21 +411,49 @@ function generateSvg(entries) {
         rx="2"
         ry="2"
         fill="${color}"
-        data-date="${tooltipDate}"
+        stroke="${color === colors[0] ? "#eaecef" : "none"}"
+        stroke-width="1"
+        class="day"
+        data-date="${dateStr}"
         data-count="${count}"
-      />
-      <g class="tooltip" transform="translate(${x - 20}, ${y - 30})">
-        <rect x="0" y="0" width="100" height="30" rx="3" fill="black" opacity="0.8" />
-        <text x="5" y="15" fill="white">${tooltipDate}: ${count} film${count !== 1 ? "s" : ""}</text>
-      </g>`
+        data-films="${filmsText}"
+      />`
+
+      // Only add tooltip if there are films
+      if (count > 0) {
+        // Calculate tooltip position
+        let tooltipX = x - 100 // Default left position
+        const tooltipY = y - 5
+
+        // Adjust tooltip position if it would go off the left edge
+        if (tooltipX < 0) {
+          tooltipX = x + CELL_SIZE + 5
+        }
+
+        // Calculate tooltip height based on number of films
+        const tooltipHeight = 40 + filmsForDay.length * 15
+
+        svg += `
+        <g class="tooltip" transform="translate(${tooltipX}, ${tooltipY})">
+          <rect x="0" y="0" width="200" height="${tooltipHeight}" rx="4" fill="var(--tooltip-bg)" />
+          <text x="8" y="15" fill="var(--tooltip-color)" class="tooltip-date">${dateStr}</text>
+          <text x="8" y="30" fill="var(--tooltip-color)" class="tooltip-count">${count} film${count !== 1 ? "s" : ""} watched</text>`
+
+        // Add film titles to tooltip
+        filmsForDay.forEach((film, index) => {
+          svg += `<text x="8" y="${45 + index * 15}" fill="var(--tooltip-color)" class="tooltip-films">• ${film.title} (${film.year})${film.rating ? ` - ${film.rating}★` : ""}</text>`
+        })
+
+        svg += `</g>`
+      }
     }
   }
 
   svg += `</g>
   
   <!-- Legend -->
-  <g transform="translate(${SVG_WIDTH - 120}, ${SVG_HEIGHT - 15})">
-    <text x="0" y="7">Less</text>`
+  <g transform="translate(30, ${SVG_HEIGHT - 20})">
+    <text x="0" y="7" class="legend-text">Less</text>`
 
   // Add legend colors
   for (let i = 0; i < 5; i++) {
@@ -360,11 +466,13 @@ function generateSvg(entries) {
       rx="2"
       ry="2"
       fill="${colors[i]}"
+      stroke="${i === 0 ? "#eaecef" : "none"}"
+      stroke-width="1"
     />`
   }
 
   svg += `
-    <text x="${40 + 5 * 15 + 5}" y="7">More</text>
+    <text x="${40 + 5 * 15 + 5}" y="7" class="legend-text">More</text>
   </g>
 </svg>`
 
@@ -373,8 +481,15 @@ function generateSvg(entries) {
 
 function generateEmptySvg(message) {
   return `<svg width="600" height="100" xmlns="http://www.w3.org/2000/svg">
-    <rect width="600" height="100" fill="#f6f8fa" rx="3" ry="3" />
-    <text x="50%" y="50%" font-family="Arial" font-size="14" fill="#24292e" text-anchor="middle" dominant-baseline="middle">${message}</text>
+    <style>
+      :root {
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        --text-color: #24292e;
+        --bg-color: #f6f8fa;
+      }
+    </style>
+    <rect width="600" height="100" fill="var(--bg-color)" rx="4" ry="4" />
+    <text x="50%" y="50%" font-family="var(--font-family)" font-size="14" fill="var(--text-color)" text-anchor="middle" dominant-baseline="middle">${message}</text>
   </svg>`
 }
 
