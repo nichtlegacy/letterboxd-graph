@@ -20,11 +20,9 @@
     }
   </style>
   <rect width="749" height="161" fill="#0d1117" rx="6" ry="6"/>
-  <!-- Title and films watched in top-left -->
   <text x="10" y="15" class="title-text">Letterboxd 2025</text>
   <text x="10" y="30" class="subtitle-text">123 movies watched</text>
   
-  <!-- Legend in top-right, shifted left -->
   <g transform="translate(589, 10)">
     <text x="0" y="10">Less</text>
     <rect x="40" y="2" width="10" height="10" rx="2" ry="2" fill="#161b22"/>
@@ -35,11 +33,8 @@
     <text x="120" y="10">More</text>
   </g>
   
-  <!-- Month labels -->
   <g transform="translate(30, 50)"><text x="0" y="0">Jan</text><text x="52" y="0">Feb</text><text x="104" y="0">Mar</text><text x="169" y="0">Apr</text><text x="221" y="0">May</text><text x="273" y="0">Jun</text><text x="338" y="0">Jul</text><text x="390" y="0">Aug</text><text x="455" y="0">Sep</text><text x="507" y="0">Oct</text><text x="559" y="0">Nov</text><text x="624" y="0">Dec</text></g>
-  <!-- Day of week labels -->
   <g transform="translate(10, 60)"><text x="0" y="9.5">S</text><text x="0" y="22.5">M</text><text x="0" y="35.5">T</text><text x="0" y="48.5">W</text><text x="0" y="61.5">T</text><text x="0" y="74.5">F</text><text x="0" y="87.5">S</text></g>
-  <!-- Contribution cells -->
   <g transform="translate(30, 60)">
       <rect
         x="0"
