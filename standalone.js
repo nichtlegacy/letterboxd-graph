@@ -79,7 +79,6 @@ async function fetchLetterboxdData(username, year) {
           const titleLink = titleElement.attr("href");
 
           if (monthNum !== undefined && day && entryYear === year) {
-            // Use UTC to avoid timezone shifts
             const date = new Date(Date.UTC(year, monthNum, Number.parseInt(day)));
             const filmUrl = titleLink ? `https://letterboxd.com${titleLink}` : undefined;
 
@@ -166,6 +165,19 @@ async function fetchProfileData(username) {
   }
 }
 
+async function imageToBase64(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+    const buffer = await response.buffer();
+    const mimeType = response.headers.get("content-type") || "image/png";
+    return `data:${mimeType};base64,${buffer.toString("base64")}`;
+  } catch (error) {
+    console.warn(`Error converting ${url} to Base64: ${error}`);
+    return null;
+  }
+}
+
 function escapeXml(unsafe) {
   if (unsafe === undefined || unsafe === null) return "";
   return String(unsafe).replace(/[<>&'"]/g, (c) => {
@@ -194,13 +206,13 @@ function generateSvg(entries, options = {}) {
   }).sort((a, b) => a.date.getTime() - b.date.getTime());
 
   const displayYear = year;
-  const startDate = new Date(Date.UTC(displayYear, 0, 1)); // January 1st UTC
-  const endDate = new Date(Date.UTC(displayYear, 11, 31)); // December 31st UTC
+  const startDate = new Date(Date.UTC(displayYear, 0, 1));
+  const endDate = new Date(Date.UTC(displayYear, 11, 31));
   
   const startDay = startDate.getDay();
   const dayShift = weekStart === 'monday' ? (startDay + 6) % 7 : startDay;
   if (dayShift > 0) {
-    startDate.setDate(startDate.getDate() - dayShift); // Align to week start, may go into previous year
+    startDate.setDate(startDate.getDate() - dayShift);
   }
 
   const totalDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)) + 1;
@@ -274,6 +286,8 @@ function generateSvg(entries, options = {}) {
   const textWidth = displayName.length * 8;
   const totalHeaderWidth = imageWidth + (profileImage ? 5 : 0) + textWidth;
 
+  const logoBase64 = options.logoBase64 || "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=="; // Fallback für Tests
+
   let svg = `<svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
   <style>
     text {
@@ -291,7 +305,7 @@ function generateSvg(entries, options = {}) {
       font-size: 12px;
       fill: ${currentTheme.tooltipText};
     }
-    rect[opacity="1"]:hover + .tooltip { /* Änderung hier: Nur opacity="1" triggert den Hover */
+    rect[opacity="1"]:hover + .tooltip {
       opacity: 1;
     }
   </style>
@@ -305,7 +319,7 @@ function generateSvg(entries, options = {}) {
   
   <!-- Letterboxd-Logo und Titel -->
   <g transform="translate(10, 17)">
-    <image href="https://a.ltrbxd.com/logos/letterboxd-decal-dots-pos-rgb-500px.png" x="0" y="-12" width="15" height="15"/>
+    <image href="${logoBase64}" x="0" y="-12" width="15" height="15"/>
     <text x="20" y="0" class="title-text">Letterboxd ${displayYear}</text>
   </g>
   <text x="30" y="30" class="subtitle-text">${totalFilms} movies watched</text>
@@ -448,6 +462,11 @@ async function main() {
       }
     }
 
+    if (!username) {
+      console.error("Error: No username provided. Usage: node standalone.js <username> [options]");
+      process.exit(1);
+    }
+
     const outputPathDark = `${outputBasePath}-dark.svg`;
     const outputPathLight = `${outputBasePath}-light.svg`;
 
@@ -457,13 +476,32 @@ async function main() {
     console.log(`Output paths: ${outputPathDark}, ${outputPathLight}`);
 
     const { profileImage, displayName } = await fetchProfileData(username);
-    console.log(`Fetched profile data: Display Name = ${displayName}, Profile Image = ${profileImage || 'none'}`);
+    const profileImageBase64 = profileImage ? await imageToBase64(profileImage) : null;
+    const logoBase64 = await imageToBase64("https://a.ltrbxd.com/logos/letterboxd-decal-dots-pos-rgb-500px.png");
+
+    console.log(`Fetched profile data: Display Name = ${displayName}, Profile Image = ${profileImageBase64 ? 'Base64 encoded' : 'none'}`);
 
     const filmEntries = await tryFetchMultipleYears(username, year);
     console.log(`Found ${filmEntries.length} film entries in total`);
 
-    const svgDark = generateSvg(filmEntries, { theme: 'dark', year, weekStart, username, profileImage, displayName });
-    const svgLight = generateSvg(filmEntries, { theme: 'light', year, weekStart, username, profileImage, displayName });
+    const svgDark = generateSvg(filmEntries, { 
+      theme: 'dark', 
+      year, 
+      weekStart, 
+      username, 
+      profileImage: profileImageBase64, 
+      displayName,
+      logoBase64 
+    });
+    const svgLight = generateSvg(filmEntries, { 
+      theme: 'light', 
+      year, 
+      weekStart, 
+      username, 
+      profileImage: profileImageBase64, 
+      displayName,
+      logoBase64 
+    });
 
     const dir = path.dirname(outputPathDark);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
