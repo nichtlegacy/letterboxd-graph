@@ -93,17 +93,52 @@ async function fetchLetterboxdData(username, year) {
           const filmYearElement = $row.find("td.td-released")
           const filmYear = filmYearElement.text().trim()
 
-          // Extract rating (if available) - Direct approach
-          let rating = null
+          // DETAILED RATING DEBUGGING
+          console.log(`\n--- RATING DEBUG for ${title} ---`)
 
-          // Find the rateit-range div directly and get aria-valuenow
+          // Get the HTML of the rating cell for debugging
+          const ratingCell = $row.find("td.td-rating")
+          console.log(`Rating cell found: ${ratingCell.length > 0}`)
+          if (ratingCell.length > 0) {
+            console.log(`Rating cell HTML: ${ratingCell.html().substring(0, 200)}...`)
+          }
+
+          // Try to find all divs with class containing "rateit"
+          const rateitDivs = $row.find("div[class*='rateit']")
+          console.log(`Found ${rateitDivs.length} divs with 'rateit' in class`)
+
+          rateitDivs.each((i, el) => {
+            console.log(`Rateit div ${i + 1} class: ${$(el).attr("class")}`)
+            console.log(`Rateit div ${i + 1} aria-valuenow: ${$(el).attr("aria-valuenow")}`)
+          })
+
+          // Try a more direct approach - look for the specific div
           const rateitRange = $row.find(".rateit-range")
+          console.log(`Found ${rateitRange.length} elements with class 'rateit-range'`)
+
+          // Extract rating
+          let rating = null
           if (rateitRange.length > 0) {
             const ratingValue = rateitRange.attr("aria-valuenow")
+            console.log(`Rating value from aria-valuenow: ${ratingValue}`)
             if (ratingValue) {
               rating = Number(ratingValue) / 2 // Convert from 0-10 to 0-5 scale
+              console.log(`Converted rating: ${rating}`)
             }
           }
+
+          // If still no rating, try another approach
+          if (rating === null) {
+            // Try to find the rating directly from the HTML
+            const html = $row.html()
+            const ratingMatch = html.match(/aria-valuenow="(\d+)"/)
+            if (ratingMatch && ratingMatch[1]) {
+              rating = Number(ratingMatch[1]) / 2
+              console.log(`Rating extracted from HTML: ${rating}`)
+            }
+          }
+
+          console.log(`--- END RATING DEBUG ---\n`)
 
           // Convert month name to month number
           const monthNames = {
@@ -310,7 +345,7 @@ function generateSvg(entries, darkMode = true) {
     return colors[Math.min(level, 4)]
   }
 
-  // Start building the SVG
+  // Start building the SVG - COMPLETELY DIFFERENT STRUCTURE
   let svg = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
   <style>
@@ -329,12 +364,12 @@ function generateSvg(entries, darkMode = true) {
   
   <rect width="${SVG_WIDTH}" height="${SVG_HEIGHT}" fill="${bgColor}" rx="6" ry="6" />
   
-  <!-- Title -->
-  <text x="10" y="14" class="font-sans text-lg font-semibold text-primary">Letterboxd Contribution Graph</text>
-  <text x="10" y="30" class="font-sans text-base text-secondary">${totalFilms} films watched in ${year}</text>
+  <!-- Title - CHANGED POSITION -->
+  <text x="${SVG_WIDTH / 2}" y="20" class="font-sans text-lg font-semibold text-primary" text-anchor="middle">Letterboxd Contribution Graph - ${year}</text>
+  <text x="${SVG_WIDTH / 2}" y="40" class="font-sans text-base text-secondary" text-anchor="middle">${totalFilms} films watched</text>
   
-  <!-- Legend (moved to top right) -->
-  <g transform="translate(${SVG_WIDTH - 150}, 20)">
+  <!-- Legend - MOVED TO TOP CENTER -->
+  <g transform="translate(${SVG_WIDTH / 2 - 75}, 55)">
     <text x="0" y="7" class="font-sans text-xs text-secondary text-start text-middle">Less</text>
 `
 
@@ -359,7 +394,7 @@ function generateSvg(entries, darkMode = true) {
   </g>
   
   <!-- Month labels -->
-  <g transform="translate(30, 45)">`
+  <g transform="translate(30, 80)">`
 
   // Add month labels
   for (let i = 0; i < 12; i++) {
@@ -377,7 +412,7 @@ function generateSvg(entries, darkMode = true) {
   svg += `</g>
   
   <!-- Day of week labels -->
-  <g transform="translate(20, 60)">`
+  <g transform="translate(20, 95)">`
 
   // Add day of week labels (only Mon, Wed, Fri)
   const daysToShow = [1, 3, 5] // Monday, Wednesday, Friday
@@ -389,8 +424,8 @@ function generateSvg(entries, darkMode = true) {
 
   svg += `</g>
   
-  <!-- Contribution cells and tooltips -->
-  <g transform="translate(30, 60)">`
+  <!-- Contribution cells with native tooltips -->
+  <g transform="translate(30, 95)">`
 
   // First, add all the cells
   for (let day = 0; day < 7; day++) {
@@ -415,10 +450,9 @@ function generateSvg(entries, darkMode = true) {
       let tooltipContent = `${dateStr}: ${count} film${count !== 1 ? "s" : ""} watched`
 
       if (filmsForDay.length > 0) {
-        tooltipContent += "\\n" // Newline in tooltip
         filmsForDay.forEach((film) => {
           const ratingStr = film.rating ? ` - ${film.rating}★` : ""
-          tooltipContent += `\\n• ${escapeXml(film.title)} (${escapeXml(film.year)})${ratingStr}`
+          tooltipContent += `\n• ${escapeXml(film.title)} (${escapeXml(film.year)})${ratingStr}`
         })
       }
 
