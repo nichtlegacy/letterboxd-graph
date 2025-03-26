@@ -15,7 +15,7 @@ jobs:
           node-version: '18'
           cache: 'npm'
       - run: npm ci
-      - run: npm start doc_hudson -o images/github-letterboxd
+      - run: npm start nichtlegacy -o images/github-letterboxd
       - run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
