@@ -61,7 +61,8 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add images/github-letterboxd-dark.svg images/github-letterboxd-light.svg
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Letterboxd graph" && git push)
+          git commit --allow-empty -m "Update Letterboxd graph"
+          git push
 ```
 
 #### Setup Steps
