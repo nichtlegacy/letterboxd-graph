@@ -193,6 +193,24 @@ async function tryFetchMultipleYears(username, startYear) {
   return allEntries
 }
 
+// Helper function to escape special characters for XML
+function escapeXml(unsafe) {
+  return unsafe.replace(/[<>&'"]/g, (c) => {
+    switch (c) {
+      case "<":
+        return "&lt;"
+      case ">":
+        return "&gt;"
+      case "&":
+        return "&amp;"
+      case "'":
+        return "&apos;"
+      case '"':
+        return "&quot;"
+    }
+  })
+}
+
 function generateSvg(entries) {
   // Sort entries by date
   const sortedEntries = [...entries].sort((a, b) => a.date.getTime() - b.date.getTime())
@@ -277,72 +295,24 @@ function generateSvg(entries) {
 
   let svg = `<svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
   <style>
-    :root {
-      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      --text-color: #24292e;
-      --text-secondary: #586069;
-      --bg-color: #ffffff;
-      --border-color: #e1e4e8;
-      --tooltip-bg: rgba(0, 0, 0, 0.8);
-      --tooltip-color: #ffffff;
-    }
-    
-    text {
-      font-family: var(--font-family);
-      fill: var(--text-secondary);
-      font-size: 9px;
-    }
-    
-    .title {
-      font-size: 14px;
-      font-weight: 600;
-      fill: var(--text-color);
-    }
-    
-    .tooltip {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s;
-    }
-    
-    .day:hover + .tooltip {
-      opacity: 1;
-    }
-    
-    .tooltip-date {
-      font-weight: 600;
-      font-size: 12px;
-    }
-    
-    .tooltip-films {
-      font-size: 11px;
-    }
-    
-    .tooltip-count {
-      font-weight: 600;
-    }
-    
-    .month-label {
-      font-size: 10px;
-      text-anchor: start;
-    }
-    
-    .day-label {
-      font-size: 9px;
-      text-anchor: end;
-      dominant-baseline: middle;
-    }
-    
-    .legend-text {
-      font-size: 9px;
-      text-anchor: start;
-      dominant-baseline: middle;
-    }
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .text-secondary { fill: #586069; }
+    .text-primary { fill: #24292e; }
+    .text-xs { font-size: 9px; }
+    .text-sm { font-size: 10px; }
+    .text-base { font-size: 12px; }
+    .text-lg { font-size: 14px; }
+    .font-semibold { font-weight: 600; }
+    .text-start { text-anchor: start; }
+    .text-middle { dominant-baseline: middle; }
+    .text-end { text-anchor: end; }
+    .tooltip { opacity: 0; }
+    .day:hover + .tooltip { opacity: 1; }
   </style>
   
   <!-- Title -->
-  <text x="10" y="14" class="title">Letterboxd Contribution Graph</text>
-  <text x="10" y="30" font-size="12">${totalFilms} films watched in ${year}</text>
+  <text x="10" y="14" class="font-sans text-lg font-semibold text-primary">Letterboxd Contribution Graph</text>
+  <text x="10" y="30" class="font-sans text-base text-secondary">${totalFilms} films watched in ${year}</text>
   
   <!-- Month labels -->
   <g transform="translate(30, 45)">`
@@ -357,7 +327,7 @@ function generateSvg(entries) {
     const weekIndex = Math.floor(daysSinceStart / 7)
     const x = weekIndex * (CELL_SIZE + CELL_MARGIN)
 
-    svg += `<text x="${x}" y="0" class="month-label">${MONTHS[i]}</text>`
+    svg += `<text x="${x}" y="0" class="font-sans text-sm text-secondary text-start">${MONTHS[i]}</text>`
   }
 
   svg += `</g>
@@ -369,7 +339,7 @@ function generateSvg(entries) {
   const daysToShow = [1, 3, 5] // Monday, Wednesday, Friday
   for (let i = 0; i < 7; i++) {
     if (daysToShow.includes(i)) {
-      svg += `<text x="0" y="${i * (CELL_SIZE + CELL_MARGIN) + CELL_SIZE / 2}" class="day-label">${DAYS[i][0]}</text>`
+      svg += `<text x="0" y="${i * (CELL_SIZE + CELL_MARGIN) + CELL_SIZE / 2}" class="font-sans text-xs text-secondary text-end text-middle">${DAYS[i][0]}</text>`
     }
   }
 
@@ -396,12 +366,6 @@ function generateSvg(entries) {
       const x = week * (CELL_SIZE + CELL_MARGIN)
       const y = day * (CELL_SIZE + CELL_MARGIN)
 
-      // Get films for this date
-      const filmsForDay = filmsPerDay.get(dateStr) || []
-      const filmsText = filmsForDay
-        .map((film) => `${film.title} (${film.year})${film.rating ? ` - ${film.rating}★` : ""}`)
-        .join("\\n")
-
       svg += `
       <rect
         x="${x}"
@@ -414,13 +378,13 @@ function generateSvg(entries) {
         stroke="${color === colors[0] ? "#eaecef" : "none"}"
         stroke-width="1"
         class="day"
-        data-date="${dateStr}"
-        data-count="${count}"
-        data-films="${filmsText}"
       />`
 
       // Only add tooltip if there are films
       if (count > 0) {
+        // Get films for this date
+        const filmsForDay = filmsPerDay.get(dateStr) || []
+
         // Calculate tooltip position
         let tooltipX = x - 100 // Default left position
         const tooltipY = y - 5
@@ -435,13 +399,17 @@ function generateSvg(entries) {
 
         svg += `
         <g class="tooltip" transform="translate(${tooltipX}, ${tooltipY})">
-          <rect x="0" y="0" width="200" height="${tooltipHeight}" rx="4" fill="var(--tooltip-bg)" />
-          <text x="8" y="15" fill="var(--tooltip-color)" class="tooltip-date">${dateStr}</text>
-          <text x="8" y="30" fill="var(--tooltip-color)" class="tooltip-count">${count} film${count !== 1 ? "s" : ""} watched</text>`
+          <rect x="0" y="0" width="200" height="${tooltipHeight}" rx="4" fill="rgba(0, 0, 0, 0.8)" />
+          <text x="8" y="15" class="font-sans text-base font-semibold" fill="white">${dateStr}</text>
+          <text x="8" y="30" class="font-sans text-sm font-semibold" fill="white">${count} film${count !== 1 ? "s" : ""} watched</text>`
 
         // Add film titles to tooltip
         filmsForDay.forEach((film, index) => {
-          svg += `<text x="8" y="${45 + index * 15}" fill="var(--tooltip-color)" class="tooltip-films">• ${film.title} (${film.year})${film.rating ? ` - ${film.rating}★` : ""}</text>`
+          const filmTitle = escapeXml(film.title)
+          const filmYear = escapeXml(film.year)
+          const ratingText = film.rating ? ` - ${film.rating}★` : ""
+
+          svg += `<text x="8" y="${45 + index * 15}" class="font-sans text-xs" fill="white">• ${filmTitle} (${filmYear})${ratingText}</text>`
         })
 
         svg += `</g>`
@@ -453,7 +421,7 @@ function generateSvg(entries) {
   
   <!-- Legend -->
   <g transform="translate(30, ${SVG_HEIGHT - 20})">
-    <text x="0" y="7" class="legend-text">Less</text>`
+    <text x="0" y="7" class="font-sans text-xs text-secondary text-start text-middle">Less</text>`
 
   // Add legend colors
   for (let i = 0; i < 5; i++) {
@@ -472,7 +440,7 @@ function generateSvg(entries) {
   }
 
   svg += `
-    <text x="${40 + 5 * 15 + 5}" y="7" class="legend-text">More</text>
+    <text x="${40 + 5 * 15 + 5}" y="7" class="font-sans text-xs text-secondary text-start text-middle">More</text>
   </g>
 </svg>`
 
@@ -482,14 +450,12 @@ function generateSvg(entries) {
 function generateEmptySvg(message) {
   return `<svg width="600" height="100" xmlns="http://www.w3.org/2000/svg">
     <style>
-      :root {
-        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-        --text-color: #24292e;
-        --bg-color: #f6f8fa;
-      }
+      .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+      .text-primary { fill: #24292e; }
+      .text-center { text-anchor: middle; dominant-baseline: middle; }
     </style>
-    <rect width="600" height="100" fill="var(--bg-color)" rx="4" ry="4" />
-    <text x="50%" y="50%" font-family="var(--font-family)" font-size="14" fill="var(--text-color)" text-anchor="middle" dominant-baseline="middle">${message}</text>
+    <rect width="600" height="100" fill="#f6f8fa" rx="4" ry="4" />
+    <text x="50%" y="50%" class="font-sans text-primary text-center" font-size="14">${escapeXml(message)}</text>
   </svg>`
 }
 
