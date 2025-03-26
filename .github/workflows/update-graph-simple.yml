@@ -29,7 +29,7 @@ jobs:
         run: mkdir -p images
       
       - name: Generate Letterboxd contribution graph
-        run: node standalone.js nichtlegacy -y 2024 -o images/letterboxd-graph.svg
+        run: node standalone.js nichtlegacy -o images/letterboxd-graph.svg
       
       - name: Commit and push if changed
         run: |
