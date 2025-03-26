@@ -24,6 +24,11 @@
       font-weight: bold; 
       fill: url(#usernameGradient); 
     }
+    .username-plain { 
+      font-size: 13px; 
+      font-weight: bold; 
+      fill: #ffffff; /* Weiß als Standard */
+    }
     .subtitle-text { 
       font-size: 11px; 
       fill: #8b949e; 

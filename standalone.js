@@ -198,7 +198,8 @@ function generateSvg(entries, options = {}) {
     weekStart = 'sunday',
     username = 'nichtlegacy',
     profileImage = null,
-    displayName = username
+    displayName = username,
+    usernameGradient = true
   } = options;
 
   const sortedEntries = [...entries].filter(entry => {
@@ -314,6 +315,11 @@ function generateSvg(entries, options = {}) {
       font-weight: bold; 
       fill: url(#usernameGradient); 
     }
+    .username-plain { 
+      font-size: 13px; 
+      font-weight: bold; 
+      fill: #ffffff; /* Weiß als Standard */
+    }
     .subtitle-text { 
       font-size: 11px; 
       fill: ${currentTheme.subtitle}; 
@@ -335,7 +341,7 @@ function generateSvg(entries, options = {}) {
   <!-- Profilbild und Name -->
   <g transform="translate(${(SVG_WIDTH - totalHeaderWidth) / 2}, 10)">
     ${profileImage ? `<image href="${profileImage}" x="0" y="0" width="13" height="13" preserveAspectRatio="xMidYMid slice" clip-path="circle(6.5px at 6.5px 6.5px)"/>` : ''}
-    <text x="${profileImage ? 18 : 0}" y="11" class="username-gradient">${escapeXml(displayName)}</text>
+    <text x="${profileImage ? 18 : 0}" y="11" class="${usernameGradient ? 'username-gradient' : 'username-plain'}">${escapeXml(displayName)}</text>
   </g>
   
   <!-- Letterboxd-Logo und Titel -->
@@ -432,19 +438,6 @@ function generateSvg(entries, options = {}) {
   return svg;
 }
 
-function generateEmptySvg(message, theme = 'dark') {
-  const themes = {
-    dark: { bg: '#0d1117', text: '#c9d1d9' },
-    light: { bg: '#ffffff', text: '#24292e' }
-  };
-  const currentTheme = themes[theme] || themes.dark;
-
-  return `<svg width="600" height="100" xmlns="http://www.w3.org/2000/svg">
-    <rect width="600" height="100" fill="${currentTheme.bg}" rx="6" ry="6"/>
-    <text x="50%" y="50%" font-family="Arial" font-size="14" fill="${currentTheme.text}" text-anchor="middle" dominant-baseline="middle">${escapeXml(message)}</text>
-  </svg>`;
-}
-
 async function main() {
   try {
     const args = process.argv.slice(2);
@@ -453,6 +446,7 @@ async function main() {
     let year = new Date().getFullYear();
     let weekStart = "sunday";
     let outputBasePath = path.join("images", "github-letterboxd");
+    let usernameGradient = true;
 
     for (let i = 0; i < args.length; i++) {
       if (args[i].startsWith('-')) {
@@ -466,13 +460,14 @@ async function main() {
             break;
           case 'w':
             weekStart = ['sunday', 'monday'].includes(value) ? value : 'sunday';
-            if (!['sunday', 'monday'].includes(value)) {
-              console.warn(`Invalid weekStart "${value}", defaulting to "sunday"`);
-            }
             i++;
             break;
           case 'o':
             outputBasePath = path.join(path.dirname(value), path.basename(value));
+            i++;
+            break;
+          case 'g':
+            usernameGradient = value.toLowerCase() !== 'false';
             i++;
             break;
           default:
@@ -482,7 +477,6 @@ async function main() {
         username = args[i];
       }
     }
-
     if (!username) {
       console.error("Error: No username provided. Usage: node standalone.js <username> [options]");
       process.exit(1);
@@ -512,7 +506,8 @@ async function main() {
       username, 
       profileImage: profileImageBase64, 
       displayName,
-      logoBase64 
+      logoBase64,
+      usernameGradient
     });
     const svgLight = generateSvg(filmEntries, { 
       theme: 'light', 
@@ -521,7 +516,8 @@ async function main() {
       username, 
       profileImage: profileImageBase64, 
       displayName,
-      logoBase64 
+      logoBase64,
+      usernameGradient
     });
 
     const dir = path.dirname(outputPathDark);
