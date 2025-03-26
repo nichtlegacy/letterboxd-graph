@@ -287,16 +287,37 @@ function generateSvg(entries, options = {}) {
   const totalHeaderWidth = imageWidth + (profileImage ? 5 : 0) + textWidth;
 
   const logoBase64 = options.logoBase64 || "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=="; // Fallback für Tests
-
+  
   let svg = `<svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="usernameGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff8001"/>   <!-- Orange -->
+      <stop offset="25%" stop-color="#b3c02e"/>  <!-- Helleres Gelb-Grün -->
+      <stop offset="50%" stop-color="#00e054"/>  <!-- Grün -->
+      <stop offset="75%" stop-color="#1fc5a4"/>  <!-- Zwischen Grün und Blau -->
+      <stop offset="100%" stop-color="#3fbcf4"/> <!-- Blau -->
+    </linearGradient>
+  </defs>
   <style>
     text {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       font-size: 11px;
       fill: ${currentTheme.text};
     }
-    .title-text { font-size: 13px; fill: ${currentTheme.title}; }
-    .subtitle-text { font-size: 11px; fill: ${currentTheme.subtitle}; }
+    .title-text { 
+      font-size: 13px; 
+      font-weight: bold; 
+      fill: ${currentTheme.title}; 
+    }
+    .username-gradient { 
+      font-size: 13px; 
+      font-weight: bold; 
+      fill: url(#usernameGradient); 
+    }
+    .subtitle-text { 
+      font-size: 11px; 
+      fill: ${currentTheme.subtitle}; 
+    }
     .tooltip {
       opacity: 0;
       pointer-events: none;
@@ -314,7 +335,7 @@ function generateSvg(entries, options = {}) {
   <!-- Profilbild und Name -->
   <g transform="translate(${(SVG_WIDTH - totalHeaderWidth) / 2}, 10)">
     ${profileImage ? `<image href="${profileImage}" x="0" y="0" width="13" height="13" preserveAspectRatio="xMidYMid slice" clip-path="circle(6.5px at 6.5px 6.5px)"/>` : ''}
-    <text x="${profileImage ? 18 : 0}" y="11" class="title-text">${escapeXml(displayName)}</text>
+    <text x="${profileImage ? 18 : 0}" y="11" class="username-gradient">${escapeXml(displayName)}</text>
   </g>
   
   <!-- Letterboxd-Logo und Titel -->
