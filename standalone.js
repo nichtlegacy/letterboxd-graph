@@ -93,13 +93,36 @@ async function fetchLetterboxdData(username, year) {
           const filmYearElement = $row.find("td.td-released")
           const filmYear = filmYearElement.text().trim()
 
-          // Extract rating (if available)
-          const ratingElement = $row.find("td.td-rating .rateit-range")
+          // Extract rating (if available) - Debug the HTML structure
+          const ratingCell = $row.find("td.td-rating")
+          console.log(`Rating cell found: ${ratingCell.length > 0}`)
+
           let rating = null
-          if (ratingElement.length > 0) {
-            const ratingValue = ratingElement.attr("aria-valuenow")
+
+          // Try to find the rateit-range div directly
+          const rateitRange = ratingCell.find(".rateit-range")
+          if (rateitRange.length > 0) {
+            console.log(`Found rateit-range: ${rateitRange.attr("class")}`)
+            const ratingValue = rateitRange.attr("aria-valuenow")
+            console.log(`Rating value from aria-valuenow: ${ratingValue}`)
             if (ratingValue) {
-              rating = Number.parseInt(ratingValue) / 2 // Convert from 0-10 to 0-5 scale
+              rating = Number(ratingValue) / 2 // Convert from 0-10 to 0-5 scale
+            }
+          } else {
+            // Alternative approach: look for the selected width
+            const rateitSelected = ratingCell.find(".rateit-selected")
+            if (rateitSelected.length > 0) {
+              const widthStyle = rateitSelected.attr("style")
+              console.log(`Rateit selected style: ${widthStyle}`)
+              if (widthStyle) {
+                const widthMatch = widthStyle.match(/width:\s*(\d+)px/)
+                if (widthMatch && widthMatch[1]) {
+                  const width = Number(widthMatch[1])
+                  // Assuming 80px is the full width (10 stars), so 8px per star
+                  rating = width / 16
+                  console.log(`Calculated rating from width: ${rating}`)
+                }
+              }
             }
           }
 
@@ -212,12 +235,12 @@ function escapeXml(unsafe) {
   })
 }
 
-function generateSvg(entries) {
+function generateSvg(entries, darkMode = true) {
   // Sort entries by date
   const sortedEntries = [...entries].sort((a, b) => a.date.getTime() - b.date.getTime())
 
   if (sortedEntries.length === 0) {
-    return generateEmptySvg("No film entries found")
+    return generateEmptySvg("No film entries found", darkMode)
   }
 
   // Determine date range
@@ -279,14 +302,28 @@ function generateSvg(entries) {
   const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
-  // GitHub-like color scheme (more accurate)
-  const colors = [
-    "#ebedf0", // 0 contributions
-    "#9be9a8", // Level 1
-    "#40c463", // Level 2
-    "#30a14e", // Level 3
-    "#216e39", // Level 4
-  ]
+  // Color schemes
+  const colors = darkMode
+    ? [
+        "#161b22", // 0 contributions (dark background)
+        "#0e4429", // Level 1
+        "#006d32", // Level 2
+        "#26a641", // Level 3
+        "#39d353", // Level 4
+      ]
+    : [
+        "#ebedf0", // 0 contributions
+        "#9be9a8", // Level 1
+        "#40c463", // Level 2
+        "#30a14e", // Level 3
+        "#216e39", // Level 4
+      ]
+
+  // Text colors
+  const textPrimary = darkMode ? "#e6edf3" : "#24292e"
+  const textSecondary = darkMode ? "#8b949e" : "#586069"
+  const bgColor = darkMode ? "#0d1117" : "transparent"
+  const borderColor = darkMode ? "#30363d" : "#eaecef"
 
   function getColor(count) {
     if (count === 0) return colors[0]
@@ -299,8 +336,8 @@ function generateSvg(entries) {
 <svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
   <style>
     .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
-    .text-secondary { fill: #586069; }
-    .text-primary { fill: #24292e; }
+    .text-secondary { fill: ${textSecondary}; }
+    .text-primary { fill: ${textPrimary}; }
     .text-xs { font-size: 9px; }
     .text-sm { font-size: 10px; }
     .text-base { font-size: 12px; }
@@ -310,8 +347,10 @@ function generateSvg(entries) {
     .text-middle { dominant-baseline: middle; }
     .text-end { text-anchor: end; }
     .tooltip { opacity: 0; }
-    .day:hover + .tooltip { opacity: 1; }
+    rect.day:hover + .tooltip { opacity: 1; }
   </style>
+  
+  <rect width="${SVG_WIDTH}" height="${SVG_HEIGHT}" fill="${bgColor}" rx="6" ry="6" />
   
   <!-- Title -->
   <text x="10" y="14" class="font-sans text-lg font-semibold text-primary">Letterboxd Contribution Graph</text>
@@ -378,7 +417,7 @@ function generateSvg(entries) {
         rx="2"
         ry="2"
         fill="${color}"
-        stroke="${color === colors[0] ? "#eaecef" : "none"}"
+        stroke="${count === 0 ? borderColor : "none"}"
         stroke-width="1"
         class="day"
       />`
@@ -422,43 +461,46 @@ function generateSvg(entries) {
 
   svg += `</g>
   
-  <!-- Legend -->
-  <g transform="translate(30, ${SVG_HEIGHT - 20})">
+  <!-- Legend (moved to bottom right) -->
+  <g transform="translate(${SVG_WIDTH - 150}, ${SVG_HEIGHT - 20})">
     <text x="0" y="7" class="font-sans text-xs text-secondary text-start text-middle">Less</text>`
 
   // Add legend colors
   for (let i = 0; i < 5; i++) {
     svg += `
     <rect
-      x="${40 + i * 15}"
+      x="${30 + i * 15}"
       y="0"
       width="10"
       height="10"
       rx="2"
       ry="2"
       fill="${colors[i]}"
-      stroke="${i === 0 ? "#eaecef" : "none"}"
+      stroke="${i === 0 ? borderColor : "none"}"
       stroke-width="1"
     />`
   }
 
   svg += `
-    <text x="${40 + 5 * 15 + 5}" y="7" class="font-sans text-xs text-secondary text-start text-middle">More</text>
+    <text x="${30 + 5 * 15 + 5}" y="7" class="font-sans text-xs text-secondary text-start text-middle">More</text>
   </g>
 </svg>`
 
   return svg
 }
 
-function generateEmptySvg(message) {
+function generateEmptySvg(message, darkMode = true) {
+  const textColor = darkMode ? "#e6edf3" : "#24292e"
+  const bgColor = darkMode ? "#0d1117" : "#f6f8fa"
+
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="600" height="100" xmlns="http://www.w3.org/2000/svg">
   <style>
     .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
-    .text-primary { fill: #24292e; }
+    .text-primary { fill: ${textColor}; }
     .text-center { text-anchor: middle; dominant-baseline: middle; }
   </style>
-  <rect width="600" height="100" fill="#f6f8fa" rx="4" ry="4" />
+  <rect width="600" height="100" fill="${bgColor}" rx="4" ry="4" />
   <text x="50%" y="50%" class="font-sans text-primary text-center" font-size="14">${escapeXml(message)}</text>
 </svg>`
 }
@@ -469,6 +511,7 @@ async function main() {
     const username = process.argv[2] || process.env.INPUT_LETTERBOXD_USERNAME || "nichtlegacy"
     const year = Number.parseInt(process.argv[3] || process.env.INPUT_YEAR || new Date().getFullYear())
     const outputPath = process.argv[4] || process.env.INPUT_OUTPUT_PATH || "letterboxd-graph.svg"
+    const darkMode = true // Set to true for dark mode
 
     console.log(`Starting Letterboxd contribution graph generation for user: ${username}`)
 
@@ -477,7 +520,7 @@ async function main() {
     console.log(`Found ${filmEntries.length} film entries in total`)
 
     // Generate the SVG
-    const svg = generateSvg(filmEntries)
+    const svg = generateSvg(filmEntries, darkMode)
 
     // Ensure directory exists
     const dir = path.dirname(outputPath)
