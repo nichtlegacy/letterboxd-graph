@@ -335,13 +335,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-05"
+        data-date="2025-04-06"
         data-count="0"
       />
       <g class="tooltip" transform="translate(93, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-05: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-06: 0 films watched</tspan></text>
       </g>
       <rect
         x="195"
@@ -352,13 +352,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-12"
+        data-date="2025-04-13"
         data-count="0"
       />
       <g class="tooltip" transform="translate(106, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-12: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-13: 0 films watched</tspan></text>
       </g>
       <rect
         x="208"
@@ -369,13 +369,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-19"
+        data-date="2025-04-20"
         data-count="0"
       />
       <g class="tooltip" transform="translate(119, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-19: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-20: 0 films watched</tspan></text>
       </g>
       <rect
         x="221"
@@ -386,13 +386,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-26"
+        data-date="2025-04-27"
         data-count="0"
       />
       <g class="tooltip" transform="translate(132, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-26: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-27: 0 films watched</tspan></text>
       </g>
       <rect
         x="234"
@@ -403,13 +403,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-03"
+        data-date="2025-05-04"
         data-count="0"
       />
       <g class="tooltip" transform="translate(145, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-03: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-04: 0 films watched</tspan></text>
       </g>
       <rect
         x="247"
@@ -420,13 +420,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-10"
+        data-date="2025-05-11"
         data-count="0"
       />
       <g class="tooltip" transform="translate(158, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-10: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-11: 0 films watched</tspan></text>
       </g>
       <rect
         x="260"
@@ -437,13 +437,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-17"
+        data-date="2025-05-18"
         data-count="0"
       />
       <g class="tooltip" transform="translate(171, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-17: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-18: 0 films watched</tspan></text>
       </g>
       <rect
         x="273"
@@ -454,13 +454,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-24"
+        data-date="2025-05-25"
         data-count="0"
       />
       <g class="tooltip" transform="translate(184, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-24: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-25: 0 films watched</tspan></text>
       </g>
       <rect
         x="286"
@@ -471,13 +471,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-31"
+        data-date="2025-06-01"
         data-count="0"
       />
       <g class="tooltip" transform="translate(197, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-31: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-01: 0 films watched</tspan></text>
       </g>
       <rect
         x="299"
@@ -488,13 +488,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-07"
+        data-date="2025-06-08"
         data-count="0"
       />
       <g class="tooltip" transform="translate(210, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-07: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-08: 0 films watched</tspan></text>
       </g>
       <rect
         x="312"
@@ -505,13 +505,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-14"
+        data-date="2025-06-15"
         data-count="0"
       />
       <g class="tooltip" transform="translate(223, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-14: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-15: 0 films watched</tspan></text>
       </g>
       <rect
         x="325"
@@ -522,13 +522,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-21"
+        data-date="2025-06-22"
         data-count="0"
       />
       <g class="tooltip" transform="translate(236, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-21: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-22: 0 films watched</tspan></text>
       </g>
       <rect
         x="338"
@@ -539,13 +539,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-28"
+        data-date="2025-06-29"
         data-count="0"
       />
       <g class="tooltip" transform="translate(249, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-28: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-29: 0 films watched</tspan></text>
       </g>
       <rect
         x="351"
@@ -556,13 +556,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-05"
+        data-date="2025-07-06"
         data-count="0"
       />
       <g class="tooltip" transform="translate(262, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-05: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-06: 0 films watched</tspan></text>
       </g>
       <rect
         x="364"
@@ -573,13 +573,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-12"
+        data-date="2025-07-13"
         data-count="0"
       />
       <g class="tooltip" transform="translate(275, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-12: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-13: 0 films watched</tspan></text>
       </g>
       <rect
         x="377"
@@ -590,13 +590,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-19"
+        data-date="2025-07-20"
         data-count="0"
       />
       <g class="tooltip" transform="translate(288, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-19: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-20: 0 films watched</tspan></text>
       </g>
       <rect
         x="390"
@@ -607,13 +607,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-26"
+        data-date="2025-07-27"
         data-count="0"
       />
       <g class="tooltip" transform="translate(301, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-26: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-27: 0 films watched</tspan></text>
       </g>
       <rect
         x="403"
@@ -624,13 +624,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-02"
+        data-date="2025-08-03"
         data-count="0"
       />
       <g class="tooltip" transform="translate(314, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-02: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-03: 0 films watched</tspan></text>
       </g>
       <rect
         x="416"
@@ -641,13 +641,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-09"
+        data-date="2025-08-10"
         data-count="0"
       />
       <g class="tooltip" transform="translate(327, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-09: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-10: 0 films watched</tspan></text>
       </g>
       <rect
         x="429"
@@ -658,13 +658,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-16"
+        data-date="2025-08-17"
         data-count="0"
       />
       <g class="tooltip" transform="translate(340, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-16: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-17: 0 films watched</tspan></text>
       </g>
       <rect
         x="442"
@@ -675,13 +675,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-23"
+        data-date="2025-08-24"
         data-count="0"
       />
       <g class="tooltip" transform="translate(353, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-23: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-24: 0 films watched</tspan></text>
       </g>
       <rect
         x="455"
@@ -692,13 +692,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-30"
+        data-date="2025-08-31"
         data-count="0"
       />
       <g class="tooltip" transform="translate(366, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-30: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-31: 0 films watched</tspan></text>
       </g>
       <rect
         x="468"
@@ -709,13 +709,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-06"
+        data-date="2025-09-07"
         data-count="0"
       />
       <g class="tooltip" transform="translate(379, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-06: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-07: 0 films watched</tspan></text>
       </g>
       <rect
         x="481"
@@ -726,13 +726,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-13"
+        data-date="2025-09-14"
         data-count="0"
       />
       <g class="tooltip" transform="translate(392, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-13: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-14: 0 films watched</tspan></text>
       </g>
       <rect
         x="494"
@@ -743,13 +743,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-20"
+        data-date="2025-09-21"
         data-count="0"
       />
       <g class="tooltip" transform="translate(405, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-20: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-21: 0 films watched</tspan></text>
       </g>
       <rect
         x="507"
@@ -760,13 +760,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-27"
+        data-date="2025-09-28"
         data-count="0"
       />
       <g class="tooltip" transform="translate(418, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-27: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-28: 0 films watched</tspan></text>
       </g>
       <rect
         x="520"
@@ -777,13 +777,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-04"
+        data-date="2025-10-05"
         data-count="0"
       />
       <g class="tooltip" transform="translate(431, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-04: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-05: 0 films watched</tspan></text>
       </g>
       <rect
         x="533"
@@ -794,13 +794,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-11"
+        data-date="2025-10-12"
         data-count="0"
       />
       <g class="tooltip" transform="translate(444, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-11: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-12: 0 films watched</tspan></text>
       </g>
       <rect
         x="546"
@@ -811,13 +811,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-18"
+        data-date="2025-10-19"
         data-count="0"
       />
       <g class="tooltip" transform="translate(457, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-18: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-19: 0 films watched</tspan></text>
       </g>
       <rect
         x="559"
@@ -828,13 +828,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-25"
+        data-date="2025-10-26"
         data-count="0"
       />
       <g class="tooltip" transform="translate(470, -48)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-25: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-26: 0 films watched</tspan></text>
       </g>
       <rect
         x="572"
@@ -1238,13 +1238,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-03-30"
+        data-date="2025-03-31"
         data-count="0"
       />
       <g class="tooltip" transform="translate(80, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-03-30: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-03-31: 0 films watched</tspan></text>
       </g>
       <rect
         x="182"
@@ -1255,13 +1255,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-06"
+        data-date="2025-04-07"
         data-count="0"
       />
       <g class="tooltip" transform="translate(93, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-06: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-07: 0 films watched</tspan></text>
       </g>
       <rect
         x="195"
@@ -1272,13 +1272,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-13"
+        data-date="2025-04-14"
         data-count="0"
       />
       <g class="tooltip" transform="translate(106, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-13: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-14: 0 films watched</tspan></text>
       </g>
       <rect
         x="208"
@@ -1289,13 +1289,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-20"
+        data-date="2025-04-21"
         data-count="0"
       />
       <g class="tooltip" transform="translate(119, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-20: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-21: 0 films watched</tspan></text>
       </g>
       <rect
         x="221"
@@ -1306,13 +1306,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-27"
+        data-date="2025-04-28"
         data-count="0"
       />
       <g class="tooltip" transform="translate(132, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-27: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-28: 0 films watched</tspan></text>
       </g>
       <rect
         x="234"
@@ -1323,13 +1323,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-04"
+        data-date="2025-05-05"
         data-count="0"
       />
       <g class="tooltip" transform="translate(145, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-04: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-05: 0 films watched</tspan></text>
       </g>
       <rect
         x="247"
@@ -1340,13 +1340,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-11"
+        data-date="2025-05-12"
         data-count="0"
       />
       <g class="tooltip" transform="translate(158, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-11: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-12: 0 films watched</tspan></text>
       </g>
       <rect
         x="260"
@@ -1357,13 +1357,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-18"
+        data-date="2025-05-19"
         data-count="0"
       />
       <g class="tooltip" transform="translate(171, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-18: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-19: 0 films watched</tspan></text>
       </g>
       <rect
         x="273"
@@ -1374,13 +1374,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-25"
+        data-date="2025-05-26"
         data-count="0"
       />
       <g class="tooltip" transform="translate(184, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-25: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-26: 0 films watched</tspan></text>
       </g>
       <rect
         x="286"
@@ -1391,13 +1391,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-01"
+        data-date="2025-06-02"
         data-count="0"
       />
       <g class="tooltip" transform="translate(197, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-01: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-02: 0 films watched</tspan></text>
       </g>
       <rect
         x="299"
@@ -1408,13 +1408,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-08"
+        data-date="2025-06-09"
         data-count="0"
       />
       <g class="tooltip" transform="translate(210, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-08: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-09: 0 films watched</tspan></text>
       </g>
       <rect
         x="312"
@@ -1425,13 +1425,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-15"
+        data-date="2025-06-16"
         data-count="0"
       />
       <g class="tooltip" transform="translate(223, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-15: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-16: 0 films watched</tspan></text>
       </g>
       <rect
         x="325"
@@ -1442,13 +1442,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-22"
+        data-date="2025-06-23"
         data-count="0"
       />
       <g class="tooltip" transform="translate(236, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-22: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-23: 0 films watched</tspan></text>
       </g>
       <rect
         x="338"
@@ -1459,13 +1459,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-29"
+        data-date="2025-06-30"
         data-count="0"
       />
       <g class="tooltip" transform="translate(249, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-29: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-30: 0 films watched</tspan></text>
       </g>
       <rect
         x="351"
@@ -1476,13 +1476,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-06"
+        data-date="2025-07-07"
         data-count="0"
       />
       <g class="tooltip" transform="translate(262, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-06: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-07: 0 films watched</tspan></text>
       </g>
       <rect
         x="364"
@@ -1493,13 +1493,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-13"
+        data-date="2025-07-14"
         data-count="0"
       />
       <g class="tooltip" transform="translate(275, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-13: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-14: 0 films watched</tspan></text>
       </g>
       <rect
         x="377"
@@ -1510,13 +1510,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-20"
+        data-date="2025-07-21"
         data-count="0"
       />
       <g class="tooltip" transform="translate(288, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-20: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-21: 0 films watched</tspan></text>
       </g>
       <rect
         x="390"
@@ -1527,13 +1527,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-27"
+        data-date="2025-07-28"
         data-count="0"
       />
       <g class="tooltip" transform="translate(301, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-27: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-28: 0 films watched</tspan></text>
       </g>
       <rect
         x="403"
@@ -1544,13 +1544,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-03"
+        data-date="2025-08-04"
         data-count="0"
       />
       <g class="tooltip" transform="translate(314, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-03: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-04: 0 films watched</tspan></text>
       </g>
       <rect
         x="416"
@@ -1561,13 +1561,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-10"
+        data-date="2025-08-11"
         data-count="0"
       />
       <g class="tooltip" transform="translate(327, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-10: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-11: 0 films watched</tspan></text>
       </g>
       <rect
         x="429"
@@ -1578,13 +1578,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-17"
+        data-date="2025-08-18"
         data-count="0"
       />
       <g class="tooltip" transform="translate(340, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-17: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-18: 0 films watched</tspan></text>
       </g>
       <rect
         x="442"
@@ -1595,13 +1595,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-24"
+        data-date="2025-08-25"
         data-count="0"
       />
       <g class="tooltip" transform="translate(353, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-24: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-25: 0 films watched</tspan></text>
       </g>
       <rect
         x="455"
@@ -1612,13 +1612,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-31"
+        data-date="2025-09-01"
         data-count="0"
       />
       <g class="tooltip" transform="translate(366, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-31: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-01: 0 films watched</tspan></text>
       </g>
       <rect
         x="468"
@@ -1629,13 +1629,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-07"
+        data-date="2025-09-08"
         data-count="0"
       />
       <g class="tooltip" transform="translate(379, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-07: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-08: 0 films watched</tspan></text>
       </g>
       <rect
         x="481"
@@ -1646,13 +1646,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-14"
+        data-date="2025-09-15"
         data-count="0"
       />
       <g class="tooltip" transform="translate(392, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-14: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-15: 0 films watched</tspan></text>
       </g>
       <rect
         x="494"
@@ -1663,13 +1663,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-21"
+        data-date="2025-09-22"
         data-count="0"
       />
       <g class="tooltip" transform="translate(405, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-21: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-22: 0 films watched</tspan></text>
       </g>
       <rect
         x="507"
@@ -1680,13 +1680,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-28"
+        data-date="2025-09-29"
         data-count="0"
       />
       <g class="tooltip" transform="translate(418, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-28: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-29: 0 films watched</tspan></text>
       </g>
       <rect
         x="520"
@@ -1697,13 +1697,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-05"
+        data-date="2025-10-06"
         data-count="0"
       />
       <g class="tooltip" transform="translate(431, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-05: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-06: 0 films watched</tspan></text>
       </g>
       <rect
         x="533"
@@ -1714,13 +1714,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-12"
+        data-date="2025-10-13"
         data-count="0"
       />
       <g class="tooltip" transform="translate(444, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-12: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-13: 0 films watched</tspan></text>
       </g>
       <rect
         x="546"
@@ -1731,13 +1731,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-19"
+        data-date="2025-10-20"
         data-count="0"
       />
       <g class="tooltip" transform="translate(457, -35)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-19: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-20: 0 films watched</tspan></text>
       </g>
       <rect
         x="559"
@@ -2158,13 +2158,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-03-31"
+        data-date="2025-04-01"
         data-count="0"
       />
       <g class="tooltip" transform="translate(80, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-03-31: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-01: 0 films watched</tspan></text>
       </g>
       <rect
         x="182"
@@ -2175,13 +2175,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-07"
+        data-date="2025-04-08"
         data-count="0"
       />
       <g class="tooltip" transform="translate(93, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-07: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-08: 0 films watched</tspan></text>
       </g>
       <rect
         x="195"
@@ -2192,13 +2192,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-14"
+        data-date="2025-04-15"
         data-count="0"
       />
       <g class="tooltip" transform="translate(106, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-14: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-15: 0 films watched</tspan></text>
       </g>
       <rect
         x="208"
@@ -2209,13 +2209,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-21"
+        data-date="2025-04-22"
         data-count="0"
       />
       <g class="tooltip" transform="translate(119, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-21: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-22: 0 films watched</tspan></text>
       </g>
       <rect
         x="221"
@@ -2226,13 +2226,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-28"
+        data-date="2025-04-29"
         data-count="0"
       />
       <g class="tooltip" transform="translate(132, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-28: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-29: 0 films watched</tspan></text>
       </g>
       <rect
         x="234"
@@ -2243,13 +2243,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-05"
+        data-date="2025-05-06"
         data-count="0"
       />
       <g class="tooltip" transform="translate(145, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-05: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-06: 0 films watched</tspan></text>
       </g>
       <rect
         x="247"
@@ -2260,13 +2260,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-12"
+        data-date="2025-05-13"
         data-count="0"
       />
       <g class="tooltip" transform="translate(158, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-12: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-13: 0 films watched</tspan></text>
       </g>
       <rect
         x="260"
@@ -2277,13 +2277,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-19"
+        data-date="2025-05-20"
         data-count="0"
       />
       <g class="tooltip" transform="translate(171, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-19: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-20: 0 films watched</tspan></text>
       </g>
       <rect
         x="273"
@@ -2294,13 +2294,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-26"
+        data-date="2025-05-27"
         data-count="0"
       />
       <g class="tooltip" transform="translate(184, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-26: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-27: 0 films watched</tspan></text>
       </g>
       <rect
         x="286"
@@ -2311,13 +2311,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-02"
+        data-date="2025-06-03"
         data-count="0"
       />
       <g class="tooltip" transform="translate(197, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-02: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-03: 0 films watched</tspan></text>
       </g>
       <rect
         x="299"
@@ -2328,13 +2328,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-09"
+        data-date="2025-06-10"
         data-count="0"
       />
       <g class="tooltip" transform="translate(210, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-09: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-10: 0 films watched</tspan></text>
       </g>
       <rect
         x="312"
@@ -2345,13 +2345,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-16"
+        data-date="2025-06-17"
         data-count="0"
       />
       <g class="tooltip" transform="translate(223, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-16: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-17: 0 films watched</tspan></text>
       </g>
       <rect
         x="325"
@@ -2362,13 +2362,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-23"
+        data-date="2025-06-24"
         data-count="0"
       />
       <g class="tooltip" transform="translate(236, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-23: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-24: 0 films watched</tspan></text>
       </g>
       <rect
         x="338"
@@ -2379,13 +2379,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-30"
+        data-date="2025-07-01"
         data-count="0"
       />
       <g class="tooltip" transform="translate(249, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-30: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-01: 0 films watched</tspan></text>
       </g>
       <rect
         x="351"
@@ -2396,13 +2396,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-07"
+        data-date="2025-07-08"
         data-count="0"
       />
       <g class="tooltip" transform="translate(262, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-07: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-08: 0 films watched</tspan></text>
       </g>
       <rect
         x="364"
@@ -2413,13 +2413,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-14"
+        data-date="2025-07-15"
         data-count="0"
       />
       <g class="tooltip" transform="translate(275, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-14: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-15: 0 films watched</tspan></text>
       </g>
       <rect
         x="377"
@@ -2430,13 +2430,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-21"
+        data-date="2025-07-22"
         data-count="0"
       />
       <g class="tooltip" transform="translate(288, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-21: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-22: 0 films watched</tspan></text>
       </g>
       <rect
         x="390"
@@ -2447,13 +2447,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-28"
+        data-date="2025-07-29"
         data-count="0"
       />
       <g class="tooltip" transform="translate(301, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-28: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-29: 0 films watched</tspan></text>
       </g>
       <rect
         x="403"
@@ -2464,13 +2464,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-04"
+        data-date="2025-08-05"
         data-count="0"
       />
       <g class="tooltip" transform="translate(314, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-04: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-05: 0 films watched</tspan></text>
       </g>
       <rect
         x="416"
@@ -2481,13 +2481,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-11"
+        data-date="2025-08-12"
         data-count="0"
       />
       <g class="tooltip" transform="translate(327, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-11: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-12: 0 films watched</tspan></text>
       </g>
       <rect
         x="429"
@@ -2498,13 +2498,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-18"
+        data-date="2025-08-19"
         data-count="0"
       />
       <g class="tooltip" transform="translate(340, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-18: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-19: 0 films watched</tspan></text>
       </g>
       <rect
         x="442"
@@ -2515,13 +2515,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-25"
+        data-date="2025-08-26"
         data-count="0"
       />
       <g class="tooltip" transform="translate(353, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-25: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-26: 0 films watched</tspan></text>
       </g>
       <rect
         x="455"
@@ -2532,13 +2532,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-01"
+        data-date="2025-09-02"
         data-count="0"
       />
       <g class="tooltip" transform="translate(366, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-01: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-02: 0 films watched</tspan></text>
       </g>
       <rect
         x="468"
@@ -2549,13 +2549,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-08"
+        data-date="2025-09-09"
         data-count="0"
       />
       <g class="tooltip" transform="translate(379, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-08: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-09: 0 films watched</tspan></text>
       </g>
       <rect
         x="481"
@@ -2566,13 +2566,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-15"
+        data-date="2025-09-16"
         data-count="0"
       />
       <g class="tooltip" transform="translate(392, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-15: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-16: 0 films watched</tspan></text>
       </g>
       <rect
         x="494"
@@ -2583,13 +2583,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-22"
+        data-date="2025-09-23"
         data-count="0"
       />
       <g class="tooltip" transform="translate(405, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-22: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-23: 0 films watched</tspan></text>
       </g>
       <rect
         x="507"
@@ -2600,13 +2600,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-29"
+        data-date="2025-09-30"
         data-count="0"
       />
       <g class="tooltip" transform="translate(418, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-29: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-30: 0 films watched</tspan></text>
       </g>
       <rect
         x="520"
@@ -2617,13 +2617,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-06"
+        data-date="2025-10-07"
         data-count="0"
       />
       <g class="tooltip" transform="translate(431, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-06: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-07: 0 films watched</tspan></text>
       </g>
       <rect
         x="533"
@@ -2634,13 +2634,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-13"
+        data-date="2025-10-14"
         data-count="0"
       />
       <g class="tooltip" transform="translate(444, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-13: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-14: 0 films watched</tspan></text>
       </g>
       <rect
         x="546"
@@ -2651,13 +2651,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-20"
+        data-date="2025-10-21"
         data-count="0"
       />
       <g class="tooltip" transform="translate(457, -22)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-20: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-21: 0 films watched</tspan></text>
       </g>
       <rect
         x="559"
@@ -3073,13 +3073,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-01"
+        data-date="2025-04-02"
         data-count="0"
       />
       <g class="tooltip" transform="translate(80, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-01: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-02: 0 films watched</tspan></text>
       </g>
       <rect
         x="182"
@@ -3090,13 +3090,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-08"
+        data-date="2025-04-09"
         data-count="0"
       />
       <g class="tooltip" transform="translate(93, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-08: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-09: 0 films watched</tspan></text>
       </g>
       <rect
         x="195"
@@ -3107,13 +3107,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-15"
+        data-date="2025-04-16"
         data-count="0"
       />
       <g class="tooltip" transform="translate(106, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-15: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-16: 0 films watched</tspan></text>
       </g>
       <rect
         x="208"
@@ -3124,13 +3124,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-22"
+        data-date="2025-04-23"
         data-count="0"
       />
       <g class="tooltip" transform="translate(119, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-22: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-23: 0 films watched</tspan></text>
       </g>
       <rect
         x="221"
@@ -3141,13 +3141,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-29"
+        data-date="2025-04-30"
         data-count="0"
       />
       <g class="tooltip" transform="translate(132, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-29: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-30: 0 films watched</tspan></text>
       </g>
       <rect
         x="234"
@@ -3158,13 +3158,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-06"
+        data-date="2025-05-07"
         data-count="0"
       />
       <g class="tooltip" transform="translate(145, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-06: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-07: 0 films watched</tspan></text>
       </g>
       <rect
         x="247"
@@ -3175,13 +3175,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-13"
+        data-date="2025-05-14"
         data-count="0"
       />
       <g class="tooltip" transform="translate(158, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-13: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-14: 0 films watched</tspan></text>
       </g>
       <rect
         x="260"
@@ -3192,13 +3192,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-20"
+        data-date="2025-05-21"
         data-count="0"
       />
       <g class="tooltip" transform="translate(171, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-20: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-21: 0 films watched</tspan></text>
       </g>
       <rect
         x="273"
@@ -3209,13 +3209,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-27"
+        data-date="2025-05-28"
         data-count="0"
       />
       <g class="tooltip" transform="translate(184, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-27: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-28: 0 films watched</tspan></text>
       </g>
       <rect
         x="286"
@@ -3226,13 +3226,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-03"
+        data-date="2025-06-04"
         data-count="0"
       />
       <g class="tooltip" transform="translate(197, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-03: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-04: 0 films watched</tspan></text>
       </g>
       <rect
         x="299"
@@ -3243,13 +3243,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-10"
+        data-date="2025-06-11"
         data-count="0"
       />
       <g class="tooltip" transform="translate(210, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-10: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-11: 0 films watched</tspan></text>
       </g>
       <rect
         x="312"
@@ -3260,13 +3260,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-17"
+        data-date="2025-06-18"
         data-count="0"
       />
       <g class="tooltip" transform="translate(223, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-17: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-18: 0 films watched</tspan></text>
       </g>
       <rect
         x="325"
@@ -3277,13 +3277,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-24"
+        data-date="2025-06-25"
         data-count="0"
       />
       <g class="tooltip" transform="translate(236, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-24: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-25: 0 films watched</tspan></text>
       </g>
       <rect
         x="338"
@@ -3294,13 +3294,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-01"
+        data-date="2025-07-02"
         data-count="0"
       />
       <g class="tooltip" transform="translate(249, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-01: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-02: 0 films watched</tspan></text>
       </g>
       <rect
         x="351"
@@ -3311,13 +3311,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-08"
+        data-date="2025-07-09"
         data-count="0"
       />
       <g class="tooltip" transform="translate(262, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-08: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-09: 0 films watched</tspan></text>
       </g>
       <rect
         x="364"
@@ -3328,13 +3328,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-15"
+        data-date="2025-07-16"
         data-count="0"
       />
       <g class="tooltip" transform="translate(275, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-15: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-16: 0 films watched</tspan></text>
       </g>
       <rect
         x="377"
@@ -3345,13 +3345,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-22"
+        data-date="2025-07-23"
         data-count="0"
       />
       <g class="tooltip" transform="translate(288, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-22: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-23: 0 films watched</tspan></text>
       </g>
       <rect
         x="390"
@@ -3362,13 +3362,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-29"
+        data-date="2025-07-30"
         data-count="0"
       />
       <g class="tooltip" transform="translate(301, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-29: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-30: 0 films watched</tspan></text>
       </g>
       <rect
         x="403"
@@ -3379,13 +3379,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-05"
+        data-date="2025-08-06"
         data-count="0"
       />
       <g class="tooltip" transform="translate(314, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-05: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-06: 0 films watched</tspan></text>
       </g>
       <rect
         x="416"
@@ -3396,13 +3396,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-12"
+        data-date="2025-08-13"
         data-count="0"
       />
       <g class="tooltip" transform="translate(327, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-12: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-13: 0 films watched</tspan></text>
       </g>
       <rect
         x="429"
@@ -3413,13 +3413,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-19"
+        data-date="2025-08-20"
         data-count="0"
       />
       <g class="tooltip" transform="translate(340, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-19: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-20: 0 films watched</tspan></text>
       </g>
       <rect
         x="442"
@@ -3430,13 +3430,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-26"
+        data-date="2025-08-27"
         data-count="0"
       />
       <g class="tooltip" transform="translate(353, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-26: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-27: 0 films watched</tspan></text>
       </g>
       <rect
         x="455"
@@ -3447,13 +3447,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-02"
+        data-date="2025-09-03"
         data-count="0"
       />
       <g class="tooltip" transform="translate(366, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-02: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-03: 0 films watched</tspan></text>
       </g>
       <rect
         x="468"
@@ -3464,13 +3464,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-09"
+        data-date="2025-09-10"
         data-count="0"
       />
       <g class="tooltip" transform="translate(379, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-09: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-10: 0 films watched</tspan></text>
       </g>
       <rect
         x="481"
@@ -3481,13 +3481,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-16"
+        data-date="2025-09-17"
         data-count="0"
       />
       <g class="tooltip" transform="translate(392, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-16: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-17: 0 films watched</tspan></text>
       </g>
       <rect
         x="494"
@@ -3498,13 +3498,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-23"
+        data-date="2025-09-24"
         data-count="0"
       />
       <g class="tooltip" transform="translate(405, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-23: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-24: 0 films watched</tspan></text>
       </g>
       <rect
         x="507"
@@ -3515,13 +3515,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-30"
+        data-date="2025-10-01"
         data-count="0"
       />
       <g class="tooltip" transform="translate(418, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-30: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-01: 0 films watched</tspan></text>
       </g>
       <rect
         x="520"
@@ -3532,13 +3532,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-07"
+        data-date="2025-10-08"
         data-count="0"
       />
       <g class="tooltip" transform="translate(431, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-07: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-08: 0 films watched</tspan></text>
       </g>
       <rect
         x="533"
@@ -3549,13 +3549,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-14"
+        data-date="2025-10-15"
         data-count="0"
       />
       <g class="tooltip" transform="translate(444, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-14: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-15: 0 films watched</tspan></text>
       </g>
       <rect
         x="546"
@@ -3566,13 +3566,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-21"
+        data-date="2025-10-22"
         data-count="0"
       />
       <g class="tooltip" transform="translate(457, -9)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-21: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-22: 0 films watched</tspan></text>
       </g>
       <rect
         x="559"
@@ -3991,13 +3991,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-02"
+        data-date="2025-04-03"
         data-count="0"
       />
       <g class="tooltip" transform="translate(80, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-02: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-03: 0 films watched</tspan></text>
       </g>
       <rect
         x="182"
@@ -4008,13 +4008,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-09"
+        data-date="2025-04-10"
         data-count="0"
       />
       <g class="tooltip" transform="translate(93, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-09: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-10: 0 films watched</tspan></text>
       </g>
       <rect
         x="195"
@@ -4025,13 +4025,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-16"
+        data-date="2025-04-17"
         data-count="0"
       />
       <g class="tooltip" transform="translate(106, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-16: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-17: 0 films watched</tspan></text>
       </g>
       <rect
         x="208"
@@ -4042,13 +4042,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-23"
+        data-date="2025-04-24"
         data-count="0"
       />
       <g class="tooltip" transform="translate(119, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-23: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-24: 0 films watched</tspan></text>
       </g>
       <rect
         x="221"
@@ -4059,13 +4059,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-30"
+        data-date="2025-05-01"
         data-count="0"
       />
       <g class="tooltip" transform="translate(132, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-30: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-01: 0 films watched</tspan></text>
       </g>
       <rect
         x="234"
@@ -4076,13 +4076,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-07"
+        data-date="2025-05-08"
         data-count="0"
       />
       <g class="tooltip" transform="translate(145, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-07: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-08: 0 films watched</tspan></text>
       </g>
       <rect
         x="247"
@@ -4093,13 +4093,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-14"
+        data-date="2025-05-15"
         data-count="0"
       />
       <g class="tooltip" transform="translate(158, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-14: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-15: 0 films watched</tspan></text>
       </g>
       <rect
         x="260"
@@ -4110,13 +4110,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-21"
+        data-date="2025-05-22"
         data-count="0"
       />
       <g class="tooltip" transform="translate(171, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-21: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-22: 0 films watched</tspan></text>
       </g>
       <rect
         x="273"
@@ -4127,13 +4127,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-28"
+        data-date="2025-05-29"
         data-count="0"
       />
       <g class="tooltip" transform="translate(184, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-28: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-29: 0 films watched</tspan></text>
       </g>
       <rect
         x="286"
@@ -4144,13 +4144,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-04"
+        data-date="2025-06-05"
         data-count="0"
       />
       <g class="tooltip" transform="translate(197, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-04: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-05: 0 films watched</tspan></text>
       </g>
       <rect
         x="299"
@@ -4161,13 +4161,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-11"
+        data-date="2025-06-12"
         data-count="0"
       />
       <g class="tooltip" transform="translate(210, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-11: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-12: 0 films watched</tspan></text>
       </g>
       <rect
         x="312"
@@ -4178,13 +4178,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-18"
+        data-date="2025-06-19"
         data-count="0"
       />
       <g class="tooltip" transform="translate(223, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-18: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-19: 0 films watched</tspan></text>
       </g>
       <rect
         x="325"
@@ -4195,13 +4195,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-25"
+        data-date="2025-06-26"
         data-count="0"
       />
       <g class="tooltip" transform="translate(236, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-25: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-26: 0 films watched</tspan></text>
       </g>
       <rect
         x="338"
@@ -4212,13 +4212,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-02"
+        data-date="2025-07-03"
         data-count="0"
       />
       <g class="tooltip" transform="translate(249, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-02: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-03: 0 films watched</tspan></text>
       </g>
       <rect
         x="351"
@@ -4229,13 +4229,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-09"
+        data-date="2025-07-10"
         data-count="0"
       />
       <g class="tooltip" transform="translate(262, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-09: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-10: 0 films watched</tspan></text>
       </g>
       <rect
         x="364"
@@ -4246,13 +4246,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-16"
+        data-date="2025-07-17"
         data-count="0"
       />
       <g class="tooltip" transform="translate(275, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-16: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-17: 0 films watched</tspan></text>
       </g>
       <rect
         x="377"
@@ -4263,13 +4263,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-23"
+        data-date="2025-07-24"
         data-count="0"
       />
       <g class="tooltip" transform="translate(288, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-23: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-24: 0 films watched</tspan></text>
       </g>
       <rect
         x="390"
@@ -4280,13 +4280,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-30"
+        data-date="2025-07-31"
         data-count="0"
       />
       <g class="tooltip" transform="translate(301, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-30: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-31: 0 films watched</tspan></text>
       </g>
       <rect
         x="403"
@@ -4297,13 +4297,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-06"
+        data-date="2025-08-07"
         data-count="0"
       />
       <g class="tooltip" transform="translate(314, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-06: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-07: 0 films watched</tspan></text>
       </g>
       <rect
         x="416"
@@ -4314,13 +4314,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-13"
+        data-date="2025-08-14"
         data-count="0"
       />
       <g class="tooltip" transform="translate(327, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-13: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-14: 0 films watched</tspan></text>
       </g>
       <rect
         x="429"
@@ -4331,13 +4331,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-20"
+        data-date="2025-08-21"
         data-count="0"
       />
       <g class="tooltip" transform="translate(340, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-20: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-21: 0 films watched</tspan></text>
       </g>
       <rect
         x="442"
@@ -4348,13 +4348,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-27"
+        data-date="2025-08-28"
         data-count="0"
       />
       <g class="tooltip" transform="translate(353, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-27: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-28: 0 films watched</tspan></text>
       </g>
       <rect
         x="455"
@@ -4365,13 +4365,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-03"
+        data-date="2025-09-04"
         data-count="0"
       />
       <g class="tooltip" transform="translate(366, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-03: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-04: 0 films watched</tspan></text>
       </g>
       <rect
         x="468"
@@ -4382,13 +4382,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-10"
+        data-date="2025-09-11"
         data-count="0"
       />
       <g class="tooltip" transform="translate(379, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-10: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-11: 0 films watched</tspan></text>
       </g>
       <rect
         x="481"
@@ -4399,13 +4399,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-17"
+        data-date="2025-09-18"
         data-count="0"
       />
       <g class="tooltip" transform="translate(392, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-17: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-18: 0 films watched</tspan></text>
       </g>
       <rect
         x="494"
@@ -4416,13 +4416,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-24"
+        data-date="2025-09-25"
         data-count="0"
       />
       <g class="tooltip" transform="translate(405, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-24: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-25: 0 films watched</tspan></text>
       </g>
       <rect
         x="507"
@@ -4433,13 +4433,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-01"
+        data-date="2025-10-02"
         data-count="0"
       />
       <g class="tooltip" transform="translate(418, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-01: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-02: 0 films watched</tspan></text>
       </g>
       <rect
         x="520"
@@ -4450,13 +4450,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-08"
+        data-date="2025-10-09"
         data-count="0"
       />
       <g class="tooltip" transform="translate(431, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-08: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-09: 0 films watched</tspan></text>
       </g>
       <rect
         x="533"
@@ -4467,13 +4467,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-15"
+        data-date="2025-10-16"
         data-count="0"
       />
       <g class="tooltip" transform="translate(444, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-15: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-16: 0 films watched</tspan></text>
       </g>
       <rect
         x="546"
@@ -4484,13 +4484,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-22"
+        data-date="2025-10-23"
         data-count="0"
       />
       <g class="tooltip" transform="translate(457, 4)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-22: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-23: 0 films watched</tspan></text>
       </g>
       <rect
         x="559"
@@ -4912,13 +4912,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-03"
+        data-date="2025-04-04"
         data-count="0"
       />
       <g class="tooltip" transform="translate(80, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-03: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-04: 0 films watched</tspan></text>
       </g>
       <rect
         x="182"
@@ -4929,13 +4929,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-10"
+        data-date="2025-04-11"
         data-count="0"
       />
       <g class="tooltip" transform="translate(93, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-10: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-11: 0 films watched</tspan></text>
       </g>
       <rect
         x="195"
@@ -4946,13 +4946,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-17"
+        data-date="2025-04-18"
         data-count="0"
       />
       <g class="tooltip" transform="translate(106, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-17: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-18: 0 films watched</tspan></text>
       </g>
       <rect
         x="208"
@@ -4963,13 +4963,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-24"
+        data-date="2025-04-25"
         data-count="0"
       />
       <g class="tooltip" transform="translate(119, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-24: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-25: 0 films watched</tspan></text>
       </g>
       <rect
         x="221"
@@ -4980,13 +4980,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-01"
+        data-date="2025-05-02"
         data-count="0"
       />
       <g class="tooltip" transform="translate(132, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-01: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-02: 0 films watched</tspan></text>
       </g>
       <rect
         x="234"
@@ -4997,13 +4997,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-08"
+        data-date="2025-05-09"
         data-count="0"
       />
       <g class="tooltip" transform="translate(145, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-08: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-09: 0 films watched</tspan></text>
       </g>
       <rect
         x="247"
@@ -5014,13 +5014,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-15"
+        data-date="2025-05-16"
         data-count="0"
       />
       <g class="tooltip" transform="translate(158, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-15: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-16: 0 films watched</tspan></text>
       </g>
       <rect
         x="260"
@@ -5031,13 +5031,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-22"
+        data-date="2025-05-23"
         data-count="0"
       />
       <g class="tooltip" transform="translate(171, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-22: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-23: 0 films watched</tspan></text>
       </g>
       <rect
         x="273"
@@ -5048,13 +5048,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-29"
+        data-date="2025-05-30"
         data-count="0"
       />
       <g class="tooltip" transform="translate(184, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-29: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-30: 0 films watched</tspan></text>
       </g>
       <rect
         x="286"
@@ -5065,13 +5065,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-05"
+        data-date="2025-06-06"
         data-count="0"
       />
       <g class="tooltip" transform="translate(197, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-05: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-06: 0 films watched</tspan></text>
       </g>
       <rect
         x="299"
@@ -5082,13 +5082,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-12"
+        data-date="2025-06-13"
         data-count="0"
       />
       <g class="tooltip" transform="translate(210, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-12: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-13: 0 films watched</tspan></text>
       </g>
       <rect
         x="312"
@@ -5099,13 +5099,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-19"
+        data-date="2025-06-20"
         data-count="0"
       />
       <g class="tooltip" transform="translate(223, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-19: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-20: 0 films watched</tspan></text>
       </g>
       <rect
         x="325"
@@ -5116,13 +5116,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-26"
+        data-date="2025-06-27"
         data-count="0"
       />
       <g class="tooltip" transform="translate(236, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-26: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-27: 0 films watched</tspan></text>
       </g>
       <rect
         x="338"
@@ -5133,13 +5133,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-03"
+        data-date="2025-07-04"
         data-count="0"
       />
       <g class="tooltip" transform="translate(249, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-03: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-04: 0 films watched</tspan></text>
       </g>
       <rect
         x="351"
@@ -5150,13 +5150,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-10"
+        data-date="2025-07-11"
         data-count="0"
       />
       <g class="tooltip" transform="translate(262, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-10: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-11: 0 films watched</tspan></text>
       </g>
       <rect
         x="364"
@@ -5167,13 +5167,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-17"
+        data-date="2025-07-18"
         data-count="0"
       />
       <g class="tooltip" transform="translate(275, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-17: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-18: 0 films watched</tspan></text>
       </g>
       <rect
         x="377"
@@ -5184,13 +5184,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-24"
+        data-date="2025-07-25"
         data-count="0"
       />
       <g class="tooltip" transform="translate(288, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-24: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-25: 0 films watched</tspan></text>
       </g>
       <rect
         x="390"
@@ -5201,13 +5201,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-31"
+        data-date="2025-08-01"
         data-count="0"
       />
       <g class="tooltip" transform="translate(301, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-31: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-01: 0 films watched</tspan></text>
       </g>
       <rect
         x="403"
@@ -5218,13 +5218,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-07"
+        data-date="2025-08-08"
         data-count="0"
       />
       <g class="tooltip" transform="translate(314, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-07: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-08: 0 films watched</tspan></text>
       </g>
       <rect
         x="416"
@@ -5235,13 +5235,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-14"
+        data-date="2025-08-15"
         data-count="0"
       />
       <g class="tooltip" transform="translate(327, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-14: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-15: 0 films watched</tspan></text>
       </g>
       <rect
         x="429"
@@ -5252,13 +5252,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-21"
+        data-date="2025-08-22"
         data-count="0"
       />
       <g class="tooltip" transform="translate(340, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-21: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-22: 0 films watched</tspan></text>
       </g>
       <rect
         x="442"
@@ -5269,13 +5269,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-28"
+        data-date="2025-08-29"
         data-count="0"
       />
       <g class="tooltip" transform="translate(353, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-28: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-29: 0 films watched</tspan></text>
       </g>
       <rect
         x="455"
@@ -5286,13 +5286,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-04"
+        data-date="2025-09-05"
         data-count="0"
       />
       <g class="tooltip" transform="translate(366, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-04: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-05: 0 films watched</tspan></text>
       </g>
       <rect
         x="468"
@@ -5303,13 +5303,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-11"
+        data-date="2025-09-12"
         data-count="0"
       />
       <g class="tooltip" transform="translate(379, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-11: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-12: 0 films watched</tspan></text>
       </g>
       <rect
         x="481"
@@ -5320,13 +5320,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-18"
+        data-date="2025-09-19"
         data-count="0"
       />
       <g class="tooltip" transform="translate(392, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-18: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-19: 0 films watched</tspan></text>
       </g>
       <rect
         x="494"
@@ -5337,13 +5337,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-25"
+        data-date="2025-09-26"
         data-count="0"
       />
       <g class="tooltip" transform="translate(405, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-25: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-26: 0 films watched</tspan></text>
       </g>
       <rect
         x="507"
@@ -5354,13 +5354,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-02"
+        data-date="2025-10-03"
         data-count="0"
       />
       <g class="tooltip" transform="translate(418, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-02: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-03: 0 films watched</tspan></text>
       </g>
       <rect
         x="520"
@@ -5371,13 +5371,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-09"
+        data-date="2025-10-10"
         data-count="0"
       />
       <g class="tooltip" transform="translate(431, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-09: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-10: 0 films watched</tspan></text>
       </g>
       <rect
         x="533"
@@ -5388,13 +5388,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-16"
+        data-date="2025-10-17"
         data-count="0"
       />
       <g class="tooltip" transform="translate(444, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-16: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-17: 0 films watched</tspan></text>
       </g>
       <rect
         x="546"
@@ -5405,13 +5405,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-23"
+        data-date="2025-10-24"
         data-count="0"
       />
       <g class="tooltip" transform="translate(457, 17)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-23: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-24: 0 films watched</tspan></text>
       </g>
       <rect
         x="559"
@@ -5834,13 +5834,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-04"
+        data-date="2025-04-05"
         data-count="0"
       />
       <g class="tooltip" transform="translate(80, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-04: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-05: 0 films watched</tspan></text>
       </g>
       <rect
         x="182"
@@ -5851,13 +5851,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-11"
+        data-date="2025-04-12"
         data-count="0"
       />
       <g class="tooltip" transform="translate(93, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-11: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-12: 0 films watched</tspan></text>
       </g>
       <rect
         x="195"
@@ -5868,13 +5868,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-18"
+        data-date="2025-04-19"
         data-count="0"
       />
       <g class="tooltip" transform="translate(106, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-18: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-19: 0 films watched</tspan></text>
       </g>
       <rect
         x="208"
@@ -5885,13 +5885,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-04-25"
+        data-date="2025-04-26"
         data-count="0"
       />
       <g class="tooltip" transform="translate(119, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-04-25: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-04-26: 0 films watched</tspan></text>
       </g>
       <rect
         x="221"
@@ -5902,13 +5902,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-02"
+        data-date="2025-05-03"
         data-count="0"
       />
       <g class="tooltip" transform="translate(132, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-02: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-03: 0 films watched</tspan></text>
       </g>
       <rect
         x="234"
@@ -5919,13 +5919,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-09"
+        data-date="2025-05-10"
         data-count="0"
       />
       <g class="tooltip" transform="translate(145, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-09: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-10: 0 films watched</tspan></text>
       </g>
       <rect
         x="247"
@@ -5936,13 +5936,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-16"
+        data-date="2025-05-17"
         data-count="0"
       />
       <g class="tooltip" transform="translate(158, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-16: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-17: 0 films watched</tspan></text>
       </g>
       <rect
         x="260"
@@ -5953,13 +5953,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-23"
+        data-date="2025-05-24"
         data-count="0"
       />
       <g class="tooltip" transform="translate(171, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-23: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-24: 0 films watched</tspan></text>
       </g>
       <rect
         x="273"
@@ -5970,13 +5970,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-05-30"
+        data-date="2025-05-31"
         data-count="0"
       />
       <g class="tooltip" transform="translate(184, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-05-30: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-05-31: 0 films watched</tspan></text>
       </g>
       <rect
         x="286"
@@ -5987,13 +5987,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-06"
+        data-date="2025-06-07"
         data-count="0"
       />
       <g class="tooltip" transform="translate(197, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-06: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-07: 0 films watched</tspan></text>
       </g>
       <rect
         x="299"
@@ -6004,13 +6004,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-13"
+        data-date="2025-06-14"
         data-count="0"
       />
       <g class="tooltip" transform="translate(210, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-13: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-14: 0 films watched</tspan></text>
       </g>
       <rect
         x="312"
@@ -6021,13 +6021,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-20"
+        data-date="2025-06-21"
         data-count="0"
       />
       <g class="tooltip" transform="translate(223, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-20: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-21: 0 films watched</tspan></text>
       </g>
       <rect
         x="325"
@@ -6038,13 +6038,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-06-27"
+        data-date="2025-06-28"
         data-count="0"
       />
       <g class="tooltip" transform="translate(236, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-06-27: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-06-28: 0 films watched</tspan></text>
       </g>
       <rect
         x="338"
@@ -6055,13 +6055,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-04"
+        data-date="2025-07-05"
         data-count="0"
       />
       <g class="tooltip" transform="translate(249, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-04: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-05: 0 films watched</tspan></text>
       </g>
       <rect
         x="351"
@@ -6072,13 +6072,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-11"
+        data-date="2025-07-12"
         data-count="0"
       />
       <g class="tooltip" transform="translate(262, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-11: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-12: 0 films watched</tspan></text>
       </g>
       <rect
         x="364"
@@ -6089,13 +6089,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-18"
+        data-date="2025-07-19"
         data-count="0"
       />
       <g class="tooltip" transform="translate(275, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-18: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-19: 0 films watched</tspan></text>
       </g>
       <rect
         x="377"
@@ -6106,13 +6106,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-07-25"
+        data-date="2025-07-26"
         data-count="0"
       />
       <g class="tooltip" transform="translate(288, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-07-25: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-07-26: 0 films watched</tspan></text>
       </g>
       <rect
         x="390"
@@ -6123,13 +6123,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-01"
+        data-date="2025-08-02"
         data-count="0"
       />
       <g class="tooltip" transform="translate(301, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-01: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-02: 0 films watched</tspan></text>
       </g>
       <rect
         x="403"
@@ -6140,13 +6140,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-08"
+        data-date="2025-08-09"
         data-count="0"
       />
       <g class="tooltip" transform="translate(314, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-08: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-09: 0 films watched</tspan></text>
       </g>
       <rect
         x="416"
@@ -6157,13 +6157,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-15"
+        data-date="2025-08-16"
         data-count="0"
       />
       <g class="tooltip" transform="translate(327, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-15: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-16: 0 films watched</tspan></text>
       </g>
       <rect
         x="429"
@@ -6174,13 +6174,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-22"
+        data-date="2025-08-23"
         data-count="0"
       />
       <g class="tooltip" transform="translate(340, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-22: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-23: 0 films watched</tspan></text>
       </g>
       <rect
         x="442"
@@ -6191,13 +6191,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-08-29"
+        data-date="2025-08-30"
         data-count="0"
       />
       <g class="tooltip" transform="translate(353, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-08-29: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-08-30: 0 films watched</tspan></text>
       </g>
       <rect
         x="455"
@@ -6208,13 +6208,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-05"
+        data-date="2025-09-06"
         data-count="0"
       />
       <g class="tooltip" transform="translate(366, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-05: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-06: 0 films watched</tspan></text>
       </g>
       <rect
         x="468"
@@ -6225,13 +6225,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-12"
+        data-date="2025-09-13"
         data-count="0"
       />
       <g class="tooltip" transform="translate(379, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-12: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-13: 0 films watched</tspan></text>
       </g>
       <rect
         x="481"
@@ -6242,13 +6242,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-19"
+        data-date="2025-09-20"
         data-count="0"
       />
       <g class="tooltip" transform="translate(392, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-19: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-20: 0 films watched</tspan></text>
       </g>
       <rect
         x="494"
@@ -6259,13 +6259,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-09-26"
+        data-date="2025-09-27"
         data-count="0"
       />
       <g class="tooltip" transform="translate(405, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-09-26: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-09-27: 0 films watched</tspan></text>
       </g>
       <rect
         x="507"
@@ -6276,13 +6276,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-03"
+        data-date="2025-10-04"
         data-count="0"
       />
       <g class="tooltip" transform="translate(418, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-03: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-04: 0 films watched</tspan></text>
       </g>
       <rect
         x="520"
@@ -6293,13 +6293,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-10"
+        data-date="2025-10-11"
         data-count="0"
       />
       <g class="tooltip" transform="translate(431, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-10: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-11: 0 films watched</tspan></text>
       </g>
       <rect
         x="533"
@@ -6310,13 +6310,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-17"
+        data-date="2025-10-18"
         data-count="0"
       />
       <g class="tooltip" transform="translate(444, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-17: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-18: 0 films watched</tspan></text>
       </g>
       <rect
         x="546"
@@ -6327,13 +6327,13 @@
         ry="2"
         fill="#161b22"
         opacity="1"
-        data-date="2025-10-24"
+        data-date="2025-10-25"
         data-count="0"
       />
       <g class="tooltip" transform="translate(457, 30)">
         <rect x="0" y="0" width="189" height="38" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
-          <tspan x="10" dy="0">2025-10-24: 0 films watched</tspan></text>
+          <tspan x="10" dy="0">2025-10-25: 0 films watched</tspan></text>
       </g>
       <rect
         x="559"
