@@ -328,6 +328,9 @@ function generateSvg(entries, options = {}) {
       opacity: 0;
       pointer-events: none;
     }
+    a:hover .tooltip {
+      opacity: 1;
+    }
     .tooltip text {
       font-size: 12px;
       fill: ${currentTheme.tooltipText};
@@ -380,36 +383,43 @@ function generateSvg(entries, options = {}) {
 
   svg += `</g>
   <g transform="translate(30, 60)">`;
-  for (let day = 0; day < 7; day++) {
-    for (let week = 0; week < totalWeeks; week++) {
-      const count = grid[day][week];
-      const color = getColor(count);
-      const cellDate = new Date(startDate);
-      cellDate.setDate(cellDate.getDate() + week * 7 + day);
+for (let day = 0; day < 7; day++) {
+  for (let week = 0; week < totalWeeks; week++) {
+    const count = grid[day][week];
+    const color = getColor(count);
+    const cellDate = new Date(startDate);
+    cellDate.setDate(cellDate.getDate() + week * 7 + day);
 
-      const tooltipDate = cellDate.toISOString().split("T")[0];
-      const x = week * (CELL_SIZE + CELL_MARGIN);
-      const y = day * (CELL_SIZE + CELL_MARGIN);
+    const tooltipDate = cellDate.toISOString().split("T")[0];
+    const x = week * (CELL_SIZE + CELL_MARGIN);
+    const y = day * (CELL_SIZE + CELL_MARGIN);
 
-      const isOutsideYear = cellDate < new Date(Date.UTC(displayYear, 0, 1)) || cellDate > new Date(Date.UTC(displayYear, 11, 31));
-      const opacity = isOutsideYear ? "0" : "1";
+    const isOutsideYear = cellDate < new Date(Date.UTC(displayYear, 0, 1)) || cellDate > new Date(Date.UTC(displayYear, 11, 31));
+    const opacity = isOutsideYear ? "0" : "1";
 
-      const filmsForDay = filmsPerDay.get(tooltipDate) || [];
-      let tooltipLines = [`${tooltipDate}: ${count} film${count !== 1 ? "s" : ""} watched`];
-      if (filmsForDay.length > 0) {
-        filmsForDay.forEach((film) => {
-          const ratingStr = film.rating ? ` - ${film.rating}★` : "";
-          tooltipLines.push(`• ${film.title} (${film.year})${ratingStr}`);
-        });
-      }
+    // Generiere die Letterboxd-URL
+    const yearStr = cellDate.getUTCFullYear();
+    const monthStr = String(cellDate.getUTCMonth() + 1).padStart(2, '0'); // Monat beginnt bei 0, daher +1
+    const dayStr = String(cellDate.getUTCDate()).padStart(2, '0');
+    const diaryUrl = `https://letterboxd.com/${username}/films/diary/for/${yearStr}/${monthStr}/${dayStr}/`;
 
-      const lineHeight = 18;
-      const padding = 10;
-      const tooltipHeight = tooltipLines.length * lineHeight + padding * 2;
-      const maxLineLength = Math.max(...tooltipLines.map(line => line.length));
-      const tooltipWidth = Math.min(Math.max(maxLineLength * 7, 150), 300);
+    const filmsForDay = filmsPerDay.get(tooltipDate) || [];
+    let tooltipLines = [`${tooltipDate}: ${count} film${count !== 1 ? "s" : ""} watched`];
+    if (filmsForDay.length > 0) {
+      filmsForDay.forEach((film) => {
+        const ratingStr = film.rating ? ` - ${film.rating}★` : "";
+        tooltipLines.push(`• ${film.title} (${film.year})${ratingStr}`);
+      });
+    }
 
-      svg += `
+    const lineHeight = 18;
+    const padding = 10;
+    const tooltipHeight = tooltipLines.length * lineHeight + padding * 2;
+    const maxLineLength = Math.max(...tooltipLines.map(line => line.length));
+    const tooltipWidth = Math.min(Math.max(maxLineLength * 7, 150), 300);
+
+    svg += `
+    <a href="${diaryUrl}" target="_blank">
       <rect
         x="${x}"
         y="${y}"
@@ -425,16 +435,16 @@ function generateSvg(entries, options = {}) {
       <g class="tooltip" transform="translate(${x - tooltipWidth / 2 + CELL_SIZE / 2}, ${y - tooltipHeight - 10})">
         <rect x="0" y="0" width="${tooltipWidth}" height="${tooltipHeight}" rx="4" fill="${currentTheme.tooltipBg}" stroke="${currentTheme.tooltipBorder}" stroke-width="0.5" opacity="0.95"/>
         <text x="${padding}" y="${padding + 12}">`;
-      tooltipLines.forEach((line, i) => {
-        svg += `
-          <tspan x="${padding}" dy="${i === 0 ? 0 : lineHeight}">${escapeXml(line)}</tspan>`;
-      });
-      svg += `</text>
-      </g>`;
-    }
+    tooltipLines.forEach((line, i) => {
+    svg += `
+              <tspan x="${padding}" dy="${i === 0 ? 0 : lineHeight}">${escapeXml(line)}</tspan>`;
+    });
+    svg += `</text>
+      </g>
+    </a>`;
   }
-
-  svg += `</g></svg>`;
+}
+svg += `</g></svg>`;
   return svg;
 }
 
