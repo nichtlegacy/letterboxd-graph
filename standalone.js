@@ -542,4 +542,52 @@ async function main() {
   }
 }
 
-main();
+if (require.main === module) {
+  main();
+}
+
+async function generateGraphs(username, year, options = {}) {
+  const {
+    weekStart = 'sunday',
+    usernameGradient = true
+  } = options;
+
+  const { profileImage, displayName } = await fetchProfileData(username);
+  const profileImageBase64 = profileImage ? await imageToBase64(profileImage) : null;
+  const logoBase64 = await imageToBase64("https://a.ltrbxd.com/logos/letterboxd-decal-dots-pos-rgb-500px.png");
+
+  const filmEntries = await tryFetchMultipleYears(username, year);
+
+  const svgDark = generateSvg(filmEntries, {
+    theme: 'dark',
+    year,
+    weekStart,
+    username,
+    profileImage: profileImageBase64,
+    displayName,
+    logoBase64,
+    usernameGradient
+  });
+
+  const svgLight = generateSvg(filmEntries, {
+    theme: 'light',
+    year,
+    weekStart,
+    username,
+    profileImage: profileImageBase64,
+    displayName,
+    logoBase64,
+    usernameGradient
+  });
+
+  return { svgDark, svgLight };
+}
+
+module.exports = {
+  fetchLetterboxdData,
+  tryFetchMultipleYears,
+  fetchProfileData,
+  imageToBase64,
+  generateSvg,
+  generateGraphs
+};

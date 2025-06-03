@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letterboxd Contribution Graph</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #graphContainer svg { max-width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+  <h1>Letterboxd Contribution Graph</h1>
+  <form id="graphForm">
+    <input type="text" id="username" placeholder="Letterboxd username" required>
+    <select id="year"></select>
+    <button type="submit">Generate</button>
+  </form>
+  <div id="graphContainer" style="margin-top:20px;"></div>
+  <a id="downloadSvg" style="display:none; margin-right:10px;">Download SVG</a>
+  <a id="downloadPng" style="display:none;">Download PNG</a>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const yearSelect = document.getElementById('year');
+    const currentYear = new Date().getFullYear();
+    for (let y = currentYear; y >= 2011; y--) {
+      const opt = document.createElement('option');
+      opt.value = y;
+      opt.textContent = y;
+      yearSelect.appendChild(opt);
+    }
+
+    document.getElementById('graphForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const year = document.getElementById('year').value;
+      const res = await fetch('/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, year })
+      });
+      const data = await res.json();
+      if (data.svg) {
+        document.getElementById('graphContainer').innerHTML = data.svg;
+        const svgBlob = new Blob([data.svg], { type: 'image/svg+xml' });
+        const svgUrl = URL.createObjectURL(svgBlob);
+        const downloadSvg = document.getElementById('downloadSvg');
+        downloadSvg.href = svgUrl;
+        downloadSvg.download = `${username}-${year}.svg`;
+        downloadSvg.style.display = 'inline-block';
+        const pngRes = await fetch('/png', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ svg: data.svg })
+        });
+        const pngBlob = await pngRes.blob();
+        const pngUrl = URL.createObjectURL(pngBlob);
+        const downloadPng = document.getElementById('downloadPng');
+        downloadPng.href = pngUrl;
+        downloadPng.download = `${username}-${year}.png`;
+        downloadPng.style.display = 'inline-block';
+      } else {
+        document.getElementById('graphContainer').textContent = 'Error generating graph';
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -4,11 +4,14 @@
   "description": "Generates a GitHub-style contribution graph from Letterboxd diary entries",
   "main": "standalone.js",
   "scripts": {
-    "start": "node standalone.js"
+    "start": "node standalone.js",
+    "serve": "node server.js"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
-    "node-fetch": "^2.6.7"
+    "express": "^5.1.0",
+    "node-fetch": "^2.6.7",
+    "sharp": "^0.34.2"
   },
   "author": "Dein Name",
   "license": "MIT"
