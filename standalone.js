@@ -44,24 +44,40 @@ async function fetchLetterboxdData(username, year) {
       entryRows.each((_, row) => {
         try {
           const $row = $(row);
-          const dayElement = $row.find("td.td-day a");
+          const dayElement = $row.find("td.col-daydate a");
           const dayUrl = dayElement.attr('href');
+          
+          if (!dayUrl) {
+            console.warn(`Skipping entry: no day URL found`);
+            return;
+          }
+          
           const urlParts = dayUrl.split('/').filter(part => part);
           const yearIndex = urlParts.indexOf('for') + 1;
           const monthIndex = yearIndex + 1;
           const dayIndex = monthIndex + 1;
 
+          if (yearIndex === 0 || !urlParts[yearIndex] || !urlParts[monthIndex] || !urlParts[dayIndex]) {
+            console.warn(`Skipping entry: invalid URL structure - ${dayUrl}`);
+            return;
+          }
+
           const entryYear = Number.parseInt(urlParts[yearIndex]);
           const month = urlParts[monthIndex];
           const day = urlParts[dayIndex];
 
-          const titleElement = $row.find("h3.headline-3 a");
+          const titleElement = $row.find("h2.name a");
           const title = titleElement.text().trim();
-          const filmYearElement = $row.find("td.td-released");
+          const filmYearElement = $row.find("td.col-releaseyear span");
           const filmYear = filmYearElement.text().trim();
 
+          if (!title) {
+            console.warn(`Skipping entry: no title found for date ${month}/${day}/${entryYear}`);
+            return;
+          }
+
           let rating = null;
-          const ratingSpan = $row.find("td.td-rating .rating");
+          const ratingSpan = $row.find("td.col-rating .rating");
           if (ratingSpan.length > 0) {
             const ratingClass = ratingSpan.attr("class");
             const ratingMatch = ratingClass.match(/rated-(\d+)/);
@@ -210,10 +226,10 @@ function generateSvg(entries, options = {}) {
   const startDate = new Date(Date.UTC(displayYear, 0, 1));
   const endDate = new Date(Date.UTC(displayYear, 11, 31));
   
-  const startDay = startDate.getDay();
+  const startDay = startDate.getUTCDay();
   const dayShift = weekStart === 'monday' ? (startDay + 6) % 7 : startDay;
   if (dayShift > 0) {
-    startDate.setDate(startDate.getDate() - dayShift);
+    startDate.setUTCDate(startDate.getUTCDate() - dayShift);
   }
 
   const totalDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)) + 1;
@@ -227,7 +243,7 @@ function generateSvg(entries, options = {}) {
   sortedEntries.forEach((entry) => {
     const daysSinceStart = Math.floor((entry.date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
     const weekIndex = Math.floor(daysSinceStart / 7);
-    const dayIndex = weekStart === 'monday' ? (entry.date.getDay() + 6) % 7 : entry.date.getDay();
+    const dayIndex = weekStart === 'monday' ? (entry.date.getUTCDay() + 6) % 7 : entry.date.getUTCDay();
 
     if (weekIndex >= 0 && weekIndex < totalWeeks) {
       grid[dayIndex][weekIndex]++;
@@ -388,7 +404,7 @@ for (let day = 0; day < 7; day++) {
     const count = grid[day][week];
     const color = getColor(count);
     const cellDate = new Date(startDate);
-    cellDate.setDate(cellDate.getDate() + week * 7 + day);
+    cellDate.setUTCDate(cellDate.getUTCDate() + week * 7 + day);
 
     const tooltipDate = cellDate.toISOString().split("T")[0];
     const x = week * (CELL_SIZE + CELL_MARGIN);
