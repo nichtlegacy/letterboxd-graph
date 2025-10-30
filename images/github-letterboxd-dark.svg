@@ -893,11 +893,11 @@
         data-date="2025-10-05"
         data-count="1"
       />
-      <g class="tooltip" transform="translate(375.5, -66)">
-        <rect x="0" y="0" width="300" height="56" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
+      <g class="tooltip" transform="translate(378.5, -66)">
+        <rect x="0" y="0" width="294" height="56" rx="4" fill="#21262d" stroke="#ffffff" stroke-width="0.5" opacity="0.95"/>
         <text x="10" y="22">
               <tspan x="10" dy="0">2025-10-05: 1 film watched</tspan>
-              <tspan x="10" dy="18">• The Fantastic Four: First Steps (2025) - 4★</tspan></text>
+              <tspan x="10" dy="18">• The Fantastic 4: First Steps (2025) - 4★</tspan></text>
       </g>
     </a>
     <a href="https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/12/" target="_blank">
