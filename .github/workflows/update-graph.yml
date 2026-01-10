@@ -48,28 +48,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
-      - name: Generate graph
+      - name: Generate Graph
         run: |
-          CMD="npm start ${{ env.LETTERBOXD_USERNAME }}"
+          # Build command based on configuration
+          CMD="node src/cli.js ${{ env.LETTERBOXD_USERNAME }} -o images/github-letterboxd"
           
-          # Years (if specified)
-          if [ -n "${{ env.YEARS }}" ]; then
-            CMD="$CMD -y ${{ env.YEARS }}"
-          fi
-          
-          # Week start
-          CMD="$CMD -w ${{ env.WEEK_START }}"
-          
-          # Gradient
-          CMD="$CMD -g ${{ env.GRADIENT }}"
-          
-          # PNG export
-          if [ "${{ env.EXPORT_PNG }}" = "true" ]; then
-            CMD="$CMD -p"
-          fi
-          
-          # Output path
-          CMD="$CMD -o images/github-letterboxd"
+          if [ -n "${{ env.YEARS }}" ]; then CMD="$CMD -y ${{ env.YEARS }}"; fi
+          if [ "${{ env.WEEK_START }}" = "monday" ]; then CMD="$CMD -w monday"; fi
+          if [ "${{ env.GRADIENT }}" = "false" ]; then CMD="$CMD -g false"; fi
+          if [ "${{ env.EXPORT_PNG }}" = "true" ]; then CMD="$CMD -p"; fi
           
           echo "Running: $CMD"
           eval $CMD

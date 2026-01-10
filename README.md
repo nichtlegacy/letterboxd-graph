@@ -185,7 +185,7 @@ jobs:
       - name: Generate Graph
         run: |
           # Build command based on configuration
-          CMD="npm start ${{ env.LETTERBOXD_USERNAME }} -o images/github-letterboxd"
+          CMD="node src/cli.js ${{ env.LETTERBOXD_USERNAME }} -o images/github-letterboxd"
           
           if [ -n "${{ env.YEARS }}" ]; then CMD="$CMD -y ${{ env.YEARS }}"; fi
           if [ "${{ env.WEEK_START }}" = "monday" ]; then CMD="$CMD -w monday"; fi
