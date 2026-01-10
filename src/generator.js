@@ -3,7 +3,83 @@
  * New layout based on single-year-2024-example.svg
  */
 
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import opentype from 'opentype.js';
 import { calculateStreak, calculateDaysActive, groupEntriesByDate } from './stats.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const FONTS_DIR = path.join(__dirname, '..', 'fonts');
+
+/**
+ * Load Inter font files as Base64 for embedding in SVG
+ */
+function loadFontsBase64() {
+  const fonts = {};
+  const fontFiles = {
+    regular: 'Inter-Regular.woff2',
+    medium: 'Inter-Medium.woff2',
+    semibold: 'Inter-SemiBold.woff2',
+    bold: 'Inter-Bold.woff2'
+  };
+
+  for (const [weight, filename] of Object.entries(fontFiles)) {
+    const fontPath = path.join(FONTS_DIR, filename);
+    if (fs.existsSync(fontPath)) {
+      const fontData = fs.readFileSync(fontPath);
+      fonts[weight] = `data:font/woff2;base64,${fontData.toString('base64')}`;
+    }
+  }
+  return fonts;
+}
+
+// Load fonts once at module initialization
+let embeddedFonts = null;
+function getEmbeddedFonts() {
+  if (!embeddedFonts) {
+    embeddedFonts = loadFontsBase64();
+  }
+  return embeddedFonts;
+}
+
+/**
+ * Generate @font-face CSS declarations for embedded fonts
+ */
+function generateFontFaceCSS() {
+  const fonts = getEmbeddedFonts();
+  if (Object.keys(fonts).length === 0) {
+    return ''; // Fallback to system fonts if no embedded fonts available
+  }
+
+  return `
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        src: url('${fonts.regular}') format('woff2');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        src: url('${fonts.medium}') format('woff2');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        src: url('${fonts.semibold}') format('woff2');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        src: url('${fonts.bold}') format('woff2');
+      }
+  `;
+}
 
 /**
  * Escape XML special characters
@@ -22,6 +98,56 @@ function escapeXml(unsafe) {
 }
 
 /**
+ * Calculate exact text width using opentype.js
+ * Uses Inter-SemiBold font for accurate measurements with kerning support
+ */
+
+// Load font once at module initialization
+let loadedFont = null;
+function getFont() {
+  if (!loadedFont) {
+    const fontPath = path.join(FONTS_DIR, 'Inter-SemiBold.ttf');
+    if (fs.existsSync(fontPath)) {
+      try {
+        const fontBuffer = fs.readFileSync(fontPath);
+        loadedFont = opentype.parse(fontBuffer.buffer);
+      } catch (e) {
+        console.warn('Could not load font for text measurement, using fallback');
+        loadedFont = null;
+      }
+    }
+  }
+  return loadedFont;
+}
+
+/**
+ * Calculate exact text width using opentype.js with kerning support
+ * @param {string} text - Text to measure
+ * @param {number} fontSize - Font size in pixels
+ * @param {number} letterSpacing - Additional letter spacing (default 0)
+ * @returns {number} Width in pixels
+ */
+function calculateTextWidth(text, fontSize, letterSpacing = 0) {
+  if (!text) return 0;
+  
+  const font = getFont();
+  if (font) {
+    // Use getAdvanceWidth for accurate measurement with kerning
+    let width = font.getAdvanceWidth(text, fontSize, { kerning: true });
+    
+    // Add letter spacing if specified
+    if (letterSpacing > 0 && text.length > 1) {
+      width += letterSpacing * (text.length - 1);
+    }
+    
+    return width;
+  }
+  
+  // Fallback to rough estimation if font couldn't be loaded
+  return text.length * fontSize * 0.55;
+}
+
+/**
  * Generate the SVG contribution graph
  */
 export function generateSvg(entries, options = {}) {
@@ -29,15 +155,21 @@ export function generateSvg(entries, options = {}) {
     theme = 'dark', 
     year = new Date().getFullYear(),
     weekStart = 'sunday',
-    username = 'letterboxd',
     profileImage = null,
-    displayName = username,
+    displayName = '',
+    username = '',
     usernameGradient = true,
     logoBase64 = null,
     followers = 0,
     following = 0,
+    totalEntries = 0,
+    memberStatus = null, // 'patron', 'pro', or null
     mode = 'count' // 'count' or 'rating'
   } = options;
+
+  // Calculate precise width for badge placement (28px font) + 4px gap
+  const nameWidth = calculateTextWidth(displayName, 28);
+  const badgeX = 90 + nameWidth;
 
   // Filter entries for the requested year
   const sortedEntries = [...entries].filter(entry => {
@@ -57,6 +189,24 @@ export function generateSvg(entries, options = {}) {
     weeklyDistribution[dayOfWeek]++;
   });
   const maxWeeklyCount = Math.max(...weeklyDistribution);
+
+  // Calculate rating distribution (0.5 to 5.0 in 0.5 increments)
+  const ratingDistribution = {};
+  const ratingLabels = ['0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5'];
+  ratingLabels.forEach(r => ratingDistribution[r] = 0);
+  ratingDistribution['unrated'] = 0;
+  
+  sortedEntries.forEach(entry => {
+    if (entry.rating && entry.rating > 0) {
+      const ratingKey = String(entry.rating);
+      if (ratingDistribution.hasOwnProperty(ratingKey)) {
+        ratingDistribution[ratingKey]++;
+      }
+    } else {
+      ratingDistribution['unrated']++;
+    }
+  });
+  const maxRatingCount = Math.max(...ratingLabels.map(r => ratingDistribution[r]));
 
   // Setup date range
   const displayYear = year;
@@ -159,14 +309,13 @@ export function generateSvg(entries, options = {}) {
       <circle cx="40" cy="40" r="40"/>
     </clipPath>
     <linearGradient id="usernameGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ff8001"/>
-      <stop offset="25%" stop-color="#b3c02e"/>
-      <stop offset="50%" stop-color="#00e054"/>
-      <stop offset="75%" stop-color="#1fc5a4"/>
-      <stop offset="100%" stop-color="#3fbcf4"/>
+      <stop offset="0%" stop-color="#FF8000"/>
+      <stop offset="50%" stop-color="#00E054"/>
+      <stop offset="100%" stop-color="#40BCF4"/>
     </linearGradient>
     <style type="text/css">
       <![CDATA[
+      ${generateFontFaceCSS()}
       .tooltip-group {
         opacity: 0;
         transition: opacity 0.2s ease;
@@ -192,6 +341,14 @@ export function generateSvg(entries, options = {}) {
       .streak-group:hover {
         cursor: pointer;
       }
+      .streak-cell {
+        transition: filter 0.2s ease, stroke 0.2s ease, stroke-width 0.2s ease;
+      }
+      svg:has(.streak-group:hover) .streak-cell {
+        filter: brightness(1.4) saturate(1.2);
+        stroke: #22d3ee;
+        stroke-width: 2;
+      }
       .days-active-tooltip {
         opacity: 0;
         transition: opacity 0.2s ease;
@@ -201,6 +358,17 @@ export function generateSvg(entries, options = {}) {
         opacity: 1;
       }
       .days-active-group:hover {
+        cursor: pointer;
+      }
+      .movies-tooltip {
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        pointer-events: none;
+      }
+      .movies-group:hover .movies-tooltip {
+        opacity: 1;
+      }
+      .movies-group:hover {
         cursor: pointer;
       }
       ]]>
@@ -217,23 +385,30 @@ export function generateSvg(entries, options = {}) {
       <circle cx="40" cy="40" r="42" fill="${t.cardBorder}"/>
       ${profileImage ? `<image href="${profileImage}" x="0" y="0" width="80" height="80" clip-path="url(#profileClip)" style="cursor: pointer;"/>` : `<circle cx="40" cy="40" r="40" fill="${t.colors[2]}"/>`}
     </a>
+    
+    ${memberStatus ? `
+    <!-- Member Badge (bottom-left overlay) -->
+    <g transform="translate(-5, 58)">
+      <rect x="0" y="0" width="${memberStatus === 'patron' ? 48 : 32}" height="18" rx="3" fill="${memberStatus === 'patron' ? '#40bcf4' : '#ff8000'}"/>
+      <text x="${memberStatus === 'patron' ? 24 : 16}" y="13" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">${memberStatus === 'patron' ? 'PATRON' : 'PRO'}</text>
+    </g>` : ''}
 
     <!-- Name and Info (clickable) -->
+
     <a href="https://letterboxd.com/${username}/" target="_blank">
-      <text x="100" y="35" font-family="'Segoe UI', Arial, sans-serif" font-size="28" font-weight="600" fill="${usernameGradient ? 'url(#usernameGradient)' : t.text}" style="cursor: pointer;">${escapeXml(displayName)}</text>
+      <text x="100" y="35" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="28" font-weight="600" fill="${usernameGradient ? 'url(#usernameGradient)' : t.text}" style="cursor: pointer;">${escapeXml(displayName)}</text>
     </a>
-    <a href="https://letterboxd.com/${username}/" target="_blank">
-      <text x="100" y="60" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="500" style="cursor: pointer;">
+
+    <text x="100" y="60" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="14" font-weight="500">
+      <a href="https://letterboxd.com/${username}/" target="_blank" style="cursor: pointer;">
         <tspan fill="${t.textMuted}">@${escapeXml(username)}</tspan>
-      </text>
-    </a>
-    <text x="185" y="60" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="500">
-      <tspan fill="${t.textMuted}">•</tspan>
-      <tspan dx="8" fill="${t.text}">${followers}</tspan>
+      </a>
+      <tspan dx="5" fill="${t.textMuted}">•</tspan>
+      <tspan dx="5" fill="${t.text}">${totalEntries}</tspan>
+      <tspan fill="${t.textMuted}"> Films</tspan>
+      <tspan dx="5" fill="${t.textMuted}">•</tspan>
+      <tspan dx="5" fill="${t.text}">${followers}</tspan>
       <tspan fill="${t.textMuted}"> Followers</tspan>
-      <tspan dx="8" fill="${t.textMuted}">•</tspan>
-      <tspan dx="8" fill="${t.text}">${following}</tspan>
-      <tspan fill="${t.textMuted}"> Following</tspan>
     </text>
 
     <!-- Letterboxd Logo (clickable, links to main site) -->
@@ -245,9 +420,26 @@ export function generateSvg(entries, options = {}) {
   </g>
 
   <!-- Stats Row -->
-  <g transform="translate(25, 115)" font-family="'Segoe UI', Arial, sans-serif">
+  <g transform="translate(25, 115)" font-family="'Segoe UI', Inter, Arial, sans-serif">
     <text x="0" y="20" font-size="16" font-weight="600" fill="${t.text}">${displayYear}</text>
-    <text x="60" y="20" font-size="14" font-weight="500" fill="${t.textMuted}">${totalFilms} Movies</text>
+    
+    <!-- Movies with rating distribution tooltip -->
+    <g class="movies-group" transform="translate(60, 5)">
+      <text x="0" y="15" font-size="14" font-weight="500" fill="${t.textMuted}">${totalFilms} Movies</text>
+      <g class="movies-tooltip" transform="translate(-30, -115)">
+        <rect x="0" y="0" width="260" height="105" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>
+        <text x="130" y="18" font-size="11" font-weight="600" fill="${t.tooltipText}" text-anchor="middle">Rating Distribution${ratingDistribution['unrated'] > 0 ? ` (${ratingDistribution['unrated']} unrated)` : ''}</text>
+        ${ratingLabels.map((rating, i) => {
+          const count = ratingDistribution[rating];
+          const barHeight = maxRatingCount > 0 ? Math.round((count / maxRatingCount) * 45) : 0;
+          const x = 15 + i * 24;
+          return `
+        <text x="${x + 7}" y="${80 - barHeight - 3}" font-size="8" fill="${t.tooltipText}" text-anchor="middle">${count > 0 ? count : ''}</text>
+        <rect x="${x}" y="${80 - barHeight}" width="14" height="${Math.max(barHeight, 1)}" rx="2" fill="${t.colors[Math.min(Math.floor(i / 2) + 1, 4)]}"/>
+        <text x="${x + 7}" y="98" font-size="7" fill="${t.text}" text-anchor="middle">${rating}</text>`;
+        }).join('')}
+      </g>
+    </g>
     
     <!-- Days Active with hover tooltip -->
     <g class="days-active-group" transform="translate(170, 5)">
@@ -295,7 +487,7 @@ export function generateSvg(entries, options = {}) {
   </g>
 
   <!-- Month Labels -->
-  <g transform="translate(${GRID_OFFSET_X}, ${GRID_OFFSET_Y - 8})" font-family="'Segoe UI', Arial, sans-serif">`;
+  <g transform="translate(${GRID_OFFSET_X}, ${GRID_OFFSET_Y - 8})" font-family="'Segoe UI', Inter, Arial, sans-serif">`;
 
   for (let i = 0; i < 12; i++) {
     const firstDayOfMonth = new Date(Date.UTC(displayYear, i, 1));
@@ -310,10 +502,13 @@ export function generateSvg(entries, options = {}) {
   </g>
 
   <!-- Day Labels -->
-  <g transform="translate(26, ${GRID_OFFSET_Y})" font-family="'Segoe UI', Arial, sans-serif">
+  <g transform="translate(26, ${GRID_OFFSET_Y})" font-family="'Segoe UI', Inter, Arial, sans-serif">
     <text x="0" y="${0 * (CELL_SIZE + CELL_GAP) + 11}" font-size="10" fill="${t.textMuted}" text-anchor="end">${DAYS[0].charAt(0)}</text>
+    <text x="0" y="${1 * (CELL_SIZE + CELL_GAP) + 11}" font-size="10" fill="${t.textMuted}" text-anchor="end">${DAYS[1].charAt(0)}</text>
     <text x="0" y="${2 * (CELL_SIZE + CELL_GAP) + 11}" font-size="10" fill="${t.textMuted}" text-anchor="end">${DAYS[2].charAt(0)}</text>
+    <text x="0" y="${3 * (CELL_SIZE + CELL_GAP) + 11}" font-size="10" fill="${t.textMuted}" text-anchor="end">${DAYS[3].charAt(0)}</text>
     <text x="0" y="${4 * (CELL_SIZE + CELL_GAP) + 11}" font-size="10" fill="${t.textMuted}" text-anchor="end">${DAYS[4].charAt(0)}</text>
+    <text x="0" y="${5 * (CELL_SIZE + CELL_GAP) + 11}" font-size="10" fill="${t.textMuted}" text-anchor="end">${DAYS[5].charAt(0)}</text>
     <text x="0" y="${6 * (CELL_SIZE + CELL_GAP) + 11}" font-size="10" fill="${t.textMuted}" text-anchor="end">${DAYS[6].charAt(0)}</text>
   </g>
 
@@ -362,10 +557,15 @@ export function generateSvg(entries, options = {}) {
       // Position tooltip to avoid overflow
       const tooltipX = Math.min(x, SVG_WIDTH - GRID_OFFSET_X - tooltipWidth - 10);
       
+      // Check if this cell is part of the streak
+      const isStreakCell = streak.length > 0 && streak.startDate && streak.endDate && 
+        tooltipDate >= streak.startDate && tooltipDate <= streak.endDate;
+      const cellClass = isStreakCell ? 'cell streak-cell' : 'cell';
+
       svg += `
     <g class="cell-group">
       <a href="${diaryUrl}" target="_blank">
-        <rect class="cell"
+        <rect class="${cellClass}"
           x="${x}"
           y="${y}"
           width="${CELL_SIZE}"
@@ -375,7 +575,7 @@ export function generateSvg(entries, options = {}) {
         />
         <g class="tooltip-group" transform="translate(${tooltipX}, ${y - tooltipHeight - 8})">
           <rect x="0" y="0" width="${tooltipWidth}" height="${tooltipHeight}" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>
-          <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="${t.tooltipText}">
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="${t.tooltipText}">
             <tspan x="10" dy="22" font-weight="600">${escapeXml(tooltipTitle)}</tspan>`;
       
       filmsForDay.forEach((film) => {
@@ -415,8 +615,14 @@ export function generateMultiYearSvg(entries, options = {}) {
     logoBase64 = null,
     followers = 0,
     following = 0,
+    totalEntries = 0,
+    memberStatus = null,
     mode = 'count' // 'count' or 'rating'
   } = options;
+
+  // Calculate precise width for badge placement (28px font) + 4px gap
+  const nameWidth = calculateTextWidth(displayName, 28);
+  const badgeX = 100 + nameWidth + 4;
 
   // Sort years descending (newest first)
   const sortedYears = [...years].sort((a, b) => b - a);
@@ -471,14 +677,13 @@ export function generateMultiYearSvg(entries, options = {}) {
       <circle cx="40" cy="40" r="40"/>
     </clipPath>
     <linearGradient id="usernameGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ff8001"/>
-      <stop offset="25%" stop-color="#b3c02e"/>
-      <stop offset="50%" stop-color="#00e054"/>
-      <stop offset="75%" stop-color="#1fc5a4"/>
-      <stop offset="100%" stop-color="#3fbcf4"/>
+      <stop offset="0%" stop-color="#FF8000"/>
+      <stop offset="50%" stop-color="#00E054"/>
+      <stop offset="100%" stop-color="#40BCF4"/>
     </linearGradient>
     <style type="text/css">
       <![CDATA[
+      ${generateFontFaceCSS()}
       .tooltip-group { opacity: 0; transition: opacity 0.2s ease; pointer-events: none; }
       .cell-group:hover .tooltip-group { opacity: 1; }
       .cell-group:hover .cell { filter: brightness(1.3); }
@@ -486,9 +691,18 @@ export function generateMultiYearSvg(entries, options = {}) {
       .streak-tooltip { opacity: 0; transition: opacity 0.2s ease; pointer-events: none; }
       .streak-group:hover .streak-tooltip { opacity: 1; }
       .streak-group:hover { cursor: pointer; }
+      .streak-cell { transition: filter 0.2s ease, stroke 0.2s ease, stroke-width 0.2s ease; }
+      ${sortedYears.map(y => `svg:has(.streak-group-${y}:hover) .streak-cell-${y} { filter: brightness(1.4) saturate(1.2); stroke: #22d3ee; stroke-width: 2; }`).join('\n      ')}
       .days-active-tooltip { opacity: 0; transition: opacity 0.2s ease; pointer-events: none; }
       .days-active-group:hover .days-active-tooltip { opacity: 1; }
       .days-active-group:hover { cursor: pointer; }
+      .movies-tooltip { opacity: 0; transition: opacity 0.2s ease; pointer-events: none; }
+      .movies-group:hover .movies-tooltip { opacity: 1; }
+      .movies-group:hover { cursor: pointer; }
+      .tooltip-group { opacity: 0; transition: opacity 0.2s ease; pointer-events: none; }
+      .cell-group:hover .tooltip-group { opacity: 1; }
+      .cell-group:hover .cell { filter: brightness(1.3); }
+      .cell { transition: filter 0.2s ease; }
       ]]>
     </style>
   </defs>
@@ -503,23 +717,29 @@ export function generateMultiYearSvg(entries, options = {}) {
       <circle cx="40" cy="40" r="42" fill="${t.cardBorder}"/>
       ${profileImage ? `<image href="${profileImage}" x="0" y="0" width="80" height="80" clip-path="url(#profileClip)" style="cursor: pointer;"/>` : `<circle cx="40" cy="40" r="40" fill="${t.colors[2]}"/>`}
     </a>
+    
+    ${memberStatus ? `
+    <!-- Member Badge (bottom-left overlay) -->
+    <g transform="translate(-5, 58)">
+      <rect x="0" y="0" width="${memberStatus === 'patron' ? 48 : 32}" height="18" rx="3" fill="${memberStatus === 'patron' ? '#40bcf4' : '#ff8000'}"/>
+      <text x="${memberStatus === 'patron' ? 24 : 16}" y="13" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">${memberStatus === 'patron' ? 'PATRON' : 'PRO'}</text>
+    </g>` : ''}
 
     <!-- Name and Info (clickable) -->
     <a href="https://letterboxd.com/${username}/" target="_blank">
-      <text x="100" y="35" font-family="'Segoe UI', Arial, sans-serif" font-size="28" font-weight="600" fill="${usernameGradient ? 'url(#usernameGradient)' : t.text}" style="cursor: pointer;">${escapeXml(displayName)}</text>
+      <text x="100" y="35" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="28" font-weight="600" fill="${usernameGradient ? 'url(#usernameGradient)' : t.text}" style="cursor: pointer;">${escapeXml(displayName)}</text>
     </a>
-    <a href="https://letterboxd.com/${username}/" target="_blank">
-      <text x="100" y="60" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="500" style="cursor: pointer;">
+
+    <text x="100" y="60" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="14" font-weight="500">
+      <a href="https://letterboxd.com/${username}/" target="_blank" style="cursor: pointer;">
         <tspan fill="${t.textMuted}">@${escapeXml(username)}</tspan>
-      </text>
-    </a>
-    <text x="185" y="60" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="500">
-      <tspan fill="${t.textMuted}">•</tspan>
-      <tspan dx="8" fill="${t.text}">${followers}</tspan>
+      </a>
+      <tspan dx="5" fill="${t.textMuted}">•</tspan>
+      <tspan dx="5" fill="${t.text}">${totalEntries}</tspan>
+      <tspan fill="${t.textMuted}"> Films</tspan>
+      <tspan dx="5" fill="${t.textMuted}">•</tspan>
+      <tspan dx="5" fill="${t.text}">${followers}</tspan>
       <tspan fill="${t.textMuted}"> Followers</tspan>
-      <tspan dx="8" fill="${t.textMuted}">•</tspan>
-      <tspan dx="8" fill="${t.text}">${following}</tspan>
-      <tspan fill="${t.textMuted}"> Following</tspan>
     </text>
 
     <!-- Letterboxd Logo (clickable, links to main site) -->
@@ -547,6 +767,24 @@ export function generateMultiYearSvg(entries, options = {}) {
       weeklyDistribution[entry.date.getUTCDay()]++;
     });
     const maxWeeklyCount = Math.max(...weeklyDistribution);
+    
+    // Calculate rating distribution for this year
+    const ratingDistribution = {};
+    const ratingLabels = ['0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5'];
+    ratingLabels.forEach(r => ratingDistribution[r] = 0);
+    ratingDistribution['unrated'] = 0;
+    
+    yearEntries.forEach(entry => {
+      if (entry.rating && entry.rating > 0) {
+        const ratingKey = String(entry.rating);
+        if (ratingDistribution.hasOwnProperty(ratingKey)) {
+          ratingDistribution[ratingKey]++;
+        }
+      } else {
+        ratingDistribution['unrated']++;
+      }
+    });
+    const maxRatingCount = Math.max(...ratingLabels.map(r => ratingDistribution[r]));
 
     // Setup date range for this year
     const startDate = new Date(Date.UTC(year, 0, 1));
@@ -597,9 +835,25 @@ export function generateMultiYearSvg(entries, options = {}) {
     // Stats Row for this year
     svg += `
   <!-- Year ${year} -->
-  <g transform="translate(25, ${yearOffset})" font-family="'Segoe UI', Arial, sans-serif">
+  <g transform="translate(25, ${yearOffset})" font-family="'Segoe UI', Inter, Arial, sans-serif">
     <text x="0" y="20" font-size="16" font-weight="600" fill="${t.text}">${year}</text>
-    <text x="60" y="20" font-size="14" font-weight="500" fill="${t.textMuted}">${totalFilms} Movies</text>
+    <!-- Movies with rating distribution tooltip -->
+    <g class="movies-group" transform="translate(60, 5)">
+      <text x="0" y="15" font-size="14" font-weight="500" fill="${t.textMuted}">${totalFilms} Movies</text>
+      <g class="movies-tooltip" transform="translate(-30, -115)">
+        <rect x="0" y="0" width="260" height="105" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>
+        <text x="130" y="18" font-size="11" font-weight="600" fill="${t.tooltipText}" text-anchor="middle">Rating Distribution${ratingDistribution['unrated'] > 0 ? ` (${ratingDistribution['unrated']} unrated)` : ''}</text>
+        ${ratingLabels.map((rating, i) => {
+          const count = ratingDistribution[rating];
+          const barHeight = maxRatingCount > 0 ? Math.round((count / maxRatingCount) * 45) : 0;
+          const x = 15 + i * 24;
+          return `
+        <text x="${x + 7}" y="${80 - barHeight - 3}" font-size="8" fill="${t.tooltipText}" text-anchor="middle">${count > 0 ? count : ''}</text>
+        <rect x="${x}" y="${80 - barHeight}" width="14" height="${Math.max(barHeight, 1)}" rx="2" fill="${t.colors[Math.min(Math.floor(i / 2) + 1, 4)]}"/>
+        <text x="${x + 7}" y="98" font-size="7" fill="${t.text}" text-anchor="middle">${rating}</text>`;
+        }).join('')}
+      </g>
+    </g>
     
     <!-- Days Active with hover tooltip -->
     <g class="days-active-group" transform="translate(170, 5)">
@@ -620,7 +874,7 @@ export function generateMultiYearSvg(entries, options = {}) {
       </g>
     </g>
     <!-- Streak with hover tooltip -->
-    <g class="streak-group" transform="translate(310, 5)">
+    <g class="streak-group streak-group-${year}" transform="translate(310, 5)">
       <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"
             stroke="${streak.length > 0 ? '#f97316' : t.textMuted}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="${streak.length > 0 ? '#f97316' : 'none'}" fill-opacity="0.2" transform="scale(0.75)"/>
       <text x="18" y="13" font-size="14" font-weight="500" fill="${t.textMuted}">${streak.length} Day Streak</text>
@@ -641,7 +895,7 @@ export function generateMultiYearSvg(entries, options = {}) {
   </g>
 
   <!-- Month Labels ${year} -->
-  <g transform="translate(51, ${yearOffset + 42})" font-family="'Segoe UI', Arial, sans-serif">`;
+  <g transform="translate(51, ${yearOffset + 42})" font-family="'Segoe UI', Inter, Arial, sans-serif">`;
 
     // Generate month labels for this year
     for (let i = 0; i < 12; i++) {
@@ -657,10 +911,13 @@ export function generateMultiYearSvg(entries, options = {}) {
   </g>
 
   <!-- Day Labels ${year} -->
-  <g transform="translate(26, ${yearOffset + 50})" font-family="'Segoe UI', Arial, sans-serif">
+  <g transform="translate(26, ${yearOffset + 50})" font-family="'Segoe UI', Inter, Arial, sans-serif">
     <text x="0" y="${0 * (CELL_SIZE + CELL_GAP) + 11}" font-size="10" fill="${t.textMuted}" text-anchor="end">${DAYS[0].charAt(0)}</text>
+    <text x="0" y="${1 * (CELL_SIZE + CELL_GAP) + 11}" font-size="10" fill="${t.textMuted}" text-anchor="end">${DAYS[1].charAt(0)}</text>
     <text x="0" y="${2 * (CELL_SIZE + CELL_GAP) + 11}" font-size="10" fill="${t.textMuted}" text-anchor="end">${DAYS[2].charAt(0)}</text>
+    <text x="0" y="${3 * (CELL_SIZE + CELL_GAP) + 11}" font-size="10" fill="${t.textMuted}" text-anchor="end">${DAYS[3].charAt(0)}</text>
     <text x="0" y="${4 * (CELL_SIZE + CELL_GAP) + 11}" font-size="10" fill="${t.textMuted}" text-anchor="end">${DAYS[4].charAt(0)}</text>
+    <text x="0" y="${5 * (CELL_SIZE + CELL_GAP) + 11}" font-size="10" fill="${t.textMuted}" text-anchor="end">${DAYS[5].charAt(0)}</text>
     <text x="0" y="${6 * (CELL_SIZE + CELL_GAP) + 11}" font-size="10" fill="${t.textMuted}" text-anchor="end">${DAYS[6].charAt(0)}</text>
   </g>
 
@@ -704,10 +961,15 @@ export function generateMultiYearSvg(entries, options = {}) {
         // Position tooltip
         const tooltipX = Math.min(x, SVG_WIDTH - 51 - tooltipWidth - 10);
         
+        // Check if this cell is part of the streak
+        const isStreakCell = streak.length > 0 && streak.startDate && streak.endDate && 
+          tooltipDate >= streak.startDate && tooltipDate <= streak.endDate;
+        const cellClass = isStreakCell ? `cell streak-cell streak-cell-${year}` : 'cell';
+
         svg += `
     <g class="cell-group">
       <a href="${diaryUrl}" target="_blank">
-        <rect class="cell"
+        <rect class="${cellClass}"
           x="${x}"
           y="${y}"
           width="${CELL_SIZE}"
@@ -717,7 +979,7 @@ export function generateMultiYearSvg(entries, options = {}) {
         />
         <g class="tooltip-group" transform="translate(${tooltipX}, ${y - tooltipHeight - 8})">
           <rect x="0" y="0" width="${tooltipWidth}" height="${tooltipHeight}" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>
-          <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="${t.tooltipText}">
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="${t.tooltipText}">
             <tspan x="10" dy="22" font-weight="600">${escapeXml(tooltipTitle)}</tspan>`;
       
       filmsForDay.forEach((film) => {

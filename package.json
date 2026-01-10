@@ -10,6 +10,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
     "node-fetch": "^3.3.2",
+    "opentype.js": "^1.3.4",
     "sharp": "^0.34.5"
   },
   "author": "nichtlegacy",

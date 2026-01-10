@@ -1,0 +1,93 @@
+name: Update Letterboxd Graph
+
+# ╔════════════════════════════════════════════════════════════════╗
+# ║  CONFIGURATION - Edit these values for your Letterboxd profile ║
+# ╚════════════════════════════════════════════════════════════════╝
+env:
+  LETTERBOXD_USERNAME: "nichtlegacy"  # Your Letterboxd username
+  YEARS: "2026,2025"                            # Years to generate (e.g. "2026,2025" or leave empty for current)
+  EXPORT_PNG: "false"                  # Set to "true" to also generate PNG files
+  WEEK_START: "sunday"                 # "sunday" or "monday"
+  GRADIENT: "true"                     # "true" for colored name, "false" for white
+
+on:
+  # Daily at midnight UTC (main only)
+  schedule:
+    - cron: "0 0 * * *"
+  
+  # On push to main or dev
+  push:
+    branches:
+      - main
+      - dev
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - '.gitignore'
+  
+  # Manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-graph:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Generate graph
+        run: |
+          CMD="npm start ${{ env.LETTERBOXD_USERNAME }}"
+          
+          # Years (if specified)
+          if [ -n "${{ env.YEARS }}" ]; then
+            CMD="$CMD -y ${{ env.YEARS }}"
+          fi
+          
+          # Week start
+          CMD="$CMD -w ${{ env.WEEK_START }}"
+          
+          # Gradient
+          CMD="$CMD -g ${{ env.GRADIENT }}"
+          
+          # PNG export
+          if [ "${{ env.EXPORT_PNG }}" = "true" ]; then
+            CMD="$CMD -p"
+          fi
+          
+          # Output path
+          CMD="$CMD -o images/github-letterboxd"
+          
+          echo "Running: $CMD"
+          eval $CMD
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Add all generated files
+          git add images/
+          
+          # Check if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            BRANCH="${{ github.ref_name }}"
+            TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+            git commit -m "Update Letterboxd graph [$BRANCH] - $TIMESTAMP"
+            git push
+          fi

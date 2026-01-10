@@ -92,15 +92,17 @@ async function main() {
     console.log(`Years: ${years.join(', ')}`);
     console.log(`Week starts on: ${weekStart}`);
     console.log(`Mode: ${mode}`);
+    console.log(`Gradient: ${usernameGradient ? '✓' : '✗'}`);
     console.log(`PNG Export: ${exportPng ? '✓' : '✗'}`);
     console.log(`Output: ${outputPathDark}, ${outputPathLight}\n`);
 
     // Fetch profile data
     console.log("📋 Fetching profile data...");
-    const { profileImage, displayName, followers, following } = await fetchProfileData(username);
+    const { profileImage, displayName, followers, following, totalEntries, memberStatus } = await fetchProfileData(username);
     const profileImageBase64 = profileImage ? await imageToBase64(profileImage) : null;
     console.log(`   Display Name: ${displayName}`);
     console.log(`   Followers: ${followers}, Following: ${following}`);
+    console.log(`   Total Films: ${totalEntries}, Member Status: ${memberStatus || 'None'}`);
     console.log(`   Profile Image: ${profileImageBase64 ? '✓' : '✗'}\n`);
 
     // Fetch Letterboxd logo
@@ -135,6 +137,8 @@ async function main() {
       usernameGradient,
       followers,
       following,
+      totalEntries,
+      memberStatus,
       mode
     };
     

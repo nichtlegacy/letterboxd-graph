@@ -198,27 +198,45 @@ export async function fetchProfileData(username) {
     // Try to get followers/following counts
     let followers = 0;
     let following = 0;
+    let totalEntries = 0;
     
+    // Followers/Following
     const followersLink = $('a[href*="/followers/"]');
     const followingLink = $('a[href*="/following/"]');
     
     if (followersLink.length > 0) {
-      const followersText = followersLink.text().trim();
-      const match = followersText.match(/(\d+)/);
-      if (match) followers = parseInt(match[1]);
+      const title = followersLink.attr('title') || followersLink.text();
+      const match = title.match(/(\d+(,\d+)*)/);
+      if (match) followers = parseInt(match[1].replace(/,/g, ''));
     }
     
     if (followingLink.length > 0) {
-      const followingText = followingLink.text().trim();
-      const match = followingText.match(/(\d+)/);
-      if (match) following = parseInt(match[1]);
+      const title = followingLink.attr('title') || followingLink.text();
+      const match = title.match(/(\d+(,\d+)*)/);
+      if (match) following = parseInt(match[1].replace(/,/g, ''));
     }
+
+    // Total Films
+    const filmsLink = $('a[href*="/films/"]');
+    if (filmsLink.length > 0) {
+      const valueSpan = filmsLink.find('.value');
+      const text = valueSpan.length > 0 ? valueSpan.text() : filmsLink.text();
+      const match = text.match(/(\d+(,\d+)*)/);
+      if (match) totalEntries = parseInt(match[1].replace(/,/g, ''));
+    }
+
+    // Check for Member status
+    let memberStatus = null;
+    if ($('.badge.-patron').length > 0) memberStatus = 'patron';
+    else if ($('.badge.-pro').length > 0) memberStatus = 'pro';
 
     return {
       profileImage: profileImage || null,
       displayName: displayName || username,
       followers,
-      following
+      following,
+      totalEntries,
+      memberStatus
     };
   } catch (error) {
     console.warn(`Error fetching profile data for ${username}: ${error}. Using fallback values.`);
