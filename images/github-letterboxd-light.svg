@@ -86,7 +86,7 @@
         <tspan fill="#656d76">@nichtlegacy</tspan>
       </a>
       <tspan dx="5" fill="#656d76">•</tspan>
-      <tspan dx="5" fill="#1f2328">575</tspan>
+      <tspan dx="5" fill="#1f2328">577</tspan>
       <tspan fill="#656d76"> Films</tspan>
       <tspan dx="5" fill="#656d76">•</tspan>
       <tspan dx="5" fill="#1f2328">14</tspan>
@@ -105,7 +105,7 @@
     <text x="0" y="20" font-size="16" font-weight="600" fill="#1f2328">2026</text>
     <!-- Movies with rating distribution tooltip -->
     <g class="movies-group" transform="translate(60, 5)">
-      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">10 Movies</text>
+      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">12 Movies</text>
       <g class="movies-tooltip" transform="translate(-30, -115)">
         <rect x="0" y="0" width="260" height="105" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
         <text x="130" y="18" font-size="11" font-weight="600" fill="#1f2328" text-anchor="middle">Rating Distribution</text>
@@ -122,17 +122,17 @@
         <text x="94" y="77" font-size="8" fill="#1f2328" text-anchor="middle"></text>
         <rect x="87" y="80" width="14" height="1" rx="2" fill="#40c463"/>
         <text x="94" y="98" font-size="7" fill="#1f2328" text-anchor="middle">2</text>
-        <text x="118" y="43" font-size="8" fill="#1f2328" text-anchor="middle">3</text>
-        <rect x="111" y="46" width="14" height="34" rx="2" fill="#30a14e"/>
+        <text x="118" y="41" font-size="8" fill="#1f2328" text-anchor="middle">4</text>
+        <rect x="111" y="44" width="14" height="36" rx="2" fill="#30a14e"/>
         <text x="118" y="98" font-size="7" fill="#1f2328" text-anchor="middle">2.5</text>
-        <text x="142" y="54" font-size="8" fill="#1f2328" text-anchor="middle">2</text>
-        <rect x="135" y="57" width="14" height="23" rx="2" fill="#30a14e"/>
+        <text x="142" y="59" font-size="8" fill="#1f2328" text-anchor="middle">2</text>
+        <rect x="135" y="62" width="14" height="18" rx="2" fill="#30a14e"/>
         <text x="142" y="98" font-size="7" fill="#1f2328" text-anchor="middle">3</text>
-        <text x="166" y="32" font-size="8" fill="#1f2328" text-anchor="middle">4</text>
+        <text x="166" y="32" font-size="8" fill="#1f2328" text-anchor="middle">5</text>
         <rect x="159" y="35" width="14" height="45" rx="2" fill="#216e39"/>
         <text x="166" y="98" font-size="7" fill="#1f2328" text-anchor="middle">3.5</text>
-        <text x="190" y="66" font-size="8" fill="#1f2328" text-anchor="middle">1</text>
-        <rect x="183" y="69" width="14" height="11" rx="2" fill="#216e39"/>
+        <text x="190" y="68" font-size="8" fill="#1f2328" text-anchor="middle">1</text>
+        <rect x="183" y="71" width="14" height="9" rx="2" fill="#216e39"/>
         <text x="190" y="98" font-size="7" fill="#1f2328" text-anchor="middle">4</text>
         <text x="214" y="77" font-size="8" fill="#1f2328" text-anchor="middle"></text>
         <rect x="207" y="80" width="14" height="1" rx="2" fill="#216e39"/>
@@ -145,7 +145,7 @@
     
     <!-- Days Active with hover tooltip -->
     <g class="days-active-group" transform="translate(170, 5)">
-      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">7 Days Active</text>
+      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">8 Days Active</text>
       <g class="days-active-tooltip" transform="translate(-20, -115)">
         <rect x="0" y="0" width="200" height="105" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
         <text x="100" y="18" font-size="11" font-weight="600" fill="#1f2328" text-anchor="middle">Weekly Distribution</text>
@@ -153,8 +153,8 @@
         <text x="27" y="66" font-size="9" fill="#1f2328" text-anchor="middle">1</text>
         <rect x="20" y="69" width="14" height="11" rx="2" fill="#30a14e"/>
         <text x="27" y="100" font-size="9" fill="#1f2328" text-anchor="middle">S</text>
-        <text x="51" y="77" font-size="9" fill="#1f2328" text-anchor="middle">0</text>
-        <rect x="44" y="80" width="14" height="0" rx="2" fill="#30a14e"/>
+        <text x="51" y="54" font-size="9" fill="#1f2328" text-anchor="middle">2</text>
+        <rect x="44" y="57" width="14" height="23" rx="2" fill="#30a14e"/>
         <text x="51" y="100" font-size="9" fill="#1f2328" text-anchor="middle">M</text>
         <text x="75" y="77" font-size="9" fill="#1f2328" text-anchor="middle">0</text>
         <rect x="68" y="80" width="14" height="0" rx="2" fill="#30a14e"/>
@@ -1174,12 +1174,14 @@
           width="14"
           height="14"
           rx="2"
-          fill="#ebedf0"
+          fill="#30a14e"
         />
-        <g class="tooltip-group" transform="translate(34, -29)">
-          <rect x="0" y="0" width="245" height="38" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(34, -65)">
+          <rect x="0" y="0" width="287" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Mon, 12. Jan 2026: 0 movies watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Mon, 12. Jan 2026: 2 movies watched</tspan>
+            <tspan x="10" dy="18">• Five Nights at Freddy&apos;s 2 (2025) - 2.5★</tspan>
+            <tspan x="10" dy="18">• KPop Demon Hunters (2025) - 3.5★</tspan>
           </text>
         </g>
       </a>
