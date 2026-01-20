@@ -8,7 +8,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { fetchProfileData, tryFetchMultipleYears, fetchSpecificYears, imageToBase64 } from './fetcher.js';
+import { fetchProfileData, tryFetchMultipleYears, fetchSpecificYears, imageToBase64, closeBrowser } from './fetcher.js';
 import { generateSvg, generateMultiYearSvg } from './generator.js';
 import { svgToPng } from './exporter.js';
 
@@ -179,6 +179,9 @@ async function main() {
       await svgToPng(svgDark, pngPathDark);
       await svgToPng(svgLight, pngPathLight);
     }
+    
+    // Close the browser instance
+    await closeBrowser();
     
     console.log(`\n✅ Done!\n`);
 
