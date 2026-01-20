@@ -53,7 +53,7 @@ jobs:
             libnspr4 \
             libatk1.0-0 \
             libatk-bridge2.0-0 \
-            libcups2 \
+            libcups2t64 \
             libdrm2 \
             libxkbcommon0 \
             libxcomposite1 \
@@ -61,7 +61,7 @@ jobs:
             libxfixes3 \
             libxrandr2 \
             libgbm1 \
-            libasound2 \
+            libasound2t64 \
             libpango-1.0-0 \
             libcairo2
       
