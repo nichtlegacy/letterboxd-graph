@@ -1,5 +1,5 @@
-import { fetchLetterboxdData, fetchProfileData, imageToBase64 } from "@/lib/web-fetcher"
 import { generateGraphs } from "@/lib/web-generator"
+import { fetchLetterboxdData, fetchProfileData, imageToBase64 } from "@/lib/web-fetcher"
 
 export const dynamic = "force-dynamic"
 export const maxDuration = 60
@@ -38,12 +38,9 @@ export async function GET(request: Request) {
         // Step 0: Fetching profile data
         sendEvent({ type: "progress", step: 0, message: "Fetching profile data..." })
         
-        const profileData = await fetchProfileData(username)
-        
-        // Check if profile was found
-        if (!profileData.displayName || profileData.displayName === username) {
-          // Could be a valid profile with no display name, or invalid - continue anyway
-        }
+        const profileData = await fetchProfileData(username, (msg) => {
+          sendEvent({ type: "progress", step: 0, message: msg })
+        })
 
         // Step 1: Loading diary entries
         sendEvent({ type: "progress", step: 1, message: "Loading diary entries..." })

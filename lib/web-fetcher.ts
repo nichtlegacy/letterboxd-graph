@@ -16,13 +16,15 @@ const BROWSER_HEADERS = {
 
 export interface DiaryEntry {
   date: Date
-  title: string
+  film: string
   year: string
   rating: number | null
+  rewatch?: boolean
   url?: string
 }
 
 export interface ProfileData {
+  username?: string
   profileImage: string | null
   displayName: string
   followers: number
@@ -90,12 +92,12 @@ function parseDiaryEntries(html: string, year: number): { entries: DiaryEntry[];
       const month = urlParts[monthIndex]
       const day = urlParts[dayIndex]
 
-      const titleElement = $row.find("h2.name a")
-      const title = titleElement.text().trim()
+      const filmElement = $row.find("h2.name a")
+      const film = filmElement.text().trim()
       const filmYearElement = $row.find("td.col-releaseyear span")
       const filmYear = filmYearElement.text().trim()
 
-      if (!title) return
+      if (!film) return
 
       let rating: number | null = null
       const ratingSpan = $row.find("td.col-rating .rating")
@@ -113,17 +115,18 @@ function parseDiaryEntries(html: string, year: number): { entries: DiaryEntry[];
       }
 
       const monthNum = monthNames[month]
-      const titleLink = titleElement.attr("href")
+      const filmLink = filmElement.attr("href")
 
       if (monthNum !== undefined && day && entryYear === year) {
         const date = new Date(Date.UTC(year, monthNum, parseInt(day)))
-        const filmUrl = titleLink ? `https://letterboxd.com${titleLink}` : undefined
+        const filmUrl = filmLink ? `https://letterboxd.com${filmLink}` : undefined
 
         entries.push({
           date,
-          title,
+          film,
           year: filmYear,
           rating,
+          rewatch: false,
           url: filmUrl
         })
       }

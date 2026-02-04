@@ -24,20 +24,17 @@ export default function Home() {
   const [lastOptions, setLastOptions] = useState<GeneratorOptions | null>(null)
 
   const generateGraph = useCallback(async (options: GeneratorOptions) => {
-    console.log("[v0] Starting graph generation for:", options.username, options.year)
     setState({ status: "loading", step: 0, message: "Starting..." })
     setLastOptions(options)
 
     try {
       const url = `/api/generate?username=${encodeURIComponent(options.username)}&year=${options.year}&weekStart=${options.weekStart}&mode=${options.mode}&gradient=${options.usernameGradient}`
-      console.log("[v0] Connecting to EventSource:", url)
       
       const eventSource = new EventSource(url)
 
       eventSource.onmessage = (event) => {
         try {
           const data = JSON.parse(event.data)
-          console.log("[v0] Received event:", data.type, data.message || "")
           
           if (data.type === "progress") {
             setState({ 
@@ -46,7 +43,6 @@ export default function Home() {
               message: data.message 
             })
           } else if (data.type === "complete") {
-            console.log("[v0] Graph generation complete")
             setState({
               status: "success",
               darkSvg: data.darkSvg,
@@ -56,20 +52,18 @@ export default function Home() {
             })
             eventSource.close()
           } else if (data.type === "error") {
-            console.log("[v0] Error from server:", data.message)
             setState({
               status: "error",
               message: data.message
             })
             eventSource.close()
           }
-        } catch (parseError) {
-          console.error("[v0] Failed to parse event data:", parseError)
+        } catch {
+          // Parse error - ignore
         }
       }
 
-      eventSource.onerror = (err) => {
-        console.error("[v0] EventSource error:", err)
+      eventSource.onerror = () => {
         eventSource.close()
         setState({
           status: "error",
@@ -77,7 +71,6 @@ export default function Home() {
         })
       }
     } catch (error) {
-      console.error("[v0] Failed to start generation:", error)
       setState({
         status: "error",
         message: error instanceof Error ? error.message : "An unexpected error occurred"
