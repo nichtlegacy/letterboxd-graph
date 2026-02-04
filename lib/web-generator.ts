@@ -185,8 +185,9 @@ export function generateSvg(entries: DiaryEntry[], options: GeneratorOptions): s
   const totalDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)) + 1
   const totalWeeks = Math.ceil(totalDays / 7)
 
-  // Build activity grid
+  // Build activity grid - stores count or sum of ratings depending on mode
   const grid: number[][] = Array(7).fill(0).map(() => Array(totalWeeks).fill(0))
+  const countGrid: number[][] = Array(7).fill(0).map(() => Array(totalWeeks).fill(0))
   let maxCount = 0
 
   sortedEntries.forEach((entry) => {
@@ -195,8 +196,22 @@ export function generateSvg(entries: DiaryEntry[], options: GeneratorOptions): s
     const dayIndex = weekStart === "monday" ? (entry.date.getUTCDay() + 6) % 7 : entry.date.getUTCDay()
 
     if (weekIndex >= 0 && weekIndex < totalWeeks) {
-      grid[dayIndex][weekIndex]++
-      maxCount = Math.max(maxCount, grid[dayIndex][weekIndex])
+      countGrid[dayIndex][weekIndex]++
+      if (mode === "rating" && entry.rating) {
+        grid[dayIndex][weekIndex] += entry.rating
+      } else {
+        grid[dayIndex][weekIndex]++
+      }
+      
+      // For rating mode, calculate average
+      if (mode === "rating") {
+        const avg = countGrid[dayIndex][weekIndex] > 0 
+          ? grid[dayIndex][weekIndex] / countGrid[dayIndex][weekIndex] 
+          : 0
+        maxCount = Math.max(maxCount, avg)
+      } else {
+        maxCount = Math.max(maxCount, grid[dayIndex][weekIndex])
+      }
     }
   })
 
@@ -239,11 +254,22 @@ export function generateSvg(entries: DiaryEntry[], options: GeneratorOptions): s
 
   const t = themes[theme]
 
-  function getColor(count: number): string {
+  function getColor(dayIndex: number, weekIndex: number): string {
+    const count = countGrid[dayIndex][weekIndex]
     if (count === 0) return t.colors[0]
-    if (maxCount === 0) return t.colors[0]
-    const level = Math.ceil((count / maxCount) * 4)
-    return t.colors[Math.min(level, 4)]
+    
+    if (mode === "rating") {
+      // For rating mode, use average rating (0-5 scale)
+      const avgRating = grid[dayIndex][weekIndex] / count
+      if (avgRating === 0) return t.colors[0]
+      const level = Math.ceil((avgRating / 5) * 4)
+      return t.colors[Math.min(level, 4)]
+    } else {
+      // For count mode, use film count
+      if (maxCount === 0) return t.colors[0]
+      const level = Math.ceil((grid[dayIndex][weekIndex] / maxCount) * 4)
+      return t.colors[Math.min(level, 4)]
+    }
   }
 
   // Start building SVG
@@ -363,8 +389,7 @@ export function generateSvg(entries: DiaryEntry[], options: GeneratorOptions): s
   // Generate cells
   for (let week = 0; week < totalWeeks; week++) {
     for (let day = 0; day < 7; day++) {
-      const count = grid[day][week]
-      const color = getColor(count)
+      const color = getColor(day, week)
       const x = week * (CELL_SIZE + CELL_GAP)
       const y = day * (CELL_SIZE + CELL_GAP)
       
