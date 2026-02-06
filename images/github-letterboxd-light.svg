@@ -86,7 +86,7 @@
         <tspan fill="#656d76">@nichtlegacy</tspan>
       </a>
       <tspan dx="5" fill="#656d76">•</tspan>
-      <tspan dx="5" fill="#1f2328">582</tspan>
+      <tspan dx="5" fill="#1f2328">583</tspan>
       <tspan fill="#656d76"> Films</tspan>
       <tspan dx="5" fill="#656d76">•</tspan>
       <tspan dx="5" fill="#1f2328">14</tspan>
@@ -105,7 +105,7 @@
     <text x="0" y="20" font-size="16" font-weight="600" fill="#1f2328">2026</text>
     <!-- Movies with rating distribution tooltip -->
     <g class="movies-group" transform="translate(60, 5)">
-      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">18 Movies</text>
+      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">19 Movies</text>
       <g class="movies-tooltip" transform="translate(-30, -115)">
         <rect x="0" y="0" width="260" height="105" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
         <text x="130" y="18" font-size="11" font-weight="600" fill="#1f2328" text-anchor="middle">Rating Distribution</text>
@@ -122,8 +122,8 @@
         <text x="94" y="77" font-size="8" fill="#1f2328" text-anchor="middle"></text>
         <rect x="87" y="80" width="14" height="1" rx="2" fill="#40c463"/>
         <text x="94" y="98" font-size="7" fill="#1f2328" text-anchor="middle">2</text>
-        <text x="118" y="51" font-size="8" fill="#1f2328" text-anchor="middle">4</text>
-        <rect x="111" y="54" width="14" height="26" rx="2" fill="#30a14e"/>
+        <text x="118" y="45" font-size="8" fill="#1f2328" text-anchor="middle">5</text>
+        <rect x="111" y="48" width="14" height="32" rx="2" fill="#30a14e"/>
         <text x="118" y="98" font-size="7" fill="#1f2328" text-anchor="middle">2.5</text>
         <text x="142" y="58" font-size="8" fill="#1f2328" text-anchor="middle">3</text>
         <rect x="135" y="61" width="14" height="19" rx="2" fill="#30a14e"/>
@@ -145,7 +145,7 @@
     
     <!-- Days Active with hover tooltip -->
     <g class="days-active-group" transform="translate(170, 5)">
-      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">13 Days Active</text>
+      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">14 Days Active</text>
       <g class="days-active-tooltip" transform="translate(-20, -115)">
         <rect x="0" y="0" width="200" height="105" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
         <text x="100" y="18" font-size="11" font-weight="600" fill="#1f2328" text-anchor="middle">Weekly Distribution</text>
@@ -162,8 +162,8 @@
         <text x="99" y="71" font-size="9" fill="#1f2328" text-anchor="middle">1</text>
         <rect x="92" y="74" width="14" height="6" rx="2" fill="#30a14e"/>
         <text x="99" y="100" font-size="9" fill="#1f2328" text-anchor="middle">W</text>
-        <text x="123" y="51" font-size="9" fill="#1f2328" text-anchor="middle">4</text>
-        <rect x="116" y="54" width="14" height="26" rx="2" fill="#30a14e"/>
+        <text x="123" y="45" font-size="9" fill="#1f2328" text-anchor="middle">5</text>
+        <rect x="116" y="48" width="14" height="32" rx="2" fill="#30a14e"/>
         <text x="123" y="100" font-size="9" fill="#1f2328" text-anchor="middle">T</text>
         <text x="147" y="64" font-size="9" fill="#1f2328" text-anchor="middle">2</text>
         <rect x="140" y="67" width="14" height="13" rx="2" fill="#30a14e"/>
@@ -4062,12 +4062,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#ebedf0"
+          fill="#40c463"
         />
-        <g class="tooltip-group" transform="translate(85, 22)">
-          <rect x="0" y="0" width="240" height="38" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(85, 4)">
+          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Thu, 5. Feb 2026: 0 movies watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Thu, 5. Feb 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• The Shadow’s Edge (2025) - 2.5★</tspan>
           </text>
         </g>
       </a>
