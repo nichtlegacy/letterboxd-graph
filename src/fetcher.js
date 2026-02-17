@@ -34,6 +34,62 @@ const BROWSER_HEADERS = {
 
 // Shared browser instance
 let browserInstance = null;
+const RETRYABLE_STATUS_CODES = new Set([403, 429, 503]);
+
+const CLOUDFLARE_STRONG_MARKERS = [
+  /cloudflare ray id/i,
+  /cf_chl/i,
+  /challenge-platform/i,
+  /cdn-cgi\/challenge-platform/i
+];
+
+const CLOUDFLARE_WEAK_MARKERS = [
+  /just a moment/i,
+  /checking your browser/i,
+  /attention required/i
+];
+
+function isCloudflareChallengePage(html) {
+  if (!html) return false;
+  if (CLOUDFLARE_STRONG_MARKERS.some((pattern) => pattern.test(html))) {
+    return true;
+  }
+
+  const hasWeakMarker = CLOUDFLARE_WEAK_MARKERS.some((pattern) => pattern.test(html));
+  const hasCloudflareText = /cloudflare/i.test(html);
+  const hasVerificationHint = /(verify|security check|browser check|challenge)/i.test(html);
+
+  return hasWeakMarker && hasCloudflareText && hasVerificationHint;
+}
+
+class CloudflareChallengeError extends Error {
+  constructor(url, status = null) {
+    const statusSuffix = status ? ` (HTTP ${status})` : '';
+    super(`Cloudflare challenge blocked request: ${url}${statusSuffix}`);
+    this.name = 'CloudflareChallengeError';
+  }
+}
+
+function isCloudflareResponse(response) {
+  if (!response) return false;
+
+  const status = response.status();
+  const headers = response.headers?.() || {};
+  const server = (headers.server || '').toLowerCase();
+  const hasCloudflareHeader = ['cf-ray', 'cf-cache-status', 'cf-mitigated'].some((key) => key in headers);
+
+  return RETRYABLE_STATUS_CODES.has(status) && (hasCloudflareHeader || server.includes('cloudflare') || status === 403);
+}
+
+function retryDelayMs(attempt, isCloudflareRetry = false) {
+  const baseSeconds = isCloudflareRetry ? 3 : 2;
+  const jitterSeconds = Math.random();
+  return Math.round((baseSeconds * attempt + jitterSeconds) * 1000);
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 /**
  * Get or create a shared browser instance
@@ -68,7 +124,7 @@ export async function closeBrowser() {
  * Fetch page content using Puppeteer (bypasses Cloudflare)
  * Includes retry logic for unreliable connections
  */
-async function fetchPageWithPuppeteer(url, retries = 3) {
+async function fetchPageWithPuppeteer(url, retries = 5) {
   const browser = await getBrowser();
   
   for (let attempt = 1; attempt <= retries; attempt++) {
@@ -79,11 +135,20 @@ async function fetchPageWithPuppeteer(url, retries = 3) {
       await page.setViewport({ width: 1920, height: 1080 });
       await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36');
       
-      // Navigate to the page with longer timeout
-      await page.goto(url, { 
+      // Increase timeout progressively across retries.
+      const navTimeout = 45000 + (attempt * 15000);
+
+      const response = await page.goto(url, { 
         waitUntil: 'domcontentloaded',
-        timeout: 60000 
+        timeout: navTimeout 
       });
+
+      if (response && response.status() >= 400) {
+        if (isCloudflareResponse(response)) {
+          throw new CloudflareChallengeError(url, response.status());
+        }
+        throw new Error(`HTTP ${response.status()} while fetching ${url}`);
+      }
       
       // Wait for the diary table to load (or timeout after 15 seconds)
       try {
@@ -93,19 +158,36 @@ async function fetchPageWithPuppeteer(url, retries = 3) {
       }
       
       // Wait a bit more for any dynamic content
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      await sleep(1500);
       
-      // Get the page content
-      const content = await page.content();
-      await page.close();
+      // Get the page content and explicitly detect Cloudflare challenge pages
+      let content = await page.content();
+      if (isCloudflareChallengePage(content)) {
+        // Give Cloudflare JS challenge a chance to resolve automatically
+        await sleep(8000);
+        content = await page.content();
+      }
+
+      if (isCloudflareChallengePage(content)) {
+        throw new CloudflareChallengeError(url);
+      }
+
       return content;
     } catch (error) {
-      await page.close();
       if (attempt === retries) {
         throw error;
       }
-      console.log(`  Attempt ${attempt} failed, retrying...`);
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const isCloudflareRetry = error instanceof CloudflareChallengeError;
+      const waitMs = retryDelayMs(attempt, isCloudflareRetry);
+      const retryLabel = isCloudflareRetry ? ' (Cloudflare challenge)' : '';
+      console.log(`  Attempt ${attempt} failed${retryLabel}, retrying in ${Math.ceil(waitMs / 1000)}s...`);
+      await sleep(waitMs);
+    } finally {
+      try {
+        await page.close();
+      } catch {
+        // no-op; page may already be closed
+      }
     }
   }
 }
@@ -235,6 +317,13 @@ export async function fetchLetterboxdData(username, year) {
       }
     } catch (error) {
       console.warn(`Error fetching page ${page}: ${error}`);
+      const isCloudflareError = error instanceof CloudflareChallengeError;
+
+      // Do not silently return empty data when page 1 is blocked/unavailable.
+      if (isCloudflareError || page === 1) {
+        throw error;
+      }
+
       hasMorePages = false;
     }
   }

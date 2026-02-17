@@ -99,5 +99,12 @@ jobs:
             BRANCH="${{ github.ref_name }}"
             TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
             git commit -m "Update Letterboxd graph [$BRANCH] - $TIMESTAMP"
-            git push
+            
+            # Push with one retry in case the branch moved meanwhile
+            if ! git push origin "HEAD:$BRANCH"; then
+              echo "Initial push failed, retrying after rebase..."
+              git fetch origin "$BRANCH"
+              git rebase "origin/$BRANCH"
+              git push origin "HEAD:$BRANCH"
+            fi
           fi
