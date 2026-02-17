@@ -11,6 +11,7 @@ import { fileURLToPath } from 'url';
 import { fetchProfileData, tryFetchMultipleYears, fetchSpecificYears, imageToBase64, closeBrowser } from './fetcher.js';
 import { generateSvg, generateMultiYearSvg } from './generator.js';
 import { svgToPng } from './exporter.js';
+import { buildJsonExport } from './stats.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -86,6 +87,7 @@ async function main() {
 
     const outputPathDark = `${outputBasePath}-dark.svg`;
     const outputPathLight = `${outputBasePath}-light.svg`;
+    const outputJsonPath = path.join(path.dirname(outputBasePath), 'letterboxd-data.json');
 
     console.log(`\n🎬 Letterboxd Contribution Graph Generator\n`);
     console.log(`Username: ${username}`);
@@ -94,7 +96,7 @@ async function main() {
     console.log(`Mode: ${mode}`);
     console.log(`Gradient: ${usernameGradient ? '✓' : '✗'}`);
     console.log(`PNG Export: ${exportPng ? '✓' : '✗'}`);
-    console.log(`Output: ${outputPathDark}, ${outputPathLight}\n`);
+    console.log(`Output: ${outputPathDark}, ${outputPathLight}, ${outputJsonPath}\n`);
 
     // Fetch profile data
     console.log("📋 Fetching profile data...");
@@ -165,8 +167,19 @@ async function main() {
     // Write SVG files
     fs.writeFileSync(outputPathDark, svgDark);
     fs.writeFileSync(outputPathLight, svgLight);
+
+    // Write JSON export for Glance custom-api and other consumers
+    const jsonExport = buildJsonExport(filmEntries, {
+      username,
+      year: years.length === 1 ? years[0] : null,
+      years,
+      recentLimit: 10
+    });
+    fs.writeFileSync(outputJsonPath, JSON.stringify(jsonExport, null, 2));
+
     console.log(`   ✓ ${outputPathDark}`);
     console.log(`   ✓ ${outputPathLight}`);
+    console.log(`   ✓ ${outputJsonPath}`);
 
     // Export PNGs if requested
     if (exportPng) {

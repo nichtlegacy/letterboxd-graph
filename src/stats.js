@@ -107,3 +107,81 @@ export function calculateAverageRating(entries) {
   const sum = rated.reduce((acc, e) => acc + e.rating, 0);
   return Math.round((sum / rated.length) * 10) / 10;
 }
+
+/**
+ * Build a compact JSON payload for external consumers (e.g. Glance widgets)
+ * @param {Array} entries - Array of diary entries
+ * @param {Object} options - Export options
+ * @param {string} options.username - Letterboxd username
+ * @param {number|null} options.year - Primary export year (single-year mode)
+ * @param {Array<number>} options.years - Export years
+ * @param {number} options.recentLimit - Number of recent entries to include
+ * @returns {Object} JSON-serializable export object
+ */
+export function buildJsonExport(entries, options = {}) {
+  const {
+    username = '',
+    year = null,
+    years = [],
+    recentLimit = 10
+  } = options;
+
+  const sortedEntries = [...entries].sort((a, b) => a.date.getTime() - b.date.getTime());
+  const groupedByDate = new Map();
+
+  for (const entry of sortedEntries) {
+    const dateKey = entry.date.toISOString().split('T')[0];
+    if (!groupedByDate.has(dateKey)) {
+      groupedByDate.set(dateKey, []);
+    }
+    groupedByDate.get(dateKey).push(entry);
+  }
+
+  const cells = Array.from(groupedByDate.entries()).map(([date, dayEntries]) => {
+    const rated = dayEntries.filter((item) => item.rating !== null);
+    const ratingAvg = rated.length > 0
+      ? Math.round((rated.reduce((sum, item) => sum + item.rating, 0) / rated.length) * 10) / 10
+      : null;
+
+    const [cellYear, cellMonth, cellDay] = date.split('-');
+    const url = `https://letterboxd.com/${username}/films/diary/for/${cellYear}/${cellMonth}/${cellDay}/`;
+
+    return {
+      date,
+      count: dayEntries.length,
+      ratingAvg,
+      films: dayEntries.map((item) => ({
+        title: item.title,
+        year: item.year,
+        rating: item.rating,
+        url: item.url || null
+      })),
+      url
+    };
+  });
+
+  const recent = [...sortedEntries]
+    .sort((a, b) => b.date.getTime() - a.date.getTime())
+    .slice(0, recentLimit)
+    .map((entry) => ({
+      date: entry.date.toISOString().split('T')[0],
+      title: entry.title,
+      year: entry.year,
+      rating: entry.rating,
+      url: entry.url || null
+    }));
+
+  return {
+    user: username,
+    year,
+    years,
+    generatedAt: new Date().toISOString(),
+    stats: {
+      films: sortedEntries.length,
+      daysActive: calculateDaysActive(sortedEntries),
+      streak: calculateStreak(sortedEntries).length
+    },
+    cells,
+    recent
+  };
+}
