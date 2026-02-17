@@ -138,7 +138,10 @@ export function buildJsonExport(entries, options = {}) {
   }
 
   const cells = Array.from(groupedByDate.entries()).map(([date, dayEntries]) => {
-    const ratingAvg = calculateAverageRating(dayEntries);
+    const rated = dayEntries.filter((item) => item.rating !== null);
+    const ratingAvg = rated.length > 0
+      ? Math.round((rated.reduce((sum, item) => sum + item.rating, 0) / rated.length) * 10) / 10
+      : null;
 
     const [cellYear, cellMonth, cellDay] = date.split('-');
     const url = `https://letterboxd.com/${username}/films/diary/for/${cellYear}/${cellMonth}/${cellDay}/`;
