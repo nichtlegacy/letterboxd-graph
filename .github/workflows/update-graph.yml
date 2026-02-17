@@ -1,4 +1,4 @@
-name: Update Letterboxd Graph
+name: Update Letterboxd Graph + JSON Export
 
 # ╔════════════════════════════════════════════════════════════════╗
 # ║  CONFIGURATION - Edit these values for your Letterboxd profile ║
@@ -89,7 +89,7 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          # Add all generated files
+          # Add all generated files (dark/light SVG + letterboxd-data.json)
           git add images/
           
           # Check if there are changes
