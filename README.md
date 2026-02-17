@@ -36,6 +36,7 @@
 | 🎯 **Streak Highlighting** | Hover over "Day Streak" to highlight your longest streak |
 | 💬 **Interactive Tooltips** | Hover over cells to see film details (in browser) |
 | ⭐ **Rating Mode** | Color cells by average rating instead of watch count |
+| 📦 **JSON Export** | Writes `images/letterboxd-data.json` for external widgets (e.g. Glance `custom-api`) |
 | 🔄 **Daily Updates** | Automated updates via GitHub Actions |
 
 ---
@@ -221,6 +222,47 @@ You can customize the graph directly in the workflow file by editing the `env` s
 
 ---
 
+
+### Glance Widgets (custom-api)
+
+The generator also writes `images/letterboxd-data.json`, so you can build Glance widgets without running an extra backend container.
+
+Raw URL format:
+
+```
+https://raw.githubusercontent.com/<github-user>/letterboxd-graph/main/images/letterboxd-data.json
+```
+
+Example payload shape:
+
+```json
+{
+  "user": "nichtlegacy",
+  "year": 2026,
+  "stats": { "films": 123, "daysActive": 80, "streak": 7 },
+  "cells": [
+    {
+      "date": "2026-02-16",
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        { "title": "Film A", "year": "2024", "rating": 3.5, "url": "https://letterboxd.com/..." }
+      ],
+      "url": "https://letterboxd.com/<user>/films/diary/for/2026/02/16/"
+    }
+  ],
+  "recent": [
+    { "date": "2026-02-16", "title": "Film A", "year": "2024", "rating": 3.5, "url": "https://letterboxd.com/..." }
+  ]
+}
+```
+
+You can use this to build:
+
+- a compact heatmap widget (GitHub-like)
+- a separate stats widget (`films`, `daysActive`, `streak`)
+- an optional recent-watches list
+
 ## 📂 Project Structure
 
 ```
@@ -236,7 +278,8 @@ letterboxd-graph/
 │   └── Inter-SemiBold.ttf    # Primary font for text measurement
 ├── images/
 │   ├── github-letterboxd-dark.svg    # Generated dark theme
-│   └── github-letterboxd-light.svg   # Generated light theme
+│   ├── github-letterboxd-light.svg   # Generated light theme
+│   └── letterboxd-data.json          # Generated JSON data for widgets
 ├── src/
 │   ├── cli.js                # CLI entry point
 │   ├── fetcher.js            # Letterboxd data fetching

@@ -1,4 +1,4 @@
-name: Update Letterboxd Graph
+name: Update Letterboxd Graph + JSON Export
 
 # ╔════════════════════════════════════════════════════════════════╗
 # ║  CONFIGURATION - Edit these values for your Letterboxd profile ║
@@ -89,7 +89,7 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          # Add all generated files
+          # Add all generated files (dark/light SVG + letterboxd-data.json)
           git add images/
           
           # Check if there are changes
@@ -99,5 +99,12 @@ jobs:
             BRANCH="${{ github.ref_name }}"
             TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
             git commit -m "Update Letterboxd graph [$BRANCH] - $TIMESTAMP"
-            git push
+            
+            # Push with one retry in case the branch moved meanwhile
+            if ! git push origin "HEAD:$BRANCH"; then
+              echo "Initial push failed, retrying after rebase..."
+              git fetch origin "$BRANCH"
+              git rebase "origin/$BRANCH"
+              git push origin "HEAD:$BRANCH"
+            fi
           fi
