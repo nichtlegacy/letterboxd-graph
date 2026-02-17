@@ -173,6 +173,7 @@ async function main() {
       username,
       year: years.length === 1 ? years[0] : null,
       years,
+      weekStart,
       recentLimit: 10
     });
     fs.writeFileSync(outputJsonPath, JSON.stringify(jsonExport, null, 2));

@@ -115,6 +115,7 @@ export function calculateAverageRating(entries) {
  * @param {string} options.username - Letterboxd username
  * @param {number|null} options.year - Primary export year (single-year mode)
  * @param {Array<number>} options.years - Export years
+ * @param {string} options.weekStart - "sunday" or "monday"
  * @param {number} options.recentLimit - Number of recent entries to include
  * @returns {Object} JSON-serializable export object
  */
@@ -123,10 +124,13 @@ export function buildJsonExport(entries, options = {}) {
     username = '',
     year = null,
     years = [],
+    weekStart = 'sunday',
     recentLimit = 10
   } = options;
 
   const sortedEntries = [...entries].sort((a, b) => a.date.getTime() - b.date.getTime());
+  const normalizedWeekStart = weekStart === 'monday' ? 'monday' : 'sunday';
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const groupedByDate = new Map();
 
   for (const entry of sortedEntries) {
@@ -160,6 +164,110 @@ export function buildJsonExport(entries, options = {}) {
     };
   });
 
+  const selectedYears = (() => {
+    const parsedYears = years
+      .map((value) => Number.parseInt(value, 10))
+      .filter((value) => Number.isInteger(value));
+
+    if (parsedYears.length > 0) {
+      return [...new Set(parsedYears)].sort((a, b) => b - a);
+    }
+
+    if (Number.isInteger(year)) {
+      return [year];
+    }
+
+    const yearsFromEntries = [...new Set(
+      sortedEntries.map((entry) => entry.date.getUTCFullYear())
+    )].sort((a, b) => b - a);
+
+    if (yearsFromEntries.length > 0) {
+      return yearsFromEntries;
+    }
+
+    return [new Date().getUTCFullYear()];
+  })();
+
+  const minYear = Math.min(...selectedYears);
+  const maxYear = Math.max(...selectedYears);
+  const rangeStart = new Date(Date.UTC(minYear, 0, 1));
+  const rangeEnd = new Date(Date.UTC(maxYear, 11, 31));
+  const rangeStartWeekday = normalizedWeekStart === 'monday'
+    ? (rangeStart.getUTCDay() + 6) % 7
+    : rangeStart.getUTCDay();
+
+  const alignedStart = new Date(rangeStart);
+  alignedStart.setUTCDate(alignedStart.getUTCDate() - rangeStartWeekday);
+
+  const totalDays = Math.floor((rangeEnd.getTime() - alignedStart.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+  const calendar = [];
+  const monthLabels = [];
+  let maxCount = 0;
+
+  for (let dayOffset = 0; dayOffset < totalDays; dayOffset++) {
+    const currentDate = new Date(alignedStart);
+    currentDate.setUTCDate(alignedStart.getUTCDate() + dayOffset);
+
+    const date = currentDate.toISOString().split('T')[0];
+    const dayEntries = groupedByDate.get(date) || [];
+    const count = dayEntries.length;
+
+    if (count > maxCount) {
+      maxCount = count;
+    }
+
+    const rated = dayEntries.filter((item) => item.rating !== null);
+    const ratingAvg = rated.length > 0
+      ? Math.round((rated.reduce((sum, item) => sum + item.rating, 0) / rated.length) * 10) / 10
+      : null;
+
+    const cellWeekday = normalizedWeekStart === 'monday'
+      ? (currentDate.getUTCDay() + 6) % 7
+      : currentDate.getUTCDay();
+
+    const [cellYear, cellMonth, cellDay] = date.split('-');
+    const url = `https://letterboxd.com/${username}/films/diary/for/${cellYear}/${cellMonth}/${cellDay}/`;
+    const isPadding = currentDate < rangeStart || currentDate > rangeEnd;
+
+    if (!isPadding && currentDate.getUTCDate() === 1) {
+      monthLabels.push({
+        month: monthNames[currentDate.getUTCMonth()],
+        week: Math.floor(dayOffset / 7)
+      });
+    }
+
+    calendar.push({
+      date,
+      week: Math.floor(dayOffset / 7),
+      weekday: cellWeekday,
+      count,
+      ratingAvg,
+      films: dayEntries.map((item) => ({
+        title: item.title,
+        year: item.year,
+        rating: item.rating,
+        url: item.url || null
+      })),
+      level: 0,
+      inRange: !isPadding,
+      url
+    });
+  }
+
+  for (const day of calendar) {
+    if (day.count <= 0 || maxCount <= 0) {
+      day.level = 0;
+      continue;
+    }
+
+    if (maxCount === 1) {
+      day.level = 1;
+      continue;
+    }
+
+    day.level = Math.max(1, Math.min(4, Math.ceil((day.count / maxCount) * 4)));
+  }
+
   const recent = [...sortedEntries]
     .sort((a, b) => b.date.getTime() - a.date.getTime())
     .slice(0, recentLimit)
@@ -174,13 +282,25 @@ export function buildJsonExport(entries, options = {}) {
   return {
     user: username,
     year,
-    years,
+    years: selectedYears,
     generatedAt: new Date().toISOString(),
+    meta: {
+      weekStart: normalizedWeekStart,
+      minYear,
+      maxYear,
+      startDate: rangeStart.toISOString().split('T')[0],
+      endDate: rangeEnd.toISOString().split('T')[0],
+      alignedStart: alignedStart.toISOString().split('T')[0],
+      weeks: Math.ceil(calendar.length / 7),
+      maxCount
+    },
     stats: {
       films: sortedEntries.length,
       daysActive: calculateDaysActive(sortedEntries),
       streak: calculateStreak(sortedEntries).length
     },
+    monthLabels,
+    calendar,
     cells,
     recent
   };
