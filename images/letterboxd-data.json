@@ -1,23 +1,24 @@
 {
   "user": "nichtlegacy",
-  "year": 2025,
+  "year": null,
   "years": [
+    2026,
     2025
   ],
-  "generatedAt": "2026-02-17T20:01:21.521Z",
+  "generatedAt": "2026-02-17T20:19:45.549Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
-    "maxYear": 2025,
+    "maxYear": 2026,
     "startDate": "2025-01-01",
-    "endDate": "2025-12-31",
+    "endDate": "2026-12-31",
     "alignedStart": "2024-12-29",
-    "weeks": 53,
+    "weeks": 105,
     "maxCount": 5
   },
   "stats": {
-    "films": 381,
-    "daysActive": 263,
+    "films": 402,
+    "daysActive": 279,
     "streak": 34
   },
   "monthLabels": [
@@ -68,6 +69,54 @@
     {
       "month": "Dec",
       "week": 48
+    },
+    {
+      "month": "Jan",
+      "week": 52
+    },
+    {
+      "month": "Feb",
+      "week": 57
+    },
+    {
+      "month": "Mar",
+      "week": 61
+    },
+    {
+      "month": "Apr",
+      "week": 65
+    },
+    {
+      "month": "May",
+      "week": 69
+    },
+    {
+      "month": "Jun",
+      "week": 74
+    },
+    {
+      "month": "Jul",
+      "week": 78
+    },
+    {
+      "month": "Aug",
+      "week": 82
+    },
+    {
+      "month": "Sep",
+      "week": 87
+    },
+    {
+      "month": "Oct",
+      "week": 91
+    },
+    {
+      "month": "Nov",
+      "week": 96
+    },
+    {
+      "month": "Dec",
+      "week": 100
     }
   ],
   "calendar": [
@@ -6667,6 +6716,4163 @@
       "level": 0,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/31/"
+    },
+    {
+      "date": "2026-01-01",
+      "week": 52,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 2.8,
+      "films": [
+        {
+          "title": "Ants in the Pants",
+          "year": "2000",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/ants-in-the-pants/"
+        },
+        {
+          "title": "Holmes & Watson",
+          "year": "2018",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/holmes-watson/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/01/"
+    },
+    {
+      "date": "2026-01-02",
+      "week": 52,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Ants in the Pants 2",
+          "year": "2002",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/ants-in-the-pants-2/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/02/"
+    },
+    {
+      "date": "2026-01-03",
+      "week": 52,
+      "weekday": 6,
+      "count": 3,
+      "ratingAvg": 3.7,
+      "films": [
+        {
+          "title": "Kung Fu Hustle",
+          "year": "2004",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/kung-fu-hustle/"
+        },
+        {
+          "title": "Good Fortune",
+          "year": "2025",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/good-fortune-2025/"
+        },
+        {
+          "title": "10 Things I Hate About You",
+          "year": "1999",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/10-things-i-hate-about-you/1/"
+        }
+      ],
+      "level": 3,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/03/"
+    },
+    {
+      "date": "2026-01-04",
+      "week": 53,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Go",
+          "year": "1999",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/go/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/04/"
+    },
+    {
+      "date": "2026-01-05",
+      "week": 53,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/05/"
+    },
+    {
+      "date": "2026-01-06",
+      "week": 53,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/06/"
+    },
+    {
+      "date": "2026-01-07",
+      "week": 53,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/07/"
+    },
+    {
+      "date": "2026-01-08",
+      "week": 53,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Crazy",
+          "year": "2000",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/crazy/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/08/"
+    },
+    {
+      "date": "2026-01-09",
+      "week": 53,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Wedding Singer",
+          "year": "1998",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-wedding-singer/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/09/"
+    },
+    {
+      "date": "2026-01-10",
+      "week": 53,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Small Soldiers",
+          "year": "1998",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/small-soldiers/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/10/"
+    },
+    {
+      "date": "2026-01-11",
+      "week": 54,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/11/"
+    },
+    {
+      "date": "2026-01-12",
+      "week": 54,
+      "weekday": 1,
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Five Nights at Freddy’s 2",
+          "year": "2025",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/five-nights-at-freddys-2/"
+        },
+        {
+          "title": "KPop Demon Hunters",
+          "year": "2025",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/kpop-demon-hunters/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/12/"
+    },
+    {
+      "date": "2026-01-13",
+      "week": 54,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/13/"
+    },
+    {
+      "date": "2026-01-14",
+      "week": 54,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Ferris Bueller’s Day Off",
+          "year": "1986",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/ferris-buellers-day-off/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/14/"
+    },
+    {
+      "date": "2026-01-15",
+      "week": 54,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/15/"
+    },
+    {
+      "date": "2026-01-16",
+      "week": 54,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/16/"
+    },
+    {
+      "date": "2026-01-17",
+      "week": 54,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "BASEketball",
+          "year": "1998",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/baseketball/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/17/"
+    },
+    {
+      "date": "2026-01-18",
+      "week": 55,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/18/"
+    },
+    {
+      "date": "2026-01-19",
+      "week": 55,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "BlackBerry",
+          "year": "2023",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/blackberry-2023/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/19/"
+    },
+    {
+      "date": "2026-01-20",
+      "week": 55,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/20/"
+    },
+    {
+      "date": "2026-01-21",
+      "week": 55,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/21/"
+    },
+    {
+      "date": "2026-01-22",
+      "week": 55,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Once Upon a Time… in Hollywood",
+          "year": "2019",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/once-upon-a-time-in-hollywood/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/22/"
+    },
+    {
+      "date": "2026-01-23",
+      "week": 55,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/23/"
+    },
+    {
+      "date": "2026-01-24",
+      "week": 55,
+      "weekday": 6,
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Election",
+          "year": "1999",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/election/"
+        },
+        {
+          "title": "The SpongeBob Movie: Search for SquarePants",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-spongebob-movie-search-for-squarepants/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/24/"
+    },
+    {
+      "date": "2026-01-25",
+      "week": 56,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/25/"
+    },
+    {
+      "date": "2026-01-26",
+      "week": 56,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/26/"
+    },
+    {
+      "date": "2026-01-27",
+      "week": 56,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/27/"
+    },
+    {
+      "date": "2026-01-28",
+      "week": 56,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/28/"
+    },
+    {
+      "date": "2026-01-29",
+      "week": 56,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/29/"
+    },
+    {
+      "date": "2026-01-30",
+      "week": 56,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/30/"
+    },
+    {
+      "date": "2026-01-31",
+      "week": 56,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/31/"
+    },
+    {
+      "date": "2026-02-01",
+      "week": 57,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/01/"
+    },
+    {
+      "date": "2026-02-02",
+      "week": 57,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/02/"
+    },
+    {
+      "date": "2026-02-03",
+      "week": 57,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/03/"
+    },
+    {
+      "date": "2026-02-04",
+      "week": 57,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/04/"
+    },
+    {
+      "date": "2026-02-05",
+      "week": 57,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "The Shadow’s Edge",
+          "year": "2025",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-shadows-edge-2025/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/05/"
+    },
+    {
+      "date": "2026-02-06",
+      "week": 57,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/06/"
+    },
+    {
+      "date": "2026-02-07",
+      "week": 57,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Bill & Ted’s Bogus Journey",
+          "year": "1991",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/bill-teds-bogus-journey/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/07/"
+    },
+    {
+      "date": "2026-02-08",
+      "week": 58,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/08/"
+    },
+    {
+      "date": "2026-02-09",
+      "week": 58,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/09/"
+    },
+    {
+      "date": "2026-02-10",
+      "week": 58,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/10/"
+    },
+    {
+      "date": "2026-02-11",
+      "week": 58,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/11/"
+    },
+    {
+      "date": "2026-02-12",
+      "week": 58,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/12/"
+    },
+    {
+      "date": "2026-02-13",
+      "week": 58,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Housemaid",
+          "year": "2025",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-housemaid-2025/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/13/"
+    },
+    {
+      "date": "2026-02-14",
+      "week": 58,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/14/"
+    },
+    {
+      "date": "2026-02-15",
+      "week": 59,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/15/"
+    },
+    {
+      "date": "2026-02-16",
+      "week": 59,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/16/"
+    },
+    {
+      "date": "2026-02-17",
+      "week": 59,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/17/"
+    },
+    {
+      "date": "2026-02-18",
+      "week": 59,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/18/"
+    },
+    {
+      "date": "2026-02-19",
+      "week": 59,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/19/"
+    },
+    {
+      "date": "2026-02-20",
+      "week": 59,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/20/"
+    },
+    {
+      "date": "2026-02-21",
+      "week": 59,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/21/"
+    },
+    {
+      "date": "2026-02-22",
+      "week": 60,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/22/"
+    },
+    {
+      "date": "2026-02-23",
+      "week": 60,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/23/"
+    },
+    {
+      "date": "2026-02-24",
+      "week": 60,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/24/"
+    },
+    {
+      "date": "2026-02-25",
+      "week": 60,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/25/"
+    },
+    {
+      "date": "2026-02-26",
+      "week": 60,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/26/"
+    },
+    {
+      "date": "2026-02-27",
+      "week": 60,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/27/"
+    },
+    {
+      "date": "2026-02-28",
+      "week": 60,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/28/"
+    },
+    {
+      "date": "2026-03-01",
+      "week": 61,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/01/"
+    },
+    {
+      "date": "2026-03-02",
+      "week": 61,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/02/"
+    },
+    {
+      "date": "2026-03-03",
+      "week": 61,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/03/"
+    },
+    {
+      "date": "2026-03-04",
+      "week": 61,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/04/"
+    },
+    {
+      "date": "2026-03-05",
+      "week": 61,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/05/"
+    },
+    {
+      "date": "2026-03-06",
+      "week": 61,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/06/"
+    },
+    {
+      "date": "2026-03-07",
+      "week": 61,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/07/"
+    },
+    {
+      "date": "2026-03-08",
+      "week": 62,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/08/"
+    },
+    {
+      "date": "2026-03-09",
+      "week": 62,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/09/"
+    },
+    {
+      "date": "2026-03-10",
+      "week": 62,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/10/"
+    },
+    {
+      "date": "2026-03-11",
+      "week": 62,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/11/"
+    },
+    {
+      "date": "2026-03-12",
+      "week": 62,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/12/"
+    },
+    {
+      "date": "2026-03-13",
+      "week": 62,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/13/"
+    },
+    {
+      "date": "2026-03-14",
+      "week": 62,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/14/"
+    },
+    {
+      "date": "2026-03-15",
+      "week": 63,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/15/"
+    },
+    {
+      "date": "2026-03-16",
+      "week": 63,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/16/"
+    },
+    {
+      "date": "2026-03-17",
+      "week": 63,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/17/"
+    },
+    {
+      "date": "2026-03-18",
+      "week": 63,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/18/"
+    },
+    {
+      "date": "2026-03-19",
+      "week": 63,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/19/"
+    },
+    {
+      "date": "2026-03-20",
+      "week": 63,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/20/"
+    },
+    {
+      "date": "2026-03-21",
+      "week": 63,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/21/"
+    },
+    {
+      "date": "2026-03-22",
+      "week": 64,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/22/"
+    },
+    {
+      "date": "2026-03-23",
+      "week": 64,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/23/"
+    },
+    {
+      "date": "2026-03-24",
+      "week": 64,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/24/"
+    },
+    {
+      "date": "2026-03-25",
+      "week": 64,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/25/"
+    },
+    {
+      "date": "2026-03-26",
+      "week": 64,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/26/"
+    },
+    {
+      "date": "2026-03-27",
+      "week": 64,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/27/"
+    },
+    {
+      "date": "2026-03-28",
+      "week": 64,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/28/"
+    },
+    {
+      "date": "2026-03-29",
+      "week": 65,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/29/"
+    },
+    {
+      "date": "2026-03-30",
+      "week": 65,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/30/"
+    },
+    {
+      "date": "2026-03-31",
+      "week": 65,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/03/31/"
+    },
+    {
+      "date": "2026-04-01",
+      "week": 65,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/01/"
+    },
+    {
+      "date": "2026-04-02",
+      "week": 65,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/02/"
+    },
+    {
+      "date": "2026-04-03",
+      "week": 65,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/03/"
+    },
+    {
+      "date": "2026-04-04",
+      "week": 65,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/04/"
+    },
+    {
+      "date": "2026-04-05",
+      "week": 66,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/05/"
+    },
+    {
+      "date": "2026-04-06",
+      "week": 66,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/06/"
+    },
+    {
+      "date": "2026-04-07",
+      "week": 66,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/07/"
+    },
+    {
+      "date": "2026-04-08",
+      "week": 66,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/08/"
+    },
+    {
+      "date": "2026-04-09",
+      "week": 66,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/09/"
+    },
+    {
+      "date": "2026-04-10",
+      "week": 66,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/10/"
+    },
+    {
+      "date": "2026-04-11",
+      "week": 66,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/11/"
+    },
+    {
+      "date": "2026-04-12",
+      "week": 67,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/12/"
+    },
+    {
+      "date": "2026-04-13",
+      "week": 67,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/13/"
+    },
+    {
+      "date": "2026-04-14",
+      "week": 67,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/14/"
+    },
+    {
+      "date": "2026-04-15",
+      "week": 67,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/15/"
+    },
+    {
+      "date": "2026-04-16",
+      "week": 67,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/16/"
+    },
+    {
+      "date": "2026-04-17",
+      "week": 67,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/17/"
+    },
+    {
+      "date": "2026-04-18",
+      "week": 67,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/18/"
+    },
+    {
+      "date": "2026-04-19",
+      "week": 68,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/19/"
+    },
+    {
+      "date": "2026-04-20",
+      "week": 68,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/20/"
+    },
+    {
+      "date": "2026-04-21",
+      "week": 68,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/21/"
+    },
+    {
+      "date": "2026-04-22",
+      "week": 68,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/22/"
+    },
+    {
+      "date": "2026-04-23",
+      "week": 68,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/23/"
+    },
+    {
+      "date": "2026-04-24",
+      "week": 68,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/24/"
+    },
+    {
+      "date": "2026-04-25",
+      "week": 68,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/25/"
+    },
+    {
+      "date": "2026-04-26",
+      "week": 69,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/26/"
+    },
+    {
+      "date": "2026-04-27",
+      "week": 69,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/27/"
+    },
+    {
+      "date": "2026-04-28",
+      "week": 69,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/28/"
+    },
+    {
+      "date": "2026-04-29",
+      "week": 69,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/29/"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 69,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/04/30/"
+    },
+    {
+      "date": "2026-05-01",
+      "week": 69,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/01/"
+    },
+    {
+      "date": "2026-05-02",
+      "week": 69,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/02/"
+    },
+    {
+      "date": "2026-05-03",
+      "week": 70,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/03/"
+    },
+    {
+      "date": "2026-05-04",
+      "week": 70,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/04/"
+    },
+    {
+      "date": "2026-05-05",
+      "week": 70,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/05/"
+    },
+    {
+      "date": "2026-05-06",
+      "week": 70,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/06/"
+    },
+    {
+      "date": "2026-05-07",
+      "week": 70,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/07/"
+    },
+    {
+      "date": "2026-05-08",
+      "week": 70,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/08/"
+    },
+    {
+      "date": "2026-05-09",
+      "week": 70,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/09/"
+    },
+    {
+      "date": "2026-05-10",
+      "week": 71,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/10/"
+    },
+    {
+      "date": "2026-05-11",
+      "week": 71,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/11/"
+    },
+    {
+      "date": "2026-05-12",
+      "week": 71,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/12/"
+    },
+    {
+      "date": "2026-05-13",
+      "week": 71,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/13/"
+    },
+    {
+      "date": "2026-05-14",
+      "week": 71,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/14/"
+    },
+    {
+      "date": "2026-05-15",
+      "week": 71,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/15/"
+    },
+    {
+      "date": "2026-05-16",
+      "week": 71,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/16/"
+    },
+    {
+      "date": "2026-05-17",
+      "week": 72,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/17/"
+    },
+    {
+      "date": "2026-05-18",
+      "week": 72,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/18/"
+    },
+    {
+      "date": "2026-05-19",
+      "week": 72,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/19/"
+    },
+    {
+      "date": "2026-05-20",
+      "week": 72,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/20/"
+    },
+    {
+      "date": "2026-05-21",
+      "week": 72,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/21/"
+    },
+    {
+      "date": "2026-05-22",
+      "week": 72,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/22/"
+    },
+    {
+      "date": "2026-05-23",
+      "week": 72,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/23/"
+    },
+    {
+      "date": "2026-05-24",
+      "week": 73,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/24/"
+    },
+    {
+      "date": "2026-05-25",
+      "week": 73,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/25/"
+    },
+    {
+      "date": "2026-05-26",
+      "week": 73,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/26/"
+    },
+    {
+      "date": "2026-05-27",
+      "week": 73,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/27/"
+    },
+    {
+      "date": "2026-05-28",
+      "week": 73,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/28/"
+    },
+    {
+      "date": "2026-05-29",
+      "week": 73,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/29/"
+    },
+    {
+      "date": "2026-05-30",
+      "week": 73,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/30/"
+    },
+    {
+      "date": "2026-05-31",
+      "week": 74,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/05/31/"
+    },
+    {
+      "date": "2026-06-01",
+      "week": 74,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/01/"
+    },
+    {
+      "date": "2026-06-02",
+      "week": 74,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/02/"
+    },
+    {
+      "date": "2026-06-03",
+      "week": 74,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/03/"
+    },
+    {
+      "date": "2026-06-04",
+      "week": 74,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/04/"
+    },
+    {
+      "date": "2026-06-05",
+      "week": 74,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/05/"
+    },
+    {
+      "date": "2026-06-06",
+      "week": 74,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/06/"
+    },
+    {
+      "date": "2026-06-07",
+      "week": 75,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/07/"
+    },
+    {
+      "date": "2026-06-08",
+      "week": 75,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/08/"
+    },
+    {
+      "date": "2026-06-09",
+      "week": 75,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/09/"
+    },
+    {
+      "date": "2026-06-10",
+      "week": 75,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/10/"
+    },
+    {
+      "date": "2026-06-11",
+      "week": 75,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/11/"
+    },
+    {
+      "date": "2026-06-12",
+      "week": 75,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/12/"
+    },
+    {
+      "date": "2026-06-13",
+      "week": 75,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/13/"
+    },
+    {
+      "date": "2026-06-14",
+      "week": 76,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/14/"
+    },
+    {
+      "date": "2026-06-15",
+      "week": 76,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/15/"
+    },
+    {
+      "date": "2026-06-16",
+      "week": 76,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/16/"
+    },
+    {
+      "date": "2026-06-17",
+      "week": 76,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/17/"
+    },
+    {
+      "date": "2026-06-18",
+      "week": 76,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/18/"
+    },
+    {
+      "date": "2026-06-19",
+      "week": 76,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/19/"
+    },
+    {
+      "date": "2026-06-20",
+      "week": 76,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/20/"
+    },
+    {
+      "date": "2026-06-21",
+      "week": 77,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/21/"
+    },
+    {
+      "date": "2026-06-22",
+      "week": 77,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/22/"
+    },
+    {
+      "date": "2026-06-23",
+      "week": 77,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/23/"
+    },
+    {
+      "date": "2026-06-24",
+      "week": 77,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/24/"
+    },
+    {
+      "date": "2026-06-25",
+      "week": 77,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/25/"
+    },
+    {
+      "date": "2026-06-26",
+      "week": 77,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/26/"
+    },
+    {
+      "date": "2026-06-27",
+      "week": 77,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/27/"
+    },
+    {
+      "date": "2026-06-28",
+      "week": 78,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/28/"
+    },
+    {
+      "date": "2026-06-29",
+      "week": 78,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/29/"
+    },
+    {
+      "date": "2026-06-30",
+      "week": 78,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/06/30/"
+    },
+    {
+      "date": "2026-07-01",
+      "week": 78,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/01/"
+    },
+    {
+      "date": "2026-07-02",
+      "week": 78,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/02/"
+    },
+    {
+      "date": "2026-07-03",
+      "week": 78,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/03/"
+    },
+    {
+      "date": "2026-07-04",
+      "week": 78,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/04/"
+    },
+    {
+      "date": "2026-07-05",
+      "week": 79,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/05/"
+    },
+    {
+      "date": "2026-07-06",
+      "week": 79,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/06/"
+    },
+    {
+      "date": "2026-07-07",
+      "week": 79,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/07/"
+    },
+    {
+      "date": "2026-07-08",
+      "week": 79,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/08/"
+    },
+    {
+      "date": "2026-07-09",
+      "week": 79,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/09/"
+    },
+    {
+      "date": "2026-07-10",
+      "week": 79,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/10/"
+    },
+    {
+      "date": "2026-07-11",
+      "week": 79,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/11/"
+    },
+    {
+      "date": "2026-07-12",
+      "week": 80,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/12/"
+    },
+    {
+      "date": "2026-07-13",
+      "week": 80,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/13/"
+    },
+    {
+      "date": "2026-07-14",
+      "week": 80,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/14/"
+    },
+    {
+      "date": "2026-07-15",
+      "week": 80,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/15/"
+    },
+    {
+      "date": "2026-07-16",
+      "week": 80,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/16/"
+    },
+    {
+      "date": "2026-07-17",
+      "week": 80,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/17/"
+    },
+    {
+      "date": "2026-07-18",
+      "week": 80,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/18/"
+    },
+    {
+      "date": "2026-07-19",
+      "week": 81,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/19/"
+    },
+    {
+      "date": "2026-07-20",
+      "week": 81,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/20/"
+    },
+    {
+      "date": "2026-07-21",
+      "week": 81,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/21/"
+    },
+    {
+      "date": "2026-07-22",
+      "week": 81,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/22/"
+    },
+    {
+      "date": "2026-07-23",
+      "week": 81,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/23/"
+    },
+    {
+      "date": "2026-07-24",
+      "week": 81,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/24/"
+    },
+    {
+      "date": "2026-07-25",
+      "week": 81,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/25/"
+    },
+    {
+      "date": "2026-07-26",
+      "week": 82,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/26/"
+    },
+    {
+      "date": "2026-07-27",
+      "week": 82,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/27/"
+    },
+    {
+      "date": "2026-07-28",
+      "week": 82,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/28/"
+    },
+    {
+      "date": "2026-07-29",
+      "week": 82,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/29/"
+    },
+    {
+      "date": "2026-07-30",
+      "week": 82,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/30/"
+    },
+    {
+      "date": "2026-07-31",
+      "week": 82,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/07/31/"
+    },
+    {
+      "date": "2026-08-01",
+      "week": 82,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/01/"
+    },
+    {
+      "date": "2026-08-02",
+      "week": 83,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/02/"
+    },
+    {
+      "date": "2026-08-03",
+      "week": 83,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/03/"
+    },
+    {
+      "date": "2026-08-04",
+      "week": 83,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/04/"
+    },
+    {
+      "date": "2026-08-05",
+      "week": 83,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/05/"
+    },
+    {
+      "date": "2026-08-06",
+      "week": 83,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/06/"
+    },
+    {
+      "date": "2026-08-07",
+      "week": 83,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/07/"
+    },
+    {
+      "date": "2026-08-08",
+      "week": 83,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/08/"
+    },
+    {
+      "date": "2026-08-09",
+      "week": 84,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/09/"
+    },
+    {
+      "date": "2026-08-10",
+      "week": 84,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/10/"
+    },
+    {
+      "date": "2026-08-11",
+      "week": 84,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/11/"
+    },
+    {
+      "date": "2026-08-12",
+      "week": 84,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/12/"
+    },
+    {
+      "date": "2026-08-13",
+      "week": 84,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/13/"
+    },
+    {
+      "date": "2026-08-14",
+      "week": 84,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/14/"
+    },
+    {
+      "date": "2026-08-15",
+      "week": 84,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/15/"
+    },
+    {
+      "date": "2026-08-16",
+      "week": 85,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/16/"
+    },
+    {
+      "date": "2026-08-17",
+      "week": 85,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/17/"
+    },
+    {
+      "date": "2026-08-18",
+      "week": 85,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/18/"
+    },
+    {
+      "date": "2026-08-19",
+      "week": 85,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/19/"
+    },
+    {
+      "date": "2026-08-20",
+      "week": 85,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/20/"
+    },
+    {
+      "date": "2026-08-21",
+      "week": 85,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/21/"
+    },
+    {
+      "date": "2026-08-22",
+      "week": 85,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/22/"
+    },
+    {
+      "date": "2026-08-23",
+      "week": 86,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/23/"
+    },
+    {
+      "date": "2026-08-24",
+      "week": 86,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/24/"
+    },
+    {
+      "date": "2026-08-25",
+      "week": 86,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/25/"
+    },
+    {
+      "date": "2026-08-26",
+      "week": 86,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/26/"
+    },
+    {
+      "date": "2026-08-27",
+      "week": 86,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/27/"
+    },
+    {
+      "date": "2026-08-28",
+      "week": 86,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/28/"
+    },
+    {
+      "date": "2026-08-29",
+      "week": 86,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/29/"
+    },
+    {
+      "date": "2026-08-30",
+      "week": 87,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/30/"
+    },
+    {
+      "date": "2026-08-31",
+      "week": 87,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/08/31/"
+    },
+    {
+      "date": "2026-09-01",
+      "week": 87,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/01/"
+    },
+    {
+      "date": "2026-09-02",
+      "week": 87,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/02/"
+    },
+    {
+      "date": "2026-09-03",
+      "week": 87,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/03/"
+    },
+    {
+      "date": "2026-09-04",
+      "week": 87,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/04/"
+    },
+    {
+      "date": "2026-09-05",
+      "week": 87,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/05/"
+    },
+    {
+      "date": "2026-09-06",
+      "week": 88,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/06/"
+    },
+    {
+      "date": "2026-09-07",
+      "week": 88,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/07/"
+    },
+    {
+      "date": "2026-09-08",
+      "week": 88,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/08/"
+    },
+    {
+      "date": "2026-09-09",
+      "week": 88,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/09/"
+    },
+    {
+      "date": "2026-09-10",
+      "week": 88,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/10/"
+    },
+    {
+      "date": "2026-09-11",
+      "week": 88,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/11/"
+    },
+    {
+      "date": "2026-09-12",
+      "week": 88,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/12/"
+    },
+    {
+      "date": "2026-09-13",
+      "week": 89,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/13/"
+    },
+    {
+      "date": "2026-09-14",
+      "week": 89,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/14/"
+    },
+    {
+      "date": "2026-09-15",
+      "week": 89,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/15/"
+    },
+    {
+      "date": "2026-09-16",
+      "week": 89,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/16/"
+    },
+    {
+      "date": "2026-09-17",
+      "week": 89,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/17/"
+    },
+    {
+      "date": "2026-09-18",
+      "week": 89,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/18/"
+    },
+    {
+      "date": "2026-09-19",
+      "week": 89,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/19/"
+    },
+    {
+      "date": "2026-09-20",
+      "week": 90,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/20/"
+    },
+    {
+      "date": "2026-09-21",
+      "week": 90,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/21/"
+    },
+    {
+      "date": "2026-09-22",
+      "week": 90,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/22/"
+    },
+    {
+      "date": "2026-09-23",
+      "week": 90,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/23/"
+    },
+    {
+      "date": "2026-09-24",
+      "week": 90,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/24/"
+    },
+    {
+      "date": "2026-09-25",
+      "week": 90,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/25/"
+    },
+    {
+      "date": "2026-09-26",
+      "week": 90,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/26/"
+    },
+    {
+      "date": "2026-09-27",
+      "week": 91,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/27/"
+    },
+    {
+      "date": "2026-09-28",
+      "week": 91,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/28/"
+    },
+    {
+      "date": "2026-09-29",
+      "week": 91,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/29/"
+    },
+    {
+      "date": "2026-09-30",
+      "week": 91,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/09/30/"
+    },
+    {
+      "date": "2026-10-01",
+      "week": 91,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/01/"
+    },
+    {
+      "date": "2026-10-02",
+      "week": 91,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/02/"
+    },
+    {
+      "date": "2026-10-03",
+      "week": 91,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/03/"
+    },
+    {
+      "date": "2026-10-04",
+      "week": 92,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/04/"
+    },
+    {
+      "date": "2026-10-05",
+      "week": 92,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/05/"
+    },
+    {
+      "date": "2026-10-06",
+      "week": 92,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/06/"
+    },
+    {
+      "date": "2026-10-07",
+      "week": 92,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/07/"
+    },
+    {
+      "date": "2026-10-08",
+      "week": 92,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/08/"
+    },
+    {
+      "date": "2026-10-09",
+      "week": 92,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/09/"
+    },
+    {
+      "date": "2026-10-10",
+      "week": 92,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/10/"
+    },
+    {
+      "date": "2026-10-11",
+      "week": 93,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/11/"
+    },
+    {
+      "date": "2026-10-12",
+      "week": 93,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/12/"
+    },
+    {
+      "date": "2026-10-13",
+      "week": 93,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/13/"
+    },
+    {
+      "date": "2026-10-14",
+      "week": 93,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/14/"
+    },
+    {
+      "date": "2026-10-15",
+      "week": 93,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/15/"
+    },
+    {
+      "date": "2026-10-16",
+      "week": 93,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/16/"
+    },
+    {
+      "date": "2026-10-17",
+      "week": 93,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/17/"
+    },
+    {
+      "date": "2026-10-18",
+      "week": 94,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/18/"
+    },
+    {
+      "date": "2026-10-19",
+      "week": 94,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/19/"
+    },
+    {
+      "date": "2026-10-20",
+      "week": 94,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/20/"
+    },
+    {
+      "date": "2026-10-21",
+      "week": 94,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/21/"
+    },
+    {
+      "date": "2026-10-22",
+      "week": 94,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/22/"
+    },
+    {
+      "date": "2026-10-23",
+      "week": 94,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/23/"
+    },
+    {
+      "date": "2026-10-24",
+      "week": 94,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/24/"
+    },
+    {
+      "date": "2026-10-25",
+      "week": 95,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/25/"
+    },
+    {
+      "date": "2026-10-26",
+      "week": 95,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/26/"
+    },
+    {
+      "date": "2026-10-27",
+      "week": 95,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/27/"
+    },
+    {
+      "date": "2026-10-28",
+      "week": 95,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/28/"
+    },
+    {
+      "date": "2026-10-29",
+      "week": 95,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/29/"
+    },
+    {
+      "date": "2026-10-30",
+      "week": 95,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/30/"
+    },
+    {
+      "date": "2026-10-31",
+      "week": 95,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/10/31/"
+    },
+    {
+      "date": "2026-11-01",
+      "week": 96,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/01/"
+    },
+    {
+      "date": "2026-11-02",
+      "week": 96,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/02/"
+    },
+    {
+      "date": "2026-11-03",
+      "week": 96,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/03/"
+    },
+    {
+      "date": "2026-11-04",
+      "week": 96,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/04/"
+    },
+    {
+      "date": "2026-11-05",
+      "week": 96,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/05/"
+    },
+    {
+      "date": "2026-11-06",
+      "week": 96,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/06/"
+    },
+    {
+      "date": "2026-11-07",
+      "week": 96,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/07/"
+    },
+    {
+      "date": "2026-11-08",
+      "week": 97,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/08/"
+    },
+    {
+      "date": "2026-11-09",
+      "week": 97,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/09/"
+    },
+    {
+      "date": "2026-11-10",
+      "week": 97,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/10/"
+    },
+    {
+      "date": "2026-11-11",
+      "week": 97,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/11/"
+    },
+    {
+      "date": "2026-11-12",
+      "week": 97,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/12/"
+    },
+    {
+      "date": "2026-11-13",
+      "week": 97,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/13/"
+    },
+    {
+      "date": "2026-11-14",
+      "week": 97,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/14/"
+    },
+    {
+      "date": "2026-11-15",
+      "week": 98,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/15/"
+    },
+    {
+      "date": "2026-11-16",
+      "week": 98,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/16/"
+    },
+    {
+      "date": "2026-11-17",
+      "week": 98,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/17/"
+    },
+    {
+      "date": "2026-11-18",
+      "week": 98,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/18/"
+    },
+    {
+      "date": "2026-11-19",
+      "week": 98,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/19/"
+    },
+    {
+      "date": "2026-11-20",
+      "week": 98,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/20/"
+    },
+    {
+      "date": "2026-11-21",
+      "week": 98,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/21/"
+    },
+    {
+      "date": "2026-11-22",
+      "week": 99,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/22/"
+    },
+    {
+      "date": "2026-11-23",
+      "week": 99,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/23/"
+    },
+    {
+      "date": "2026-11-24",
+      "week": 99,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/24/"
+    },
+    {
+      "date": "2026-11-25",
+      "week": 99,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/25/"
+    },
+    {
+      "date": "2026-11-26",
+      "week": 99,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/26/"
+    },
+    {
+      "date": "2026-11-27",
+      "week": 99,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/27/"
+    },
+    {
+      "date": "2026-11-28",
+      "week": 99,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/28/"
+    },
+    {
+      "date": "2026-11-29",
+      "week": 100,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/29/"
+    },
+    {
+      "date": "2026-11-30",
+      "week": 100,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/11/30/"
+    },
+    {
+      "date": "2026-12-01",
+      "week": 100,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/01/"
+    },
+    {
+      "date": "2026-12-02",
+      "week": 100,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/02/"
+    },
+    {
+      "date": "2026-12-03",
+      "week": 100,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/03/"
+    },
+    {
+      "date": "2026-12-04",
+      "week": 100,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/04/"
+    },
+    {
+      "date": "2026-12-05",
+      "week": 100,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/05/"
+    },
+    {
+      "date": "2026-12-06",
+      "week": 101,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/06/"
+    },
+    {
+      "date": "2026-12-07",
+      "week": 101,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/07/"
+    },
+    {
+      "date": "2026-12-08",
+      "week": 101,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/08/"
+    },
+    {
+      "date": "2026-12-09",
+      "week": 101,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/09/"
+    },
+    {
+      "date": "2026-12-10",
+      "week": 101,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/10/"
+    },
+    {
+      "date": "2026-12-11",
+      "week": 101,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/11/"
+    },
+    {
+      "date": "2026-12-12",
+      "week": 101,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/12/"
+    },
+    {
+      "date": "2026-12-13",
+      "week": 102,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/13/"
+    },
+    {
+      "date": "2026-12-14",
+      "week": 102,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/14/"
+    },
+    {
+      "date": "2026-12-15",
+      "week": 102,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/15/"
+    },
+    {
+      "date": "2026-12-16",
+      "week": 102,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/16/"
+    },
+    {
+      "date": "2026-12-17",
+      "week": 102,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/17/"
+    },
+    {
+      "date": "2026-12-18",
+      "week": 102,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/18/"
+    },
+    {
+      "date": "2026-12-19",
+      "week": 102,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/19/"
+    },
+    {
+      "date": "2026-12-20",
+      "week": 103,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/20/"
+    },
+    {
+      "date": "2026-12-21",
+      "week": 103,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/21/"
+    },
+    {
+      "date": "2026-12-22",
+      "week": 103,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/22/"
+    },
+    {
+      "date": "2026-12-23",
+      "week": 103,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/23/"
+    },
+    {
+      "date": "2026-12-24",
+      "week": 103,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/24/"
+    },
+    {
+      "date": "2026-12-25",
+      "week": 103,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/25/"
+    },
+    {
+      "date": "2026-12-26",
+      "week": 103,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/26/"
+    },
+    {
+      "date": "2026-12-27",
+      "week": 104,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/27/"
+    },
+    {
+      "date": "2026-12-28",
+      "week": 104,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/28/"
+    },
+    {
+      "date": "2026-12-29",
+      "week": 104,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/29/"
+    },
+    {
+      "date": "2026-12-30",
+      "week": 104,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/30/"
+    },
+    {
+      "date": "2026-12-31",
+      "week": 104,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/12/31/"
     }
   ],
   "cells": [
@@ -11059,78 +15265,332 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/30/"
+    },
+    {
+      "date": "2026-01-01",
+      "count": 2,
+      "ratingAvg": 2.8,
+      "films": [
+        {
+          "title": "Ants in the Pants",
+          "year": "2000",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/ants-in-the-pants/"
+        },
+        {
+          "title": "Holmes & Watson",
+          "year": "2018",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/holmes-watson/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/01/"
+    },
+    {
+      "date": "2026-01-02",
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Ants in the Pants 2",
+          "year": "2002",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/ants-in-the-pants-2/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/02/"
+    },
+    {
+      "date": "2026-01-03",
+      "count": 3,
+      "ratingAvg": 3.7,
+      "films": [
+        {
+          "title": "Kung Fu Hustle",
+          "year": "2004",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/kung-fu-hustle/"
+        },
+        {
+          "title": "Good Fortune",
+          "year": "2025",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/good-fortune-2025/"
+        },
+        {
+          "title": "10 Things I Hate About You",
+          "year": "1999",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/10-things-i-hate-about-you/1/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/03/"
+    },
+    {
+      "date": "2026-01-04",
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Go",
+          "year": "1999",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/go/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/04/"
+    },
+    {
+      "date": "2026-01-08",
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Crazy",
+          "year": "2000",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/crazy/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/08/"
+    },
+    {
+      "date": "2026-01-09",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Wedding Singer",
+          "year": "1998",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-wedding-singer/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/09/"
+    },
+    {
+      "date": "2026-01-10",
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Small Soldiers",
+          "year": "1998",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/small-soldiers/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/10/"
+    },
+    {
+      "date": "2026-01-12",
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Five Nights at Freddy’s 2",
+          "year": "2025",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/five-nights-at-freddys-2/"
+        },
+        {
+          "title": "KPop Demon Hunters",
+          "year": "2025",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/kpop-demon-hunters/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/12/"
+    },
+    {
+      "date": "2026-01-14",
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Ferris Bueller’s Day Off",
+          "year": "1986",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/ferris-buellers-day-off/1/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/14/"
+    },
+    {
+      "date": "2026-01-17",
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "BASEketball",
+          "year": "1998",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/baseketball/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/17/"
+    },
+    {
+      "date": "2026-01-19",
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "BlackBerry",
+          "year": "2023",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/blackberry-2023/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/19/"
+    },
+    {
+      "date": "2026-01-22",
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Once Upon a Time… in Hollywood",
+          "year": "2019",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/once-upon-a-time-in-hollywood/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/22/"
+    },
+    {
+      "date": "2026-01-24",
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Election",
+          "year": "1999",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/election/"
+        },
+        {
+          "title": "The SpongeBob Movie: Search for SquarePants",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-spongebob-movie-search-for-squarepants/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/24/"
+    },
+    {
+      "date": "2026-02-05",
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "The Shadow’s Edge",
+          "year": "2025",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-shadows-edge-2025/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/05/"
+    },
+    {
+      "date": "2026-02-07",
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Bill & Ted’s Bogus Journey",
+          "year": "1991",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/bill-teds-bogus-journey/1/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/07/"
+    },
+    {
+      "date": "2026-02-13",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Housemaid",
+          "year": "2025",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-housemaid-2025/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/13/"
     }
   ],
   "recent": [
     {
-      "date": "2025-12-30",
-      "title": "Soloalbum",
-      "year": "2003",
-      "rating": 2.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/soloalbum/"
-    },
-    {
-      "date": "2025-12-29",
-      "title": "No More School",
-      "year": "2000",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/no-more-school/"
-    },
-    {
-      "date": "2025-12-29",
-      "title": "David Holmes: The Boy Who Lived",
-      "year": "2023",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/david-holmes-the-boy-who-lived/"
-    },
-    {
-      "date": "2025-12-28",
-      "title": "Mardi Gras: Spring Break",
-      "year": "2011",
-      "rating": 2.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/mardi-gras-spring-break/1/"
-    },
-    {
-      "date": "2025-12-27",
-      "title": "Rat Race",
-      "year": "2001",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/rat-race/"
-    },
-    {
-      "date": "2025-12-26",
-      "title": "Dinner for Schmucks",
-      "year": "2010",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/dinner-for-schmucks/"
-    },
-    {
-      "date": "2025-12-25",
-      "title": "Now You See Me: Now You Don’t",
+      "date": "2026-02-13",
+      "title": "The Housemaid",
       "year": "2025",
       "rating": 3,
-      "url": "https://letterboxd.com/nichtlegacy/film/now-you-see-me-now-you-dont-2025/"
+      "url": "https://letterboxd.com/nichtlegacy/film/the-housemaid-2025/"
     },
     {
-      "date": "2025-12-24",
-      "title": "Mardi Gras: Spring Break",
-      "year": "2011",
+      "date": "2026-02-07",
+      "title": "Bill & Ted’s Bogus Journey",
+      "year": "1991",
       "rating": 2.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/mardi-gras-spring-break/"
+      "url": "https://letterboxd.com/nichtlegacy/film/bill-teds-bogus-journey/1/"
     },
     {
-      "date": "2025-12-24",
-      "title": "The Royal Tenenbaums",
-      "year": "2001",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/the-royal-tenenbaums/"
+      "date": "2026-02-05",
+      "title": "The Shadow’s Edge",
+      "year": "2025",
+      "rating": 2.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-shadows-edge-2025/"
     },
     {
-      "date": "2025-12-23",
-      "title": "Scary Movie",
-      "year": "2000",
+      "date": "2026-01-24",
+      "title": "Election",
+      "year": "1999",
+      "rating": 3,
+      "url": "https://letterboxd.com/nichtlegacy/film/election/"
+    },
+    {
+      "date": "2026-01-24",
+      "title": "The SpongeBob Movie: Search for SquarePants",
+      "year": "2025",
+      "rating": 4,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-spongebob-movie-search-for-squarepants/"
+    },
+    {
+      "date": "2026-01-22",
+      "title": "Once Upon a Time… in Hollywood",
+      "year": "2019",
+      "rating": 4,
+      "url": "https://letterboxd.com/nichtlegacy/film/once-upon-a-time-in-hollywood/"
+    },
+    {
+      "date": "2026-01-19",
+      "title": "BlackBerry",
+      "year": "2023",
       "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2000/1/"
+      "url": "https://letterboxd.com/nichtlegacy/film/blackberry-2023/"
+    },
+    {
+      "date": "2026-01-17",
+      "title": "BASEketball",
+      "year": "1998",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/baseketball/"
+    },
+    {
+      "date": "2026-01-14",
+      "title": "Ferris Bueller’s Day Off",
+      "year": "1986",
+      "rating": 4,
+      "url": "https://letterboxd.com/nichtlegacy/film/ferris-buellers-day-off/1/"
+    },
+    {
+      "date": "2026-01-12",
+      "title": "Five Nights at Freddy’s 2",
+      "year": "2025",
+      "rating": 2.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/five-nights-at-freddys-2/"
     }
   ]
 }
