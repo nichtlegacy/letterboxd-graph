@@ -1,16 +1,6674 @@
 {
   "user": "nichtlegacy",
-  "year": null,
+  "year": 2025,
   "years": [
-    2026,
     2025
   ],
-  "generatedAt": "2026-02-17T19:25:05.923Z",
+  "generatedAt": "2026-02-17T20:01:21.521Z",
+  "meta": {
+    "weekStart": "sunday",
+    "minYear": 2025,
+    "maxYear": 2025,
+    "startDate": "2025-01-01",
+    "endDate": "2025-12-31",
+    "alignedStart": "2024-12-29",
+    "weeks": 53,
+    "maxCount": 5
+  },
   "stats": {
-    "films": 402,
-    "daysActive": 279,
+    "films": 381,
+    "daysActive": 263,
     "streak": 34
   },
+  "monthLabels": [
+    {
+      "month": "Jan",
+      "week": 0
+    },
+    {
+      "month": "Feb",
+      "week": 4
+    },
+    {
+      "month": "Mar",
+      "week": 8
+    },
+    {
+      "month": "Apr",
+      "week": 13
+    },
+    {
+      "month": "May",
+      "week": 17
+    },
+    {
+      "month": "Jun",
+      "week": 22
+    },
+    {
+      "month": "Jul",
+      "week": 26
+    },
+    {
+      "month": "Aug",
+      "week": 30
+    },
+    {
+      "month": "Sep",
+      "week": 35
+    },
+    {
+      "month": "Oct",
+      "week": 39
+    },
+    {
+      "month": "Nov",
+      "week": 43
+    },
+    {
+      "month": "Dec",
+      "week": 48
+    }
+  ],
+  "calendar": [
+    {
+      "date": "2024-12-29",
+      "week": 0,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": false,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2024/12/29/"
+    },
+    {
+      "date": "2024-12-30",
+      "week": 0,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": false,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2024/12/30/"
+    },
+    {
+      "date": "2024-12-31",
+      "week": 0,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": false,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2024/12/31/"
+    },
+    {
+      "date": "2025-01-01",
+      "week": 0,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/01/"
+    },
+    {
+      "date": "2025-01-02",
+      "week": 0,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Monsters, Inc.",
+          "year": "2001",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/monsters-inc/"
+        },
+        {
+          "title": "Bad Teacher",
+          "year": "2011",
+          "rating": 1.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/bad-teacher/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/02/"
+    },
+    {
+      "date": "2025-01-03",
+      "week": 0,
+      "weekday": 5,
+      "count": 3,
+      "ratingAvg": 4.2,
+      "films": [
+        {
+          "title": "The Prestige",
+          "year": "2006",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-prestige/2/"
+        },
+        {
+          "title": "Top Gun: Maverick",
+          "year": "2022",
+          "rating": 5,
+          "url": "https://letterboxd.com/nichtlegacy/film/top-gun-maverick/"
+        },
+        {
+          "title": "Idle Hands",
+          "year": "1999",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/idle-hands/"
+        }
+      ],
+      "level": 3,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/03/"
+    },
+    {
+      "date": "2025-01-04",
+      "week": 0,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Beerfest",
+          "year": "2006",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/beerfest/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/04/"
+    },
+    {
+      "date": "2025-01-05",
+      "week": 1,
+      "weekday": 0,
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Half Baked",
+          "year": "1998",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/half-baked/1/"
+        },
+        {
+          "title": "Rush Hour",
+          "year": "1998",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/rush-hour/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/05/"
+    },
+    {
+      "date": "2025-01-06",
+      "week": 1,
+      "weekday": 1,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "The Other Guys",
+          "year": "2010",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-other-guys/"
+        },
+        {
+          "title": "Role Models",
+          "year": "2008",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/role-models/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/06/"
+    },
+    {
+      "date": "2025-01-07",
+      "week": 1,
+      "weekday": 2,
+      "count": 3,
+      "ratingAvg": 2.7,
+      "films": [
+        {
+          "title": "Good Kids",
+          "year": "2016",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/good-kids-2016/"
+        },
+        {
+          "title": "The Stöned Age",
+          "year": "1994",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-stoned-age/"
+        },
+        {
+          "title": "Bill & Ted’s Excellent Adventure",
+          "year": "1989",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/bill-teds-excellent-adventure/"
+        }
+      ],
+      "level": 3,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/07/"
+    },
+    {
+      "date": "2025-01-08",
+      "week": 1,
+      "weekday": 3,
+      "count": 2,
+      "ratingAvg": 2.8,
+      "films": [
+        {
+          "title": "Major Payne",
+          "year": "1995",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/major-payne/"
+        },
+        {
+          "title": "Bill & Ted’s Bogus Journey",
+          "year": "1991",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/bill-teds-bogus-journey/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/08/"
+    },
+    {
+      "date": "2025-01-09",
+      "week": 1,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "Wallace & Gromit: Vengeance Most Fowl",
+          "year": "2024",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/wallace-gromit-vengeance-most-fowl/"
+        },
+        {
+          "title": "Mallrats",
+          "year": "1995",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/mallrats/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/09/"
+    },
+    {
+      "date": "2025-01-10",
+      "week": 1,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Airplane!",
+          "year": "1980",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/airplane/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/10/"
+    },
+    {
+      "date": "2025-01-11",
+      "week": 1,
+      "weekday": 6,
+      "count": 2,
+      "ratingAvg": 2.3,
+      "films": [
+        {
+          "title": "Puff, Puff, Pass",
+          "year": "2006",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/puff-puff-pass/"
+        },
+        {
+          "title": "PCU",
+          "year": "1994",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/pcu/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/11/"
+    },
+    {
+      "date": "2025-01-12",
+      "week": 2,
+      "weekday": 0,
+      "count": 3,
+      "ratingAvg": 3.2,
+      "films": [
+        {
+          "title": "John Wick: Chapter 4",
+          "year": "2023",
+          "rating": 5,
+          "url": "https://letterboxd.com/nichtlegacy/film/john-wick-chapter-4/"
+        },
+        {
+          "title": "Scary Movie 4",
+          "year": "2006",
+          "rating": 1.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-4/"
+        },
+        {
+          "title": "The Dukes of Hazzard",
+          "year": "2005",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-dukes-of-hazzard/"
+        }
+      ],
+      "level": 3,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/12/"
+    },
+    {
+      "date": "2025-01-13",
+      "week": 2,
+      "weekday": 1,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "The Wrong Trousers",
+          "year": "1993",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-wrong-trousers/"
+        },
+        {
+          "title": "The Breakfast Club",
+          "year": "1985",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-breakfast-club/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/13/"
+    },
+    {
+      "date": "2025-01-14",
+      "week": 2,
+      "weekday": 2,
+      "count": 2,
+      "ratingAvg": 1.8,
+      "films": [
+        {
+          "title": "Celebrity Sex Tape",
+          "year": "2012",
+          "rating": 1,
+          "url": "https://letterboxd.com/nichtlegacy/film/celebrity-sex-tape/"
+        },
+        {
+          "title": "Office Space",
+          "year": "1999",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/office-space/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/14/"
+    },
+    {
+      "date": "2025-01-15",
+      "week": 2,
+      "weekday": 3,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "The Naked Gun: From the Files of Police Squad!",
+          "year": "1988",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-naked-gun-from-the-files-of-police-squad/"
+        },
+        {
+          "title": "Up in Smoke",
+          "year": "1978",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/up-in-smoke-1978/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/15/"
+    },
+    {
+      "date": "2025-01-16",
+      "week": 2,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "Deuce Bigalow: European Gigolo",
+          "year": "2005",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/deuce-bigalow-european-gigolo/"
+        },
+        {
+          "title": "Anchorman: The Legend of Ron Burgundy",
+          "year": "2004",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/anchorman-the-legend-of-ron-burgundy/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/16/"
+    },
+    {
+      "date": "2025-01-17",
+      "week": 2,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Deuce Bigalow: Male Gigolo",
+          "year": "1999",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/deuce-bigalow-male-gigolo/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/17/"
+    },
+    {
+      "date": "2025-01-18",
+      "week": 2,
+      "weekday": 6,
+      "count": 4,
+      "ratingAvg": 3.8,
+      "films": [
+        {
+          "title": "Monty Python and the Holy Grail",
+          "year": "1975",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/monty-python-and-the-holy-grail/"
+        },
+        {
+          "title": "Toy Story",
+          "year": "1995",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/toy-story/"
+        },
+        {
+          "title": "Good Will Hunting",
+          "year": "1997",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/good-will-hunting/"
+        },
+        {
+          "title": "Pineapple Express",
+          "year": "2008",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/pineapple-express/"
+        }
+      ],
+      "level": 4,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/18/"
+    },
+    {
+      "date": "2025-01-19",
+      "week": 3,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/19/"
+    },
+    {
+      "date": "2025-01-20",
+      "week": 3,
+      "weekday": 1,
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Anchorman: The Legend of Ron Burgundy",
+          "year": "2004",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/anchorman-the-legend-of-ron-burgundy/1/"
+        },
+        {
+          "title": "Toy Story 2",
+          "year": "1999",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/toy-story-2/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/20/"
+    },
+    {
+      "date": "2025-01-21",
+      "week": 3,
+      "weekday": 2,
+      "count": 2,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Bridesmaids",
+          "year": "2011",
+          "rating": 1.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/bridesmaids/"
+        },
+        {
+          "title": "Without a Paddle",
+          "year": "2004",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/without-a-paddle/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/21/"
+    },
+    {
+      "date": "2025-01-22",
+      "week": 3,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Dogma",
+          "year": "1999",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/dogma/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/22/"
+    },
+    {
+      "date": "2025-01-23",
+      "week": 3,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/23/"
+    },
+    {
+      "date": "2025-01-24",
+      "week": 3,
+      "weekday": 5,
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Sonic the Hedgehog 2",
+          "year": "2022",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/sonic-the-hedgehog-2/"
+        },
+        {
+          "title": "Geostorm",
+          "year": "2017",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/geostorm/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/24/"
+    },
+    {
+      "date": "2025-01-25",
+      "week": 3,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Sonic the Hedgehog 3",
+          "year": "2024",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/sonic-the-hedgehog-3/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/25/"
+    },
+    {
+      "date": "2025-01-26",
+      "week": 4,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/26/"
+    },
+    {
+      "date": "2025-01-27",
+      "week": 4,
+      "weekday": 1,
+      "count": 2,
+      "ratingAvg": 4.3,
+      "films": [
+        {
+          "title": "The SpongeBob SquarePants Movie",
+          "year": "2004",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-spongebob-squarepants-movie/"
+        },
+        {
+          "title": "High School",
+          "year": "2010",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/high-school-2010/1/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/27/"
+    },
+    {
+      "date": "2025-01-28",
+      "week": 4,
+      "weekday": 2,
+      "count": 2,
+      "ratingAvg": 2.8,
+      "films": [
+        {
+          "title": "Scooby-Doo",
+          "year": "2002",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/scooby-doo/"
+        },
+        {
+          "title": "Happy Gilmore",
+          "year": "1996",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/happy-gilmore/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/28/"
+    },
+    {
+      "date": "2025-01-29",
+      "week": 4,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Tommy Boy",
+          "year": "1995",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/tommy-boy/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/29/"
+    },
+    {
+      "date": "2025-01-30",
+      "week": 4,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Lammbock",
+          "year": "2001",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/lammbock/"
+        },
+        {
+          "title": "Billy Madison",
+          "year": "1995",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/billy-madison/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/30/"
+    },
+    {
+      "date": "2025-01-31",
+      "week": 4,
+      "weekday": 5,
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Hot Rod",
+          "year": "2007",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/hot-rod/"
+        },
+        {
+          "title": "Harry Potter and the Order of the Phoenix",
+          "year": "2007",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/harry-potter-and-the-order-of-the-phoenix/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/01/31/"
+    },
+    {
+      "date": "2025-02-01",
+      "week": 4,
+      "weekday": 6,
+      "count": 2,
+      "ratingAvg": 2.8,
+      "films": [
+        {
+          "title": "My Neighbor Totoro",
+          "year": "1988",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/my-neighbor-totoro/"
+        },
+        {
+          "title": "Airheads",
+          "year": "1994",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/airheads/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/01/"
+    },
+    {
+      "date": "2025-02-02",
+      "week": 5,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Orange County",
+          "year": "2002",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/orange-county/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/02/"
+    },
+    {
+      "date": "2025-02-03",
+      "week": 5,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "There’s Something About Mary",
+          "year": "1998",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/theres-something-about-mary/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/03/"
+    },
+    {
+      "date": "2025-02-04",
+      "week": 5,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 5,
+      "films": [
+        {
+          "title": "The Big Lebowski",
+          "year": "1998",
+          "rating": 5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-big-lebowski/2/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/04/"
+    },
+    {
+      "date": "2025-02-05",
+      "week": 5,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 2,
+      "films": [
+        {
+          "title": "Bio-Dome",
+          "year": "1996",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/bio-dome/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/05/"
+    },
+    {
+      "date": "2025-02-06",
+      "week": 5,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Kingpin",
+          "year": "1996",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/kingpin/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/06/"
+    },
+    {
+      "date": "2025-02-07",
+      "week": 5,
+      "weekday": 5,
+      "count": 2,
+      "ratingAvg": 2.8,
+      "films": [
+        {
+          "title": "Soul Plane",
+          "year": "2004",
+          "rating": 1.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/soul-plane/"
+        },
+        {
+          "title": "Dazed and Confused",
+          "year": "1993",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/dazed-and-confused/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/07/"
+    },
+    {
+      "date": "2025-02-08",
+      "week": 5,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Ferris Bueller’s Day Off",
+          "year": "1986",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/ferris-buellers-day-off/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/08/"
+    },
+    {
+      "date": "2025-02-09",
+      "week": 6,
+      "weekday": 0,
+      "count": 3,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Detroit Rock City",
+          "year": "1999",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/detroit-rock-city/"
+        },
+        {
+          "title": "Can’t Hardly Wait",
+          "year": "1998",
+          "rating": 1.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/cant-hardly-wait/"
+        },
+        {
+          "title": "21 Jump Street",
+          "year": "2012",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/21-jump-street/1/"
+        }
+      ],
+      "level": 3,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/09/"
+    },
+    {
+      "date": "2025-02-10",
+      "week": 6,
+      "weekday": 1,
+      "count": 2,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Detroit Rock City",
+          "year": "1999",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/detroit-rock-city/1/"
+        },
+        {
+          "title": "Fast Times at Ridgemont High",
+          "year": "1982",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/fast-times-at-ridgemont-high/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/10/"
+    },
+    {
+      "date": "2025-02-11",
+      "week": 6,
+      "weekday": 2,
+      "count": 2,
+      "ratingAvg": 4.3,
+      "films": [
+        {
+          "title": "American Pie",
+          "year": "1999",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/american-pie/"
+        },
+        {
+          "title": "O Brother, Where Art Thou?",
+          "year": "2000",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/o-brother-where-art-thou/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/11/"
+    },
+    {
+      "date": "2025-02-12",
+      "week": 6,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Fear and Loathing in Las Vegas",
+          "year": "1998",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/fear-and-loathing-in-las-vegas/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/12/"
+    },
+    {
+      "date": "2025-02-13",
+      "week": 6,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Kid Cannabis",
+          "year": "2014",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/kid-cannabis/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/13/"
+    },
+    {
+      "date": "2025-02-14",
+      "week": 6,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Cheech & Chong’s Next Movie",
+          "year": "1980",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/cheech-chongs-next-movie/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/14/"
+    },
+    {
+      "date": "2025-02-15",
+      "week": 6,
+      "weekday": 6,
+      "count": 2,
+      "ratingAvg": 2.3,
+      "films": [
+        {
+          "title": "The Emperor’s New Groove",
+          "year": "2000",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-emperors-new-groove/"
+        },
+        {
+          "title": "Out Cold",
+          "year": "2001",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/out-cold/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/15/"
+    },
+    {
+      "date": "2025-02-16",
+      "week": 7,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Click",
+          "year": "2006",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/click/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/16/"
+    },
+    {
+      "date": "2025-02-17",
+      "week": 7,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Keanu",
+          "year": "2016",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/keanu/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/17/"
+    },
+    {
+      "date": "2025-02-18",
+      "week": 7,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Tropic Thunder",
+          "year": "2008",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/tropic-thunder/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/18/"
+    },
+    {
+      "date": "2025-02-19",
+      "week": 7,
+      "weekday": 3,
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Stand by Me",
+          "year": "1986",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/stand-by-me/"
+        },
+        {
+          "title": "Your Highness",
+          "year": "2011",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/your-highness/1/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/19/"
+    },
+    {
+      "date": "2025-02-20",
+      "week": 7,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Booksmart",
+          "year": "2019",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/booksmart/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/20/"
+    },
+    {
+      "date": "2025-02-21",
+      "week": 7,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Saving Grace",
+          "year": "2000",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/saving-grace/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/21/"
+    },
+    {
+      "date": "2025-02-22",
+      "week": 7,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Toy Story 3",
+          "year": "2010",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/toy-story-3/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/22/"
+    },
+    {
+      "date": "2025-02-23",
+      "week": 8,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Employee of the Month",
+          "year": "2006",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/employee-of-the-month-2006/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/23/"
+    },
+    {
+      "date": "2025-02-24",
+      "week": 8,
+      "weekday": 1,
+      "count": 2,
+      "ratingAvg": 2.8,
+      "films": [
+        {
+          "title": "Raising Arizona",
+          "year": "1987",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/raising-arizona/"
+        },
+        {
+          "title": "Ace Ventura: Pet Detective",
+          "year": "1994",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/ace-ventura-pet-detective/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/24/"
+    },
+    {
+      "date": "2025-02-25",
+      "week": 8,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Fargo",
+          "year": "1996",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/fargo/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/25/"
+    },
+    {
+      "date": "2025-02-26",
+      "week": 8,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Strange Brew",
+          "year": "1983",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/strange-brew/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/26/"
+    },
+    {
+      "date": "2025-02-27",
+      "week": 8,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Big Daddy",
+          "year": "1999",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/big-daddy/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/27/"
+    },
+    {
+      "date": "2025-02-28",
+      "week": 8,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Mr. Deeds",
+          "year": "2002",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/mr-deeds/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/02/28/"
+    },
+    {
+      "date": "2025-03-01",
+      "week": 8,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 2,
+      "films": [
+        {
+          "title": "The Wackness",
+          "year": "2008",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-wackness/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/01/"
+    },
+    {
+      "date": "2025-03-02",
+      "week": 9,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/02/"
+    },
+    {
+      "date": "2025-03-03",
+      "week": 9,
+      "weekday": 1,
+      "count": 2,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Your Name.",
+          "year": "2016",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/your-name/"
+        },
+        {
+          "title": "Not Another Teen Movie",
+          "year": "2001",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/not-another-teen-movie/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/03/"
+    },
+    {
+      "date": "2025-03-04",
+      "week": 9,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Weathering with You",
+          "year": "2019",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/weathering-with-you/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/04/"
+    },
+    {
+      "date": "2025-03-05",
+      "week": 9,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Suzume",
+          "year": "2022",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/suzume/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/05/"
+    },
+    {
+      "date": "2025-03-06",
+      "week": 9,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Clerks II",
+          "year": "2006",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/clerks-ii/"
+        },
+        {
+          "title": "5 Centimeters per Second",
+          "year": "2007",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/5-centimeters-per-second/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/06/"
+    },
+    {
+      "date": "2025-03-07",
+      "week": 9,
+      "weekday": 5,
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Piece By Piece",
+          "year": "2024",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/piece-by-piece-2024/"
+        },
+        {
+          "title": "Sex Drive",
+          "year": "2008",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/sex-drive/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/07/"
+    },
+    {
+      "date": "2025-03-08",
+      "week": 9,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Starsky & Hutch",
+          "year": "2004",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/starsky-hutch/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/08/"
+    },
+    {
+      "date": "2025-03-09",
+      "week": 10,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 4.5,
+      "films": [
+        {
+          "title": "Smiley Face",
+          "year": "2007",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/smiley-face/4/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/09/"
+    },
+    {
+      "date": "2025-03-10",
+      "week": 10,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Bring It On",
+          "year": "2000",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/bring-it-on/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/10/"
+    },
+    {
+      "date": "2025-03-11",
+      "week": 10,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "DodgeBall: A True Underdog Story",
+          "year": "2004",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/dodgeball-a-true-underdog-story/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/11/"
+    },
+    {
+      "date": "2025-03-12",
+      "week": 10,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "School of Rock",
+          "year": "2003",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/school-of-rock/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/12/"
+    },
+    {
+      "date": "2025-03-13",
+      "week": 10,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 2.8,
+      "films": [
+        {
+          "title": "Surfer, Dude",
+          "year": "2008",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/surfer-dude/"
+        },
+        {
+          "title": "Forgetting Sarah Marshall",
+          "year": "2008",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/forgetting-sarah-marshall/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/13/"
+    },
+    {
+      "date": "2025-03-14",
+      "week": 10,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "This Is 40",
+          "year": "2012",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/this-is-40/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/14/"
+    },
+    {
+      "date": "2025-03-15",
+      "week": 10,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Mac & Devin Go to High School",
+          "year": "2012",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/mac-devin-go-to-high-school/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/15/"
+    },
+    {
+      "date": "2025-03-16",
+      "week": 11,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Matchstick Men",
+          "year": "2003",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/matchstick-men/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/16/"
+    },
+    {
+      "date": "2025-03-17",
+      "week": 11,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Shaun of the Dead",
+          "year": "2004",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/shaun-of-the-dead/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/17/"
+    },
+    {
+      "date": "2025-03-18",
+      "week": 11,
+      "weekday": 2,
+      "count": 2,
+      "ratingAvg": 2.3,
+      "films": [
+        {
+          "title": "What Happens in Vegas",
+          "year": "2008",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/what-happens-in-vegas/"
+        },
+        {
+          "title": "Bad Santa",
+          "year": "2003",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/bad-santa/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/18/"
+    },
+    {
+      "date": "2025-03-19",
+      "week": 11,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Talladega Nights: The Ballad of Ricky Bobby",
+          "year": "2006",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/talladega-nights-the-ballad-of-ricky-bobby/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/19/"
+    },
+    {
+      "date": "2025-03-20",
+      "week": 11,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Open Season",
+          "year": "2006",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/open-season/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/20/"
+    },
+    {
+      "date": "2025-03-21",
+      "week": 11,
+      "weekday": 5,
+      "count": 3,
+      "ratingAvg": 4.3,
+      "films": [
+        {
+          "title": "I Want to Eat Your Pancreas",
+          "year": "2018",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/i-want-to-eat-your-pancreas/"
+        },
+        {
+          "title": "The Garden of Words",
+          "year": "2013",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-garden-of-words/"
+        },
+        {
+          "title": "Your Name.",
+          "year": "2016",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/your-name/1/"
+        }
+      ],
+      "level": 3,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/21/"
+    },
+    {
+      "date": "2025-03-22",
+      "week": 11,
+      "weekday": 6,
+      "count": 4,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The Nutty Professor",
+          "year": "1996",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-nutty-professor-1996/"
+        },
+        {
+          "title": "Extract",
+          "year": "2009",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/extract/"
+        },
+        {
+          "title": "The Girl Who Leapt Through Time",
+          "year": "2006",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-girl-who-leapt-through-time/"
+        },
+        {
+          "title": "A Silent Voice: The Movie",
+          "year": "2016",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/a-silent-voice-the-movie/"
+        }
+      ],
+      "level": 4,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/22/"
+    },
+    {
+      "date": "2025-03-23",
+      "week": 12,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Top Secret!",
+          "year": "1984",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/top-secret/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/23/"
+    },
+    {
+      "date": "2025-03-24",
+      "week": 12,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Team America: World Police",
+          "year": "2004",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/team-america-world-police/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/24/"
+    },
+    {
+      "date": "2025-03-25",
+      "week": 12,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Trainspotting",
+          "year": "1996",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/trainspotting/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/25/"
+    },
+    {
+      "date": "2025-03-26",
+      "week": 12,
+      "weekday": 3,
+      "count": 3,
+      "ratingAvg": 2.8,
+      "films": [
+        {
+          "title": "Wayne’s World",
+          "year": "1992",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/waynes-world/"
+        },
+        {
+          "title": "You, Me and Dupree",
+          "year": "2006",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/you-me-and-dupree/"
+        },
+        {
+          "title": "Reefer Madness: The Movie Musical",
+          "year": "2005",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/reefer-madness-the-movie-musical/"
+        }
+      ],
+      "level": 3,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/26/"
+    },
+    {
+      "date": "2025-03-27",
+      "week": 12,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "White Men Can’t Jump",
+          "year": "1992",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/white-men-cant-jump/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/27/"
+    },
+    {
+      "date": "2025-03-28",
+      "week": 12,
+      "weekday": 5,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "Bill & Ted’s Excellent Adventure",
+          "year": "1989",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/bill-teds-excellent-adventure/1/"
+        },
+        {
+          "title": "The Waterboy",
+          "year": "1998",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-waterboy/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/28/"
+    },
+    {
+      "date": "2025-03-29",
+      "week": 12,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Going the Distance",
+          "year": "2004",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/going-the-distance/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/29/"
+    },
+    {
+      "date": "2025-03-30",
+      "week": 13,
+      "weekday": 0,
+      "count": 2,
+      "ratingAvg": 2.8,
+      "films": [
+        {
+          "title": "Napoleon Dynamite",
+          "year": "2004",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/napoleon-dynamite/"
+        },
+        {
+          "title": "Fanboys",
+          "year": "2009",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/fanboys/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/30/"
+    },
+    {
+      "date": "2025-03-31",
+      "week": 13,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Heartbreakers",
+          "year": "2001",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/heartbreakers/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/03/31/"
+    },
+    {
+      "date": "2025-04-01",
+      "week": 13,
+      "weekday": 2,
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Princess Protection Program",
+          "year": "2009",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/princess-protection-program/"
+        },
+        {
+          "title": "True Romance",
+          "year": "1993",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/true-romance/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/01/"
+    },
+    {
+      "date": "2025-04-02",
+      "week": 13,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Easy A",
+          "year": "2010",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/easy-a/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/02/"
+    },
+    {
+      "date": "2025-04-03",
+      "week": 13,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 4.3,
+      "films": [
+        {
+          "title": "South Park: Bigger, Longer & Uncut",
+          "year": "1999",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/south-park-bigger-longer-uncut/"
+        },
+        {
+          "title": "The Big Lebowski",
+          "year": "1998",
+          "rating": 5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-big-lebowski/3/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/03/"
+    },
+    {
+      "date": "2025-04-04",
+      "week": 13,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/04/"
+    },
+    {
+      "date": "2025-04-05",
+      "week": 13,
+      "weekday": 6,
+      "count": 2,
+      "ratingAvg": 2.8,
+      "films": [
+        {
+          "title": "Clueless",
+          "year": "1995",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/clueless/"
+        },
+        {
+          "title": "The Internship",
+          "year": "2013",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-internship/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/05/"
+    },
+    {
+      "date": "2025-04-06",
+      "week": 14,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Epic Movie",
+          "year": "2007",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/epic-movie/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/06/"
+    },
+    {
+      "date": "2025-04-07",
+      "week": 14,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Jumanji: The Next Level",
+          "year": "2019",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/jumanji-the-next-level/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/07/"
+    },
+    {
+      "date": "2025-04-08",
+      "week": 14,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Puss in Boots",
+          "year": "2011",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/puss-in-boots/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/08/"
+    },
+    {
+      "date": "2025-04-09",
+      "week": 14,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/09/"
+    },
+    {
+      "date": "2025-04-10",
+      "week": 14,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The Simpsons Movie",
+          "year": "2007",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-simpsons-movie/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/10/"
+    },
+    {
+      "date": "2025-04-11",
+      "week": 14,
+      "weekday": 5,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "Goodbye Berlin",
+          "year": "2016",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/goodbye-berlin/"
+        },
+        {
+          "title": "Mean Girls",
+          "year": "2004",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/mean-girls/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/11/"
+    },
+    {
+      "date": "2025-04-12",
+      "week": 14,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "A Haunted House 2",
+          "year": "2014",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/a-haunted-house-2/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/12/"
+    },
+    {
+      "date": "2025-04-13",
+      "week": 15,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "The Martian",
+          "year": "2015",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-martian/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/13/"
+    },
+    {
+      "date": "2025-04-14",
+      "week": 15,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The Hitchhiker’s Guide to the Galaxy",
+          "year": "2005",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-hitchhikers-guide-to-the-galaxy-2005/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/14/"
+    },
+    {
+      "date": "2025-04-15",
+      "week": 15,
+      "weekday": 2,
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The Princess Diaries",
+          "year": "2001",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-princess-diaries/"
+        },
+        {
+          "title": "Novocaine",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/novocaine-2025/1/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/15/"
+    },
+    {
+      "date": "2025-04-16",
+      "week": 15,
+      "weekday": 3,
+      "count": 5,
+      "ratingAvg": 2.8,
+      "films": [
+        {
+          "title": "Journey to the Center of the Earth",
+          "year": "2008",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/journey-to-the-center-of-the-earth-2008/"
+        },
+        {
+          "title": "A Haunted House",
+          "year": "2013",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/a-haunted-house/"
+        },
+        {
+          "title": "Good Boys",
+          "year": "2019",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/good-boys-2019/"
+        },
+        {
+          "title": "Captain America: Brave New World",
+          "year": "2025",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/captain-america-brave-new-world/"
+        },
+        {
+          "title": "Liar Liar",
+          "year": "1997",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/liar-liar/"
+        }
+      ],
+      "level": 4,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/16/"
+    },
+    {
+      "date": "2025-04-17",
+      "week": 15,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Dazed and Confused",
+          "year": "1993",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/dazed-and-confused/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/17/"
+    },
+    {
+      "date": "2025-04-18",
+      "week": 15,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Nice Dreams",
+          "year": "1981",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/nice-dreams/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/18/"
+    },
+    {
+      "date": "2025-04-19",
+      "week": 15,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Cat Returns",
+          "year": "2002",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-cat-returns/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/19/"
+    },
+    {
+      "date": "2025-04-20",
+      "week": 16,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/20/"
+    },
+    {
+      "date": "2025-04-21",
+      "week": 16,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Margin Call",
+          "year": "2011",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/margin-call/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/21/"
+    },
+    {
+      "date": "2025-04-22",
+      "week": 16,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Dude, Where’s My Car?",
+          "year": "2000",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/22/"
+    },
+    {
+      "date": "2025-04-23",
+      "week": 16,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Harold & Kumar Escape from Guantanamo Bay",
+          "year": "2008",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/harold-kumar-escape-from-guantanamo-bay/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/23/"
+    },
+    {
+      "date": "2025-04-24",
+      "week": 16,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The Brothers Solomon",
+          "year": "2007",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-brothers-solomon/"
+        },
+        {
+          "title": "Nacho Libre",
+          "year": "2006",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/nacho-libre/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/24/"
+    },
+    {
+      "date": "2025-04-25",
+      "week": 16,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "iHostage",
+          "year": "2025",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/ihostage/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/25/"
+    },
+    {
+      "date": "2025-04-26",
+      "week": 16,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Why Him?",
+          "year": "2016",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/why-him/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/26/"
+    },
+    {
+      "date": "2025-04-27",
+      "week": 17,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 2,
+      "films": [
+        {
+          "title": "It’s a Wonderful Binge",
+          "year": "2022",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/its-a-wonderful-binge/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/27/"
+    },
+    {
+      "date": "2025-04-28",
+      "week": 17,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "MacGruber",
+          "year": "2010",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/macgruber/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/28/"
+    },
+    {
+      "date": "2025-04-29",
+      "week": 17,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Sky High",
+          "year": "2005",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/sky-high-2005/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/29/"
+    },
+    {
+      "date": "2025-04-30",
+      "week": 17,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Hit Man",
+          "year": "2023",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/hit-man-2023/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/04/30/"
+    },
+    {
+      "date": "2025-05-01",
+      "week": 17,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "Pootie Tang",
+          "year": "2001",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/pootie-tang/"
+        },
+        {
+          "title": "Gone Girl",
+          "year": "2014",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/gone-girl/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/01/"
+    },
+    {
+      "date": "2025-05-02",
+      "week": 17,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Our Idiot Brother",
+          "year": "2011",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/our-idiot-brother/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/02/"
+    },
+    {
+      "date": "2025-05-03",
+      "week": 17,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The Kings of Summer",
+          "year": "2013",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-kings-of-summer/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/03/"
+    },
+    {
+      "date": "2025-05-04",
+      "week": 18,
+      "weekday": 0,
+      "count": 4,
+      "ratingAvg": 3.6,
+      "films": [
+        {
+          "title": "Family Guy Presents: Something, Something, Something, Dark Side",
+          "year": "2009",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/family-guy-presents-something-something-something-dark-side/1/"
+        },
+        {
+          "title": "Robot Chicken: Star Wars",
+          "year": "2007",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/robot-chicken-star-wars/"
+        },
+        {
+          "title": "Family Guy Presents: Blue Harvest",
+          "year": "2007",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/family-guy-presents-blue-harvest/1/"
+        },
+        {
+          "title": "Star Wars",
+          "year": "1977",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/star-wars/1/"
+        }
+      ],
+      "level": 4,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/04/"
+    },
+    {
+      "date": "2025-05-05",
+      "week": 18,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Thunderbolts*",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/thunderbolts/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/05/"
+    },
+    {
+      "date": "2025-05-06",
+      "week": 18,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/06/"
+    },
+    {
+      "date": "2025-05-07",
+      "week": 18,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/07/"
+    },
+    {
+      "date": "2025-05-08",
+      "week": 18,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Crank",
+          "year": "2006",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/crank/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/08/"
+    },
+    {
+      "date": "2025-05-09",
+      "week": 18,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/09/"
+    },
+    {
+      "date": "2025-05-10",
+      "week": 18,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Half Baked",
+          "year": "1998",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/half-baked/2/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/10/"
+    },
+    {
+      "date": "2025-05-11",
+      "week": 19,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "American Pie 2",
+          "year": "2001",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/american-pie-2/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/11/"
+    },
+    {
+      "date": "2025-05-12",
+      "week": 19,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 1.5,
+      "films": [
+        {
+          "title": "Stan Helsing",
+          "year": "2009",
+          "rating": 1.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/stan-helsing/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/12/"
+    },
+    {
+      "date": "2025-05-13",
+      "week": 19,
+      "weekday": 2,
+      "count": 2,
+      "ratingAvg": 3.8,
+      "films": [
+        {
+          "title": "The Beach Bum",
+          "year": "2019",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-beach-bum/"
+        },
+        {
+          "title": "A Minecraft Movie",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/a-minecraft-movie/1/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/13/"
+    },
+    {
+      "date": "2025-05-14",
+      "week": 19,
+      "weekday": 3,
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Cat in the Hat",
+          "year": "2003",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-cat-in-the-hat-2003/"
+        },
+        {
+          "title": "The Craft",
+          "year": "1996",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-craft/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/14/"
+    },
+    {
+      "date": "2025-05-15",
+      "week": 19,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Date Movie",
+          "year": "2006",
+          "rating": 1.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/date-movie/"
+        },
+        {
+          "title": "A Working Man",
+          "year": "2025",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/a-working-man/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/15/"
+    },
+    {
+      "date": "2025-05-16",
+      "week": 19,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Ghost in the Shell",
+          "year": "1995",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/ghost-in-the-shell/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/16/"
+    },
+    {
+      "date": "2025-05-17",
+      "week": 19,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Let’s Be Cops",
+          "year": "2014",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/lets-be-cops/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/17/"
+    },
+    {
+      "date": "2025-05-18",
+      "week": 20,
+      "weekday": 0,
+      "count": 2,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Strange Wilderness",
+          "year": "2008",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/strange-wilderness/1/"
+        },
+        {
+          "title": "American Pie Presents: Girls’ Rules",
+          "year": "2020",
+          "rating": 1.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/american-pie-presents-girls-rules/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/18/"
+    },
+    {
+      "date": "2025-05-19",
+      "week": 20,
+      "weekday": 1,
+      "count": 2,
+      "ratingAvg": 3.8,
+      "films": [
+        {
+          "title": "Jay and Silent Bob Strike Back",
+          "year": "2001",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/jay-and-silent-bob-strike-back/1/"
+        },
+        {
+          "title": "Warfare",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/warfare/4/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/19/"
+    },
+    {
+      "date": "2025-05-20",
+      "week": 20,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Disaster Movie",
+          "year": "2008",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/disaster-movie/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/20/"
+    },
+    {
+      "date": "2025-05-21",
+      "week": 20,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "End of Watch",
+          "year": "2012",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/end-of-watch/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/21/"
+    },
+    {
+      "date": "2025-05-22",
+      "week": 20,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "How High",
+          "year": "2001",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/how-high/"
+        },
+        {
+          "title": "Scary Movie 4",
+          "year": "2006",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-4/1/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/22/"
+    },
+    {
+      "date": "2025-05-23",
+      "week": 20,
+      "weekday": 5,
+      "count": 2,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Up in Smoke",
+          "year": "1978",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/up-in-smoke-1978/1/"
+        },
+        {
+          "title": "Friday",
+          "year": "1995",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/friday/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/23/"
+    },
+    {
+      "date": "2025-05-24",
+      "week": 20,
+      "weekday": 6,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "Things Are Tough All Over",
+          "year": "1982",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/things-are-tough-all-over/"
+        },
+        {
+          "title": "Final Destination Bloodlines",
+          "year": "2025",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/final-destination-bloodlines/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/24/"
+    },
+    {
+      "date": "2025-05-25",
+      "week": 21,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Saving Bikini Bottom: The Sandy Cheeks Movie",
+          "year": "2024",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/saving-bikini-bottom-the-sandy-cheeks-movie/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/25/"
+    },
+    {
+      "date": "2025-05-26",
+      "week": 21,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Idiocracy",
+          "year": "2006",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/idiocracy/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/26/"
+    },
+    {
+      "date": "2025-05-27",
+      "week": 21,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "I Love You, Man",
+          "year": "2009",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/i-love-you-man/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/27/"
+    },
+    {
+      "date": "2025-05-28",
+      "week": 21,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/28/"
+    },
+    {
+      "date": "2025-05-29",
+      "week": 21,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Superhero Movie",
+          "year": "2008",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/superhero-movie/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/29/"
+    },
+    {
+      "date": "2025-05-30",
+      "week": 21,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "The Campaign",
+          "year": "2012",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-campaign/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/30/"
+    },
+    {
+      "date": "2025-05-31",
+      "week": 21,
+      "weekday": 6,
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The New Guy",
+          "year": "2002",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-new-guy/"
+        },
+        {
+          "title": "Lilo & Stitch",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/lilo-stitch-2025/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/05/31/"
+    },
+    {
+      "date": "2025-06-01",
+      "week": 22,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/01/"
+    },
+    {
+      "date": "2025-06-02",
+      "week": 22,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/02/"
+    },
+    {
+      "date": "2025-06-03",
+      "week": 22,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The Stöned Age",
+          "year": "1994",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-stoned-age/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/03/"
+    },
+    {
+      "date": "2025-06-04",
+      "week": 22,
+      "weekday": 3,
+      "count": 3,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "DuckTales: The Movie – Treasure of the Lost Lamp",
+          "year": "1990",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/ducktales-the-movie-treasure-of-the-lost-lamp/"
+        },
+        {
+          "title": "(500) Days of Summer",
+          "year": "2009",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/500-days-of-summer/"
+        },
+        {
+          "title": "CB4",
+          "year": "1993",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/cb4/"
+        }
+      ],
+      "level": 3,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/04/"
+    },
+    {
+      "date": "2025-06-05",
+      "week": 22,
+      "weekday": 4,
+      "count": 3,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The DUFF",
+          "year": "2015",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-duff/"
+        },
+        {
+          "title": "Meet Dave",
+          "year": "2008",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/meet-dave/"
+        },
+        {
+          "title": "Austin Powers: International Man of Mystery",
+          "year": "1997",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/austin-powers-international-man-of-mystery/"
+        }
+      ],
+      "level": 3,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/05/"
+    },
+    {
+      "date": "2025-06-06",
+      "week": 22,
+      "weekday": 5,
+      "count": 2,
+      "ratingAvg": 2,
+      "films": [
+        {
+          "title": "Little Nicky",
+          "year": "2000",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/little-nicky/"
+        },
+        {
+          "title": "The Ten",
+          "year": "2007",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-ten/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/06/"
+    },
+    {
+      "date": "2025-06-07",
+      "week": 22,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Get Him to the Greek",
+          "year": "2010",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/get-him-to-the-greek/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/07/"
+    },
+    {
+      "date": "2025-06-08",
+      "week": 23,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "They Came Together",
+          "year": "2014",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/they-came-together/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/08/"
+    },
+    {
+      "date": "2025-06-09",
+      "week": 23,
+      "weekday": 1,
+      "count": 2,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Lock, Stock and Two Smoking Barrels",
+          "year": "1998",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/lock-stock-and-two-smoking-barrels/"
+        },
+        {
+          "title": "New Kids Nitro",
+          "year": "2011",
+          "rating": 1.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/new-kids-nitro/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/09/"
+    },
+    {
+      "date": "2025-06-10",
+      "week": 23,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Freaky Friday",
+          "year": "2003",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/freaky-friday-2003/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/10/"
+    },
+    {
+      "date": "2025-06-11",
+      "week": 23,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The 40 Year Old Virgin",
+          "year": "2005",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-40-year-old-virgin/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/11/"
+    },
+    {
+      "date": "2025-06-12",
+      "week": 23,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Everybody Wants Some!!",
+          "year": "2016",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/everybody-wants-some/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/12/"
+    },
+    {
+      "date": "2025-06-13",
+      "week": 23,
+      "weekday": 5,
+      "count": 2,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Companion",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/companion-2025/1/"
+        },
+        {
+          "title": "The Amateur",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-amateur-2025/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/13/"
+    },
+    {
+      "date": "2025-06-14",
+      "week": 23,
+      "weekday": 6,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "The Place Promised in Our Early Days",
+          "year": "2004",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-place-promised-in-our-early-days/"
+        },
+        {
+          "title": "The Adjustment Bureau",
+          "year": "2011",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-adjustment-bureau/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/14/"
+    },
+    {
+      "date": "2025-06-15",
+      "week": 24,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/15/"
+    },
+    {
+      "date": "2025-06-16",
+      "week": 24,
+      "weekday": 1,
+      "count": 3,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "The Big Lebowski",
+          "year": "1998",
+          "rating": 5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-big-lebowski/4/"
+        },
+        {
+          "title": "The To Do List",
+          "year": "2013",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-to-do-list/"
+        },
+        {
+          "title": "Pitch Perfect",
+          "year": "2012",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/pitch-perfect/"
+        }
+      ],
+      "level": 3,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/16/"
+    },
+    {
+      "date": "2025-06-17",
+      "week": 24,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Observe and Report",
+          "year": "2009",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/observe-and-report/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/17/"
+    },
+    {
+      "date": "2025-06-18",
+      "week": 24,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 1.5,
+      "films": [
+        {
+          "title": "The Wrong Missy",
+          "year": "2020",
+          "rating": 1.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-wrong-missy/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/18/"
+    },
+    {
+      "date": "2025-06-19",
+      "week": 24,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "mid90s",
+          "year": "2018",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/mid90s/"
+        },
+        {
+          "title": "Dope",
+          "year": "2015",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/dope-2015/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/19/"
+    },
+    {
+      "date": "2025-06-20",
+      "week": 24,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/20/"
+    },
+    {
+      "date": "2025-06-21",
+      "week": 24,
+      "weekday": 6,
+      "count": 3,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Land of the Lost",
+          "year": "2009",
+          "rating": 1.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/land-of-the-lost/"
+        },
+        {
+          "title": "Grandma’s Boy",
+          "year": "2006",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/grandmas-boy-2006/1/"
+        },
+        {
+          "title": "Moonfall",
+          "year": "2022",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/moonfall/"
+        }
+      ],
+      "level": 3,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/21/"
+    },
+    {
+      "date": "2025-06-22",
+      "week": 25,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Donnie Darko",
+          "year": "2001",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/donnie-darko/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/22/"
+    },
+    {
+      "date": "2025-06-23",
+      "week": 25,
+      "weekday": 1,
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The Lego Movie 2: The Second Part",
+          "year": "2019",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-lego-movie-2-the-second-part/"
+        },
+        {
+          "title": "12 Angry Men",
+          "year": "1957",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/12-angry-men/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/23/"
+    },
+    {
+      "date": "2025-06-24",
+      "week": 25,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Under the Silver Lake",
+          "year": "2018",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/under-the-silver-lake/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/24/"
+    },
+    {
+      "date": "2025-06-25",
+      "week": 25,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Coherence",
+          "year": "2013",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/coherence/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/25/"
+    },
+    {
+      "date": "2025-06-26",
+      "week": 25,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Mulholland Drive",
+          "year": "2001",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/mulholland-drive/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/26/"
+    },
+    {
+      "date": "2025-06-27",
+      "week": 25,
+      "weekday": 5,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "The Virgin Suicides",
+          "year": "1999",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-virgin-suicides/"
+        },
+        {
+          "title": "Squid Game",
+          "year": "2021",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/squid-game/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/27/"
+    },
+    {
+      "date": "2025-06-28",
+      "week": 25,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Chicken Run",
+          "year": "2000",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/chicken-run/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/28/"
+    },
+    {
+      "date": "2025-06-29",
+      "week": 26,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Kiss Kiss Bang Bang",
+          "year": "2005",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/kiss-kiss-bang-bang-2005/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/29/"
+    },
+    {
+      "date": "2025-06-30",
+      "week": 26,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Teenage Mutant Ninja Turtles",
+          "year": "1990",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/teenage-mutant-ninja-turtles/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/06/30/"
+    },
+    {
+      "date": "2025-07-01",
+      "week": 26,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Ballerina",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/ballerina-2025/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/01/"
+    },
+    {
+      "date": "2025-07-02",
+      "week": 26,
+      "weekday": 3,
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Fifth Element",
+          "year": "1997",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-fifth-element/"
+        },
+        {
+          "title": "Heads of State",
+          "year": "2025",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/heads-of-state/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/02/"
+    },
+    {
+      "date": "2025-07-03",
+      "week": 26,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Dog Man",
+          "year": "2025",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/dog-man/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/03/"
+    },
+    {
+      "date": "2025-07-04",
+      "week": 26,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Kill Bill: Vol. 1",
+          "year": "2003",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/kill-bill-vol-1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/04/"
+    },
+    {
+      "date": "2025-07-05",
+      "week": 26,
+      "weekday": 6,
+      "count": 2,
+      "ratingAvg": 2.8,
+      "films": [
+        {
+          "title": "The Muppets",
+          "year": "2011",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-muppets/"
+        },
+        {
+          "title": "The Ten",
+          "year": "2007",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-ten/1/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/05/"
+    },
+    {
+      "date": "2025-07-06",
+      "week": 27,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 2,
+      "films": [
+        {
+          "title": "Encino Man",
+          "year": "1992",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/encino-man/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/06/"
+    },
+    {
+      "date": "2025-07-07",
+      "week": 27,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Bill & Ted Face the Music",
+          "year": "2020",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/bill-ted-face-the-music/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/07/"
+    },
+    {
+      "date": "2025-07-08",
+      "week": 27,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/08/"
+    },
+    {
+      "date": "2025-07-09",
+      "week": 27,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/09/"
+    },
+    {
+      "date": "2025-07-10",
+      "week": 27,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/10/"
+    },
+    {
+      "date": "2025-07-11",
+      "week": 27,
+      "weekday": 5,
+      "count": 2,
+      "ratingAvg": 3.8,
+      "films": [
+        {
+          "title": "Chronicle",
+          "year": "2012",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/chronicle/"
+        },
+        {
+          "title": "The Day of the Jackal",
+          "year": "2024",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-day-of-the-jackal-2024/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/11/"
+    },
+    {
+      "date": "2025-07-12",
+      "week": 27,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/12/"
+    },
+    {
+      "date": "2025-07-13",
+      "week": 28,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Tucker and Dale vs. Evil",
+          "year": "2010",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/tucker-and-dale-vs-evil/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/13/"
+    },
+    {
+      "date": "2025-07-14",
+      "week": 28,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The Art of Self-Defense",
+          "year": "2019",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-art-of-self-defense-2019/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/14/"
+    },
+    {
+      "date": "2025-07-15",
+      "week": 28,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/15/"
+    },
+    {
+      "date": "2025-07-16",
+      "week": 28,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Flow",
+          "year": "2024",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/flow-2024/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/16/"
+    },
+    {
+      "date": "2025-07-17",
+      "week": 28,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Eternal Sunshine of the Spotless Mind",
+          "year": "2004",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/eternal-sunshine-of-the-spotless-mind/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/17/"
+    },
+    {
+      "date": "2025-07-18",
+      "week": 28,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The Way Way Back",
+          "year": "2013",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-way-way-back/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/18/"
+    },
+    {
+      "date": "2025-07-19",
+      "week": 28,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Enemy",
+          "year": "2013",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/enemy/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/19/"
+    },
+    {
+      "date": "2025-07-20",
+      "week": 29,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Black Bag",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/black-bag-2025/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/20/"
+    },
+    {
+      "date": "2025-07-21",
+      "week": 29,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Little Miss Sunshine",
+          "year": "2006",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/little-miss-sunshine/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/21/"
+    },
+    {
+      "date": "2025-07-22",
+      "week": 29,
+      "weekday": 2,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "The Monkey",
+          "year": "2025",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-monkey-2025/"
+        },
+        {
+          "title": "The Grand Budapest Hotel",
+          "year": "2014",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-grand-budapest-hotel/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/22/"
+    },
+    {
+      "date": "2025-07-23",
+      "week": 29,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Seven Psychopaths",
+          "year": "2012",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/seven-psychopaths/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/23/"
+    },
+    {
+      "date": "2025-07-24",
+      "week": 29,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Popstar: Never Stop Never Stopping",
+          "year": "2016",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/popstar-never-stop-never-stopping/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/24/"
+    },
+    {
+      "date": "2025-07-25",
+      "week": 29,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/25/"
+    },
+    {
+      "date": "2025-07-26",
+      "week": 29,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Happy Gilmore 2",
+          "year": "2025",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/happy-gilmore-2/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/26/"
+    },
+    {
+      "date": "2025-07-27",
+      "week": 30,
+      "weekday": 0,
+      "count": 3,
+      "ratingAvg": 3.2,
+      "films": [
+        {
+          "title": "Galaxy Quest",
+          "year": "1999",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/galaxy-quest/"
+        },
+        {
+          "title": "Harold & Kumar Go to White Castle",
+          "year": "2004",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/harold-kumar-go-to-white-castle/"
+        },
+        {
+          "title": "Barbie",
+          "year": "2023",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/barbie/"
+        }
+      ],
+      "level": 3,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/27/"
+    },
+    {
+      "date": "2025-07-28",
+      "week": 30,
+      "weekday": 1,
+      "count": 3,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The Accountant²",
+          "year": "2025",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-accountant-2025/"
+        },
+        {
+          "title": "M3GAN 2.0",
+          "year": "2025",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/m3gan-20/"
+        },
+        {
+          "title": "Reservoir Dogs",
+          "year": "1992",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/reservoir-dogs/"
+        }
+      ],
+      "level": 3,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/28/"
+    },
+    {
+      "date": "2025-07-29",
+      "week": 30,
+      "weekday": 2,
+      "count": 4,
+      "ratingAvg": 3.1,
+      "films": [
+        {
+          "title": "Mission: Impossible",
+          "year": "1996",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/mission-impossible/"
+        },
+        {
+          "title": "Wild Child",
+          "year": "2008",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/wild-child/"
+        },
+        {
+          "title": "Dude, Where’s My Car?",
+          "year": "2000",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/2/"
+        },
+        {
+          "title": "M3GAN",
+          "year": "2022",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/m3gan/"
+        }
+      ],
+      "level": 4,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/29/"
+    },
+    {
+      "date": "2025-07-30",
+      "week": 30,
+      "weekday": 3,
+      "count": 3,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "Smurfs",
+          "year": "2025",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/smurfs/"
+        },
+        {
+          "title": "Dredd",
+          "year": "2012",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/dredd/"
+        },
+        {
+          "title": "Ted",
+          "year": "2012",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/ted/1/"
+        }
+      ],
+      "level": 3,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/30/"
+    },
+    {
+      "date": "2025-07-31",
+      "week": 30,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Mission: Impossible II",
+          "year": "2000",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/mission-impossible-ii/"
+        },
+        {
+          "title": "Ford v Ferrari",
+          "year": "2019",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/ford-v-ferrari/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/07/31/"
+    },
+    {
+      "date": "2025-08-01",
+      "week": 30,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/01/"
+    },
+    {
+      "date": "2025-08-02",
+      "week": 30,
+      "weekday": 6,
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Naked Gun 2½: The Smell of Fear",
+          "year": "1991",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-naked-gun-2-the-smell-of-fear/"
+        },
+        {
+          "title": "Money Talks",
+          "year": "1997",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/money-talks/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/02/"
+    },
+    {
+      "date": "2025-08-03",
+      "week": 31,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Karate Kid: Legends",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/karate-kid-legends/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/03/"
+    },
+    {
+      "date": "2025-08-04",
+      "week": 31,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/04/"
+    },
+    {
+      "date": "2025-08-05",
+      "week": 31,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/05/"
+    },
+    {
+      "date": "2025-08-06",
+      "week": 31,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/06/"
+    },
+    {
+      "date": "2025-08-07",
+      "week": 31,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/07/"
+    },
+    {
+      "date": "2025-08-08",
+      "week": 31,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "The Naked Gun",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-naked-gun/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/08/"
+    },
+    {
+      "date": "2025-08-09",
+      "week": 31,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/09/"
+    },
+    {
+      "date": "2025-08-10",
+      "week": 32,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Slackers",
+          "year": "2002",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/slackers/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/10/"
+    },
+    {
+      "date": "2025-08-11",
+      "week": 32,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/11/"
+    },
+    {
+      "date": "2025-08-12",
+      "week": 32,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/12/"
+    },
+    {
+      "date": "2025-08-13",
+      "week": 32,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/13/"
+    },
+    {
+      "date": "2025-08-14",
+      "week": 32,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/14/"
+    },
+    {
+      "date": "2025-08-15",
+      "week": 32,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The Edge of Seventeen",
+          "year": "2016",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-edge-of-seventeen/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/15/"
+    },
+    {
+      "date": "2025-08-16",
+      "week": 32,
+      "weekday": 6,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "Sorority Boys",
+          "year": "2002",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/sorority-boys/"
+        },
+        {
+          "title": "Robot Dreams",
+          "year": "2023",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/robot-dreams/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/16/"
+    },
+    {
+      "date": "2025-08-17",
+      "week": 33,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Superman",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/superman-2025/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/17/"
+    },
+    {
+      "date": "2025-08-18",
+      "week": 33,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/18/"
+    },
+    {
+      "date": "2025-08-19",
+      "week": 33,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/19/"
+    },
+    {
+      "date": "2025-08-20",
+      "week": 33,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/20/"
+    },
+    {
+      "date": "2025-08-21",
+      "week": 33,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/21/"
+    },
+    {
+      "date": "2025-08-22",
+      "week": 33,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Walk Hard: The Dewey Cox Story",
+          "year": "2007",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/walk-hard-the-dewey-cox-story/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/22/"
+    },
+    {
+      "date": "2025-08-23",
+      "week": 33,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Empire Records",
+          "year": "1995",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/empire-records/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/23/"
+    },
+    {
+      "date": "2025-08-24",
+      "week": 34,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Legally Blonde",
+          "year": "2001",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/legally-blonde/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/24/"
+    },
+    {
+      "date": "2025-08-25",
+      "week": 34,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/25/"
+    },
+    {
+      "date": "2025-08-26",
+      "week": 34,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/26/"
+    },
+    {
+      "date": "2025-08-27",
+      "week": 34,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/27/"
+    },
+    {
+      "date": "2025-08-28",
+      "week": 34,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/28/"
+    },
+    {
+      "date": "2025-08-29",
+      "week": 34,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/29/"
+    },
+    {
+      "date": "2025-08-30",
+      "week": 34,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/30/"
+    },
+    {
+      "date": "2025-08-31",
+      "week": 35,
+      "weekday": 0,
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Barb & Star Go to Vista Del Mar",
+          "year": "2021",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/barb-star-go-to-vista-del-mar/"
+        },
+        {
+          "title": "The Gentlemen",
+          "year": "2019",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-gentlemen/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/08/31/"
+    },
+    {
+      "date": "2025-09-01",
+      "week": 35,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/01/"
+    },
+    {
+      "date": "2025-09-02",
+      "week": 35,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/02/"
+    },
+    {
+      "date": "2025-09-03",
+      "week": 35,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/03/"
+    },
+    {
+      "date": "2025-09-04",
+      "week": 35,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/04/"
+    },
+    {
+      "date": "2025-09-05",
+      "week": 35,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Bad Teacher",
+          "year": "2011",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/bad-teacher/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/05/"
+    },
+    {
+      "date": "2025-09-06",
+      "week": 35,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Nobody 2",
+          "year": "2025",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/nobody-2/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/06/"
+    },
+    {
+      "date": "2025-09-07",
+      "week": 36,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/07/"
+    },
+    {
+      "date": "2025-09-08",
+      "week": 36,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Bubble Boy",
+          "year": "2001",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/bubble-boy/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/08/"
+    },
+    {
+      "date": "2025-09-09",
+      "week": 36,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/09/"
+    },
+    {
+      "date": "2025-09-10",
+      "week": 36,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "The Goods: Live Hard, Sell Hard",
+          "year": "2009",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-goods-live-hard-sell-hard/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/10/"
+    },
+    {
+      "date": "2025-09-11",
+      "week": 36,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/11/"
+    },
+    {
+      "date": "2025-09-12",
+      "week": 36,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/12/"
+    },
+    {
+      "date": "2025-09-13",
+      "week": 36,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/13/"
+    },
+    {
+      "date": "2025-09-14",
+      "week": 37,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Snatch",
+          "year": "2000",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/snatch/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/14/"
+    },
+    {
+      "date": "2025-09-15",
+      "week": 37,
+      "weekday": 1,
+      "count": 2,
+      "ratingAvg": 2.8,
+      "films": [
+        {
+          "title": "Mystery Men",
+          "year": "1999",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/mystery-men/"
+        },
+        {
+          "title": "Big Stan",
+          "year": "2007",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/big-stan/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/15/"
+    },
+    {
+      "date": "2025-09-16",
+      "week": 37,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/16/"
+    },
+    {
+      "date": "2025-09-17",
+      "week": 37,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Ghostbusters",
+          "year": "1984",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/ghostbusters/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/17/"
+    },
+    {
+      "date": "2025-09-18",
+      "week": 37,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 2,
+      "films": [
+        {
+          "title": "Kung Pow: Enter the Fist",
+          "year": "2002",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/kung-pow-enter-the-fist/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/18/"
+    },
+    {
+      "date": "2025-09-19",
+      "week": 37,
+      "weekday": 5,
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Paprika",
+          "year": "2006",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/paprika-2006/"
+        },
+        {
+          "title": "(T)Raumschiff Surprise - Periode 1",
+          "year": "2004",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/traumschiff-surprise-periode-1/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/19/"
+    },
+    {
+      "date": "2025-09-20",
+      "week": 37,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Loser",
+          "year": "2000",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/loser/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/20/"
+    },
+    {
+      "date": "2025-09-21",
+      "week": 38,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/21/"
+    },
+    {
+      "date": "2025-09-22",
+      "week": 38,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "The Naked Gun",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-naked-gun/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/22/"
+    },
+    {
+      "date": "2025-09-23",
+      "week": 38,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The SpongeBob Movie: Sponge on the Run",
+          "year": "2020",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-spongebob-movie-sponge-on-the-run/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/23/"
+    },
+    {
+      "date": "2025-09-24",
+      "week": 38,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Fast and the Furious",
+          "year": "2001",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-fast-and-the-furious-2001/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/24/"
+    },
+    {
+      "date": "2025-09-25",
+      "week": 38,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/25/"
+    },
+    {
+      "date": "2025-09-26",
+      "week": 38,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/26/"
+    },
+    {
+      "date": "2025-09-27",
+      "week": 38,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/27/"
+    },
+    {
+      "date": "2025-09-28",
+      "week": 39,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/28/"
+    },
+    {
+      "date": "2025-09-29",
+      "week": 39,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/29/"
+    },
+    {
+      "date": "2025-09-30",
+      "week": 39,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/09/30/"
+    },
+    {
+      "date": "2025-10-01",
+      "week": 39,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Half Baked",
+          "year": "1998",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/half-baked/3/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/01/"
+    },
+    {
+      "date": "2025-10-02",
+      "week": 39,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 3.8,
+      "films": [
+        {
+          "title": "Everything Everywhere All at Once",
+          "year": "2022",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/everything-everywhere-all-at-once/"
+        },
+        {
+          "title": "The Men Who Stare at Goats",
+          "year": "2009",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-men-who-stare-at-goats/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/02/"
+    },
+    {
+      "date": "2025-10-03",
+      "week": 39,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Snatch",
+          "year": "2000",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/snatch/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/03/"
+    },
+    {
+      "date": "2025-10-04",
+      "week": 39,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Men in Black II",
+          "year": "2002",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/men-in-black-ii/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/04/"
+    },
+    {
+      "date": "2025-10-05",
+      "week": 40,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "The Fantastic 4: First Steps",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-fantastic-4-first-steps/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/05/"
+    },
+    {
+      "date": "2025-10-06",
+      "week": 40,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Muppets Most Wanted",
+          "year": "2014",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/muppets-most-wanted/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/06/"
+    },
+    {
+      "date": "2025-10-07",
+      "week": 40,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Fast Times at Ridgemont High",
+          "year": "1982",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/fast-times-at-ridgemont-high/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/07/"
+    },
+    {
+      "date": "2025-10-08",
+      "week": 40,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Muppet Treasure Island",
+          "year": "1996",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/muppet-treasure-island/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/08/"
+    },
+    {
+      "date": "2025-10-09",
+      "week": 40,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Fantastic Mr. Fox",
+          "year": "2009",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/fantastic-mr-fox/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/09/"
+    },
+    {
+      "date": "2025-10-10",
+      "week": 40,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/10/"
+    },
+    {
+      "date": "2025-10-11",
+      "week": 40,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Weird: The Al Yankovic Story",
+          "year": "2022",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/weird-the-al-yankovic-story-2022/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/11/"
+    },
+    {
+      "date": "2025-10-12",
+      "week": 41,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/12/"
+    },
+    {
+      "date": "2025-10-13",
+      "week": 41,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/13/"
+    },
+    {
+      "date": "2025-10-14",
+      "week": 41,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "UHF",
+          "year": "1989",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/uhf/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/14/"
+    },
+    {
+      "date": "2025-10-15",
+      "week": 41,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Freakier Friday",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/freakier-friday/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/15/"
+    },
+    {
+      "date": "2025-10-16",
+      "week": 41,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The Grand Budapest Hotel",
+          "year": "2014",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-grand-budapest-hotel/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/16/"
+    },
+    {
+      "date": "2025-10-17",
+      "week": 41,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/17/"
+    },
+    {
+      "date": "2025-10-18",
+      "week": 41,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The A-Team",
+          "year": "2010",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-a-team/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/18/"
+    },
+    {
+      "date": "2025-10-19",
+      "week": 42,
+      "weekday": 0,
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Riders of Justice",
+          "year": "2020",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/riders-of-justice/"
+        },
+        {
+          "title": "Drive",
+          "year": "2011",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/drive-2011/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/19/"
+    },
+    {
+      "date": "2025-10-20",
+      "week": 42,
+      "weekday": 1,
+      "count": 3,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Green Hornet",
+          "year": "2011",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-green-hornet/"
+        },
+        {
+          "title": "Austin Powers: The Spy Who Shagged Me",
+          "year": "1999",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/austin-powers-the-spy-who-shagged-me/"
+        },
+        {
+          "title": "Blade Runner",
+          "year": "1982",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/blade-runner/"
+        }
+      ],
+      "level": 3,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/20/"
+    },
+    {
+      "date": "2025-10-21",
+      "week": 42,
+      "weekday": 2,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "Goon",
+          "year": "2011",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/goon/"
+        },
+        {
+          "title": "Crazy, Stupid, Love.",
+          "year": "2011",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/crazy-stupid-love/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/21/"
+    },
+    {
+      "date": "2025-10-22",
+      "week": 42,
+      "weekday": 3,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "The Shawshank Redemption",
+          "year": "1994",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-shawshank-redemption/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/22/"
+    },
+    {
+      "date": "2025-10-23",
+      "week": 42,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/23/"
+    },
+    {
+      "date": "2025-10-24",
+      "week": 42,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 4.5,
+      "films": [
+        {
+          "title": "Whiplash",
+          "year": "2014",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/whiplash-2014/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/24/"
+    },
+    {
+      "date": "2025-10-25",
+      "week": 42,
+      "weekday": 6,
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Another Round",
+          "year": "2020",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/another-round/"
+        },
+        {
+          "title": "The Long Walk",
+          "year": "2025",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-long-walk-2025/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/25/"
+    },
+    {
+      "date": "2025-10-26",
+      "week": 43,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Monsters University",
+          "year": "2013",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/monsters-university/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/26/"
+    },
+    {
+      "date": "2025-10-27",
+      "week": 43,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/27/"
+    },
+    {
+      "date": "2025-10-28",
+      "week": 43,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/28/"
+    },
+    {
+      "date": "2025-10-29",
+      "week": 43,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/29/"
+    },
+    {
+      "date": "2025-10-30",
+      "week": 43,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/30/"
+    },
+    {
+      "date": "2025-10-31",
+      "week": 43,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Austin Powers in Goldmember",
+          "year": "2002",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/austin-powers-in-goldmember/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/10/31/"
+    },
+    {
+      "date": "2025-11-01",
+      "week": 43,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/01/"
+    },
+    {
+      "date": "2025-11-02",
+      "week": 44,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/02/"
+    },
+    {
+      "date": "2025-11-03",
+      "week": 44,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Babo: The Haftbefehl Story",
+          "year": "2025",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/babo-the-haftbefehl-story/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/03/"
+    },
+    {
+      "date": "2025-11-04",
+      "week": 44,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/04/"
+    },
+    {
+      "date": "2025-11-05",
+      "week": 44,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/05/"
+    },
+    {
+      "date": "2025-11-06",
+      "week": 44,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/06/"
+    },
+    {
+      "date": "2025-11-07",
+      "week": 44,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/07/"
+    },
+    {
+      "date": "2025-11-08",
+      "week": 44,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Joe Dirt",
+          "year": "2001",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/joe-dirt/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/08/"
+    },
+    {
+      "date": "2025-11-09",
+      "week": 45,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 4.5,
+      "films": [
+        {
+          "title": "Back to the Future",
+          "year": "1985",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/back-to-the-future/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/09/"
+    },
+    {
+      "date": "2025-11-10",
+      "week": 45,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/10/"
+    },
+    {
+      "date": "2025-11-11",
+      "week": 45,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/11/"
+    },
+    {
+      "date": "2025-11-12",
+      "week": 45,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/12/"
+    },
+    {
+      "date": "2025-11-13",
+      "week": 45,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/13/"
+    },
+    {
+      "date": "2025-11-14",
+      "week": 45,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/14/"
+    },
+    {
+      "date": "2025-11-15",
+      "week": 45,
+      "weekday": 6,
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "They Came Together",
+          "year": "2014",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/they-came-together/1/"
+        },
+        {
+          "title": "One Battle After Another",
+          "year": "2025",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/one-battle-after-another/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/15/"
+    },
+    {
+      "date": "2025-11-16",
+      "week": 46,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/16/"
+    },
+    {
+      "date": "2025-11-17",
+      "week": 46,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Grave of the Fireflies",
+          "year": "1988",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/grave-of-the-fireflies/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/17/"
+    },
+    {
+      "date": "2025-11-18",
+      "week": 46,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Borat Subsequent Moviefilm",
+          "year": "2020",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/borat-subsequent-moviefilm/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/18/"
+    },
+    {
+      "date": "2025-11-19",
+      "week": 46,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/19/"
+    },
+    {
+      "date": "2025-11-20",
+      "week": 46,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/20/"
+    },
+    {
+      "date": "2025-11-21",
+      "week": 46,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/21/"
+    },
+    {
+      "date": "2025-11-22",
+      "week": 46,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Undercover Brother",
+          "year": "2002",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/undercover-brother/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/22/"
+    },
+    {
+      "date": "2025-11-23",
+      "week": 47,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/23/"
+    },
+    {
+      "date": "2025-11-24",
+      "week": 47,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/24/"
+    },
+    {
+      "date": "2025-11-25",
+      "week": 47,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/25/"
+    },
+    {
+      "date": "2025-11-26",
+      "week": 47,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/26/"
+    },
+    {
+      "date": "2025-11-27",
+      "week": 47,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "The Tunnel to Summer, the Exit of Goodbyes",
+          "year": "2022",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-tunnel-to-summer-the-exit-of-goodbyes/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/27/"
+    },
+    {
+      "date": "2025-11-28",
+      "week": 47,
+      "weekday": 5,
+      "count": 2,
+      "ratingAvg": 3.8,
+      "films": [
+        {
+          "title": "Bad Santa",
+          "year": "2003",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/bad-santa/1/"
+        },
+        {
+          "title": "Half Baked",
+          "year": "1998",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/half-baked/4/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/28/"
+    },
+    {
+      "date": "2025-11-29",
+      "week": 47,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 4.5,
+      "films": [
+        {
+          "title": "The Big Lebowski",
+          "year": "1998",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-big-lebowski/5/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/29/"
+    },
+    {
+      "date": "2025-11-30",
+      "week": 48,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/11/30/"
+    },
+    {
+      "date": "2025-12-01",
+      "week": 48,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/01/"
+    },
+    {
+      "date": "2025-12-02",
+      "week": 48,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/02/"
+    },
+    {
+      "date": "2025-12-03",
+      "week": 48,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/03/"
+    },
+    {
+      "date": "2025-12-04",
+      "week": 48,
+      "weekday": 4,
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Elf",
+          "year": "2003",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/elf/"
+        },
+        {
+          "title": "Roofman",
+          "year": "2025",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/roofman/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/04/"
+    },
+    {
+      "date": "2025-12-05",
+      "week": 48,
+      "weekday": 5,
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Night Before",
+          "year": "2015",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-night-before-2015/"
+        },
+        {
+          "title": "Friday After Next",
+          "year": "2002",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/friday-after-next/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/05/"
+    },
+    {
+      "date": "2025-12-06",
+      "week": 48,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "It’s a Very Merry Muppet Christmas Movie",
+          "year": "2002",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/its-a-very-merry-muppet-christmas-movie/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/06/"
+    },
+    {
+      "date": "2025-12-07",
+      "week": 49,
+      "weekday": 0,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/07/"
+    },
+    {
+      "date": "2025-12-08",
+      "week": 49,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/08/"
+    },
+    {
+      "date": "2025-12-09",
+      "week": 49,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/09/"
+    },
+    {
+      "date": "2025-12-10",
+      "week": 49,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/10/"
+    },
+    {
+      "date": "2025-12-11",
+      "week": 49,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Deuce Bigalow: European Gigolo",
+          "year": "2005",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/deuce-bigalow-european-gigolo/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/11/"
+    },
+    {
+      "date": "2025-12-12",
+      "week": 49,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "National Lampoon Presents Dorm Daze",
+          "year": "2003",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/national-lampoon-presents-dorm-daze/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/12/"
+    },
+    {
+      "date": "2025-12-13",
+      "week": 49,
+      "weekday": 6,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/13/"
+    },
+    {
+      "date": "2025-12-14",
+      "week": 50,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "The Running Man",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-running-man-2025/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/14/"
+    },
+    {
+      "date": "2025-12-15",
+      "week": 50,
+      "weekday": 1,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/15/"
+    },
+    {
+      "date": "2025-12-16",
+      "week": 50,
+      "weekday": 2,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/16/"
+    },
+    {
+      "date": "2025-12-17",
+      "week": 50,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/17/"
+    },
+    {
+      "date": "2025-12-18",
+      "week": 50,
+      "weekday": 4,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/18/"
+    },
+    {
+      "date": "2025-12-19",
+      "week": 50,
+      "weekday": 5,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/19/"
+    },
+    {
+      "date": "2025-12-20",
+      "week": 50,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "High Fidelity",
+          "year": "2000",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/high-fidelity/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/20/"
+    },
+    {
+      "date": "2025-12-21",
+      "week": 51,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Secret Life of Walter Mitty",
+          "year": "2013",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-secret-life-of-walter-mitty-2013/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/21/"
+    },
+    {
+      "date": "2025-12-22",
+      "week": 51,
+      "weekday": 1,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "American Beauty",
+          "year": "1999",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/american-beauty/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/22/"
+    },
+    {
+      "date": "2025-12-23",
+      "week": 51,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Scary Movie",
+          "year": "2000",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2000/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/23/"
+    },
+    {
+      "date": "2025-12-24",
+      "week": 51,
+      "weekday": 3,
+      "count": 2,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Mardi Gras: Spring Break",
+          "year": "2011",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/mardi-gras-spring-break/"
+        },
+        {
+          "title": "The Royal Tenenbaums",
+          "year": "2001",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-royal-tenenbaums/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/24/"
+    },
+    {
+      "date": "2025-12-25",
+      "week": 51,
+      "weekday": 4,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Now You See Me: Now You Don’t",
+          "year": "2025",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/now-you-see-me-now-you-dont-2025/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/25/"
+    },
+    {
+      "date": "2025-12-26",
+      "week": 51,
+      "weekday": 5,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Dinner for Schmucks",
+          "year": "2010",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/dinner-for-schmucks/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/26/"
+    },
+    {
+      "date": "2025-12-27",
+      "week": 51,
+      "weekday": 6,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Rat Race",
+          "year": "2001",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/rat-race/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/27/"
+    },
+    {
+      "date": "2025-12-28",
+      "week": 52,
+      "weekday": 0,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Mardi Gras: Spring Break",
+          "year": "2011",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/mardi-gras-spring-break/1/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/28/"
+    },
+    {
+      "date": "2025-12-29",
+      "week": 52,
+      "weekday": 1,
+      "count": 2,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "No More School",
+          "year": "2000",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/no-more-school/"
+        },
+        {
+          "title": "David Holmes: The Boy Who Lived",
+          "year": "2023",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/david-holmes-the-boy-who-lived/"
+        }
+      ],
+      "level": 2,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/29/"
+    },
+    {
+      "date": "2025-12-30",
+      "week": 52,
+      "weekday": 2,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Soloalbum",
+          "year": "2003",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/soloalbum/"
+        }
+      ],
+      "level": 1,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/30/"
+    },
+    {
+      "date": "2025-12-31",
+      "week": 52,
+      "weekday": 3,
+      "count": 0,
+      "ratingAvg": null,
+      "films": [],
+      "level": 0,
+      "inRange": true,
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/31/"
+    }
+  ],
   "cells": [
     {
       "date": "2025-01-02",
@@ -4401,332 +11059,78 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2025/12/30/"
-    },
-    {
-      "date": "2026-01-01",
-      "count": 2,
-      "ratingAvg": 2.8,
-      "films": [
-        {
-          "title": "Ants in the Pants",
-          "year": "2000",
-          "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/ants-in-the-pants/"
-        },
-        {
-          "title": "Holmes & Watson",
-          "year": "2018",
-          "rating": 2.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/holmes-watson/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/01/"
-    },
-    {
-      "date": "2026-01-02",
-      "count": 1,
-      "ratingAvg": 2.5,
-      "films": [
-        {
-          "title": "Ants in the Pants 2",
-          "year": "2002",
-          "rating": 2.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/ants-in-the-pants-2/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/02/"
-    },
-    {
-      "date": "2026-01-03",
-      "count": 3,
-      "ratingAvg": 3.7,
-      "films": [
-        {
-          "title": "Kung Fu Hustle",
-          "year": "2004",
-          "rating": 3.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/kung-fu-hustle/"
-        },
-        {
-          "title": "Good Fortune",
-          "year": "2025",
-          "rating": 3.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/good-fortune-2025/"
-        },
-        {
-          "title": "10 Things I Hate About You",
-          "year": "1999",
-          "rating": 4,
-          "url": "https://letterboxd.com/nichtlegacy/film/10-things-i-hate-about-you/1/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/03/"
-    },
-    {
-      "date": "2026-01-04",
-      "count": 1,
-      "ratingAvg": 3.5,
-      "films": [
-        {
-          "title": "Go",
-          "year": "1999",
-          "rating": 3.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/go/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/04/"
-    },
-    {
-      "date": "2026-01-08",
-      "count": 1,
-      "ratingAvg": 2.5,
-      "films": [
-        {
-          "title": "Crazy",
-          "year": "2000",
-          "rating": 2.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/crazy/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/08/"
-    },
-    {
-      "date": "2026-01-09",
-      "count": 1,
-      "ratingAvg": 3,
-      "films": [
-        {
-          "title": "The Wedding Singer",
-          "year": "1998",
-          "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/the-wedding-singer/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/09/"
-    },
-    {
-      "date": "2026-01-10",
-      "count": 1,
-      "ratingAvg": 3.5,
-      "films": [
-        {
-          "title": "Small Soldiers",
-          "year": "1998",
-          "rating": 3.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/small-soldiers/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/10/"
-    },
-    {
-      "date": "2026-01-12",
-      "count": 2,
-      "ratingAvg": 3,
-      "films": [
-        {
-          "title": "Five Nights at Freddy’s 2",
-          "year": "2025",
-          "rating": 2.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/five-nights-at-freddys-2/"
-        },
-        {
-          "title": "KPop Demon Hunters",
-          "year": "2025",
-          "rating": 3.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/kpop-demon-hunters/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/12/"
-    },
-    {
-      "date": "2026-01-14",
-      "count": 1,
-      "ratingAvg": 4,
-      "films": [
-        {
-          "title": "Ferris Bueller’s Day Off",
-          "year": "1986",
-          "rating": 4,
-          "url": "https://letterboxd.com/nichtlegacy/film/ferris-buellers-day-off/1/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/14/"
-    },
-    {
-      "date": "2026-01-17",
-      "count": 1,
-      "ratingAvg": 3.5,
-      "films": [
-        {
-          "title": "BASEketball",
-          "year": "1998",
-          "rating": 3.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/baseketball/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/17/"
-    },
-    {
-      "date": "2026-01-19",
-      "count": 1,
-      "ratingAvg": 3.5,
-      "films": [
-        {
-          "title": "BlackBerry",
-          "year": "2023",
-          "rating": 3.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/blackberry-2023/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/19/"
-    },
-    {
-      "date": "2026-01-22",
-      "count": 1,
-      "ratingAvg": 4,
-      "films": [
-        {
-          "title": "Once Upon a Time… in Hollywood",
-          "year": "2019",
-          "rating": 4,
-          "url": "https://letterboxd.com/nichtlegacy/film/once-upon-a-time-in-hollywood/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/22/"
-    },
-    {
-      "date": "2026-01-24",
-      "count": 2,
-      "ratingAvg": 3.5,
-      "films": [
-        {
-          "title": "Election",
-          "year": "1999",
-          "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/election/"
-        },
-        {
-          "title": "The SpongeBob Movie: Search for SquarePants",
-          "year": "2025",
-          "rating": 4,
-          "url": "https://letterboxd.com/nichtlegacy/film/the-spongebob-movie-search-for-squarepants/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/01/24/"
-    },
-    {
-      "date": "2026-02-05",
-      "count": 1,
-      "ratingAvg": 2.5,
-      "films": [
-        {
-          "title": "The Shadow’s Edge",
-          "year": "2025",
-          "rating": 2.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/the-shadows-edge-2025/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/05/"
-    },
-    {
-      "date": "2026-02-07",
-      "count": 1,
-      "ratingAvg": 2.5,
-      "films": [
-        {
-          "title": "Bill & Ted’s Bogus Journey",
-          "year": "1991",
-          "rating": 2.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/bill-teds-bogus-journey/1/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/07/"
-    },
-    {
-      "date": "2026-02-13",
-      "count": 1,
-      "ratingAvg": 3,
-      "films": [
-        {
-          "title": "The Housemaid",
-          "year": "2025",
-          "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/the-housemaid-2025/"
-        }
-      ],
-      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/13/"
     }
   ],
   "recent": [
     {
-      "date": "2026-02-13",
-      "title": "The Housemaid",
-      "year": "2025",
-      "rating": 3,
-      "url": "https://letterboxd.com/nichtlegacy/film/the-housemaid-2025/"
-    },
-    {
-      "date": "2026-02-07",
-      "title": "Bill & Ted’s Bogus Journey",
-      "year": "1991",
+      "date": "2025-12-30",
+      "title": "Soloalbum",
+      "year": "2003",
       "rating": 2.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/bill-teds-bogus-journey/1/"
+      "url": "https://letterboxd.com/nichtlegacy/film/soloalbum/"
     },
     {
-      "date": "2026-02-05",
-      "title": "The Shadow’s Edge",
-      "year": "2025",
-      "rating": 2.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/the-shadows-edge-2025/"
-    },
-    {
-      "date": "2026-01-24",
-      "title": "Election",
-      "year": "1999",
-      "rating": 3,
-      "url": "https://letterboxd.com/nichtlegacy/film/election/"
-    },
-    {
-      "date": "2026-01-24",
-      "title": "The SpongeBob Movie: Search for SquarePants",
-      "year": "2025",
+      "date": "2025-12-29",
+      "title": "No More School",
+      "year": "2000",
       "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/the-spongebob-movie-search-for-squarepants/"
+      "url": "https://letterboxd.com/nichtlegacy/film/no-more-school/"
     },
     {
-      "date": "2026-01-22",
-      "title": "Once Upon a Time… in Hollywood",
-      "year": "2019",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/once-upon-a-time-in-hollywood/"
-    },
-    {
-      "date": "2026-01-19",
-      "title": "BlackBerry",
+      "date": "2025-12-29",
+      "title": "David Holmes: The Boy Who Lived",
       "year": "2023",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/blackberry-2023/"
-    },
-    {
-      "date": "2026-01-17",
-      "title": "BASEketball",
-      "year": "1998",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/baseketball/"
-    },
-    {
-      "date": "2026-01-14",
-      "title": "Ferris Bueller’s Day Off",
-      "year": "1986",
       "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/ferris-buellers-day-off/1/"
+      "url": "https://letterboxd.com/nichtlegacy/film/david-holmes-the-boy-who-lived/"
     },
     {
-      "date": "2026-01-12",
-      "title": "Five Nights at Freddy’s 2",
-      "year": "2025",
+      "date": "2025-12-28",
+      "title": "Mardi Gras: Spring Break",
+      "year": "2011",
       "rating": 2.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/five-nights-at-freddys-2/"
+      "url": "https://letterboxd.com/nichtlegacy/film/mardi-gras-spring-break/1/"
+    },
+    {
+      "date": "2025-12-27",
+      "title": "Rat Race",
+      "year": "2001",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/rat-race/"
+    },
+    {
+      "date": "2025-12-26",
+      "title": "Dinner for Schmucks",
+      "year": "2010",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/dinner-for-schmucks/"
+    },
+    {
+      "date": "2025-12-25",
+      "title": "Now You See Me: Now You Don’t",
+      "year": "2025",
+      "rating": 3,
+      "url": "https://letterboxd.com/nichtlegacy/film/now-you-see-me-now-you-dont-2025/"
+    },
+    {
+      "date": "2025-12-24",
+      "title": "Mardi Gras: Spring Break",
+      "year": "2011",
+      "rating": 2.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/mardi-gras-spring-break/"
+    },
+    {
+      "date": "2025-12-24",
+      "title": "The Royal Tenenbaums",
+      "year": "2001",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-royal-tenenbaums/"
+    },
+    {
+      "date": "2025-12-23",
+      "title": "Scary Movie",
+      "year": "2000",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2000/1/"
     }
   ]
 }
