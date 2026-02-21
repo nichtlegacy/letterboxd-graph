@@ -70,6 +70,11 @@ jobs:
           # Remove lockfile to get fresh platform-specific binaries
           rm -f package-lock.json
           npm install
+
+      - name: Install curl_cffi fallback
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install curl_cffi
       
       - name: Generate Graph
         run: |
