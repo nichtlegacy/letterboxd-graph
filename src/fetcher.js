@@ -6,11 +6,20 @@
 
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { execFile } from 'child_process';
+import { promisify } from 'util';
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 
 // Use the stealth plugin to avoid detection
 puppeteer.use(StealthPlugin());
+
+const execFileAsync = promisify(execFile);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const CURL_CFFI_SCRIPT_PATH = path.join(__dirname, 'fetch_with_curl_cffi.py');
 
 /**
  * Common browser headers to avoid being blocked by anti-scraping measures
@@ -34,19 +43,34 @@ const BROWSER_HEADERS = {
 
 // Shared browser instance
 let browserInstance = null;
+let sharedPage = null;
+let sessionPrimed = false;
+let consecutiveCloudflareFailures = 0;
+let curlCffiAvailable = null;
+let curlCffiUnavailableLogged = false;
+
 const RETRYABLE_STATUS_CODES = new Set([403, 429, 503]);
+const MAX_CONSECUTIVE_CF_FAILURES = 3;
+const PAGE_ROTATION_INTERVAL = 3;
 
 const CLOUDFLARE_STRONG_MARKERS = [
   /cloudflare ray id/i,
   /cf_chl/i,
   /challenge-platform/i,
-  /cdn-cgi\/challenge-platform/i
+  /cdn-cgi\/challenge-platform/i,
+  /cf-browser-verification/i,
+  /cf-turnstile/i
 ];
 
 const CLOUDFLARE_WEAK_MARKERS = [
   /just a moment/i,
   /checking your browser/i,
-  /attention required/i
+  /attention required/i,
+  /security challenge/i,
+  /permission denied/i,
+  /verify you are human/i,
+  /captcha/i,
+  /ddos protection/i
 ];
 
 function isCloudflareChallengePage(html) {
@@ -56,10 +80,29 @@ function isCloudflareChallengePage(html) {
   }
 
   const hasWeakMarker = CLOUDFLARE_WEAK_MARKERS.some((pattern) => pattern.test(html));
-  const hasCloudflareText = /cloudflare/i.test(html);
-  const hasVerificationHint = /(verify|security check|browser check|challenge)/i.test(html);
+  const hasCloudflareText = /cloudflare|cf-ray|cdn-cgi/i.test(html);
+  const hasVerificationHint = /(verify|security check|browser check|challenge|access denied)/i.test(html);
 
   return hasWeakMarker && hasCloudflareText && hasVerificationHint;
+}
+
+function hasExpectedPageContent(html, url) {
+  if (!html || !url) return false;
+
+  if (url.includes('/diary/')) {
+    return /id=["']diary-table["']/i.test(html) || /diary-entry-row/i.test(html);
+  }
+
+  const isProfileRoute = /^https:\/\/letterboxd\.com\/[^/]+\/?$/.test(url);
+  if (isProfileRoute) {
+    return /person-display-name|profile-avatar|profile-header/i.test(html);
+  }
+
+  if (url === 'https://letterboxd.com/' || url === 'https://letterboxd.com') {
+    return /<title>.*letterboxd/i.test(html);
+  }
+
+  return false;
 }
 
 class CloudflareChallengeError extends Error {
@@ -82,13 +125,86 @@ function isCloudflareResponse(response) {
 }
 
 function retryDelayMs(attempt, isCloudflareRetry = false) {
-  const baseSeconds = isCloudflareRetry ? 3 : 2;
-  const jitterSeconds = Math.random();
-  return Math.round((baseSeconds * attempt + jitterSeconds) * 1000);
+  const baseMs = isCloudflareRetry ? 4000 : 2500;
+  const growth = isCloudflareRetry ? 1.9 : 1.5;
+  const jitterMs = Math.round(Math.random() * 1200);
+  const delayMs = baseMs * Math.pow(growth, attempt - 1);
+  return Math.min(Math.round(delayMs + jitterMs), 45000);
 }
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function randomBetween(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+async function isCurlCffiAvailable() {
+  if (curlCffiAvailable !== null) {
+    return curlCffiAvailable;
+  }
+
+  try {
+    await execFileAsync('python3', ['-c', 'import curl_cffi']);
+    curlCffiAvailable = true;
+  } catch {
+    curlCffiAvailable = false;
+  }
+
+  return curlCffiAvailable;
+}
+
+async function fetchPageWithCurlCffi(url, retries = 5) {
+  const available = await isCurlCffiAvailable();
+  if (!available) {
+    throw new Error('curl_cffi_unavailable');
+  }
+
+  try {
+    const { stdout, stderr } = await execFileAsync(
+      'python3',
+      [CURL_CFFI_SCRIPT_PATH, url, String(retries)],
+      { maxBuffer: 10 * 1024 * 1024 }
+    );
+
+    if (stderr && stderr.trim()) {
+      console.log(`  curl_cffi: ${stderr.trim().split('\n').join(' | ')}`);
+    }
+
+    if (!hasExpectedPageContent(stdout, url) && isCloudflareChallengePage(stdout)) {
+      throw new CloudflareChallengeError(url, 403);
+    }
+
+    return stdout;
+  } catch (error) {
+    const stderr = typeof error?.stderr === 'string' ? error.stderr : '';
+    const combined = `${stderr}\n${error?.message || ''}`.toLowerCase();
+
+    if (combined.includes('cloudflare_block') || combined.includes('http 403')) {
+      throw new CloudflareChallengeError(url, 403);
+    }
+
+    throw new Error(`curl_cffi request failed for ${url}: ${stderr || error?.message || 'unknown error'}`);
+  }
+}
+
+async function fetchPage(url) {
+  const canUseCurlCffi = await isCurlCffiAvailable();
+  if (canUseCurlCffi) {
+    try {
+      return await fetchPageWithCurlCffi(url);
+    } catch (error) {
+      const isCfError = error instanceof CloudflareChallengeError;
+      const reason = isCfError ? 'Cloudflare challenge' : error.message;
+      console.log(`  curl_cffi failed (${reason}), falling back to Puppeteer...`);
+    }
+  } else if (!curlCffiUnavailableLogged) {
+    console.log('  curl_cffi unavailable, using Puppeteer fallback.');
+    curlCffiUnavailableLogged = true;
+  }
+
+  return fetchPageWithPuppeteer(url);
 }
 
 /**
@@ -111,36 +227,159 @@ async function getBrowser() {
   return browserInstance;
 }
 
-/**
- * Close the shared browser instance
- */
-export async function closeBrowser() {
+async function createConfiguredPage() {
+  const browser = await getBrowser();
+  const page = await browser.newPage();
+
+  await page.setViewport({ width: 1920, height: 1080 });
+  await page.setUserAgent(BROWSER_HEADERS['User-Agent']);
+  await page.setExtraHTTPHeaders({
+    'Accept': BROWSER_HEADERS.Accept,
+    'Accept-Language': BROWSER_HEADERS['Accept-Language'],
+    'Cache-Control': BROWSER_HEADERS['Cache-Control'],
+    'Pragma': BROWSER_HEADERS.Pragma,
+    'Upgrade-Insecure-Requests': BROWSER_HEADERS['Upgrade-Insecure-Requests']
+  });
+  await page.setDefaultNavigationTimeout(120000);
+  await page.setDefaultTimeout(30000);
+  await page.setRequestInterception(true);
+
+  page.on('request', (request) => {
+    const resourceType = request.resourceType();
+    if (resourceType === 'image' || resourceType === 'media' || resourceType === 'font') {
+      request.abort().catch(() => {});
+      return;
+    }
+    request.continue().catch(() => {});
+  });
+
+  return page;
+}
+
+async function getSharedPage({ forceNew = false } = {}) {
+  if (forceNew && sharedPage) {
+    try {
+      await sharedPage.close();
+    } catch {
+      // no-op; page may already be closed
+    }
+    sharedPage = null;
+    sessionPrimed = false;
+  }
+
+  if (!sharedPage || sharedPage.isClosed()) {
+    sharedPage = await createConfiguredPage();
+    sessionPrimed = false;
+  }
+
+  return sharedPage;
+}
+
+async function resetSession() {
+  if (sharedPage) {
+    try {
+      await sharedPage.close();
+    } catch {
+      // no-op; page may already be closed
+    }
+    sharedPage = null;
+  }
+
   if (browserInstance) {
     await browserInstance.close();
     browserInstance = null;
   }
+
+  sessionPrimed = false;
+}
+
+async function resolveCloudflareChallenge(page, url, attempt) {
+  let content = await page.content();
+
+  if (hasExpectedPageContent(content, url) || !isCloudflareChallengePage(content)) {
+    return content;
+  }
+
+  const maxWaitMs = 12000 + (attempt * 4000);
+  const pollMs = 2000;
+  let waited = 0;
+
+  while (waited < maxWaitMs) {
+    await sleep(pollMs + randomBetween(0, 600));
+    waited += pollMs;
+    content = await page.content();
+    if (hasExpectedPageContent(content, url) || !isCloudflareChallengePage(content)) {
+      return content;
+    }
+  }
+
+  throw new CloudflareChallengeError(url);
+}
+
+async function primeSession(page) {
+  if (sessionPrimed) {
+    return;
+  }
+
+  const response = await page.goto('https://letterboxd.com/', {
+    waitUntil: 'domcontentloaded',
+    timeout: 60000
+  });
+
+  if (response && response.status() >= 400 && isCloudflareResponse(response)) {
+    throw new CloudflareChallengeError('https://letterboxd.com/', response.status());
+  }
+
+  await sleep(900 + randomBetween(100, 600));
+  await resolveCloudflareChallenge(page, 'https://letterboxd.com/', 1);
+  sessionPrimed = true;
+}
+
+async function recoverSessionAfterCloudflare(attempt) {
+  consecutiveCloudflareFailures += 1;
+
+  const shouldReset = consecutiveCloudflareFailures >= MAX_CONSECUTIVE_CF_FAILURES;
+  if (shouldReset) {
+    console.log('  Reinitializing browser session after repeated Cloudflare blocks...');
+    await resetSession();
+    consecutiveCloudflareFailures = 0;
+    return;
+  }
+
+  try {
+    const page = await getSharedPage({ forceNew: attempt % PAGE_ROTATION_INTERVAL === 0 });
+    sessionPrimed = false;
+    await primeSession(page);
+  } catch {
+    // Best effort recovery; regular retry flow handles further attempts.
+  }
+}
+
+/**
+ * Close the shared browser instance
+ */
+export async function closeBrowser() {
+  await resetSession();
 }
 /**
  * Fetch page content using Puppeteer (bypasses Cloudflare)
  * Includes retry logic for unreliable connections
  */
-async function fetchPageWithPuppeteer(url, retries = 5) {
-  const browser = await getBrowser();
-  
+async function fetchPageWithPuppeteer(url, retries = 7) {
   for (let attempt = 1; attempt <= retries; attempt++) {
-    const page = await browser.newPage();
-    
     try {
-      // Set a realistic viewport and user agent
-      await page.setViewport({ width: 1920, height: 1080 });
-      await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36');
-      
-      // Increase timeout progressively across retries.
-      const navTimeout = 45000 + (attempt * 15000);
+      const forceNewPage = attempt > 1 && attempt % PAGE_ROTATION_INTERVAL === 0;
+      const page = await getSharedPage({ forceNew: forceNewPage });
+      await primeSession(page);
 
-      const response = await page.goto(url, { 
+      await sleep(randomBetween(250, 900));
+
+      // Increase timeout progressively across retries.
+      const navTimeout = 50000 + (attempt * 18000);
+
+      const response = await page.goto(url, {
         waitUntil: 'domcontentloaded',
-        timeout: navTimeout 
+        timeout: navTimeout
       });
 
       if (response && response.status() >= 400) {
@@ -150,44 +389,34 @@ async function fetchPageWithPuppeteer(url, retries = 5) {
         throw new Error(`HTTP ${response.status()} while fetching ${url}`);
       }
       
-      // Wait for the diary table to load (or timeout after 15 seconds)
-      try {
-        await page.waitForSelector('#diary-table', { timeout: 15000 });
-      } catch (e) {
-        // Table might not exist on this page, continue anyway
+      if (url.includes('/diary/')) {
+        // Wait for the diary table to load (or timeout after 15 seconds)
+        try {
+          await page.waitForSelector('#diary-table', { timeout: 15000 });
+        } catch {
+          // Table might not exist on this page, continue anyway
+        }
       }
       
-      // Wait a bit more for any dynamic content
-      await sleep(1500);
-      
-      // Get the page content and explicitly detect Cloudflare challenge pages
-      let content = await page.content();
-      if (isCloudflareChallengePage(content)) {
-        // Give Cloudflare JS challenge a chance to resolve automatically
-        await sleep(8000);
-        content = await page.content();
-      }
+      await sleep(900 + randomBetween(100, 900));
+      const content = await resolveCloudflareChallenge(page, url, attempt);
 
-      if (isCloudflareChallengePage(content)) {
-        throw new CloudflareChallengeError(url);
-      }
-
+      consecutiveCloudflareFailures = 0;
       return content;
     } catch (error) {
+      const isCloudflareRetry = error instanceof CloudflareChallengeError;
+      if (isCloudflareRetry) {
+        await recoverSessionAfterCloudflare(attempt);
+      }
+
       if (attempt === retries) {
         throw error;
       }
-      const isCloudflareRetry = error instanceof CloudflareChallengeError;
+
       const waitMs = retryDelayMs(attempt, isCloudflareRetry);
       const retryLabel = isCloudflareRetry ? ' (Cloudflare challenge)' : '';
       console.log(`  Attempt ${attempt} failed${retryLabel}, retrying in ${Math.ceil(waitMs / 1000)}s...`);
       await sleep(waitMs);
-    } finally {
-      try {
-        await page.close();
-      } catch {
-        // no-op; page may already be closed
-      }
     }
   }
 }
@@ -281,7 +510,7 @@ function parseDiaryEntries(html, year) {
 }
 
 /**
- * Fetch diary entries for a specific year using Puppeteer
+ * Fetch diary entries for a specific year with curl_cffi primary and Puppeteer fallback
  */
 export async function fetchLetterboxdData(username, year) {
   const allEntries = [];
@@ -295,7 +524,7 @@ export async function fetchLetterboxdData(username, year) {
     console.log(`URL: ${url}`);
 
     try {
-      const html = await fetchPageWithPuppeteer(url);
+      const html = await fetchPage(url);
       const { entries, hasMore } = parseDiaryEntries(html, year);
       
       console.log(`Found ${entries.length} diary entries on page ${page}`);
@@ -372,12 +601,12 @@ export async function fetchSpecificYears(username, years) {
 
 /**
  * Fetch profile data (display name, avatar, followers, following)
- * Uses Puppeteer to bypass Cloudflare
+ * Uses curl_cffi primary and Puppeteer fallback for Cloudflare resilience
  */
 export async function fetchProfileData(username) {
   const url = `https://letterboxd.com/${username}/`;
   try {
-    const html = await fetchPageWithPuppeteer(url);
+    const html = await fetchPage(url);
     const $ = cheerio.load(html);
 
     const profileImage = $('.profile-avatar img').attr('src');
