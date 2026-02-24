@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-02-23T02:35:54.013Z",
+  "generatedAt": "2026-02-24T02:31:36.780Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 403,
-    "daysActive": 280,
+    "films": 404,
+    "daysActive": 281,
     "streak": 34
   },
   "monthLabels": [
@@ -7431,10 +7431,17 @@
       "date": "2026-02-21",
       "week": 59,
       "weekday": 6,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Menace II Society",
+          "year": "1993",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/menace-ii-society/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/21/"
     },
@@ -15540,9 +15547,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/20/"
+    },
+    {
+      "date": "2026-02-21",
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Menace II Society",
+          "year": "1993",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/menace-ii-society/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/films/diary/for/2026/02/21/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-02-21",
+      "title": "Menace II Society",
+      "year": "1993",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/menace-ii-society/"
+    },
     {
       "date": "2026-02-20",
       "title": "Marty Supreme",
@@ -15605,13 +15633,6 @@
       "year": "1998",
       "rating": 3.5,
       "url": "https://letterboxd.com/nichtlegacy/film/baseketball/"
-    },
-    {
-      "date": "2026-01-14",
-      "title": "Ferris Bueller's Day Off",
-      "year": "1986",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/ferris-buellers-day-off/1/"
     }
   ]
 }
