@@ -148,7 +148,7 @@ export function buildJsonExport(entries, options = {}) {
       : null;
 
     const [cellYear, cellMonth, cellDay] = date.split('-');
-    const url = `https://letterboxd.com/${username}/films/diary/for/${cellYear}/${cellMonth}/${cellDay}/`;
+    const url = `https://letterboxd.com/${username}/diary/films/for/${cellYear}/${cellMonth}/${cellDay}/`;
 
     return {
       date,
@@ -226,7 +226,7 @@ export function buildJsonExport(entries, options = {}) {
       : currentDate.getUTCDay();
 
     const [cellYear, cellMonth, cellDay] = date.split('-');
-    const url = `https://letterboxd.com/${username}/films/diary/for/${cellYear}/${cellMonth}/${cellDay}/`;
+    const url = `https://letterboxd.com/${username}/diary/films/for/${cellYear}/${cellMonth}/${cellDay}/`;
     const isPadding = currentDate < rangeStart || currentDate > rangeEnd;
 
     if (!isPadding && currentDate.getUTCDate() === 1) {

@@ -55,16 +55,24 @@ const PAGE_ROTATION_INTERVAL = 3;
 
 const CLOUDFLARE_STRONG_MARKERS = [
   /cloudflare ray id/i,
+  /\bray id\b/i,
   /cf_chl/i,
   /challenge-platform/i,
   /cdn-cgi\/challenge-platform/i,
   /cf-browser-verification/i,
-  /cf-turnstile/i
+  /cf-turnstile/i,
+  /performing security verification/i,
+  /performance and security by cloudflare/i,
+  /performance\s*(?:and|&)\s*security by cloudflare/i,
+  /this website uses a security service to protect against malicious bots/i,
+  /<title>\s*just a moment/i
 ];
 
 const CLOUDFLARE_WEAK_MARKERS = [
   /just a moment/i,
   /checking your browser/i,
+  /security verification/i,
+  /security service/i,
   /attention required/i,
   /security challenge/i,
   /permission denied/i,
@@ -72,6 +80,62 @@ const CLOUDFLARE_WEAK_MARKERS = [
   /captcha/i,
   /ddos protection/i
 ];
+
+const DIARY_ENTRY_URL_PATTERN = /\/diary\/(?:films\/)?for\/(\d{4})\/(\d{2})\/(\d{2})\/?/i;
+const YEAR_TEXT_PATTERN = /\b(18|19|20)\d{2}\b/;
+
+function extractPageTitle(html) {
+  if (!html) return '';
+  const titleMatch = html.match(/<title>([\s\S]*?)<\/title>/i);
+  return titleMatch?.[1]?.replace(/\s+/g, ' ').trim() || '';
+}
+
+function summarizeHtmlContent(html, maxLength = 180) {
+  if (!html) return '';
+
+  const text = html
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (text.length <= maxLength) {
+    return text;
+  }
+
+  return `${text.slice(0, maxLength).trim()}...`;
+}
+
+function extractDiaryCountHint(text) {
+  if (!text) return null;
+
+  const match = text.match(/has logged\s+([\d,]+)\s+entr(?:y|ies)\s+for films during/i);
+  if (!match?.[1]) {
+    return null;
+  }
+
+  const count = Number.parseInt(match[1].replace(/,/g, ''), 10);
+  return Number.isFinite(count) ? count : null;
+}
+
+function hasExpectedDiaryPageContent(html) {
+  if (!html) return false;
+
+  const normalized = html.replace(/\s+/g, ' ');
+
+  const diarySignals = [
+    /id=["']diary-table["']/i.test(html),
+    /diary-entry-row/i.test(html),
+    /href=["'][^"']*\/diary\/(?:films\/)?for\/\d{4}\/\d{2}\/\d{2}\//i.test(html),
+    /has logged\s+[\d,]+\s+entr(?:y|ies)\s+for films during/i.test(normalized),
+    /no diary entries/i.test(normalized),
+    /month\s*<\/th>[\s\S]*day\s*<\/th>[\s\S]*film\s*<\/th>/i.test(html),
+    /col-daydate/i.test(html)
+  ];
+
+  return diarySignals.some(Boolean);
+}
 
 function isCloudflareChallengePage(html) {
   if (!html) return false;
@@ -90,7 +154,7 @@ function hasExpectedPageContent(html, url) {
   if (!html || !url) return false;
 
   if (url.includes('/diary/')) {
-    return /id=["']diary-table["']/i.test(html) || /diary-entry-row/i.test(html);
+    return hasExpectedDiaryPageContent(html);
   }
 
   const isProfileRoute = /^https:\/\/letterboxd\.com\/[^/]+\/?$/.test(url);
@@ -110,6 +174,26 @@ class CloudflareChallengeError extends Error {
     const statusSuffix = status ? ` (HTTP ${status})` : '';
     super(`Cloudflare challenge blocked request: ${url}${statusSuffix}`);
     this.name = 'CloudflareChallengeError';
+  }
+}
+
+class UnexpectedPageContentError extends Error {
+  constructor(url, html) {
+    const title = extractPageTitle(html);
+    const summary = summarizeHtmlContent(html);
+    const suffix = [title, summary].filter(Boolean).join(' | ');
+    super(`Unexpected page content for ${url}${suffix ? `: ${suffix}` : ''}`);
+    this.name = 'UnexpectedPageContentError';
+  }
+}
+
+class DiaryParseError extends Error {
+  constructor(url, expectedCountHint = null) {
+    const expectedSuffix = Number.isFinite(expectedCountHint)
+      ? ` (page indicates ${expectedCountHint} entries)`
+      : '';
+    super(`Diary page parsed as zero entries despite populated markup: ${url}${expectedSuffix}`);
+    this.name = 'DiaryParseError';
   }
 }
 
@@ -176,8 +260,16 @@ async function fetchPageWithCurlCffi(url, retries = 5) {
       throw new CloudflareChallengeError(url, 403);
     }
 
+    if (!hasExpectedPageContent(stdout, url)) {
+      throw new UnexpectedPageContentError(url, stdout);
+    }
+
     return stdout;
   } catch (error) {
+    if (error instanceof UnexpectedPageContentError) {
+      throw error;
+    }
+
     const stderr = typeof error?.stderr === 'string' ? error.stderr : '';
     const combined = `${stderr}\n${error?.message || ''}`.toLowerCase();
 
@@ -196,8 +288,10 @@ async function fetchPage(url) {
       return await fetchPageWithCurlCffi(url);
     } catch (error) {
       const isCfError = error instanceof CloudflareChallengeError;
+      const isUnexpectedContent = error instanceof UnexpectedPageContentError;
       const reason = isCfError ? 'Cloudflare challenge' : error.message;
-      console.log(`  curl_cffi failed (${reason}), falling back to Puppeteer...`);
+      const detail = isUnexpectedContent ? error.message : reason;
+      console.log(`  curl_cffi failed (${detail}), falling back to Puppeteer...`);
     }
   } else if (!curlCffiUnavailableLogged) {
     console.log('  curl_cffi unavailable, using Puppeteer fallback.');
@@ -390,16 +484,30 @@ async function fetchPageWithPuppeteer(url, retries = 7) {
       }
       
       if (url.includes('/diary/')) {
-        // Wait for the diary table to load (or timeout after 15 seconds)
+        // Wait for the diary content to load (or timeout after 15 seconds)
         try {
-          await page.waitForSelector('#diary-table', { timeout: 15000 });
+          await page.waitForFunction(
+            () => {
+              const bodyText = document.body?.innerText || '';
+              return Boolean(
+                document.querySelector('#diary-table, tr.diary-entry-row, a[href*="/diary/for/"], a[href*="/diary/films/for/"]')
+                || /has logged\s+[\d,]+\s+entries?\s+for films during/i.test(bodyText)
+                || /no diary entries/i.test(bodyText)
+              );
+            },
+            { timeout: 15000 }
+          );
         } catch {
-          // Table might not exist on this page, continue anyway
+          // The page might be empty or slow; final validation below decides whether it is usable.
         }
       }
       
       await sleep(900 + randomBetween(100, 900));
       const content = await resolveCloudflareChallenge(page, url, attempt);
+
+      if (!hasExpectedPageContent(content, url)) {
+        throw new UnexpectedPageContentError(url, content);
+      }
 
       consecutiveCloudflareFailures = 0;
       return content;
@@ -427,50 +535,89 @@ async function fetchPageWithPuppeteer(url, retries = 7) {
 function parseDiaryEntries(html, year) {
   const $ = cheerio.load(html);
   const entries = [];
-  
-  const diaryTable = $("#diary-table");
-  if (diaryTable.length === 0) {
-    return { entries: [], hasMore: false };
-  }
+  const pageText = $('body').text().replace(/\s+/g, ' ').trim();
+  const expectedCountHint = extractDiaryCountHint(pageText);
+  const diaryTable = $('#diary-table, table.diary-table').first();
+  const expectedRowCount = diaryTable.length > 0
+    ? diaryTable.find('tr.diary-entry-row').length
+    : 0;
+  const rowCandidates = diaryTable.length > 0
+    ? diaryTable.find('tr').toArray()
+    : $('tr, li.diary-entry, article[data-viewing-date], div.diary-entry').toArray();
+  const seenKeys = new Set();
 
-  const entryRows = diaryTable.find("tr.diary-entry-row");
-  
-  entryRows.each((_, row) => {
+  rowCandidates.forEach((row) => {
     try {
       const $row = $(row);
-      const dayElement = $row.find("td.col-daydate a");
-      const dayUrl = dayElement.attr('href');
+      let dayUrl = $row
+        .find('td.col-daydate a[href]')
+        .map((_, element) => $(element).attr('href') || '')
+        .get()
+        .find((href) => DIARY_ENTRY_URL_PATTERN.test(href));
+
+      if (!dayUrl) {
+        // Fallback for alternate layouts: choose the first diary link that includes an explicit day.
+        const fallbackDiaryLinks = $row.find('a[href*="/diary/"]').toArray();
+        for (const link of fallbackDiaryLinks) {
+          const href = ($(link).attr('href') || '').trim();
+          if (DIARY_ENTRY_URL_PATTERN.test(href)) {
+            dayUrl = href;
+            break;
+          }
+        }
+      }
       
       if (!dayUrl) {
         return;
       }
-      
-      const urlParts = dayUrl.split('/').filter(part => part);
-      const yearIndex = urlParts.indexOf('for') + 1;
-      const monthIndex = yearIndex + 1;
-      const dayIndex = monthIndex + 1;
 
-      if (yearIndex === 0 || !urlParts[yearIndex] || !urlParts[monthIndex] || !urlParts[dayIndex]) {
+      const dayMatch = dayUrl.match(DIARY_ENTRY_URL_PATTERN);
+      if (!dayMatch) {
         return;
       }
 
-      const entryYear = Number.parseInt(urlParts[yearIndex]);
-      const month = urlParts[monthIndex];
-      const day = urlParts[dayIndex];
+      const [, entryYearRaw, month, day] = dayMatch;
+      const entryYear = Number.parseInt(entryYearRaw, 10);
+      const entryKey = `${entryYearRaw}-${month}-${day}-${$row.index()}`;
+      if (seenKeys.has(entryKey)) {
+        return;
+      }
+      seenKeys.add(entryKey);
 
-      const titleElement = $row.find("h2.name a");
-      const title = titleElement.text().trim();
-      const filmYearElement = $row.find("td.col-releaseyear span");
-      const filmYear = filmYearElement.text().trim();
+      const titleCandidates = $row.find('h2.name a, td.col-title a[href*="/film/"], a[href*="/film/"]').toArray();
+      let title = '';
+      let titleLink = '';
+
+      for (const candidate of titleCandidates) {
+        const $candidate = $(candidate);
+        const candidateHref = $candidate.attr('href') || '';
+        const candidateTitle = $candidate.text().trim() || $candidate.find('img').attr('alt')?.trim() || '';
+
+        if (!candidateHref.includes('/film/')) {
+          continue;
+        }
+
+        if (!candidateTitle || /^(review|edit|member)$/i.test(candidateTitle)) {
+          continue;
+        }
+
+        title = candidateTitle;
+        titleLink = candidateHref;
+        break;
+      }
 
       if (!title) {
         return;
       }
 
+      const filmYearText = $row.find('td.col-releaseyear span, td.col-releaseyear, td[class*="release"]').first().text().trim();
+      const filmYearMatch = filmYearText.match(YEAR_TEXT_PATTERN);
+      const filmYear = filmYearMatch?.[0] || '';
+
       let rating = null;
-      const ratingSpan = $row.find("td.col-rating .rating");
+      const ratingSpan = $row.find('td.col-rating .rating, .rating[class*="rated-"], [class*=" rated-"], [class^="rated-"]').first();
       if (ratingSpan.length > 0) {
-        const ratingClass = ratingSpan.attr("class");
+        const ratingClass = ratingSpan.attr('class') || '';
         const ratingMatch = ratingClass.match(/rated-(\d+)/);
         if (ratingMatch && ratingMatch[1]) {
           rating = Number(ratingMatch[1]) / 2;
@@ -483,10 +630,9 @@ function parseDiaryEntries(html, year) {
       };
 
       const monthNum = monthNames[month];
-      const titleLink = titleElement.attr("href");
 
       if (monthNum !== undefined && day && entryYear === year) {
-        const date = new Date(Date.UTC(year, monthNum, Number.parseInt(day)));
+        const date = new Date(Date.UTC(year, monthNum, Number.parseInt(day, 10)));
         const filmUrl = titleLink ? `https://letterboxd.com${titleLink}` : undefined;
 
         entries.push({
@@ -503,10 +649,24 @@ function parseDiaryEntries(html, year) {
   });
 
   // Check if there's a next page
-  const nextPageLink = $(".paginate-nextprev .next");
-  const hasMore = nextPageLink.length > 0 && !nextPageLink.hasClass("disabled");
+  const nextPageLink = $('link[rel="next"], .paginate-nextprev .next[href], a.next[href]').first();
+  const nextPageHref = nextPageLink.attr('href') || '';
+  const hasMore = nextPageLink.length > 0
+    && !nextPageLink.hasClass('disabled')
+    && /\/page\/\d+\/?/i.test(nextPageHref);
+  const hasDiaryLinks = DIARY_ENTRY_URL_PATTERN.test(html);
+  const parseMismatch = (
+    (expectedRowCount > 0 && entries.length < expectedRowCount)
+    || (
+      entries.length === 0
+      && (
+        (Number.isFinite(expectedCountHint) && expectedCountHint > 0)
+        || hasDiaryLinks
+      )
+    )
+  );
 
-  return { entries, hasMore };
+  return { entries, hasMore, parseMismatch, expectedCountHint };
 }
 
 /**
@@ -520,14 +680,18 @@ export async function fetchLetterboxdData(username, year) {
   console.log(`Fetching Letterboxd diary for user: ${username} for year: ${year}`);
 
   while (hasMorePages) {
-    const url = `https://letterboxd.com/${username}/diary/for/${year}/page/${page}/`;
+    const url = `https://letterboxd.com/${username}/diary/films/for/${year}/page/${page}/`;
     console.log(`URL: ${url}`);
 
     try {
       const html = await fetchPage(url);
-      const { entries, hasMore } = parseDiaryEntries(html, year);
+      const { entries, hasMore, parseMismatch, expectedCountHint } = parseDiaryEntries(html, year);
       
       console.log(`Found ${entries.length} diary entries on page ${page}`);
+
+      if (parseMismatch) {
+        throw new DiaryParseError(url, expectedCountHint);
+      }
       
       if (entries.length === 0) {
         hasMorePages = false;
@@ -547,9 +711,11 @@ export async function fetchLetterboxdData(username, year) {
     } catch (error) {
       console.warn(`Error fetching page ${page}: ${error}`);
       const isCloudflareError = error instanceof CloudflareChallengeError;
+      const isUnexpectedContent = error instanceof UnexpectedPageContentError;
+      const isParseError = error instanceof DiaryParseError;
 
       // Do not silently return empty data when page 1 is blocked/unavailable.
-      if (isCloudflareError || page === 1) {
+      if (isCloudflareError || isUnexpectedContent || isParseError || page === 1) {
         throw error;
       }
 

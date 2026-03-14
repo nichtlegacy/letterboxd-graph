@@ -539,7 +539,7 @@ export function generateSvg(entries, options = {}) {
       const yearStr = cellDate.getUTCFullYear();
       const monthStr = String(cellDate.getUTCMonth() + 1).padStart(2, '0');
       const dayStr = String(cellDate.getUTCDate()).padStart(2, '0');
-      const diaryUrl = `https://letterboxd.com/${username}/films/diary/for/${yearStr}/${monthStr}/${dayStr}/`;
+      const diaryUrl = `https://letterboxd.com/${username}/diary/films/for/${yearStr}/${monthStr}/${dayStr}/`;
 
       // Films for this day (already fetched above)
       
@@ -946,7 +946,7 @@ export function generateMultiYearSvg(entries, options = {}) {
         const yearStr = cellDate.getUTCFullYear();
         const monthStr = String(cellDate.getUTCMonth() + 1).padStart(2, '0');
         const dayStr = String(cellDate.getUTCDate()).padStart(2, '0');
-        const diaryUrl = `https://letterboxd.com/${username}/films/diary/for/${yearStr}/${monthStr}/${dayStr}/`;
+        const diaryUrl = `https://letterboxd.com/${username}/diary/films/for/${yearStr}/${monthStr}/${dayStr}/`;
 
         // Tooltip content
         const dayName = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][cellDate.getUTCDay()];
