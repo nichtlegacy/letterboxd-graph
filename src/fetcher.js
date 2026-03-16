@@ -6,6 +6,7 @@
 
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { execFile } from 'child_process';
@@ -83,6 +84,14 @@ const CLOUDFLARE_WEAK_MARKERS = [
 
 const DIARY_ENTRY_URL_PATTERN = /\/diary\/(?:films\/)?for\/(\d{4})\/(\d{2})\/(\d{2})\/?/i;
 const YEAR_TEXT_PATTERN = /\b(18|19|20)\d{2}\b/;
+const LOCAL_BROWSER_CANDIDATES = [
+  process.env.PUPPETEER_EXECUTABLE_PATH,
+  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+  '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary',
+  '/Applications/Chromium.app/Contents/MacOS/Chromium',
+  '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser',
+  '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge'
+].filter(Boolean);
 
 function extractPageTitle(html) {
   if (!html) return '';
@@ -119,6 +128,13 @@ function extractDiaryCountHint(text) {
   return Number.isFinite(count) ? count : null;
 }
 
+function hasEmptyDiaryState(text) {
+  if (!text) return false;
+
+  return /(hasn['’]t|haven['’]t)\s+logged\s+any\s+entr(?:y|ies)\s+for\s+films\s+during/i.test(text)
+    || /no diary entries/i.test(text);
+}
+
 function hasExpectedDiaryPageContent(html) {
   if (!html) return false;
 
@@ -129,7 +145,7 @@ function hasExpectedDiaryPageContent(html) {
     /diary-entry-row/i.test(html),
     /href=["'][^"']*\/diary\/(?:films\/)?for\/\d{4}\/\d{2}\/\d{2}\//i.test(html),
     /has logged\s+[\d,]+\s+entr(?:y|ies)\s+for films during/i.test(normalized),
-    /no diary entries/i.test(normalized),
+    hasEmptyDiaryState(normalized),
     /month\s*<\/th>[\s\S]*day\s*<\/th>[\s\S]*film\s*<\/th>/i.test(html),
     /col-daydate/i.test(html)
   ];
@@ -224,6 +240,16 @@ function randomBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function resolveBrowserExecutablePath() {
+  for (const candidate of LOCAL_BROWSER_CANDIDATES) {
+    if (candidate && fs.existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  return undefined;
+}
+
 async function isCurlCffiAvailable() {
   if (curlCffiAvailable !== null) {
     return curlCffiAvailable;
@@ -306,8 +332,10 @@ async function fetchPage(url) {
  */
 async function getBrowser() {
   if (!browserInstance) {
+    const executablePath = resolveBrowserExecutablePath();
     browserInstance = await puppeteer.launch({
       headless: 'new',
+      executablePath,
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
@@ -492,6 +520,7 @@ async function fetchPageWithPuppeteer(url, retries = 7) {
               return Boolean(
                 document.querySelector('#diary-table, tr.diary-entry-row, a[href*="/diary/for/"], a[href*="/diary/films/for/"]')
                 || /has logged\s+[\d,]+\s+entries?\s+for films during/i.test(bodyText)
+                || /(hasn't|hasn’t|haven't|haven’t)\s+logged\s+any\s+entries?\s+for\s+films\s+during/i.test(bodyText)
                 || /no diary entries/i.test(bodyText)
               );
             },
