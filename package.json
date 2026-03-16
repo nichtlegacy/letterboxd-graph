@@ -32,6 +32,17 @@
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "sharp": "^0.34.0"
   },
+  "overrides": {
+    "cheerio": {
+      "undici": "6.24.0"
+    },
+    "glob": {
+      "minimatch": "3.1.4"
+    },
+    "extract-zip": {
+      "yauzl": "3.2.1"
+    }
+  },
   "engines": {
     "node": ">=18.0.0"
   },
