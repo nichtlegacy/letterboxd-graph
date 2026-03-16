@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-03-15T02:46:07.610Z",
+  "generatedAt": "2026-03-16T02:46:18.876Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 404,
-    "daysActive": 281,
+    "films": 406,
+    "daysActive": 283,
     "streak": 34
   },
   "monthLabels": [
@@ -7515,10 +7515,17 @@
       "date": "2026-02-28",
       "week": 60,
       "weekday": 6,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Scott Pilgrim vs. the World",
+          "year": "2010",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/scott-pilgrim-vs-the-world/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/02/28/"
     },
@@ -7669,10 +7676,17 @@
       "date": "2026-03-14",
       "week": 62,
       "weekday": 6,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Scary Movie",
+          "year": "2000",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2000/2/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/14/"
     },
@@ -15561,9 +15575,51 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/02/21/"
+    },
+    {
+      "date": "2026-02-28",
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Scott Pilgrim vs. the World",
+          "year": "2010",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/scott-pilgrim-vs-the-world/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/02/28/"
+    },
+    {
+      "date": "2026-03-14",
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Scary Movie",
+          "year": "2000",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2000/2/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/14/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-03-14",
+      "title": "Scary Movie",
+      "year": "2000",
+      "rating": 4,
+      "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2000/2/"
+    },
+    {
+      "date": "2026-02-28",
+      "title": "Scott Pilgrim vs. the World",
+      "year": "2010",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/scott-pilgrim-vs-the-world/"
+    },
     {
       "date": "2026-02-21",
       "title": "Menace II Society",
@@ -15619,20 +15675,6 @@
       "year": "2019",
       "rating": 4,
       "url": "https://letterboxd.com/nichtlegacy/film/once-upon-a-time-in-hollywood/"
-    },
-    {
-      "date": "2026-01-19",
-      "title": "BlackBerry",
-      "year": "2023",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/blackberry-2023/"
-    },
-    {
-      "date": "2026-01-17",
-      "title": "BASEketball",
-      "year": "1998",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/baseketball/"
     }
   ]
 }
