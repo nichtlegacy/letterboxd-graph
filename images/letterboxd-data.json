@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-03-18T02:38:58.165Z",
+  "generatedAt": "2026-03-19T02:36:45.096Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 406,
-    "daysActive": 283,
+    "films": 407,
+    "daysActive": 284,
     "streak": 34
   },
   "monthLabels": [
@@ -7727,10 +7727,17 @@
       "date": "2026-03-18",
       "week": 63,
       "weekday": 3,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Mercy",
+          "year": "2026",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/mercy-2026/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/18/"
     },
@@ -15603,9 +15610,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/14/"
+    },
+    {
+      "date": "2026-03-18",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Mercy",
+          "year": "2026",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/mercy-2026/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/18/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-03-18",
+      "title": "Mercy",
+      "year": "2026",
+      "rating": 3,
+      "url": "https://letterboxd.com/nichtlegacy/film/mercy-2026/"
+    },
     {
       "date": "2026-03-14",
       "title": "Scary Movie",
@@ -15668,13 +15696,6 @@
       "year": "2025",
       "rating": 4,
       "url": "https://letterboxd.com/nichtlegacy/film/the-spongebob-movie-search-for-squarepants/"
-    },
-    {
-      "date": "2026-01-22",
-      "title": "Once Upon a Time... in Hollywood",
-      "year": "2019",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/once-upon-a-time-in-hollywood/"
     }
   ]
 }
