@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-03-25T02:34:55.817Z",
+  "generatedAt": "2026-03-26T02:42:36.818Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 407,
-    "daysActive": 284,
+    "films": 408,
+    "daysActive": 285,
     "streak": 34
   },
   "monthLabels": [
@@ -7811,10 +7811,17 @@
       "date": "2026-03-25",
       "week": 64,
       "weekday": 3,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Peaky Blinders: The Immortal Man",
+          "year": "2026",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/peaky-blinders-the-immortal-man/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/25/"
     },
@@ -15624,9 +15631,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/18/"
+    },
+    {
+      "date": "2026-03-25",
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Peaky Blinders: The Immortal Man",
+          "year": "2026",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/peaky-blinders-the-immortal-man/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/25/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-03-25",
+      "title": "Peaky Blinders: The Immortal Man",
+      "year": "2026",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/peaky-blinders-the-immortal-man/"
+    },
     {
       "date": "2026-03-18",
       "title": "Mercy",
@@ -15689,13 +15717,6 @@
       "year": "1999",
       "rating": 3,
       "url": "https://letterboxd.com/nichtlegacy/film/election/"
-    },
-    {
-      "date": "2026-01-24",
-      "title": "The SpongeBob Movie: Search for SquarePants",
-      "year": "2025",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/the-spongebob-movie-search-for-squarepants/"
     }
   ]
 }
