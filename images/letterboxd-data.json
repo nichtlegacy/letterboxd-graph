@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-03-28T02:33:45.348Z",
+  "generatedAt": "2026-03-29T02:48:01.355Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 408,
-    "daysActive": 285,
+    "films": 409,
+    "daysActive": 286,
     "streak": 34
   },
   "monthLabels": [
@@ -7851,10 +7851,17 @@
       "date": "2026-03-28",
       "week": 64,
       "weekday": 6,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Nirvanna the Band the Show the Movie",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/28/"
     },
@@ -15645,9 +15652,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/25/"
+    },
+    {
+      "date": "2026-03-28",
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Nirvanna the Band the Show the Movie",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/28/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-03-28",
+      "title": "Nirvanna the Band the Show the Movie",
+      "year": "2025",
+      "rating": 4,
+      "url": "https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/"
+    },
     {
       "date": "2026-03-25",
       "title": "Peaky Blinders: The Immortal Man",
@@ -15710,13 +15738,6 @@
       "year": "2025",
       "rating": 2.5,
       "url": "https://letterboxd.com/nichtlegacy/film/the-shadows-edge-2025/"
-    },
-    {
-      "date": "2026-01-24",
-      "title": "Election",
-      "year": "1999",
-      "rating": 3,
-      "url": "https://letterboxd.com/nichtlegacy/film/election/"
     }
   ]
 }
