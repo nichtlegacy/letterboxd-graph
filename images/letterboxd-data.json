@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-03-30T02:50:54.811Z",
+  "generatedAt": "2026-03-31T02:43:57.162Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 409,
-    "daysActive": 286,
+    "films": 412,
+    "daysActive": 288,
     "streak": 34
   },
   "monthLabels": [
@@ -7756,10 +7756,17 @@
       "date": "2026-03-20",
       "week": 63,
       "weekday": 5,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Fun with Dick and Jane",
+          "year": "2005",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/fun-with-dick-and-jane-1996/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/20/"
     },
@@ -7869,10 +7876,23 @@
       "date": "2026-03-29",
       "week": 65,
       "weekday": 0,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "Human Traffic",
+          "year": "1999",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/human-traffic/1/"
+        },
+        {
+          "title": "Zootopia 2",
+          "year": "2025",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/zootopia-2/1/"
+        }
+      ],
+      "level": 2,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/29/"
     },
@@ -15640,6 +15660,20 @@
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/18/"
     },
     {
+      "date": "2026-03-20",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Fun with Dick and Jane",
+          "year": "2005",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/fun-with-dick-and-jane-1996/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/20/"
+    },
+    {
       "date": "2026-03-25",
       "count": 1,
       "ratingAvg": 3.5,
@@ -15666,9 +15700,43 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/28/"
+    },
+    {
+      "date": "2026-03-29",
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "Human Traffic",
+          "year": "1999",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/human-traffic/1/"
+        },
+        {
+          "title": "Zootopia 2",
+          "year": "2025",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/zootopia-2/1/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/29/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-03-29",
+      "title": "Human Traffic",
+      "year": "1999",
+      "rating": 3,
+      "url": "https://letterboxd.com/nichtlegacy/film/human-traffic/1/"
+    },
+    {
+      "date": "2026-03-29",
+      "title": "Zootopia 2",
+      "year": "2025",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/zootopia-2/1/"
+    },
     {
       "date": "2026-03-28",
       "title": "Nirvanna the Band the Show the Movie",
@@ -15682,6 +15750,13 @@
       "year": "2026",
       "rating": 3.5,
       "url": "https://letterboxd.com/nichtlegacy/film/peaky-blinders-the-immortal-man/"
+    },
+    {
+      "date": "2026-03-20",
+      "title": "Fun with Dick and Jane",
+      "year": "2005",
+      "rating": 3,
+      "url": "https://letterboxd.com/nichtlegacy/film/fun-with-dick-and-jane-1996/"
     },
     {
       "date": "2026-03-18",
@@ -15717,27 +15792,6 @@
       "year": "2025",
       "rating": 4,
       "url": "https://letterboxd.com/nichtlegacy/film/marty-supreme/"
-    },
-    {
-      "date": "2026-02-13",
-      "title": "The Housemaid",
-      "year": "2025",
-      "rating": 3,
-      "url": "https://letterboxd.com/nichtlegacy/film/the-housemaid-2025/"
-    },
-    {
-      "date": "2026-02-07",
-      "title": "Bill & Ted's Bogus Journey",
-      "year": "1991",
-      "rating": 2.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/bill-teds-bogus-journey/1/"
-    },
-    {
-      "date": "2026-02-05",
-      "title": "The Shadow's Edge",
-      "year": "2025",
-      "rating": 2.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/the-shadows-edge-2025/"
     }
   ]
 }
