@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-03-31T02:43:57.162Z",
+  "generatedAt": "2026-04-01T02:55:50.439Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 412,
-    "daysActive": 288,
+    "films": 414,
+    "daysActive": 290,
     "streak": 34
   },
   "monthLabels": [
@@ -7900,10 +7900,17 @@
       "date": "2026-03-30",
       "week": 65,
       "weekday": 1,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 2,
+      "films": [
+        {
+          "title": "Shriek If You Know What I Did Last Friday the Thirteenth",
+          "year": "2000",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/shriek-if-you-know-what-i-did-last-friday-the-thirteenth/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/30/"
     },
@@ -7911,10 +7918,17 @@
       "date": "2026-03-31",
       "week": 65,
       "weekday": 2,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Sorry to Bother You",
+          "year": "2018",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/sorry-to-bother-you/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/31/"
     },
@@ -15720,9 +15734,51 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/29/"
+    },
+    {
+      "date": "2026-03-30",
+      "count": 1,
+      "ratingAvg": 2,
+      "films": [
+        {
+          "title": "Shriek If You Know What I Did Last Friday the Thirteenth",
+          "year": "2000",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/shriek-if-you-know-what-i-did-last-friday-the-thirteenth/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/30/"
+    },
+    {
+      "date": "2026-03-31",
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Sorry to Bother You",
+          "year": "2018",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/sorry-to-bother-you/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/31/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-03-31",
+      "title": "Sorry to Bother You",
+      "year": "2018",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/sorry-to-bother-you/"
+    },
+    {
+      "date": "2026-03-30",
+      "title": "Shriek If You Know What I Did Last Friday the Thirteenth",
+      "year": "2000",
+      "rating": 2,
+      "url": "https://letterboxd.com/nichtlegacy/film/shriek-if-you-know-what-i-did-last-friday-the-thirteenth/"
+    },
     {
       "date": "2026-03-29",
       "title": "Human Traffic",
@@ -15778,20 +15834,6 @@
       "year": "2010",
       "rating": 3.5,
       "url": "https://letterboxd.com/nichtlegacy/film/scott-pilgrim-vs-the-world/"
-    },
-    {
-      "date": "2026-02-21",
-      "title": "Menace II Society",
-      "year": "1993",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/menace-ii-society/"
-    },
-    {
-      "date": "2026-02-20",
-      "title": "Marty Supreme",
-      "year": "2025",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/marty-supreme/"
     }
   ]
 }
