@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-04-02T02:40:15.089Z",
+  "generatedAt": "2026-04-03T02:41:55.446Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 414,
-    "daysActive": 290,
+    "films": 415,
+    "daysActive": 291,
     "streak": 34
   },
   "monthLabels": [
@@ -7936,10 +7936,17 @@
       "date": "2026-04-01",
       "week": 65,
       "weekday": 3,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "The Super Mario Galaxy Movie",
+          "year": "2026",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-super-mario-galaxy-movie/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/01/"
     },
@@ -15762,9 +15769,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/31/"
+    },
+    {
+      "date": "2026-04-01",
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "The Super Mario Galaxy Movie",
+          "year": "2026",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-super-mario-galaxy-movie/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/01/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-04-01",
+      "title": "The Super Mario Galaxy Movie",
+      "year": "2026",
+      "rating": 2.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-super-mario-galaxy-movie/"
+    },
     {
       "date": "2026-03-31",
       "title": "Sorry to Bother You",
@@ -15827,13 +15855,6 @@
       "year": "2000",
       "rating": 4,
       "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2000/2/"
-    },
-    {
-      "date": "2026-02-28",
-      "title": "Scott Pilgrim vs. the World",
-      "year": "2010",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/scott-pilgrim-vs-the-world/"
     }
   ]
 }
