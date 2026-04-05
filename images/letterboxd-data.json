@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-04-04T02:32:53.036Z",
+  "generatedAt": "2026-04-05T02:50:13.380Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 415,
-    "daysActive": 291,
+    "films": 421,
+    "daysActive": 292,
     "streak": 34
   },
   "monthLabels": [
@@ -7918,9 +7918,21 @@
       "date": "2026-03-31",
       "week": 65,
       "weekday": 2,
-      "count": 1,
-      "ratingAvg": 3.5,
+      "count": 3,
+      "ratingAvg": 3.3,
       "films": [
+        {
+          "title": "Donnie Darko",
+          "year": "2001",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/donnie-darko/1/"
+        },
+        {
+          "title": "Jackass 3D",
+          "year": "2010",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/jackass-3d/"
+        },
         {
           "title": "Sorry to Bother You",
           "year": "2018",
@@ -7928,7 +7940,7 @@
           "url": "https://letterboxd.com/nichtlegacy/film/sorry-to-bother-you/"
         }
       ],
-      "level": 1,
+      "level": 3,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/31/"
     },
@@ -7936,9 +7948,21 @@
       "date": "2026-04-01",
       "week": 65,
       "weekday": 3,
-      "count": 1,
-      "ratingAvg": 2.5,
+      "count": 3,
+      "ratingAvg": 2.7,
       "films": [
+        {
+          "title": "Pokémon 3: The Movie",
+          "year": "2000",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/pokemon-3-the-movie/"
+        },
+        {
+          "title": "Pokémon the Movie 2000",
+          "year": "1999",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/pokemon-the-movie-2000/"
+        },
         {
           "title": "The Super Mario Galaxy Movie",
           "year": "2026",
@@ -7946,7 +7970,7 @@
           "url": "https://letterboxd.com/nichtlegacy/film/the-super-mario-galaxy-movie/"
         }
       ],
-      "level": 1,
+      "level": 3,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/01/"
     },
@@ -7954,10 +7978,23 @@
       "date": "2026-04-02",
       "week": 65,
       "weekday": 4,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Mystery Team",
+          "year": "2009",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/mystery-team/"
+        },
+        {
+          "title": "Me, Myself & Irene",
+          "year": "2000",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/me-myself-irene/"
+        }
+      ],
+      "level": 2,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/02/"
     },
@@ -15758,9 +15795,21 @@
     },
     {
       "date": "2026-03-31",
-      "count": 1,
-      "ratingAvg": 3.5,
+      "count": 3,
+      "ratingAvg": 3.3,
       "films": [
+        {
+          "title": "Donnie Darko",
+          "year": "2001",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/donnie-darko/1/"
+        },
+        {
+          "title": "Jackass 3D",
+          "year": "2010",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/jackass-3d/"
+        },
         {
           "title": "Sorry to Bother You",
           "year": "2018",
@@ -15772,9 +15821,21 @@
     },
     {
       "date": "2026-04-01",
-      "count": 1,
-      "ratingAvg": 2.5,
+      "count": 3,
+      "ratingAvg": 2.7,
       "films": [
+        {
+          "title": "Pokémon 3: The Movie",
+          "year": "2000",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/pokemon-3-the-movie/"
+        },
+        {
+          "title": "Pokémon the Movie 2000",
+          "year": "1999",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/pokemon-the-movie-2000/"
+        },
         {
           "title": "The Super Mario Galaxy Movie",
           "year": "2026",
@@ -15783,15 +15844,77 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/01/"
+    },
+    {
+      "date": "2026-04-02",
+      "count": 2,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Mystery Team",
+          "year": "2009",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/mystery-team/"
+        },
+        {
+          "title": "Me, Myself & Irene",
+          "year": "2000",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/me-myself-irene/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/02/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-04-02",
+      "title": "Mystery Team",
+      "year": "2009",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/mystery-team/"
+    },
+    {
+      "date": "2026-04-02",
+      "title": "Me, Myself & Irene",
+      "year": "2000",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/me-myself-irene/"
+    },
+    {
+      "date": "2026-04-01",
+      "title": "Pokémon 3: The Movie",
+      "year": "2000",
+      "rating": 2.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/pokemon-3-the-movie/"
+    },
+    {
+      "date": "2026-04-01",
+      "title": "Pokémon the Movie 2000",
+      "year": "1999",
+      "rating": 3,
+      "url": "https://letterboxd.com/nichtlegacy/film/pokemon-the-movie-2000/"
+    },
     {
       "date": "2026-04-01",
       "title": "The Super Mario Galaxy Movie",
       "year": "2026",
       "rating": 2.5,
       "url": "https://letterboxd.com/nichtlegacy/film/the-super-mario-galaxy-movie/"
+    },
+    {
+      "date": "2026-03-31",
+      "title": "Donnie Darko",
+      "year": "2001",
+      "rating": 4,
+      "url": "https://letterboxd.com/nichtlegacy/film/donnie-darko/1/"
+    },
+    {
+      "date": "2026-03-31",
+      "title": "Jackass 3D",
+      "year": "2010",
+      "rating": 2.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/jackass-3d/"
     },
     {
       "date": "2026-03-31",
@@ -15813,48 +15936,6 @@
       "year": "1999",
       "rating": 3,
       "url": "https://letterboxd.com/nichtlegacy/film/human-traffic/1/"
-    },
-    {
-      "date": "2026-03-29",
-      "title": "Zootopia 2",
-      "year": "2025",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/zootopia-2/1/"
-    },
-    {
-      "date": "2026-03-28",
-      "title": "Nirvanna the Band the Show the Movie",
-      "year": "2025",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/"
-    },
-    {
-      "date": "2026-03-25",
-      "title": "Peaky Blinders: The Immortal Man",
-      "year": "2026",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/peaky-blinders-the-immortal-man/"
-    },
-    {
-      "date": "2026-03-20",
-      "title": "Fun with Dick and Jane",
-      "year": "2005",
-      "rating": 3,
-      "url": "https://letterboxd.com/nichtlegacy/film/fun-with-dick-and-jane-1996/"
-    },
-    {
-      "date": "2026-03-18",
-      "title": "Mercy",
-      "year": "2026",
-      "rating": 3,
-      "url": "https://letterboxd.com/nichtlegacy/film/mercy-2026/"
-    },
-    {
-      "date": "2026-03-14",
-      "title": "Scary Movie",
-      "year": "2000",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2000/2/"
     }
   ]
 }
