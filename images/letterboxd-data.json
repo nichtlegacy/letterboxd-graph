@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-04-06T02:51:51.666Z",
+  "generatedAt": "2026-04-07T02:45:14.160Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,7 +17,7 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 424,
+    "films": 425,
     "daysActive": 294,
     "streak": 34
   },
@@ -8024,9 +8024,15 @@
       "date": "2026-04-05",
       "week": 66,
       "weekday": 0,
-      "count": 2,
-      "ratingAvg": 4,
+      "count": 3,
+      "ratingAvg": 3.7,
       "films": [
+        {
+          "title": "Taxi Driver",
+          "year": "1976",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/taxi-driver/"
+        },
         {
           "title": "Nirvanna the Band the Show the Movie",
           "year": "2025",
@@ -8040,7 +8046,7 @@
           "url": "https://letterboxd.com/nichtlegacy/film/inglourious-basterds/"
         }
       ],
-      "level": 2,
+      "level": 3,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/05/"
     },
@@ -8049,13 +8055,13 @@
       "week": 66,
       "weekday": 1,
       "count": 1,
-      "ratingAvg": 3,
+      "ratingAvg": 3.5,
       "films": [
         {
-          "title": "Taxi Driver",
-          "year": "1976",
-          "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/taxi-driver/"
+          "title": "Memento",
+          "year": "2000",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/memento/"
         }
       ],
       "level": 1,
@@ -15887,9 +15893,15 @@
     },
     {
       "date": "2026-04-05",
-      "count": 2,
-      "ratingAvg": 4,
+      "count": 3,
+      "ratingAvg": 3.7,
       "films": [
+        {
+          "title": "Taxi Driver",
+          "year": "1976",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/taxi-driver/"
+        },
         {
           "title": "Nirvanna the Band the Show the Movie",
           "year": "2025",
@@ -15908,13 +15920,13 @@
     {
       "date": "2026-04-06",
       "count": 1,
-      "ratingAvg": 3,
+      "ratingAvg": 3.5,
       "films": [
         {
-          "title": "Taxi Driver",
-          "year": "1976",
-          "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/taxi-driver/"
+          "title": "Memento",
+          "year": "2000",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/memento/"
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/06/"
@@ -15923,6 +15935,13 @@
   "recent": [
     {
       "date": "2026-04-06",
+      "title": "Memento",
+      "year": "2000",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/memento/"
+    },
+    {
+      "date": "2026-04-05",
       "title": "Taxi Driver",
       "year": "1976",
       "rating": 3,
@@ -15983,13 +16002,6 @@
       "year": "2001",
       "rating": 4,
       "url": "https://letterboxd.com/nichtlegacy/film/donnie-darko/1/"
-    },
-    {
-      "date": "2026-03-31",
-      "title": "Jackass 3D",
-      "year": "2010",
-      "rating": 2.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/jackass-3d/"
     }
   ]
 }
