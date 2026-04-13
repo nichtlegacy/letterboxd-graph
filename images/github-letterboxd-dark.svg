@@ -105,7 +105,7 @@
     <text x="0" y="20" font-size="16" font-weight="600" fill="#e6edf3">2026</text>
     <!-- Movies with rating distribution tooltip -->
     <g class="movies-group" transform="translate(60, 5)">
-      <text x="0" y="15" font-size="14" font-weight="500" fill="#7d8590">44 Movies</text>
+      <text x="0" y="15" font-size="14" font-weight="500" fill="#7d8590">45 Movies</text>
       <g class="movies-tooltip" transform="translate(-30, -115)">
         <rect x="0" y="0" width="260" height="105" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
         <text x="130" y="18" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="middle">Rating Distribution</text>
@@ -131,8 +131,8 @@
         <text x="166" y="32" font-size="8" fill="#f0f6fc" text-anchor="middle">15</text>
         <rect x="159" y="35" width="14" height="45" rx="2" fill="#39d353"/>
         <text x="166" y="98" font-size="7" fill="#e6edf3" text-anchor="middle">3.5</text>
-        <text x="190" y="47" font-size="8" fill="#f0f6fc" text-anchor="middle">10</text>
-        <rect x="183" y="50" width="14" height="30" rx="2" fill="#39d353"/>
+        <text x="190" y="44" font-size="8" fill="#f0f6fc" text-anchor="middle">11</text>
+        <rect x="183" y="47" width="14" height="33" rx="2" fill="#39d353"/>
         <text x="190" y="98" font-size="7" fill="#e6edf3" text-anchor="middle">4</text>
         <text x="214" y="77" font-size="8" fill="#f0f6fc" text-anchor="middle"></text>
         <rect x="207" y="80" width="14" height="1" rx="2" fill="#39d353"/>
@@ -145,13 +145,13 @@
     
     <!-- Days Active with hover tooltip -->
     <g class="days-active-group" transform="translate(170, 5)">
-      <text x="0" y="15" font-size="14" font-weight="500" fill="#7d8590">31 Days Active</text>
+      <text x="0" y="15" font-size="14" font-weight="500" fill="#7d8590">32 Days Active</text>
       <g class="days-active-tooltip" transform="translate(-20, -115)">
         <rect x="0" y="0" width="200" height="105" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
         <text x="100" y="18" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="middle">Weekly Distribution</text>
         
-        <text x="27" y="54" font-size="9" fill="#f0f6fc" text-anchor="middle">6</text>
-        <rect x="20" y="57" width="14" height="23" rx="2" fill="#26a641"/>
+        <text x="27" y="51" font-size="9" fill="#f0f6fc" text-anchor="middle">7</text>
+        <rect x="20" y="54" width="14" height="26" rx="2" fill="#26a641"/>
         <text x="27" y="100" font-size="9" fill="#e6edf3" text-anchor="middle">S</text>
         <text x="51" y="58" font-size="9" fill="#f0f6fc" text-anchor="middle">5</text>
         <rect x="44" y="61" width="14" height="19" rx="2" fill="#26a641"/>
@@ -477,12 +477,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#161b22"
+          fill="#006d32"
         />
-        <g class="tooltip-group" transform="translate(255, -46)">
-          <rect x="0" y="0" width="245" height="38" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(255, -64)">
+          <rect x="0" y="0" width="240" height="56" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#f0f6fc">
-            <tspan x="10" dy="22" font-weight="600">Sun, 12. Apr 2026: 0 movies watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Sun, 12. Apr 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• Ted (2012) - 4★</tspan>
           </text>
         </g>
       </a>
