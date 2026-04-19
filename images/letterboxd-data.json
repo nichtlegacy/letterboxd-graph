@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-04-18T02:45:01.060Z",
+  "generatedAt": "2026-04-19T03:19:31.653Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 426,
-    "daysActive": 295,
+    "films": 428,
+    "daysActive": 297,
     "streak": 34
   },
   "monthLabels": [
@@ -8189,10 +8189,17 @@
       "date": "2026-04-17",
       "week": 67,
       "weekday": 5,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Step Brothers",
+          "year": "2008",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/step-brothers/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/17/"
     },
@@ -8200,10 +8207,17 @@
       "date": "2026-04-18",
       "week": 67,
       "weekday": 6,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Banker",
+          "year": "2020",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-banker-2020/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/18/"
     },
@@ -15951,9 +15965,51 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/12/"
+    },
+    {
+      "date": "2026-04-17",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Step Brothers",
+          "year": "2008",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/step-brothers/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/17/"
+    },
+    {
+      "date": "2026-04-18",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Banker",
+          "year": "2020",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-banker-2020/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/18/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-04-18",
+      "title": "The Banker",
+      "year": "2020",
+      "rating": 3,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-banker-2020/"
+    },
+    {
+      "date": "2026-04-17",
+      "title": "Step Brothers",
+      "year": "2008",
+      "rating": 3,
+      "url": "https://letterboxd.com/nichtlegacy/film/step-brothers/"
+    },
     {
       "date": "2026-04-12",
       "title": "Ted",
@@ -16009,20 +16065,6 @@
       "year": "2000",
       "rating": 2.5,
       "url": "https://letterboxd.com/nichtlegacy/film/pokemon-3-the-movie/"
-    },
-    {
-      "date": "2026-04-01",
-      "title": "Pokémon the Movie 2000",
-      "year": "1999",
-      "rating": 3,
-      "url": "https://letterboxd.com/nichtlegacy/film/pokemon-the-movie-2000/"
-    },
-    {
-      "date": "2026-04-01",
-      "title": "The Super Mario Galaxy Movie",
-      "year": "2026",
-      "rating": 2.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/the-super-mario-galaxy-movie/"
     }
   ]
 }
