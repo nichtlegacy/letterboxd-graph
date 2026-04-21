@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-04-20T03:21:36.179Z",
+  "generatedAt": "2026-04-21T02:54:49.812Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 428,
-    "daysActive": 297,
+    "films": 430,
+    "daysActive": 298,
     "streak": 34
   },
   "monthLabels": [
@@ -8207,9 +8207,15 @@
       "date": "2026-04-18",
       "week": 67,
       "weekday": 6,
-      "count": 1,
-      "ratingAvg": 3,
+      "count": 2,
+      "ratingAvg": 3.3,
       "films": [
+        {
+          "title": "Swiss Army Man",
+          "year": "2016",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/swiss-army-man/"
+        },
         {
           "title": "The Banker",
           "year": "2020",
@@ -8217,7 +8223,7 @@
           "url": "https://letterboxd.com/nichtlegacy/film/the-banker-2020/"
         }
       ],
-      "level": 1,
+      "level": 2,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/18/"
     },
@@ -8236,10 +8242,17 @@
       "date": "2026-04-20",
       "week": 68,
       "weekday": 1,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Hoppers",
+          "year": "2026",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/hoppers/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/20/"
     },
@@ -15982,9 +15995,15 @@
     },
     {
       "date": "2026-04-18",
-      "count": 1,
-      "ratingAvg": 3,
+      "count": 2,
+      "ratingAvg": 3.3,
       "films": [
+        {
+          "title": "Swiss Army Man",
+          "year": "2016",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/swiss-army-man/"
+        },
         {
           "title": "The Banker",
           "year": "2020",
@@ -15993,9 +16012,37 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/18/"
+    },
+    {
+      "date": "2026-04-20",
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Hoppers",
+          "year": "2026",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/hoppers/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/20/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-04-20",
+      "title": "Hoppers",
+      "year": "2026",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/hoppers/"
+    },
+    {
+      "date": "2026-04-18",
+      "title": "Swiss Army Man",
+      "year": "2016",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/swiss-army-man/"
+    },
     {
       "date": "2026-04-18",
       "title": "The Banker",
@@ -16051,20 +16098,6 @@
       "year": "2009",
       "rating": 3.5,
       "url": "https://letterboxd.com/nichtlegacy/film/mystery-team/"
-    },
-    {
-      "date": "2026-04-02",
-      "title": "Me, Myself & Irene",
-      "year": "2000",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/me-myself-irene/"
-    },
-    {
-      "date": "2026-04-01",
-      "title": "Pokémon 3: The Movie",
-      "year": "2000",
-      "rating": 2.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/pokemon-3-the-movie/"
     }
   ]
 }
