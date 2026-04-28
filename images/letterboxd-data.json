@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-04-27T03:28:46.812Z",
+  "generatedAt": "2026-04-28T03:34:37.264Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 430,
-    "daysActive": 298,
+    "films": 431,
+    "daysActive": 299,
     "streak": 34
   },
   "monthLabels": [
@@ -8326,10 +8326,17 @@
       "date": "2026-04-27",
       "week": 69,
       "weekday": 1,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Wild Tales",
+          "year": "2014",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/wild-tales/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/27/"
     },
@@ -16026,9 +16033,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/20/"
+    },
+    {
+      "date": "2026-04-27",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Wild Tales",
+          "year": "2014",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/wild-tales/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/27/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-04-27",
+      "title": "Wild Tales",
+      "year": "2014",
+      "rating": 3,
+      "url": "https://letterboxd.com/nichtlegacy/film/wild-tales/"
+    },
     {
       "date": "2026-04-20",
       "title": "Hoppers",
@@ -16091,13 +16119,6 @@
       "year": "2009",
       "rating": 4,
       "url": "https://letterboxd.com/nichtlegacy/film/inglourious-basterds/"
-    },
-    {
-      "date": "2026-04-02",
-      "title": "Mystery Team",
-      "year": "2009",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/mystery-team/"
     }
   ]
 }
