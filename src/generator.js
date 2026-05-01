@@ -104,13 +104,18 @@ function escapeXml(unsafe) {
 
 // Load font once at module initialization
 let loadedFont = null;
+let textWidthFallbackWarningShown = false;
 function getFont() {
   if (!loadedFont) {
     const fontPath = path.join(FONTS_DIR, 'Inter-SemiBold.ttf');
     if (fs.existsSync(fontPath)) {
       try {
         const fontBuffer = fs.readFileSync(fontPath);
-        loadedFont = opentype.parse(fontBuffer.buffer);
+        const fontData = fontBuffer.buffer.slice(
+          fontBuffer.byteOffset,
+          fontBuffer.byteOffset + fontBuffer.byteLength
+        );
+        loadedFont = opentype.parse(fontData);
       } catch (e) {
         console.warn('Could not load font for text measurement, using fallback');
         loadedFont = null;
@@ -132,15 +137,22 @@ function calculateTextWidth(text, fontSize, letterSpacing = 0) {
   
   const font = getFont();
   if (font) {
-    // Use getAdvanceWidth for accurate measurement with kerning
-    let width = font.getAdvanceWidth(text, fontSize, { kerning: true });
-    
-    // Add letter spacing if specified
-    if (letterSpacing > 0 && text.length > 1) {
-      width += letterSpacing * (text.length - 1);
+    try {
+      // Use getAdvanceWidth for accurate measurement with kerning
+      let width = font.getAdvanceWidth(text, fontSize, { kerning: true });
+      
+      // Add letter spacing if specified
+      if (letterSpacing > 0 && text.length > 1) {
+        width += letterSpacing * (text.length - 1);
+      }
+      
+      return width;
+    } catch (error) {
+      if (!textWidthFallbackWarningShown) {
+        console.warn(`Could not measure text width with opentype.js, using fallback: ${error.message}`);
+        textWidthFallbackWarningShown = true;
+      }
     }
-    
-    return width;
   }
   
   // Fallback to rough estimation if font couldn't be loaded
