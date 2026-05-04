@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-05-03T03:36:36.822Z",
+  "generatedAt": "2026-05-04T03:35:21.203Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 431,
-    "daysActive": 299,
+    "films": 432,
+    "daysActive": 300,
     "streak": 34
   },
   "monthLabels": [
@@ -8399,10 +8399,17 @@
       "date": "2026-05-03",
       "week": 70,
       "weekday": 0,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Man on the Moon",
+          "year": "1999",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/man-on-the-moon/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/03/"
     },
@@ -16047,9 +16054,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/04/27/"
+    },
+    {
+      "date": "2026-05-03",
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Man on the Moon",
+          "year": "1999",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/man-on-the-moon/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/03/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-05-03",
+      "title": "Man on the Moon",
+      "year": "1999",
+      "rating": 4,
+      "url": "https://letterboxd.com/nichtlegacy/film/man-on-the-moon/"
+    },
     {
       "date": "2026-04-27",
       "title": "Wild Tales",
@@ -16112,13 +16140,6 @@
       "year": "2025",
       "rating": 4,
       "url": "https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/1/"
-    },
-    {
-      "date": "2026-04-05",
-      "title": "Inglourious Basterds",
-      "year": "2009",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/inglourious-basterds/"
     }
   ]
 }
