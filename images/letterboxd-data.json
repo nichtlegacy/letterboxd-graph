@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-05-07T03:32:15.443Z",
+  "generatedAt": "2026-05-08T03:28:13.111Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 432,
-    "daysActive": 300,
+    "films": 433,
+    "daysActive": 301,
     "streak": 34
   },
   "monthLabels": [
@@ -8417,10 +8417,17 @@
       "date": "2026-05-04",
       "week": 70,
       "weekday": 1,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 4.5,
+      "films": [
+        {
+          "title": "Star Wars",
+          "year": "1977",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/star-wars/2/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/04/"
     },
@@ -16068,9 +16075,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/03/"
+    },
+    {
+      "date": "2026-05-04",
+      "count": 1,
+      "ratingAvg": 4.5,
+      "films": [
+        {
+          "title": "Star Wars",
+          "year": "1977",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/star-wars/2/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/04/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-05-04",
+      "title": "Star Wars",
+      "year": "1977",
+      "rating": 4.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/star-wars/2/"
+    },
     {
       "date": "2026-05-03",
       "title": "Man on the Moon",
@@ -16133,13 +16161,6 @@
       "year": "1976",
       "rating": 3,
       "url": "https://letterboxd.com/nichtlegacy/film/taxi-driver/"
-    },
-    {
-      "date": "2026-04-05",
-      "title": "Nirvanna the Band the Show the Movie",
-      "year": "2025",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/1/"
     }
   ]
 }
