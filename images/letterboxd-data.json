@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-05-08T03:28:13.111Z",
+  "generatedAt": "2026-05-09T03:27:13.264Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 433,
-    "daysActive": 301,
+    "films": 434,
+    "daysActive": 302,
     "streak": 34
   },
   "monthLabels": [
@@ -8468,10 +8468,17 @@
       "date": "2026-05-08",
       "week": 70,
       "weekday": 5,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Man on the Moon",
+          "year": "1999",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/man-on-the-moon/1/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/08/"
     },
@@ -16089,9 +16096,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/04/"
+    },
+    {
+      "date": "2026-05-08",
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Man on the Moon",
+          "year": "1999",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/man-on-the-moon/1/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/08/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-05-08",
+      "title": "Man on the Moon",
+      "year": "1999",
+      "rating": 4,
+      "url": "https://letterboxd.com/nichtlegacy/film/man-on-the-moon/1/"
+    },
     {
       "date": "2026-05-04",
       "title": "Star Wars",
@@ -16154,13 +16182,6 @@
       "year": "2000",
       "rating": 3.5,
       "url": "https://letterboxd.com/nichtlegacy/film/memento/"
-    },
-    {
-      "date": "2026-04-05",
-      "title": "Taxi Driver",
-      "year": "1976",
-      "rating": 3,
-      "url": "https://letterboxd.com/nichtlegacy/film/taxi-driver/"
     }
   ]
 }
