@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-05-22T04:01:39.497Z",
+  "generatedAt": "2026-05-23T03:38:59.621Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 438,
-    "daysActive": 306,
+    "films": 439,
+    "daysActive": 307,
     "streak": 34
   },
   "monthLabels": [
@@ -8657,10 +8657,17 @@
       "date": "2026-05-22",
       "week": 72,
       "weekday": 5,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "It's What's Inside",
+          "year": "2024",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/its-whats-inside/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/22/"
     },
@@ -16194,9 +16201,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/15/"
+    },
+    {
+      "date": "2026-05-22",
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "It's What's Inside",
+          "year": "2024",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/its-whats-inside/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/22/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-05-22",
+      "title": "It's What's Inside",
+      "year": "2024",
+      "rating": 4,
+      "url": "https://letterboxd.com/nichtlegacy/film/its-whats-inside/"
+    },
     {
       "date": "2026-05-15",
       "title": "Project Hail Mary",
@@ -16259,13 +16287,6 @@
       "year": "2026",
       "rating": 3.5,
       "url": "https://letterboxd.com/nichtlegacy/film/hoppers/"
-    },
-    {
-      "date": "2026-04-18",
-      "title": "Swiss Army Man",
-      "year": "2016",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/swiss-army-man/"
     }
   ]
 }
