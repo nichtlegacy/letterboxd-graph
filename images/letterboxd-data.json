@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-05-31T04:13:11.658Z",
+  "generatedAt": "2026-06-01T04:26:41.173Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 439,
-    "daysActive": 307,
+    "films": 440,
+    "daysActive": 308,
     "streak": 34
   },
   "monthLabels": [
@@ -8752,10 +8752,17 @@
       "date": "2026-05-30",
       "week": 73,
       "weekday": 6,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Bottoms",
+          "year": "2023",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/bottoms/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/30/"
     },
@@ -16215,9 +16222,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/22/"
+    },
+    {
+      "date": "2026-05-30",
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Bottoms",
+          "year": "2023",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/bottoms/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/30/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-05-30",
+      "title": "Bottoms",
+      "year": "2023",
+      "rating": 2.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/bottoms/"
+    },
     {
       "date": "2026-05-22",
       "title": "It's What's Inside",
@@ -16280,13 +16308,6 @@
       "year": "2026",
       "rating": 3.5,
       "url": "https://letterboxd.com/nichtlegacy/film/roommates-2026/"
-    },
-    {
-      "date": "2026-04-20",
-      "title": "Hoppers",
-      "year": "2026",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/hoppers/"
     }
   ]
 }
