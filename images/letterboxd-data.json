@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-06-03T04:30:57.083Z",
+  "generatedAt": "2026-06-04T04:27:40.860Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 440,
-    "daysActive": 308,
+    "films": 441,
+    "daysActive": 309,
     "streak": 34
   },
   "monthLabels": [
@@ -8803,10 +8803,17 @@
       "date": "2026-06-03",
       "week": 74,
       "weekday": 3,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Scary Movie",
+          "year": "2026",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2026/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/06/03/"
     },
@@ -16236,9 +16243,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/30/"
+    },
+    {
+      "date": "2026-06-03",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Scary Movie",
+          "year": "2026",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2026/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/06/03/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-06-03",
+      "title": "Scary Movie",
+      "year": "2026",
+      "rating": 3,
+      "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2026/"
+    },
     {
       "date": "2026-05-30",
       "title": "Bottoms",
@@ -16301,13 +16329,6 @@
       "year": "2007",
       "rating": 3,
       "url": "https://letterboxd.com/nichtlegacy/film/futurama-benders-big-score/"
-    },
-    {
-      "date": "2026-04-22",
-      "title": "Roommates",
-      "year": "2026",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/roommates-2026/"
     }
   ]
 }
