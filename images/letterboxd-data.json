@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-06-19T04:51:46.967Z",
+  "generatedAt": "2026-06-20T04:09:34.569Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 441,
-    "daysActive": 309,
+    "films": 442,
+    "daysActive": 310,
     "streak": 34
   },
   "monthLabels": [
@@ -8986,10 +8986,17 @@
       "date": "2026-06-19",
       "week": 76,
       "weekday": 5,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Ted 2",
+          "year": "2015",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/ted-2/1/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/06/19/"
     },
@@ -16257,9 +16264,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/06/03/"
+    },
+    {
+      "date": "2026-06-19",
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Ted 2",
+          "year": "2015",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/ted-2/1/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/06/19/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-06-19",
+      "title": "Ted 2",
+      "year": "2015",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/ted-2/1/"
+    },
     {
       "date": "2026-06-03",
       "title": "Scary Movie",
@@ -16322,13 +16350,6 @@
       "year": "2019",
       "rating": 3,
       "url": "https://letterboxd.com/nichtlegacy/film/jojo-rabbit/"
-    },
-    {
-      "date": "2026-04-24",
-      "title": "Futurama: Bender's Big Score",
-      "year": "2007",
-      "rating": 3,
-      "url": "https://letterboxd.com/nichtlegacy/film/futurama-benders-big-score/"
     }
   ]
 }
