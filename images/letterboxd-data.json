@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-06-21T04:44:52.150Z",
+  "generatedAt": "2026-06-22T04:55:04.048Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 442,
-    "daysActive": 310,
+    "films": 443,
+    "daysActive": 311,
     "streak": 34
   },
   "monthLabels": [
@@ -9015,10 +9015,17 @@
       "date": "2026-06-21",
       "week": 77,
       "weekday": 0,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Nirvanna the Band the Show the Movie",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/2/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/06/21/"
     },
@@ -16278,9 +16285,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/06/19/"
+    },
+    {
+      "date": "2026-06-21",
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Nirvanna the Band the Show the Movie",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/2/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/06/21/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-06-21",
+      "title": "Nirvanna the Band the Show the Movie",
+      "year": "2025",
+      "rating": 4,
+      "url": "https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/2/"
+    },
     {
       "date": "2026-06-19",
       "title": "Ted 2",
@@ -16343,13 +16371,6 @@
       "year": "2014",
       "rating": 3,
       "url": "https://letterboxd.com/nichtlegacy/film/wild-tales/"
-    },
-    {
-      "date": "2026-04-26",
-      "title": "Jojo Rabbit",
-      "year": "2019",
-      "rating": 3,
-      "url": "https://letterboxd.com/nichtlegacy/film/jojo-rabbit/"
     }
   ]
 }
