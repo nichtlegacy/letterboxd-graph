@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-06-28T04:13:16.696Z",
+  "generatedAt": "2026-06-29T04:17:40.545Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 443,
-    "daysActive": 311,
+    "films": 444,
+    "daysActive": 312,
     "streak": 34
   },
   "monthLabels": [
@@ -9099,10 +9099,17 @@
       "date": "2026-06-28",
       "week": 78,
       "weekday": 0,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Ghost World",
+          "year": "2001",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/ghost-world/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/06/28/"
     },
@@ -16299,9 +16306,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/06/21/"
+    },
+    {
+      "date": "2026-06-28",
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Ghost World",
+          "year": "2001",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/ghost-world/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/06/28/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-06-28",
+      "title": "Ghost World",
+      "year": "2001",
+      "rating": 2.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/ghost-world/"
+    },
     {
       "date": "2026-06-21",
       "title": "Nirvanna the Band the Show the Movie",
@@ -16364,13 +16392,6 @@
       "year": "1999",
       "rating": 4,
       "url": "https://letterboxd.com/nichtlegacy/film/man-on-the-moon/"
-    },
-    {
-      "date": "2026-04-27",
-      "title": "Wild Tales",
-      "year": "2014",
-      "rating": 3,
-      "url": "https://letterboxd.com/nichtlegacy/film/wild-tales/"
     }
   ]
 }
