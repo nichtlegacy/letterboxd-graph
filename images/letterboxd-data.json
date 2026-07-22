@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-07-21T03:04:35.159Z",
+  "generatedAt": "2026-07-22T02:57:11.513Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 444,
-    "daysActive": 312,
+    "films": 445,
+    "daysActive": 313,
     "streak": 34
   },
   "monthLabels": [
@@ -9359,10 +9359,17 @@
       "date": "2026-07-21",
       "week": 81,
       "weekday": 2,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 4.5,
+      "films": [
+        {
+          "title": "The Odyssey",
+          "year": "2026",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-odyssey-2026/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/21/"
     },
@@ -16320,9 +16327,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/06/28/"
+    },
+    {
+      "date": "2026-07-21",
+      "count": 1,
+      "ratingAvg": 4.5,
+      "films": [
+        {
+          "title": "The Odyssey",
+          "year": "2026",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-odyssey-2026/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/21/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-07-21",
+      "title": "The Odyssey",
+      "year": "2026",
+      "rating": 4.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-odyssey-2026/"
+    },
     {
       "date": "2026-06-28",
       "title": "Ghost World",
@@ -16385,13 +16413,6 @@
       "year": "1977",
       "rating": 4.5,
       "url": "https://letterboxd.com/nichtlegacy/film/star-wars/2/"
-    },
-    {
-      "date": "2026-05-03",
-      "title": "Man on the Moon",
-      "year": "1999",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/man-on-the-moon/"
     }
   ]
 }
