@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-07-22T02:57:11.513Z",
+  "generatedAt": "2026-07-23T03:19:44.090Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 445,
-    "daysActive": 313,
+    "films": 452,
+    "daysActive": 318,
     "streak": 34
   },
   "monthLabels": [
@@ -9271,10 +9271,17 @@
       "date": "2026-07-13",
       "week": 80,
       "weekday": 1,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 4.5,
+      "films": [
+        {
+          "title": "Half Baked",
+          "year": "1998",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/half-baked/5/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/13/"
     },
@@ -9282,10 +9289,17 @@
       "date": "2026-07-14",
       "week": 80,
       "weekday": 2,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "High School",
+          "year": "2010",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/high-school-2010/2/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/14/"
     },
@@ -9293,10 +9307,17 @@
       "date": "2026-07-15",
       "week": 80,
       "weekday": 3,
-      "count": 0,
+      "count": 1,
       "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "films": [
+        {
+          "title": "Scouts Guide to the Zombie Apocalypse",
+          "year": "2015",
+          "rating": null,
+          "url": "https://letterboxd.com/nichtlegacy/film/scouts-guide-to-the-zombie-apocalypse/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/15/"
     },
@@ -9315,10 +9336,17 @@
       "date": "2026-07-17",
       "week": 80,
       "weekday": 5,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "What We Do in the Shadows",
+          "year": "2014",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/what-we-do-in-the-shadows/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/17/"
     },
@@ -9337,10 +9365,29 @@
       "date": "2026-07-19",
       "week": 81,
       "weekday": 0,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 3,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "Jay and Silent Bob Strike Back",
+          "year": "2001",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/jay-and-silent-bob-strike-back/2/"
+        },
+        {
+          "title": "Minions",
+          "year": "2015",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/minions/"
+        },
+        {
+          "title": "Minions: The Rise of Gru",
+          "year": "2022",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/minions-the-rise-of-gru/"
+        }
+      ],
+      "level": 3,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/19/"
     },
@@ -16329,6 +16376,88 @@
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/06/28/"
     },
     {
+      "date": "2026-07-13",
+      "count": 1,
+      "ratingAvg": 4.5,
+      "films": [
+        {
+          "title": "Half Baked",
+          "year": "1998",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/half-baked/5/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/13/"
+    },
+    {
+      "date": "2026-07-14",
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "High School",
+          "year": "2010",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/high-school-2010/2/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/14/"
+    },
+    {
+      "date": "2026-07-15",
+      "count": 1,
+      "ratingAvg": null,
+      "films": [
+        {
+          "title": "Scouts Guide to the Zombie Apocalypse",
+          "year": "2015",
+          "rating": null,
+          "url": "https://letterboxd.com/nichtlegacy/film/scouts-guide-to-the-zombie-apocalypse/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/15/"
+    },
+    {
+      "date": "2026-07-17",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "What We Do in the Shadows",
+          "year": "2014",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/what-we-do-in-the-shadows/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/17/"
+    },
+    {
+      "date": "2026-07-19",
+      "count": 3,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "Jay and Silent Bob Strike Back",
+          "year": "2001",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/jay-and-silent-bob-strike-back/2/"
+        },
+        {
+          "title": "Minions",
+          "year": "2015",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/minions/"
+        },
+        {
+          "title": "Minions: The Rise of Gru",
+          "year": "2022",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/minions-the-rise-of-gru/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/19/"
+    },
+    {
       "date": "2026-07-21",
       "count": 1,
       "ratingAvg": 4.5,
@@ -16352,6 +16481,55 @@
       "url": "https://letterboxd.com/nichtlegacy/film/the-odyssey-2026/"
     },
     {
+      "date": "2026-07-19",
+      "title": "Jay and Silent Bob Strike Back",
+      "year": "2001",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/jay-and-silent-bob-strike-back/2/"
+    },
+    {
+      "date": "2026-07-19",
+      "title": "Minions",
+      "year": "2015",
+      "rating": 3.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/minions/"
+    },
+    {
+      "date": "2026-07-19",
+      "title": "Minions: The Rise of Gru",
+      "year": "2022",
+      "rating": 3,
+      "url": "https://letterboxd.com/nichtlegacy/film/minions-the-rise-of-gru/"
+    },
+    {
+      "date": "2026-07-17",
+      "title": "What We Do in the Shadows",
+      "year": "2014",
+      "rating": 3,
+      "url": "https://letterboxd.com/nichtlegacy/film/what-we-do-in-the-shadows/"
+    },
+    {
+      "date": "2026-07-15",
+      "title": "Scouts Guide to the Zombie Apocalypse",
+      "year": "2015",
+      "rating": null,
+      "url": "https://letterboxd.com/nichtlegacy/film/scouts-guide-to-the-zombie-apocalypse/"
+    },
+    {
+      "date": "2026-07-14",
+      "title": "High School",
+      "year": "2010",
+      "rating": 4,
+      "url": "https://letterboxd.com/nichtlegacy/film/high-school-2010/2/"
+    },
+    {
+      "date": "2026-07-13",
+      "title": "Half Baked",
+      "year": "1998",
+      "rating": 4.5,
+      "url": "https://letterboxd.com/nichtlegacy/film/half-baked/5/"
+    },
+    {
       "date": "2026-06-28",
       "title": "Ghost World",
       "year": "2001",
@@ -16364,55 +16542,6 @@
       "year": "2025",
       "rating": 4,
       "url": "https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/2/"
-    },
-    {
-      "date": "2026-06-19",
-      "title": "Ted 2",
-      "year": "2015",
-      "rating": 3.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/ted-2/1/"
-    },
-    {
-      "date": "2026-06-03",
-      "title": "Scary Movie",
-      "year": "2026",
-      "rating": 3,
-      "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2026/"
-    },
-    {
-      "date": "2026-05-30",
-      "title": "Bottoms",
-      "year": "2023",
-      "rating": 2.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/bottoms/"
-    },
-    {
-      "date": "2026-05-22",
-      "title": "It's What's Inside",
-      "year": "2024",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/its-whats-inside/"
-    },
-    {
-      "date": "2026-05-15",
-      "title": "Project Hail Mary",
-      "year": "2026",
-      "rating": 4.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/project-hail-mary/"
-    },
-    {
-      "date": "2026-05-08",
-      "title": "Man on the Moon",
-      "year": "1999",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/man-on-the-moon/1/"
-    },
-    {
-      "date": "2026-05-04",
-      "title": "Star Wars",
-      "year": "1977",
-      "rating": 4.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/star-wars/2/"
     }
   ]
 }
