@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-07-25T03:00:31.722Z",
+  "generatedAt": "2026-07-26T03:23:23.450Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 452,
-    "daysActive": 318,
+    "films": 454,
+    "daysActive": 320,
     "streak": 34
   },
   "monthLabels": [
@@ -9308,12 +9308,12 @@
       "week": 80,
       "weekday": 3,
       "count": 1,
-      "ratingAvg": null,
+      "ratingAvg": 2.5,
       "films": [
         {
           "title": "Scouts Guide to the Zombie Apocalypse",
           "year": "2015",
-          "rating": null,
+          "rating": 2.5,
           "url": "https://letterboxd.com/nichtlegacy/film/scouts-guide-to-the-zombie-apocalypse/"
         }
       ],
@@ -9446,10 +9446,17 @@
       "date": "2026-07-24",
       "week": 81,
       "weekday": 5,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Never Goin' Back",
+          "year": "2018",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/never-goin-back/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/24/"
     },
@@ -9457,10 +9464,17 @@
       "date": "2026-07-25",
       "week": 81,
       "weekday": 6,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "How to Make a Killing",
+          "year": "2026",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/how-to-make-a-killing-2026/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/25/"
     },
@@ -16406,12 +16420,12 @@
     {
       "date": "2026-07-15",
       "count": 1,
-      "ratingAvg": null,
+      "ratingAvg": 2.5,
       "films": [
         {
           "title": "Scouts Guide to the Zombie Apocalypse",
           "year": "2015",
-          "rating": null,
+          "rating": 2.5,
           "url": "https://letterboxd.com/nichtlegacy/film/scouts-guide-to-the-zombie-apocalypse/"
         }
       ],
@@ -16470,9 +16484,51 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/21/"
+    },
+    {
+      "date": "2026-07-24",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Never Goin' Back",
+          "year": "2018",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/never-goin-back/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/24/"
+    },
+    {
+      "date": "2026-07-25",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "How to Make a Killing",
+          "year": "2026",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/how-to-make-a-killing-2026/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/25/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-07-25",
+      "title": "How to Make a Killing",
+      "year": "2026",
+      "rating": 3,
+      "url": "https://letterboxd.com/nichtlegacy/film/how-to-make-a-killing-2026/"
+    },
+    {
+      "date": "2026-07-24",
+      "title": "Never Goin' Back",
+      "year": "2018",
+      "rating": 3,
+      "url": "https://letterboxd.com/nichtlegacy/film/never-goin-back/"
+    },
     {
       "date": "2026-07-21",
       "title": "The Odyssey",
@@ -16512,7 +16568,7 @@
       "date": "2026-07-15",
       "title": "Scouts Guide to the Zombie Apocalypse",
       "year": "2015",
-      "rating": null,
+      "rating": 2.5,
       "url": "https://letterboxd.com/nichtlegacy/film/scouts-guide-to-the-zombie-apocalypse/"
     },
     {
@@ -16528,20 +16584,6 @@
       "year": "1998",
       "rating": 4.5,
       "url": "https://letterboxd.com/nichtlegacy/film/half-baked/5/"
-    },
-    {
-      "date": "2026-06-28",
-      "title": "Ghost World",
-      "year": "2001",
-      "rating": 2.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/ghost-world/"
-    },
-    {
-      "date": "2026-06-21",
-      "title": "Nirvanna the Band the Show the Movie",
-      "year": "2025",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/2/"
     }
   ]
 }
