@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-07-28T02:55:18.837Z",
+  "generatedAt": "2026-07-29T03:01:02.794Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 454,
-    "daysActive": 320,
+    "films": 455,
+    "daysActive": 321,
     "streak": 34
   },
   "monthLabels": [
@@ -9504,10 +9504,17 @@
       "date": "2026-07-28",
       "week": 82,
       "weekday": 2,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Masters of the Universe",
+          "year": "2026",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/masters-of-the-universe-2026/17/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/28/"
     },
@@ -16512,9 +16519,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/25/"
+    },
+    {
+      "date": "2026-07-28",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Masters of the Universe",
+          "year": "2026",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/masters-of-the-universe-2026/17/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/28/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-07-28",
+      "title": "Masters of the Universe",
+      "year": "2026",
+      "rating": 3,
+      "url": "https://letterboxd.com/nichtlegacy/film/masters-of-the-universe-2026/17/"
+    },
     {
       "date": "2026-07-25",
       "title": "How to Make a Killing",
@@ -16577,13 +16605,6 @@
       "year": "2010",
       "rating": 4,
       "url": "https://letterboxd.com/nichtlegacy/film/high-school-2010/2/"
-    },
-    {
-      "date": "2026-07-13",
-      "title": "Half Baked",
-      "year": "1998",
-      "rating": 4.5,
-      "url": "https://letterboxd.com/nichtlegacy/film/half-baked/5/"
     }
   ]
 }
