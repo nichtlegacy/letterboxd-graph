@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-07-30T02:42:05.733Z",
+  "generatedAt": "2026-07-31T03:28:45.001Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -17,8 +17,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 455,
-    "daysActive": 321,
+    "films": 456,
+    "daysActive": 322,
     "streak": 34
   },
   "monthLabels": [
@@ -9533,10 +9533,17 @@
       "date": "2026-07-30",
       "week": 82,
       "weekday": 4,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Spider-Man: Brand New Day",
+          "year": "2026",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/spider-man-brand-new-day/"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/30/"
     },
@@ -16533,9 +16540,30 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/28/"
+    },
+    {
+      "date": "2026-07-30",
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Spider-Man: Brand New Day",
+          "year": "2026",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/spider-man-brand-new-day/"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/07/30/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-07-30",
+      "title": "Spider-Man: Brand New Day",
+      "year": "2026",
+      "rating": 4,
+      "url": "https://letterboxd.com/nichtlegacy/film/spider-man-brand-new-day/"
+    },
     {
       "date": "2026-07-28",
       "title": "Masters of the Universe",
@@ -16598,13 +16626,6 @@
       "year": "2015",
       "rating": 2.5,
       "url": "https://letterboxd.com/nichtlegacy/film/scouts-guide-to-the-zombie-apocalypse/"
-    },
-    {
-      "date": "2026-07-14",
-      "title": "High School",
-      "year": "2010",
-      "rating": 4,
-      "url": "https://letterboxd.com/nichtlegacy/film/high-school-2010/2/"
     }
   ]
 }
