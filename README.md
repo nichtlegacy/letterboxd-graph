@@ -283,11 +283,20 @@ letterboxd-graph/
 ├── src/
 │   ├── cli.js                # CLI entry point
 │   ├── fetcher.js            # Letterboxd data fetching
+│   ├── fetch_with_curl_cffi.py  # curl_cffi fetcher (primary, Puppeteer is the fallback)
 │   ├── generator.js          # SVG generation
 │   ├── stats.js              # Statistics calculations
 │   └── exporter.js           # PNG export functionality
+├── tests/
+│   └── test_fetch_with_curl_cffi.py  # Tests for the curl_cffi fetcher
 ├── package.json
 └── README.md
+```
+
+Run the test suite with:
+
+```bash
+npm test
 ```
 
 ---
@@ -344,6 +353,7 @@ The graph automatically detects and displays your Letterboxd membership status:
 ## 🛠️ Requirements
 
 - **Node.js** v20.9 or higher (required by sharp v0.35)
+- **Python 3** with `curl_cffi` (`pip install curl_cffi`) — used as the primary fetcher and to run the tests. Without it the fetcher falls back to Puppeteer.
 - **Public Letterboxd profile** with diary entries
 - **GitHub account** with Actions enabled (for automated updates)
 
