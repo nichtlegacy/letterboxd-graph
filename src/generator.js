@@ -477,9 +477,10 @@ export function generateSvg(entries, options = {}) {
       <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"
             stroke="${streak.length > 0 ? '#f97316' : t.textMuted}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="${streak.length > 0 ? '#f97316' : 'none'}" fill-opacity="0.2" transform="scale(0.75)"/>
       <text x="18" y="13" font-size="14" font-weight="500" fill="${t.textMuted}">${streak.length} Day Streak</text>
-      ${streak.length > 0 ? `<g class="streak-tooltip" transform="translate(0, -45)">
-        <rect x="-10" y="0" width="180" height="36" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>
-        <text x="5" y="23" font-size="12" fill="${t.tooltipText}">${streak.startDate} → ${streak.endDate}</text>
+      ${streak.length > 0 ? `<g class="streak-tooltip" transform="translate(0, -63)">
+        <rect x="-10" y="0" width="180" height="54" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>
+        <text x="5" y="21" font-size="12" fill="${t.tooltipText}">${streak.startDate} → ${streak.endDate}</text>
+        <text x="5" y="41" font-size="11" font-weight="500" fill="${t.textMuted}"><tspan fill="#f97316" font-weight="600">${streak.films}</tspan> ${streak.films === 1 ? 'Movie' : 'Movies'} watched</text>
       </g>` : ''}
     </g>
 
@@ -890,9 +891,10 @@ export function generateMultiYearSvg(entries, options = {}) {
       <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"
             stroke="${streak.length > 0 ? '#f97316' : t.textMuted}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="${streak.length > 0 ? '#f97316' : 'none'}" fill-opacity="0.2" transform="scale(0.75)"/>
       <text x="18" y="13" font-size="14" font-weight="500" fill="${t.textMuted}">${streak.length} Day Streak</text>
-      ${streak.length > 0 ? `<g class="streak-tooltip" transform="translate(0, -45)">
-        <rect x="-10" y="0" width="180" height="36" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>
-        <text x="5" y="23" font-size="12" fill="${t.tooltipText}">${streak.startDate} → ${streak.endDate}</text>
+      ${streak.length > 0 ? `<g class="streak-tooltip" transform="translate(0, -63)">
+        <rect x="-10" y="0" width="180" height="54" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>
+        <text x="5" y="21" font-size="12" fill="${t.tooltipText}">${streak.startDate} → ${streak.endDate}</text>
+        <text x="5" y="41" font-size="11" font-weight="500" fill="${t.textMuted}"><tspan fill="#f97316" font-weight="600">${streak.films}</tspan> ${streak.films === 1 ? 'Movie' : 'Movies'} watched</text>
       </g>` : ''}
     </g>
     ${yearIndex === 0 ? `<g transform="translate(${SVG_WIDTH - 200}, 0)">
