@@ -49,6 +49,7 @@ let sessionPrimed = false;
 let consecutiveCloudflareFailures = 0;
 let curlCffiAvailable = null;
 let curlCffiUnavailableLogged = false;
+let curlCffiBlockedForRun = false;
 
 const RETRYABLE_STATUS_CODES = new Set([403, 429, 503]);
 const MAX_CONSECUTIVE_CF_FAILURES = 3;
@@ -265,7 +266,7 @@ async function isCurlCffiAvailable() {
   return curlCffiAvailable;
 }
 
-async function fetchPageWithCurlCffi(url, retries = 5) {
+async function fetchPageWithCurlCffi(url, retries = 2) {
   const available = await isCurlCffiAvailable();
   if (!available) {
     throw new Error('curl_cffi_unavailable');
@@ -308,7 +309,7 @@ async function fetchPageWithCurlCffi(url, retries = 5) {
 }
 
 async function fetchPage(url) {
-  const canUseCurlCffi = await isCurlCffiAvailable();
+  const canUseCurlCffi = !curlCffiBlockedForRun && await isCurlCffiAvailable();
   if (canUseCurlCffi) {
     try {
       return await fetchPageWithCurlCffi(url);
@@ -318,6 +319,9 @@ async function fetchPage(url) {
       const reason = isCfError ? 'Cloudflare challenge' : error.message;
       const detail = isUnexpectedContent ? error.message : reason;
       console.log(`  curl_cffi failed (${detail}), falling back to Puppeteer...`);
+      if (isCfError) {
+        curlCffiBlockedForRun = true;
+      }
     }
   } else if (!curlCffiUnavailableLogged) {
     console.log('  curl_cffi unavailable, using Puppeteer fallback.');

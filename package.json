@@ -8,7 +8,8 @@
     "letterboxd-graph": "src/cli.js"
   },
   "scripts": {
-    "start": "node src/cli.js"
+    "start": "node src/cli.js",
+    "test": "python3 -B -m unittest discover -s tests -v"
   },
   "keywords": [
     "letterboxd",

@@ -9,16 +9,6 @@ from curl_cffi import requests
 
 
 RETRYABLE_STATUS_CODES = {403, 429, 503}
-BLOCK_KEYWORDS = (
-    "cloudflare",
-    "security challenge",
-    "checking your browser",
-    "verify you are human",
-    "captcha",
-    "access denied",
-    "permission denied",
-    "ddos protection",
-)
 
 HEADERS = {
     "referer": "https://letterboxd.com/",
@@ -29,6 +19,30 @@ HEADERS = {
     "pragma": "no-cache",
     "upgrade-insecure-requests": "1",
 }
+
+IMPERSONATION_PROFILES = ("safari17_0", "chrome")
+
+
+def fetch_with_profiles(session: requests.Session, url: str, timeout: tuple[int, int]):
+    """Try browser fingerprints without delaying between profile-specific blocks."""
+    last_response = None
+    last_error = None
+
+    for profile in IMPERSONATION_PROFILES:
+        try:
+            response = session.get(
+                url,
+                headers=HEADERS,
+                timeout=timeout,
+                impersonate=profile,
+            )
+            last_response = response
+            if response.status_code == 200 and not is_cloudflare_block(response):
+                return response, None
+        except requests.errors.RequestsError as error:
+            last_error = error
+
+    return last_response, last_error
 
 
 def is_cloudflare_block(response: requests.Response) -> bool:
@@ -43,7 +57,11 @@ def is_cloudflare_block(response: requests.Response) -> bool:
         return True
 
     body = (response.text or "").lower()
-    return response.status_code == 403 and any(keyword in body for keyword in BLOCK_KEYWORDS)
+    return (
+        "cf_chl_" in body
+        or ("just a moment" in body and "cloudflare" in body)
+        or ("attention required" in body and "cloudflare" in body)
+    )
 
 
 def retry_delay(attempt: int, is_cf_retry: bool) -> float:
@@ -64,45 +82,41 @@ def main() -> int:
     last_error = None
 
     for attempt in range(1, retries + 1):
-        try:
-            timeout = (10 + (attempt * 2), 30 + (attempt * 5))
-            response = session.get(
-                url,
-                headers=HEADERS,
-                timeout=timeout,
-                impersonate="chrome",
-            )
+        timeout = (10 + (attempt * 2), 30 + (attempt * 5))
+        response, request_error = fetch_with_profiles(session, url, timeout)
+        if (
+            response is not None
+            and response.status_code == 200
+            and not is_cloudflare_block(response)
+        ):
+            sys.stdout.write(response.text)
+            return 0
 
-            if response.status_code == 200:
-                sys.stdout.write(response.text)
-                return 0
+        if request_error is not None:
+            last_error = request_error
 
-            is_cf = is_cloudflare_block(response)
-            if attempt == retries:
-                if is_cf:
-                    print(f"CLOUDFLARE_BLOCK {url} HTTP {response.status_code}", file=sys.stderr)
-                    return 86
+        is_cf = response is not None and is_cloudflare_block(response)
+        if attempt == retries:
+            if is_cf:
+                print(f"CLOUDFLARE_BLOCK {url} HTTP {response.status_code}", file=sys.stderr)
+                return 86
+            if response is not None:
                 print(f"HTTP_ERROR {url} HTTP {response.status_code}", file=sys.stderr)
                 return 87
+            break
 
-            wait_s = retry_delay(attempt, is_cf)
-            reason = "Cloudflare challenge" if is_cf else f"HTTP {response.status_code}"
-            print(
-                f"Attempt {attempt} failed ({reason}), retrying in {round(wait_s)}s...",
-                file=sys.stderr,
-            )
-            time.sleep(wait_s)
-        except requests.errors.RequestsError as error:
-            last_error = error
-            if attempt == retries:
-                break
-
-            wait_s = retry_delay(attempt, False)
-            print(
-                f"Attempt {attempt} failed ({type(error).__name__}), retrying in {round(wait_s)}s...",
-                file=sys.stderr,
-            )
-            time.sleep(wait_s)
+        wait_s = retry_delay(attempt, is_cf)
+        reason = (
+            "Cloudflare challenge"
+            if is_cf
+            else type(request_error).__name__ if request_error is not None
+            else "request failure"
+        )
+        print(
+            f"Attempt {attempt} failed ({reason}), retrying in {round(wait_s)}s...",
+            file=sys.stderr,
+        )
+        time.sleep(wait_s)
 
     if last_error:
         print(f"NETWORK_ERROR {url} {type(last_error).__name__}: {last_error}", file=sys.stderr)
