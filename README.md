@@ -33,7 +33,7 @@
 | 👤 **Profile Integration** | Shows profile picture, display name, stats, and member badge |
 | 🏆 **Pro/Patron Badges** | Displays Letterboxd Pro (orange) or Patron (cyan) status |
 | 📅 **Multi-Year Support** | Generate graphs spanning multiple years |
-| 🎯 **Streak Highlighting** | Hover over "Day Streak" to highlight your longest streak |
+| 🎯 **Streak Highlighting** | Hover over "Day Streak" to highlight your longest streak, with its date range and film count |
 | 💬 **Interactive Tooltips** | Hover over cells to see film details (in browser) |
 | ⭐ **Rating Mode** | Color cells by average rating instead of watch count |
 | 📦 **JSON Export** | Writes `images/letterboxd-data.json` for external widgets (e.g. Glance `custom-api`) |
@@ -239,7 +239,7 @@ Example payload shape:
 {
   "user": "nichtlegacy",
   "year": 2026,
-  "stats": { "films": 123, "daysActive": 80, "streak": 7 },
+  "stats": { "films": 123, "daysActive": 80, "streak": 7, "streakFilms": 11 },
   "cells": [
     {
       "date": "2026-02-16",
@@ -260,7 +260,7 @@ Example payload shape:
 You can use this to build:
 
 - a compact heatmap widget (GitHub-like)
-- a separate stats widget (`films`, `daysActive`, `streak`)
+- a separate stats widget (`films`, `daysActive`, `streak`, `streakFilms`)
 - an optional recent-watches list
 
 ## 📂 Project Structure

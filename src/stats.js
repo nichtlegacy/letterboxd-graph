@@ -5,20 +5,19 @@
 /**
  * Calculate the longest streak of consecutive days with movies watched
  * @param {Array} entries - Array of diary entries with date property
- * @returns {Object} Streak info: { length, startDate, endDate }
+ * @returns {Object} Streak info: { length, startDate, endDate, films }
  */
 export function calculateStreak(entries) {
   if (!entries || entries.length === 0) {
-    return { length: 0, startDate: null, endDate: null };
+    return { length: 0, startDate: null, endDate: null, films: 0 };
   }
 
   // Get unique dates, sorted
-  const uniqueDates = [...new Set(
-    entries.map(e => e.date.toISOString().split('T')[0])
-  )].sort();
+  const dateStrings = entries.map(e => e.date.toISOString().split('T')[0]);
+  const uniqueDates = [...new Set(dateStrings)].sort();
 
   if (uniqueDates.length === 0) {
-    return { length: 0, startDate: null, endDate: null };
+    return { length: 0, startDate: null, endDate: null, films: 0 };
   }
 
   let maxStreak = 1;
@@ -50,10 +49,14 @@ export function calculateStreak(entries) {
     }
   }
 
+  // Count all films watched within the winning streak window
+  const films = dateStrings.filter(d => d >= maxStart && d <= maxEnd).length;
+
   return {
     length: maxStreak,
     startDate: maxStart,
-    endDate: maxEnd
+    endDate: maxEnd,
+    films
   };
 }
 
@@ -268,6 +271,8 @@ export function buildJsonExport(entries, options = {}) {
     day.level = Math.max(1, Math.min(4, Math.ceil((day.count / maxCount) * 4)));
   }
 
+  const streakInfo = calculateStreak(sortedEntries);
+
   const recent = [...sortedEntries]
     .sort((a, b) => b.date.getTime() - a.date.getTime())
     .slice(0, recentLimit)
@@ -297,7 +302,8 @@ export function buildJsonExport(entries, options = {}) {
     stats: {
       films: sortedEntries.length,
       daysActive: calculateDaysActive(sortedEntries),
-      streak: calculateStreak(sortedEntries).length
+      streak: streakInfo.length,
+      streakFilms: streakInfo.films
     },
     monthLabels,
     calendar,
