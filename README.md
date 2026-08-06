@@ -343,7 +343,7 @@ The graph automatically detects and displays your Letterboxd membership status:
 
 ## 🛠️ Requirements
 
-- **Node.js** v18 or higher
+- **Node.js** v20.9 or higher (required by sharp v0.35)
 - **Public Letterboxd profile** with diary entries
 - **GitHub account** with Actions enabled (for automated updates)
 
