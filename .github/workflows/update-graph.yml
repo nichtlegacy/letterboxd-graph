@@ -72,7 +72,10 @@ jobs:
       - name: Install curl_cffi fallback
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install curl_cffi
+          python3 -m pip install curl_cffi==0.14.0
+
+      - name: Run tests
+        run: npm test
       
       - name: Generate Graph
         run: |

@@ -8,7 +8,8 @@
     "letterboxd-graph": "src/cli.js"
   },
   "scripts": {
-    "start": "node src/cli.js"
+    "start": "node src/cli.js",
+    "test": "python3 -B -m unittest discover -s tests -v"
   },
   "keywords": [
     "letterboxd",
@@ -30,21 +31,25 @@
     "puppeteer": "^24.0.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
-    "sharp": "^0.34.0"
+    "sharp": "^0.35.3"
   },
   "overrides": {
     "cheerio": {
-      "undici": "6.24.0"
+      "undici": "6.28.0"
     },
     "glob": {
       "minimatch": "3.1.4"
     },
     "extract-zip": {
       "yauzl": "3.2.1"
-    }
+    },
+    "brace-expansion": "1.1.18",
+    "ip-address": "10.3.1",
+    "js-yaml": "5.2.2",
+    "ws": "8.21.1"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.9.0"
   },
   "author": "nichtlegacy",
   "license": "MIT"
