@@ -37,6 +37,7 @@
 | 💬 **Interactive Tooltips** | Hover over cells to see film details (in browser) |
 | 📈 **Rating Distribution + Summary** | Hover over the film count for the rating histogram, your average rating, and rewatch/like totals |
 | ↻ **Rewatches & Likes** | Rewatched entries are marked `↻` and liked entries `♥` in the day tooltips |
+| 🃏 **Year-in-Review Card** | A shareable 1200×630 card per year with the headline figures and your top rated films |
 | 🕰️ **Decade Breakdown** | Hover over the year label to see how your films spread across release decades |
 | ✨ **Cell Reveal Animation** | Cells fade in as a wave when the SVG loads; respects `prefers-reduced-motion` |
 | 🎨 **Color Palettes** | GitHub green, or a Letterboxd-native palette built on its signature green |
@@ -368,15 +369,20 @@ letterboxd-graph/
 ├── images/
 │   ├── github-letterboxd-dark.svg    # Generated dark theme
 │   ├── github-letterboxd-light.svg   # Generated light theme
+│   ├── letterboxd-review-2026-dark.svg   # Generated year-in-review card
+│   ├── letterboxd-review-2026-light.svg
 │   └── letterboxd-data.json          # Generated JSON data for widgets
 ├── src/
 │   ├── cli.js                # CLI entry point
 │   ├── fetcher.js            # Letterboxd data fetching
 │   ├── fetch_with_curl_cffi.py  # curl_cffi fetcher (primary, Puppeteer is the fallback)
-│   ├── generator.js          # SVG generation
+│   ├── generator.js          # Contribution graph SVG generation
+│   ├── review.js             # Year-in-review card generation
+│   ├── svg-utils.js          # Shared fonts, text measurement and palettes
 │   ├── stats.js              # Statistics calculations
 │   └── exporter.js           # PNG export functionality
 ├── tests/
+│   ├── review.test.js                # Tests for the year-in-review card
 │   ├── stats.test.js                 # Tests for the statistics helpers
 │   └── test_fetch_with_curl_cffi.py  # Tests for the curl_cffi fetcher
 ├── package.json
@@ -423,6 +429,21 @@ Replace `YOUR_GITHUB_USERNAME` and `YOUR_LETTERBOXD_USERNAME` with your username
 ---
 
 ## 🎨 Themes & Modes
+
+### Year-in-Review Card
+
+Alongside the graph, every run writes a 1200×630 card per requested year:
+
+```
+images/letterboxd-review-<year>-dark.svg
+images/letterboxd-review-<year>-light.svg
+```
+
+It carries the headline figures (films, days active, streak, average rating,
+rewatches, likes) and your five highest rated films of that year. Rewatches are
+collapsed to a single entry at their best rating, so one film cannot take two
+slots. 1200×630 is the Open Graph default, so the card works as a social preview
+or a README banner as is.
 
 ### Color Palettes
 

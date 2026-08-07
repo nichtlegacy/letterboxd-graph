@@ -10,6 +10,7 @@ import { fileURLToPath } from 'url';
 
 import { fetchProfileData, tryFetchMultipleYears, fetchSpecificYears, imageToBase64, closeBrowser } from './fetcher.js';
 import { generateSvg, generateMultiYearSvg } from './generator.js';
+import { generateReviewCard } from './review.js';
 import { svgToPng } from './exporter.js';
 import { buildJsonExport } from './stats.js';
 
@@ -198,6 +199,25 @@ async function main() {
     console.log(`   ✓ ${outputPathLight}`);
     console.log(`   ✓ ${outputJsonPath}`);
 
+    // Year-in-Review cards, one per requested year, in both themes
+    console.log("\n🃏 Generating year-in-review cards...");
+    const reviewCards = [];
+
+    for (const reviewYear of [...years].sort((a, b) => b - a)) {
+      for (const theme of ['dark', 'light']) {
+        const cardPath = path.join(dir, `letterboxd-review-${reviewYear}-${theme}.svg`);
+        const card = await generateReviewCard(filmEntries, {
+          ...svgOptions,
+          year: reviewYear,
+          theme
+        });
+
+        fs.writeFileSync(cardPath, card);
+        reviewCards.push({ path: cardPath, svg: card });
+        console.log(`   ✓ ${cardPath}`);
+      }
+    }
+
     // Export PNGs if requested
     if (exportPng) {
       console.log("\n📸 Exporting PNG files...");
@@ -208,6 +228,10 @@ async function main() {
       // Default scale 2 is fine
       await svgToPng(svgDark, pngPathDark);
       await svgToPng(svgLight, pngPathLight);
+
+      for (const card of reviewCards) {
+        await svgToPng(card.svg, card.path.replace('.svg', '.png'));
+      }
     }
     
     // Close the browser instance
