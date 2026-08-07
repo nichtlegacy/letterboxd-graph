@@ -980,10 +980,24 @@ main {
 
 /* The card draws its own rounded edge, so the frame adds none of its own — the
    media is clipped to that same radius and filled with the card's own colour,
-   which is what keeps an <object> canvas from showing through the corners. */
+   which is what keeps an <object> canvas from showing through the corners.
+   The radius itself is set from the manifest, since it belongs to the drawing.
+
+   The mask is not decoration. WebKit does not clip replaced content — an
+   <object>, an iframe, a video — to an ancestor's border-radius through
+   `overflow: hidden` alone; the embedded document keeps painting its square
+   canvas over the rounded corner. A mask forces the whole subtree through one
+   compositing pass, which does respect the radius. */
 .frame-media {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+
+  /* A card is drawn in almost the same colour as the page it sits on, so
+     without a line around it there is nothing to say where it ends. */
+  border: 1px solid var(--border-subtle);
 }
 
 .frame-media object,

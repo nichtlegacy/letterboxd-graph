@@ -513,7 +513,15 @@ function createFrame(asset, manifest) {
   // in the drawing's own units and has to be scaled to how wide it is rendered.
   const fitCorners = () => {
     if (!asset.radius) return;
-    media.style.borderRadius = `${(asset.radius * media.clientWidth) / asset.width}px`;
+
+    const radius = `${(asset.radius * media.clientWidth) / asset.width}px`;
+    media.style.borderRadius = radius;
+
+    // The embed carries the radius as well. A clipping ancestor is not enough
+    // on its own in WebKit, and an element that rounds its own box needs no
+    // help from one.
+    const object = media.querySelector('object');
+    if (object) object.style.borderRadius = radius;
   };
 
   const embed = () => {
@@ -530,8 +538,20 @@ function createFrame(asset, manifest) {
     // the document is there.
     object.addEventListener('load', () => {
       media.classList.add('is-loaded');
+      fitCorners();
+
       const doc = object.contentDocument;
       if (!doc) return;
+
+      // Same origin, so the embedded document can be told two things it has no
+      // way of knowing. First, what colour it is sitting on: the card's corners
+      // are transparent by design, and left to itself a browser paints the
+      // document canvas behind them white. Painting it the page's own colour
+      // makes the corner read as transparent even where the clip above is
+      // ignored. Second, that its links open out here rather than inside the
+      // embed, which the generated markup cannot say either.
+      doc.documentElement.style.background =
+        getComputedStyle(document.documentElement).getPropertyValue('--background').trim();
 
       for (const anchor of doc.querySelectorAll('a')) {
         anchor.setAttribute('target', '_blank');
