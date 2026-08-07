@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Letterboxd Graph</title>
+  <meta name="description" content="A Letterboxd film diary as a contribution graph, year and month review cards and a profile card — generated daily by a GitHub Action.">
+  <meta name="color-scheme" content="dark light">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Letterboxd Graph">
+  <meta property="og:description" content="A Letterboxd film diary as a contribution graph, year and month review cards and a profile card.">
+  <meta property="og:image" content="images/letterboxd-profile-dark.svg">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Applied before first paint so the page never flashes the wrong theme. -->
+  <script>
+    (() => {
+      const stored = localStorage.getItem('lbg-theme') || 'system';
+      const system = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.dataset.theme = stored === 'system' ? system : stored;
+    })();
+  </script>
+
+  <script type="module" src="app.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="wordmark" href="#top">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        Letterboxd Graph
+      </a>
+
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#graph">Graph</a>
+        <a href="#years">Years</a>
+        <a href="#months">Months</a>
+        <a href="#profile">Profile</a>
+        <a href="#diary">Diary</a>
+      </nav>
+
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Change theme">
+        <span class="theme-icon" data-theme-icon aria-hidden="true"></span>
+        <span class="theme-label" data-theme-label>System</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-text">
+        <p class="eyebrow" data-hero-eyebrow>Film diary, rendered</p>
+        <h1 class="display" data-hero-title>Letterboxd Graph</h1>
+        <p class="lead">
+          Every card this repository generates, in one place. Hover the graph and the
+          links work here — inside a README they cannot, because GitHub serves the
+          SVGs through an <code>&lt;img&gt;</code> tag that receives no mouse events.
+        </p>
+
+        <div class="actions">
+          <a class="button button-primary" data-profile-link href="https://letterboxd.com/" rel="noopener">Letterboxd profile</a>
+          <a class="button" data-export-link href="images/letterboxd-data.json">JSON export</a>
+          <a class="button" data-repo-link href="https://github.com/nichtlegacy/letterboxd-graph" rel="noopener">Source on GitHub</a>
+        </div>
+      </div>
+
+      <dl class="stats" data-stats hidden></dl>
+    </section>
+
+    <noscript>
+      <p class="notice">
+        This page assembles itself from the generated files, so it needs JavaScript.
+        The images themselves do not — they sit in
+        <a href="https://github.com/nichtlegacy/letterboxd-graph/tree/main/images">images/</a>.
+      </p>
+    </noscript>
+
+    <section class="section" id="graph" data-section="graph" hidden>
+      <div class="section-head">
+        <h2>Contribution graph</h2>
+        <p class="section-note">
+          One block of weeks per year. Hovering a day cell lists the films watched
+          that day, the year label breaks the films down by release decade, and the
+          headline figures each open a distribution of their own.
+        </p>
+      </div>
+      <div class="section-body"></div>
+    </section>
+
+    <section class="section" id="years" data-section="year" hidden>
+      <div class="section-head">
+        <h2>Year in review</h2>
+        <p class="section-note">
+          1200&times;630, the Open Graph default, so a card works as a social
+          preview as it stands. Headline figures on the left, top rated films on
+          the right with poster art, runtime and the community rating.
+        </p>
+      </div>
+      <div class="section-body"></div>
+    </section>
+
+    <section class="section" id="months" data-section="month" hidden>
+      <div class="section-head">
+        <h2>Month in review</h2>
+        <p class="section-note">
+          The same card narrowed to a single month. The files are named by how
+          recent the month is, not by its date, so an embed keeps working when the
+          month turns over and old cards do not pile up.
+        </p>
+      </div>
+      <div class="section-body"></div>
+    </section>
+
+    <section class="section" id="profile" data-section="profile" hidden>
+      <div class="section-head">
+        <h2>Profile card</h2>
+        <p class="section-note">
+          Not tied to a year. The headline is the all-time films watched taken from
+          the profile page; the right column shows the favourites pinned on it.
+        </p>
+      </div>
+      <div class="section-body"></div>
+    </section>
+
+    <section class="section" id="diary" data-diary hidden>
+      <div class="section-head">
+        <h2>Recent diary</h2>
+        <p class="section-note">
+          The last ten entries, straight out of the JSON export.
+          <span class="marker marker-rewatch">&#8635;</span> marks a rewatch,
+          <span class="marker marker-like">&#9829;</span> a like.
+        </p>
+      </div>
+      <ol class="diary-list" data-diary-list></ol>
+    </section>
+
+    <section class="section" id="embed">
+      <div class="section-head">
+        <h2>Use them yourself</h2>
+        <p class="section-note">
+          Every card above has a <b>Copy embed</b> button that puts the matching
+          <code>&lt;picture&gt;</code> block on your clipboard, theme switching
+          included. Point at the raw file, never at the <code>blob</code> URL —
+          GitHub serves <code>blob</code> as HTML and the image will not render.
+        </p>
+      </div>
+
+      <pre class="code"><code>- uses: nichtlegacy/letterboxd-graph@v2
+  with:
+    username: YOUR_LETTERBOXD_USERNAME
+    years: "2026,2025"</code></pre>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>
+        Generated by
+        <a data-repo-link href="https://github.com/nichtlegacy/letterboxd-graph">letterboxd-graph</a>,
+        released under the MIT License.
+      </p>
+      <p class="footer-note">
+        Not affiliated with, endorsed by, or connected to Letterboxd. Figures come
+        from public profile pages only. Type is
+        <a href="fonts/LICENSE.txt">Inter</a>, under the SIL Open Font License.
+      </p>
+      <p class="footer-note" data-generated></p>
+    </div>
+  </footer>
+
+  <div class="toast" data-toast role="status" aria-live="polite" hidden></div>
+</body>
+</html>

@@ -288,9 +288,10 @@ async function main() {
       }
     };
 
+    // Mirrors the card: the release filter is for year cards only.
     const listFor = (period) => {
       const inPeriod = entriesForPeriod(allEntries, period);
-      return topFilms === 'released'
+      return topFilms === 'released' && period.month == null
         ? inPeriod.filter(entry => String(entry.year) === String(period.year))
         : inPeriod;
     };

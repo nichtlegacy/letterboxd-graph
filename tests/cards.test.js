@@ -715,3 +715,33 @@ test('a year with no releases of its own says so', async () => {
 
   assert.ok(textNodes(svg).includes('No 2026 releases logged'));
 });
+
+test('the release filter leaves month cards alone', async () => {
+  // A single month is far too small a window to also demand the film came out
+  // that year: it empties the card rather than sharpening it.
+  const entries = [
+    entry('2026-08-03', { title: 'New', year: '2026', rating: 4 }),
+    entry('2026-08-04', { title: 'Classic', year: '1977', rating: 5 })
+  ];
+  const options = { year: 2026, topFilms: 'released', username: 'someone' };
+
+  const yearCard = await generateReviewCard(entries, options);
+  const monthCard = await generateReviewCard(entries, { ...options, month: 8 });
+
+  assert.ok(!textNodes(yearCard).includes('Classic'), 'the year card narrows');
+  assert.ok(textNodes(monthCard).includes('Classic'), 'the month card does not');
+  assert.ok(!textNodes(monthCard).some(text => text.includes('RELEASES')), 'and carries no heading');
+});
+
+test('a month of nothing but old films still fills its list', async () => {
+  const entries = ['1977', '1985', '1994'].map((year, i) =>
+    entry(`2026-08-0${i + 1}`, { title: `Classic ${year}`, year, rating: 5 - i * 0.5 }));
+
+  const svg = await generateReviewCard(entries, {
+    year: 2026, month: 8, topFilms: 'released', username: 'someone'
+  });
+  const rows = svg.match(/<rect x="626" y="[\d.]+" width="536"/g) || [];
+
+  assert.equal(rows.length, 3, 'one row per film, not an empty state');
+  assert.ok(!textNodes(svg).includes('No 2026 releases logged'));
+});

@@ -11,7 +11,7 @@ Runs as a GitHub Action, commits the finished SVGs back to your repository.
 [![Reusable Action](https://img.shields.io/badge/GitHub_Action-reusable-2088FF?style=flat-square&logo=githubactions&logoColor=white)](#quick-start)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
 
-[Quick Start](#quick-start) • [What It Generates](#what-it-generates) • [Configuration](#configuration) • [CLI](#cli) • [How It Works](#how-it-works) • [License](#license)
+[Quick Start](#quick-start) • [What It Generates](#what-it-generates) • [Configuration](#configuration) • [CLI](#cli) • [How It Works](#how-it-works) • [Pages Site](#pages-site) • [License](#license)
 
 <a href="https://letterboxd.com/nichtlegacy/">
   <picture>
@@ -150,8 +150,12 @@ of 2026" are different claims:
 
 | `top-films` | The list holds |
 |-------------|----------------|
-| `watched` (default) | Everything watched in the period, whatever year it came out |
-| `released` | Only the films released in the card's year |
+| `watched` (default) | Everything watched that year, whatever year it came out |
+| `released` | Only the films released that year |
+
+It applies to year cards only. A month is far too small a window to also demand
+the film came out that year — one month of new releases is a handful of titles
+at best and often none, so a month card always ranks everything watched.
 
 The card above is set to `released`, which is why it carries a **TOP 2026
 RELEASES** heading. The default needs no heading — everything watched is not a
@@ -187,6 +191,9 @@ that year, which is true but says nothing about the year itself.
 The same card narrowed to a single month, shown here for the previous one since
 the current month is only a few days old at the start of one. A month with
 nothing logged says so rather than rendering an empty list.
+
+Its film list always ranks everything watched that month, whatever
+[`top-films`](#year-in-review) is set to.
 
 The files are named by how recent the month is, not by its date, so an embed
 keeps working when the month turns over and old cards do not pile up.
@@ -256,7 +263,7 @@ All options are action inputs. Only `username` is required.
 | `years` | Comma-separated years, e.g. `2026,2025` | current year |
 | `scope` | Diary scope: `all` or `years` | `all` |
 | `month-cards` | Recent months to also make cards for, `0` to skip | `2` |
-| `top-films` | Card film list: `watched` or `released` | `watched` |
+| `top-films` | Year card film list: `watched` or `released` | `watched` |
 | `mode` | Cell coloring: `count` or `rating` | `count` |
 | `week-start` | `sunday` or `monday` | `sunday` |
 | `gradient` | Gradient text: `true`, `false`, `name` or `year` | `true` |
@@ -308,7 +315,7 @@ node src/cli.js <username> [options]
 | `-y <years>` | Year(s), comma-separated, e.g. `2026,2025` | current year |
 | `-s <scope>` | Diary scope: `all` or `years` | `all` |
 | `-c <count>` | Recent months to also card, `0` to skip | `2` |
-| `-r <scope>` | Card film list: `watched` or `released` | `watched` |
+| `-r <scope>` | Year card film list: `watched` or `released` | `watched` |
 | `-m <mode>` | Graph mode: `count` or `rating` | `count` |
 | `-w <day>` | Week start: `sunday` or `monday` | `sunday` |
 | `-g <targets>` | Gradient text: `true`, `false`, `name` or `year` | `true` |
@@ -476,6 +483,47 @@ image will not render.
 Swap the filename for `letterboxd-review-2026`, `letterboxd-review-current-month`
 or `letterboxd-profile` to embed a card instead.
 
+## Pages Site
+
+A README has room for one card, maybe two. Everything else ends up behind a
+`<details>` or not embedded at all — so the same files are also published as a
+page: **[nichtlegacy.github.io/letterboxd-graph](https://nichtlegacy.github.io/letterboxd-graph/)**.
+
+<p align="center">
+  <img alt="The generated cards on the Pages site" src=".github/assets/pages-dark.png" width="100%">
+</p>
+
+It is the one place where the cards behave as they were drawn. GitHub embeds an
+SVG through an `<img>` tag, which receives no mouse events and is served under a
+`sandbox` CSP; the page embeds each card as an `<object>`, so tooltips, links and
+the reveal animation all work, and every card keeps its own ids and stylesheet
+instead of colliding with its neighbours.
+
+- Dark and light, following the system by default and switchable in the header.
+  The page swaps to the matching SVG rather than filtering the one it has.
+- Assembled from what the last run actually wrote, so years and month cards
+  appear and disappear on their own. Nothing about the site is hardcoded.
+- **Copy embed** under each card puts the `<picture>` block for it on your
+  clipboard, both themes filled in.
+- Type is served from `fonts/`, figures from a slim cut of the JSON export.
+  Nothing is fetched from a third party.
+
+### Enabling it
+
+`.github/workflows/pages.yml` is already in the repository. In **Settings →
+Pages**, set **Source** to **GitHub Actions**. The workflow then runs after every
+generator run, on pushes that touch the site, and on demand from the **Actions**
+tab — which is also how a branch can be published before it is merged.
+
+To preview it locally, generate the images once and serve the build:
+
+```bash
+npm run build:site     # writes _site/
+npm run serve:site     # builds, then serves it on :8080
+```
+
+The build only reads `images/`, so it costs no requests against Letterboxd.
+
 ## Requirements
 
 Running through the action needs nothing on your side; the runner provides it
@@ -503,6 +551,8 @@ markedly slower and more prone to being challenged.
 - [`src/svg-utils.js`](src/svg-utils.js) — font subsetting, text measurement, theme colors
 - [`src/stats.js`](src/stats.js) — streaks, distributions, JSON export
 - [`src/exporter.js`](src/exporter.js) — PNG rasterisation and poster thumbnails
+- [`site/`](site/) — the Pages front end: one page, one stylesheet, one module
+- [`scripts/build-site.mjs`](scripts/build-site.mjs) — assembles `_site/`, writes the manifest the page reads
 - [`action.yml`](action.yml) — the reusable action
 - [`tests/`](tests/) — `node:test` for the JavaScript, `unittest` for the fetcher
 

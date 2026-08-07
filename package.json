@@ -9,6 +9,8 @@
   },
   "scripts": {
     "start": "node src/cli.js",
+    "build:site": "node scripts/build-site.mjs",
+    "serve:site": "npm run build:site && python3 -m http.server 8080 --directory _site",
     "test": "npm run test:js && npm run test:py",
     "test:js": "node --test tests/*.test.js",
     "test:py": "python3 -B -m unittest discover -s tests -v"

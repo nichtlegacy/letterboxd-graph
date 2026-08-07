@@ -437,7 +437,8 @@ function renderIcon(path, x, y, size, color) {
  * @param {number} options.year - Year to summarise
  * @param {number|null} options.month - Month 1-12 to narrow it to, or null for the whole year
  * @param {string} options.topFilms - 'watched' ranks everything seen in the period,
- *   'released' keeps only films released in its year
+ *   'released' keeps only films released in its year. Year cards only; a month
+ *   card always ranks everything watched.
  * @param {string} options.theme - 'dark' or 'light'
  * @param {string} options.username - Letterboxd username
  * @param {string} options.displayName - Profile display name
@@ -508,7 +509,11 @@ export async function generateReviewCard(entries, options = {}) {
 
   // 'released' turns the list from "the best I watched" into "the best of that
   // year", which is a different claim and so gets a heading to say which it is.
-  const releasesOnly = topFilmScope === 'released';
+  //
+  // It applies to years only. A month is far too small a window to also demand
+  // the film came out that year: one month of 2026 releases is a handful of
+  // titles at best and usually none at all.
+  const releasesOnly = topFilmScope === 'released' && month === null;
   const listEntries = releasesOnly
     ? yearEntries.filter(entry => String(entry.year) === String(year))
     : yearEntries;
