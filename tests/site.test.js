@@ -159,7 +159,7 @@ test('slimData keeps the figures and drops the calendar', () => {
   assert.equal(slim.user, 'nichtlegacy');
   assert.equal(slim.calendar, undefined);
   assert.equal(slim.cells, undefined);
-  assert.equal(slim.recent.length, 10);
+  assert.equal(slim.recent.length, 16);
   assert.deepEqual(slim.stats, { films: 456, daysActive: 322, streak: 34 });
 
   // The figures the page draws are aggregated here so it never has to load the

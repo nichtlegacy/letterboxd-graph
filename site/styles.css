@@ -1087,9 +1087,14 @@ a.bar-row:hover .bar-value {
 
 /* ── Diary ────────────────────────────────────────────────────────────────── */
 
+.diary-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 48px;
+}
+
 .diary-list {
   margin: 0;
-  max-width: 900px;
   padding: 0;
   list-style: none;
   border-top: 1px solid var(--border-subtle);
@@ -1098,13 +1103,13 @@ a.bar-row:hover .bar-value {
 .diary-row {
   display: flex;
   align-items: baseline;
-  gap: 16px;
-  padding: 16px 0;
+  gap: 12px;
+  padding: 14px 0;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .diary-date {
-  width: 88px;
+  width: 60px;
   flex: none;
   color: var(--text-muted);
   font-size: 12px;
@@ -1361,6 +1366,16 @@ a.bar-row:hover .bar-value {
 
   .when-foot {
     align-items: flex-start;
+  }
+
+  /* One column takes the second list's top rule with it, so the two halves
+     still read as a single run of entries. */
+  .diary-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .diary-columns .diary-list + .diary-list {
+    border-top: 0;
   }
 }
 

@@ -717,45 +717,58 @@ function renderHero(data, manifest) {
   }
 }
 
+const DIARY_PER_COLUMN = 8;
+
 function renderDiary(recent) {
   if (!recent?.length) return;
 
-  const list = document.querySelector('[data-diary-list]');
+  const host = document.querySelector('[data-diary-list]');
+  const entries = recent.slice(0, DIARY_PER_COLUMN * 2);
 
-  for (const entry of recent) {
-    const row = el('li', 'diary-row');
-    row.append(el('span', 'diary-date', formatDate(entry.date, { day: '2-digit', month: 'short' })));
-
-    const main = el('div', 'diary-main');
-    const title = entry.url
-      ? link(entry.url, 'diary-title', entry.title)
-      : el('span', 'diary-title', entry.title);
-    main.append(title);
-
-    if (entry.year) main.append(el('span', 'diary-year', entry.year));
-
-    const markers = el('span', 'markers');
-    if (entry.rewatch) {
-      const mark = el('span', 'marker marker-rewatch', '↻');
-      mark.title = 'Rewatch';
-      markers.append(mark);
+  // One list per column, so each column carries its own top rule and the
+  // entries read downwards rather than across.
+  for (let start = 0; start < entries.length; start += DIARY_PER_COLUMN) {
+    const list = el('ol', 'diary-list');
+    for (const entry of entries.slice(start, start + DIARY_PER_COLUMN)) {
+      list.append(diaryRow(entry));
     }
-    if (entry.liked) {
-      const mark = el('span', 'marker marker-like', '♥');
-      mark.title = 'Liked';
-      markers.append(mark);
-    }
-    if (markers.childElementCount) main.append(markers);
-
-    const rating = el('span', 'diary-rating', entry.rating ? stars(entry.rating) : '—');
-    if (!entry.rating) rating.classList.add('is-empty');
-    rating.title = entry.rating ? `${entry.rating} out of 5` : 'Not rated';
-
-    row.append(main, rating);
-    list.append(row);
+    host.append(list);
   }
 
   document.querySelector('[data-diary]').hidden = false;
+}
+
+function diaryRow(entry) {
+  const row = el('li', 'diary-row');
+  row.append(el('span', 'diary-date', formatDate(entry.date, { day: '2-digit', month: 'short' })));
+
+  const main = el('div', 'diary-main');
+  const title = entry.url
+    ? link(entry.url, 'diary-title', entry.title)
+    : el('span', 'diary-title', entry.title);
+  main.append(title);
+
+  if (entry.year) main.append(el('span', 'diary-year', entry.year));
+
+  const markers = el('span', 'markers');
+  if (entry.rewatch) {
+    const mark = el('span', 'marker marker-rewatch', '↻');
+    mark.title = 'Rewatch';
+    markers.append(mark);
+  }
+  if (entry.liked) {
+    const mark = el('span', 'marker marker-like', '♥');
+    mark.title = 'Liked';
+    markers.append(mark);
+  }
+  if (markers.childElementCount) main.append(markers);
+
+  const rating = el('span', 'diary-rating', entry.rating ? stars(entry.rating) : '—');
+  if (!entry.rating) rating.classList.add('is-empty');
+  rating.title = entry.rating ? `${entry.rating} out of 5` : 'Not rated';
+
+  row.append(main, rating);
+  return row;
 }
 
 /* ── Scroll spy ───────────────────────────────────────────────────────────── */

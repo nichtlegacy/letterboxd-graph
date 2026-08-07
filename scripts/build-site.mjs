@@ -219,7 +219,8 @@ export function slimData(data) {
     generatedAt: data.generatedAt,
     stats: data.stats,
     allTime: data.allTime || allTimeFromCells(data),
-    recent: (data.recent || []).slice(0, 10)
+    // Two columns of eight on the page.
+    recent: (data.recent || []).slice(0, 16)
   };
 }
 

@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-07T16:27:52.183Z",
+  "generatedAt": "2026-08-07T17:10:18.311Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18473,6 +18473,60 @@
       "rewatch": false,
       "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/scouts-guide-to-the-zombie-apocalypse/"
+    },
+    {
+      "date": "2026-07-14",
+      "title": "High School",
+      "year": "2010",
+      "rating": 4,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/high-school-2010/2/"
+    },
+    {
+      "date": "2026-07-13",
+      "title": "Half Baked",
+      "year": "1998",
+      "rating": 4.5,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/half-baked/5/"
+    },
+    {
+      "date": "2026-06-28",
+      "title": "Ghost World",
+      "year": "2001",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/ghost-world/"
+    },
+    {
+      "date": "2026-06-21",
+      "title": "Nirvanna the Band the Show the Movie",
+      "year": "2025",
+      "rating": 4,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/2/"
+    },
+    {
+      "date": "2026-06-19",
+      "title": "Ted 2",
+      "year": "2015",
+      "rating": 3.5,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/ted-2/1/"
+    },
+    {
+      "date": "2026-06-03",
+      "title": "Scary Movie",
+      "year": "2026",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2026/"
     }
   ],
   "allTime": {
