@@ -20,12 +20,14 @@ import {
  * Build a diary entry. Dates are UTC so the tests do not depend on the
  * machine's timezone.
  */
-function entry(dateString, { title = 'Film', year = '2020', rating = null } = {}) {
+function entry(dateString, { title = 'Film', year = '2020', rating = null, rewatch = false, liked = false } = {}) {
   return {
     date: new Date(`${dateString}T00:00:00Z`),
     title,
     year,
     rating,
+    rewatch,
+    liked,
     url: `https://letterboxd.com/film/${title.toLowerCase()}/`
   };
 }
@@ -167,6 +169,31 @@ test('groupEntriesByDate: keys are ISO dates', () => {
   assert.equal(grouped.get('2025-06-02').length, 1);
 });
 
+test('groupEntriesByDate: carries the rewatch and like flags through', () => {
+  // The day tooltip renders from this map, so dropping the flags here silently
+  // removes the markers from every film line.
+  const grouped = groupEntriesByDate([
+    entry('2025-06-01', { title: 'A', rewatch: true, liked: true }),
+    entry('2025-06-01', { title: 'B' })
+  ]);
+  const [first, second] = grouped.get('2025-06-01');
+
+  assert.equal(first.rewatch, true);
+  assert.equal(first.liked, true);
+  assert.equal(second.rewatch, false);
+  assert.equal(second.liked, false);
+});
+
+test('groupEntriesByDate: missing flags normalise to false', () => {
+  const grouped = groupEntriesByDate([
+    { date: new Date('2025-06-01T00:00:00Z'), title: 'Legacy', year: '2020', rating: 4 }
+  ]);
+  const [only] = grouped.get('2025-06-01');
+
+  assert.equal(only.rewatch, false);
+  assert.equal(only.liked, false);
+});
+
 test('buildJsonExport: reports stats over the entries it is given', () => {
   const result = buildJsonExport(
     [
@@ -182,6 +209,8 @@ test('buildJsonExport: reports stats over the entries it is given', () => {
   assert.equal(result.stats.daysActive, 3);
   assert.equal(result.stats.streak, 3);
   assert.equal(result.stats.streakFilms, 3);
+  assert.equal(result.stats.rewatches, 0);
+  assert.equal(result.stats.liked, 0);
   assert.equal(result.cells.length, 3);
   assert.deepEqual(result.years, [2025]);
 });
@@ -200,6 +229,32 @@ test('buildJsonExport: `year` labels the export, it does not filter entries', ()
   assert.ok(result.cells.some(cell => cell.date.startsWith('2024')));
 });
 
+test('buildJsonExport: counts rewatches and likes', () => {
+  const result = buildJsonExport(
+    [
+      entry('2025-02-01', { title: 'A', rewatch: true, liked: true }),
+      entry('2025-02-02', { title: 'B', rewatch: true }),
+      entry('2025-02-03', { title: 'C' })
+    ],
+    { username: 'someone', year: 2025, years: [2025] }
+  );
+
+  assert.equal(result.stats.rewatches, 2);
+  assert.equal(result.stats.liked, 1);
+  assert.deepEqual(
+    result.cells[0].films[0],
+    {
+      title: 'A',
+      year: '2020',
+      rating: null,
+      rewatch: true,
+      liked: true,
+      url: 'https://letterboxd.com/film/a/'
+    }
+  );
+  assert.equal(result.recent[0].rewatch, false);
+});
+
 test('buildJsonExport: no entries still yields a usable payload', () => {
   const result = buildJsonExport([], { username: 'someone', year: 2025, years: [2025] });
 
@@ -207,6 +262,8 @@ test('buildJsonExport: no entries still yields a usable payload', () => {
   assert.equal(result.stats.daysActive, 0);
   assert.equal(result.stats.streak, 0);
   assert.equal(result.stats.streakFilms, 0);
+  assert.equal(result.stats.rewatches, 0);
+  assert.equal(result.stats.liked, 0);
   assert.deepEqual(result.cells, []);
   assert.deepEqual(result.recent, []);
 });

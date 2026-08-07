@@ -91,7 +91,9 @@ export function groupEntriesByDate(entries) {
     grouped.get(dateKey).push({
       title: entry.title,
       year: entry.year,
-      rating: entry.rating
+      rating: entry.rating,
+      rewatch: Boolean(entry.rewatch),
+      liked: Boolean(entry.liked)
     });
   }
   
@@ -182,6 +184,8 @@ export function buildJsonExport(entries, options = {}) {
         title: item.title,
         year: item.year,
         rating: item.rating,
+        rewatch: Boolean(item.rewatch),
+        liked: Boolean(item.liked),
         url: item.url || null
       })),
       url
@@ -270,6 +274,8 @@ export function buildJsonExport(entries, options = {}) {
         title: item.title,
         year: item.year,
         rating: item.rating,
+        rewatch: Boolean(item.rewatch),
+        liked: Boolean(item.liked),
         url: item.url || null
       })),
       level: 0,
@@ -302,6 +308,8 @@ export function buildJsonExport(entries, options = {}) {
       title: entry.title,
       year: entry.year,
       rating: entry.rating,
+      rewatch: Boolean(entry.rewatch),
+      liked: Boolean(entry.liked),
       url: entry.url || null
     }));
 
@@ -324,7 +332,9 @@ export function buildJsonExport(entries, options = {}) {
       films: sortedEntries.length,
       daysActive: calculateDaysActive(sortedEntries),
       streak: streakInfo.length,
-      streakFilms: streakInfo.films
+      streakFilms: streakInfo.films,
+      rewatches: sortedEntries.filter((entry) => entry.rewatch).length,
+      liked: sortedEntries.filter((entry) => entry.liked).length
     },
     monthLabels,
     calendar,

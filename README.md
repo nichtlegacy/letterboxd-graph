@@ -35,7 +35,8 @@
 | 📅 **Multi-Year Support** | Generate graphs spanning multiple years |
 | 🎯 **Streak Highlighting** | Hover over "Day Streak" to highlight your longest streak, with its date range and film count |
 | 💬 **Interactive Tooltips** | Hover over cells to see film details (in browser) |
-| 📈 **Rating Distribution + Average** | Hover over the film count for the rating histogram and your average rating |
+| 📈 **Rating Distribution + Summary** | Hover over the film count for the rating histogram, your average rating, and rewatch/like totals |
+| ↻ **Rewatches & Likes** | Rewatched entries are marked `↻` and liked entries `♥` in the day tooltips |
 | 🕰️ **Decade Breakdown** | Hover over the year label to see how your films spread across release decades |
 | ✨ **Cell Reveal Animation** | Cells fade in as a wave when the SVG loads; respects `prefers-reduced-motion` |
 | 🎨 **Color Palettes** | GitHub green, or a Letterboxd-native palette built on its signature green |
@@ -91,9 +92,10 @@ The graph updates daily at midnight UTC, or trigger manually via the **Actions**
 Hover over stats to reveal additional information:
 
 - **Year label** → films grouped by release decade
-- **Film count** → rating distribution and your average rating
+- **Film count** → rating distribution, average rating, rewatch and like totals
 - **Days Active** → weekday distribution
 - **Day Streak** → date range, film count, and the streak highlighted in the grid
+- **Any day cell** → the films watched, with `↻` for rewatches and `♥` for likes
 
 > **Note:** GitHub embeds the SVG through an `<img>` tag, which cannot receive mouse
 > events — hover states only work when you open the SVG file directly in a browser.
@@ -325,20 +327,20 @@ Example payload shape:
 {
   "user": "nichtlegacy",
   "year": 2026,
-  "stats": { "films": 123, "daysActive": 80, "streak": 7, "streakFilms": 11 },
+  "stats": { "films": 123, "daysActive": 80, "streak": 7, "streakFilms": 11, "rewatches": 18, "liked": 19 },
   "cells": [
     {
       "date": "2026-02-16",
       "count": 2,
       "ratingAvg": 3.5,
       "films": [
-        { "title": "Film A", "year": "2024", "rating": 3.5, "url": "https://letterboxd.com/..." }
+        { "title": "Film A", "year": "2024", "rating": 3.5, "rewatch": false, "liked": true, "url": "https://letterboxd.com/..." }
       ],
       "url": "https://letterboxd.com/<user>/films/diary/for/2026/02/16/"
     }
   ],
   "recent": [
-    { "date": "2026-02-16", "title": "Film A", "year": "2024", "rating": 3.5, "url": "https://letterboxd.com/..." }
+    { "date": "2026-02-16", "title": "Film A", "year": "2024", "rating": 3.5, "rewatch": false, "liked": true, "url": "https://letterboxd.com/..." }
   ]
 }
 ```
@@ -346,7 +348,7 @@ Example payload shape:
 You can use this to build:
 
 - a compact heatmap widget (GitHub-like)
-- a separate stats widget (`films`, `daysActive`, `streak`, `streakFilms`)
+- a separate stats widget (`films`, `daysActive`, `streak`, `streakFilms`, `rewatches`, `liked`)
 - an optional recent-watches list
 
 ## 📂 Project Structure

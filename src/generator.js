@@ -378,7 +378,24 @@ function buildCellDelay(enabled, week, day, yearIndex = 0) {
 }
 
 /**
- * Build the "X Movies" hover tooltip: rating distribution plus average rating
+ * Format one film line of a day tooltip.
+ *
+ * Rewatches and likes ride along as markers on the line that already exists,
+ * so they cost no extra space. Shared with the tooltip width calculation so the
+ * measured string and the rendered string cannot drift apart.
+ *
+ * @param {Object} film - Diary entry
+ * @returns {string} e.g. "• ↻ Sicario (2015) - 4★ ♥"
+ */
+function formatFilmLine(film) {
+  const rewatch = film.rewatch ? '↻ ' : '';
+  const rating = film.rating ? ` - ${film.rating}★` : '';
+  const liked = film.liked ? ' ♥' : '';
+  return `• ${rewatch}${film.title} (${film.year})${rating}${liked}`;
+}
+
+/**
+ * Build the "X Movies" hover tooltip: rating distribution plus a summary line
  * @param {Array} entries - Diary entries for the year
  * @param {Object} t - Theme colors
  * @returns {string} SVG markup
@@ -401,9 +418,17 @@ function buildMoviesTooltip(entries, t) {
   const maxRatingCount = Math.max(...ratingLabels.map(r => ratingDistribution[r]));
   const ratedCount = entries.length - ratingDistribution['unrated'];
   const average = calculateAverageRating(entries);
-  const averageLine = average === null
-    ? 'No ratings yet'
-    : `Ø ${average.toFixed(1)}★ across ${ratedCount} rated ${ratedCount === 1 ? 'film' : 'films'}`;
+  const rewatchCount = entries.filter(entry => entry.rewatch).length;
+  const likedCount = entries.filter(entry => entry.liked).length;
+
+  // One line, not one row per figure: the tooltip cannot grow past ~110px
+  // without being clipped by the top of the card.
+  const summaryParts = [
+    average === null ? 'No ratings yet' : `Ø ${average.toFixed(1)}★ · ${ratedCount} rated`
+  ];
+  if (rewatchCount > 0) summaryParts.push(`↻ ${rewatchCount}`);
+  if (likedCount > 0) summaryParts.push(`♥ ${likedCount}`);
+  const summaryLine = summaryParts.join(' · ');
 
   const bars = ratingLabels.map((rating, i) => {
     const count = ratingDistribution[rating];
@@ -419,7 +444,7 @@ function buildMoviesTooltip(entries, t) {
         <rect x="0" y="0" width="260" height="${MOVIES_TOOLTIP_HEIGHT}" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>
         <text x="130" y="15" font-size="11" font-weight="600" fill="${t.tooltipText}" text-anchor="middle">Rating Distribution${ratingDistribution['unrated'] > 0 ? ` (${ratingDistribution['unrated']} unrated)` : ''}</text>${bars}
         <line x1="12" y1="90" x2="248" y2="90" stroke="${t.tooltipBorder}" stroke-width="1"/>
-        <text x="130" y="102" font-size="10" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(averageLine)}</text>
+        <text x="130" y="102" font-size="10" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(summaryLine)}</text>
       </g>`;
 }
 
@@ -831,7 +856,7 @@ export async function generateSvg(entries, options = {}) {
       
       const lineHeight = 18;
       const tooltipHeight = 38 + filmsForDay.length * lineHeight;
-      const tooltipWidth = Math.max(240, Math.max(...[tooltipTitle, ...filmsForDay.map(f => `• ${f.title} (${f.year})${f.rating ? ` - ${f.rating}★` : ''}`)].map(s => s.length * 7)));
+      const tooltipWidth = Math.max(240, Math.max(...[tooltipTitle, ...filmsForDay.map(formatFilmLine)].map(s => s.length * 7)));
 
       // Position tooltip to avoid overflow
       const tooltipX = Math.min(x, SVG_WIDTH - GRID_OFFSET_X - tooltipWidth - 10);
@@ -858,9 +883,8 @@ export async function generateSvg(entries, options = {}) {
             <tspan x="10" dy="22" font-weight="600">${escapeXml(tooltipTitle)}</tspan>`;
       
       filmsForDay.forEach((film) => {
-        const ratingStr = film.rating ? ` - ${film.rating}★` : "";
         svg += `
-            <tspan x="10" dy="${lineHeight}">${escapeXml(`• ${film.title} (${film.year})${ratingStr}`)}</tspan>`;
+            <tspan x="10" dy="${lineHeight}">${escapeXml(formatFilmLine(film))}</tspan>`;
       });
 
       svg += `
@@ -1196,7 +1220,7 @@ export async function generateMultiYearSvg(entries, options = {}) {
         
         const lineHeight = 18;
         const tooltipHeight = 38 + filmsForDay.length * lineHeight;
-        const tooltipWidth = Math.max(240, Math.max(...[tooltipTitle, ...filmsForDay.map(f => `• ${f.title} (${f.year})${f.rating ? ` - ${f.rating}★` : ''}`)].map(s => s.length * 7)));
+        const tooltipWidth = Math.max(240, Math.max(...[tooltipTitle, ...filmsForDay.map(formatFilmLine)].map(s => s.length * 7)));
 
         // Position tooltip
         const tooltipX = Math.min(x, SVG_WIDTH - 51 - tooltipWidth - 10);
@@ -1223,9 +1247,8 @@ export async function generateMultiYearSvg(entries, options = {}) {
             <tspan x="10" dy="22" font-weight="600">${escapeXml(tooltipTitle)}</tspan>`;
       
       filmsForDay.forEach((film) => {
-        const ratingStr = film.rating ? ` - ${film.rating}★` : "";
         svg += `
-            <tspan x="10" dy="${lineHeight}">${escapeXml(`• ${film.title} (${film.year})${ratingStr}`)}</tspan>`;
+            <tspan x="10" dy="${lineHeight}">${escapeXml(formatFilmLine(film))}</tspan>`;
       });
 
       svg += `

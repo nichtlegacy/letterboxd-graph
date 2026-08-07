@@ -657,6 +657,15 @@ function parseDiaryEntries(html, year) {
         }
       }
 
+      // The rewatch column is always present and carries `icon-status-off` when
+      // the entry is a first watch, so a rewatch is the absence of that class.
+      const rewatchCell = $row.find('td.col-rewatch').first();
+      const rewatch = rewatchCell.length > 0 && !rewatchCell.hasClass('icon-status-off');
+
+      // A liked entry adds a separate `icon-liked` span next to the owner's
+      // like button, which is rendered for every row whether liked or not.
+      const liked = $row.find('td.col-like .icon-liked').length > 0;
+
       const monthNames = {
         '01': 0, '02': 1, '03': 2, '04': 3, '05': 4, '06': 5,
         '07': 6, '08': 7, '09': 8, '10': 9, '11': 10, '12': 11
@@ -673,6 +682,8 @@ function parseDiaryEntries(html, year) {
           title,
           year: filmYear,
           rating,
+          rewatch,
+          liked,
           url: filmUrl
         });
       }
