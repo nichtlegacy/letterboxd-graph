@@ -177,6 +177,145 @@ export function calculateDecadeDistribution(entries) {
 }
 
 /**
+ * Aggregate the whole diary, not just the years the graph covers.
+ *
+ * Everything here is derived from entries that were already fetched, so it
+ * costs no further requests. The figures are aggregates rather than a second
+ * copy of the diary: a consumer gets the shape of a viewing history without
+ * having to walk thousands of entries itself.
+ *
+ * @param {Array} entries - Diary entries, any order
+ * @param {Object} options
+ * @param {number|null} options.totalFilms - Films watched per the profile page, which
+ *   counts films ticked off without a diary entry and is therefore higher
+ * @param {string} options.scope - "all" when the whole diary was fetched, "years" otherwise
+ * @param {number} options.milestoneStep - Diary entry interval to mark, 0 to skip
+ * @returns {Object|null} Aggregates, or null without entries
+ */
+export function buildAllTimeStats(entries, options = {}) {
+  const { totalFilms = null, scope = 'all', milestoneStep = 100 } = options;
+  if (!entries || entries.length === 0) return null;
+
+  const sorted = [...entries].sort((a, b) => a.date.getTime() - b.date.getTime());
+  const iso = (date) => date.toISOString().split('T')[0];
+  const rated = sorted.filter((entry) => entry.rating !== null && entry.rating !== undefined);
+
+  const days = new Map();
+  const perYear = new Map();
+  const perWeekday = new Array(7).fill(0);
+  const perMonthOfYear = new Array(12).fill(0);
+  const perMonth = new Map();
+  const ratings = new Map();
+  const views = new Map();
+
+  for (const entry of sorted) {
+    const date = iso(entry.date);
+    const year = entry.date.getUTCFullYear();
+    const month = `${date.slice(0, 7)}`;
+
+    days.set(date, (days.get(date) || 0) + 1);
+    perMonth.set(month, (perMonth.get(month) || 0) + 1);
+    perWeekday[entry.date.getUTCDay()] += 1;
+    perMonthOfYear[entry.date.getUTCMonth()] += 1;
+
+    const yearEntry = perYear.get(year) || { year, films: 0, days: new Set() };
+    yearEntry.films += 1;
+    yearEntry.days.add(date);
+    perYear.set(year, yearEntry);
+
+    if (entry.rating !== null && entry.rating !== undefined) {
+      ratings.set(entry.rating, (ratings.get(entry.rating) || 0) + 1);
+    }
+
+    const key = filmKey(entry);
+    const seen = views.get(key) || { title: entry.title, year: entry.year, url: entry.url || null, views: 0 };
+    seen.views += 1;
+    views.set(key, seen);
+  }
+
+  // A continuous series, zeros included: a month with nothing logged is a fact
+  // about the year, and dropping it would compress the gaps out of the chart.
+  const firstDate = new Date(`${iso(sorted[0].date).slice(0, 7)}-01T00:00:00Z`);
+  const lastDate = new Date(`${iso(sorted.at(-1).date).slice(0, 7)}-01T00:00:00Z`);
+  const monthSeries = [];
+
+  for (let cursor = new Date(firstDate); cursor <= lastDate; cursor.setUTCMonth(cursor.getUTCMonth() + 1)) {
+    const month = iso(cursor).slice(0, 7);
+    monthSeries.push({ month, count: perMonth.get(month) || 0 });
+  }
+
+  const dayList = [...days.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+  const busiest = dayList.reduce((best, day) => (day[1] > best[1] ? day : best), dayList[0]);
+
+  // The longest the diary ever went quiet, measured between active days.
+  let longestGap = { days: 0, from: null, to: null };
+  for (let index = 1; index < dayList.length; index++) {
+    const from = dayList[index - 1][0];
+    const to = dayList[index][0];
+    const gap = Math.round((Date.parse(to) - Date.parse(from)) / 86400000) - 1;
+    if (gap > longestGap.days) longestGap = { days: gap, from, to };
+  }
+
+  const milestone = (entry, position) => ({
+    n: position,
+    date: iso(entry.date),
+    title: entry.title,
+    year: entry.year || null,
+    rating: entry.rating ?? null,
+    url: entry.url || null
+  });
+
+  const milestones = [milestone(sorted[0], 1)];
+  if (milestoneStep > 0) {
+    for (let position = milestoneStep; position <= sorted.length; position += milestoneStep) {
+      milestones.push(milestone(sorted[position - 1], position));
+    }
+  }
+  if (sorted.length > 1 && milestones.at(-1).n !== sorted.length) {
+    milestones.push(milestone(sorted.at(-1), sorted.length));
+  }
+
+  const spanDays = Math.round((sorted.at(-1).date.getTime() - sorted[0].date.getTime()) / 86400000) + 1;
+  const round = (value, digits = 1) => Math.round(value * 10 ** digits) / 10 ** digits;
+
+  return {
+    scope,
+    films: totalFilms,
+    entries: sorted.length,
+    distinctFilms: views.size,
+    firstEntry: iso(sorted[0].date),
+    lastEntry: iso(sorted.at(-1).date),
+    spanDays,
+    daysActive: days.size,
+    rewatches: sorted.filter((entry) => entry.rewatch).length,
+    liked: sorted.filter((entry) => entry.liked).length,
+    rated: rated.length,
+    averageRating: calculateAverageRating(sorted),
+    perDay: round(sorted.length / spanDays, 2),
+    perWeek: round((sorted.length / spanDays) * 7),
+    perMonth: round((sorted.length / spanDays) * 30.44),
+    streak: calculateStreak(sorted),
+    busiestDay: busiest ? { date: busiest[0], count: busiest[1] } : null,
+    longestGap,
+    perYear: [...perYear.values()]
+      .map(({ year, films, days: active }) => ({ year, films, days: active.size }))
+      .sort((a, b) => a.year - b.year),
+    perWeekday,
+    perMonthOfYear,
+    monthSeries,
+    ratings: [...ratings.entries()]
+      .sort((a, b) => a[0] - b[0])
+      .map(([rating, count]) => ({ rating, count })),
+    decades: calculateDecadeDistribution(sorted),
+    mostRewatched: [...views.values()]
+      .filter((film) => film.views > 1)
+      .sort((a, b) => b.views - a.views || a.title.localeCompare(b.title))
+      .slice(0, 5),
+    milestones
+  };
+}
+
+/**
  * Build a compact JSON payload for external consumers (e.g. Glance widgets)
  * @param {Array} entries - Array of diary entries
  * @param {Object} options - Export options
@@ -185,6 +324,9 @@ export function calculateDecadeDistribution(entries) {
  * @param {Array<number>} options.years - Export years
  * @param {string} options.weekStart - "sunday" or "monday"
  * @param {number} options.recentLimit - Number of recent entries to include
+ * @param {Array} options.allEntries - The whole diary, when more than the export years was fetched
+ * @param {number|null} options.totalFilms - Films watched per the profile page
+ * @param {string} options.scope - Diary scope the run used
  * @returns {Object} JSON-serializable export object
  */
 export function buildJsonExport(entries, options = {}) {
@@ -193,7 +335,10 @@ export function buildJsonExport(entries, options = {}) {
     year = null,
     years = [],
     weekStart = 'sunday',
-    recentLimit = 10
+    recentLimit = 10,
+    allEntries = null,
+    totalFilms = null,
+    scope = 'all'
   } = options;
 
   const sortedEntries = [...entries].sort((a, b) => a.date.getTime() - b.date.getTime());
@@ -381,6 +526,7 @@ export function buildJsonExport(entries, options = {}) {
     monthLabels,
     calendar,
     cells,
-    recent
+    recent,
+    allTime: buildAllTimeStats(allEntries || sortedEntries, { totalFilms, scope })
   };
 }

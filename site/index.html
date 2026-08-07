@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Letterboxd Graph</title>
-  <meta name="description" content="A Letterboxd film diary as a contribution graph, year and month review cards and a profile card — generated daily by a GitHub Action.">
+  <meta name="description" content="A Letterboxd film diary as a contribution graph, review cards and a set of all-time statistics — generated daily by a GitHub Action.">
   <meta name="color-scheme" content="dark light">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Letterboxd Graph">
-  <meta property="og:description" content="A Letterboxd film diary as a contribution graph, year and month review cards and a profile card.">
+  <meta property="og:description" content="A Letterboxd film diary as a contribution graph, review cards and a set of all-time statistics.">
   <meta property="og:image" content="images/letterboxd-profile-dark.svg">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -39,10 +39,11 @@
       </a>
 
       <nav class="nav-links" aria-label="Sections">
-        <a href="#graph">Graph</a>
-        <a href="#years">Years</a>
-        <a href="#months">Months</a>
-        <a href="#profile">Profile</a>
+        <a href="#alltime">All time</a>
+        <a href="#when">When</a>
+        <a href="#ratings">Ratings</a>
+        <a href="#milestones">Milestones</a>
+        <a href="#graph">Cards</a>
         <a href="#diary">Diary</a>
       </nav>
 
@@ -59,9 +60,10 @@
         <p class="eyebrow" data-hero-eyebrow>Film diary, rendered</p>
         <h1 class="display" data-hero-title>Letterboxd Graph</h1>
         <p class="lead">
-          Every card this repository generates, in one place. Hover the graph and the
-          links work here — inside a README they cannot, because GitHub serves the
-          SVGs through an <code>&lt;img&gt;</code> tag that receives no mouse events.
+          A film diary read straight off Letterboxd and drawn as a contribution
+          graph, a card per year and month, and the figures behind them. Hover
+          works here — inside a README it cannot, because GitHub serves the SVGs
+          through an <code>&lt;img&gt;</code> tag that receives no mouse events.
         </p>
 
         <div class="actions">
@@ -70,8 +72,6 @@
           <a class="button" data-repo-link href="https://github.com/nichtlegacy/letterboxd-graph" rel="noopener">Source on GitHub</a>
         </div>
       </div>
-
-      <dl class="stats" data-stats hidden></dl>
     </section>
 
     <noscript>
@@ -82,8 +82,85 @@
       </p>
     </noscript>
 
+    <section class="section" id="alltime" data-alltime hidden>
+      <div class="section-head">
+        <p class="eyebrow">All time</p>
+        <h2 data-alltime-title>The diary in numbers</h2>
+        <p class="section-note" data-alltime-note></p>
+      </div>
+
+      <div class="tiles" data-alltime-tiles></div>
+      <div class="strip" data-alltime-strip></div>
+      <div class="year-strip" data-alltime-years></div>
+    </section>
+
+    <section class="section" id="when" data-when hidden>
+      <div class="section-head">
+        <p class="eyebrow">By month</p>
+        <h2>When you watched</h2>
+        <p class="section-note">
+          Every month between the first diary entry and the last, quiet ones
+          included — a gap is as much a part of a viewing history as a run.
+        </p>
+      </div>
+
+      <div class="chart" data-month-chart></div>
+
+      <div class="when-foot">
+        <div class="blocks" data-when-blocks></div>
+        <div class="weekday" data-weekday-chart></div>
+      </div>
+
+      <div class="facts" data-when-facts></div>
+    </section>
+
+    <section class="section" id="ratings" data-ratings hidden>
+      <div class="section-head">
+        <p class="eyebrow">Distribution</p>
+        <h2>How you rated</h2>
+        <p class="section-note">
+          Every rating in the diary, half stars and all. Unrated entries are left
+          out rather than counted as zero.
+        </p>
+      </div>
+
+      <div class="ratings-grid">
+        <div class="histogram" data-rating-chart></div>
+        <div class="ratings-side" data-rating-side></div>
+      </div>
+    </section>
+
+    <section class="section" id="decades" data-decades hidden>
+      <div class="section-head">
+        <p class="eyebrow">Release decades &amp; repeats</p>
+        <h2>What you reached for</h2>
+        <p class="section-note">
+          Which decades the films came out in, and the ones you went back to more
+          than once.
+        </p>
+      </div>
+
+      <div class="split">
+        <div class="bars" data-decade-chart></div>
+        <div class="rewatched" data-rewatched></div>
+      </div>
+    </section>
+
+    <section class="section" id="milestones" data-milestones hidden>
+      <div class="section-head">
+        <p class="eyebrow">Milestones</p>
+        <h2>Where the diary turned over</h2>
+        <p class="section-note">
+          The first entry, every hundredth after it, and the latest one.
+        </p>
+      </div>
+
+      <ol class="milestones" data-milestone-list></ol>
+    </section>
+
     <section class="section" id="graph" data-section="graph" hidden>
       <div class="section-head">
+        <p class="eyebrow">The cards</p>
         <h2>Contribution graph</h2>
         <p class="section-note">
           One block of weeks per year. Hovering a day cell lists the films watched
@@ -131,6 +208,7 @@
 
     <section class="section" id="diary" data-diary hidden>
       <div class="section-head">
+        <p class="eyebrow">Latest</p>
         <h2>Recent diary</h2>
         <p class="section-note">
           The last ten entries, straight out of the JSON export.

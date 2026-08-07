@@ -14,6 +14,7 @@ import {
   calculateDecadeDistribution,
   groupEntriesByDate,
   buildJsonExport,
+  buildAllTimeStats,
   filmKey,
   markRewatches
 } from '../src/stats.js';
@@ -323,4 +324,142 @@ test('markRewatches leaves the input untouched', () => {
   markRewatches(original);
 
   assert.equal(original[0].rewatch, undefined);
+});
+
+test('buildAllTimeStats: nothing to aggregate', () => {
+  assert.equal(buildAllTimeStats([]), null);
+  assert.equal(buildAllTimeStats(null), null);
+});
+
+test('buildAllTimeStats counts entries, distinct films and the profile figure apart', () => {
+  const all = buildAllTimeStats([
+    entry('2024-01-01', { title: 'A', rating: 4, liked: true }),
+    entry('2024-01-01', { title: 'B', rating: 3 }),
+    entry('2024-03-05', { title: 'A', rating: 5, rewatch: true })
+  ], { totalFilms: 600 });
+
+  assert.equal(all.entries, 3, 'three viewings');
+  assert.equal(all.distinctFilms, 2, 'of two films');
+  assert.equal(all.films, 600, 'the profile figure is carried through untouched');
+  assert.equal(all.daysActive, 2);
+  assert.equal(all.rewatches, 1);
+  assert.equal(all.liked, 1);
+  assert.equal(all.rated, 3);
+  assert.equal(all.averageRating, 4);
+  assert.equal(all.firstEntry, '2024-01-01');
+  assert.equal(all.lastEntry, '2024-03-05');
+});
+
+test('buildAllTimeStats: the month series runs continuously, gaps included', () => {
+  const all = buildAllTimeStats([
+    entry('2024-01-10', { title: 'A' }),
+    entry('2024-04-02', { title: 'B' }),
+    entry('2024-04-20', { title: 'C' })
+  ]);
+
+  assert.deepEqual(all.monthSeries, [
+    { month: '2024-01', count: 1 },
+    { month: '2024-02', count: 0 },
+    { month: '2024-03', count: 0 },
+    { month: '2024-04', count: 2 }
+  ]);
+});
+
+test('buildAllTimeStats: weekday and month distributions', () => {
+  // 2024-01-07 is a Sunday, 2024-01-08 a Monday.
+  const all = buildAllTimeStats([
+    entry('2024-01-07', { title: 'A' }),
+    entry('2024-01-08', { title: 'B' }),
+    entry('2024-06-09', { title: 'C' })
+  ]);
+
+  assert.equal(all.perWeekday[0], 2, 'both Sundays land on index 0');
+  assert.equal(all.perWeekday[1], 1);
+  assert.equal(all.perMonthOfYear[0], 2, 'January');
+  assert.equal(all.perMonthOfYear[5], 1, 'June');
+});
+
+test('buildAllTimeStats: the longest gap is the quiet span between active days', () => {
+  const all = buildAllTimeStats([
+    entry('2024-01-01', { title: 'A' }),
+    entry('2024-01-02', { title: 'B' }),
+    entry('2024-02-01', { title: 'C' })
+  ]);
+
+  assert.equal(all.longestGap.days, 29, 'the days between 2 Jan and 1 Feb');
+  assert.deepEqual([all.longestGap.from, all.longestGap.to], ['2024-01-02', '2024-02-01']);
+});
+
+test('buildAllTimeStats: milestones mark the first, every hundredth and the latest', () => {
+  const entries = Array.from({ length: 250 }, (_, index) => {
+    const date = new Date(Date.UTC(2024, 0, 1 + index));
+    return entry(date.toISOString().split('T')[0], { title: `Film ${index + 1}` });
+  });
+
+  const all = buildAllTimeStats(entries);
+
+  assert.deepEqual(all.milestones.map(m => m.n), [1, 100, 200, 250]);
+  assert.equal(all.milestones[0].title, 'Film 1');
+  assert.equal(all.milestones[1].title, 'Film 100');
+  assert.equal(all.milestones.at(-1).title, 'Film 250', 'the latest entry closes the run');
+});
+
+test('buildAllTimeStats: a diary shorter than one milestone still has both ends', () => {
+  const all = buildAllTimeStats([
+    entry('2024-01-01', { title: 'A' }),
+    entry('2024-01-02', { title: 'B' })
+  ]);
+
+  assert.deepEqual(all.milestones.map(m => m.n), [1, 2]);
+});
+
+test('buildAllTimeStats: most rewatched ranks repeat viewings only', () => {
+  const all = buildAllTimeStats([
+    entry('2024-01-01', { title: 'A' }),
+    entry('2024-02-01', { title: 'A' }),
+    entry('2024-03-01', { title: 'A' }),
+    entry('2024-01-05', { title: 'B' }),
+    entry('2024-02-05', { title: 'B' }),
+    entry('2024-01-09', { title: 'C' })
+  ]);
+
+  assert.deepEqual(all.mostRewatched.map(film => [film.title, film.views]), [['A', 3], ['B', 2]]);
+});
+
+test('buildAllTimeStats: rates per week and per month come off the span, not the calendar', () => {
+  // Ten films across ten days: a heavy week, not a tenth of a year.
+  const entries = Array.from({ length: 10 }, (_, index) =>
+    entry(new Date(Date.UTC(2024, 0, 1 + index)).toISOString().split('T')[0], { title: `F${index}` }));
+
+  const all = buildAllTimeStats(entries);
+
+  assert.equal(all.spanDays, 10);
+  assert.equal(all.perWeek, 7);
+  assert.equal(all.perDay, 1);
+});
+
+test('buildJsonExport carries an all-time block covering more than the graph years', () => {
+  const graphYears = [entry('2026-01-01', { title: 'New' })];
+  const whole = [entry('2019-05-05', { title: 'Old' }), ...graphYears];
+
+  const exported = buildJsonExport(graphYears, {
+    username: 'someone',
+    years: [2026],
+    allEntries: whole,
+    totalFilms: 42,
+    scope: 'all'
+  });
+
+  assert.equal(exported.stats.films, 1, 'the graph figures stay scoped to the years');
+  assert.equal(exported.allTime.entries, 2, 'the all-time block sees the whole diary');
+  assert.equal(exported.allTime.firstEntry, '2019-05-05');
+  assert.equal(exported.allTime.films, 42);
+  assert.equal(exported.allTime.scope, 'all');
+});
+
+test('buildJsonExport falls back to the exported entries when no diary was passed', () => {
+  const exported = buildJsonExport([entry('2026-01-01', { title: 'Only' })], { username: 'someone' });
+
+  assert.equal(exported.allTime.entries, 1);
+  assert.equal(exported.allTime.films, null, 'no profile figure to report');
 });

@@ -229,7 +229,12 @@ async function main() {
       year: years.length === 1 ? years[0] : null,
       years,
       weekStart,
-      recentLimit: 10
+      recentLimit: 10,
+      // The graph and its cells stay scoped to the requested years; the all-time
+      // block covers whatever was fetched, which in 'all' scope is the lot.
+      allEntries,
+      totalFilms: totalEntries,
+      scope
     });
     fs.writeFileSync(outputJsonPath, JSON.stringify(jsonExport, null, 2));
 

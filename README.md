@@ -456,9 +456,33 @@ https://raw.githubusercontent.com/<github-user>/letterboxd-graph/main/images/let
   ],
   "recent": [
     { "date": "2026-02-16", "title": "Film A", "year": "2024", "rating": 3.5, "rewatch": false, "liked": true, "url": "https://letterboxd.com/..." }
-  ]
+  ],
+  "allTime": {
+    "scope": "all",
+    "films": 626, "entries": 599, "distinctFilms": 517,
+    "firstEntry": "2019-05-05", "lastEntry": "2026-07-30", "spanDays": 2644,
+    "daysActive": 427, "rewatches": 83, "liked": 76, "rated": 540, "averageRating": 3.3,
+    "perDay": 0.23, "perWeek": 1.6, "perMonth": 6.9,
+    "streak": { "length": 34, "startDate": "2025-01-27", "endDate": "2025-03-01", "films": 47 },
+    "busiestDay": { "date": "2025-04-16", "count": 5 },
+    "longestGap": { "days": 61, "from": "2021-02-03", "to": "2021-04-05" },
+    "perYear": [{ "year": 2025, "films": 381, "days": 263 }],
+    "perWeekday": [65, 65, 55, 59, 62, 69, 81],
+    "perMonthOfYear": [51, 44, 39, 47, 38, 30, 41, 33, 29, 36, 34, 37],
+    "monthSeries": [{ "month": "2026-02", "count": 12 }],
+    "ratings": [{ "rating": 3.5, "count": 125 }],
+    "decades": [{ "decade": 2020, "label": "2020s", "count": 89 }],
+    "mostRewatched": [{ "title": "Half Baked", "year": "1998", "url": "https://letterboxd.com/...", "views": 5 }],
+    "milestones": [{ "n": 100, "date": "2025-03-08", "title": "Film B", "year": "2004", "rating": 3, "url": "https://letterboxd.com/..." }]
+  }
 }
 ```
+
+`stats` and `cells` are scoped to the years in `years`, the same window the graph
+draws. `allTime` covers everything the run fetched, which under the default
+`scope: all` is the whole diary — `films` is the profile's own count, `entries`
+the dated ones. It is aggregates only, so it stays a few kilobytes whatever the
+diary weighs, and `scope` says which of the two it was built from.
 
 </details>
 

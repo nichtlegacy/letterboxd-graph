@@ -9,7 +9,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { classify, label, readDimensions, buildAssets, slimData } from '../scripts/build-site.mjs';
+import { classify, label, readDimensions, readChrome, buildAssets, slimData, allTimeFromCells } from '../scripts/build-site.mjs';
 
 const svg = (width, height) =>
   `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg"></svg>`;
@@ -149,9 +149,9 @@ test('slimData keeps the figures and drops the calendar', () => {
     stats: { films: 456, daysActive: 322, streak: 34 },
     calendar: new Array(500).fill({ date: '2025-01-01', count: 0 }),
     cells: [
-      { date: '2025-01-02', count: 2 },
-      { date: '2025-01-03', count: 1 },
-      { date: '2026-02-16', count: 3 }
+      { date: '2025-01-02', count: 2, films: [{ title: 'A' }, { title: 'B' }] },
+      { date: '2025-01-03', count: 1, films: [{ title: 'C' }] },
+      { date: '2026-02-16', count: 3, films: [{ title: 'D' }, { title: 'E' }, { title: 'F' }] }
     ],
     recent: new Array(20).fill({ date: '2026-07-30', title: 'Film' })
   });
@@ -162,9 +162,66 @@ test('slimData keeps the figures and drops the calendar', () => {
   assert.equal(slim.recent.length, 10);
   assert.deepEqual(slim.stats, { films: 456, daysActive: 322, streak: 34 });
 
-  // Per-year totals are derived here so the page never has to load the cells.
-  assert.deepEqual(slim.perYear, [
-    { year: 2026, films: 3, days: 1 },
-    { year: 2025, films: 3, days: 2 }
+  // The figures the page draws are aggregated here so it never has to load the
+  // cells the totals came from.
+  assert.deepEqual(slim.allTime.perYear, [
+    { year: 2025, films: 3, days: 2 },
+    { year: 2026, films: 3, days: 1 }
   ]);
+});
+
+test('readChrome reads the radius and fill of the card background', () => {
+  // The page clips its embed to this radius and paints this fill behind it, so
+  // an <object> canvas cannot show through the rounded corners.
+  const card = `<svg viewBox="0 0 1200 630"><defs><style>@font-face{}</style></defs>
+    <rect width="100%" height="100%" rx="20" fill="#12161c"/></svg>`;
+
+  assert.deepEqual(readChrome(card), { radius: 20, fill: '#12161c' });
+});
+
+test('readChrome copes with a card that has no rounded background', () => {
+  assert.deepEqual(readChrome('<svg viewBox="0 0 10 10"><g/></svg>'), { radius: 0, fill: null });
+});
+
+test('buildAssets records the radius once and the fill per theme', () => {
+  const svg = (fill) => `<svg viewBox="0 0 1200 630"><rect width="100%" height="100%" rx="20" fill="${fill}"/></svg>`;
+  const assets = buildAssets(
+    ['letterboxd-profile-dark.svg', 'letterboxd-profile-light.svg'],
+    name => svg(name.includes('dark') ? '#12161c' : '#ffffff')
+  );
+
+  assert.equal(assets[0].radius, 20);
+  assert.deepEqual(assets[0].background, { dark: '#12161c', light: '#ffffff' });
+});
+
+test('slimData keeps a generator-written all-time block as it is', () => {
+  const slim = slimData({
+    user: 'someone',
+    allTime: { scope: 'all', entries: 3000, films: 3653 },
+    cells: [{ date: '2025-01-01', count: 1, films: [{ title: 'A' }] }],
+    recent: []
+  });
+
+  assert.equal(slim.allTime.scope, 'all');
+  assert.equal(slim.allTime.films, 3653, 'the whole diary wins over the graph years');
+});
+
+test('allTimeFromCells rebuilds the block for an export written before it existed', () => {
+  const slim = slimData({
+    user: 'someone',
+    cells: [
+      { date: '2025-01-01', count: 2, films: [{ title: 'A', rating: 4 }, { title: 'B', rating: 3 }] },
+      { date: '2025-01-02', count: 1, films: [{ title: 'A', rating: 5 }] }
+    ],
+    recent: []
+  });
+
+  assert.equal(slim.allTime.scope, 'years', 'and says it only covers the graph years');
+  assert.equal(slim.allTime.entries, 3);
+  assert.equal(slim.allTime.distinctFilms, 2);
+  assert.equal(slim.allTime.films, null, 'no profile figure in an export that old');
+});
+
+test('allTimeFromCells has nothing to rebuild from an empty export', () => {
+  assert.equal(allTimeFromCells({ cells: [] }), null);
 });

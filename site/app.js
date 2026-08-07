@@ -3,8 +3,8 @@
  *
  * The page ships as empty section shells and fills itself from two files the
  * build step writes next to it: `manifest.json` (which SVGs exist, paired by
- * theme and measured) and `data.json` (the headline figures and recent films).
- * Nothing here knows which years or months were generated.
+ * theme and measured) and `data.json` (the figures, aggregated at build time).
+ * Nothing here knows which years, months or milestones were generated.
  *
  * Cards are embedded with <object> rather than <img>. An <img> receives no
  * mouse events, which is exactly why the tooltips do not work inside a README;
@@ -16,6 +16,9 @@
 
 const THEME_MODES = ['system', 'light', 'dark'];
 const STORAGE_KEY = 'lbg-theme';
+
+const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const WEEKDAY_INITIALS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
 const systemQuery = matchMedia('(prefers-color-scheme: light)');
 const frames = new Set();
@@ -71,14 +74,49 @@ function formatNumber(value) {
   return typeof value === 'number' ? value.toLocaleString('en-US') : '—';
 }
 
-function formatDate(iso, options) {
-  const date = new Date(`${iso.length === 10 ? iso : iso.slice(0, 10)}T00:00:00Z`);
-  return date.toLocaleDateString('en-GB', { timeZone: 'UTC', ...options });
+function formatDecimal(value, digits = 1) {
+  return typeof value === 'number'
+    ? value.toLocaleString('en-US', { minimumFractionDigits: digits, maximumFractionDigits: digits })
+    : '—';
+}
+
+function formatDate(iso, options = { day: '2-digit', month: 'short', year: 'numeric' }) {
+  return new Date(`${iso.slice(0, 10)}T00:00:00Z`)
+    .toLocaleDateString('en-GB', { timeZone: 'UTC', ...options });
+}
+
+function formatMonth(iso) {
+  return new Date(`${iso}-01T00:00:00Z`)
+    .toLocaleDateString('en-GB', { timeZone: 'UTC', month: 'short', year: 'numeric' });
 }
 
 function stars(rating) {
   if (!rating) return '';
   return '★'.repeat(Math.floor(rating)) + (rating % 1 ? '½' : '');
+}
+
+/**
+ * 1st, 2nd, 3rd, 11th — the exceptions in the teens included.
+ *
+ * @param {number} value
+ * @returns {string}
+ */
+function ordinal(value) {
+  const tens = value % 100;
+  const ones = value % 10;
+  if (tens >= 11 && tens <= 13) return `${value}th`;
+  if (ones === 1) return `${value}st`;
+  if (ones === 2) return `${value}nd`;
+  if (ones === 3) return `${value}rd`;
+  return `${value}th`;
+}
+
+function link(href, className, text) {
+  const node = el('a', className, text);
+  node.href = href;
+  node.target = '_blank';
+  node.rel = 'noopener';
+  return node;
 }
 
 let toastTimer = null;
@@ -94,6 +132,336 @@ function toast(message) {
     node.classList.remove('is-visible');
     toastTimer = setTimeout(() => { node.hidden = true; }, 250);
   }, 2000);
+}
+
+/* ── Charts ───────────────────────────────────────────────────────────────── */
+
+/**
+ * A column chart with a tooltip that follows the hovered bar. Used for the month
+ * series and, in a smaller variant, for the weekday and rating distributions.
+ *
+ * @param {HTMLElement} host - Element to render into
+ * @param {Array<{value: number, label: string, meta?: string, caption?: string}>} bars
+ * @param {{variant?: string, axis?: [string, string]}} options
+ */
+function columnChart(host, bars, { variant = '', axis = null } = {}) {
+  host.replaceChildren();
+  if (!bars.length) return;
+
+  const max = Math.max(1, ...bars.map(bar => bar.value));
+  const plot = el('div', `plot ${variant}`.trim());
+  const tooltip = el('div', 'chart-tip');
+  tooltip.hidden = true;
+
+  bars.forEach((bar) => {
+    const column = el('div', 'column');
+    const fill = el('span', 'column-fill');
+    // A zero stays flat; everything else keeps a sliver so a single film is
+    // still visible next to a month of thirty.
+    fill.style.height = bar.value === 0 ? '0' : `${Math.max((bar.value / max) * 100, 3)}%`;
+    if (bar.value === 0) column.classList.add('is-empty');
+    column.append(fill);
+
+    const show = () => {
+      tooltip.replaceChildren(
+        el('b', null, `${formatNumber(bar.value)} ${bar.value === 1 ? 'film' : 'films'}`),
+        el('span', null, bar.label)
+      );
+      if (bar.meta) tooltip.append(el('span', 'muted', bar.meta));
+
+      tooltip.hidden = false;
+      plot.classList.add('is-hovered');
+      column.classList.add('is-active');
+
+      // Sit just above the bar rather than above the whole plot, and stay
+      // inside it: a tooltip over the first column would otherwise hang off the
+      // left edge, and one over a short bar would float far above it.
+      const half = tooltip.offsetWidth / 2;
+      const centre = column.offsetLeft + column.offsetWidth / 2;
+
+      tooltip.style.left = `${Math.min(Math.max(centre, half), plot.clientWidth - half)}px`;
+      tooltip.style.bottom = `${fill.offsetHeight + 10}px`;
+    };
+
+    const hide = () => {
+      tooltip.hidden = true;
+      plot.classList.remove('is-hovered');
+      column.classList.remove('is-active');
+    };
+
+    column.addEventListener('mouseenter', show);
+    column.addEventListener('mouseleave', hide);
+    column.addEventListener('focus', show);
+    column.addEventListener('blur', hide);
+    column.tabIndex = 0;
+    column.setAttribute('role', 'img');
+    column.setAttribute('aria-label', `${bar.label}: ${bar.value}`);
+
+    if (bar.caption) column.append(el('span', 'column-caption', bar.caption));
+    plot.append(column);
+  });
+
+  plot.append(tooltip);
+  host.append(plot);
+
+  if (axis) {
+    const scale = el('div', 'axis');
+    scale.append(el('span', null, axis[0]), el('span', null, axis[1]));
+    host.append(scale);
+  }
+}
+
+/* ── All time ─────────────────────────────────────────────────────────────── */
+
+function tile(label, value, meta, accent) {
+  const node = el('div', `tile${accent ? ' is-accent' : ''}`);
+  node.append(el('span', 'tile-label', label), el('span', 'tile-value', value));
+  if (meta) node.append(el('span', 'tile-meta', meta));
+  return node;
+}
+
+function renderAllTime(all, data) {
+  const section = document.querySelector('[data-alltime]');
+  if (!all) return;
+
+  document.querySelector('[data-alltime-title]').textContent =
+    data.user ? `@${data.user} in numbers` : 'The diary in numbers';
+
+  const note = document.querySelector('[data-alltime-note]');
+  note.textContent = all.scope === 'all'
+    ? `Every entry from ${formatDate(all.firstEntry)} to ${formatDate(all.lastEntry)}.`
+    : `Covers ${formatDate(all.firstEntry)} to ${formatDate(all.lastEntry)} — the run fetched only the graph years, so this is not the whole diary.`;
+
+  // Films watched is the profile's own figure and counts films ticked off
+  // without a diary entry, which is why it outruns the entry count.
+  const headline = [
+    all.films
+      ? tile('Films watched', formatNumber(all.films), `${formatNumber(all.entries)} of them dated in the diary`, true)
+      : tile('Diary entries', formatNumber(all.entries), `${formatNumber(all.distinctFilms)} distinct films`, true),
+    tile('Days active', formatNumber(all.daysActive), `${formatDecimal(all.perWeek)} films a week on average`),
+    tile('Average rating', all.averageRating ? formatDecimal(all.averageRating, 2) : '—',
+      `${formatNumber(all.rated)} of ${formatNumber(all.entries)} rated`)
+  ];
+
+  document.querySelector('[data-alltime-tiles]').replaceChildren(...headline);
+
+  const strip = [
+    ['Distinct films', formatNumber(all.distinctFilms)],
+    ['Rewatches', formatNumber(all.rewatches)],
+    ['Liked', formatNumber(all.liked)],
+    ['Longest streak', `${formatNumber(all.streak?.length ?? 0)} days`]
+  ].map(([label, value]) => {
+    const node = el('div', 'strip-item');
+    node.append(el('span', 'strip-label', label), el('span', 'strip-value', value));
+    return node;
+  });
+
+  document.querySelector('[data-alltime-strip]').replaceChildren(...strip);
+
+  const years = (all.perYear || []).slice().sort((a, b) => b.year - a.year);
+  if (years.length > 1) {
+    const busiest = Math.max(...years.map(year => year.films));
+    const nodes = years.map((year) => {
+      const node = el('div', 'year-cell');
+      const track = el('span', 'year-track');
+      const bar = el('span', 'year-bar');
+      bar.style.width = `${Math.max((year.films / busiest) * 100, 2)}%`;
+      track.append(bar);
+
+      node.append(
+        el('span', 'year-label', String(year.year)),
+        track,
+        el('span', 'year-count', `${formatNumber(year.films)} films · ${formatNumber(year.days)} days`)
+      );
+      return node;
+    });
+
+    document.querySelector('[data-alltime-years]').replaceChildren(...nodes);
+  }
+
+  section.hidden = false;
+}
+
+/* ── When you watched ─────────────────────────────────────────────────────── */
+
+function renderWhen(all) {
+  const series = all?.monthSeries || [];
+  if (series.length < 2) return;
+
+  columnChart(
+    document.querySelector('[data-month-chart]'),
+    series.map(point => ({ value: point.count, label: formatMonth(point.month) })),
+    { axis: [formatMonth(series[0].month), formatMonth(series.at(-1).month)] }
+  );
+
+  const blocks = [
+    ['Entries logged', formatNumber(all.entries)],
+    ['Average per month', formatDecimal(all.perMonth)],
+    ['Average per week', formatDecimal(all.perWeek)]
+  ];
+
+  const blockNodes = [];
+  blocks.forEach(([label, value], index) => {
+    if (index > 0) blockNodes.push(el('span', 'block-arrow', '→'));
+    const node = el('div', 'block');
+    node.append(el('span', 'block-value', value), el('span', 'block-label', label));
+    blockNodes.push(node);
+  });
+
+  document.querySelector('[data-when-blocks]').replaceChildren(...blockNodes);
+
+  const weekday = all.perWeekday || [];
+  if (weekday.some(Boolean)) {
+    columnChart(
+      document.querySelector('[data-weekday-chart]'),
+      weekday.map((count, index) => ({
+        value: count,
+        label: WEEKDAYS[index],
+        caption: WEEKDAY_INITIALS[index]
+      })),
+      { variant: 'is-small' }
+    );
+  }
+
+  const facts = [];
+  if (all.busiestDay?.count > 1) {
+    facts.push([`${all.busiestDay.count} films in a day`, formatDate(all.busiestDay.date)]);
+  }
+  if (all.streak?.length > 1) {
+    facts.push([`${all.streak.length} days running`, `${formatDate(all.streak.startDate)} – ${formatDate(all.streak.endDate)}`]);
+  }
+  if (all.longestGap?.days > 1) {
+    facts.push([`${all.longestGap.days} days quiet`, `${formatDate(all.longestGap.from)} – ${formatDate(all.longestGap.to)}`]);
+  }
+
+  document.querySelector('[data-when-facts]').replaceChildren(...facts.map(([value, meta]) => {
+    const node = el('div', 'fact');
+    node.append(el('span', 'fact-value', value), el('span', 'fact-meta', meta));
+    return node;
+  }));
+
+  document.querySelector('[data-when]').hidden = false;
+}
+
+/* ── Ratings ──────────────────────────────────────────────────────────────── */
+
+function renderRatings(all) {
+  const ratings = all?.ratings || [];
+  if (!ratings.length) return;
+
+  // Half-star steps with nothing on them still need their slot, or the shape of
+  // the distribution is a lie.
+  const counts = new Map(ratings.map(entry => [entry.rating, entry.count]));
+  const buckets = Array.from({ length: 10 }, (_, index) => {
+    const rating = (index + 1) / 2;
+    return {
+      value: counts.get(rating) || 0,
+      label: `${rating} out of 5`,
+      caption: rating % 1 === 0 ? '★'.repeat(rating) : ''
+    };
+  });
+
+  columnChart(document.querySelector('[data-rating-chart]'), buckets, { variant: 'is-ratings' });
+
+  const top = ratings.reduce((best, entry) => (entry.count > best.count ? entry : best), ratings[0]);
+  const side = [
+    ['Average', all.averageRating ? formatDecimal(all.averageRating, 2) : '—', stars(Math.round(all.averageRating * 2) / 2)],
+    ['Most given', formatDecimal(top.rating, 1), `${formatNumber(top.count)} entries`],
+    ['Rated', `${Math.round((all.rated / all.entries) * 100)}%`, `${formatNumber(all.rated)} of ${formatNumber(all.entries)}`],
+    ['Liked', `${Math.round((all.liked / all.entries) * 100)}%`, `${formatNumber(all.liked)} entries`]
+  ].map(([label, value, meta]) => {
+    const node = el('div', 'side-item');
+    node.append(el('span', 'side-label', label), el('span', 'side-value', value));
+    if (meta) node.append(el('span', 'side-meta', meta));
+    return node;
+  });
+
+  document.querySelector('[data-rating-side]').replaceChildren(...side);
+  document.querySelector('[data-ratings]').hidden = false;
+}
+
+/* ── Decades and repeats ──────────────────────────────────────────────────── */
+
+function renderDecades(all) {
+  const decades = all?.decades || [];
+  const rewatched = all?.mostRewatched || [];
+  if (!decades.length && !rewatched.length) return;
+
+  if (decades.length) {
+    const max = Math.max(...decades.map(decade => decade.count));
+    const nodes = decades.slice().reverse().map((decade) => {
+      const node = el('div', 'bar-row');
+      const track = el('span', 'bar-track');
+      const fill = el('span', 'bar-fill');
+      fill.style.width = `${Math.max((decade.count / max) * 100, 1.5)}%`;
+      track.append(fill);
+
+      node.append(
+        el('span', 'bar-label', decade.label),
+        track,
+        el('span', 'bar-value', formatNumber(decade.count))
+      );
+      return node;
+    });
+
+    document.querySelector('[data-decade-chart]').replaceChildren(...nodes);
+  }
+
+  if (rewatched.length) {
+    const host = document.querySelector('[data-rewatched]');
+    host.append(el('p', 'side-heading', 'Films you returned to'));
+
+    const list = el('ol', 'repeat-list');
+    for (const film of rewatched) {
+      const row = el('li', 'repeat-row');
+      const title = film.url
+        ? link(film.url, 'repeat-title', film.title)
+        : el('span', 'repeat-title', film.title);
+
+      row.append(title);
+      if (film.year) row.append(el('span', 'repeat-year', film.year));
+      row.append(el('span', 'repeat-count', `${film.views}×`));
+      list.append(row);
+    }
+
+    host.append(list);
+  }
+
+  document.querySelector('[data-decades]').hidden = false;
+}
+
+/* ── Milestones ───────────────────────────────────────────────────────────── */
+
+function renderMilestones(all) {
+  const milestones = all?.milestones || [];
+  if (milestones.length < 2) return;
+
+  const nodes = milestones.map((entry, index) => {
+    const node = el('li', 'milestone');
+    const badge = index === 0
+      ? 'First'
+      : index === milestones.length - 1 && entry.n % 100 !== 0
+        ? 'Latest'
+        : ordinal(entry.n);
+
+    node.append(el('span', 'milestone-badge', badge));
+
+    const title = entry.url
+      ? link(entry.url, 'milestone-title', entry.title)
+      : el('span', 'milestone-title', entry.title);
+    node.append(title);
+
+    const meta = el('span', 'milestone-meta');
+    meta.append(el('span', null, formatDate(entry.date)));
+    if (entry.year) meta.append(el('span', 'milestone-year', entry.year));
+    node.append(meta);
+
+    if (entry.rating) node.append(el('span', 'milestone-rating', stars(entry.rating)));
+    return node;
+  });
+
+  document.querySelector('[data-milestone-list]').replaceChildren(...nodes);
+  document.querySelector('[data-milestones]').hidden = false;
 }
 
 /* ── Frames ───────────────────────────────────────────────────────────────── */
@@ -138,6 +506,16 @@ function createFrame(asset, manifest) {
   let theme = activeTheme();
   let loaded = false;
 
+  // The card draws its own rounded background and leaves the corners
+  // transparent. In an <object> those corners fall through to the embedded
+  // document's canvas, which some browsers paint white, so the page clips the
+  // embed to the same radius and paints the same fill behind it. The radius is
+  // in the drawing's own units and has to be scaled to how wide it is rendered.
+  const fitCorners = () => {
+    if (!asset.radius) return;
+    media.style.borderRadius = `${(asset.radius * media.clientWidth) / asset.width}px`;
+  };
+
   const embed = () => {
     media.classList.remove('is-loaded');
     media.replaceChildren();
@@ -155,9 +533,9 @@ function createFrame(asset, manifest) {
       const doc = object.contentDocument;
       if (!doc) return;
 
-      for (const link of doc.querySelectorAll('a')) {
-        link.setAttribute('target', '_blank');
-        link.setAttribute('rel', 'noopener');
+      for (const anchor of doc.querySelectorAll('a')) {
+        anchor.setAttribute('target', '_blank');
+        anchor.setAttribute('rel', 'noopener');
       }
     });
 
@@ -172,6 +550,8 @@ function createFrame(asset, manifest) {
   const paint = () => {
     file.textContent = asset.svg[theme];
     open.href = asset.svg[theme];
+    media.style.background = asset.background?.[theme] || 'var(--background)';
+    fitCorners();
     if (loaded) embed();
   };
 
@@ -197,6 +577,8 @@ function createFrame(asset, manifest) {
       toast('Clipboard blocked — open the SVG instead');
     }
   });
+
+  new ResizeObserver(fitCorners).observe(media);
 
   frames.add({
     setTheme(next) {
@@ -258,15 +640,7 @@ function renderSection(section, assets, manifest) {
   body.append(tabs, ...built);
 }
 
-/* ── Data ─────────────────────────────────────────────────────────────────── */
-
-const STAT_LABELS = {
-  films: 'Films',
-  daysActive: 'Days active',
-  streak: 'Longest streak',
-  rewatches: 'Rewatches',
-  liked: 'Liked'
-};
+/* ── Hero and diary ───────────────────────────────────────────────────────── */
 
 function renderHero(data, manifest) {
   const profile = `https://letterboxd.com/${data.user}/`;
@@ -277,11 +651,15 @@ function renderHero(data, manifest) {
 
   const years = data.years?.length ? data.years.slice().sort((a, b) => a - b) : [];
   const span = years.length > 1 ? `${years[0]}–${years.at(-1)}` : years[0];
-  document.querySelector('[data-hero-eyebrow]').textContent =
-    span ? `Film diary · ${span}` : 'Film diary';
+  const films = data.allTime?.films || data.allTime?.entries;
 
-  for (const link of document.querySelectorAll('[data-repo-link]')) {
-    link.href = `https://github.com/${manifest.repository}`;
+  document.querySelector('[data-hero-eyebrow]').textContent = [
+    films ? `${formatNumber(films)} films` : null,
+    span ? `graph covers ${span}` : null
+  ].filter(Boolean).join(' · ') || 'Film diary';
+
+  for (const anchor of document.querySelectorAll('[data-repo-link]')) {
+    anchor.href = `https://github.com/${manifest.repository}`;
   }
   document.querySelector('[data-export-link]').href = manifest.export;
 
@@ -290,21 +668,6 @@ function renderHero(data, manifest) {
     document.querySelector('[data-generated]').textContent =
       `Last generated ${stamp.toLocaleString('en-GB', { timeZone: 'UTC', dateStyle: 'medium', timeStyle: 'short' })} UTC.`;
   }
-}
-
-function renderStats(stats) {
-  if (!stats) return;
-
-  const list = document.querySelector('[data-stats]');
-  for (const [key, label] of Object.entries(STAT_LABELS)) {
-    if (stats[key] === undefined) continue;
-
-    const group = el('div');
-    group.append(el('dd', null, formatNumber(stats[key])), el('dt', null, label));
-    list.append(group);
-  }
-
-  list.hidden = false;
 }
 
 function renderDiary(recent) {
@@ -317,12 +680,9 @@ function renderDiary(recent) {
     row.append(el('span', 'diary-date', formatDate(entry.date, { day: '2-digit', month: 'short' })));
 
     const main = el('div', 'diary-main');
-    const title = entry.url ? el('a', 'diary-title', entry.title) : el('span', 'diary-title', entry.title);
-    if (entry.url) {
-      title.href = entry.url;
-      title.target = '_blank';
-      title.rel = 'noopener';
-    }
+    const title = entry.url
+      ? link(entry.url, 'diary-title', entry.title)
+      : el('span', 'diary-title', entry.title);
     main.append(title);
 
     if (entry.year) main.append(el('span', 'diary-year', entry.year));
@@ -356,14 +716,14 @@ function renderDiary(recent) {
 function setupScrollSpy() {
   const links = [...document.querySelectorAll('.nav-links a')];
   const sections = links
-    .map(link => document.querySelector(link.getAttribute('href')))
+    .map(anchor => document.querySelector(anchor.getAttribute('href')))
     .filter(Boolean);
 
   const spy = new IntersectionObserver((entries) => {
     for (const entry of entries) {
       if (!entry.isIntersecting) continue;
-      for (const link of links) {
-        link.classList.toggle('is-active', link.getAttribute('href') === `#${entry.target.id}`);
+      for (const anchor of links) {
+        anchor.classList.toggle('is-active', anchor.getAttribute('href') === `#${entry.target.id}`);
       }
     }
   }, { rootMargin: '-56px 0px -70% 0px' });
@@ -383,7 +743,11 @@ async function main() {
 
   if (data) {
     renderHero(data, manifest);
-    renderStats(data.stats);
+    renderAllTime(data.allTime, data);
+    renderWhen(data.allTime);
+    renderRatings(data.allTime);
+    renderDecades(data.allTime);
+    renderMilestones(data.allTime);
     renderDiary(data.recent);
   }
 

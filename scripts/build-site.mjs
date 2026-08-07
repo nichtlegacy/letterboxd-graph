@@ -21,6 +21,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { buildAllTimeStats } from '../src/stats.js';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 
@@ -97,6 +99,34 @@ export function readDimensions(svg) {
 }
 
 /**
+ * Read the card's own chrome: the corner radius of its full-bleed background
+ * rect and the colour it is filled with.
+ *
+ * Both matter to the page. An SVG in an `<object>` is its own document, and
+ * some browsers paint that document's canvas white, which shows through
+ * wherever the drawing is transparent — precisely the four rounded corners. The
+ * page clips its embed to the same radius and paints the same fill behind it, so
+ * there is no corner left for a canvas colour to show through.
+ *
+ * @param {string} svg - SVG markup
+ * @returns {{radius: number, fill: string|null}}
+ */
+export function readChrome(svg) {
+  // Not a head slice: the background rect sits after the defs, and those carry
+  // the inlined font, which runs to hundreds of kilobytes.
+  const rect = /<rect[^>]*\bwidth="100%"[^>]*>/.exec(svg);
+  if (!rect) return { radius: 0, fill: null };
+
+  const radius = /\brx="(\d+(?:\.\d+)?)"/.exec(rect[0]);
+  const fill = /\bfill="(#[0-9a-fA-F]{3,8}|[a-z]+)"/.exec(rect[0]);
+
+  return {
+    radius: radius ? Number(radius[1]) : 0,
+    fill: fill ? fill[1] : null
+  };
+}
+
+/**
  * Sort assets into the order the page shows them: graph, years newest first,
  * months most recent first, then the profile card.
  *
@@ -144,6 +174,8 @@ export function buildAssets(filenames, readSvg) {
         label: label(parsed),
         width: 1200,
         height: 630,
+        radius: 0,
+        background: {},
         svg: {},
         png: {}
       });
@@ -155,9 +187,14 @@ export function buildAssets(filenames, readSvg) {
     const png = filename.replace(/\.svg$/, '.png');
     if (present.has(png)) asset.png[parsed.theme] = `images/${png}`;
 
-    // Both themes are the same drawing, so reading one is enough.
+    const markup = readSvg(filename);
+    const chrome = readChrome(markup);
+    asset.background[parsed.theme] = chrome.fill;
+
+    // The two themes are the same drawing, so its geometry is read once. The
+    // fill is not: that is the whole point of having two files.
     if (parsed.theme === 'dark' || !asset.measured) {
-      Object.assign(asset, readDimensions(readSvg(filename)));
+      Object.assign(asset, readDimensions(markup), { radius: chrome.radius });
       asset.measured = true;
     }
   }
@@ -176,24 +213,29 @@ export function buildAssets(filenames, readSvg) {
  * @returns {object} Slim payload
  */
 export function slimData(data) {
-  const perYear = new Map();
-
-  for (const cell of data.cells || []) {
-    const year = Number(cell.date.slice(0, 4));
-    const entry = perYear.get(year) || { year, films: 0, days: 0 };
-    entry.films += cell.count;
-    entry.days += 1;
-    perYear.set(year, entry);
-  }
-
   return {
     user: data.user,
     years: data.years || (data.year ? [data.year] : []),
     generatedAt: data.generatedAt,
     stats: data.stats,
-    perYear: [...perYear.values()].sort((a, b) => b.year - a.year),
+    allTime: data.allTime || allTimeFromCells(data),
     recent: (data.recent || []).slice(0, 10)
   };
+}
+
+/**
+ * Rebuild the all-time block for an export written before the generator started
+ * including one. The cells only cover the graph years, so the figures are
+ * narrower than a fresh run's — the page says as much by reading `scope`.
+ *
+ * @param {object} data - Parsed `letterboxd-data.json`
+ * @returns {object|null}
+ */
+export function allTimeFromCells(data) {
+  const entries = (data.cells || []).flatMap(cell =>
+    (cell.films || []).map(film => ({ ...film, date: new Date(`${cell.date}T00:00:00Z`) })));
+
+  return buildAllTimeStats(entries, { scope: 'years', totalFilms: null });
 }
 
 /**

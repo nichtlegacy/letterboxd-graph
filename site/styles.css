@@ -409,6 +409,10 @@ main {
   margin-bottom: 24px;
 }
 
+.section-head .eyebrow {
+  margin-bottom: 8px;
+}
+
 .section-head h2 {
   font-family: var(--font-serif);
   font-size: 28px;
@@ -467,23 +471,519 @@ main {
   border-bottom-color: var(--brand-green);
 }
 
-/* ── Frames ───────────────────────────────────────────────────────────────── */
+/* ── Statistics ───────────────────────────────────────────────────────────── */
 
-.frame {
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 40px;
+}
+
+.tile {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+
+.tile-label {
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tile-value {
+  color: var(--text-light);
+  font-size: clamp(38px, 5vw, 52px);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.tile.is-accent .tile-value {
+  color: var(--brand-green);
+}
+
+.tile-meta {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  margin-top: 40px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.strip-item {
+  display: grid;
+  gap: 4px;
+  padding: 16px 20px;
+  border-left: 1px solid var(--border-subtle);
+}
+
+.strip-item:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.strip-label {
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.strip-value {
+  color: var(--text-light);
+  font-size: 20px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.year-strip {
+  display: grid;
+  gap: 8px;
+  margin-top: 32px;
+  max-width: 720px;
+}
+
+.year-cell {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.year-label {
+  color: var(--text-light);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.year-track {
+  height: 6px;
+  background: var(--surface-elevated);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.year-bar {
+  display: block;
+  height: 100%;
+  background: var(--brand-green);
+}
+
+.year-count {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Charts ───────────────────────────────────────────────────────────────── */
+
+.chart {
+  margin-bottom: 8px;
+}
+
+.plot {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 180px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.plot.is-small {
+  height: 72px;
+  gap: 6px;
+}
+
+.plot.is-ratings {
+  height: 140px;
+  gap: 6px;
+}
+
+.column {
+  position: relative;
+  flex: 1;
+  min-width: 5px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: default;
+}
+
+.column-fill {
+  display: block;
+  width: 100%;
+  min-height: 1px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(180deg, var(--brand-green) 0%, var(--brand-green-mid) 100%);
+  transition: opacity 150ms var(--ease);
+}
+
+/* The weekday strip is a supporting figure, not the point of its section, so it
+   stays muted until it is read. */
+.plot.is-small .column-fill {
+  background: var(--surface-elevated);
+  border-top: 1px solid var(--border-medium);
+}
+
+.plot.is-small .column:hover .column-fill,
+.plot.is-small .column.is-active .column-fill {
+  background: var(--brand-green);
+  border-top-color: var(--brand-green);
+}
+
+.plot.is-hovered .column:not(.is-active) .column-fill {
+  opacity: 0.35;
+}
+
+.column-caption {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding-top: 6px;
+  color: var(--text-muted);
+  font-size: 10px;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.column.is-active .column-caption {
+  color: var(--text-light);
+}
+
+.plot.is-small,
+.plot.is-ratings {
+  margin-bottom: 22px;
+}
+
+/* `hidden` alone loses to the display below, and a stray empty tooltip is very
+   visible. */
+.chart-tip[hidden] {
+  display: none;
+}
+
+.chart-tip {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
+  display: grid;
+  gap: 2px;
+  padding: 8px 12px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.chart-tip b {
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-tip span {
+  color: var(--text-secondary);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.chart-tip .muted {
+  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.when-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.blocks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.block {
+  display: grid;
+  gap: 4px;
+}
+
+.block-value {
+  color: var(--text-light);
+  font-size: 36px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.block-label {
+  color: var(--text-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.block-arrow {
+  color: var(--text-muted);
+  font-size: 18px;
+  padding-bottom: 18px;
+}
+
+.weekday {
+  width: 100%;
+  max-width: 260px;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.fact {
+  display: grid;
+  gap: 2px;
+}
+
+.fact-value {
+  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.fact-meta {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ratings-grid,
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+  gap: 48px;
+  align-items: start;
+}
+
+.ratings-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.side-item {
+  display: grid;
+  gap: 2px;
+}
+
+.side-label {
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.side-value {
+  color: var(--text-light);
+  font-size: 22px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.side-meta {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.side-heading {
+  color: var(--text-light);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* ── Bars ─────────────────────────────────────────────────────────────────── */
+
+.bars {
+  display: grid;
+  gap: 10px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 56px 1fr 48px;
+  align-items: center;
+  gap: 16px;
+}
+
+.bar-label {
+  color: var(--text-primary);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar-track {
+  height: 10px;
+  background: var(--surface-elevated);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  display: block;
+  height: 100%;
+  background: var(--brand-green);
+}
+
+.bar-value {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.repeat-list {
   margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.repeat-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.repeat-title {
+  color: var(--text-light);
+  font-family: var(--font-serif);
+  font-size: 15px;
+  flex: 1;
+  min-width: 0;
+}
+
+.repeat-year {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.repeat-count {
+  color: var(--brand-green);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Milestones ───────────────────────────────────────────────────────────── */
+
+.milestones {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--border-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: 4px;
   overflow: hidden;
-  background: var(--surface);
+}
+
+.milestone {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  padding: 20px;
+  background: var(--background);
+}
+
+.milestone-badge {
+  color: var(--brand-green);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+}
+
+.milestone-title {
+  color: var(--text-light);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.milestone-meta {
+  display: flex;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.milestone-rating {
+  color: var(--brand-green);
+  font-size: 13px;
+}
+
+/* ── Frames ───────────────────────────────────────────────────────────────── */
+
+.frame {
+  display: grid;
+  margin: 0;
 }
 
 .frame[hidden] {
   display: none;
 }
 
+/* The card draws its own rounded edge, so the frame adds none of its own — the
+   media is clipped to that same radius and filled with the card's own colour,
+   which is what keeps an <object> canvas from showing through the corners. */
 .frame-media {
   position: relative;
-  background: var(--background);
+  overflow: hidden;
 }
 
 .frame-media object,
@@ -514,8 +1014,7 @@ main {
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
-  padding: 10px 16px;
-  border-top: 1px solid var(--border-subtle);
+  padding: 12px 2px 0;
   color: var(--text-muted);
   font-size: 12px;
 }
@@ -679,9 +1178,37 @@ main {
 
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 
+@media (max-width: 980px) {
+  .ratings-grid,
+  .split {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .when-foot {
+    align-items: flex-start;
+  }
+}
+
 @media (max-width: 860px) {
   .nav-links {
     display: none;
+  }
+
+  /* Stacked, the vertical rules land in the middle of a row instead of between
+     columns, so the strip switches to horizontal ones. */
+  .strip {
+    border-top: none;
+  }
+
+  .strip-item {
+    padding: 14px 0;
+    border-left: none;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .strip-item:first-child {
+    padding-left: 0;
   }
 
   .theme-toggle {
@@ -710,6 +1237,15 @@ main {
 @media (max-width: 560px) {
   .theme-label {
     display: none;
+  }
+
+  /* Stacked, the arrows point at the wrong thing. */
+  .block-arrow {
+    display: none;
+  }
+
+  .blocks {
+    gap: 20px 32px;
   }
 
   .theme-toggle {
