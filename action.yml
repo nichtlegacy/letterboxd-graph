@@ -1,0 +1,161 @@
+name: 'Letterboxd Contribution Graph'
+description: 'Generate a GitHub-style contribution graph (SVG + JSON) from a Letterboxd film diary'
+author: 'nichtlegacy'
+
+branding:
+  icon: 'film'
+  color: 'green'
+
+inputs:
+  username:
+    description: 'Letterboxd username to generate the graph for'
+    required: true
+  years:
+    description: 'Comma-separated years, e.g. "2026,2025". Empty means the current year.'
+    required: false
+    default: ''
+  week-start:
+    description: 'First day of the week: "sunday" or "monday"'
+    required: false
+    default: 'sunday'
+  mode:
+    description: 'Cell coloring: "count" or "rating"'
+    required: false
+    default: 'count'
+  gradient:
+    description: 'Render the display name with the Letterboxd color gradient'
+    required: false
+    default: 'true'
+  animate:
+    description: 'Reveal grid cells with a CSS animation when the SVG loads'
+    required: false
+    default: 'true'
+  export-png:
+    description: 'Also write PNG versions next to the SVGs'
+    required: false
+    default: 'false'
+  output:
+    description: 'Output path without extension, relative to the repository root'
+    required: false
+    default: 'images/github-letterboxd'
+  node-version:
+    description: 'Node.js version used to run the generator'
+    required: false
+    default: '20'
+  install-browser-deps:
+    description: 'Install the system libraries the Puppeteer fallback needs (Ubuntu runners only)'
+    required: false
+    default: 'true'
+  commit:
+    description: 'Commit and push the generated files back to the repository'
+    required: false
+    default: 'true'
+  commit-message:
+    description: 'Commit message. The branch name and a UTC timestamp are appended.'
+    required: false
+    default: 'Update Letterboxd graph'
+
+outputs:
+  svg-dark:
+    description: 'Path to the generated dark theme SVG'
+    value: '${{ inputs.output }}-dark.svg'
+  svg-light:
+    description: 'Path to the generated light theme SVG'
+    value: '${{ inputs.output }}-light.svg'
+  data-json:
+    description: 'Path to the generated JSON export'
+    value: '${{ steps.generate.outputs.data-json }}'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'npm'
+        cache-dependency-path: ${{ github.action_path }}/package-lock.json
+
+    - name: Install Puppeteer system dependencies
+      if: ${{ inputs.install-browser-deps == 'true' && runner.os == 'Linux' }}
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2t64 \
+          libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 \
+          libxrandr2 libgbm1 libasound2t64 libpango-1.0-0 libcairo2
+
+    - name: Install generator dependencies
+      shell: bash
+      working-directory: ${{ github.action_path }}
+      run: npm ci
+
+    - name: Install curl_cffi fetcher
+      shell: bash
+      run: |
+        python3 -m pip install --upgrade pip
+        python3 -m pip install curl_cffi==0.14.0
+
+    - name: Generate graph
+      id: generate
+      shell: bash
+      env:
+        LB_USERNAME: ${{ inputs.username }}
+        LB_YEARS: ${{ inputs.years }}
+        LB_WEEK_START: ${{ inputs.week-start }}
+        LB_MODE: ${{ inputs.mode }}
+        LB_GRADIENT: ${{ inputs.gradient }}
+        LB_ANIMATE: ${{ inputs.animate }}
+        LB_EXPORT_PNG: ${{ inputs.export-png }}
+        LB_OUTPUT: ${{ inputs.output }}
+      run: |
+        set -euo pipefail
+
+        args=("$LB_USERNAME" -o "$LB_OUTPUT" -w "$LB_WEEK_START" -m "$LB_MODE")
+        if [ -n "$LB_YEARS" ]; then args+=(-y "$LB_YEARS"); fi
+        if [ "$LB_GRADIENT" = "false" ]; then args+=(-g false); fi
+        if [ "$LB_ANIMATE" = "false" ]; then args+=(-a false); fi
+        if [ "$LB_EXPORT_PNG" = "true" ]; then args+=(-p); fi
+
+        node "$GITHUB_ACTION_PATH/src/cli.js" "${args[@]}"
+
+        echo "data-json=$(dirname "$LB_OUTPUT")/letterboxd-data.json" >> "$GITHUB_OUTPUT"
+
+    - name: Commit and push
+      if: ${{ inputs.commit == 'true' }}
+      shell: bash
+      env:
+        LB_OUTPUT: ${{ inputs.output }}
+        LB_COMMIT_MESSAGE: ${{ inputs.commit-message }}
+      run: |
+        set -euo pipefail
+
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+        git add "$(dirname "$LB_OUTPUT")"
+
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+          exit 0
+        fi
+
+        BRANCH="${GITHUB_REF_NAME}"
+        TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+        git commit -m "$LB_COMMIT_MESSAGE [$BRANCH] - $TIMESTAMP"
+
+        if ! git push origin "HEAD:$BRANCH"; then
+          echo "Initial push failed, retrying after rebase..."
+          git fetch origin "$BRANCH"
+
+          # The branch usually moved because a concurrent run rewrote the same
+          # generated files, so a plain rebase always conflicts. These are build
+          # outputs, so the freshly generated version wins.
+          if ! git rebase -X theirs "origin/$BRANCH"; then
+            git rebase --abort
+            echo "Rebase onto origin/$BRANCH failed, giving up." >&2
+            exit 1
+          fi
+
+          git push origin "HEAD:$BRANCH"
+        fi

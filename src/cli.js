@@ -27,6 +27,7 @@ async function main() {
     let usernameGradient = true;
     let exportPng = false;
     let mode = "count"; // 'count' or 'rating'
+    let animate = true; // CSS reveal animation for grid cells
 
     // Parse arguments
     for (let i = 0; i < args.length; i++) {
@@ -64,6 +65,10 @@ async function main() {
             mode = ['count', 'rating'].includes(value) ? value : 'count';
             i++;
             break;
+          case 'a':
+            animate = value.toLowerCase() !== 'false';
+            i++;
+            break;
           default:
             console.warn(`Unknown flag "${flag}", ignoring`);
         }
@@ -82,6 +87,7 @@ async function main() {
       console.log("  -g <bool>     Username gradient: true or false (default: true)");
       console.log("  -p            Also export PNG files");
       console.log("  -m <mode>     Graph mode: count or rating (default: count)");
+      console.log("  -a <bool>     Cell reveal animation: true or false (default: true)");
       process.exit(1);
     }
 
@@ -94,6 +100,7 @@ async function main() {
     console.log(`Years: ${years.join(', ')}`);
     console.log(`Week starts on: ${weekStart}`);
     console.log(`Mode: ${mode}`);
+    console.log(`Animation: ${animate ? '✓' : '✗'}`);
     console.log(`Gradient: ${usernameGradient ? '✓' : '✗'}`);
     console.log(`PNG Export: ${exportPng ? '✓' : '✗'}`);
     console.log(`Output: ${outputPathDark}, ${outputPathLight}, ${outputJsonPath}\n`);
@@ -141,7 +148,8 @@ async function main() {
       following,
       totalEntries,
       memberStatus,
-      mode
+      mode,
+      animate
     };
     
     let svgDark, svgLight;
