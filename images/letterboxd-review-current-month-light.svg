@@ -64,8 +64,8 @@
 
   <!-- Hero -->
   <text x="316" y="202" font-size="88" font-weight="700" fill="url(#reviewGradient)" text-anchor="middle">August</text>
-  <line x1="78" y1="229" x2="188" y2="229" stroke="#e2e6ea" stroke-width="1"/>
-  <line x1="444" y1="229" x2="554" y2="229" stroke="#e2e6ea" stroke-width="1"/>
+  <line x1="78" y1="229" x2="192.68798828125" y2="229" stroke="#e2e6ea" stroke-width="1"/>
+  <line x1="439.31201171875" y1="229" x2="554" y2="229" stroke="#e2e6ea" stroke-width="1"/>
   <text x="316" y="234" font-size="14" font-weight="600" fill="#656d76" text-anchor="middle" letter-spacing="7">2026 IN REVIEW</text>
 
   <!-- Headline figures -->
@@ -99,6 +99,8 @@
 
   <!-- Top rated -->
   
-    <rect x="626" y="38" width="536" height="102" rx="14" fill="#f4f6f8" stroke="#e2e6ea" stroke-width="1"/>
-    <text x="894" y="95" font-size="16" font-weight="500" fill="#656d76" text-anchor="middle">No rated films this month</text>
+    <rect x="626" y="38" width="536" height="554" rx="14" fill="#f4f6f8" stroke="#e2e6ea" stroke-width="1" stroke-dasharray="6 6"/>
+    <g transform="translate(872, 253) scale(1.8333)" fill="none" stroke="#656d76" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="12" rx="2"/><path d="M2 9V5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5V9"/><path d="m7 4-2 5M12 4l-2 5M17 4l-2 5"/></g>
+    <text x="894" y="321" font-size="19" font-weight="600" fill="#1f2328" text-anchor="middle">Nothing logged this month</text>
+    <text x="894" y="347" font-size="14" font-weight="500" fill="#656d76" text-anchor="middle">August 2026 is still waiting for its first film</text>
 </svg>
