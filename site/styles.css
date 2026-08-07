@@ -1425,6 +1425,12 @@ a.bar-row:hover .bar-value {
   padding: 12px 14px;
 }
 
+.step-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
 .step-link {
   color: var(--text-light);
   font-size: 12px;
@@ -1474,9 +1480,9 @@ a.bar-row:hover .bar-value {
 .footer-inner {
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: 0 max(24px, env(safe-area-inset-right)) 64px max(24px, env(safe-area-inset-left));
+  padding: 0 max(24px, env(safe-area-inset-right)) 48px max(24px, env(safe-area-inset-left));
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1.4fr;
+  grid-template-columns: 1fr 1fr 1.8fr;
   gap: 48px;
 }
 
@@ -1492,14 +1498,6 @@ a.bar-row:hover .bar-value {
   font-size: 15px;
   letter-spacing: -0.03em;
   text-transform: uppercase;
-}
-
-.footer-tagline {
-  max-width: 28ch;
-  color: var(--text-secondary);
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 13px;
 }
 
 .footer-nav,
@@ -1544,6 +1542,20 @@ a.bar-row:hover .bar-value {
 
 .footer-colophon a:hover {
   color: var(--brand-green);
+}
+
+/* The one line that is about neither the page nor its author: it belongs under
+   both columns rather than inside one. */
+.footer-note {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 20px max(24px, env(safe-area-inset-right)) 40px max(24px, env(safe-area-inset-left));
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-family: var(--font-serif);
+  font-size: 12px;
+  line-height: 1.55;
+  text-align: center;
 }
 
 /* ── Toast ────────────────────────────────────────────────────────────────── */
