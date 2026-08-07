@@ -542,6 +542,31 @@ The figures cover whatever the run fetched — the whole diary under `scope: all
 the graph years under `scope: years`, which the page says out loud rather than
 passing narrow numbers off as all-time.
 
+### Sharing it
+
+Paste the page's address into Discord, Slack, X, WhatsApp, Signal, Bluesky,
+iMessage or Teams and it unfurls as a card: the profile card as the image, the
+diary's headline figures as the text.
+
+None of that can come from the page as it runs. A crawler reads the HTML that
+was served and stops there — it does not run the JavaScript that fetches
+`data.json` and fills the page in — so the build writes the figures into the
+head instead. The same step rasterises the profile card to `og.png`, because
+every one of those platforms drops an SVG preview rather than drawing it, and
+moves the image's URL with each run so a reshared link is not answered from a
+cache holding last week's numbers.
+
+| Written into the built page | What reads it |
+|-----------------------------|---------------|
+| `<title>`, `description`, `canonical` | Google's result listing |
+| `og:*`, including `og:image` at 1200×630 | Discord, Slack, WhatsApp, Signal, Bluesky, iMessage, Teams, LinkedIn |
+| `twitter:card` as `summary_large_image` | X |
+| JSON-LD: `WebSite`, `Person`, `ProfilePage` | Search engines reading structured data |
+| `robots.txt`, `sitemap.xml` | Crawlers, and the `lastmod` that tells them it changed |
+
+The addresses in all of it are absolute, taken from the deployment itself, so a
+custom domain needs no second place to be configured.
+
 It is also the one place where the cards work as drawn: GitHub serves an SVG
 through an `<img>` tag, which gets no mouse events, while the page embeds each
 one as an `<object>`, so tooltips, links and the reveal animation all behave.
@@ -582,10 +607,13 @@ Then:
 2. Your `package.json` needs `"type": "module"` — `build-site.mjs` imports
    `src/stats.js`, and without it Node reads that file as CommonJS and the build
    dies on the `export` keyword.
-3. Leave `commit` at its default. The build reads `images/` out of the
+3. Keep the `npm ci` step in `pages.yml`. The build uses `sharp` to rasterise
+   the share preview; without it the page still deploys, but a shared link
+   unfurls with no image.
+4. Leave `commit` at its default. The build reads `images/` out of the
    repository and fetches nothing, so the files have to be committed for it to
    have anything to publish.
-4. **Settings → Pages → Source → GitHub Actions**, then run the generator once.
+5. **Settings → Pages → Source → GitHub Actions**, then run the generator once.
 
 A private repository needs a paid plan for Pages; a public one does not.
 

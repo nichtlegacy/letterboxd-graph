@@ -4,16 +4,38 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#12161a" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+
+  <!--
+    Everything between the markers is rewritten by scripts/build-site.mjs with
+    the figures of the diary that was actually generated, absolute URLs and a
+    rasterised preview image. A crawler never runs the page's JavaScript, so the
+    tags cannot be filled in from data.json at view time the way the page is.
+
+    What is written here is the fallback: what an unbuilt site/ says when it is
+    opened straight off disk.
+  -->
+  <!-- meta:start -->
   <title>Letterboxd Graph</title>
   <meta name="description" content="A Letterboxd film diary as a contribution graph, review cards and a set of all-time statistics — generated daily by a GitHub Action.">
-  <meta name="color-scheme" content="dark light">
 
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Letterboxd Graph">
+  <meta property="og:locale" content="en_GB">
   <meta property="og:title" content="Letterboxd Graph">
   <meta property="og:description" content="A Letterboxd film diary as a contribution graph, review cards and a set of all-time statistics.">
-  <meta property="og:image" content="images/letterboxd-profile-dark.svg">
+  <meta property="og:image" content="og.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Letterboxd Graph">
+  <meta name="twitter:description" content="A Letterboxd film diary as a contribution graph, review cards and a set of all-time statistics.">
+  <meta name="twitter:image" content="og.png">
+  <!-- meta:end -->
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
 
   <!-- Applied before first paint so the page never flashes the wrong theme.
