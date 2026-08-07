@@ -325,12 +325,22 @@ The two counts differ because they measure different things:
 roughly two thirds were ticked off without a diary entry. Only the diary drives
 the request count, which is why a large library can still be cheap to fetch.
 
-> [!NOTE]
-> **Rewatches** counts the rewatch flag, the way Letterboxd does — it is set by
-> hand, not derived. Logging the same film twice without ticking it leaves the
-> count at zero. @BeHaind logged *Leo (2023)* twice and still shows 0 rewatches,
-> which is faithful to the diary rather than a parsing miss. Repeat viewings do
-> still weigh on the [film ranking](#film-ranking), which counts entries.
+### Rewatches
+
+A viewing counts as a rewatch if Letterboxd's flag is set **or** the same film
+appears earlier in the diary. Neither signal alone is enough:
+
+- The flag is set by hand, so a repeat logged without ticking it is missed. On
+  [@nichtlegacy](https://letterboxd.com/nichtlegacy/) that is 30 of 83 rewatches.
+- Repeats alone miss a film first seen before the diary begins, which has only
+  one entry in it. On [@Rufus_Firefly](https://letterboxd.com/Rufus_Firefly/)
+  that is 761 viewings — every rewatch they have.
+
+Films are identified by the slug in their diary link, not by title. Titles are
+not unique, and neither is title plus year: two different 2023 films are both
+called *Leo*. @Rufus_Firefly has 55 titles that are actually different films, so
+matching on the title alone would invent rewatches and merge unrelated films in
+the [ranking](#film-ranking).
 
 The graph and the year cards still only cover the years in `years`; the rest is
 filtered out of the same fetch rather than requested again. Set `scope: years`

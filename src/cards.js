@@ -10,7 +10,8 @@
 import {
   calculateStreak,
   calculateDaysActive,
-  calculateAverageRating
+  calculateAverageRating,
+  filmKey
 } from './stats.js';
 
 import {
@@ -223,10 +224,12 @@ export function aggregateFilms(entries) {
   const films = new Map();
 
   for (const entry of entries) {
-    const existing = films.get(entry.title);
+    // Keyed on the film, not the title: two different films can share one.
+    const key = filmKey(entry);
+    const existing = films.get(key);
 
     if (!existing) {
-      films.set(entry.title, {
+      films.set(key, {
         ...entry,
         rating: entry.rating || 0,
         watches: 1,

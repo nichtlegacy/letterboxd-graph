@@ -12,7 +12,7 @@ import { fetchProfileData, tryFetchMultipleYears, fetchSpecificYears, fetchAllDi
 import { generateSvg, generateMultiYearSvg } from './generator.js';
 import { generateReviewCard, generateProfileCard, pickTopFilms, entriesForPeriod, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT, FAV_PIXEL_WIDTH, FAV_PIXEL_HEIGHT } from './cards.js';
 import { svgToPng, imageBufferToThumbnail } from './exporter.js';
-import { buildJsonExport } from './stats.js';
+import { buildJsonExport, markRewatches } from './stats.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -166,6 +166,10 @@ async function main() {
        // Multiple specific years
        allEntries = await fetchSpecificYears(username, years);
     }
+
+    // Fill in the rewatches Letterboxd's hand-set flag missed, before anything
+    // reads the entries, so tooltips, stats, cards and the export agree.
+    allEntries = markRewatches(allEntries);
 
     // The graphs and the year cards only ever show the requested years
     const filmEntries = scope === 'all'

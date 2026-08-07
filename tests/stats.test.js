@@ -13,7 +13,9 @@ import {
   calculateAverageRating,
   calculateDecadeDistribution,
   groupEntriesByDate,
-  buildJsonExport
+  buildJsonExport,
+  filmKey,
+  markRewatches
 } from '../src/stats.js';
 
 /**
@@ -266,4 +268,59 @@ test('buildJsonExport: no entries still yields a usable payload', () => {
   assert.equal(result.stats.liked, 0);
   assert.deepEqual(result.cells, []);
   assert.deepEqual(result.recent, []);
+});
+
+test('filmKey identifies a film by its slug, not its title', () => {
+  // Two different 2023 films are both called "Leo", so neither the title nor
+  // the title and year together separate them.
+  const a = { title: 'Leo', year: '2023', url: 'https://letterboxd.com/u/film/leo/' };
+  const b = { title: 'Leo', year: '2023', url: 'https://letterboxd.com/u/film/leo-2023/' };
+
+  assert.notEqual(filmKey(a), filmKey(b));
+  assert.equal(filmKey(a), filmKey({ ...a, url: 'https://letterboxd.com/u/film/leo/2/' }),
+    'a rewatch link points at the same film');
+});
+
+test('filmKey falls back to title and year without a URL', () => {
+  assert.equal(filmKey({ title: 'Heat', year: '1995' }), 'title:Heat|1995');
+  assert.notEqual(filmKey({ title: 'Heat', year: '1995' }), filmKey({ title: 'Heat', year: '2022' }));
+});
+
+test('markRewatches keeps every flag Letterboxd already set', () => {
+  // A film first seen before the diary begins has one entry in it, and only the
+  // flag knows that entry was a rewatch.
+  const marked = markRewatches([
+    { date: new Date('2025-01-01T00:00:00Z'), title: 'Heat', rewatch: true, url: 'https://letterboxd.com/u/film/heat/' }
+  ]);
+
+  assert.equal(marked[0].rewatch, true);
+});
+
+test('markRewatches derives the flag from a repeat viewing', () => {
+  const entry = (date, slug, rewatch = false) => ({
+    date: new Date(`${date}T00:00:00Z`),
+    title: slug,
+    rewatch,
+    url: `https://letterboxd.com/u/film/${slug}/`
+  });
+  const marked = markRewatches([entry('2025-06-01', 'heat'), entry('2025-01-01', 'heat')]);
+
+  assert.equal(marked[0].rewatch, false, 'the earliest viewing is the first watch');
+  assert.equal(marked[1].rewatch, true, 'the later one is a rewatch even unticked');
+});
+
+test('markRewatches does not confuse two films sharing a title', () => {
+  const marked = markRewatches([
+    { date: new Date('2025-01-01T00:00:00Z'), title: 'Leo', url: 'https://letterboxd.com/u/film/leo/' },
+    { date: new Date('2025-02-01T00:00:00Z'), title: 'Leo', url: 'https://letterboxd.com/u/film/leo-2023/' }
+  ]);
+
+  assert.ok(marked.every(entry => entry.rewatch === false));
+});
+
+test('markRewatches leaves the input untouched', () => {
+  const original = [{ date: new Date('2025-01-01T00:00:00Z'), title: 'A', url: 'https://letterboxd.com/u/film/a/' }];
+  markRewatches(original);
+
+  assert.equal(original[0].rewatch, undefined);
 });
