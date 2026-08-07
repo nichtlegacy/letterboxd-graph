@@ -1758,7 +1758,7 @@
         <rect x="231" y="68" width="14" height="2" rx="2" fill="#216e39"/>
         <text x="238" y="84" font-size="7" fill="#1f2328" text-anchor="middle">5</text>
         <line x1="12" y1="90" x2="248" y2="90" stroke="#d1d9e0" stroke-width="1"/>
-        <text x="130" y="102" font-size="10" font-weight="500" fill="#656d76" text-anchor="middle">Ø 3.2★ · 381 rated · ↻ 18 · ♥ 19</text>
+        <text x="130" y="102" font-size="10" font-weight="500" fill="#656d76" text-anchor="middle">Ø 3.2★ · 381 rated · ↻ 48 · ♥ 19</text>
       </g>
     </g>
 
@@ -1959,7 +1959,7 @@
           <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Sun, 9. Mar 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• Smiley Face (2007) - 4.5★</tspan>
+            <tspan x="10" dy="18">• ↻ Smiley Face (2007) - 4.5★</tspan>
           </text>
         </g>
       </a>
@@ -2096,8 +2096,8 @@
             <tspan x="10" dy="22" font-weight="600">Sun, 4. May 2025: 4 movies watched</tspan>
             <tspan x="10" dy="18">• ↻ Family Guy Presents: Something, Something, Something, Dark Side (2009) - 4★</tspan>
             <tspan x="10" dy="18">• The Robot Chicken: Star Wars (2007) - 2.5★</tspan>
-            <tspan x="10" dy="18">• Family Guy Presents: Blue Harvest (2007) - 3.5★</tspan>
-            <tspan x="10" dy="18">• Star Wars (1977) - 4.5★</tspan>
+            <tspan x="10" dy="18">• ↻ Family Guy Presents: Blue Harvest (2007) - 3.5★</tspan>
+            <tspan x="10" dy="18">• ↻ Star Wars (1977) - 4.5★</tspan>
           </text>
         </g>
       </a>
@@ -2135,7 +2135,7 @@
           <rect x="0" y="0" width="357" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Sun, 18. May 2025: 2 movies watched</tspan>
-            <tspan x="10" dy="18">• Strange Wilderness (2008) - 3.5★</tspan>
+            <tspan x="10" dy="18">• ↻ Strange Wilderness (2008) - 3.5★</tspan>
             <tspan x="10" dy="18">• American Pie Presents: Girls&apos; Rules (2020) - 1.5★</tspan>
           </text>
         </g>
@@ -2546,11 +2546,11 @@
           rx="2"
           fill="#9be9a8" style="animation-delay:752ms"
         />
-        <g class="tooltip-group" transform="translate(659, -64)">
-          <rect x="0" y="0" width="280" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(645, -64)">
+          <rect x="0" y="0" width="294" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Sun, 28. Dec 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• Mardi Gras: Spring Break (2011) - 2.5★</tspan>
+            <tspan x="10" dy="18">• ↻ Mardi Gras: Spring Break (2011) - 2.5★</tspan>
           </text>
         </g>
       </a>
@@ -2934,10 +2934,10 @@
           fill="#40c463" style="animation-delay:405ms"
         />
         <g class="tooltip-group" transform="translate(340, -65)">
-          <rect x="0" y="0" width="322" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <rect x="0" y="0" width="336" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Mon, 19. May 2025: 2 movies watched</tspan>
-            <tspan x="10" dy="18">• Jay and Silent Bob Strike Back (2001) - 3.5★</tspan>
+            <tspan x="10" dy="18">• ↻ Jay and Silent Bob Strike Back (2001) - 3.5★</tspan>
             <tspan x="10" dy="18">• Warfare (2025) - 4★</tspan>
           </text>
         </g>
@@ -3179,7 +3179,7 @@
           <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Mon, 22. Sep 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• The Naked Gun (2025) - 4★</tspan>
+            <tspan x="10" dy="18">• ↻ The Naked Gun (2025) - 4★</tspan>
           </text>
         </g>
       </a>
@@ -3614,10 +3614,10 @@
           fill="#9be9a8" style="animation-delay:366ms"
         />
         <g class="tooltip-group" transform="translate(272, -30)">
-          <rect x="0" y="0" width="259" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <rect x="0" y="0" width="273" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Tue, 22. Apr 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• Dude, Where&apos;s My Car? (2000) - 3.5★</tspan>
+            <tspan x="10" dy="18">• ↻ Dude, Where&apos;s My Car? (2000) - 3.5★</tspan>
           </text>
         </g>
       </a>
@@ -3714,7 +3714,7 @@
           <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Tue, 3. Jun 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• The Stöned Age (1994) - 3.5★</tspan>
+            <tspan x="10" dy="18">• ↻ The Stöned Age (1994) - 3.5★</tspan>
           </text>
         </g>
       </a>
@@ -3828,12 +3828,12 @@
           fill="#216e39" style="animation-delay:520ms"
         />
         <g class="tooltip-group" transform="translate(510, -84)">
-          <rect x="0" y="0" width="245" height="110" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <rect x="0" y="0" width="259" height="110" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Tue, 29. Jul 2025: 4 movies watched</tspan>
             <tspan x="10" dy="18">• Mission: Impossible (1996) - 3★</tspan>
             <tspan x="10" dy="18">• Wild Child (2008) - 2.5★</tspan>
-            <tspan x="10" dy="18">• Dude, Where&apos;s My Car? (2000) - 4★</tspan>
+            <tspan x="10" dy="18">• ↻ Dude, Where&apos;s My Car? (2000) - 4★</tspan>
             <tspan x="10" dy="18">• M3GAN (2022) - 3★</tspan>
           </text>
         </g>
@@ -3876,11 +3876,11 @@
           rx="2"
           fill="#9be9a8" style="animation-delay:630ms"
         />
-        <g class="tooltip-group" transform="translate(645, -30)">
-          <rect x="0" y="0" width="294" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(631, -30)">
+          <rect x="0" y="0" width="308" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Tue, 7. Oct 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• Fast Times at Ridgemont High (1982) - 3★</tspan>
+            <tspan x="10" dy="18">• ↻ Fast Times at Ridgemont High (1982) - 3★</tspan>
           </text>
         </g>
       </a>
@@ -3964,7 +3964,7 @@
           <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Tue, 23. Dec 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• Scary Movie (2000) - 3.5★</tspan>
+            <tspan x="10" dy="18">• ↻ Scary Movie (2000) - 3.5★</tspan>
           </text>
         </g>
       </a>
@@ -4376,10 +4376,10 @@
           fill="#9be9a8" style="animation-delay:448ms"
         />
         <g class="tooltip-group" transform="translate(391, -13)">
-          <rect x="0" y="0" width="266" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <rect x="0" y="0" width="280" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Wed, 11. Jun 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• The 40 Year Old Virgin (2005) - 3.5★</tspan>
+            <tspan x="10" dy="18">• ↻ The 40 Year Old Virgin (2005) - 3.5★</tspan>
           </text>
         </g>
       </a>
@@ -4497,7 +4497,7 @@
             <tspan x="10" dy="22" font-weight="600">Wed, 30. Jul 2025: 3 movies watched</tspan>
             <tspan x="10" dy="18">• Smurfs (2025) - 3★</tspan>
             <tspan x="10" dy="18">• Dredd (2012) - 3★</tspan>
-            <tspan x="10" dy="18">• Ted (2012) - 4★</tspan>
+            <tspan x="10" dy="18">• ↻ Ted (2012) - 4★</tspan>
           </text>
         </g>
       </a>
@@ -4578,7 +4578,7 @@
           <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Wed, 1. Oct 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• Half Baked (1998) - 4★</tspan>
+            <tspan x="10" dy="18">• ↻ Half Baked (1998) - 4★</tspan>
           </text>
         </g>
       </a>
@@ -4957,7 +4957,7 @@
           <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Thu, 17. Apr 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• Dazed and Confused (1993) - 4★</tspan>
+            <tspan x="10" dy="18">• ↻ Dazed and Confused (1993) - 4★</tspan>
           </text>
         </g>
       </a>
@@ -5056,7 +5056,7 @@
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Thu, 22. May 2025: 2 movies watched</tspan>
             <tspan x="10" dy="18">• How High (2001) - 4★</tspan>
-            <tspan x="10" dy="18">• Scary Movie 4 (2006) - 3★</tspan>
+            <tspan x="10" dy="18">• ↻ Scary Movie 4 (2006) - 3★</tspan>
           </text>
         </g>
       </a>
@@ -5375,11 +5375,11 @@
           rx="2"
           fill="#9be9a8" style="animation-delay:739ms"
         />
-        <g class="tooltip-group" transform="translate(617, 4)">
-          <rect x="0" y="0" width="322" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(603, 4)">
+          <rect x="0" y="0" width="336" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Thu, 11. Dec 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• Deuce Bigalow: European Gigolo (2005) - 2.5★</tspan>
+            <tspan x="10" dy="18">• ↻ Deuce Bigalow: European Gigolo (2005) - 2.5★</tspan>
           </text>
         </g>
       </a>
@@ -5635,7 +5635,7 @@
             <tspan x="10" dy="22" font-weight="600">Fri, 21. Mar 2025: 3 movies watched</tspan>
             <tspan x="10" dy="18">• I Want to Eat Your Pancreas (2018) - 4.5★</tspan>
             <tspan x="10" dy="18">• The Garden of Words (2013) - 4★</tspan>
-            <tspan x="10" dy="18">• Your Name. (2016) - 4.5★</tspan>
+            <tspan x="10" dy="18">• ↻ Your Name. (2016) - 4.5★</tspan>
           </text>
         </g>
       </a>
@@ -5651,10 +5651,10 @@
           fill="#40c463" style="animation-delay:337ms"
         />
         <g class="tooltip-group" transform="translate(204, 3)">
-          <rect x="0" y="0" width="336" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <rect x="0" y="0" width="350" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Fri, 28. Mar 2025: 2 movies watched</tspan>
-            <tspan x="10" dy="18">• Bill &amp; Ted&apos;s Excellent Adventure (1989) - 3.5★</tspan>
+            <tspan x="10" dy="18">• ↻ Bill &amp; Ted&apos;s Excellent Adventure (1989) - 3.5★</tspan>
             <tspan x="10" dy="18">• The Waterboy (1998) - 3★</tspan>
           </text>
         </g>
@@ -5772,7 +5772,7 @@
           <rect x="0" y="0" width="245" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Fri, 23. May 2025: 2 movies watched</tspan>
-            <tspan x="10" dy="18">• Up in Smoke (1978) - 4★</tspan>
+            <tspan x="10" dy="18">• ↻ Up in Smoke (1978) - 4★</tspan>
             <tspan x="10" dy="18">• Friday (1995) - 4★</tspan>
           </text>
         </g>
@@ -5990,7 +5990,7 @@
           <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Fri, 5. Sep 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• Bad Teacher (2011) - 3★</tspan>
+            <tspan x="10" dy="18">• ↻ Bad Teacher (2011) - 3★</tspan>
           </text>
         </g>
       </a>
@@ -6031,7 +6031,7 @@
           <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Fri, 3. Oct 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• Snatch (2000) - 3★</tspan>
+            <tspan x="10" dy="18">• ↻ Snatch (2000) - 3★</tspan>
           </text>
         </g>
       </a>
@@ -6093,8 +6093,8 @@
           <rect x="0" y="0" width="245" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Fri, 28. Nov 2025: 2 movies watched</tspan>
-            <tspan x="10" dy="18">• Bad Santa (2003) - 3★</tspan>
-            <tspan x="10" dy="18">• Half Baked (1998) - 4.5★</tspan>
+            <tspan x="10" dy="18">• ↻ Bad Santa (2003) - 3★</tspan>
+            <tspan x="10" dy="18">• ↻ Half Baked (1998) - 4.5★</tspan>
           </text>
         </g>
       </a>
@@ -6524,7 +6524,7 @@
           <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Sat, 10. May 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• Half Baked (1998) - 4★</tspan>
+            <tspan x="10" dy="18">• ↻ Half Baked (1998) - 4★</tspan>
           </text>
         </g>
       </a>
@@ -6642,7 +6642,7 @@
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Sat, 21. Jun 2025: 3 movies watched</tspan>
             <tspan x="10" dy="18">• Land of the Lost (2009) - 1.5★</tspan>
-            <tspan x="10" dy="18">• Grandma&apos;s Boy (2006) - 4★</tspan>
+            <tspan x="10" dy="18">• ↻ Grandma&apos;s Boy (2006) - 4★</tspan>
             <tspan x="10" dy="18">• Moonfall (2022) - 3.5★</tspan>
           </text>
         </g>
@@ -6682,7 +6682,7 @@
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Sat, 5. Jul 2025: 2 movies watched</tspan>
             <tspan x="10" dy="18">• The Muppets (2011) - 3★</tspan>
-            <tspan x="10" dy="18">• The Ten (2007) - 2.5★</tspan>
+            <tspan x="10" dy="18">• ↻ The Ten (2007) - 2.5★</tspan>
           </text>
         </g>
       </a>
@@ -6938,7 +6938,7 @@
           <rect x="0" y="0" width="280" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Sat, 15. Nov 2025: 2 movies watched</tspan>
-            <tspan x="10" dy="18">• They Came Together (2014) - 2.5★</tspan>
+            <tspan x="10" dy="18">• ↻ They Came Together (2014) - 2.5★</tspan>
             <tspan x="10" dy="18">• One Battle After Another (2025) - 4.5★</tspan>
           </text>
         </g>
@@ -6977,7 +6977,7 @@
           <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Sat, 29. Nov 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• The Big Lebowski (1998) - 4.5★</tspan>
+            <tspan x="10" dy="18">• ↻ The Big Lebowski (1998) - 4.5★</tspan>
           </text>
         </g>
       </a>

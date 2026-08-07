@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-07T13:26:05.494Z",
+  "generatedAt": "2026-08-07T13:41:41.725Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -21,7 +21,7 @@
     "daysActive": 322,
     "streak": 34,
     "streakFilms": 47,
-    "rewatches": 32,
+    "rewatches": 62,
     "liked": 26
   },
   "monthLabels": [
@@ -1766,7 +1766,7 @@
           "title": "Smiley Face",
           "year": "2007",
           "rating": 4.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/smiley-face/4/"
         }
@@ -2038,7 +2038,7 @@
           "title": "Your Name.",
           "year": "2016",
           "rating": 4.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/your-name/1/"
         }
@@ -2218,7 +2218,7 @@
           "title": "Bill & Ted's Excellent Adventure",
           "year": "1989",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/bill-teds-excellent-adventure/1/"
         },
@@ -2688,7 +2688,7 @@
           "title": "Dazed and Confused",
           "year": "1993",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/dazed-and-confused/1/"
         }
@@ -2779,7 +2779,7 @@
           "title": "Dude, Where's My Car?",
           "year": "2000",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/1/"
         }
@@ -3051,7 +3051,7 @@
           "title": "Family Guy Presents: Blue Harvest",
           "year": "2007",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/family-guy-presents-blue-harvest/1/"
         },
@@ -3059,7 +3059,7 @@
           "title": "Star Wars",
           "year": "1977",
           "rating": 4.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/star-wars/1/"
         }
@@ -3152,7 +3152,7 @@
           "title": "Half Baked",
           "year": "1998",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/half-baked/2/"
         }
@@ -3336,7 +3336,7 @@
           "title": "Strange Wilderness",
           "year": "2008",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/strange-wilderness/1/"
         },
@@ -3364,7 +3364,7 @@
           "title": "Jay and Silent Bob Strike Back",
           "year": "2001",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/jay-and-silent-bob-strike-back/1/"
         },
@@ -3440,7 +3440,7 @@
           "title": "Scary Movie 4",
           "year": "2006",
           "rating": 3,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-4/1/"
         }
@@ -3460,7 +3460,7 @@
           "title": "Up in Smoke",
           "year": "1978",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/up-in-smoke-1978/1/"
         },
@@ -3677,7 +3677,7 @@
           "title": "The Stöned Age",
           "year": "1994",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/the-stoned-age/1/"
         }
@@ -3885,7 +3885,7 @@
           "title": "The 40 Year Old Virgin",
           "year": "2005",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/the-40-year-old-virgin/1/"
         }
@@ -4115,7 +4115,7 @@
           "title": "Grandma's Boy",
           "year": "2006",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/grandmas-boy-2006/1/"
         },
@@ -4435,7 +4435,7 @@
           "title": "The Ten",
           "year": "2007",
           "rating": 2.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/the-ten/1/"
         }
@@ -4925,7 +4925,7 @@
           "title": "Dude, Where's My Car?",
           "year": "2000",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/2/"
         },
@@ -4969,7 +4969,7 @@
           "title": "Ted",
           "year": "2012",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/ted/1/"
         }
@@ -5525,7 +5525,7 @@
           "title": "Bad Teacher",
           "year": "2011",
           "rating": 3,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/bad-teacher/1/"
         }
@@ -5818,7 +5818,7 @@
           "title": "The Naked Gun",
           "year": "2025",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/the-naked-gun/1/"
         }
@@ -5944,7 +5944,7 @@
           "title": "Half Baked",
           "year": "1998",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/half-baked/3/"
         }
@@ -5992,7 +5992,7 @@
           "title": "Snatch",
           "year": "2000",
           "rating": 3,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/snatch/1/"
         }
@@ -6072,7 +6072,7 @@
           "title": "Fast Times at Ridgemont High",
           "year": "1982",
           "rating": 3,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/fast-times-at-ridgemont-high/1/"
         }
@@ -6712,7 +6712,7 @@
           "title": "They Came Together",
           "year": "2014",
           "rating": 2.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/they-came-together/1/"
         },
@@ -6908,7 +6908,7 @@
           "title": "Bad Santa",
           "year": "2003",
           "rating": 3,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/bad-santa/1/"
         },
@@ -6916,7 +6916,7 @@
           "title": "Half Baked",
           "year": "1998",
           "rating": 4.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/half-baked/4/"
         }
@@ -6936,7 +6936,7 @@
           "title": "The Big Lebowski",
           "year": "1998",
           "rating": 4.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/the-big-lebowski/5/"
         }
@@ -7120,7 +7120,7 @@
           "title": "Deuce Bigalow: European Gigolo",
           "year": "2005",
           "rating": 2.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/deuce-bigalow-european-gigolo/1/"
         }
@@ -7306,7 +7306,7 @@
           "title": "Scary Movie",
           "year": "2000",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2000/1/"
         }
@@ -7414,7 +7414,7 @@
           "title": "Mardi Gras: Spring Break",
           "year": "2011",
           "rating": 2.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/mardi-gras-spring-break/1/"
         }
@@ -13463,7 +13463,7 @@
           "title": "Smiley Face",
           "year": "2007",
           "rating": 4.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/smiley-face/4/"
         }
@@ -13687,7 +13687,7 @@
           "title": "Your Name.",
           "year": "2016",
           "rating": 4.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/your-name/1/"
         }
@@ -13839,7 +13839,7 @@
           "title": "Bill & Ted's Excellent Adventure",
           "year": "1989",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/bill-teds-excellent-adventure/1/"
         },
@@ -14215,7 +14215,7 @@
           "title": "Dazed and Confused",
           "year": "1993",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/dazed-and-confused/1/"
         }
@@ -14279,7 +14279,7 @@
           "title": "Dude, Where's My Car?",
           "year": "2000",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/1/"
         }
@@ -14503,7 +14503,7 @@
           "title": "Family Guy Presents: Blue Harvest",
           "year": "2007",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/family-guy-presents-blue-harvest/1/"
         },
@@ -14511,7 +14511,7 @@
           "title": "Star Wars",
           "year": "1977",
           "rating": 4.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/star-wars/1/"
         }
@@ -14559,7 +14559,7 @@
           "title": "Half Baked",
           "year": "1998",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/half-baked/2/"
         }
@@ -14711,7 +14711,7 @@
           "title": "Strange Wilderness",
           "year": "2008",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/strange-wilderness/1/"
         },
@@ -14735,7 +14735,7 @@
           "title": "Jay and Silent Bob Strike Back",
           "year": "2001",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/jay-and-silent-bob-strike-back/1/"
         },
@@ -14799,7 +14799,7 @@
           "title": "Scary Movie 4",
           "year": "2006",
           "rating": 3,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-4/1/"
         }
@@ -14815,7 +14815,7 @@
           "title": "Up in Smoke",
           "year": "1978",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/up-in-smoke-1978/1/"
         },
@@ -14967,7 +14967,7 @@
           "title": "The Stöned Age",
           "year": "1994",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/the-stoned-age/1/"
         }
@@ -15143,7 +15143,7 @@
           "title": "The 40 Year Old Virgin",
           "year": "2005",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/the-40-year-old-virgin/1/"
         }
@@ -15319,7 +15319,7 @@
           "title": "Grandma's Boy",
           "year": "2006",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/grandmas-boy-2006/1/"
         },
@@ -15583,7 +15583,7 @@
           "title": "The Ten",
           "year": "2007",
           "rating": 2.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/the-ten/1/"
         }
@@ -15935,7 +15935,7 @@
           "title": "Dude, Where's My Car?",
           "year": "2000",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/2/"
         },
@@ -15975,7 +15975,7 @@
           "title": "Ted",
           "year": "2012",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/ted/1/"
         }
@@ -16215,7 +16215,7 @@
           "title": "Bad Teacher",
           "year": "2011",
           "rating": 3,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/bad-teacher/1/"
         }
@@ -16391,7 +16391,7 @@
           "title": "The Naked Gun",
           "year": "2025",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/the-naked-gun/1/"
         }
@@ -16439,7 +16439,7 @@
           "title": "Half Baked",
           "year": "1998",
           "rating": 4,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/half-baked/3/"
         }
@@ -16479,7 +16479,7 @@
           "title": "Snatch",
           "year": "2000",
           "rating": 3,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/snatch/1/"
         }
@@ -16543,7 +16543,7 @@
           "title": "Fast Times at Ridgemont High",
           "year": "1982",
           "rating": 3,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/fast-times-at-ridgemont-high/1/"
         }
@@ -16887,7 +16887,7 @@
           "title": "They Came Together",
           "year": "2014",
           "rating": 2.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/they-came-together/1/"
         },
@@ -16975,7 +16975,7 @@
           "title": "Bad Santa",
           "year": "2003",
           "rating": 3,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/bad-santa/1/"
         },
@@ -16983,7 +16983,7 @@
           "title": "Half Baked",
           "year": "1998",
           "rating": 4.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/half-baked/4/"
         }
@@ -16999,7 +16999,7 @@
           "title": "The Big Lebowski",
           "year": "1998",
           "rating": 4.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/the-big-lebowski/5/"
         }
@@ -17079,7 +17079,7 @@
           "title": "Deuce Bigalow: European Gigolo",
           "year": "2005",
           "rating": 2.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/deuce-bigalow-european-gigolo/1/"
         }
@@ -17175,7 +17175,7 @@
           "title": "Scary Movie",
           "year": "2000",
           "rating": 3.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2000/1/"
         }
@@ -17263,7 +17263,7 @@
           "title": "Mardi Gras: Spring Break",
           "year": "2011",
           "rating": 2.5,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/mardi-gras-spring-break/1/"
         }
