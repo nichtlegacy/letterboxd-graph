@@ -246,7 +246,8 @@ async function main() {
           ...svgOptions,
           year: reviewYear,
           theme,
-          posters
+          posters,
+          weekStart
         });
 
         fs.writeFileSync(cardPath, card);

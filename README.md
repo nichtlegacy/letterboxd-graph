@@ -440,8 +440,9 @@ images/letterboxd-review-<year>-light.svg
 ```
 
 It carries the headline figures (films, days active, streak, average rating,
-rewatches, likes) and your five highest rated films of that year, with poster
-art and ratings in Letterboxd's green. Rewatches are
+rewatches, likes), a weekly activity strip for the year, and your five highest
+rated films with poster art and ratings in Letterboxd's green. A film you
+rewatched is marked `↻` next to its release year. Rewatches are
 collapsed to a single entry at their best rating, so one film cannot take two
 slots. 1200×630 is the Open Graph default, so the card works as a social preview
 or a README banner as is.
