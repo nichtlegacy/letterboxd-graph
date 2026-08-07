@@ -188,9 +188,10 @@ that year, which is true but says nothing about the year itself.
   </picture>
 </p>
 
-The same card narrowed to a single month, shown here for the previous one since
-the current month is only a few days old at the start of one. A month with
-nothing logged says so rather than rendering an empty list.
+The same card narrowed to a single month. The preview shows the **previous**
+month, which is always a complete one — the current month is a few days old at
+the start of one and would show a near-empty card for most of the first week. A
+month with nothing logged says so rather than rendering an empty list.
 
 Its film list always ranks everything watched that month, whatever
 [`top-films`](#year-in-review) is set to.
