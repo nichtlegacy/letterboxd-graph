@@ -140,8 +140,11 @@ function toast(message) {
  * A column chart with a tooltip that follows the hovered bar. Used for the month
  * series and, in a smaller variant, for the weekday and rating distributions.
  *
+ * A bar with an `href` becomes a link, which is what makes the rating
+ * distribution more than a picture: every step has a diary page behind it.
+ *
  * @param {HTMLElement} host - Element to render into
- * @param {Array<{value: number, label: string, meta?: string, caption?: string}>} bars
+ * @param {Array<{value: number, label: string, meta?: string, caption?: string, href?: string}>} bars
  * @param {{variant?: string, axis?: [string, string]}} options
  */
 function columnChart(host, bars, { variant = '', axis = null } = {}) {
@@ -154,7 +157,7 @@ function columnChart(host, bars, { variant = '', axis = null } = {}) {
   tooltip.hidden = true;
 
   bars.forEach((bar) => {
-    const column = el('div', 'column');
+    const column = bar.href ? link(bar.href, 'column') : el('div', 'column');
     const fill = el('span', 'column-fill');
     // A zero stays flat; everything else keeps a sliver so a single film is
     // still visible next to a month of thirty.
@@ -193,9 +196,15 @@ function columnChart(host, bars, { variant = '', axis = null } = {}) {
     column.addEventListener('mouseleave', hide);
     column.addEventListener('focus', show);
     column.addEventListener('blur', hide);
-    column.tabIndex = 0;
-    column.setAttribute('role', 'img');
-    column.setAttribute('aria-label', `${bar.label}: ${bar.value}`);
+
+    if (bar.href) {
+      column.setAttribute('aria-label', `${bar.label}: ${bar.value}. Open in the diary.`);
+    } else {
+      // A link is focusable already; a plain bar has to be made so.
+      column.tabIndex = 0;
+      column.setAttribute('role', 'img');
+      column.setAttribute('aria-label', `${bar.label}: ${bar.value}`);
+    }
 
     if (bar.caption) column.append(el('span', 'column-caption', bar.caption));
     plot.append(column);
@@ -345,7 +354,7 @@ function renderWhen(all) {
 
 /* ── Ratings ──────────────────────────────────────────────────────────────── */
 
-function renderRatings(all) {
+function renderRatings(all, diary) {
   const ratings = all?.ratings || [];
   if (!ratings.length) return;
 
@@ -354,10 +363,15 @@ function renderRatings(all) {
   const counts = new Map(ratings.map(entry => [entry.rating, entry.count]));
   const buckets = Array.from({ length: 10 }, (_, index) => {
     const rating = (index + 1) / 2;
+    const count = counts.get(rating) || 0;
+
     return {
-      value: counts.get(rating) || 0,
+      value: count,
       label: `${rating} out of 5`,
-      caption: rating % 1 === 0 ? '★'.repeat(rating) : ''
+      caption: rating % 1 === 0 ? '★'.repeat(rating) : '',
+      // Letterboxd writes a half star without its leading zero. A step nobody
+      // ever gave leads to an empty page, so it stays a plain bar.
+      href: diary && count ? `${diary}/rated/${String(rating).replace(/^0/, '')}/` : null
     };
   });
 
@@ -382,7 +396,7 @@ function renderRatings(all) {
 
 /* ── Decades and repeats ──────────────────────────────────────────────────── */
 
-function renderDecades(all) {
+function renderDecades(all, diary) {
   const decades = all?.decades || [];
   const rewatched = all?.mostRewatched || [];
   if (!decades.length && !rewatched.length) return;
@@ -390,7 +404,10 @@ function renderDecades(all) {
   if (decades.length) {
     const max = Math.max(...decades.map(decade => decade.count));
     const nodes = decades.slice().reverse().map((decade) => {
-      const node = el('div', 'bar-row');
+      // The label is the slug: Letterboxd files a decade under "2020s" too.
+      const node = diary
+        ? link(`${diary}/decade/${decade.label}/`, 'bar-row')
+        : el('div', 'bar-row');
       const track = el('span', 'bar-track');
       const fill = el('span', 'bar-fill');
       fill.style.width = `${Math.max((decade.count / max) * 100, 1.5)}%`;
@@ -762,11 +779,15 @@ async function main() {
   ]);
 
   if (data) {
+    // Both distributions have a diary page behind every bar, filtered the same
+    // way the bar is.
+    const diary = data.user ? `https://letterboxd.com/${data.user}/diary/films` : null;
+
     renderHero(data, manifest);
     renderAllTime(data.allTime, data);
     renderWhen(data.allTime);
-    renderRatings(data.allTime);
-    renderDecades(data.allTime);
+    renderRatings(data.allTime, diary);
+    renderDecades(data.allTime, diary);
     renderMilestones(data.allTime);
     renderDiary(data.recent);
   }

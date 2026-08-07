@@ -622,6 +622,12 @@ main {
   cursor: default;
 }
 
+/* A bar that leads somewhere says so on hover, and nowhere else — the chart is
+   read far more often than it is clicked. */
+a.column {
+  cursor: pointer;
+}
+
 .column-fill {
   display: block;
   width: 100%;
@@ -853,10 +859,16 @@ main {
   gap: 16px;
 }
 
+a.bar-row:hover .bar-label,
+a.bar-row:hover .bar-value {
+  color: var(--text-light);
+}
+
 .bar-label {
   color: var(--text-primary);
   font-size: 13px;
   font-variant-numeric: tabular-nums;
+  transition: color 150ms var(--ease);
 }
 
 .bar-track {
