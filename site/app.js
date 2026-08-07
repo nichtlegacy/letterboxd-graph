@@ -166,6 +166,18 @@ function toast(message) {
 
 /* ── Charts ───────────────────────────────────────────────────────────────── */
 
+// Whether the page is being read with a finger. A bar's figures live in a
+// tooltip, and a tooltip that only answers to hover is a figure a phone can
+// never see.
+const coarsePointer = matchMedia('(hover: none)');
+
+let readBar = null;
+let dismissBar = () => {};
+
+document.addEventListener('pointerdown', (event) => {
+  if (readBar && !event.target.closest('.column')) dismissBar();
+});
+
 /**
  * A column chart with a tooltip that follows the hovered bar. Used for the month
  * series and, in a smaller variant, for the weekday and rating distributions.
@@ -226,6 +238,28 @@ function columnChart(host, bars, { variant = '', axis = null } = {}) {
     column.addEventListener('mouseleave', hide);
     column.addEventListener('focus', show);
     column.addEventListener('blur', hide);
+
+    // A finger cannot hover. On a touch screen the first tap reads the bar and
+    // a second one follows it, which is the only way a bar can be both a figure
+    // and a link to the diary behind it.
+    column.addEventListener('click', (tapped) => {
+      if (!coarsePointer.matches) return;
+
+      if (tapped.target.closest('.column') === readBar) {
+        if (!bar.href) dismissBar();
+        return;
+      }
+
+      if (bar.href) tapped.preventDefault();
+      dismissBar();
+      readBar = column;
+      dismissBar = () => {
+        hide();
+        readBar = null;
+        dismissBar = () => {};
+      };
+      show();
+    });
 
     if (bar.href) {
       column.setAttribute('aria-label', `${bar.label}: ${bar.value}. Open in the diary.`);
@@ -654,8 +688,12 @@ document.addEventListener('keydown', (event) => {
  */
 function createFrame(asset, manifest) {
   const frame = el('figure', 'frame');
+  // The card keeps a readable size on a phone and scrolls sideways inside this
+  // wrapper; the caption below it stays where a thumb can reach it.
+  const scroll = el('div', 'frame-scroll');
   const media = el('div', 'frame-media');
   media.style.aspectRatio = `${asset.width} / ${asset.height}`;
+  scroll.append(media);
 
   const foot = el('figcaption', 'frame-foot');
   const file = el('span', 'frame-file');
@@ -725,8 +763,9 @@ function createFrame(asset, manifest) {
   };
 
   actions.append(chip(commands.image), chip(commands.svg), chip(commands.embed), open);
-  foot.append(file, actions);
-  frame.append(media, foot);
+  // Only ever seen where the card is wider than the screen.
+  foot.append(file, el('span', 'frame-hint', 'Drag the card sideways'), actions);
+  frame.append(scroll, foot);
 
   // The card draws its own rounded background and leaves the corners
   // transparent. In an <object> those corners fall through to the embedded
@@ -1059,9 +1098,10 @@ function diaryRow(entry) {
 
 /* ── Navigation ───────────────────────────────────────────────────────────── */
 
-// The sticky bar is 56px, so a heading scrolled to the very top would sit under
-// it. This is that height plus enough air to read as a margin.
-const NAV_OFFSET = 76;
+// A heading scrolled to the very top would sit under the sticky bar, which is
+// two rows tall on a phone and one on a desktop — so it is measured rather
+// than assumed, plus enough air to read as a margin.
+const navOffset = () => (document.querySelector('.nav')?.offsetHeight || 56) + 20;
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -1133,7 +1173,7 @@ function scrollToY(to) {
 function scrollToSection(target) {
   if (!target) return;
 
-  scrollToY(documentTop(target) - NAV_OFFSET);
+  scrollToY(documentTop(target) - navOffset());
 
   // Nothing loud: the section's own top rule lights up for a moment, so the
   // eye lands where the click pointed even if the heading is short.
@@ -1169,7 +1209,7 @@ function setupNavigation() {
   // before the sections were filled in, so it is done again from here.
   if (location.hash.length > 1) {
     const target = document.getElementById(location.hash.slice(1));
-    if (target) requestAnimationFrame(() => window.scrollTo(0, documentTop(target) - NAV_OFFSET));
+    if (target) requestAnimationFrame(() => window.scrollTo(0, documentTop(target) - navOffset()));
   }
 }
 
@@ -1215,11 +1255,13 @@ function setupScrollSpy() {
   });
   document.body.append(toTop);
 
+  const strip = document.querySelector('.nav-links');
   let queued = false;
+  let marked = null;
 
   const update = () => {
     queued = false;
-    const line = window.scrollY + NAV_OFFSET + 8;
+    const line = window.scrollY + navOffset() + 8;
 
     let current = null;
     for (const entry of targets) {
@@ -1228,6 +1270,19 @@ function setupScrollSpy() {
 
     for (const { anchor } of targets) anchor.classList.toggle('is-active', anchor === current?.anchor);
     toTop.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.6);
+
+    // On a phone the links are a strip that scrolls sideways, so the one being
+    // marked has to be brought into it.
+    if (current?.anchor !== marked) {
+      marked = current?.anchor || null;
+
+      if (marked && strip.scrollWidth > strip.clientWidth + 4) {
+        strip.scrollTo({
+          left: Math.max(0, marked.offsetLeft - (strip.clientWidth - marked.offsetWidth) / 2),
+          behavior: reducedMotion.matches ? 'auto' : 'smooth'
+        });
+      }
+    }
   };
 
   window.addEventListener('scroll', () => {

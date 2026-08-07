@@ -111,6 +111,17 @@ body {
   font-size: 14px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  /* iOS inflates text in landscape unless it is told the page can cope. */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Two readings of the same sentence: one for a page that can be hovered, one
+   for a page that can only be touched. */
+.on-touch { display: none; }
+
+@media (hover: none) {
+  .on-hover { display: none; }
+  .on-touch { display: inline; }
 }
 
 h1,
@@ -180,6 +191,7 @@ b {
   z-index: 5;
   background: color-mix(in srgb, var(--background) 92%, transparent);
   border-bottom: 1px solid var(--border-subtle);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 
@@ -187,7 +199,7 @@ b {
   max-width: var(--page-max);
   height: 56px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 max(24px, env(safe-area-inset-right)) 0 max(24px, env(safe-area-inset-left));
   display: flex;
   align-items: center;
   gap: 24px;
@@ -287,7 +299,9 @@ b {
 main {
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: 0 24px;
+  /* The insets matter on a phone held sideways, where the notch eats into the
+     side of the page. */
+  padding: 0 max(24px, env(safe-area-inset-right)) 0 max(24px, env(safe-area-inset-left));
 }
 
 .hero {
@@ -680,6 +694,15 @@ a.column {
   border-top-color: var(--brand-green);
 }
 
+/* Muted until hovered is muted for good on a phone, so there the strip is
+   drawn in the accent from the start. */
+@media (hover: none) {
+  .plot.is-small .column-fill {
+    background: var(--brand-green);
+    border-top-color: var(--brand-green);
+  }
+}
+
 .plot.is-hovered .column:not(.is-active) .column-fill {
   opacity: 0.35;
 }
@@ -1029,6 +1052,7 @@ a.bar-row:hover .bar-value {
 
 .frame-stack > .frame {
   grid-area: 1 / 1;
+  min-width: 0;
   z-index: 1;
   transition: opacity 220ms var(--ease);
 }
@@ -1057,6 +1081,9 @@ a.bar-row:hover .bar-value {
 .frame-media {
   position: relative;
   overflow: hidden;
+  /* A long press opens the card's own menu, so iOS is asked not to raise its
+     own callout over it. */
+  -webkit-touch-callout: none;
   isolation: isolate;
   -webkit-mask-image: -webkit-radial-gradient(white, black);
   mask-image: radial-gradient(white, black);
@@ -1125,6 +1152,15 @@ a.bar-row:hover .bar-value {
   margin-left: auto;
 }
 
+/* Shown only where the card is wider than the screen. */
+.frame-hint {
+  display: none;
+  color: var(--text-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
 .icon {
   width: 14px;
   height: 14px;
@@ -1180,8 +1216,8 @@ a.bar-row:hover .bar-value {
 
 .to-top {
   position: fixed;
-  right: 24px;
-  bottom: 24px;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
   z-index: 6;
   display: grid;
   place-items: center;
@@ -1189,6 +1225,7 @@ a.bar-row:hover .bar-value {
   height: 40px;
   padding: 0;
   background: color-mix(in srgb, var(--surface) 88%, transparent);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border: 1px solid var(--border-subtle);
   border-radius: 50%;
@@ -1437,7 +1474,7 @@ a.bar-row:hover .bar-value {
 .footer-inner {
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: 0 24px 64px;
+  padding: 0 max(24px, env(safe-area-inset-right)) 64px max(24px, env(safe-area-inset-left));
   display: grid;
   grid-template-columns: 1.6fr 1fr 1.4fr;
   gap: 48px;
@@ -1556,8 +1593,45 @@ a.bar-row:hover .bar-value {
 }
 
 @media (max-width: 860px) {
+  /* The links do not fit beside the wordmark, and dropping them would leave a
+     page this long with no way through it but the scrollbar. They move to a
+     second row and scroll sideways, bleeding to both edges so it is clear
+     there is more of them. */
+  .nav-inner {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 0 16px;
+    padding-top: 10px;
+  }
+
+  .wordmark {
+    height: 36px;
+  }
+
   .nav-links {
+    order: 3;
+    width: 100%;
+    margin: 0 0 0 -24px;
+    padding: 4px 24px 10px;
+    gap: 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    width: calc(100% + 48px);
+  }
+
+  .nav-links::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Padded to something a thumb can hit; the underline follows the padding
+     down to the bottom of the row. */
+  .nav-links a {
+    padding: 8px 0;
+    white-space: nowrap;
+  }
+
+  .footer-nav a {
+    padding: 4px 0;
   }
 
   .footer-inner {
@@ -1592,21 +1666,119 @@ a.bar-row:hover .bar-value {
 
 /* A day cell is 10px wide in the source drawing, so squeezing the graph into a
    phone would make it unreadable. Below this width the card keeps a usable size
-   and the frame scrolls sideways instead. */
+   and scrolls sideways instead — the caption under it does not, so the actions
+   stay where a thumb can reach them. */
 @media (max-width: 700px) {
-  .frame {
+  .frame-scroll {
     overflow-x: auto;
+    scrollbar-width: none;
+    /* A grid item is as wide as its content unless it is told otherwise, and
+       the content here is a card 620px across. */
+    min-width: 0;
   }
 
-  .frame-media,
-  .frame-foot {
+  .frame-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .frame-media {
     min-width: 620px;
+  }
+
+  .frame-hint {
+    display: block;
+  }
+
+  .frame-foot {
+    gap: 8px 12px;
+    /* Same story as the file name inside it: a grid item is as wide as its
+       widest unbreakable child unless it is told to shrink. */
+    min-width: 0;
+  }
+
+  .frame-actions {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* The path is long enough to take two lines of a phone on its own, and the
+     card it belongs to is named by the tab above it. */
+  .frame-file {
+    /* A flex item is never narrower than its content unless it is told so, and
+       `nowrap` makes that content one long unbreakable path. */
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  /* Thirty months at four pixels each is a texture, not a chart. The plots keep
+     a readable bar width and scroll instead. */
+  .chart,
+  .histogram {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .chart::-webkit-scrollbar,
+  .histogram::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chart .plot {
+    min-width: 620px;
+  }
+
+  .histogram .plot {
+    min-width: 460px;
   }
 }
 
 @media (max-width: 560px) {
   .theme-label {
     display: none;
+  }
+
+  /* Three figures stacked full width is a lot of scrolling for three numbers. */
+  .tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 20px;
+  }
+
+  .tile-value {
+    font-size: 34px;
+  }
+
+  .tiles .tile:only-child,
+  .tiles .tile:nth-child(3):last-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Thumb-sized: 30px of chip is fine under a mouse and mean under a finger. */
+  .chip {
+    height: 36px;
+    padding: 0 14px;
+  }
+
+  .tab {
+    padding: 4px 0 12px;
+  }
+
+  .column-caption,
+  .footer-label {
+    font-size: 11px;
+  }
+
+  /* A row that is a link needs to be worth aiming at: 21px of bar is a miss
+     waiting to happen. */
+  .year-cell,
+  .bar-row {
+    padding: 7px 0;
+  }
+
+  .step-link {
+    padding: 6px 0;
   }
 
   /* Stacked, the arrows point at the wrong thing. */

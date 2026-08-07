@@ -84,9 +84,12 @@
         <h1 class="display" data-hero-title>Letterboxd Graph</h1>
         <p class="lead">
           A film diary read straight off Letterboxd and drawn as a contribution
-          graph, a card per year and month, and the figures behind them. Hover
-          works here — inside a README it cannot, because GitHub serves the SVGs
-          through an <code>&lt;img&gt;</code> tag that receives no mouse events.
+          graph, a card per year and month, and the figures behind them.
+          <!-- A phone has no hover, so it is told what it does have instead. -->
+          <span class="on-hover">Hover works here</span><span class="on-touch">A
+          bar answers to a tap here</span> — inside a README neither does,
+          because GitHub serves the SVGs through an <code>&lt;img&gt;</code> tag
+          that receives no events at all.
         </p>
 
         <div class="actions">
