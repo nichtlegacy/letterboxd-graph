@@ -529,7 +529,7 @@ limit — the cards at full size, and the figures behind them read out at length
 
 <div align="center">
 
-**[nichtlegacy.github.io/letterboxd-graph](https://nichtlegacy.github.io/letterboxd-graph/)**
+**[letterboxd.nichtlegacy.com](https://letterboxd.nichtlegacy.com/)**
 
 <img alt="The generated cards on the Pages site" src=".github/assets/pages-dark.png" width="100%">
 
@@ -537,50 +537,25 @@ limit — the cards at full size, and the figures behind them read out at length
 
 | Section | What is on it |
 |---------|---------------|
-| **A Life in Film** | The opening: films watched, distinct films, diary entries, days active, average rating and longest streak, on one row |
-| **When you watched** | A column per month, empty ones included; weekday distribution, weekly and monthly averages, busiest day, longest streak, longest quiet stretch — and a figure per year, written out rather than drawn, so a twenty-year diary reads as cleanly as a two-year one |
+| **A Life in Film** | The opening: profile avatar, films watched, distinct films, diary entries, days active, average rating and longest streak, on one row |
+| **When you watched** | A column per month, empty ones included; weekday distribution, weekly and monthly averages, busiest day, fullest month, longest streak, longest quiet stretch, watched-day share and seasonal pattern — plus a figure per year, written out rather than drawn |
 | **How you rated** | The half-star histogram, empty steps kept, beside the average, the most given rating and how much is rated or liked at all |
-| **What you reached for** | Films by release decade, and the five you went back to most |
+| **What you reached for** | Films by release decade with counts, share and average rating, plus the five you went back to most |
 | **Where it turned over** | The first entry, the round numbers after it, and the latest, on one track. `milestoneStep` scales with the diary — every 25th at a hundred entries, every thousandth at five thousand — so the row holds its length instead of growing a marker per hundred |
-| **The cards** | Graph, profile, a tab per year, a tab per month — each with **Copy image**, **Copy SVG**, **Copy embed** and **Open SVG**, the same four on a right click anywhere on the card |
-| **Recent diary** | The last sixteen entries, out of the JSON export, in two columns |
+| **The cards** | Graph, profile, a tab per year, a tab per month — the finished month opens first, tabs cross-fade, and each card has **Copy image**, **Copy SVG**, **Copy embed** and **Open SVG**, also available on right click |
+| **Recent diary** | The last sixteen entries from the JSON export, newest first, in two columns; rewatches and likes stay marked |
+| **Use them yourself** | Three short paths: copy a responsive embed, run the action on your own diary, or publish a Pages site like this one. The footer links back to the Letterboxd profile, source and JSON export |
 
 The figures cover whatever the run fetched — the whole diary under `scope: all`,
 the graph years under `scope: years`, which the page says out loud rather than
-passing narrow numbers off as all-time.
+passing narrow numbers off as all-time. Year entries, rating steps, decade rows,
+milestones and diary films link back to their matching Letterboxd pages.
 
-### Sharing it
-
-Paste the page's address into Discord, Slack, X, WhatsApp, Signal, Bluesky,
-iMessage or Teams and it unfurls as a card: the profile card as the image, the
-diary's headline figures as the text.
-
-None of that can come from the page as it runs. A crawler reads the HTML that
-was served and stops there — it does not run the JavaScript that fetches
-`data.json` and fills the page in — so the build writes the figures into the
-head instead. The same step rasterises the profile card to `og.png`, because
-every one of those platforms drops an SVG preview rather than drawing it, and
-moves the image's URL with each run so a reshared link is not answered from a
-cache holding last week's numbers.
-
-| Written into the built page | What reads it |
-|-----------------------------|---------------|
-| `<title>`, `description`, `canonical` | Google's result listing |
-| `og:*`, including `og:image` at 1200×630 | Discord, Slack, WhatsApp, Signal, Bluesky, iMessage, Teams, LinkedIn |
-| `twitter:card` as `summary_large_image` | X |
-| JSON-LD: `WebSite`, `Person`, `ProfilePage` | Search engines reading structured data |
-| `robots.txt`, `sitemap.xml` | Crawlers, and the `lastmod` that tells them it changed |
-
-The addresses in all of it are absolute, taken from the deployment itself, so a
-custom domain needs no second place to be configured.
-
-It is also the one place where the cards work as drawn: GitHub serves an SVG
-through an `<img>` tag, which gets no mouse events, while the page embeds each
-one as an `<object>`, so tooltips, links and the reveal animation all behave.
-The rest follows from the same build — themes swap the file rather than filter
-it, sections come and go with whatever the last run wrote, embeds load as they
-scroll into view, and type is served from `fonts/`, so nothing is fetched from a
-third party.
+The page follows the system theme until switched, then keeps the chosen dark or
+light card set. Sticky navigation, smooth section movement and a back-to-top
+control keep the long page usable; on a phone the section links become a
+horizontal strip. Card embeds load as they scroll into view, and a missing
+generated export gets a retryable error state instead of an empty page.
 
 <details>
 <summary><b>Publishing it for your own profile</b></summary>
@@ -593,6 +568,9 @@ Which route you take depends on which [Quick Start](#quick-start) you took.
 Letterboxd Graph + JSON Export** once from the **Actions** tab; the deploy
 follows on its own, and the site lands at
 `https://<github-user>.github.io/<repository>/`.
+
+For a custom domain, configure it under **Settings → Pages**; the build takes
+the deployed address from GitHub automatically.
 
 **If you added the action to a repository of your own**, copy four things
 across:
@@ -615,8 +593,8 @@ Then:
    `src/stats.js`, and without it Node reads that file as CommonJS and the build
    dies on the `export` keyword.
 3. Keep the `npm ci` step in `pages.yml`. The build uses `sharp` to rasterise
-   the share preview; without it the page still deploys, but a shared link
-   unfurls with no image.
+   the Open Graph preview; without it the page still deploys, but its preview
+   image is missing.
 4. Leave `commit` at its default. The build reads `images/` out of the
    repository and fetches nothing, so the files have to be committed for it to
    have anything to publish.

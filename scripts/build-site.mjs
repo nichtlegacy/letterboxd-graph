@@ -16,8 +16,8 @@
  * - The head's title, description, Open Graph and Twitter tags, and the
  *   JSON-LD block are written from the same export, because the crawler that
  *   reads them does not run the JavaScript that fills the page in.
- * - `og.png` is the profile card rasterised, since the SVGs the page shows are
- *   not a format any social preview will render.
+ * - `og.png` is the Pages screenshot resized to the Open Graph format. If the
+ *   project screenshot is not present, the profile card is used as fallback.
  * - `robots.txt` and `sitemap.xml`, so the page is indexable.
  *
  * Run it locally with `npm run build:site` and serve `_site/` to preview.
@@ -328,7 +328,7 @@ export function describe(data) {
       ogTitle: 'Letterboxd Graph',
       description: generic,
       ogDescription: generic,
-      imageAlt: 'A Letterboxd profile card'
+      imageAlt: 'A Letterboxd Graph Pages site screenshot'
     };
   }
 
@@ -377,8 +377,8 @@ export function describe(data) {
   ].filter(Boolean).join(' ');
 
   const imageAlt = films
-    ? `Letterboxd profile card for ${user}: ${count(films)} films watched`
-    : `Letterboxd profile card for ${user}`;
+    ? `Letterboxd Graph Pages site for ${user}: ${count(films)} films watched`
+    : `Letterboxd Graph Pages site for ${user}`;
 
   return { title, ogTitle, description, ogDescription, imageAlt };
 }
@@ -550,27 +550,30 @@ export function renderRobots(base) {
 }
 
 /**
- * Rasterise a card to a PNG for the share preview.
+ * Rasterise a card or screenshot to a PNG for the Open Graph preview.
  *
- * The page's own cards are SVG, and no social platform renders one: Discord,
- * Slack and X all drop an SVG preview rather than draw it. The profile card is
- * already 1200x630, so it is the preview as it stands, only in a format that
- * survives the trip.
+ * The page screenshot is 1440x1080, so `cover` crops its top 1440x756 pixels
+ * to the 1200x630 Open Graph ratio. Cards are already 1200x630 and therefore
+ * keep their complete frame when used as the fallback.
  *
  * `sharp` is a generator dependency rather than a site one, so a build without
  * it warns and carries on with no preview instead of failing.
  *
- * @param {string} svgPath - Card to rasterise
+ * @param {string} inputPath - Card or screenshot to rasterise
  * @param {string} outPath - Where to write the PNG
  * @param {{width: number, height: number}} size
  * @returns {Promise<boolean>} Whether the file was written
  */
-async function rasterise(svgPath, outPath, size) {
+async function rasterise(inputPath, outPath, size) {
   try {
     const { default: sharp } = await import('sharp');
 
-    await sharp(fs.readFileSync(svgPath))
-      .resize(size.width, size.height, { fit: 'contain', background: CARD_BACKGROUND })
+    await sharp(fs.readFileSync(inputPath))
+      .resize(size.width, size.height, {
+        fit: 'cover',
+        position: 'top',
+        background: CARD_BACKGROUND
+      })
       // The cards round their corners, and a corner left transparent is a
       // corner the reader's client fills in for itself.
       .flatten({ background: CARD_BACKGROUND })
@@ -661,9 +664,17 @@ async function main() {
   const base = siteBase(process.env);
 
   const preview = previewAsset(assets);
-  const previewSource = preview?.svg.dark || preview?.svg.light;
+  const pageScreenshot = path.join(ROOT, '.github', 'assets', 'pages-dark.png');
+  const usePageScreenshot = repository === 'nichtlegacy/letterboxd-graph'
+    && fs.existsSync(pageScreenshot);
+  const previewSource = usePageScreenshot
+    ? pageScreenshot
+    : preview?.svg.dark || preview?.svg.light;
+  const previewPath = usePageScreenshot
+    ? previewSource
+    : previewSource && path.join(outDir, previewSource);
   const wrotePreview = previewSource
-    && await rasterise(path.join(outDir, previewSource), path.join(outDir, 'og.png'), OG_SIZE);
+    && await rasterise(previewPath, path.join(outDir, 'og.png'), OG_SIZE);
 
   await rasterise(path.join(outDir, 'favicon.svg'), path.join(outDir, 'apple-touch-icon.png'), TOUCH_ICON_SIZE);
 

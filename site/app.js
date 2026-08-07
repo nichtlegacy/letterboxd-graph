@@ -1445,26 +1445,67 @@ function setupScrollSpy() {
 
 /* ── Boot ─────────────────────────────────────────────────────────────────── */
 
+async function fetchJson(url) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+
+  try {
+    const response = await fetch(url, { signal: controller.signal });
+    if (!response.ok) throw new Error(`${url} returned ${response.status}`);
+    return await response.json();
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+function showLoadError() {
+  document.querySelector('[data-hero-title]').textContent = 'Diary unavailable';
+  document.querySelector('[data-hero-subtitle]').textContent =
+    'The generated diary data is currently unavailable.';
+  document.querySelector('[data-hero-kpis]').hidden = true;
+  document.querySelector('.nav-links').hidden = true;
+  document.querySelector('.footer').hidden = true;
+
+  for (const node of document.querySelectorAll('main > :not(.hero):not([data-load-error])')) {
+    node.hidden = true;
+  }
+
+  const errorState = document.querySelector('[data-load-error]');
+  errorState.hidden = false;
+  errorState.querySelector('[data-retry]').addEventListener('click', () => location.reload(), { once: true });
+  document.title = 'Letterboxd Graph — data unavailable';
+  document.documentElement.classList.remove('is-loading');
+}
+
 async function main() {
   setupTheme();
 
   const [manifest, data] = await Promise.all([
-    fetch('manifest.json').then(response => response.json()),
-    fetch('data.json').then(response => response.json()).catch(() => null)
+    fetchJson('manifest.json'),
+    fetchJson('data.json')
   ]);
 
-  if (data) {
-    // Both distributions have a diary page behind every bar, filtered the same
-    // way the bar is.
-    const diary = data.user ? `https://letterboxd.com/${data.user}/diary/films` : null;
-
-    renderHero(data, manifest);
-    renderWhen(data.allTime, diary);
-    renderRatings(data.allTime, diary);
-    renderDecades(data.allTime, diary);
-    renderMilestones(data.allTime);
-    renderDiary(data.recent);
+  if (
+    !manifest ||
+    !Array.isArray(manifest.assets) ||
+    !data ||
+    typeof data !== 'object' ||
+    Array.isArray(data) ||
+    typeof data.user !== 'string'
+  ) {
+    throw new Error('Generated site data is incomplete');
   }
+
+  // Both distributions have a diary page behind every bar, filtered the same
+  // way the bar is.
+  const diary = data.user ? `https://letterboxd.com/${data.user}/diary/films` : null;
+
+  renderHero(data, manifest);
+  renderWhen(data.allTime, diary);
+  renderRatings(data.allTime, diary);
+  renderDecades(data.allTime, diary);
+  renderMilestones(data.allTime);
+  renderDiary(data.recent);
 
   for (const section of document.querySelectorAll('[data-section]')) {
     renderSection(section, manifest.assets.filter(asset => asset.kind === section.dataset.section), manifest);
@@ -1481,8 +1522,5 @@ async function main() {
 
 main().catch((error) => {
   console.error(error);
-  // Whatever failed, the page must not stay half-drawn.
-  document.documentElement.classList.remove('is-loading');
-  document.querySelector('[data-hero-title]').textContent =
-    'Could not load the generated files';
+  showLoadError();
 });

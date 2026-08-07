@@ -264,6 +264,34 @@ b {
   border-bottom-color: var(--brand-green);
 }
 
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 11px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 150ms var(--ease), border-color 150ms var(--ease),
+    background-color 150ms var(--ease);
+}
+
+.github-link:hover {
+  background: var(--surface);
+  border-color: var(--border-medium);
+  color: var(--text-light);
+}
+
+.github-icon {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+
 .theme-toggle {
   display: flex;
   align-items: center;
@@ -496,6 +524,83 @@ main {
    height and the hero does not shift when the name arrives. */
 .is-loading .hero-subtitle {
   visibility: hidden;
+}
+
+/* A failed request gets one deliberate state. Keeping the empty shells and the
+   generic footer around makes a missing export look like a broken layout. */
+.nav-links[hidden],
+.hero-kpis[hidden],
+.footer[hidden],
+.load-error[hidden] {
+  display: none;
+}
+
+.load-error {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  margin: 24px 0 96px;
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+}
+
+.load-error-mark {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid var(--accent-orange);
+  border-radius: 50%;
+  color: var(--accent-orange);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.load-error-copy {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.load-error-copy .eyebrow {
+  margin-bottom: -4px;
+}
+
+.load-error-copy h2 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.load-error-message {
+  max-width: 52ch;
+  color: var(--text-secondary);
+}
+
+.load-error-action {
+  width: fit-content;
+  min-height: 36px;
+  margin-top: 4px;
+  padding: 0 14px;
+  background: var(--brand-green);
+  border: 1px solid var(--brand-green);
+  border-radius: 4px;
+  color: var(--text-on-accent);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 150ms var(--ease), border-color 150ms var(--ease);
+}
+
+.load-error-action:hover {
+  background: var(--brand-green-mid);
+  border-color: var(--brand-green-mid);
 }
 
 /* ── Sections ─────────────────────────────────────────────────────────────── */
@@ -2156,6 +2261,13 @@ a.repeat-title:hover {
 }
 
 @media (max-width: 560px) {
+  .load-error {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 64px;
+    padding: 24px;
+  }
+
   .theme-label {
     display: none;
   }
