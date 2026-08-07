@@ -280,7 +280,7 @@
       </div>
       <div class="hero-text">
         <h1 class="display" data-hero-title>A Life in Film</h1>
-        <p class="hero-subtitle">
+        <p class="hero-subtitle" data-hero-subtitle>
           <a class="hero-profile-link" data-profile-link href="https://letterboxd.com/" rel="noopener"><img class="hero-avatar" data-hero-avatar alt="" aria-hidden="true" hidden><span data-hero-user>@username</span></a>’s all-time stats
         </p>
       </div>
@@ -294,6 +294,19 @@
         <a href="https://github.com/nichtlegacy/letterboxd-graph/tree/main/images">images/</a>.
       </p>
     </noscript>
+
+    <section class="load-error" data-load-error hidden role="alert" aria-labelledby="load-error-title">
+      <div class="load-error-mark" aria-hidden="true">!</div>
+      <div class="load-error-copy">
+        <p class="eyebrow">Data unavailable</p>
+        <h2 id="load-error-title">The diary could not be loaded</h2>
+        <p class="load-error-message">
+          The generated diary data is missing or temporarily unavailable. Try again
+          in a moment.
+        </p>
+        <button class="load-error-action" data-retry type="button">Try again</button>
+      </div>
+    </section>
 
     <section class="section" id="when" data-when hidden>
       <div class="section-head">
