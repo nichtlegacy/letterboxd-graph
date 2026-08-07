@@ -397,7 +397,36 @@ main {
 .section {
   padding: 48px 0;
   border-top: 1px solid var(--border-subtle);
-  scroll-margin-top: 72px;
+  scroll-margin-top: 76px;
+}
+
+/* Each section fades up as it comes into view, so a long page arrives in
+   reading order rather than as one wall of figures. The starting state is set
+   from JavaScript, so a page whose script never runs shows everything. */
+.section.will-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.section.will-reveal.is-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 480ms var(--ease), transform 480ms var(--ease);
+}
+
+/* Landing from the nav: the section's own top rule carries the accent for a
+   moment, which points at where the click went without adding any chrome. */
+@keyframes section-arrive {
+  from { border-top-color: var(--brand-green); }
+  to { border-top-color: var(--border-subtle); }
+}
+
+.section.is-target {
+  animation: section-arrive 1400ms var(--ease);
+}
+
+.section:focus {
+  outline: none;
 }
 
 .section-head {
@@ -1145,6 +1174,47 @@ a.bar-row:hover .bar-value {
 .chip:focus-visible {
   outline: 2px solid var(--brand-green);
   outline-offset: 2px;
+}
+
+/* ── Back to top ──────────────────────────────────────────────────────────── */
+
+.to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 220ms var(--ease), transform 220ms var(--ease),
+    color 150ms var(--ease), border-color 150ms var(--ease);
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.to-top:hover {
+  color: var(--text-light);
+  border-color: var(--brand-green);
+}
+
+.to-top .icon {
+  width: 16px;
+  height: 16px;
 }
 
 /* ── Card menu ────────────────────────────────────────────────────────────── */

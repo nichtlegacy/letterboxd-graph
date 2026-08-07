@@ -128,7 +128,8 @@ const ICONS = {
   open: ['M14 4h6v6', 'M20 4 11 13', 'M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6'],
   code: ['m9 8-4 4 4 4', 'm15 8 4 4-4 4'],
   clipboard: ['M9 4h6v3H9z', 'M15 5.5h2a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1h2'],
-  image: ['M4 6h16v12H4z', 'M4 15.5 8.5 11l3.5 3.5L15 12l5 4.5', 'M9 9.5h.01']
+  image: ['M4 6h16v12H4z', 'M4 15.5 8.5 11l3.5 3.5L15 12l5 4.5', 'M9 9.5h.01'],
+  arrowUp: ['M12 19V6', 'm6 12 6-6 6 6']
 };
 
 function icon(name) {
@@ -1056,24 +1057,187 @@ function diaryRow(entry) {
   return row;
 }
 
-/* ── Scroll spy ───────────────────────────────────────────────────────────── */
+/* ── Navigation ───────────────────────────────────────────────────────────── */
 
-function setupScrollSpy() {
-  const links = [...document.querySelectorAll('.nav-links a')];
-  const sections = links
-    .map(anchor => document.querySelector(anchor.getAttribute('href')))
-    .filter(Boolean);
+// The sticky bar is 56px, so a heading scrolled to the very top would sit under
+// it. This is that height plus enough air to read as a margin.
+const NAV_OFFSET = 76;
 
-  const spy = new IntersectionObserver((entries) => {
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
+let scrolling = null;
+
+function stopScrolling() {
+  scrolling = null;
+}
+
+/**
+ * Where an element sits in the document, read off the layout rather than the
+ * painted box: sections carry a transform while they fade in, and a rect would
+ * hand back a position they are about to leave.
+ *
+ * @param {HTMLElement} element
+ * @returns {number}
+ */
+function documentTop(element) {
+  let top = 0;
+  for (let node = element; node; node = node.offsetParent) top += node.offsetTop;
+  return top;
+}
+
+/**
+ * Scroll the page with an ease of our own. The browser's `smooth` behaviour is
+ * a fixed speed regardless of distance, which makes a jump to the foot of the
+ * page either a crawl or a blur; this one takes longer for a longer jump, but
+ * far from proportionally, and eases at both ends.
+ *
+ * Any input that means 'stop' — a wheel, a touch, a key — abandons it, so the
+ * page never fights the reader for the scroll position.
+ *
+ * @param {number} to - Document offset to end at
+ */
+function scrollToY(to) {
+  const start = window.scrollY;
+  const limit = document.documentElement.scrollHeight - window.innerHeight;
+  const end = Math.max(0, Math.min(to, limit));
+  const distance = end - start;
+  if (Math.abs(distance) < 2) return;
+
+  if (reducedMotion.matches) {
+    window.scrollTo(0, end);
+    return;
+  }
+
+  const duration = Math.min(900, 260 + Math.sqrt(Math.abs(distance)) * 18);
+  const began = performance.now();
+  const run = Symbol('scroll');
+  scrolling = run;
+
+  const step = (now) => {
+    if (scrolling !== run) return;
+
+    const progress = Math.min(1, (now - began) / duration);
+    // Cubic in and out: leaves and arrives slowly, covers the middle quickly.
+    const eased = progress < 0.5
+      ? 4 * progress ** 3
+      : 1 - ((-2 * progress + 2) ** 3) / 2;
+
+    window.scrollTo(0, start + distance * eased);
+    if (progress < 1) requestAnimationFrame(step);
+    else scrolling = null;
+  };
+
+  requestAnimationFrame(step);
+}
+
+function scrollToSection(target) {
+  if (!target) return;
+
+  scrollToY(documentTop(target) - NAV_OFFSET);
+
+  // Nothing loud: the section's own top rule lights up for a moment, so the
+  // eye lands where the click pointed even if the heading is short.
+  target.classList.remove('is-target');
+  void target.offsetWidth;
+  target.classList.add('is-target');
+  setTimeout(() => target.classList.remove('is-target'), 1400);
+}
+
+function setupNavigation() {
+  for (const event of ['wheel', 'touchstart', 'pointerdown', 'keydown']) {
+    window.addEventListener(event, stopScrolling, { passive: true });
+  }
+
+  for (const anchor of document.querySelectorAll('a[href^="#"]')) {
+    anchor.addEventListener('click', (clicked) => {
+      const id = anchor.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+
+      clicked.preventDefault();
+      scrollToSection(target);
+      history.replaceState(null, '', `#${id}`);
+
+      // Moving the page is not moving the reader: without this, the next tab
+      // press would carry on from the link in the bar.
+      target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    });
+  }
+
+  // An address that already carries a section: the browser has jumped there
+  // before the sections were filled in, so it is done again from here.
+  if (location.hash.length > 1) {
+    const target = document.getElementById(location.hash.slice(1));
+    if (target) requestAnimationFrame(() => window.scrollTo(0, documentTop(target) - NAV_OFFSET));
+  }
+}
+
+/**
+ * Fade each section in as it comes up. A page this long arrives as a wall of
+ * figures otherwise, and the movement gives the eye an order to read them in.
+ */
+function setupReveal() {
+  if (reducedMotion.matches) return;
+
+  const observer = new IntersectionObserver((entries) => {
     for (const entry of entries) {
       if (!entry.isIntersecting) continue;
-      for (const anchor of links) {
-        anchor.classList.toggle('is-active', anchor.getAttribute('href') === `#${entry.target.id}`);
-      }
+      entry.target.classList.add('is-in');
+      observer.unobserve(entry.target);
     }
-  }, { rootMargin: '-56px 0px -70% 0px' });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.04 });
 
-  for (const section of sections) spy.observe(section);
+  for (const section of document.querySelectorAll('.section:not([hidden])')) {
+    section.classList.add('will-reveal');
+    observer.observe(section);
+  }
+}
+
+/**
+ * Mark the section the page is actually on. Read off the scroll position
+ * rather than from an observer: with several short sections on screen at once,
+ * whichever crossed the line last is the one the reader is in.
+ */
+function setupScrollSpy() {
+  const links = [...document.querySelectorAll('.nav-links a')];
+  const targets = links
+    .map(anchor => ({ anchor, section: document.getElementById(anchor.getAttribute('href').slice(1)) }))
+    .filter(entry => entry.section);
+
+  const toTop = el('button', 'to-top');
+  toTop.type = 'button';
+  toTop.setAttribute('aria-label', 'Back to top');
+  toTop.append(icon('arrowUp'));
+  toTop.addEventListener('click', () => {
+    scrollToY(0);
+    history.replaceState(null, '', location.pathname);
+  });
+  document.body.append(toTop);
+
+  let queued = false;
+
+  const update = () => {
+    queued = false;
+    const line = window.scrollY + NAV_OFFSET + 8;
+
+    let current = null;
+    for (const entry of targets) {
+      if (documentTop(entry.section) <= line) current = entry;
+    }
+
+    for (const { anchor } of targets) anchor.classList.toggle('is-active', anchor === current?.anchor);
+    toTop.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.6);
+  };
+
+  window.addEventListener('scroll', () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(update);
+  }, { passive: true });
+
+  window.addEventListener('resize', update, { passive: true });
+  update();
 }
 
 /* ── Boot ─────────────────────────────────────────────────────────────────── */
@@ -1104,6 +1268,8 @@ async function main() {
     renderSection(section, manifest.assets.filter(asset => asset.kind === section.dataset.section), manifest);
   }
 
+  setupNavigation();
+  setupReveal();
   setupScrollSpy();
 }
 
