@@ -485,44 +485,91 @@ or `letterboxd-profile` to embed a card instead.
 
 ## Pages Site
 
-A README has room for one card, maybe two. Everything else ends up behind a
-`<details>` or not embedded at all — so the same files are also published as a
-page: **[nichtlegacy.github.io/letterboxd-graph](https://nichtlegacy.github.io/letterboxd-graph/)**.
+A README has room for one card, maybe two, and a card has room for a headline
+and ten films. The same files are also published as a page, which has neither
+limit — the cards at full size, and the figures behind them read out at length.
 
-<p align="center">
-  <img alt="The generated cards on the Pages site" src=".github/assets/pages-dark.png" width="100%">
-</p>
+<div align="center">
 
-It is the one place where the cards behave as they were drawn. GitHub embeds an
-SVG through an `<img>` tag, which receives no mouse events and is served under a
-`sandbox` CSP; the page embeds each card as an `<object>`, so tooltips, links and
-the reveal animation all work, and every card keeps its own ids and stylesheet
-instead of colliding with its neighbours.
+**[nichtlegacy.github.io/letterboxd-graph](https://nichtlegacy.github.io/letterboxd-graph/)**
 
-- Dark and light, following the system by default and switchable in the header.
-  The page swaps to the matching SVG rather than filtering the one it has.
-- Assembled from what the last run actually wrote, so years and month cards
-  appear and disappear on their own. Nothing about the site is hardcoded.
-- **Copy embed** under each card puts the `<picture>` block for it on your
-  clipboard, both themes filled in.
-- Type is served from `fonts/`, figures from a slim cut of the JSON export.
-  Nothing is fetched from a third party.
+<img alt="The generated cards on the Pages site" src=".github/assets/pages-dark.png" width="100%">
 
-### Enabling it
+</div>
 
-`.github/workflows/pages.yml` is already in the repository. In **Settings →
-Pages**, set **Source** to **GitHub Actions**. The workflow then runs after every
-generator run, on pushes that touch the site, and on demand from the **Actions**
-tab — which is also how a branch can be published before it is merged.
+| Section | What is on it |
+|---------|---------------|
+| **The diary in numbers** | Films, days active and average rating, then distinct films, rewatches, likes, longest streak — and a bar per year |
+| **When you watched** | A column per month, empty ones included; weekday distribution, weekly and monthly averages, busiest day, longest streak, longest quiet stretch |
+| **How you rated** | The half-star histogram, empty steps kept, beside the average, the most given rating and how much is rated or liked at all |
+| **What you reached for** | Films by release decade, and the five you went back to most |
+| **Where it turned over** | The first entry, every hundredth after it, and the latest |
+| **The cards** | Graph, a tab per year, a tab per month, profile — each with **Open SVG** and **Copy embed** |
+| **Recent diary** | The last ten entries, out of the JSON export |
 
-To preview it locally, generate the images once and serve the build:
+The figures cover whatever the run fetched — the whole diary under `scope: all`,
+the graph years under `scope: years`, which the page says out loud rather than
+passing narrow numbers off as all-time.
+
+It is also the one place where the cards work as drawn: GitHub serves an SVG
+through an `<img>` tag, which gets no mouse events, while the page embeds each
+one as an `<object>`, so tooltips, links and the reveal animation all behave.
+The rest follows from the same build — themes swap the file rather than filter
+it, sections come and go with whatever the last run wrote, embeds load as they
+scroll into view, and type is served from `fonts/`, so nothing is fetched from a
+third party.
+
+<details>
+<summary><b>Publishing it for your own profile</b></summary>
+
+Which route you take depends on which [Quick Start](#quick-start) you took.
+
+**If you forked this repository**, everything is already in place. Set
+`LETTERBOXD_USERNAME` in `.github/workflows/update-graph.yml`, then open
+**Settings → Pages** and set **Source** to **GitHub Actions**. Run **Update
+Letterboxd Graph + JSON Export** once from the **Actions** tab; the deploy
+follows on its own, and the site lands at
+`https://<github-user>.github.io/<repository>/`.
+
+**If you added the action to a repository of your own**, copy four things
+across:
+
+| Copy | Why |
+|------|-----|
+| `site/` | the page: one HTML file, one stylesheet, one module |
+| `scripts/build-site.mjs` | assembles `_site/` and writes the two files the page reads |
+| `src/stats.js` | the aggregates behind the figures; the build imports it |
+| `fonts/` | Inter as `.woff2`, plus its license |
+| `.github/workflows/pages.yml` | builds and deploys on every generator run |
+
+Then:
+
+1. In `pages.yml`, set the `workflows:` list under `workflow_run` to the `name:`
+   of your own generator workflow. GitHub matches it by name, not by filename,
+   and a name that matches nothing simply never fires. Check `branches:` against
+   your default branch while you are in there.
+2. Your `package.json` needs `"type": "module"` — `build-site.mjs` imports
+   `src/stats.js`, and without it Node reads that file as CommonJS and the build
+   dies on the `export` keyword.
+3. Leave `commit` at its default. The build reads `images/` out of the
+   repository and fetches nothing, so the files have to be committed for it to
+   have anything to publish.
+4. **Settings → Pages → Source → GitHub Actions**, then run the generator once.
+
+A private repository needs a paid plan for Pages; a public one does not.
+
+To preview any of it locally, generate the images once and serve the build:
 
 ```bash
 npm run build:site     # writes _site/
 npm run serve:site     # builds, then serves it on :8080
 ```
 
-The build only reads `images/`, so it costs no requests against Letterboxd.
+The build only reads `images/`, so previewing costs no requests against
+Letterboxd. Deploys can also be triggered by hand from the **Actions** tab,
+which is how a branch gets published before it is merged.
+
+</details>
 
 ## Requirements
 
