@@ -3,10 +3,6 @@
  * New layout based on single-year-2024-example.svg
  */
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import opentype from 'opentype.js';
 import {
   calculateStreak,
   calculateDaysActive,
@@ -15,154 +11,36 @@ import {
   calculateDecadeDistribution
 } from './stats.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const FONTS_DIR = path.join(__dirname, '..', 'fonts');
+import {
+  FONT_FACE_PLACEHOLDER,
+  inlineFonts,
+  escapeXml,
+  calculateTextWidth,
+  getTheme
+} from './svg-utils.js';
 
 /**
- * Load Inter font files as Base64 for embedding in SVG
+ * Rating level for a day, on the four-step scale of the palette.
+ *
+ * Averaged over the films that carry a rating. Counting an unrated film as a
+ * zero dragged whole days down a step or two: one five star film logged beside
+ * one unrated film averaged 2.5 rather than 5.
+ *
+ * A day where nothing was rated has no rating to show, so it takes the lowest
+ * active step. It stays visibly a day with films on it.
+ *
+ * @param {Array} films - Diary entries for one day
+ * @returns {number} 1 to 4
  */
-function loadFontsBase64() {
-  const fonts = {};
-  const fontFiles = {
-    regular: 'Inter-Regular.woff2',
-    medium: 'Inter-Medium.woff2',
-    semibold: 'Inter-SemiBold.woff2',
-    bold: 'Inter-Bold.woff2'
-  };
+export function ratingLevel(films) {
+  const rated = films.filter(film => film.rating > 0);
+  if (rated.length === 0) return 1;
 
-  for (const [weight, filename] of Object.entries(fontFiles)) {
-    const fontPath = path.join(FONTS_DIR, filename);
-    if (fs.existsSync(fontPath)) {
-      const fontData = fs.readFileSync(fontPath);
-      fonts[weight] = `data:font/woff2;base64,${fontData.toString('base64')}`;
-    }
-  }
-  return fonts;
-}
-
-// Load fonts once at module initialization
-let embeddedFonts = null;
-function getEmbeddedFonts() {
-  if (!embeddedFonts) {
-    embeddedFonts = loadFontsBase64();
-  }
-  return embeddedFonts;
-}
-
-/**
- * Generate @font-face CSS declarations for embedded fonts
- */
-function generateFontFaceCSS() {
-  const fonts = getEmbeddedFonts();
-  if (Object.keys(fonts).length === 0) {
-    return ''; // Fallback to system fonts if no embedded fonts available
-  }
-
-  return `
-      @font-face {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        src: url('${fonts.regular}') format('woff2');
-      }
-      @font-face {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 500;
-        src: url('${fonts.medium}') format('woff2');
-      }
-      @font-face {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 600;
-        src: url('${fonts.semibold}') format('woff2');
-      }
-      @font-face {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        src: url('${fonts.bold}') format('woff2');
-      }
-  `;
-}
-
-/**
- * Escape XML special characters
- */
-function escapeXml(unsafe) {
-  if (unsafe === undefined || unsafe === null) return "";
-  return String(unsafe).replace(/[<>&'"]/g, (c) => {
-    switch (c) {
-      case "<": return "&lt;";
-      case ">": return "&gt;";
-      case "&": return "&amp;";
-      case "'": return "&apos;";
-      case '"': return "&quot;";
-    }
-  });
-}
-
-/**
- * Calculate exact text width using opentype.js
- * Uses Inter-SemiBold font for accurate measurements with kerning support
- */
-
-// Load font once at module initialization
-let loadedFont = null;
-let textWidthFallbackWarningShown = false;
-function getFont() {
-  if (!loadedFont) {
-    const fontPath = path.join(FONTS_DIR, 'Inter-SemiBold.ttf');
-    if (fs.existsSync(fontPath)) {
-      try {
-        const fontBuffer = fs.readFileSync(fontPath);
-        const fontData = fontBuffer.buffer.slice(
-          fontBuffer.byteOffset,
-          fontBuffer.byteOffset + fontBuffer.byteLength
-        );
-        loadedFont = opentype.parse(fontData);
-      } catch (e) {
-        console.warn('Could not load font for text measurement, using fallback');
-        loadedFont = null;
-      }
-    }
-  }
-  return loadedFont;
-}
-
-/**
- * Calculate exact text width using opentype.js with kerning support
- * @param {string} text - Text to measure
- * @param {number} fontSize - Font size in pixels
- * @param {number} letterSpacing - Additional letter spacing (default 0)
- * @returns {number} Width in pixels
- */
-function calculateTextWidth(text, fontSize, letterSpacing = 0) {
-  if (!text) return 0;
-  
-  const font = getFont();
-  if (font) {
-    try {
-      // Use getAdvanceWidth for accurate measurement with kerning
-      let width = font.getAdvanceWidth(text, fontSize, { kerning: true });
-      
-      // Add letter spacing if specified
-      if (letterSpacing > 0 && text.length > 1) {
-        width += letterSpacing * (text.length - 1);
-      }
-      
-      return width;
-    } catch (error) {
-      if (!textWidthFallbackWarningShown) {
-        console.warn(`Could not measure text width with opentype.js, using fallback: ${error.message}`);
-        textWidthFallbackWarningShown = true;
-      }
-    }
-  }
-  
-  // Fallback to rough estimation if font couldn't be loaded
-  return text.length * fontSize * 0.55;
+  const average = rated.reduce((sum, film) => sum + film.rating, 0) / rated.length;
+  if (average < 2.5) return 1;
+  if (average < 3.5) return 2;
+  if (average < 4.5) return 3;
+  return 4;
 }
 
 // Shared tooltip geometry so single-year and multi-year layouts stay in sync
@@ -213,7 +91,24 @@ function buildCellDelay(enabled, week, day, yearIndex = 0) {
 }
 
 /**
- * Build the "X Movies" hover tooltip: rating distribution plus average rating
+ * Format one film line of a day tooltip.
+ *
+ * Rewatches and likes ride along as markers on the line that already exists,
+ * so they cost no extra space. Shared with the tooltip width calculation so the
+ * measured string and the rendered string cannot drift apart.
+ *
+ * @param {Object} film - Diary entry
+ * @returns {string} e.g. "• ↻ Sicario (2015) - 4★ ♥"
+ */
+function formatFilmLine(film) {
+  const rewatch = film.rewatch ? '↻ ' : '';
+  const rating = film.rating ? ` - ${film.rating}★` : '';
+  const liked = film.liked ? ' ♥' : '';
+  return `• ${rewatch}${film.title} (${film.year})${rating}${liked}`;
+}
+
+/**
+ * Build the "X Movies" hover tooltip: rating distribution plus a summary line
  * @param {Array} entries - Diary entries for the year
  * @param {Object} t - Theme colors
  * @returns {string} SVG markup
@@ -236,9 +131,17 @@ function buildMoviesTooltip(entries, t) {
   const maxRatingCount = Math.max(...ratingLabels.map(r => ratingDistribution[r]));
   const ratedCount = entries.length - ratingDistribution['unrated'];
   const average = calculateAverageRating(entries);
-  const averageLine = average === null
-    ? 'No ratings yet'
-    : `Ø ${average.toFixed(1)}★ across ${ratedCount} rated ${ratedCount === 1 ? 'film' : 'films'}`;
+  const rewatchCount = entries.filter(entry => entry.rewatch).length;
+  const likedCount = entries.filter(entry => entry.liked).length;
+
+  // One line, not one row per figure: the tooltip cannot grow past ~110px
+  // without being clipped by the top of the card.
+  const summaryParts = [
+    average === null ? 'No ratings yet' : `Ø ${average.toFixed(1)}★ · ${ratedCount} rated`
+  ];
+  if (rewatchCount > 0) summaryParts.push(`↻ ${rewatchCount}`);
+  if (likedCount > 0) summaryParts.push(`♥ ${likedCount}`);
+  const summaryLine = summaryParts.join(' · ');
 
   const bars = ratingLabels.map((rating, i) => {
     const count = ratingDistribution[rating];
@@ -254,7 +157,7 @@ function buildMoviesTooltip(entries, t) {
         <rect x="0" y="0" width="260" height="${MOVIES_TOOLTIP_HEIGHT}" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>
         <text x="130" y="15" font-size="11" font-weight="600" fill="${t.tooltipText}" text-anchor="middle">Rating Distribution${ratingDistribution['unrated'] > 0 ? ` (${ratingDistribution['unrated']} unrated)` : ''}</text>${bars}
         <line x1="12" y1="90" x2="248" y2="90" stroke="${t.tooltipBorder}" stroke-width="1"/>
-        <text x="130" y="102" font-size="10" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(averageLine)}</text>
+        <text x="130" y="102" font-size="10" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(summaryLine)}</text>
       </g>`;
 }
 
@@ -289,7 +192,7 @@ function buildDecadeTooltip(entries, t) {
 /**
  * Generate the SVG contribution graph
  */
-export function generateSvg(entries, options = {}) {
+export async function generateSvg(entries, options = {}) {
   const { 
     theme = 'dark', 
     year = new Date().getFullYear(),
@@ -304,7 +207,7 @@ export function generateSvg(entries, options = {}) {
     totalEntries = 0,
     memberStatus = null, // 'patron', 'pro', or null
     mode = 'count', // 'count' or 'rating'
-    animate = true // reveal cells with a CSS animation
+    animate = true, // reveal cells with a CSS animation
   } = options;
 
   // Calculate precise width for badge placement (28px font) + 4px gap
@@ -376,47 +279,15 @@ export function generateSvg(entries, options = {}) {
   const DAYS = weekStart === 'monday' ? DAYS_MONDAY : DAYS_SUNDAY;
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  // Theme colors - GitHub contribution graph style
-  const themes = {
-    dark: {
-      bg: '#0d1117',
-      cardBorder: '#21262d',
-      text: '#e6edf3',
-      textMuted: '#7d8590',
-      tooltipBg: '#161b22',
-      tooltipBorder: '#30363d',
-      tooltipText: '#f0f6fc',
-      colors: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353']
-    },
-    light: {
-      bg: '#ffffff',
-      cardBorder: '#d1d9e0',
-      text: '#1f2328',
-      textMuted: '#656d76',
-      tooltipBg: '#ffffff',
-      tooltipBorder: '#d1d9e0',
-      tooltipText: '#1f2328',
-      colors: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
-    }
-  };
-
-  const t = themes[theme] || themes.dark;
+  const t = getTheme(theme);
 
   function getColor(count, films) {
     if (count === 0) return t.colors[0];
 
     if (mode === 'rating' && films && films.length > 0) {
-      const totalRating = films.reduce((sum, f) => sum + (f.rating || 0), 0);
-      const avgRating = totalRating / count;
-      
-      // Rating mapping: 0.5-2.0 -> 1, 2.5-3.0 -> 2, 3.5-4.0 -> 3, >= 4.5 -> 4
-      if (avgRating < 2.5) return t.colors[1];
-      if (avgRating < 3.5) return t.colors[2];
-      if (avgRating < 4.5) return t.colors[3];
-      return t.colors[4];
-    }
-    
-    // Count mode
+      return t.colors[ratingLevel(films)];
+  }
+
     if (maxCount === 0) return t.colors[0];
     const level = Math.ceil((count / maxCount) * 4);
     return t.colors[Math.min(level, 4)];
@@ -438,7 +309,7 @@ export function generateSvg(entries, options = {}) {
     </linearGradient>
     <style type="text/css">
       <![CDATA[
-      ${generateFontFaceCSS()}
+      ${FONT_FACE_PLACEHOLDER}
       .tooltip-group {
         opacity: 0;
         transition: opacity 0.2s ease;
@@ -516,7 +387,7 @@ export function generateSvg(entries, options = {}) {
   <!-- Header Section -->
   <g transform="translate(25, 20)">
     <!-- Profile Image (clickable) -->
-    <a href="https://letterboxd.com/${username}/" target="_blank">
+    <a href="https://letterboxd.com/${username}/">
       <circle cx="40" cy="40" r="42" fill="${t.cardBorder}"/>
       ${profileImage ? `<image href="${profileImage}" x="0" y="0" width="80" height="80" clip-path="url(#profileClip)" style="cursor: pointer;"/>` : `<circle cx="40" cy="40" r="40" fill="${t.colors[2]}"/>`}
     </a>
@@ -530,12 +401,12 @@ export function generateSvg(entries, options = {}) {
 
     <!-- Name and Info (clickable) -->
 
-    <a href="https://letterboxd.com/${username}/" target="_blank">
+    <a href="https://letterboxd.com/${username}/">
       <text x="100" y="35" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="28" font-weight="600" fill="${usernameGradient ? 'url(#usernameGradient)' : t.text}" style="cursor: pointer;">${escapeXml(displayName)}</text>
     </a>
 
     <text x="100" y="60" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="14" font-weight="500">
-      <a href="https://letterboxd.com/${username}/" target="_blank" style="cursor: pointer;">
+      <a href="https://letterboxd.com/${username}/" style="cursor: pointer;">
         <tspan fill="${t.textMuted}">@${escapeXml(username)}</tspan>
       </a>
       <tspan dx="5" fill="${t.textMuted}">•</tspan>
@@ -547,7 +418,7 @@ export function generateSvg(entries, options = {}) {
     </text>
 
     <!-- Letterboxd Logo (clickable, links to main site) -->
-    ${logoBase64 ? `<a href="https://letterboxd.com/" target="_blank">
+    ${logoBase64 ? `<a href="https://letterboxd.com/">
       <g transform="translate(${SVG_WIDTH - 117}, 0)">
         <image href="${logoBase64}" x="0" y="4" width="72" height="72" style="cursor: pointer;"/>
       </g>
@@ -663,6 +534,15 @@ export function generateSvg(entries, options = {}) {
         continue;
       }
 
+      // Days without films render as a bare rect: no link, no tooltip. That skips
+      // the tooltip markup for most of the grid and keeps the SVG small. A day
+      // inside a streak always has at least one film, so it never lands here.
+      if (count === 0) {
+        svg += `
+    <rect class="cell" x="${x}" y="${y}" width="${CELL_SIZE}" height="${CELL_SIZE}" rx="2" fill="${color}"${buildCellDelay(animate, week, day, yearIndex)}/>`;
+        continue;
+      }
+
       // Diary URL for this date
       const yearStr = cellDate.getUTCFullYear();
       const monthStr = String(cellDate.getUTCMonth() + 1).padStart(2, '0');
@@ -680,7 +560,7 @@ export function generateSvg(entries, options = {}) {
       
       const lineHeight = 18;
       const tooltipHeight = 38 + filmsForDay.length * lineHeight;
-      const tooltipWidth = Math.max(240, Math.max(...[tooltipTitle, ...filmsForDay.map(f => `• ${f.title} (${f.year})${f.rating ? ` - ${f.rating}★` : ''}`)].map(s => s.length * 7)));
+      const tooltipWidth = Math.max(240, Math.max(...[tooltipTitle, ...filmsForDay.map(formatFilmLine)].map(s => s.length * 7)));
 
       // Position tooltip to avoid overflow
       const tooltipX = Math.min(x, SVG_WIDTH - GRID_OFFSET_X - tooltipWidth - 10);
@@ -692,7 +572,7 @@ export function generateSvg(entries, options = {}) {
 
       svg += `
     <g class="cell-group">
-      <a href="${diaryUrl}" target="_blank">
+      <a href="${diaryUrl}">
         <rect class="${cellClass}"
           x="${x}"
           y="${y}"
@@ -707,9 +587,8 @@ export function generateSvg(entries, options = {}) {
             <tspan x="10" dy="22" font-weight="600">${escapeXml(tooltipTitle)}</tspan>`;
       
       filmsForDay.forEach((film) => {
-        const ratingStr = film.rating ? ` - ${film.rating}★` : "";
         svg += `
-            <tspan x="10" dy="${lineHeight}">${escapeXml(`• ${film.title} (${film.year})${ratingStr}`)}</tspan>`;
+            <tspan x="10" dy="${lineHeight}">${escapeXml(formatFilmLine(film))}</tspan>`;
       });
 
       svg += `
@@ -724,14 +603,14 @@ export function generateSvg(entries, options = {}) {
   </g>
 </svg>`;
 
-  return svg;
+  return await inlineFonts(svg);
 }
 
 /**
  * Generate a multi-year SVG contribution graph
  * Shows multiple years stacked vertically with a shared header
  */
-export function generateMultiYearSvg(entries, options = {}) {
+export async function generateMultiYearSvg(entries, options = {}) {
   const { 
     theme = 'dark', 
     years = [new Date().getFullYear()],
@@ -746,7 +625,7 @@ export function generateMultiYearSvg(entries, options = {}) {
     totalEntries = 0,
     memberStatus = null,
     mode = 'count', // 'count' or 'rating'
-    animate = true // reveal cells with a CSS animation
+    animate = true, // reveal cells with a CSS animation
   } = options;
 
   // Calculate precise width for badge placement (28px font) + 4px gap
@@ -770,31 +649,7 @@ export function generateMultiYearSvg(entries, options = {}) {
   const DAYS = weekStart === 'monday' ? DAYS_MONDAY : DAYS_SUNDAY;
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  // Theme colors - GitHub contribution graph style
-  const themes = {
-    dark: {
-      bg: '#0d1117',
-      cardBorder: '#21262d',
-      text: '#e6edf3',
-      textMuted: '#7d8590',
-      tooltipBg: '#161b22',
-      tooltipBorder: '#30363d',
-      tooltipText: '#f0f6fc',
-      colors: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353']
-    },
-    light: {
-      bg: '#ffffff',
-      cardBorder: '#d1d9e0',
-      text: '#1f2328',
-      textMuted: '#656d76',
-      tooltipBg: '#ffffff',
-      tooltipBorder: '#d1d9e0',
-      tooltipText: '#1f2328',
-      colors: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
-    }
-  };
-
-  const t = themes[theme] || themes.dark;
+  const t = getTheme(theme);
 
   // Start building SVG
   let svg = `<svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -812,7 +667,7 @@ export function generateMultiYearSvg(entries, options = {}) {
     </linearGradient>
     <style type="text/css">
       <![CDATA[
-      ${generateFontFaceCSS()}
+      ${FONT_FACE_PLACEHOLDER}
       .tooltip-group { opacity: 0; transition: opacity 0.2s ease; pointer-events: none; }
       .cell-group:hover .tooltip-group { opacity: 1; }
       .cell-group:hover .cell { filter: brightness(1.3); }
@@ -842,7 +697,7 @@ export function generateMultiYearSvg(entries, options = {}) {
   <!-- Header Section -->
   <g transform="translate(25, 20)">
     <!-- Profile Image (clickable) -->
-    <a href="https://letterboxd.com/${username}/" target="_blank">
+    <a href="https://letterboxd.com/${username}/">
       <circle cx="40" cy="40" r="42" fill="${t.cardBorder}"/>
       ${profileImage ? `<image href="${profileImage}" x="0" y="0" width="80" height="80" clip-path="url(#profileClip)" style="cursor: pointer;"/>` : `<circle cx="40" cy="40" r="40" fill="${t.colors[2]}"/>`}
     </a>
@@ -855,12 +710,12 @@ export function generateMultiYearSvg(entries, options = {}) {
     </g>` : ''}
 
     <!-- Name and Info (clickable) -->
-    <a href="https://letterboxd.com/${username}/" target="_blank">
+    <a href="https://letterboxd.com/${username}/">
       <text x="100" y="35" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="28" font-weight="600" fill="${usernameGradient ? 'url(#usernameGradient)' : t.text}" style="cursor: pointer;">${escapeXml(displayName)}</text>
     </a>
 
     <text x="100" y="60" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="14" font-weight="500">
-      <a href="https://letterboxd.com/${username}/" target="_blank" style="cursor: pointer;">
+      <a href="https://letterboxd.com/${username}/" style="cursor: pointer;">
         <tspan fill="${t.textMuted}">@${escapeXml(username)}</tspan>
       </a>
       <tspan dx="5" fill="${t.textMuted}">•</tspan>
@@ -872,7 +727,7 @@ export function generateMultiYearSvg(entries, options = {}) {
     </text>
 
     <!-- Letterboxd Logo (clickable, links to main site) -->
-    ${logoBase64 ? `<a href="https://letterboxd.com/" target="_blank">
+    ${logoBase64 ? `<a href="https://letterboxd.com/">
       <g transform="translate(${SVG_WIDTH - 117}, 0)">
         <image href="${logoBase64}" x="0" y="4" width="72" height="72" style="cursor: pointer;"/>
       </g>
@@ -929,13 +784,7 @@ export function generateMultiYearSvg(entries, options = {}) {
       if (count === 0) return t.colors[0];
 
       if (mode === 'rating' && films && films.length > 0) {
-        const totalRating = films.reduce((sum, f) => sum + (f.rating || 0), 0);
-        const avgRating = totalRating / count;
-        
-        if (avgRating < 2.5) return t.colors[1];
-        if (avgRating < 3.5) return t.colors[2];
-        if (avgRating < 4.5) return t.colors[3];
-        return t.colors[4];
+        return t.colors[ratingLevel(films)];
       }
 
       if (maxCount === 0) return t.colors[0];
@@ -1048,6 +897,13 @@ export function generateMultiYearSvg(entries, options = {}) {
         
         if (isOutsideYear) continue;
 
+        // See the single-year generator: empty days need no link or tooltip.
+        if (count === 0) {
+          svg += `
+    <rect class="cell" x="${x}" y="${y}" width="${CELL_SIZE}" height="${CELL_SIZE}" rx="2" fill="${color}"${buildCellDelay(animate, week, day, yearIndex)}/>`;
+          continue;
+        }
+
         const yearStr = cellDate.getUTCFullYear();
         const monthStr = String(cellDate.getUTCMonth() + 1).padStart(2, '0');
         const dayStr = String(cellDate.getUTCDate()).padStart(2, '0');
@@ -1061,7 +917,7 @@ export function generateMultiYearSvg(entries, options = {}) {
         
         const lineHeight = 18;
         const tooltipHeight = 38 + filmsForDay.length * lineHeight;
-        const tooltipWidth = Math.max(240, Math.max(...[tooltipTitle, ...filmsForDay.map(f => `• ${f.title} (${f.year})${f.rating ? ` - ${f.rating}★` : ''}`)].map(s => s.length * 7)));
+        const tooltipWidth = Math.max(240, Math.max(...[tooltipTitle, ...filmsForDay.map(formatFilmLine)].map(s => s.length * 7)));
 
         // Position tooltip
         const tooltipX = Math.min(x, SVG_WIDTH - 51 - tooltipWidth - 10);
@@ -1073,7 +929,7 @@ export function generateMultiYearSvg(entries, options = {}) {
 
         svg += `
     <g class="cell-group">
-      <a href="${diaryUrl}" target="_blank">
+      <a href="${diaryUrl}">
         <rect class="${cellClass}"
           x="${x}"
           y="${y}"
@@ -1088,9 +944,8 @@ export function generateMultiYearSvg(entries, options = {}) {
             <tspan x="10" dy="22" font-weight="600">${escapeXml(tooltipTitle)}</tspan>`;
       
       filmsForDay.forEach((film) => {
-        const ratingStr = film.rating ? ` - ${film.rating}★` : "";
         svg += `
-            <tspan x="10" dy="${lineHeight}">${escapeXml(`• ${film.title} (${film.year})${ratingStr}`)}</tspan>`;
+            <tspan x="10" dy="${lineHeight}">${escapeXml(formatFilmLine(film))}</tspan>`;
       });
 
       svg += `
@@ -1108,5 +963,5 @@ export function generateMultiYearSvg(entries, options = {}) {
   svg += `
 </svg>`;
 
-  return svg;
+  return await inlineFonts(svg);
 }

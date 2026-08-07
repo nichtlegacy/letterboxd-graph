@@ -3,6 +3,48 @@
  */
 
 /**
+ * Stable identity for a film.
+ *
+ * Titles are not unique: remakes and unrelated films share them, and even the
+ * year does not separate them — two different 2023 films are both called "Leo".
+ * The slug in the diary link is the only thing that identifies a film, so it is
+ * preferred and the title is only a fallback for entries without a URL.
+ *
+ * @param {Object} entry - Diary entry
+ * @returns {string}
+ */
+export function filmKey(entry) {
+  const slug = (entry.url || '').match(/\/film\/([^/]+)/);
+  return slug ? `film:${slug[1]}` : `title:${entry.title}|${entry.year || ''}`;
+}
+
+/**
+ * Mark every viewing that is not the first one of its film as a rewatch.
+ *
+ * Letterboxd's rewatch flag is set by hand, so it misses repeat viewings that
+ * were logged without ticking it. Deriving it from repeats alone would be worse
+ * though: a film first seen before the diary begins has only one entry in it,
+ * and only the flag knows that entry was a rewatch. One profile here has 761
+ * such viewings. Taking either signal catches both cases and loses neither.
+ *
+ * @param {Array} entries - Diary entries, any order
+ * @returns {Array} The same entries with `rewatch` filled in
+ */
+export function markRewatches(entries) {
+  const seen = new Set();
+
+  return [...entries]
+    .sort((a, b) => a.date.getTime() - b.date.getTime())
+    .map((entry) => {
+      const key = filmKey(entry);
+      const isRepeat = seen.has(key);
+      seen.add(key);
+
+      return { ...entry, rewatch: Boolean(entry.rewatch) || isRepeat };
+    });
+}
+
+/**
  * Calculate the longest streak of consecutive days with movies watched
  * @param {Array} entries - Array of diary entries with date property
  * @returns {Object} Streak info: { length, startDate, endDate, films }
@@ -91,7 +133,9 @@ export function groupEntriesByDate(entries) {
     grouped.get(dateKey).push({
       title: entry.title,
       year: entry.year,
-      rating: entry.rating
+      rating: entry.rating,
+      rewatch: Boolean(entry.rewatch),
+      liked: Boolean(entry.liked)
     });
   }
   
@@ -182,6 +226,8 @@ export function buildJsonExport(entries, options = {}) {
         title: item.title,
         year: item.year,
         rating: item.rating,
+        rewatch: Boolean(item.rewatch),
+        liked: Boolean(item.liked),
         url: item.url || null
       })),
       url
@@ -270,6 +316,8 @@ export function buildJsonExport(entries, options = {}) {
         title: item.title,
         year: item.year,
         rating: item.rating,
+        rewatch: Boolean(item.rewatch),
+        liked: Boolean(item.liked),
         url: item.url || null
       })),
       level: 0,
@@ -302,6 +350,8 @@ export function buildJsonExport(entries, options = {}) {
       title: entry.title,
       year: entry.year,
       rating: entry.rating,
+      rewatch: Boolean(entry.rewatch),
+      liked: Boolean(entry.liked),
       url: entry.url || null
     }));
 
@@ -324,7 +374,9 @@ export function buildJsonExport(entries, options = {}) {
       films: sortedEntries.length,
       daysActive: calculateDaysActive(sortedEntries),
       streak: streakInfo.length,
-      streakFilms: streakInfo.films
+      streakFilms: streakInfo.films,
+      rewatches: sortedEntries.filter((entry) => entry.rewatch).length,
+      liked: sortedEntries.filter((entry) => entry.liked).length
     },
     monthLabels,
     calendar,

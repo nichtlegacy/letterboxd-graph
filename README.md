@@ -1,174 +1,54 @@
-# 🎬 Letterboxd Contribution Graph
+<div align="center">
 
-<p align="center">
-  <img src="https://img.shields.io/github/actions/workflow/status/nichtlegacy/letterboxd-graph/update-graph.yml?label=action&style=flat-square" alt="GitHub Workflow Status">
-  <img src="https://img.shields.io/github/release/nichtlegacy/letterboxd-graph.svg?style=flat-square" alt="GitHub Release">
-  <img src="https://img.shields.io/badge/Made%20with-Node.js-green?style=flat-square" alt="Made with Node.js">
-  <img src="https://img.shields.io/badge/JavaScript-ES6+-yellow?style=flat-square" alt="JavaScript">
-  <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License">
-</p>
+# Letterboxd Graph
 
-<p align="center">
-  <strong>Transform your Letterboxd film diary into a beautiful GitHub-style contribution graph</strong>
-</p>
+**Turn your Letterboxd diary into a contribution graph and shareable cards.**<br>
+Runs as a GitHub Action, commits the finished SVGs back to your repository.
 
-<p align="center">
-  <a href="https://letterboxd.com/nichtlegacy/" target="_blank">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/nichtlegacy/letterboxd-graph/blob/main/images/github-letterboxd-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://github.com/nichtlegacy/letterboxd-graph/blob/main/images/github-letterboxd-light.svg">
-      <img alt="Letterboxd contribution graph" src="https://github.com/nichtlegacy/letterboxd-graph/blob/main/images/github-letterboxd-light.svg" width="100%">
-    </picture>
-  </a>
-</p>
+[![Workflow](https://img.shields.io/github/actions/workflow/status/nichtlegacy/letterboxd-graph/update-graph.yml?label=action&style=flat-square)](https://github.com/nichtlegacy/letterboxd-graph/actions)
+[![Release](https://img.shields.io/github/release/nichtlegacy/letterboxd-graph.svg?style=flat-square)](https://github.com/nichtlegacy/letterboxd-graph/releases)
+[![Node](https://img.shields.io/badge/node-%E2%89%A520.9-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Reusable Action](https://img.shields.io/badge/GitHub_Action-reusable-2088FF?style=flat-square&logo=githubactions&logoColor=white)](#quick-start)
+[![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
 
----
+[Quick Start](#quick-start) • [What It Generates](#what-it-generates) • [Configuration](#configuration) • [CLI](#cli) • [How It Works](#how-it-works) • [Pages Site](#pages-site) • [License](#license)
 
-## ✨ Features
+<a href="https://letterboxd.com/nichtlegacy/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nichtlegacy/letterboxd-graph/main/images/github-letterboxd-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/nichtlegacy/letterboxd-graph/main/images/github-letterboxd-light.svg">
+    <img alt="Letterboxd contribution graph" src="https://raw.githubusercontent.com/nichtlegacy/letterboxd-graph/main/images/github-letterboxd-light.svg" width="100%">
+  </picture>
+</a>
 
-| Feature | Description |
-|---------|-------------|
-| 🎨 **Light & Dark Themes** | Automatically adapts to GitHub's theme preference |
-| 📊 **Activity Heatmap** | GitHub-style contribution graph showing film activity |
-| 👤 **Profile Integration** | Shows profile picture, display name, stats, and member badge |
-| 🏆 **Pro/Patron Badges** | Displays Letterboxd Pro (orange) or Patron (cyan) status |
-| 📅 **Multi-Year Support** | Generate graphs spanning multiple years |
-| 🎯 **Streak Highlighting** | Hover over "Day Streak" to highlight your longest streak, with its date range and film count |
-| 💬 **Interactive Tooltips** | Hover over cells to see film details (in browser) |
-| 📈 **Rating Distribution + Average** | Hover over the film count for the rating histogram and your average rating |
-| 🕰️ **Decade Breakdown** | Hover over the year label to see how your films spread across release decades |
-| ✨ **Cell Reveal Animation** | Cells fade in as a wave when the SVG loads; respects `prefers-reduced-motion` |
-| ⭐ **Rating Mode** | Color cells by average rating instead of watch count |
-| 📦 **JSON Export** | Writes `images/letterboxd-data.json` for external widgets (e.g. Glance `custom-api`) |
-| 🔄 **Daily Updates** | Automated updates via GitHub Actions |
+</div>
 
----
+## Overview
 
-## 🚀 Quick Start
+Letterboxd Graph reads a public Letterboxd diary and renders it as SVG: a
+GitHub-style activity calendar, a review card per year and per month, and a card
+for the profile itself. It also writes a JSON export so you can build your own
+widgets from the same figures.
 
-### 1. Fork this Repository
+It is meant to be embedded — in a GitHub profile README, a blog post, or a
+social preview. Everything is a self-contained SVG with the fonts subset and
+inlined, so there is nothing to host and nothing to load at view time.
 
-Click the **Fork** button at the top-right of this page.
+It needs no Letterboxd account, API key, or server. It reads public profile
+pages only, and cannot see anything your profile does not show a logged-out
+visitor.
 
-### 2. Update Your Username
+## Quick Start
 
-Edit `.github/workflows/update-graph.yml`:
+Add one workflow file to any repository. No fork, no copied scripts.
 
 ```yaml
-- run: npm start YOUR_LETTERBOXD_USERNAME -o images/github-letterboxd
-```
-
-### 3. Enable GitHub Actions
-
-Go to **Actions** tab → Enable workflows if prompted.
-
-### 4. Run the Workflow
-
-The graph updates daily at midnight UTC, or trigger manually via the **Actions** tab.
-
----
-
-## 📸 Examples
-
-### Patron User (Single Year)
-<p align="center">
-  <img src=".github/assets/behaind-dark.svg" width="100%">
-</p>
-
-### Pro User (Single Year)
-<p align="center">
-  <img src=".github/assets/rufus_firefly-dark.svg" width="100%">
-</p>
-
-### Multi-Year Graph
-<p align="center">
-  <img src=".github/assets/nichtlegacy-dark.svg" width="100%">
-</p>
-
-### Interactive Features
-
-Hover over stats to reveal additional information:
-
-- **Year label** → films grouped by release decade
-- **Film count** → rating distribution and your average rating
-- **Days Active** → weekday distribution
-- **Day Streak** → date range, film count, and the streak highlighted in the grid
-
-> **Note:** GitHub embeds the SVG through an `<img>` tag, which cannot receive mouse
-> events — hover states only work when you open the SVG file directly in a browser.
-> The cell reveal animation is declarative CSS and *does* play inside a README.
-
-<table>
-  <tr>
-    <th>Day Streak Highlight</th>
-    <th>Days Active Tooltip</th>
-    <th>Film Count Tooltip</th>
-  </tr>
-  <tr>
-    <td><img src=".github/assets/hover-streak.png" width="250"></td>
-    <td><img src=".github/assets/hover-days-active.png" width="250"></td>
-    <td><img src=".github/assets/hover-films.png" width="250"></td>
-  </tr>
-</table>
-
----
-
-## 📖 CLI Usage
-
-```bash
-# Install dependencies
-npm install
-
-# Basic usage
-node src/cli.js <username>
-
-# With options
-node src/cli.js <username> [options]
-```
-
-### Arguments
-
-| Flag | Description | Default |
-|------|-------------|---------|
-| `-y <years>` | Year(s) to generate, comma-separated (e.g. `2024,2023`) | Current year |
-| `-w <day>` | Week start: `sunday` or `monday` | `sunday` |
-| `-o <path>` | Output path (without extension) | `images/github-letterboxd` |
-| `-g <bool>` | Enable username gradient: `true` or `false` | `true` |
-| `-p` | Export PNG files in addition to SVG | Disabled |
-| `-m <mode>` | Graph mode: `count` or `rating` | `count` |
-| `-a <bool>` | Cell reveal animation: `true` or `false` | `true` |
-
-### Examples
-
-```bash
-# Single year with custom output
-node src/cli.js nichtlegacy -y 2025 -o images/my-graph
-
-# Multiple years (2024 + 2025)
-node src/cli.js nichtlegacy -y 2025,2024
-
-# Start week on Monday, no gradient
-node src/cli.js nichtlegacy -w monday -g false
-
-# Rating mode with PNG export
-node src/cli.js nichtlegacy -m rating -p
-```
-
----
-
-## 🔧 GitHub Actions Setup
-
-### Option A: Reusable Action (recommended)
-
-You don't need to fork or copy this repository. Add a single workflow file to any repo
-(for example your GitHub profile repo) and pass your username as an input:
-
-```yaml
+# .github/workflows/letterboxd.yml
 name: Update Letterboxd Graph
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # Daily at midnight UTC
+    - cron: "0 0 * * *"   # daily at midnight UTC
   workflow_dispatch:
 
 permissions:
@@ -186,270 +66,525 @@ jobs:
           years: "2026,2025"        # optional, defaults to the current year
 ```
 
-The action generates the SVGs plus `letterboxd-data.json` and commits them back to the
-checked-out branch. `actions/checkout` is required so the action has a repository to
-write into.
+Run it once from the **Actions** tab. A healthy first run logs the diary pages
+it fetched, then commits into `images/`:
 
-#### Action Inputs
+```
+Found 599 film entries, 456 in 2026, 2025
+   Posters: 10/10, favourites 4/4
+   ✓ images/github-letterboxd-dark.svg
+   ✓ images/letterboxd-review-2026-dark.svg
+   ✓ images/letterboxd-review-current-month-dark.svg
+   ✓ images/letterboxd-profile-dark.svg
+```
+
+`actions/checkout` is required so the action has a repository to write into. To
+handle the files yourself instead of committing them, set `commit: 'false'`.
+
+## What It Generates
+
+Every run writes the same set of files into `images/`, each in a dark and a
+light variant. Use `<picture>` so GitHub serves the one matching the reader's
+theme — see [Embedding](#embedding).
+
+### Contribution Graph
+
+`github-letterboxd-{dark,light}.svg` — the activity calendar, one block of weeks
+per requested year.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/github-letterboxd-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="images/github-letterboxd-light.svg">
+    <img alt="Letterboxd contribution graph" src="images/github-letterboxd-light.svg" width="100%">
+  </picture>
+</p>
+
+Hovering reveals more than the graph shows at rest:
+
+| Hover target | Reveals |
+|--------------|---------|
+| Year label | Films grouped by release decade |
+| Film count | Rating distribution, average rating, rewatch and like totals |
+| Days Active | Weekday distribution |
+| Day Streak | Date range, film count, and the streak highlighted in the grid |
+| Any day cell | The films watched, `↻` for rewatches and `♥` for likes |
+
+<table>
+  <tr>
+    <th>Day Streak Highlight</th>
+    <th>Days Active Tooltip</th>
+    <th>Film Count Tooltip</th>
+  </tr>
+  <tr>
+    <td><img src=".github/assets/hover-streak.png" width="250"></td>
+    <td><img src=".github/assets/hover-days-active.png" width="250"></td>
+    <td><img src=".github/assets/hover-films.png" width="250"></td>
+  </tr>
+</table>
+
+> [!NOTE]
+> GitHub embeds SVGs through an `<img>` tag, which receives no mouse events, and
+> serves raw files with a `sandbox` CSP, so hover states and links are dead in a
+> README. They work on the [Pages site](#pages-site), which embeds each card as
+> an `<object>`. The cell reveal animation is declarative CSS and *does* play
+> inside a README.
+
+### Year in Review
+
+`letterboxd-review-<year>-{dark,light}.svg` — one card per year in `years`.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-review-2026-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-review-2026-light.svg">
+    <img alt="Letterboxd year in review card" src="images/letterboxd-review-2026-light.svg" width="100%">
+  </picture>
+</p>
+
+1200×630, the Open Graph default, so it works as a social preview as it stands.
+Headline figures on the left, top rated films on the right with poster art,
+runtime and the Letterboxd community rating.
+
+What the list ranks is a choice, because "the best I saw in 2026" and "the best
+of 2026" are different claims:
+
+| `top-films` | The list holds |
+|-------------|----------------|
+| `watched` (default) | Everything watched that year, whatever year it came out |
+| `released` | Only the films released that year |
+
+It applies to year cards only. A month is far too small a window to also demand
+the film came out that year — one month of new releases is a handful of titles
+at best and often none, so a month card always ranks everything watched.
+
+The card above is set to `released`, which is why it carries a **TOP 2026
+RELEASES** heading. The default needs no heading — everything watched is not a
+restriction, so there is nothing to announce. The heading takes its space out of
+the rows rather than off the bottom, so both columns end on the same line either
+way.
+
+<details>
+<summary><b><code>top-films: watched</code></b> — the default, for comparison</summary>
+
+<p align="center">
+  <img alt="Year in review card ranking everything watched" src=".github/assets/year-card-watched-dark.png" width="100%">
+</p>
+
+Same year, same diary. A five star film from 1977 outranks everything released
+that year, which is true but says nothing about the year itself.
+
+</details>
+
+### Month in Review
+
+`letterboxd-review-current-month-{dark,light}.svg` and
+`letterboxd-review-previous-month-{dark,light}.svg`.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-review-previous-month-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-review-previous-month-light.svg">
+    <img alt="Letterboxd month in review card" src="images/letterboxd-review-previous-month-light.svg" width="100%">
+  </picture>
+</p>
+
+The same card narrowed to a single month. A month with nothing logged says so
+rather than rendering an empty list.
+
+Its film list always ranks everything watched that month, whatever
+[`top-films`](#year-in-review) is set to.
+
+The files are named by how recent the month is, not by its date, so an embed
+keeps working when the month turns over and old cards do not pile up.
+
+### Profile Card
+
+`letterboxd-profile-{dark,light}.svg` — not tied to a year.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-profile-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-profile-light.svg">
+    <img alt="Letterboxd profile card" src="images/letterboxd-profile-light.svg" width="100%">
+  </picture>
+</p>
+
+The headline is your all-time films watched, taken from the profile page. The
+right column shows the favourites pinned on your Letterboxd profile. What the
+figures below it cover depends on [Diary Scope](#diary-scope).
+
+### Member Badges
+
+Pro and Patron members get their badge over the avatar, on the graph and on both
+cards.
+
+| Status | Badge color | Placement |
+|--------|-------------|-----------|
+| **Patron** | Cyan `#40bcf4` | Bottom-left of the profile picture |
+| **Pro** | Orange `#ff8000` | Bottom-left of the profile picture |
+
+<details>
+<summary><b>Patron example</b> — <a href="https://letterboxd.com/BeHaind/">@BeHaind</a></summary>
+
+<p align="center">
+  <img alt="Profile card for a Patron member" src=".github/assets/profile-card-patron-dark.svg" width="100%">
+</p>
+<p align="center">
+  <img alt="Contribution graph for a Patron member" src=".github/assets/graph-patron-dark.svg" width="100%">
+</p>
+
+</details>
+
+<details>
+<summary><b>Pro example</b> — <a href="https://letterboxd.com/Rufus_Firefly/">@Rufus_Firefly</a></summary>
+
+<p align="center">
+  <img alt="Profile card for a Pro member" src=".github/assets/profile-card-pro-dark.svg" width="100%">
+</p>
+<p align="center">
+  <img alt="Contribution graph for a Pro member" src=".github/assets/graph-pro-dark.svg" width="100%">
+</p>
+
+</details>
+
+### JSON Export
+
+`letterboxd-data.json` — every figure the cards use, for building your own
+widgets. See [JSON Export](#json-export-1) below.
+
+## Configuration
+
+All options are action inputs. Only `username` is required.
 
 | Input | Description | Default |
 |-------|-------------|---------|
 | `username` | Letterboxd username (**required**) | – |
 | `years` | Comma-separated years, e.g. `2026,2025` | current year |
+| `scope` | Diary scope: `all` or `years` | `all` |
+| `month-cards` | Recent months to also make cards for, `0` to skip | `2` |
+| `top-films` | Year card film list: `watched` or `released` | `watched` |
+| `mode` | Cell coloring: `count` or `rating` | `count` |
 | `week-start` | `sunday` or `monday` | `sunday` |
-| `mode` | `count` or `rating` | `count` |
-| `gradient` | Letterboxd color gradient on the display name | `true` |
+| `gradient` | Gradient text: `true`, `false`, `name` or `year` | `true` |
 | `animate` | Cell reveal animation | `true` |
 | `export-png` | Also write PNG files | `false` |
 | `output` | Output path without extension | `images/github-letterboxd` |
+| `commit` | Commit and push the generated files | `true` |
+| `commit-message` | Commit message (branch and UTC timestamp appended) | `Update Letterboxd graph` |
 | `node-version` | Node.js version | `20` |
 | `install-browser-deps` | Install Puppeteer system libraries (Ubuntu runners) | `true` |
-| `commit` | Commit and push the generated files | `true` |
-| `commit-message` | Commit message (branch + UTC timestamp appended) | `Update Letterboxd graph` |
 
-#### Action Outputs
+Outputs `svg-dark`, `svg-light` and `data-json` carry the paths written, for
+chaining into an upload or deploy step.
 
-| Output | Description |
-|--------|-------------|
-| `svg-dark` | Path to the dark theme SVG |
-| `svg-light` | Path to the light theme SVG |
-| `data-json` | Path to the JSON export |
+<details>
+<summary><b>Alternative: fork and run the CLI directly</b></summary>
 
-Set `commit: 'false'` if you want to handle the files yourself, for example to upload
-them as an artifact or deploy them to GitHub Pages.
-
-### Option B: Copy the Workflow
-
-If you'd rather fork this repository and run the CLI directly:
-
-#### Workflow File
-
-Create `.github/workflows/update-graph.yml`:
+To own the whole workflow instead, fork this repository and edit
+`.github/workflows/update-graph.yml`. Its `env` block is the configuration:
 
 ```yaml
-name: Update Letterboxd Graph
-
-# ╔════════════════════════════════════════════════════════════════╗
-# ║  CONFIGURATION - Edit these values for your Letterboxd profile ║
-# ╚════════════════════════════════════════════════════════════════╝
 env:
-  LETTERBOXD_USERNAME: "YOUR_USERNAME" # Replace with your username
-  YEARS: ""                            # e.g. "2025,2024" or leave empty for current year
-  EXPORT_PNG: "false"                  # Set to "true" to also generate PNG files
+  LETTERBOXD_USERNAME: "YOUR_USERNAME"
+  YEARS: "2026,2025"                   # empty for the current year
+  SCOPE: "all"                         # "all" (whole diary) or "years"
+  MONTH_CARDS: "2"                     # recent months to card, 0 to skip
+  TOP_FILMS: "watched"                 # "watched" or "released" film list
   WEEK_START: "sunday"                 # "sunday" or "monday"
-  GRADIENT: "true"                     # "true" for colored name, "false" for white
-  ANIMATE: "true"                      # "false" to disable the cell reveal animation
-
-on:
-  schedule:
-    - cron: "0 0 * * *"   # Daily at midnight UTC
-  workflow_dispatch:       # Manual trigger
-
-permissions:
-  contents: write
-
-jobs:
-  update-graph:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      
-      - run: npm ci
-      
-      - name: Generate Graph
-        run: |
-          # Build command based on configuration
-          CMD="node src/cli.js ${{ env.LETTERBOXD_USERNAME }} -o images/github-letterboxd"
-          
-          if [ -n "${{ env.YEARS }}" ]; then CMD="$CMD -y ${{ env.YEARS }}"; fi
-          if [ "${{ env.WEEK_START }}" = "monday" ]; then CMD="$CMD -w monday"; fi
-          if [ "${{ env.GRADIENT }}" = "false" ]; then CMD="$CMD -g false"; fi
-          if [ "${{ env.ANIMATE }}" = "false" ]; then CMD="$CMD -a false"; fi
-          if [ "${{ env.EXPORT_PNG }}" = "true" ]; then CMD="$CMD -p"; fi
-          
-          echo "Running: $CMD"
-          eval $CMD
-
-      - name: Commit and Push
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add images/
-          
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Update Letterboxd graph"
-            git push
-          fi
+  GRADIENT: "true"                     # "true", "false", "name" or "year"
+  ANIMATE: "true"                      # "false" disables the reveal animation
+  EXPORT_PNG: "false"                  # "true" also writes PNGs
 ```
 
-### Configuration
+This is the path this repository uses itself, except that it calls the action
+through `uses: ./` so every scheduled run doubles as an end-to-end test of what
+external consumers get.
 
-You can customize the graph directly in the workflow file by editing the `env` section at the top:
+</details>
 
-- **LETTERBOXD_USERNAME**: Your Letterboxd profile name
-- **YEARS**: Comma-separated list of years (e.g., `2025,2024`)
-- **EXPORT_PNG**: Set to `true` if you want PNG versions alongside SVGs
-- **WEEK_START**: Start week on `sunday` or `monday`
-- **GRADIENT**: Toggle the username text gradient
-- **ANIMATE**: Toggle the cell reveal animation
+## CLI
 
----
+```bash
+npm install
+node src/cli.js <username> [options]
+```
 
+| Flag | Description | Default |
+|------|-------------|---------|
+| `-y <years>` | Year(s), comma-separated, e.g. `2026,2025` | current year |
+| `-s <scope>` | Diary scope: `all` or `years` | `all` |
+| `-c <count>` | Recent months to also card, `0` to skip | `2` |
+| `-r <scope>` | Year card film list: `watched` or `released` | `watched` |
+| `-m <mode>` | Graph mode: `count` or `rating` | `count` |
+| `-w <day>` | Week start: `sunday` or `monday` | `sunday` |
+| `-g <targets>` | Gradient text: `true`, `false`, `name` or `year` | `true` |
+| `-a <bool>` | Cell reveal animation | `true` |
+| `-p` | Also export PNG files | off |
+| `-o <path>` | Output path without extension | `images/github-letterboxd` |
 
-### Glance Widgets (custom-api)
+```bash
+# Two years
+node src/cli.js nichtlegacy -y 2026,2025
 
-The generator also writes `images/letterboxd-data.json`, so you can build Glance widgets without running an extra backend container.
+# Only the requested year, no month cards
+node src/cli.js nichtlegacy -y 2025 -s years -c 0
 
-Raw URL format:
+# Only that year's releases in the card list
+node src/cli.js nichtlegacy -y 2025 -r released
+
+# Rating mode, week starting Monday, plain text, with PNGs
+node src/cli.js nichtlegacy -m rating -w monday -g false -p
+```
+
+## How It Works
+
+### Diary Scope
+
+By default the complete diary is fetched, so the profile card can report
+all-time figures. Paginating it costs one request per 50 entries:
+
+| Profile | Films watched | Diary entries | Requests |
+|---------|---------------|---------------|----------|
+| [@nichtlegacy](https://letterboxd.com/nichtlegacy/) | 626 | 599 | 12 |
+| [@BeHaind](https://letterboxd.com/BeHaind/) | 3,653 | 1,254 | 26 |
+| [@Rufus_Firefly](https://letterboxd.com/Rufus_Firefly/) | 5,848 | 3,783 | 76 |
+
+The two counts differ because they measure different things:
+
+- **Films watched** is the profile's own figure, linking to `/<user>/films/`. It
+  counts every film marked watched, whether or not it was ever given a date.
+- **Diary entries** are dated log entries. Only these carry a rating, a rewatch
+  flag or a like, so everything on the cards below the headline comes from them.
+
+@BeHaind has 3,653 films watched against 1,253 distinct films in the diary, so
+roughly two thirds were ticked off without a diary entry. Only the diary drives
+the request count, which is why a large library can still be cheap to fetch.
+
+### Rewatches
+
+A viewing counts as a rewatch if Letterboxd's flag is set **or** the same film
+appears earlier in the diary. Neither signal alone is enough:
+
+- The flag is set by hand, so a repeat logged without ticking it is missed. On
+  [@nichtlegacy](https://letterboxd.com/nichtlegacy/) that is 30 of 83 rewatches.
+- Repeats alone miss a film first seen before the diary begins, which has only
+  one entry in it. On [@Rufus_Firefly](https://letterboxd.com/Rufus_Firefly/)
+  that is 761 viewings — every rewatch they have.
+
+Films are identified by the slug in their diary link, not by title. Titles are
+not unique, and neither is title plus year: two different 2023 films are both
+called *Leo*. @Rufus_Firefly has 55 titles that are actually different films, so
+matching on the title alone would invent rewatches and merge unrelated films in
+the [ranking](#film-ranking).
+
+The graph and the year cards still only cover the years in `years`; the rest is
+filtered out of the same fetch rather than requested again. Set `scope: years`
+to fetch only those years — cheaper on a large diary, but it leaves the profile
+card scoped to them and labelled with the range.
+
+### Film Ranking
+
+Films on the cards are ranked by rating first. Likes and rewatches only decide
+the order *within* a rating:
+
+```
+score = rating + 0.30 if liked + 0.08 per extra viewing, capped at 0.16
+```
+
+The bonuses total less than a half-star step, so a film can never overtake one
+rated higher. This matters more than it sounds: a typical year has a handful of
+films at the top rating and a dozen tied one step below, so without it the last
+slots would be filled in whatever order the diary returned. Repeat viewings of
+one film merge into a single entry at its best rating.
+
+### Graph Modes
+
+**`count`** — intensity from how many films you watched that day, scaled to your
+busiest day. The legend reads *Less* to *More*.
+
+<p align="center">
+  <img alt="Graph in count mode" src=".github/assets/mode-count-dark.png" width="100%">
+</p>
+
+**`rating`** — colour from the average rating of that day's films. The legend
+reads *Low* to *High*, and a quiet day you loved outranks a busy one you did
+not.
+
+<p align="center">
+  <img alt="Graph in rating mode" src=".github/assets/mode-rating-dark.png" width="100%">
+</p>
+
+| Average that day | Step |
+|------------------|------|
+| under 2.5★ | lowest |
+| 2.5★ to 3★ | second |
+| 3.5★ to 4★ | third |
+| 4.5★ and up | highest |
+
+The average covers the films you rated. An unrated film sharing the day does not
+drag it down, and a day where you rated nothing sits on the lowest step — it has
+no rating to show, but it is still visibly a day with films on it.
+
+### JSON Export
+
+`images/letterboxd-data.json` holds the same figures the cards use, so a Glance
+`custom-api` widget needs no extra backend:
 
 ```
 https://raw.githubusercontent.com/<github-user>/letterboxd-graph/main/images/letterboxd-data.json
 ```
 
-Example payload shape:
+<details>
+<summary><b>Payload shape</b></summary>
 
 ```json
 {
   "user": "nichtlegacy",
   "year": 2026,
-  "stats": { "films": 123, "daysActive": 80, "streak": 7, "streakFilms": 11 },
+  "stats": { "films": 123, "daysActive": 80, "streak": 7, "streakFilms": 11, "rewatches": 18, "liked": 19 },
   "cells": [
     {
       "date": "2026-02-16",
       "count": 2,
       "ratingAvg": 3.5,
       "films": [
-        { "title": "Film A", "year": "2024", "rating": 3.5, "url": "https://letterboxd.com/..." }
+        { "title": "Film A", "year": "2024", "rating": 3.5, "rewatch": false, "liked": true, "url": "https://letterboxd.com/..." }
       ],
       "url": "https://letterboxd.com/<user>/films/diary/for/2026/02/16/"
     }
   ],
   "recent": [
-    { "date": "2026-02-16", "title": "Film A", "year": "2024", "rating": 3.5, "url": "https://letterboxd.com/..." }
+    { "date": "2026-02-16", "title": "Film A", "year": "2024", "rating": 3.5, "rewatch": false, "liked": true, "url": "https://letterboxd.com/..." }
   ]
 }
 ```
 
-You can use this to build:
+</details>
 
-- a compact heatmap widget (GitHub-like)
-- a separate stats widget (`films`, `daysActive`, `streak`, `streakFilms`)
-- an optional recent-watches list
+## Embedding
 
-## 📂 Project Structure
-
-```
-letterboxd-graph/
-├── action.yml                # Reusable GitHub Action definition
-├── .github/
-│   ├── assets/               # README images and examples
-│   └── workflows/
-│       └── update-graph.yml  # GitHub Actions workflow
-├── fonts/
-│   ├── Inter-Bold.ttf
-│   ├── Inter-Medium.ttf
-│   ├── Inter-Regular.ttf
-│   └── Inter-SemiBold.ttf    # Primary font for text measurement
-├── images/
-│   ├── github-letterboxd-dark.svg    # Generated dark theme
-│   ├── github-letterboxd-light.svg   # Generated light theme
-│   └── letterboxd-data.json          # Generated JSON data for widgets
-├── src/
-│   ├── cli.js                # CLI entry point
-│   ├── fetcher.js            # Letterboxd data fetching
-│   ├── fetch_with_curl_cffi.py  # curl_cffi fetcher (primary, Puppeteer is the fallback)
-│   ├── generator.js          # SVG generation
-│   ├── stats.js              # Statistics calculations
-│   └── exporter.js           # PNG export functionality
-├── tests/
-│   └── test_fetch_with_curl_cffi.py  # Tests for the curl_cffi fetcher
-├── package.json
-└── README.md
-```
-
-Run the test suite with:
-
-```bash
-npm test
-```
-
----
-
-## 🖼️ Embed in Your README
-
-Add this to your profile README to display the graph with automatic theme switching:
+Point at the raw file, not the `blob` URL — GitHub serves `blob` as HTML and the
+image will not render.
 
 ```html
-<p align="center">
-  <a href="https://letterboxd.com/YOUR_LETTERBOXD_USERNAME/" target="_blank">
-    <picture>
-      <source
-        media="(prefers-color-scheme: dark)"
-        srcset="https://github.com/YOUR_GITHUB_USERNAME/letterboxd-graph/blob/main/images/github-letterboxd-dark.svg"
-      />
-      <source
-        media="(prefers-color-scheme: light)"
-        srcset="https://github.com/YOUR_GITHUB_USERNAME/letterboxd-graph/blob/main/images/github-letterboxd-light.svg"
-      />
-      <img
-        alt="Letterboxd contribution graph"
-        src="https://github.com/YOUR_GITHUB_USERNAME/letterboxd-graph/blob/main/images/github-letterboxd-light.svg"
-      />
-    </picture>
-  </a>
-</p>
+<a href="https://letterboxd.com/YOUR_LETTERBOXD_USERNAME/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)"
+            srcset="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/letterboxd-graph/main/images/github-letterboxd-dark.svg">
+    <source media="(prefers-color-scheme: light)"
+            srcset="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/letterboxd-graph/main/images/github-letterboxd-light.svg">
+    <img alt="Letterboxd contribution graph"
+         src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/letterboxd-graph/main/images/github-letterboxd-light.svg">
+  </picture>
+</a>
 ```
 
-Replace `YOUR_GITHUB_USERNAME` and `YOUR_LETTERBOXD_USERNAME` with your usernames.
+Swap the filename for `letterboxd-review-2026`, `letterboxd-review-current-month`
+or `letterboxd-profile` to embed a card instead.
 
----
+## Pages Site
 
-## 🎨 Themes & Modes
+A README has room for one card, maybe two. Everything else ends up behind a
+`<details>` or not embedded at all — so the same files are also published as a
+page: **[nichtlegacy.github.io/letterboxd-graph](https://nichtlegacy.github.io/letterboxd-graph/)**.
 
-### Graph Modes
+<p align="center">
+  <img alt="The generated cards on the Pages site" src=".github/assets/pages-dark.png" width="100%">
+</p>
 
-| Mode | Description |
-|------|-------------|
-| **Count** (default) | Cell color intensity based on number of films watched |
-| **Rating** | Cell color based on average rating of films that day |
+It is the one place where the cards behave as they were drawn. GitHub embeds an
+SVG through an `<img>` tag, which receives no mouse events and is served under a
+`sandbox` CSP; the page embeds each card as an `<object>`, so tooltips, links and
+the reveal animation all work, and every card keeps its own ids and stylesheet
+instead of colliding with its neighbours.
 
-### Member Badges
+- Dark and light, following the system by default and switchable in the header.
+  The page swaps to the matching SVG rather than filtering the one it has.
+- Assembled from what the last run actually wrote, so years and month cards
+  appear and disappear on their own. Nothing about the site is hardcoded.
+- **Copy embed** under each card puts the `<picture>` block for it on your
+  clipboard, both themes filled in.
+- Type is served from `fonts/`, figures from a slim cut of the JSON export.
+  Nothing is fetched from a third party.
 
-The graph automatically detects and displays your Letterboxd membership status:
+### Enabling it
 
-| Status | Badge Color | Location |
-|--------|-------------|----------|
-| **Pro** | Orange (#ff8000) | Bottom-left of profile picture |
-| **Patron** | Cyan (#40bcf4) | Bottom-left of profile picture |
+`.github/workflows/pages.yml` is already in the repository. In **Settings →
+Pages**, set **Source** to **GitHub Actions**. The workflow then runs after every
+generator run, on pushes that touch the site, and on demand from the **Actions**
+tab — which is also how a branch can be published before it is merged.
 
----
+To preview it locally, generate the images once and serve the build:
 
-## 🛠️ Requirements
+```bash
+npm run build:site     # writes _site/
+npm run serve:site     # builds, then serves it on :8080
+```
 
-- **Node.js** v20.9 or higher (required by sharp v0.35)
-- **Python 3** with `curl_cffi` (`pip install curl_cffi`) — used as the primary fetcher and to run the tests. Without it the fetcher falls back to Puppeteer.
-- **Public Letterboxd profile** with diary entries
-- **GitHub account** with Actions enabled (for automated updates)
+The build only reads `images/`, so it costs no requests against Letterboxd.
 
----
+## Requirements
 
-## 🤝 Contributing
+Running through the action needs nothing on your side; the runner provides it
+all. For local runs:
 
-Contributions are welcome! Feel free to:
+| Requirement | Why |
+|-------------|-----|
+| **Node.js ≥ 20.9** | Required by `sharp` v0.35, which rasterises the PNG exports |
+| **Python 3 with `curl_cffi`** | The primary fetcher, and needed for the Python tests — `pip install curl_cffi` |
+| **A public Letterboxd profile** | Only pages a logged-out visitor can see are read |
 
-- 🐛 Report bugs
-- 💡 Suggest features
-- 🔧 Submit pull requests
+Without `curl_cffi` the fetcher falls back to Puppeteer, which is bundled but
+markedly slower and more prone to being challenged.
 
----
+## Development
 
-## 📄 License
+<details>
+<summary><b>Project structure</b></summary>
 
-MIT License - see [LICENSE](LICENSE) for details.
+- [`src/cli.js`](src/cli.js) — argument parsing and the run order
+- [`src/fetcher.js`](src/fetcher.js) — diary, profile and film page scraping
+- [`src/fetch_with_curl_cffi.py`](src/fetch_with_curl_cffi.py) — primary fetcher, Puppeteer is the fallback
+- [`src/generator.js`](src/generator.js) — contribution graph SVG
+- [`src/cards.js`](src/cards.js) — review and profile card SVGs
+- [`src/svg-utils.js`](src/svg-utils.js) — font subsetting, text measurement, theme colors
+- [`src/stats.js`](src/stats.js) — streaks, distributions, JSON export
+- [`src/exporter.js`](src/exporter.js) — PNG rasterisation and poster thumbnails
+- [`site/`](site/) — the Pages front end: one page, one stylesheet, one module
+- [`scripts/build-site.mjs`](scripts/build-site.mjs) — assembles `_site/`, writes the manifest the page reads
+- [`action.yml`](action.yml) — the reusable action
+- [`tests/`](tests/) — `node:test` for the JavaScript, `unittest` for the fetcher
+
+</details>
+
+```bash
+npm test          # both suites
+npm run test:js   # statistics, cards and layout
+npm run test:py   # the curl_cffi fetcher
+```
+
+The layout tests read geometry out of the generated markup rather than asserting
+on fixed coordinates, so padding and column changes do not break them
+spuriously.
+
+## Contributing
+
+Issues and pull requests are welcome.
+
+- **Bugs** — include the username, the flags or inputs used, and the run log.
+  Scraping breaks when Letterboxd changes its markup, and the log usually points
+  straight at the selector that stopped matching.
+- **Features** — open an issue first if it changes the output. The cards are
+  tightly laid out and most additions cost space somewhere else.
+- **Pull requests** — run `npm test` first. New behaviour needs a test; layout
+  changes should assert on measured geometry, not on coordinates.
+
+## License
+
+Released under the [MIT License](./LICENSE).
+
+Not affiliated with, endorsed by, or connected to Letterboxd. It reads public
+profile pages, so it depends on their markup and can break when that changes. Be
+considerate with `scope: all` on a large diary — it is one request per 50 entries
+against someone else's servers.

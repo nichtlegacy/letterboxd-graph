@@ -170,7 +170,7 @@ function isCloudflareChallengePage(html) {
 function hasExpectedPageContent(html, url) {
   if (!html || !url) return false;
 
-  if (url.includes('/diary/')) {
+  if (url.includes('/diary/') || url.includes('/films/diary')) {
     return hasExpectedDiaryPageContent(html);
   }
 
@@ -515,7 +515,7 @@ async function fetchPageWithPuppeteer(url, retries = 7) {
         throw new Error(`HTTP ${response.status()} while fetching ${url}`);
       }
       
-      if (url.includes('/diary/')) {
+      if (url.includes('/diary/') || url.includes('/films/diary')) {
         // Wait for the diary content to load (or timeout after 15 seconds)
         try {
           await page.waitForFunction(
@@ -565,6 +565,11 @@ async function fetchPageWithPuppeteer(url, retries = 7) {
 /**
  * Parse diary entries from HTML content
  */
+/**
+ * Parse the diary rows on one page.
+ * @param {string} html
+ * @param {number|null} year - Restrict to this year, or null to accept any
+ */
 function parseDiaryEntries(html, year) {
   const $ = cheerio.load(html);
   const entries = [];
@@ -611,7 +616,7 @@ function parseDiaryEntries(html, year) {
 
       const [, entryYearRaw, month, day] = dayMatch;
       const entryYear = Number.parseInt(entryYearRaw, 10);
-      const entryKey = `${entryYearRaw}-${month}-${day}-${$row.index()}`;
+      const entryKey = `${entryYearRaw}-${month}-${day}-${$row.index()}-${$row.attr('data-viewing-id') || ''}`;
       if (seenKeys.has(entryKey)) {
         return;
       }
@@ -657,6 +662,15 @@ function parseDiaryEntries(html, year) {
         }
       }
 
+      // The rewatch column is always present and carries `icon-status-off` when
+      // the entry is a first watch, so a rewatch is the absence of that class.
+      const rewatchCell = $row.find('td.col-rewatch').first();
+      const rewatch = rewatchCell.length > 0 && !rewatchCell.hasClass('icon-status-off');
+
+      // A liked entry adds a separate `icon-liked` span next to the owner's
+      // like button, which is rendered for every row whether liked or not.
+      const liked = $row.find('td.col-like .icon-liked').length > 0;
+
       const monthNames = {
         '01': 0, '02': 1, '03': 2, '04': 3, '05': 4, '06': 5,
         '07': 6, '08': 7, '09': 8, '10': 9, '11': 10, '12': 11
@@ -664,8 +678,9 @@ function parseDiaryEntries(html, year) {
 
       const monthNum = monthNames[month];
 
-      if (monthNum !== undefined && day && entryYear === year) {
-        const date = new Date(Date.UTC(year, monthNum, Number.parseInt(day, 10)));
+      const wantedYear = year === null || entryYear === year;
+      if (monthNum !== undefined && day && wantedYear) {
+        const date = new Date(Date.UTC(entryYear, monthNum, Number.parseInt(day, 10)));
         const filmUrl = titleLink ? `https://letterboxd.com${titleLink}` : undefined;
 
         entries.push({
@@ -673,6 +688,8 @@ function parseDiaryEntries(html, year) {
           title,
           year: filmYear,
           rating,
+          rewatch,
+          liked,
           url: filmUrl
         });
       }
@@ -705,6 +722,46 @@ function parseDiaryEntries(html, year) {
 /**
  * Fetch diary entries for a specific year with curl_cffi primary and Puppeteer fallback
  */
+/**
+ * Fetch the complete diary, every year at once.
+ *
+ * Paginating the unfiltered diary costs one request per 50 entries, which for a
+ * profile of a few hundred films is barely more than fetching two years
+ * separately. For a profile of several thousand it is minutes, so callers
+ * expose this as a choice rather than doing it unconditionally.
+ *
+ * @param {string} username
+ * @returns {Promise<Array>} Every diary entry, oldest last
+ */
+export async function fetchAllDiaryEntries(username) {
+  const allEntries = [];
+  let page = 1;
+
+  console.log(`Fetching the complete Letterboxd diary for user: ${username}`);
+
+  while (true) {
+    const url = `https://letterboxd.com/${username}/diary/films/page/${page}/`;
+    console.log(`URL: ${url}`);
+
+    const html = await fetchPage(url);
+    const { entries, hasMore } = parseDiaryEntries(html, null);
+    console.log(`Found ${entries.length} diary entries on page ${page}`);
+
+    if (entries.length === 0) break;
+    allEntries.push(...entries);
+
+    if (!hasMore) {
+      console.log('No next page link found, finished fetching');
+      break;
+    }
+
+    page++;
+    await new Promise(resolve => setTimeout(resolve, 500));
+  }
+
+  return allEntries;
+}
+
 export async function fetchLetterboxdData(username, year) {
   const allEntries = [];
   let page = 1;
@@ -843,6 +900,27 @@ export async function fetchProfileData(username) {
       if (match) totalEntries = parseInt(match[1].replace(/,/g, ''));
     }
 
+    // Favourite films pinned on the profile. A profile shows up to four, most
+    // show fewer, so callers have to cope with anything from zero to four.
+    // Parsed here rather than in a second request because profile pages are
+    // Cloudflare challenged and this HTML is already in hand.
+    const favourites = [];
+    $('#favourites .react-component[data-item-slug]').each((_, element) => {
+      if (favourites.length >= 4) return;
+
+      const slug = $(element).attr('data-item-slug');
+      const name = $(element).attr('data-item-name') || '';
+      const parsed = name.match(/^(.*)\s+\((\d{4})\)\s*$/);
+
+      if (slug) {
+        favourites.push({
+          title: parsed ? parsed[1] : name,
+          year: parsed ? parsed[2] : '',
+          url: `https://letterboxd.com/film/${slug}/`
+        });
+      }
+    });
+
     // Check for Member status
     let memberStatus = null;
     if ($('.badge.-patron').length > 0) memberStatus = 'patron';
@@ -854,7 +932,8 @@ export async function fetchProfileData(username) {
       followers,
       following,
       totalEntries,
-      memberStatus
+      memberStatus,
+      favourites
     };
   } catch (error) {
     console.warn(`Error fetching profile data for ${username}: ${error}. Using fallback values.`);
@@ -870,6 +949,70 @@ export async function fetchProfileData(username) {
 /**
  * Convert image URL to Base64 data URI
  */
+/**
+ * Rewrite a diary film link to the canonical film page.
+ *
+ * Diary rows link to /<user>/film/<slug>/, which 404s when requested directly.
+ * The film itself lives at /film/<slug>/.
+ *
+ * @param {string} filmUrl
+ * @returns {string|null} Canonical URL, or null if the input is not a film link
+ */
+export function canonicalFilmUrl(filmUrl) {
+  if (!filmUrl) return null;
+
+  const match = filmUrl.match(/\/film\/([^/]+)/);
+  return match ? `https://letterboxd.com/film/${match[1]}/` : null;
+}
+
+/**
+ * Read the details a card shows for a film.
+ *
+ * Poster, runtime and the community rating all come from the same page, so
+ * they are read in one request rather than three. Diary rows only carry
+ * lazy-loading placeholders, which is why the film page is needed at all.
+ *
+ * Uses a plain request rather than the Cloudflare-resilient fetchPage: film
+ * pages are not challenged the way diary and profile pages are, and fetchPage
+ * validates responses against diary markup, so it would reject a film page and
+ * fall through to the much slower Puppeteer path. Everything here is
+ * decorative, so a failure yields nulls and the card simply shows less.
+ *
+ * @param {string} filmUrl - Any Letterboxd link to the film
+ * @returns {Promise<{poster: string|null, runtime: number|null, averageRating: number|null}>}
+ */
+export async function fetchFilmDetails(filmUrl) {
+  const empty = { poster: null, runtime: null, averageRating: null };
+  const url = canonicalFilmUrl(filmUrl);
+  if (!url) return empty;
+
+  try {
+    const response = await fetch(url, { headers: BROWSER_HEADERS });
+    if (!response.ok) return empty;
+
+    const html = await response.text();
+
+    // The JSON-LD "image" field is the canonical poster and covers both asset
+    // paths Letterboxd uses (/resized/film-poster/... and /resized/sm/upload/...).
+    // The bare URL match is only a fallback for pages without JSON-LD.
+    const structured = html.match(/"image"\s*:\s*"(https:\/\/a\.ltrbxd\.com\/resized\/[^"]+)"/);
+    const fallback = html.match(/https:\/\/a\.ltrbxd\.com\/resized\/film-poster\/[^"'\s\\]+/);
+    const posterUrl = structured?.[1] || fallback?.[0];
+
+    const runtime = html.match(/(\d+)\s*(?:&nbsp;|\s)mins/);
+    const rating = html.match(/"ratingValue"\s*:\s*([\d.]+)/);
+
+    return {
+      poster: posterUrl ? posterUrl.replace(/&amp;/g, '&') : null,
+      runtime: runtime ? Number.parseInt(runtime[1], 10) : null,
+      averageRating: rating ? Number.parseFloat(rating[1]) : null
+    };
+  } catch (error) {
+    console.warn(`   Could not read details for ${url}: ${error.message}`);
+    return empty;
+  }
+}
+
 export async function imageToBase64(url) {
   try {
     const response = await fetch(url, { headers: BROWSER_HEADERS });

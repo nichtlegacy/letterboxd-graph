@@ -1,0 +1,76 @@
+name: Deploy Pages
+
+# Publishes the generated cards as a browsable page. It has nothing to fetch:
+# the site is assembled from what is already committed in images/, so a deploy
+# is cheap and can follow every generator run.
+
+on:
+  # After the generator committed a fresh set of images
+  workflow_run:
+    workflows: ["Update Letterboxd Graph + JSON Export"]
+    types: [completed]
+    branches: [main]
+
+  # And whenever the page itself changes
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'scripts/build-site.mjs'
+      - 'fonts/**'
+      - '.github/workflows/pages.yml'
+
+  # Manual, so a branch can be previewed before it is merged
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time, and let a newer one win: the site is a snapshot of the
+# images in the repository, so an in-flight older build has nothing to finish.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    # A failed generator run leaves the previous images in place, so there is
+    # nothing new to publish.
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          # A workflow_run event points at the commit that started the
+          # generator, which predates the images it went on to push. Checking
+          # out the branch tip instead picks those up.
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_branch || github.ref }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+
+      - name: Build site
+        run: node scripts/build-site.mjs
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

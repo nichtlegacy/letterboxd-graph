@@ -31,3 +31,6 @@ letterboxd-page-1.html
 # python
 __pycache__/
 *.py[cod]
+
+# generated pages site
+/_site

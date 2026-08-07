@@ -23,13 +23,30 @@ inputs:
     required: false
     default: 'count'
   gradient:
-    description: 'Render the display name with the Letterboxd color gradient'
+    description: 'Gradient text: "true" (name and year), "false", "name" or "year"'
     required: false
     default: 'true'
   animate:
     description: 'Reveal grid cells with a CSS animation when the SVG loads'
     required: false
     default: 'true'
+  scope:
+    description: >-
+      Diary scope. "all" fetches the complete diary, which costs one request per
+      50 entries — a few seconds for a few hundred films, several minutes for a
+      few thousand. "years" fetches only the years in `years`.
+    required: false
+    default: 'all'
+  month-cards:
+    description: 'Recent months to also make review cards for, "0" to skip'
+    required: false
+    default: '2'
+  top-films:
+    description: >-
+      What the card's film list ranks: "watched" for everything seen in the
+      period, "released" for only the films released in its year.
+    required: false
+    default: 'watched'
   export-png:
     description: 'Also write PNG versions next to the SVGs'
     required: false
@@ -70,11 +87,14 @@ runs:
   using: 'composite'
   steps:
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: ${{ inputs.node-version }}
-        cache: 'npm'
-        cache-dependency-path: ${{ github.action_path }}/package-lock.json
+        # Deliberately no `cache: npm`. Its cache-dependency-path has to point at
+        # the lockfile inside the action, and `github.action_path` resolves to
+        # "<workspace>/." for a local `uses: ./`, which setup-node rejects as
+        # relative pathing. Caching the action's own dependencies is a minor win
+        # next to shipping a path that breaks for some callers.
 
     - name: Install Puppeteer system dependencies
       if: ${{ inputs.install-browser-deps == 'true' && runner.os == 'Linux' }}
@@ -107,14 +127,17 @@ runs:
         LB_MODE: ${{ inputs.mode }}
         LB_GRADIENT: ${{ inputs.gradient }}
         LB_ANIMATE: ${{ inputs.animate }}
+        LB_SCOPE: ${{ inputs.scope }}
+        LB_MONTH_CARDS: ${{ inputs.month-cards }}
+        LB_TOP_FILMS: ${{ inputs.top-films }}
         LB_EXPORT_PNG: ${{ inputs.export-png }}
         LB_OUTPUT: ${{ inputs.output }}
       run: |
         set -euo pipefail
 
-        args=("$LB_USERNAME" -o "$LB_OUTPUT" -w "$LB_WEEK_START" -m "$LB_MODE")
+        args=("$LB_USERNAME" -o "$LB_OUTPUT" -w "$LB_WEEK_START" -m "$LB_MODE" -s "$LB_SCOPE" -c "$LB_MONTH_CARDS" -r "$LB_TOP_FILMS")
         if [ -n "$LB_YEARS" ]; then args+=(-y "$LB_YEARS"); fi
-        if [ "$LB_GRADIENT" = "false" ]; then args+=(-g false); fi
+        if [ -n "$LB_GRADIENT" ] && [ "$LB_GRADIENT" != "true" ]; then args+=(-g "$LB_GRADIENT"); fi
         if [ "$LB_ANIMATE" = "false" ]; then args+=(-a false); fi
         if [ "$LB_EXPORT_PNG" = "true" ]; then args+=(-p); fi
 

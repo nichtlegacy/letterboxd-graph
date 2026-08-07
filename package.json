@@ -9,7 +9,11 @@
   },
   "scripts": {
     "start": "node src/cli.js",
-    "test": "python3 -B -m unittest discover -s tests -v"
+    "build:site": "node scripts/build-site.mjs",
+    "serve:site": "npm run build:site && python3 -m http.server 8080 --directory _site",
+    "test": "npm run test:js && npm run test:py",
+    "test:js": "node --test tests/*.test.js",
+    "test:py": "python3 -B -m unittest discover -s tests -v"
   },
   "keywords": [
     "letterboxd",
@@ -31,7 +35,8 @@
     "puppeteer": "^24.0.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
-    "sharp": "^0.35.3"
+    "sharp": "^0.35.3",
+    "subset-font": "^2.5.0"
   },
   "overrides": {
     "cheerio": {
