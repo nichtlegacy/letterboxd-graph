@@ -560,6 +560,10 @@ main {
   gap: 16px;
 }
 
+a.year-cell:hover .year-count {
+  color: var(--text-light);
+}
+
 .year-label {
   color: var(--text-light);
   font-size: 13px;
@@ -584,6 +588,7 @@ main {
   color: var(--text-muted);
   font-size: 12px;
   font-variant-numeric: tabular-nums;
+  transition: color 150ms var(--ease);
 }
 
 /* ── Charts ───────────────────────────────────────────────────────────────── */

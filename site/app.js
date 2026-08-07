@@ -229,7 +229,7 @@ function tile(label, value, meta, accent) {
   return node;
 }
 
-function renderAllTime(all, data) {
+function renderAllTime(all, data, diary) {
   const section = document.querySelector('[data-alltime]');
   if (!all) return;
 
@@ -271,7 +271,9 @@ function renderAllTime(all, data) {
   if (years.length > 1) {
     const busiest = Math.max(...years.map(year => year.films));
     const nodes = years.map((year) => {
-      const node = el('div', 'year-cell');
+      const node = diary
+        ? link(`${diary}/for/${year.year}/`, 'year-cell')
+        : el('div', 'year-cell');
       const track = el('span', 'year-track');
       const bar = el('span', 'year-bar');
       bar.style.width = `${Math.max((year.films / busiest) * 100, 2)}%`;
@@ -784,7 +786,7 @@ async function main() {
     const diary = data.user ? `https://letterboxd.com/${data.user}/diary/films` : null;
 
     renderHero(data, manifest);
-    renderAllTime(data.allTime, data);
+    renderAllTime(data.allTime, data, diary);
     renderWhen(data.allTime);
     renderRatings(data.allTime, diary);
     renderDecades(data.allTime, diary);
