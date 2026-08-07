@@ -35,6 +35,9 @@
 | 📅 **Multi-Year Support** | Generate graphs spanning multiple years |
 | 🎯 **Streak Highlighting** | Hover over "Day Streak" to highlight your longest streak, with its date range and film count |
 | 💬 **Interactive Tooltips** | Hover over cells to see film details (in browser) |
+| 📈 **Rating Distribution + Average** | Hover over the film count for the rating histogram and your average rating |
+| 🕰️ **Decade Breakdown** | Hover over the year label to see how your films spread across release decades |
+| ✨ **Cell Reveal Animation** | Cells fade in as a wave when the SVG loads; respects `prefers-reduced-motion` |
 | ⭐ **Rating Mode** | Color cells by average rating instead of watch count |
 | 📦 **JSON Export** | Writes `images/letterboxd-data.json` for external widgets (e.g. Glance `custom-api`) |
 | 🔄 **Daily Updates** | Automated updates via GitHub Actions |
@@ -84,7 +87,16 @@ The graph updates daily at midnight UTC, or trigger manually via the **Actions**
 
 ### Interactive Features
 
-Hover over stats to reveal additional information (visible when opening the SVG in a browser):
+Hover over stats to reveal additional information:
+
+- **Year label** → films grouped by release decade
+- **Film count** → rating distribution and your average rating
+- **Days Active** → weekday distribution
+- **Day Streak** → date range, film count, and the streak highlighted in the grid
+
+> **Note:** GitHub embeds the SVG through an `<img>` tag, which cannot receive mouse
+> events — hover states only work when you open the SVG file directly in a browser.
+> The cell reveal animation is declarative CSS and *does* play inside a README.
 
 <table>
   <tr>
@@ -124,6 +136,7 @@ node src/cli.js <username> [options]
 | `-g <bool>` | Enable username gradient: `true` or `false` | `true` |
 | `-p` | Export PNG files in addition to SVG | Disabled |
 | `-m <mode>` | Graph mode: `count` or `rating` | `count` |
+| `-a <bool>` | Cell reveal animation: `true` or `false` | `true` |
 
 ### Examples
 
@@ -145,7 +158,71 @@ node src/cli.js nichtlegacy -m rating -p
 
 ## 🔧 GitHub Actions Setup
 
-### Workflow File
+### Option A: Reusable Action (recommended)
+
+You don't need to fork or copy this repository. Add a single workflow file to any repo
+(for example your GitHub profile repo) and pass your username as an input:
+
+```yaml
+name: Update Letterboxd Graph
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # Daily at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-graph:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: nichtlegacy/letterboxd-graph@v2
+        with:
+          username: YOUR_LETTERBOXD_USERNAME
+          years: "2026,2025"        # optional, defaults to the current year
+```
+
+The action generates the SVGs plus `letterboxd-data.json` and commits them back to the
+checked-out branch. `actions/checkout` is required so the action has a repository to
+write into.
+
+#### Action Inputs
+
+| Input | Description | Default |
+|-------|-------------|---------|
+| `username` | Letterboxd username (**required**) | – |
+| `years` | Comma-separated years, e.g. `2026,2025` | current year |
+| `week-start` | `sunday` or `monday` | `sunday` |
+| `mode` | `count` or `rating` | `count` |
+| `gradient` | Letterboxd color gradient on the display name | `true` |
+| `animate` | Cell reveal animation | `true` |
+| `export-png` | Also write PNG files | `false` |
+| `output` | Output path without extension | `images/github-letterboxd` |
+| `node-version` | Node.js version | `20` |
+| `install-browser-deps` | Install Puppeteer system libraries (Ubuntu runners) | `true` |
+| `commit` | Commit and push the generated files | `true` |
+| `commit-message` | Commit message (branch + UTC timestamp appended) | `Update Letterboxd graph` |
+
+#### Action Outputs
+
+| Output | Description |
+|--------|-------------|
+| `svg-dark` | Path to the dark theme SVG |
+| `svg-light` | Path to the light theme SVG |
+| `data-json` | Path to the JSON export |
+
+Set `commit: 'false'` if you want to handle the files yourself, for example to upload
+them as an artifact or deploy them to GitHub Pages.
+
+### Option B: Copy the Workflow
+
+If you'd rather fork this repository and run the CLI directly:
+
+#### Workflow File
 
 Create `.github/workflows/update-graph.yml`:
 
@@ -161,6 +238,7 @@ env:
   EXPORT_PNG: "false"                  # Set to "true" to also generate PNG files
   WEEK_START: "sunday"                 # "sunday" or "monday"
   GRADIENT: "true"                     # "true" for colored name, "false" for white
+  ANIMATE: "true"                      # "false" to disable the cell reveal animation
 
 on:
   schedule:
@@ -191,6 +269,7 @@ jobs:
           if [ -n "${{ env.YEARS }}" ]; then CMD="$CMD -y ${{ env.YEARS }}"; fi
           if [ "${{ env.WEEK_START }}" = "monday" ]; then CMD="$CMD -w monday"; fi
           if [ "${{ env.GRADIENT }}" = "false" ]; then CMD="$CMD -g false"; fi
+          if [ "${{ env.ANIMATE }}" = "false" ]; then CMD="$CMD -a false"; fi
           if [ "${{ env.EXPORT_PNG }}" = "true" ]; then CMD="$CMD -p"; fi
           
           echo "Running: $CMD"
@@ -219,6 +298,7 @@ You can customize the graph directly in the workflow file by editing the `env` s
 - **EXPORT_PNG**: Set to `true` if you want PNG versions alongside SVGs
 - **WEEK_START**: Start week on `sunday` or `monday`
 - **GRADIENT**: Toggle the username text gradient
+- **ANIMATE**: Toggle the cell reveal animation
 
 ---
 
@@ -267,6 +347,7 @@ You can use this to build:
 
 ```
 letterboxd-graph/
+├── action.yml                # Reusable GitHub Action definition
 ├── .github/
 │   ├── assets/               # README images and examples
 │   └── workflows/

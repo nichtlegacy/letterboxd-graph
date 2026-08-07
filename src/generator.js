@@ -7,7 +7,13 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import opentype from 'opentype.js';
-import { calculateStreak, calculateDaysActive, groupEntriesByDate } from './stats.js';
+import {
+  calculateStreak,
+  calculateDaysActive,
+  groupEntriesByDate,
+  calculateAverageRating,
+  calculateDecadeDistribution
+} from './stats.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -159,6 +165,127 @@ function calculateTextWidth(text, fontSize, letterSpacing = 0) {
   return text.length * fontSize * 0.55;
 }
 
+// Shared tooltip geometry so single-year and multi-year layouts stay in sync
+// Heights are constrained by the card top edge: the stats row sits at y=115, so a
+// tooltip taller than ~110px would be clipped out of the viewBox.
+const MOVIES_TOOLTIP_HEIGHT = 108;
+const DECADE_TOOLTIP_HEIGHT = 94;
+const TOOLTIP_GAP = 8;
+const TOOLTIP_BAR_MAX = 40;
+const TOOLTIP_BAR_BASELINE = 70;
+const DECADE_SLOT_WIDTH = 26;
+
+/**
+ * CSS for the cell reveal animation. Cells keep their final style as the base
+ * declaration so static renderers (sharp/librsvg for PNG export) are unaffected.
+ * @param {boolean} enabled - Whether the animation is active
+ * @returns {string} CSS rules
+ */
+function buildAnimationCss(enabled) {
+  if (!enabled) return '';
+  return `
+      @keyframes cell-reveal {
+        from { opacity: 0; transform: scale(0.4); }
+        to   { opacity: 1; transform: scale(1); }
+      }
+      .cell {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: cell-reveal 0.45s cubic-bezier(0.34, 1.4, 0.64, 1) backwards;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .cell { animation: none; }
+      }`;
+}
+
+/**
+ * Per-cell animation delay, producing a left-to-right wave across the grid
+ * @param {boolean} enabled - Whether the animation is active
+ * @param {number} week - Week column index
+ * @param {number} day - Day row index
+ * @param {number} yearIndex - Index of the year block (multi-year layouts)
+ * @returns {string} style attribute, or an empty string
+ */
+function buildCellDelay(enabled, week, day, yearIndex = 0) {
+  if (!enabled) return '';
+  const delay = yearIndex * 180 + week * 11 + day * 5;
+  return ` style="animation-delay:${delay}ms"`;
+}
+
+/**
+ * Build the "X Movies" hover tooltip: rating distribution plus average rating
+ * @param {Array} entries - Diary entries for the year
+ * @param {Object} t - Theme colors
+ * @returns {string} SVG markup
+ */
+function buildMoviesTooltip(entries, t) {
+  const ratingLabels = ['0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5'];
+  const ratingDistribution = {};
+  ratingLabels.forEach(r => ratingDistribution[r] = 0);
+  ratingDistribution['unrated'] = 0;
+
+  entries.forEach(entry => {
+    const ratingKey = String(entry.rating);
+    if (entry.rating && entry.rating > 0 && ratingDistribution.hasOwnProperty(ratingKey)) {
+      ratingDistribution[ratingKey]++;
+    } else {
+      ratingDistribution['unrated']++;
+    }
+  });
+
+  const maxRatingCount = Math.max(...ratingLabels.map(r => ratingDistribution[r]));
+  const ratedCount = entries.length - ratingDistribution['unrated'];
+  const average = calculateAverageRating(entries);
+  const averageLine = average === null
+    ? 'No ratings yet'
+    : `Ø ${average.toFixed(1)}★ across ${ratedCount} rated ${ratedCount === 1 ? 'film' : 'films'}`;
+
+  const bars = ratingLabels.map((rating, i) => {
+    const count = ratingDistribution[rating];
+    const barHeight = maxRatingCount > 0 ? Math.round((count / maxRatingCount) * TOOLTIP_BAR_MAX) : 0;
+    const x = 15 + i * 24;
+    return `
+        <text x="${x + 7}" y="${TOOLTIP_BAR_BASELINE - barHeight - 3}" font-size="8" fill="${t.tooltipText}" text-anchor="middle">${count > 0 ? count : ''}</text>
+        <rect x="${x}" y="${TOOLTIP_BAR_BASELINE - barHeight}" width="14" height="${Math.max(barHeight, 1)}" rx="2" fill="${t.colors[Math.min(Math.floor(i / 2) + 1, 4)]}"/>
+        <text x="${x + 7}" y="84" font-size="7" fill="${t.text}" text-anchor="middle">${rating}</text>`;
+  }).join('');
+
+  return `<g class="movies-tooltip" transform="translate(-30, ${-(MOVIES_TOOLTIP_HEIGHT + TOOLTIP_GAP)})">
+        <rect x="0" y="0" width="260" height="${MOVIES_TOOLTIP_HEIGHT}" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>
+        <text x="130" y="15" font-size="11" font-weight="600" fill="${t.tooltipText}" text-anchor="middle">Rating Distribution${ratingDistribution['unrated'] > 0 ? ` (${ratingDistribution['unrated']} unrated)` : ''}</text>${bars}
+        <line x1="12" y1="90" x2="248" y2="90" stroke="${t.tooltipBorder}" stroke-width="1"/>
+        <text x="130" y="102" font-size="10" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(averageLine)}</text>
+      </g>`;
+}
+
+/**
+ * Build the year-label hover tooltip showing the release-decade breakdown
+ * @param {Array} entries - Diary entries for the year
+ * @param {Object} t - Theme colors
+ * @returns {string} SVG markup, or an empty string when no release years are known
+ */
+function buildDecadeTooltip(entries, t) {
+  const decades = calculateDecadeDistribution(entries);
+  if (decades.length === 0) return '';
+
+  const maxCount = Math.max(...decades.map(d => d.count));
+  const width = Math.max(180, 30 + decades.length * DECADE_SLOT_WIDTH);
+
+  const bars = decades.map((d, i) => {
+    const barHeight = maxCount > 0 ? Math.round((d.count / maxCount) * TOOLTIP_BAR_MAX) : 0;
+    const x = 15 + i * DECADE_SLOT_WIDTH;
+    return `
+        <text x="${x + 8}" y="${TOOLTIP_BAR_BASELINE - barHeight - 3}" font-size="8" fill="${t.tooltipText}" text-anchor="middle">${d.count}</text>
+        <rect x="${x}" y="${TOOLTIP_BAR_BASELINE - barHeight}" width="16" height="${Math.max(barHeight, 1)}" rx="2" fill="${t.colors[3]}"/>
+        <text x="${x + 8}" y="84" font-size="7" fill="${t.text}" text-anchor="middle">${d.label}</text>`;
+  }).join('');
+
+  return `<g class="year-tooltip" transform="translate(-5, ${-(DECADE_TOOLTIP_HEIGHT + TOOLTIP_GAP)})">
+      <rect x="0" y="0" width="${width}" height="${DECADE_TOOLTIP_HEIGHT}" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>
+      <text x="${width / 2}" y="15" font-size="11" font-weight="600" fill="${t.tooltipText}" text-anchor="middle">Films by Release Decade</text>${bars}
+    </g>`;
+}
+
 /**
  * Generate the SVG contribution graph
  */
@@ -176,7 +303,8 @@ export function generateSvg(entries, options = {}) {
     following = 0,
     totalEntries = 0,
     memberStatus = null, // 'patron', 'pro', or null
-    mode = 'count' // 'count' or 'rating'
+    mode = 'count', // 'count' or 'rating'
+    animate = true // reveal cells with a CSS animation
   } = options;
 
   // Calculate precise width for badge placement (28px font) + 4px gap
@@ -202,25 +330,8 @@ export function generateSvg(entries, options = {}) {
   });
   const maxWeeklyCount = Math.max(...weeklyDistribution);
 
-  // Calculate rating distribution (0.5 to 5.0 in 0.5 increments)
-  const ratingDistribution = {};
-  const ratingLabels = ['0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5'];
-  ratingLabels.forEach(r => ratingDistribution[r] = 0);
-  ratingDistribution['unrated'] = 0;
-  
-  sortedEntries.forEach(entry => {
-    if (entry.rating && entry.rating > 0) {
-      const ratingKey = String(entry.rating);
-      if (ratingDistribution.hasOwnProperty(ratingKey)) {
-        ratingDistribution[ratingKey]++;
-      }
-    } else {
-      ratingDistribution['unrated']++;
-    }
-  });
-  const maxRatingCount = Math.max(...ratingLabels.map(r => ratingDistribution[r]));
-
   // Setup date range
+  const yearIndex = 0; // single-year layout has no year offset for the reveal animation
   const displayYear = year;
   const startDate = new Date(Date.UTC(displayYear, 0, 1));
   const endDate = new Date(Date.UTC(displayYear, 11, 31));
@@ -383,6 +494,18 @@ export function generateSvg(entries, options = {}) {
       .movies-group:hover {
         cursor: pointer;
       }
+      .year-tooltip {
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        pointer-events: none;
+      }
+      .year-group:hover .year-tooltip {
+        opacity: 1;
+      }
+      .year-group:hover {
+        cursor: pointer;
+      }
+      ${buildAnimationCss(animate)}
       ]]>
     </style>
   </defs>
@@ -433,26 +556,18 @@ export function generateSvg(entries, options = {}) {
 
   <!-- Stats Row -->
   <g transform="translate(25, 115)" font-family="'Segoe UI', Inter, Arial, sans-serif">
-    <text x="0" y="20" font-size="16" font-weight="600" fill="${t.text}">${displayYear}</text>
-    
+    <!-- Year with release-decade tooltip -->
+    <g class="year-group">
+      <text x="0" y="20" font-size="16" font-weight="600" fill="${t.text}">${displayYear}</text>
+      ${buildDecadeTooltip(sortedEntries, t)}
+    </g>
+
     <!-- Movies with rating distribution tooltip -->
     <g class="movies-group" transform="translate(60, 5)">
       <text x="0" y="15" font-size="14" font-weight="500" fill="${t.textMuted}">${totalFilms} Movies</text>
-      <g class="movies-tooltip" transform="translate(-30, -115)">
-        <rect x="0" y="0" width="260" height="105" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>
-        <text x="130" y="18" font-size="11" font-weight="600" fill="${t.tooltipText}" text-anchor="middle">Rating Distribution${ratingDistribution['unrated'] > 0 ? ` (${ratingDistribution['unrated']} unrated)` : ''}</text>
-        ${ratingLabels.map((rating, i) => {
-          const count = ratingDistribution[rating];
-          const barHeight = maxRatingCount > 0 ? Math.round((count / maxRatingCount) * 45) : 0;
-          const x = 15 + i * 24;
-          return `
-        <text x="${x + 7}" y="${80 - barHeight - 3}" font-size="8" fill="${t.tooltipText}" text-anchor="middle">${count > 0 ? count : ''}</text>
-        <rect x="${x}" y="${80 - barHeight}" width="14" height="${Math.max(barHeight, 1)}" rx="2" fill="${t.colors[Math.min(Math.floor(i / 2) + 1, 4)]}"/>
-        <text x="${x + 7}" y="98" font-size="7" fill="${t.text}" text-anchor="middle">${rating}</text>`;
-        }).join('')}
-      </g>
+      ${buildMoviesTooltip(sortedEntries, t)}
     </g>
-    
+
     <!-- Days Active with hover tooltip -->
     <g class="days-active-group" transform="translate(170, 5)">
       <text x="0" y="15" font-size="14" font-weight="500" fill="${t.textMuted}">${daysActive} Days Active</text>
@@ -584,7 +699,7 @@ export function generateSvg(entries, options = {}) {
           width="${CELL_SIZE}"
           height="${CELL_SIZE}"
           rx="2"
-          fill="${color}"
+          fill="${color}"${buildCellDelay(animate, week, day, yearIndex)}
         />
         <g class="tooltip-group" transform="translate(${tooltipX}, ${y - tooltipHeight - 8})">
           <rect x="0" y="0" width="${tooltipWidth}" height="${tooltipHeight}" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>
@@ -630,7 +745,8 @@ export function generateMultiYearSvg(entries, options = {}) {
     following = 0,
     totalEntries = 0,
     memberStatus = null,
-    mode = 'count' // 'count' or 'rating'
+    mode = 'count', // 'count' or 'rating'
+    animate = true // reveal cells with a CSS animation
   } = options;
 
   // Calculate precise width for badge placement (28px font) + 4px gap
@@ -712,10 +828,10 @@ export function generateMultiYearSvg(entries, options = {}) {
       .movies-tooltip { opacity: 0; transition: opacity 0.2s ease; pointer-events: none; }
       .movies-group:hover .movies-tooltip { opacity: 1; }
       .movies-group:hover { cursor: pointer; }
-      .tooltip-group { opacity: 0; transition: opacity 0.2s ease; pointer-events: none; }
-      .cell-group:hover .tooltip-group { opacity: 1; }
-      .cell-group:hover .cell { filter: brightness(1.3); }
-      .cell { transition: filter 0.2s ease; }
+      .year-tooltip { opacity: 0; transition: opacity 0.2s ease; pointer-events: none; }
+      .year-group:hover .year-tooltip { opacity: 1; }
+      .year-group:hover { cursor: pointer; }
+      ${buildAnimationCss(animate)}
       ]]>
     </style>
   </defs>
@@ -780,24 +896,6 @@ export function generateMultiYearSvg(entries, options = {}) {
       weeklyDistribution[entry.date.getUTCDay()]++;
     });
     const maxWeeklyCount = Math.max(...weeklyDistribution);
-    
-    // Calculate rating distribution for this year
-    const ratingDistribution = {};
-    const ratingLabels = ['0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5'];
-    ratingLabels.forEach(r => ratingDistribution[r] = 0);
-    ratingDistribution['unrated'] = 0;
-    
-    yearEntries.forEach(entry => {
-      if (entry.rating && entry.rating > 0) {
-        const ratingKey = String(entry.rating);
-        if (ratingDistribution.hasOwnProperty(ratingKey)) {
-          ratingDistribution[ratingKey]++;
-        }
-      } else {
-        ratingDistribution['unrated']++;
-      }
-    });
-    const maxRatingCount = Math.max(...ratingLabels.map(r => ratingDistribution[r]));
 
     // Setup date range for this year
     const startDate = new Date(Date.UTC(year, 0, 1));
@@ -849,25 +947,18 @@ export function generateMultiYearSvg(entries, options = {}) {
     svg += `
   <!-- Year ${year} -->
   <g transform="translate(25, ${yearOffset})" font-family="'Segoe UI', Inter, Arial, sans-serif">
-    <text x="0" y="20" font-size="16" font-weight="600" fill="${t.text}">${year}</text>
+    <!-- Year with release-decade tooltip -->
+    <g class="year-group">
+      <text x="0" y="20" font-size="16" font-weight="600" fill="${t.text}">${year}</text>
+      ${buildDecadeTooltip(yearEntries, t)}
+    </g>
+
     <!-- Movies with rating distribution tooltip -->
     <g class="movies-group" transform="translate(60, 5)">
       <text x="0" y="15" font-size="14" font-weight="500" fill="${t.textMuted}">${totalFilms} Movies</text>
-      <g class="movies-tooltip" transform="translate(-30, -115)">
-        <rect x="0" y="0" width="260" height="105" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>
-        <text x="130" y="18" font-size="11" font-weight="600" fill="${t.tooltipText}" text-anchor="middle">Rating Distribution${ratingDistribution['unrated'] > 0 ? ` (${ratingDistribution['unrated']} unrated)` : ''}</text>
-        ${ratingLabels.map((rating, i) => {
-          const count = ratingDistribution[rating];
-          const barHeight = maxRatingCount > 0 ? Math.round((count / maxRatingCount) * 45) : 0;
-          const x = 15 + i * 24;
-          return `
-        <text x="${x + 7}" y="${80 - barHeight - 3}" font-size="8" fill="${t.tooltipText}" text-anchor="middle">${count > 0 ? count : ''}</text>
-        <rect x="${x}" y="${80 - barHeight}" width="14" height="${Math.max(barHeight, 1)}" rx="2" fill="${t.colors[Math.min(Math.floor(i / 2) + 1, 4)]}"/>
-        <text x="${x + 7}" y="98" font-size="7" fill="${t.text}" text-anchor="middle">${rating}</text>`;
-        }).join('')}
-      </g>
+      ${buildMoviesTooltip(yearEntries, t)}
     </g>
-    
+
     <!-- Days Active with hover tooltip -->
     <g class="days-active-group" transform="translate(170, 5)">
       <text x="0" y="15" font-size="14" font-weight="500" fill="${t.textMuted}">${daysActive} Days Active</text>
@@ -989,7 +1080,7 @@ export function generateMultiYearSvg(entries, options = {}) {
           width="${CELL_SIZE}"
           height="${CELL_SIZE}"
           rx="2"
-          fill="${color}"
+          fill="${color}"${buildCellDelay(animate, week, day, yearIndex)}
         />
         <g class="tooltip-group" transform="translate(${tooltipX}, ${y - tooltipHeight - 8})">
           <rect x="0" y="0" width="${tooltipWidth}" height="${tooltipHeight}" rx="6" fill="${t.tooltipBg}" stroke="${t.tooltipBorder}" stroke-width="1"/>

@@ -1,6 +1,6 @@
 {
   "name": "letterboxd-contribution-graph",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Generates a GitHub-style contribution graph from Letterboxd diary entries",
   "type": "module",
   "main": "src/cli.js",

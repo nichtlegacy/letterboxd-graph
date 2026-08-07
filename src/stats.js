@@ -112,6 +112,27 @@ export function calculateAverageRating(entries) {
 }
 
 /**
+ * Group entries by the release decade of the film
+ * @param {Array} entries - Array of diary entries
+ * @returns {Array<{decade: number, label: string, count: number}>} Decades in ascending order, gaps omitted
+ */
+export function calculateDecadeDistribution(entries) {
+  const counts = new Map();
+
+  for (const entry of entries) {
+    const filmYear = Number.parseInt(entry.year, 10);
+    if (!Number.isFinite(filmYear) || filmYear < 1870 || filmYear > 2999) continue;
+
+    const decade = Math.floor(filmYear / 10) * 10;
+    counts.set(decade, (counts.get(decade) || 0) + 1);
+  }
+
+  return [...counts.entries()]
+    .sort((a, b) => a[0] - b[0])
+    .map(([decade, count]) => ({ decade, label: `${decade}s`, count }));
+}
+
+/**
  * Build a compact JSON payload for external consumers (e.g. Glance widgets)
  * @param {Array} entries - Array of diary entries
  * @param {Object} options - Export options
