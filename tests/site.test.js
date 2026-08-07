@@ -293,6 +293,7 @@ test('describe leads the share card with the figures', () => {
   assert.match(text.ogDescription, /^599 diary entries across 427 days\./);
   assert.match(text.ogDescription, /Longest streak 34 days, average rating 3\.3/);
   assert.ok(text.ogDescription.length <= 200, `card description is ${text.ogDescription.length} characters, X cuts at about 200`);
+  assert.match(text.imageAlt, /Pages site/);
   assert.match(text.imageAlt, /626 films watched/);
 });
 
