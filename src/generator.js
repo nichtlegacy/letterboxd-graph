@@ -20,6 +20,30 @@ import {
   getTheme
 } from './svg-utils.js';
 
+/**
+ * Rating level for a day, on the four-step scale of the palette.
+ *
+ * Averaged over the films that carry a rating. Counting an unrated film as a
+ * zero dragged whole days down a step or two: one five star film logged beside
+ * one unrated film averaged 2.5 rather than 5.
+ *
+ * A day where nothing was rated has no rating to show, so it takes the lowest
+ * active step. It stays visibly a day with films on it.
+ *
+ * @param {Array} films - Diary entries for one day
+ * @returns {number} 1 to 4
+ */
+export function ratingLevel(films) {
+  const rated = films.filter(film => film.rating > 0);
+  if (rated.length === 0) return 1;
+
+  const average = rated.reduce((sum, film) => sum + film.rating, 0) / rated.length;
+  if (average < 2.5) return 1;
+  if (average < 3.5) return 2;
+  if (average < 4.5) return 3;
+  return 4;
+}
+
 // Shared tooltip geometry so single-year and multi-year layouts stay in sync
 // Heights are constrained by the card top edge: the stats row sits at y=115, so a
 // tooltip taller than ~110px would be clipped out of the viewBox.
@@ -263,17 +287,9 @@ export async function generateSvg(entries, options = {}) {
     if (count === 0) return t.colors[0];
 
     if (mode === 'rating' && films && films.length > 0) {
-      const totalRating = films.reduce((sum, f) => sum + (f.rating || 0), 0);
-      const avgRating = totalRating / count;
-      
-      // Rating mapping: 0.5-2.0 -> 1, 2.5-3.0 -> 2, 3.5-4.0 -> 3, >= 4.5 -> 4
-      if (avgRating < 2.5) return t.colors[1];
-      if (avgRating < 3.5) return t.colors[2];
-      if (avgRating < 4.5) return t.colors[3];
-      return t.colors[4];
-    }
-    
-    // Count mode
+      return t.colors[ratingLevel(films)];
+  }
+
     if (maxCount === 0) return t.colors[0];
     const level = Math.ceil((count / maxCount) * 4);
     return t.colors[Math.min(level, 4)];
@@ -771,13 +787,7 @@ export async function generateMultiYearSvg(entries, options = {}) {
       if (count === 0) return t.colors[0];
 
       if (mode === 'rating' && films && films.length > 0) {
-        const totalRating = films.reduce((sum, f) => sum + (f.rating || 0), 0);
-        const avgRating = totalRating / count;
-        
-        if (avgRating < 2.5) return t.colors[1];
-        if (avgRating < 3.5) return t.colors[2];
-        if (avgRating < 4.5) return t.colors[3];
-        return t.colors[4];
+        return t.colors[ratingLevel(films)];
       }
 
       if (maxCount === 0) return t.colors[0];

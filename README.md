@@ -314,9 +314,23 @@ all-time figures. Paginating it costs one request per 50 entries:
 | [@BeHaind](https://letterboxd.com/BeHaind/) | 3,653 | 1,254 | 26 |
 | [@Rufus_Firefly](https://letterboxd.com/Rufus_Firefly/) | 5,848 | 3,783 | 76 |
 
-The two counts differ because a profile counts films watched while the diary
-counts logged viewings, and only the latter drives the request count. A large
-library with few diary entries is cheap to fetch.
+The two counts differ because they measure different things:
+
+- **Films watched** is the profile's own figure, linking to `/<user>/films/`. It
+  counts every film marked watched, whether or not it was ever given a date.
+- **Diary entries** are dated log entries. Only these carry a rating, a rewatch
+  flag or a like, so everything on the cards below the headline comes from them.
+
+@BeHaind has 3,653 films watched against 1,253 distinct films in the diary, so
+roughly two thirds were ticked off without a diary entry. Only the diary drives
+the request count, which is why a large library can still be cheap to fetch.
+
+> [!NOTE]
+> **Rewatches** counts the rewatch flag, the way Letterboxd does — it is set by
+> hand, not derived. Logging the same film twice without ticking it leaves the
+> count at zero. @BeHaind logged *Leo (2023)* twice and still shows 0 rewatches,
+> which is faithful to the diary rather than a parsing miss. Repeat viewings do
+> still weigh on the [film ranking](#film-ranking), which counts entries.
 
 The graph and the year cards still only cover the years in `years`; the rest is
 filtered out of the same fetch rather than requested again. Set `scope: years`
@@ -340,10 +354,21 @@ one film merge into a single entry at its best rating.
 
 ### Color Palettes
 
-| Palette | Description |
-|---------|-------------|
-| `github` | The familiar GitHub contribution graph greens |
-| `letterboxd` | Letterboxd's own UI greys, ramp anchored on its green `#00E054` |
+Same diary, same year, both palettes:
+
+**`github`** — the familiar contribution graph greens
+
+<p align="center">
+  <img alt="Graph in the GitHub palette" src=".github/assets/palette-github-dark.png" width="100%">
+</p>
+
+**`letterboxd`** — Letterboxd's own UI greys, ramp anchored on its green `#00E054`
+
+<p align="center">
+  <img alt="Graph in the Letterboxd palette" src=".github/assets/palette-letterboxd-dark.png" width="100%">
+</p>
+
+The palette changes the card surfaces too, not just the grid.
 
 The ramp stays single-hue on purpose. Shifting hue across a sequential scale
 reads as separate categories rather than as more or less activity, so
@@ -351,10 +376,31 @@ Letterboxd's orange and blue stay accents on the streak flame and the badge.
 
 ### Graph Modes
 
-| Mode | Description |
-|------|-------------|
-| `count` | Cell intensity from the number of films watched that day |
-| `rating` | Cell color from the average rating of that day's films |
+**`count`** — intensity from how many films you watched that day, scaled to your
+busiest day. The legend reads *Less* to *More*.
+
+<p align="center">
+  <img alt="Graph in count mode" src=".github/assets/mode-count-dark.png" width="100%">
+</p>
+
+**`rating`** — colour from the average rating of that day's films. The legend
+reads *Low* to *High*, and a quiet day you loved outranks a busy one you did
+not.
+
+<p align="center">
+  <img alt="Graph in rating mode" src=".github/assets/mode-rating-dark.png" width="100%">
+</p>
+
+| Average that day | Step |
+|------------------|------|
+| under 2.5★ | lowest |
+| 2.5★ to 3★ | second |
+| 3.5★ to 4★ | third |
+| 4.5★ and up | highest |
+
+The average covers the films you rated. An unrated film sharing the day does not
+drag it down, and a day where you rated nothing sits on the lowest step — it has
+no rating to show, but it is still visibly a day with films on it.
 
 ### JSON Export
 
