@@ -11,6 +11,7 @@ env:
   GRADIENT: "true"                     # "true" for colored name, "false" for white
   ANIMATE: "true"                      # "false" to disable the cell reveal animation
   PALETTE: "github"                    # "github" or "letterboxd"
+  SCOPE: "all"                         # "all" (whole diary) or "years"
 
 on:
   # Daily at midnight UTC (main only)
@@ -76,5 +77,6 @@ jobs:
           gradient: ${{ env.GRADIENT }}
           animate: ${{ env.ANIMATE }}
           palette: ${{ env.PALETTE }}
+          scope: ${{ env.SCOPE }}
           export-png: ${{ env.EXPORT_PNG }}
           output: images/github-letterboxd

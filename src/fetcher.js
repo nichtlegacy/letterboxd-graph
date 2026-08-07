@@ -170,7 +170,7 @@ function isCloudflareChallengePage(html) {
 function hasExpectedPageContent(html, url) {
   if (!html || !url) return false;
 
-  if (url.includes('/diary/')) {
+  if (url.includes('/diary/') || url.includes('/films/diary')) {
     return hasExpectedDiaryPageContent(html);
   }
 
@@ -515,7 +515,7 @@ async function fetchPageWithPuppeteer(url, retries = 7) {
         throw new Error(`HTTP ${response.status()} while fetching ${url}`);
       }
       
-      if (url.includes('/diary/')) {
+      if (url.includes('/diary/') || url.includes('/films/diary')) {
         // Wait for the diary content to load (or timeout after 15 seconds)
         try {
           await page.waitForFunction(
@@ -565,6 +565,11 @@ async function fetchPageWithPuppeteer(url, retries = 7) {
 /**
  * Parse diary entries from HTML content
  */
+/**
+ * Parse the diary rows on one page.
+ * @param {string} html
+ * @param {number|null} year - Restrict to this year, or null to accept any
+ */
 function parseDiaryEntries(html, year) {
   const $ = cheerio.load(html);
   const entries = [];
@@ -611,7 +616,7 @@ function parseDiaryEntries(html, year) {
 
       const [, entryYearRaw, month, day] = dayMatch;
       const entryYear = Number.parseInt(entryYearRaw, 10);
-      const entryKey = `${entryYearRaw}-${month}-${day}-${$row.index()}`;
+      const entryKey = `${entryYearRaw}-${month}-${day}-${$row.index()}-${$row.attr('data-viewing-id') || ''}`;
       if (seenKeys.has(entryKey)) {
         return;
       }
@@ -673,8 +678,9 @@ function parseDiaryEntries(html, year) {
 
       const monthNum = monthNames[month];
 
-      if (monthNum !== undefined && day && entryYear === year) {
-        const date = new Date(Date.UTC(year, monthNum, Number.parseInt(day, 10)));
+      const wantedYear = year === null || entryYear === year;
+      if (monthNum !== undefined && day && wantedYear) {
+        const date = new Date(Date.UTC(entryYear, monthNum, Number.parseInt(day, 10)));
         const filmUrl = titleLink ? `https://letterboxd.com${titleLink}` : undefined;
 
         entries.push({
@@ -716,6 +722,46 @@ function parseDiaryEntries(html, year) {
 /**
  * Fetch diary entries for a specific year with curl_cffi primary and Puppeteer fallback
  */
+/**
+ * Fetch the complete diary, every year at once.
+ *
+ * Paginating the unfiltered diary costs one request per 50 entries, which for a
+ * profile of a few hundred films is barely more than fetching two years
+ * separately. For a profile of several thousand it is minutes, so callers
+ * expose this as a choice rather than doing it unconditionally.
+ *
+ * @param {string} username
+ * @returns {Promise<Array>} Every diary entry, oldest last
+ */
+export async function fetchAllDiaryEntries(username) {
+  const allEntries = [];
+  let page = 1;
+
+  console.log(`Fetching the complete Letterboxd diary for user: ${username}`);
+
+  while (true) {
+    const url = `https://letterboxd.com/${username}/diary/films/page/${page}/`;
+    console.log(`URL: ${url}`);
+
+    const html = await fetchPage(url);
+    const { entries, hasMore } = parseDiaryEntries(html, null);
+    console.log(`Found ${entries.length} diary entries on page ${page}`);
+
+    if (entries.length === 0) break;
+    allEntries.push(...entries);
+
+    if (!hasMore) {
+      console.log('No next page link found, finished fetching');
+      break;
+    }
+
+    page++;
+    await new Promise(resolve => setTimeout(resolve, 500));
+  }
+
+  return allEntries;
+}
+
 export async function fetchLetterboxdData(username, year) {
   const allEntries = [];
   let page = 1;

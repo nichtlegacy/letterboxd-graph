@@ -434,8 +434,9 @@ const FAV_POSTER_WIDTH = 118;
 const FAV_POSTER_HEIGHT = 177;
 const FAV_GAP = 18;
 const FAV_TOP = 82;
-const PROFILE_ROW_TOP = 302;
-const PROFILE_ROW_HEIGHT = 85;
+const FAV_LABEL_TOP = FAV_TOP + FAV_POSTER_HEIGHT + 20;
+const PROFILE_ROW_TOP = 332;
+const PROFILE_ROW_HEIGHT = 75;
 const PROFILE_ROW_GAP = 8;
 const PROFILE_ROW_COUNT = 3;
 const PROFILE_POSTER_WIDTH = 40;
@@ -454,6 +455,7 @@ export const FAV_PIXEL_HEIGHT = FAV_POSTER_HEIGHT * 2;
  * @param {Array} entries - All fetched diary entries
  * @param {Object} options
  * @param {Array<number>} options.years - Years the entries cover
+ * @param {boolean} options.allTime - Whether the entries are the complete diary
  * @param {number} options.totalEntries - All-time film count from the profile
  * @param {Array} options.favourites - Favourite films pinned on the profile
  * @param {Map<string, string>} options.posters - Film URL to poster data URI for the list
@@ -463,6 +465,7 @@ export const FAV_PIXEL_HEIGHT = FAV_POSTER_HEIGHT * 2;
 export async function generateProfileCard(entries, options = {}) {
   const {
     years = [],
+    allTime = false,
     totalEntries = 0,
     favourites = [],
     theme = 'dark',
@@ -484,8 +487,11 @@ export async function generateProfileCard(entries, options = {}) {
   const surfaceBorder = isDark ? '#252c35' : '#e2e6ea';
   const cardBg = isDark ? '#12161c' : '#ffffff';
 
+  // The range is only spelled out when the figures cover part of the diary.
+  // Labelling a complete diary with its year span would read as a restriction
+  // that is not there.
   const covered = [...new Set(years)].sort((a, b) => a - b);
-  const range = covered.length === 0
+  const range = allTime || covered.length === 0
     ? ''
     : covered.length === 1 ? String(covered[0]) : `${covered[0]}–${covered[covered.length - 1]}`;
 
@@ -539,6 +545,8 @@ export async function generateProfileCard(entries, options = {}) {
     <rect x="${x}" y="${FAV_TOP}" width="${FAV_POSTER_WIDTH}" height="${FAV_POSTER_HEIGHT}" rx="8" fill="${isDark ? '#0d1117' : '#dfe4e9'}"/>
     ${poster ? `<image href="${poster}" x="${x}" y="${FAV_TOP}" width="${FAV_POSTER_WIDTH}" height="${FAV_POSTER_HEIGHT}" clip-path="url(#favClip${index})" preserveAspectRatio="xMidYMid slice"/>` : `<text x="${x + FAV_POSTER_WIDTH / 2}" y="${FAV_TOP + FAV_POSTER_HEIGHT / 2}" font-size="12" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(truncateToWidth(film.title, 12, FAV_POSTER_WIDTH - 12))}</text>`}
     <rect x="${x}" y="${FAV_TOP}" width="${FAV_POSTER_WIDTH}" height="${FAV_POSTER_HEIGHT}" rx="8" fill="none" stroke="${isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'}" stroke-width="1"/>
+    <text x="${x + FAV_POSTER_WIDTH / 2}" y="${FAV_LABEL_TOP}" font-size="13" font-weight="600" fill="${t.text}" text-anchor="middle">${escapeXml(truncateToWidth(film.title, 13, FAV_POSTER_WIDTH))}</text>
+    <text x="${x + FAV_POSTER_WIDTH / 2}" y="${FAV_LABEL_TOP + 17}" font-size="12" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(film.year || '')}</text>
     </a>`;
     }).join('');
 
@@ -636,7 +644,7 @@ export async function generateProfileCard(entries, options = {}) {
   <text x="${RIGHT_X}" y="71" font-size="13" font-weight="700" fill="${t.textMuted}" letter-spacing="3">FAVOURITES</text>
   ${favouritesMarkup}
 
-  <text x="${RIGHT_X}" y="291" font-size="13" font-weight="700" fill="${t.textMuted}" letter-spacing="3">TOP RATED${range ? ` ${range}` : ''}</text>
+  <text x="${RIGHT_X}" y="320" font-size="13" font-weight="700" fill="${t.textMuted}" letter-spacing="3">TOP RATED${range ? ` ${range}` : ''}</text>
   ${rowsMarkup}
 </svg>`;
 

@@ -34,6 +34,13 @@ inputs:
     description: 'Color palette: "github" or "letterboxd"'
     required: false
     default: 'github'
+  scope:
+    description: >-
+      Diary scope. "all" fetches the complete diary, which costs one request per
+      50 entries — a few seconds for a few hundred films, several minutes for a
+      few thousand. "years" fetches only the years in `years`.
+    required: false
+    default: 'all'
   export-png:
     description: 'Also write PNG versions next to the SVGs'
     required: false
@@ -115,12 +122,13 @@ runs:
         LB_GRADIENT: ${{ inputs.gradient }}
         LB_ANIMATE: ${{ inputs.animate }}
         LB_PALETTE: ${{ inputs.palette }}
+        LB_SCOPE: ${{ inputs.scope }}
         LB_EXPORT_PNG: ${{ inputs.export-png }}
         LB_OUTPUT: ${{ inputs.output }}
       run: |
         set -euo pipefail
 
-        args=("$LB_USERNAME" -o "$LB_OUTPUT" -w "$LB_WEEK_START" -m "$LB_MODE" -t "$LB_PALETTE")
+        args=("$LB_USERNAME" -o "$LB_OUTPUT" -w "$LB_WEEK_START" -m "$LB_MODE" -t "$LB_PALETTE" -s "$LB_SCOPE")
         if [ -n "$LB_YEARS" ]; then args+=(-y "$LB_YEARS"); fi
         if [ -n "$LB_GRADIENT" ] && [ "$LB_GRADIENT" != "true" ]; then args+=(-g "$LB_GRADIENT"); fi
         if [ "$LB_ANIMATE" = "false" ]; then args+=(-a false); fi

@@ -8,7 +8,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { fetchProfileData, tryFetchMultipleYears, fetchSpecificYears, fetchFilmPoster, imageToBase64, closeBrowser } from './fetcher.js';
+import { fetchProfileData, tryFetchMultipleYears, fetchSpecificYears, fetchAllDiaryEntries, fetchFilmPoster, imageToBase64, closeBrowser } from './fetcher.js';
 import { generateSvg, generateMultiYearSvg } from './generator.js';
 import { generateReviewCard, generateProfileCard, pickTopFilms, entriesForYear, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT, FAV_PIXEL_WIDTH, FAV_PIXEL_HEIGHT } from './cards.js';
 import { svgToPng, imageBufferToThumbnail } from './exporter.js';
@@ -31,6 +31,7 @@ async function main() {
     let mode = "count"; // 'count' or 'rating'
     let animate = true; // CSS reveal animation for grid cells
     let palette = "github"; // 'github' or 'letterboxd' heatmap colors
+    let scope = "all"; // 'all' fetches the whole diary, 'years' only the -y years
 
     // Parse arguments
     for (let i = 0; i < args.length; i++) {
@@ -81,6 +82,10 @@ async function main() {
             palette = ['github', 'letterboxd'].includes(value) ? value : 'github';
             i++;
             break;
+          case 's':
+            scope = ['all', 'years'].includes(value) ? value : 'all';
+            i++;
+            break;
           default:
             console.warn(`Unknown flag "${flag}", ignoring`);
         }
@@ -101,6 +106,7 @@ async function main() {
       console.log("  -m <mode>     Graph mode: count or rating (default: count)");
       console.log("  -a <bool>     Cell reveal animation: true or false (default: true)");
       console.log("  -t <palette>  Color palette: github or letterboxd (default: github)");
+      console.log("  -s <scope>    Diary scope: all or years (default: all)");
       process.exit(1);
     }
 
@@ -115,6 +121,7 @@ async function main() {
     console.log(`Mode: ${mode}`);
     console.log(`Animation: ${animate ? '✓' : '✗'}`);
     console.log(`Palette: ${palette}`);
+    console.log(`Scope: ${scope === 'all' ? 'complete diary' : `only ${years.join(', ')}`}`);
     console.log(`Gradient: name ${usernameGradient ? '✓' : '✗'}, year ${yearGradient ? '✓' : '✗'}`);
     console.log(`PNG Export: ${exportPng ? '✓' : '✗'}`);
     console.log(`Output: ${outputPathDark}, ${outputPathLight}, ${outputJsonPath}\n`);
@@ -134,20 +141,30 @@ async function main() {
     const logoBase64 = await imageToBase64("https://a.ltrbxd.com/logos/letterboxd-decal-dots-pos-rgb-500px.png");
     console.log(`   Logo: ${logoBase64 ? '✓' : '✗'}\n`);
 
-    // Fetch diary entries
+    // Fetch diary entries. In 'all' scope the whole diary is fetched once and
+    // the graph years are filtered out of it, so the extra years cost nothing
+    // beyond the pages they live on.
     console.log("📖 Fetching diary entries...");
-    let filmEntries;
-    
-    if (years.length === 1) {
+    let allEntries;
+
+    if (scope === 'all') {
+      allEntries = await fetchAllDiaryEntries(username);
+    } else if (years.length === 1) {
        // Single year - use tryFetchMultipleYears logic (backwards compat) or direct fetch
        // Using tryFetchMultipleYears to keep robustness if current year is empty
-       filmEntries = await tryFetchMultipleYears(username, years[0]);
+       allEntries = await tryFetchMultipleYears(username, years[0]);
     } else {
        // Multiple specific years
-       filmEntries = await fetchSpecificYears(username, years);
+       allEntries = await fetchSpecificYears(username, years);
     }
-    
-    console.log(`\n📊 Found ${filmEntries.length} film entries\n`);
+
+    // The graphs and the year cards only ever show the requested years
+    const filmEntries = scope === 'all'
+      ? allEntries.filter(entry => years.includes(entry.date.getUTCFullYear()))
+      : allEntries;
+
+    console.log(`\n📊 Found ${allEntries.length} film entries`
+      + (scope === 'all' ? `, ${filmEntries.length} in ${years.join(', ')}` : '') + '\n');
 
     // Generate SVGs
     console.log("🎨 Generating SVG graphs...");
@@ -243,7 +260,7 @@ async function main() {
 
     const topFilms = [
       ...sortedYears.flatMap(y => pickTopFilms(entriesForYear(filmEntries, y))),
-      ...pickTopFilms(filmEntries, 3)
+      ...pickTopFilms(allEntries, 3)
     ];
     await loadPosters(topFilms, posters, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT);
     await loadPosters(favourites, favouritePosters, FAV_PIXEL_WIDTH, FAV_PIXEL_HEIGHT);
@@ -271,10 +288,13 @@ async function main() {
       path.join(dir, `letterboxd-profile-${theme}.svg`));
 
     for (const [index, theme] of ['dark', 'light'].entries()) {
-      const card = await generateProfileCard(filmEntries, {
+      const card = await generateProfileCard(allEntries, {
         ...svgOptions,
         theme,
-        years,
+        years: scope === 'all'
+          ? [...new Set(allEntries.map(entry => entry.date.getUTCFullYear()))].sort((a, b) => a - b)
+          : years,
+        allTime: scope === 'all',
         totalEntries,
         favourites,
         posters,

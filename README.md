@@ -143,6 +143,7 @@ node src/cli.js <username> [options]
 | `-m <mode>` | Graph mode: `count` or `rating` | `count` |
 | `-a <bool>` | Cell reveal animation: `true` or `false` | `true` |
 | `-t <palette>` | Color palette: `github` or `letterboxd` | `github` |
+| `-s <scope>` | Diary scope: `all` or `years` | `all` |
 
 ### Examples
 
@@ -207,6 +208,7 @@ write into.
 | `gradient` | Gradient text: `true`, `false`, `name` or `year` | `true` |
 | `animate` | Cell reveal animation | `true` |
 | `palette` | Color palette: `github` or `letterboxd` | `github` |
+| `scope` | Diary scope: `all` or `years` | `all` |
 | `export-png` | Also write PNG files | `false` |
 | `output` | Output path without extension | `images/github-letterboxd` |
 | `node-version` | Node.js version | `20` |
@@ -247,6 +249,7 @@ env:
   GRADIENT: "true"                     # "true", "false", "name" or "year"
   ANIMATE: "true"                      # "false" to disable the cell reveal animation
   PALETTE: "github"                    # "github" or "letterboxd"
+  SCOPE: "all"                         # "all" (whole diary) or "years"
 
 on:
   schedule:
@@ -279,6 +282,7 @@ jobs:
           if [ -n "${{ env.GRADIENT }}" ] && [ "${{ env.GRADIENT }}" != "true" ]; then CMD="$CMD -g ${{ env.GRADIENT }}"; fi
           if [ "${{ env.ANIMATE }}" = "false" ]; then CMD="$CMD -a false"; fi
           if [ -n "${{ env.PALETTE }}" ]; then CMD="$CMD -t ${{ env.PALETTE }}"; fi
+          if [ -n "${{ env.SCOPE }}" ]; then CMD="$CMD -s ${{ env.SCOPE }}"; fi
           if [ "${{ env.EXPORT_PNG }}" = "true" ]; then CMD="$CMD -p"; fi
           
           echo "Running: $CMD"
@@ -309,6 +313,7 @@ You can customize the graph directly in the workflow file by editing the `env` s
 - **GRADIENT**: Gradient text — `true`, `false`, `name` or `year`
 - **ANIMATE**: Toggle the cell reveal animation
 - **PALETTE**: Heatmap colors, `github` or `letterboxd`
+- **SCOPE**: `all` fetches the complete diary, `years` only the years in `YEARS`
 
 ---
 
@@ -471,6 +476,22 @@ the top rated list cover the years the run fetched, and say so, so the two are
 not mistaken for each other. The right column shows the favourites pinned on
 your Letterboxd profile — a profile can pin up to four, and the row is laid out
 left to right so pinning fewer reads as a short row rather than a row with gaps.
+
+### Diary Scope
+
+By default the complete diary is fetched, so the profile card can report
+all-time figures. Paginating the diary costs one request per 50 entries:
+
+| Library | Requests | Roughly |
+|---------|----------|---------|
+| 600 films | ~13 | a few seconds |
+| 3,500 films | ~73 | about a minute |
+| 6,000 films | ~120 | a few minutes |
+
+The graph and the year cards still only cover the years in `-y`; the extra
+years are filtered out of the same fetch rather than requested again. Set
+`-s years` to fetch only those years, which is cheaper on a large library but
+leaves the profile card scoped to them, labelled with the year range.
 
 ### Color Palettes
 

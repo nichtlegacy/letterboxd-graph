@@ -407,3 +407,35 @@ test('a rewatch links to the film, not to one viewing of it', async () => {
   assert.ok(svg.includes('<a href="https://letterboxd.com/someone/film/heat/">'));
   assert.ok(!svg.includes('/film/heat/3/'));
 });
+
+test('profile card drops the year range when the diary is complete', async () => {
+  const entries = [entry('2024-01-01', { title: 'A', rating: 4 }), entry('2026-01-01', { title: 'B', rating: 3 })];
+
+  const scoped = await generateProfileCard(entries, {
+    years: [2024, 2026], totalEntries: 626, username: 'someone'
+  });
+  const complete = await generateProfileCard(entries, {
+    years: [2024, 2026], allTime: true, totalEntries: 626, username: 'someone'
+  });
+
+  assert.ok(textNodes(scoped).includes('TOP RATED 2024–2026'));
+  assert.ok(textNodes(scoped).includes('Films 2024–2026'));
+
+  // Labelling a complete diary with its span would read as a restriction that
+  // is not there.
+  assert.ok(textNodes(complete).includes('TOP RATED'));
+  assert.ok(textNodes(complete).includes('Films'));
+  assert.ok(!complete.includes('2024–2026'));
+});
+
+test('profile card names the favourites under their posters', async () => {
+  const svg = await generateProfileCard([entry('2025-01-01', { title: 'A', rating: 4 })], {
+    years: [2025],
+    username: 'someone',
+    favourites: [{ title: 'Solaris', year: '1972', url: 'https://letterboxd.com/film/solaris/' }]
+  });
+  const texts = textNodes(svg);
+
+  assert.ok(texts.includes('Solaris'));
+  assert.ok(texts.includes('1972'));
+});
