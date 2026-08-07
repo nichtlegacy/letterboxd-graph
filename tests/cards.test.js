@@ -138,7 +138,7 @@ test('card handles a year with no entries', async () => {
   const svg = await generateReviewCard([], { year: 2025, username: 'someone' });
   const texts = textNodes(svg);
 
-  assert.ok(texts.includes('No rated films this year'));
+  assert.ok(texts.includes('Nothing logged this year'));
   assert.ok(texts.includes('–'), 'average rating falls back to a dash');
   assert.ok(svg.startsWith('<svg'));
 });
@@ -149,7 +149,7 @@ test('card handles entries without ratings', async () => {
     { year: 2025, username: 'someone' }
   );
 
-  assert.ok(textNodes(svg).includes('No rated films this year'));
+  assert.ok(textNodes(svg).includes('Nothing logged this year'));
   assert.ok(!svg.includes('Unrated'));
 });
 
@@ -623,7 +623,7 @@ test('an empty month says so', async () => {
     year: 2026, month: 8, username: 'someone'
   });
 
-  assert.ok(textNodes(svg).includes('No rated films this month'));
+  assert.ok(textNodes(svg).includes('Nothing logged this month'));
 });
 
 test('a long month name is scaled down to fit the column', async () => {
@@ -633,4 +633,26 @@ test('a long month name is scaled down to fit the column', async () => {
 
   assert.equal(size(short), 88, 'May needs no shrinking');
   assert.ok(size(long) <= 88 && size(long) >= 40);
+});
+
+test('an empty period fills the column rather than leaving one short row', async () => {
+  const svg = await generateReviewCard([], { year: 2026, month: 8, username: 'someone' });
+  const panels = [...svg.matchAll(/<rect x="[\d.]+" y="([\d.]+)" width="([\d.]+)" height="([\d.]+)" rx="14"/g)]
+    .map(([, y, width, height]) => ({ y: Number(y), width: Number(width), height: Number(height) }));
+  const widest = panels.reduce((a, b) => (b.width > a.width ? b : a));
+
+  assert.ok(widest.height > 400, 'the placeholder spans the list it replaces');
+  assert.ok(textNodes(svg).some(text => text.includes('August 2026')), 'it names the period');
+});
+
+test('the hero rules keep clear of a wider subtitle', async () => {
+  const rulesOf = (svg) => [...svg.matchAll(/<line x1="([\d.]+)" y1="229" x2="([\d.]+)"/g)]
+    .map(([, x1, x2]) => [Number(x1), Number(x2)]);
+
+  const year = await generateReviewCard([], { year: 2026, username: 'someone' });
+  const month = await generateReviewCard([], { year: 2026, month: 9, username: 'someone' });
+
+  // "2026 IN REVIEW" is wider than "IN REVIEW", so the rules have to give way.
+  assert.ok(rulesOf(month)[0][1] < rulesOf(year)[0][1]);
+  assert.ok(rulesOf(month)[1][0] > rulesOf(year)[1][0]);
 });

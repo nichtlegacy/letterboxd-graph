@@ -149,13 +149,17 @@ poster art, runtime and the Letterboxd community rating.
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-review-current-month-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-review-current-month-light.svg">
-    <img alt="Letterboxd month in review card" src="images/letterboxd-review-current-month-light.svg" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-review-previous-month-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-review-previous-month-light.svg">
+    <img alt="Letterboxd month in review card" src="images/letterboxd-review-previous-month-light.svg" width="100%">
   </picture>
 </p>
 
-The same card narrowed to a single month. The files are named by how recent the
+*Shown here for the previous month, since the current one is only a few days old
+at the start of a month.*
+
+The same card narrowed to a single month. A month with nothing logged says so
+rather than rendering an empty list. The files are named by how recent the
 month is rather than by its date, so an embed keeps working when the month turns
 over and old cards do not pile up in the repository.
 
@@ -184,20 +188,28 @@ right column shows the favourites you pinned on Letterboxd. See
 Letterboxd Pro and Patron members get their badge over the avatar, on the graph
 and on both cards.
 
-<table>
-  <tr>
-    <th width="50%">Patron</th>
-    <th width="50%">Pro</th>
-  </tr>
-  <tr>
-    <td><img src=".github/assets/profile-card-patron-dark.svg" width="100%"></td>
-    <td><img src=".github/assets/profile-card-pro-dark.svg" width="100%"></td>
-  </tr>
-  <tr>
-    <td><img src=".github/assets/graph-patron-dark.svg" width="100%"></td>
-    <td><img src=".github/assets/graph-pro-dark.svg" width="100%"></td>
-  </tr>
-</table>
+| Status | Badge color | Location |
+|--------|-------------|----------|
+| **Patron** | Cyan `#40bcf4` | Bottom-left of the profile picture |
+| **Pro** | Orange `#ff8000` | Bottom-left of the profile picture |
+
+**Patron** — cyan badge, shown on [@BeHaind](https://letterboxd.com/BeHaind/)
+
+<p align="center">
+  <img alt="Profile card for a Patron member" src=".github/assets/profile-card-patron-dark.svg" width="100%">
+</p>
+<p align="center">
+  <img alt="Contribution graph for a Patron member" src=".github/assets/graph-patron-dark.svg" width="100%">
+</p>
+
+**Pro** — orange badge, shown on [@Rufus_Firefly](https://letterboxd.com/Rufus_Firefly/)
+
+<p align="center">
+  <img alt="Profile card for a Pro member" src=".github/assets/profile-card-pro-dark.svg" width="100%">
+</p>
+<p align="center">
+  <img alt="Contribution graph for a Pro member" src=".github/assets/graph-pro-dark.svg" width="100%">
+</p>
 
 ### JSON Export
 
@@ -593,15 +605,6 @@ flame and the member badge.
 |------|-------------|
 | **Count** (default) | Cell color intensity based on number of films watched |
 | **Rating** | Cell color based on average rating of films that day |
-
-### Member Badges
-
-The graph automatically detects and displays your Letterboxd membership status:
-
-| Status | Badge Color | Location |
-|--------|-------------|----------|
-| **Pro** | Orange (#ff8000) | Bottom-left of profile picture |
-| **Patron** | Cyan (#40bcf4) | Bottom-left of profile picture |
 
 ---
 

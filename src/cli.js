@@ -311,6 +311,19 @@ async function main() {
       }
     }
 
+    // Anything matching the card naming scheme that this run did not write is
+    // left over from an earlier configuration: dated month files, or a year
+    // that has since been dropped from -y. Nothing else in the directory is
+    // touched.
+    const written = new Set(reviewCards.map(card => path.basename(card.path)));
+    for (const name of fs.readdirSync(dir)) {
+      if (!/^letterboxd-review-.+\.(svg|png)$/.test(name)) continue;
+      if (written.has(name) || written.has(name.replace(/\.png$/, '.svg'))) continue;
+
+      fs.unlinkSync(path.join(dir, name));
+      console.log(`   ✗ removed stale ${name}`);
+    }
+
     // Profile card, not tied to a single year
     const profileCardPaths = ['dark', 'light'].map(theme =>
       path.join(dir, `letterboxd-profile-${theme}.svg`));

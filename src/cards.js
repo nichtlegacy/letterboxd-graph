@@ -372,6 +372,32 @@ function headlineFontSize(headline, maxWidth) {
 }
 
 /**
+ * Rules flanking the hero subtitle.
+ *
+ * The subtitle is wider for a month than for a year ("2026 IN REVIEW" against
+ * "IN REVIEW"), so the rules are measured against it rather than pinned, and
+ * dropped entirely when there is no room left for them.
+ *
+ * @param {string} subtitle
+ * @param {number} fontSize
+ * @param {number} letterSpacing
+ * @returns {{left: [number, number], right: [number, number]}|null}
+ */
+function heroRules(subtitle, fontSize, letterSpacing) {
+  const centre = CONTENT_LEFT + LEFT_WIDTH / 2;
+  const textWidth = calculateTextWidth(subtitle, fontSize) + letterSpacing * Math.max(subtitle.length - 1, 0);
+  const innerEdge = textWidth / 2 + 22;
+  const outerEdge = LEFT_WIDTH / 2 - 40;
+
+  if (outerEdge - innerEdge < 30) return null;
+
+  return {
+    left: [centre - outerEdge, centre - innerEdge],
+    right: [centre + innerEdge, centre + outerEdge]
+  };
+}
+
+/**
  * File name stem for a period's cards, e.g. "2026" or "2026-08"
  * @param {{year: number, month?: number|null}} period
  * @returns {string}
@@ -443,6 +469,7 @@ export async function generateReviewCard(entries, options = {}) {
 
   const period = { year, month };
   const { headline, subtitle } = periodLabels(period);
+  const rules = heroRules(subtitle, 14, 7);
   const yearEntries = entriesForPeriod(entries, period);
   const streak = calculateStreak(yearEntries);
   const average = calculateAverageRating(yearEntries);
@@ -471,10 +498,15 @@ export async function generateReviewCard(entries, options = {}) {
 
   const topFilms = pickTopFilms(yearEntries);
 
+  // An empty period gets a panel the size of the list it replaces. A single
+  // short row left the column looking broken rather than quiet.
+  const emptyHeight = CONTENT_BOTTOM - ROW_TOP;
   const rowsMarkup = topFilms.length === 0
     ? `
-    <rect x="${RIGHT_X}" y="${ROW_TOP}" width="${RIGHT_WIDTH}" height="${ROW_HEIGHT}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
-    <text x="${RIGHT_X + RIGHT_WIDTH / 2}" y="${ROW_TOP + ROW_HEIGHT / 2 + 6}" font-size="16" font-weight="500" fill="${t.textMuted}" text-anchor="middle">No rated films ${month === null ? 'this year' : 'this month'}</text>`
+    <rect x="${RIGHT_X}" y="${ROW_TOP}" width="${RIGHT_WIDTH}" height="${emptyHeight}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1" stroke-dasharray="6 6"/>
+    ${renderIcon(ICONS.films, RIGHT_X + RIGHT_WIDTH / 2 - 22, ROW_TOP + emptyHeight / 2 - 62, 44, t.textMuted)}
+    <text x="${RIGHT_X + RIGHT_WIDTH / 2}" y="${ROW_TOP + emptyHeight / 2 + 6}" font-size="19" font-weight="600" fill="${t.text}" text-anchor="middle">Nothing logged ${month === null ? 'this year' : 'this month'}</text>
+    <text x="${RIGHT_X + RIGHT_WIDTH / 2}" y="${ROW_TOP + emptyHeight / 2 + 32}" font-size="14" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(headline)}${month === null ? '' : ` ${year}`} is still waiting for its first film</text>`
     : topFilms.map((film, index) => {
       const y = ROW_TOP + index * (ROW_HEIGHT + ROW_GAP);
       const midY = y + ROW_HEIGHT / 2;
@@ -554,8 +586,8 @@ export async function generateReviewCard(entries, options = {}) {
 
   <!-- Hero -->
   <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="${HERO_BASELINE}" font-size="${headlineFontSize(headline, LEFT_WIDTH - 40)}" font-weight="700" fill="${yearGradient ? 'url(#reviewGradient)' : t.text}" text-anchor="middle">${escapeXml(headline)}</text>
-  <line x1="${CONTENT_LEFT + 40}" y1="${HERO_RULE_Y}" x2="${CONTENT_LEFT + 150}" y2="${HERO_RULE_Y}" stroke="${surfaceBorder}" stroke-width="1"/>
-  <line x1="${CONTENT_LEFT + LEFT_WIDTH - 150}" y1="${HERO_RULE_Y}" x2="${CONTENT_LEFT + LEFT_WIDTH - 40}" y2="${HERO_RULE_Y}" stroke="${surfaceBorder}" stroke-width="1"/>
+  ${rules ? `<line x1="${rules.left[0]}" y1="${HERO_RULE_Y}" x2="${rules.left[1]}" y2="${HERO_RULE_Y}" stroke="${surfaceBorder}" stroke-width="1"/>
+  <line x1="${rules.right[0]}" y1="${HERO_RULE_Y}" x2="${rules.right[1]}" y2="${HERO_RULE_Y}" stroke="${surfaceBorder}" stroke-width="1"/>` : ''}
   <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="${HERO_LABEL_Y}" font-size="14" font-weight="600" fill="${t.textMuted}" text-anchor="middle" letter-spacing="7">${escapeXml(subtitle)}</text>
 
   <!-- Headline figures -->
@@ -646,6 +678,7 @@ export async function generateProfileCard(entries, options = {}) {
   // The range is only spelled out when the figures cover part of the diary.
   // Labelling a complete diary with its year span would read as a restriction
   // that is not there.
+  const profileRules = heroRules('FILMS WATCHED', 14, 7);
   const covered = [...new Set(years)].sort((a, b) => a - b);
   const range = allTime || covered.length === 0
     ? ''
@@ -782,8 +815,8 @@ export async function generateProfileCard(entries, options = {}) {
 
   <!-- Headline -->
   <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="${HERO_BASELINE}" font-size="88" font-weight="700" fill="${yearGradient ? 'url(#reviewGradient)' : t.text}" text-anchor="middle">${totalEntries}</text>
-  <line x1="${CONTENT_LEFT + 40}" y1="${HERO_RULE_Y}" x2="${CONTENT_LEFT + 150}" y2="${HERO_RULE_Y}" stroke="${surfaceBorder}" stroke-width="1"/>
-  <line x1="${CONTENT_LEFT + LEFT_WIDTH - 150}" y1="${HERO_RULE_Y}" x2="${CONTENT_LEFT + LEFT_WIDTH - 40}" y2="${HERO_RULE_Y}" stroke="${surfaceBorder}" stroke-width="1"/>
+  ${profileRules ? `<line x1="${profileRules.left[0]}" y1="${HERO_RULE_Y}" x2="${profileRules.left[1]}" y2="${HERO_RULE_Y}" stroke="${surfaceBorder}" stroke-width="1"/>
+  <line x1="${profileRules.right[0]}" y1="${HERO_RULE_Y}" x2="${profileRules.right[1]}" y2="${HERO_RULE_Y}" stroke="${surfaceBorder}" stroke-width="1"/>` : ''}
   <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="${HERO_LABEL_Y}" font-size="14" font-weight="600" fill="${t.textMuted}" text-anchor="middle" letter-spacing="7">FILMS WATCHED</text>
 
   ${tilesMarkup}
