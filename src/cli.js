@@ -8,10 +8,10 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { fetchProfileData, tryFetchMultipleYears, fetchSpecificYears, imageToBase64, closeBrowser } from './fetcher.js';
+import { fetchProfileData, tryFetchMultipleYears, fetchSpecificYears, fetchFilmPoster, imageToBase64, closeBrowser } from './fetcher.js';
 import { generateSvg, generateMultiYearSvg } from './generator.js';
-import { generateReviewCard } from './review.js';
-import { svgToPng } from './exporter.js';
+import { generateReviewCard, pickTopFilms, entriesForYear, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT } from './review.js';
+import { svgToPng, imageBufferToThumbnail } from './exporter.js';
 import { buildJsonExport } from './stats.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -202,14 +202,44 @@ async function main() {
     // Year-in-Review cards, one per requested year, in both themes
     console.log("\n🃏 Generating year-in-review cards...");
     const reviewCards = [];
+    const sortedYears = [...years].sort((a, b) => b - a);
 
-    for (const reviewYear of [...years].sort((a, b) => b - a)) {
+    // Posters are only needed for the films that actually make a card, so they
+    // are resolved once here rather than per theme. A missing poster is not an
+    // error: the card falls back to a plain placeholder.
+    const posters = new Map();
+    const topFilms = sortedYears.flatMap(y => pickTopFilms(entriesForYear(filmEntries, y)));
+
+    for (const film of topFilms) {
+      if (!film.url || posters.has(film.url)) continue;
+
+      const posterUrl = await fetchFilmPoster(film.url);
+      if (!posterUrl) continue;
+
+      try {
+        const response = await fetch(posterUrl);
+        if (!response.ok) continue;
+
+        const thumbnail = await imageBufferToThumbnail(
+          Buffer.from(await response.arrayBuffer()),
+          POSTER_PIXEL_WIDTH,
+          POSTER_PIXEL_HEIGHT
+        );
+        if (thumbnail) posters.set(film.url, thumbnail);
+      } catch (error) {
+        console.warn(`   Could not load poster for ${film.title}: ${error.message}`);
+      }
+    }
+    console.log(`   Posters: ${posters.size}/${new Set(topFilms.map(f => f.url)).size}`);
+
+    for (const reviewYear of sortedYears) {
       for (const theme of ['dark', 'light']) {
         const cardPath = path.join(dir, `letterboxd-review-${reviewYear}-${theme}.svg`);
         const card = await generateReviewCard(filmEntries, {
           ...svgOptions,
           year: reviewYear,
-          theme
+          theme,
+          posters
         });
 
         fs.writeFileSync(cardPath, card);

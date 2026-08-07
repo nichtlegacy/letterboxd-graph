@@ -373,7 +373,7 @@ export async function generateSvg(entries, options = {}) {
   <!-- Header Section -->
   <g transform="translate(25, 20)">
     <!-- Profile Image (clickable) -->
-    <a href="https://letterboxd.com/${username}/" target="_blank">
+    <a href="https://letterboxd.com/${username}/">
       <circle cx="40" cy="40" r="42" fill="${t.cardBorder}"/>
       ${profileImage ? `<image href="${profileImage}" x="0" y="0" width="80" height="80" clip-path="url(#profileClip)" style="cursor: pointer;"/>` : `<circle cx="40" cy="40" r="40" fill="${t.colors[2]}"/>`}
     </a>
@@ -387,12 +387,12 @@ export async function generateSvg(entries, options = {}) {
 
     <!-- Name and Info (clickable) -->
 
-    <a href="https://letterboxd.com/${username}/" target="_blank">
+    <a href="https://letterboxd.com/${username}/">
       <text x="100" y="35" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="28" font-weight="600" fill="${usernameGradient ? 'url(#usernameGradient)' : t.text}" style="cursor: pointer;">${escapeXml(displayName)}</text>
     </a>
 
     <text x="100" y="60" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="14" font-weight="500">
-      <a href="https://letterboxd.com/${username}/" target="_blank" style="cursor: pointer;">
+      <a href="https://letterboxd.com/${username}/" style="cursor: pointer;">
         <tspan fill="${t.textMuted}">@${escapeXml(username)}</tspan>
       </a>
       <tspan dx="5" fill="${t.textMuted}">•</tspan>
@@ -404,7 +404,7 @@ export async function generateSvg(entries, options = {}) {
     </text>
 
     <!-- Letterboxd Logo (clickable, links to main site) -->
-    ${logoBase64 ? `<a href="https://letterboxd.com/" target="_blank">
+    ${logoBase64 ? `<a href="https://letterboxd.com/">
       <g transform="translate(${SVG_WIDTH - 117}, 0)">
         <image href="${logoBase64}" x="0" y="4" width="72" height="72" style="cursor: pointer;"/>
       </g>
@@ -558,7 +558,7 @@ export async function generateSvg(entries, options = {}) {
 
       svg += `
     <g class="cell-group">
-      <a href="${diaryUrl}" target="_blank">
+      <a href="${diaryUrl}">
         <rect class="${cellClass}"
           x="${x}"
           y="${y}"
@@ -684,7 +684,7 @@ export async function generateMultiYearSvg(entries, options = {}) {
   <!-- Header Section -->
   <g transform="translate(25, 20)">
     <!-- Profile Image (clickable) -->
-    <a href="https://letterboxd.com/${username}/" target="_blank">
+    <a href="https://letterboxd.com/${username}/">
       <circle cx="40" cy="40" r="42" fill="${t.cardBorder}"/>
       ${profileImage ? `<image href="${profileImage}" x="0" y="0" width="80" height="80" clip-path="url(#profileClip)" style="cursor: pointer;"/>` : `<circle cx="40" cy="40" r="40" fill="${t.colors[2]}"/>`}
     </a>
@@ -697,12 +697,12 @@ export async function generateMultiYearSvg(entries, options = {}) {
     </g>` : ''}
 
     <!-- Name and Info (clickable) -->
-    <a href="https://letterboxd.com/${username}/" target="_blank">
+    <a href="https://letterboxd.com/${username}/">
       <text x="100" y="35" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="28" font-weight="600" fill="${usernameGradient ? 'url(#usernameGradient)' : t.text}" style="cursor: pointer;">${escapeXml(displayName)}</text>
     </a>
 
     <text x="100" y="60" font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="14" font-weight="500">
-      <a href="https://letterboxd.com/${username}/" target="_blank" style="cursor: pointer;">
+      <a href="https://letterboxd.com/${username}/" style="cursor: pointer;">
         <tspan fill="${t.textMuted}">@${escapeXml(username)}</tspan>
       </a>
       <tspan dx="5" fill="${t.textMuted}">•</tspan>
@@ -714,7 +714,7 @@ export async function generateMultiYearSvg(entries, options = {}) {
     </text>
 
     <!-- Letterboxd Logo (clickable, links to main site) -->
-    ${logoBase64 ? `<a href="https://letterboxd.com/" target="_blank">
+    ${logoBase64 ? `<a href="https://letterboxd.com/">
       <g transform="translate(${SVG_WIDTH - 117}, 0)">
         <image href="${logoBase64}" x="0" y="4" width="72" height="72" style="cursor: pointer;"/>
       </g>
@@ -922,7 +922,7 @@ export async function generateMultiYearSvg(entries, options = {}) {
 
         svg += `
     <g class="cell-group">
-      <a href="${diaryUrl}" target="_blank">
+      <a href="${diaryUrl}">
         <rect class="${cellClass}"
           x="${x}"
           y="${y}"

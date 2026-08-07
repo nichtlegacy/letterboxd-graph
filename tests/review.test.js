@@ -38,7 +38,7 @@ test('card reports the figures for the requested year only', async () => {
   assert.ok(texts.includes('2'), 'film count');
   assert.ok(texts.includes('3.5'), 'average rating');
   assert.ok(texts.includes('Rewatches'));
-  assert.ok(!svg.includes('Old'), 'entries from other years are excluded');
+  assert.ok(!texts.includes('Old'), 'entries from other years are excluded');
 });
 
 test('card lists the highest rated films first', async () => {
@@ -74,8 +74,36 @@ test('card renders half stars the way Letterboxd does', async () => {
     [entry('2025-01-01', { title: 'Half', rating: 3.5, year: '1999' })],
     { year: 2025, username: 'someone' }
   );
+  const texts = textNodes(svg);
 
-  assert.ok(textNodes(svg).includes('1999 · ★★★½'));
+  assert.ok(texts.includes('★★★½'));
+  assert.ok(texts.includes('1999'));
+});
+
+test('card embeds a poster when one was resolved, and a placeholder otherwise', async () => {
+  const film = entry('2025-01-01', { title: 'Postered', rating: 5 });
+  const withoutPoster = await generateReviewCard([film], { year: 2025, username: 'someone' });
+  assert.ok(!withoutPoster.includes('<image href="data:image/jpeg'));
+
+  const withPoster = await generateReviewCard([film], {
+    year: 2025,
+    username: 'someone',
+    posters: new Map([[film.url, 'data:image/jpeg;base64,AAAA']])
+  });
+  assert.ok(withPoster.includes('data:image/jpeg;base64,AAAA'));
+  assert.ok(withPoster.includes('clip-path="url(#posterClip0)"'));
+});
+
+test('card keeps the title clear of the rating column', async () => {
+  // A five star rating is the widest the stars column gets, so the title has
+  // the least room in exactly that case.
+  const svg = await generateReviewCard(
+    [entry('2025-01-01', { title: 'A Very Long Film Title That Would Otherwise Run Into The Stars', rating: 5 })],
+    { year: 2025, username: 'someone' }
+  );
+  const title = textNodes(svg).find(text => text.startsWith('A Very Long'));
+
+  assert.ok(title.endsWith('…'));
 });
 
 test('card truncates a long title instead of overflowing', async () => {

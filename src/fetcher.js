@@ -881,6 +881,56 @@ export async function fetchProfileData(username) {
 /**
  * Convert image URL to Base64 data URI
  */
+/**
+ * Rewrite a diary film link to the canonical film page.
+ *
+ * Diary rows link to /<user>/film/<slug>/, which 404s when requested directly.
+ * The film itself lives at /film/<slug>/.
+ *
+ * @param {string} filmUrl
+ * @returns {string|null} Canonical URL, or null if the input is not a film link
+ */
+export function canonicalFilmUrl(filmUrl) {
+  if (!filmUrl) return null;
+
+  const match = filmUrl.match(/\/film\/([^/]+)/);
+  return match ? `https://letterboxd.com/film/${match[1]}/` : null;
+}
+
+/**
+ * Resolve the poster image URL for a film.
+ *
+ * Diary rows only carry lazy-loading placeholders, so the poster has to come
+ * from the film page. Both the JSON-LD block and the markup reference the same
+ * resized poster asset, so matching that URL shape is enough and avoids parsing
+ * the whole document.
+ *
+ * Uses a plain request rather than the Cloudflare-resilient fetchPage: film
+ * pages are not challenged the way diary pages are, and fetchPage validates
+ * responses against diary markup, so it would reject a film page and fall
+ * through to the much slower Puppeteer path. A poster is decorative, so any
+ * failure just returns null and the card renders a placeholder.
+ *
+ * @param {string} filmUrl - Any Letterboxd link to the film
+ * @returns {Promise<string|null>} Poster URL, or null when none was found
+ */
+export async function fetchFilmPoster(filmUrl) {
+  const url = canonicalFilmUrl(filmUrl);
+  if (!url) return null;
+
+  try {
+    const response = await fetch(url, { headers: BROWSER_HEADERS });
+    if (!response.ok) return null;
+
+    const html = await response.text();
+    const match = html.match(/https:\/\/a\.ltrbxd\.com\/resized\/film-poster\/[^"'\s\\]+/);
+    return match ? match[0].replace(/&amp;/g, '&') : null;
+  } catch (error) {
+    console.warn(`   Could not resolve poster for ${url}: ${error.message}`);
+    return null;
+  }
+}
+
 export async function imageToBase64(url) {
   try {
     const response = await fetch(url, { headers: BROWSER_HEADERS });
