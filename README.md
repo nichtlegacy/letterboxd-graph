@@ -125,9 +125,10 @@ Hovering reveals more than the graph shows at rest:
 
 > [!NOTE]
 > GitHub embeds SVGs through an `<img>` tag, which receives no mouse events, and
-> serves raw files with a `sandbox` CSP. Hover states and links therefore only
-> work when the SVG is opened directly or embedded in a page you control. The
-> cell reveal animation is declarative CSS and *does* play inside a README.
+> serves raw files with a `sandbox` CSP, so hover states and links are dead in a
+> README. They work on the [Pages site](#pages-site), which embeds each card as
+> an `<object>`. The cell reveal animation is declarative CSS and *does* play
+> inside a README.
 
 ### Year in Review
 
