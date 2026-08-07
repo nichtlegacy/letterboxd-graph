@@ -8,7 +8,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { generateReviewCard, generateProfileCard, pickTopFilms, aggregateFilms } from '../src/cards.js';
+import {
+  generateReviewCard,
+  generateProfileCard,
+  pickTopFilms,
+  aggregateFilms,
+  entriesForPeriod,
+  periodLabels,
+  periodSlug
+} from '../src/cards.js';
 
 function entry(dateString, { title = 'Film', year = '2020', rating = null, rewatch = false, liked = false } = {}) {
   return {
@@ -572,4 +580,57 @@ test('the profile card does not label two different numbers as films', async () 
   assert.ok(texts.includes('FILMS WATCHED'));
   assert.ok(texts.includes('Diary Entries'));
   assert.ok(!texts.includes('Films'), 'the bare word would be ambiguous here');
+});
+
+test('entriesForPeriod narrows to a year or to a month within it', () => {
+  const entries = [
+    entry('2026-08-03', { title: 'Aug' }),
+    entry('2026-07-30', { title: 'Jul' }),
+    entry('2025-08-03', { title: 'LastAug' })
+  ];
+
+  assert.equal(entriesForPeriod(entries, { year: 2026 }).length, 2);
+  assert.equal(entriesForPeriod(entries, { year: 2026, month: 8 })[0].title, 'Aug');
+  assert.equal(entriesForPeriod(entries, { year: 2026, month: 9 }).length, 0);
+});
+
+test('a period names itself for the card and for the file', () => {
+  assert.deepEqual(periodLabels({ year: 2026 }), { headline: '2026', subtitle: 'IN REVIEW' });
+  assert.deepEqual(periodLabels({ year: 2026, month: 8 }), { headline: 'August', subtitle: '2026 IN REVIEW' });
+
+  assert.equal(periodSlug({ year: 2026 }), '2026');
+  assert.equal(periodSlug({ year: 2026, month: 8 }), '2026-08');
+  assert.equal(periodSlug({ year: 2026, month: 12 }), '2026-12');
+});
+
+test('a month card counts only that month', async () => {
+  const entries = [
+    entry('2026-08-03', { title: 'Aug A', rating: 5 }),
+    entry('2026-08-14', { title: 'Aug B', rating: 4 }),
+    entry('2026-07-30', { title: 'Jul', rating: 5 })
+  ];
+  const svg = await generateReviewCard(entries, { year: 2026, month: 8, username: 'someone' });
+  const texts = textNodes(svg);
+
+  assert.ok(texts.includes('August'));
+  assert.ok(texts.includes('2026 IN REVIEW'));
+  assert.ok(texts.includes('2'), 'two films that month');
+  assert.ok(!texts.includes('Jul'), 'the previous month is excluded');
+});
+
+test('an empty month says so', async () => {
+  const svg = await generateReviewCard([entry('2026-07-01', { title: 'Jul', rating: 4 })], {
+    year: 2026, month: 8, username: 'someone'
+  });
+
+  assert.ok(textNodes(svg).includes('No rated films this month'));
+});
+
+test('a long month name is scaled down to fit the column', async () => {
+  const short = await generateReviewCard([], { year: 2026, month: 5, username: 'someone' });
+  const long = await generateReviewCard([], { year: 2026, month: 9, username: 'someone' });
+  const size = (svg) => Number(svg.match(/y="202" font-size="(\d+)"/)[1]);
+
+  assert.equal(size(short), 88, 'May needs no shrinking');
+  assert.ok(size(long) <= 88 && size(long) >= 40);
 });

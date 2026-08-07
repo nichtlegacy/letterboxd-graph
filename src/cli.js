@@ -10,7 +10,7 @@ import { fileURLToPath } from 'url';
 
 import { fetchProfileData, tryFetchMultipleYears, fetchSpecificYears, fetchAllDiaryEntries, fetchFilmDetails, imageToBase64, closeBrowser } from './fetcher.js';
 import { generateSvg, generateMultiYearSvg } from './generator.js';
-import { generateReviewCard, generateProfileCard, pickTopFilms, entriesForYear, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT, FAV_PIXEL_WIDTH, FAV_PIXEL_HEIGHT } from './cards.js';
+import { generateReviewCard, generateProfileCard, pickTopFilms, entriesForPeriod, periodSlug, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT, FAV_PIXEL_WIDTH, FAV_PIXEL_HEIGHT } from './cards.js';
 import { svgToPng, imageBufferToThumbnail } from './exporter.js';
 import { buildJsonExport } from './stats.js';
 
@@ -32,6 +32,7 @@ async function main() {
     let animate = true; // CSS reveal animation for grid cells
     let palette = "github"; // 'github' or 'letterboxd' heatmap colors
     let scope = "all"; // 'all' fetches the whole diary, 'years' only the -y years
+    let monthCards = 2; // recent months to also make review cards for
 
     // Parse arguments
     for (let i = 0; i < args.length; i++) {
@@ -86,6 +87,12 @@ async function main() {
             scope = ['all', 'years'].includes(value) ? value : 'all';
             i++;
             break;
+          case 'c': {
+            const parsed = Number.parseInt(value, 10);
+            monthCards = Number.isInteger(parsed) && parsed >= 0 ? parsed : 2;
+            i++;
+            break;
+          }
           default:
             console.warn(`Unknown flag "${flag}", ignoring`);
         }
@@ -107,6 +114,7 @@ async function main() {
       console.log("  -a <bool>     Cell reveal animation: true or false (default: true)");
       console.log("  -t <palette>  Color palette: github or letterboxd (default: github)");
       console.log("  -s <scope>    Diary scope: all or years (default: all)");
+      console.log("  -c <count>    Recent months to also make cards for, 0 to skip (default: 2)");
       process.exit(1);
     }
 
@@ -122,6 +130,7 @@ async function main() {
     console.log(`Animation: ${animate ? '✓' : '✗'}`);
     console.log(`Palette: ${palette}`);
     console.log(`Scope: ${scope === 'all' ? 'complete diary' : `only ${years.join(', ')}`}`);
+    console.log(`Month cards: ${monthCards === 0 ? '✗' : `last ${monthCards}`}`);
     console.log(`Gradient: name ${usernameGradient ? '✓' : '✗'}, year ${yearGradient ? '✓' : '✗'}`);
     console.log(`PNG Export: ${exportPng ? '✓' : '✗'}`);
     console.log(`Output: ${outputPathDark}, ${outputPathLight}, ${outputJsonPath}\n`);
@@ -224,10 +233,18 @@ async function main() {
     console.log(`   ✓ ${outputPathLight}`);
     console.log(`   ✓ ${outputJsonPath}`);
 
-    // Year-in-Review cards, one per requested year, in both themes
-    console.log("\n🃏 Generating year-in-review cards...");
+    // Review cards. A period is a year or a single month within one; the card
+    // is the same either way, so both come out of the same loop.
+    console.log("\n🃏 Generating review cards...");
     const reviewCards = [];
     const sortedYears = [...years].sort((a, b) => b - a);
+
+    const periods = sortedYears.map(year => ({ year }));
+    const now = new Date();
+    for (let back = 0; back < monthCards; back++) {
+      const cursor = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - back, 1));
+      periods.push({ year: cursor.getUTCFullYear(), month: cursor.getUTCMonth() + 1 });
+    }
 
     // Posters are only needed for the films that actually make a card, so they
     // are resolved once here rather than per theme. A missing poster is not an
@@ -263,7 +280,7 @@ async function main() {
     };
 
     const topFilms = [
-      ...sortedYears.flatMap(y => pickTopFilms(entriesForYear(filmEntries, y))),
+      ...periods.flatMap(period => pickTopFilms(entriesForPeriod(allEntries, period))),
       ...pickTopFilms(allEntries, 3)
     ];
     await loadFilm(topFilms, posters, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT);
@@ -271,12 +288,12 @@ async function main() {
     console.log(`   Posters: ${posters.size}/${new Set(topFilms.map(f => f.url)).size}`
       + `, favourites ${favouritePosters.size}/${favourites.length}`);
 
-    for (const reviewYear of sortedYears) {
+    for (const period of periods) {
       for (const theme of ['dark', 'light']) {
-        const cardPath = path.join(dir, `letterboxd-review-${reviewYear}-${theme}.svg`);
-        const card = await generateReviewCard(filmEntries, {
+        const cardPath = path.join(dir, `letterboxd-review-${periodSlug(period)}-${theme}.svg`);
+        const card = await generateReviewCard(allEntries, {
           ...svgOptions,
-          year: reviewYear,
+          ...period,
           theme,
           posters,
           details

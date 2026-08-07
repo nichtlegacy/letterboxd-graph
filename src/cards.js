@@ -309,6 +309,11 @@ export function pickTopFilms(entries, limit = TOP_FILM_COUNT) {
     .slice(0, limit);
 }
 
+const MONTH_NAMES = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
+];
+
 /**
  * Select the entries belonging to one calendar year
  * @param {Array} entries
@@ -317,6 +322,62 @@ export function pickTopFilms(entries, limit = TOP_FILM_COUNT) {
  */
 export function entriesForYear(entries, year) {
   return entries.filter(entry => entry.date.getUTCFullYear() === year);
+}
+
+/**
+ * Select the entries belonging to one period.
+ *
+ * A period is a year, or a single month within one. The card is the same
+ * either way, so the only thing that changes is what falls inside it.
+ *
+ * @param {Array} entries
+ * @param {{year: number, month?: number|null}} period - month is 1-12
+ * @returns {Array}
+ */
+export function entriesForPeriod(entries, { year, month = null }) {
+  return entries.filter(entry =>
+    entry.date.getUTCFullYear() === year
+    && (month === null || entry.date.getUTCMonth() + 1 === month));
+}
+
+/**
+ * Headline and subtitle for a period.
+ *
+ * A year is its own headline. A month leads with its name and carries the year
+ * in the subtitle, so "August 2026" does not have to compete for the same line.
+ *
+ * @param {{year: number, month?: number|null}} period
+ * @returns {{headline: string, subtitle: string}}
+ */
+export function periodLabels({ year, month = null }) {
+  return month === null
+    ? { headline: String(year), subtitle: 'IN REVIEW' }
+    : { headline: MONTH_NAMES[month - 1], subtitle: `${year} IN REVIEW` };
+}
+
+/**
+ * Largest font size at which the headline still fits the column.
+ *
+ * "September" is a good deal wider than "2026" at the same size, so the
+ * headline is measured rather than assumed to fit.
+ *
+ * @param {string} headline
+ * @param {number} maxWidth
+ * @returns {number}
+ */
+function headlineFontSize(headline, maxWidth) {
+  let size = 88;
+  while (size > 40 && calculateTextWidth(headline, size) > maxWidth) size -= 2;
+  return size;
+}
+
+/**
+ * File name stem for a period's cards, e.g. "2026" or "2026-08"
+ * @param {{year: number, month?: number|null}} period
+ * @returns {string}
+ */
+export function periodSlug({ year, month = null }) {
+  return month === null ? String(year) : `${year}-${String(month).padStart(2, '0')}`;
 }
 
 /**
@@ -339,6 +400,7 @@ function renderIcon(path, x, y, size, color) {
  * @param {Array} entries - Diary entries, filtered to the year here
  * @param {Object} options
  * @param {number} options.year - Year to summarise
+ * @param {number|null} options.month - Month 1-12 to narrow it to, or null for the whole year
  * @param {string} options.theme - 'dark' or 'light'
  * @param {string} options.palette - 'github' or 'letterboxd'
  * @param {string} options.username - Letterboxd username
@@ -355,6 +417,7 @@ function renderIcon(path, x, y, size, color) {
 export async function generateReviewCard(entries, options = {}) {
   const {
     year = new Date().getFullYear(),
+    month = null,
     theme = 'dark',
     palette = DEFAULT_PALETTE,
     username = '',
@@ -378,7 +441,9 @@ export async function generateReviewCard(entries, options = {}) {
   const surfaceBorder = isDark ? '#252c35' : '#e2e6ea';
   const cardBg = isDark ? '#12161c' : '#ffffff';
 
-  const yearEntries = entriesForYear(entries, year);
+  const period = { year, month };
+  const { headline, subtitle } = periodLabels(period);
+  const yearEntries = entriesForPeriod(entries, period);
   const streak = calculateStreak(yearEntries);
   const average = calculateAverageRating(yearEntries);
 
@@ -409,7 +474,7 @@ export async function generateReviewCard(entries, options = {}) {
   const rowsMarkup = topFilms.length === 0
     ? `
     <rect x="${RIGHT_X}" y="${ROW_TOP}" width="${RIGHT_WIDTH}" height="${ROW_HEIGHT}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
-    <text x="${RIGHT_X + RIGHT_WIDTH / 2}" y="${ROW_TOP + ROW_HEIGHT / 2 + 6}" font-size="16" font-weight="500" fill="${t.textMuted}" text-anchor="middle">No rated films this year</text>`
+    <text x="${RIGHT_X + RIGHT_WIDTH / 2}" y="${ROW_TOP + ROW_HEIGHT / 2 + 6}" font-size="16" font-weight="500" fill="${t.textMuted}" text-anchor="middle">No rated films ${month === null ? 'this year' : 'this month'}</text>`
     : topFilms.map((film, index) => {
       const y = ROW_TOP + index * (ROW_HEIGHT + ROW_GAP);
       const midY = y + ROW_HEIGHT / 2;
@@ -488,10 +553,10 @@ export async function generateReviewCard(entries, options = {}) {
   </g>
 
   <!-- Hero -->
-  <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="${HERO_BASELINE}" font-size="88" font-weight="700" fill="${yearGradient ? 'url(#reviewGradient)' : t.text}" text-anchor="middle">${year}</text>
+  <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="${HERO_BASELINE}" font-size="${headlineFontSize(headline, LEFT_WIDTH - 40)}" font-weight="700" fill="${yearGradient ? 'url(#reviewGradient)' : t.text}" text-anchor="middle">${escapeXml(headline)}</text>
   <line x1="${CONTENT_LEFT + 40}" y1="${HERO_RULE_Y}" x2="${CONTENT_LEFT + 150}" y2="${HERO_RULE_Y}" stroke="${surfaceBorder}" stroke-width="1"/>
   <line x1="${CONTENT_LEFT + LEFT_WIDTH - 150}" y1="${HERO_RULE_Y}" x2="${CONTENT_LEFT + LEFT_WIDTH - 40}" y2="${HERO_RULE_Y}" stroke="${surfaceBorder}" stroke-width="1"/>
-  <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="${HERO_LABEL_Y}" font-size="14" font-weight="600" fill="${t.textMuted}" text-anchor="middle" letter-spacing="7">IN REVIEW</text>
+  <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="${HERO_LABEL_Y}" font-size="14" font-weight="600" fill="${t.textMuted}" text-anchor="middle" letter-spacing="7">${escapeXml(subtitle)}</text>
 
   <!-- Headline figures -->
   ${tilesMarkup}
