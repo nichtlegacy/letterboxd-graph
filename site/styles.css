@@ -995,6 +995,30 @@ a.bar-row:hover .bar-value {
   display: none;
 }
 
+/* Tabbed sections stack their cards in one cell rather than swapping one for
+   another: the cards in a section are all the same size, so the stack holds its
+   height and a switch is a crossfade instead of a jump. */
+.frame-stack {
+  display: grid;
+}
+
+.frame-stack > .frame {
+  grid-area: 1 / 1;
+  z-index: 1;
+  transition: opacity 220ms var(--ease);
+}
+
+/* The card being left behind holds at full opacity underneath and is dropped
+   once the incoming one has faded in over it. Fading both at once would let
+   the page show through the pair halfway across the switch. */
+.frame-stack > .frame[data-inactive] {
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0s linear 220ms, visibility 0s linear 220ms;
+}
+
 /* The card draws its own rounded edge, so the frame adds none of its own — the
    media is clipped to that same radius and filled with the card's own colour,
    which is what keeps an <object> canvas from showing through the corners.
@@ -1023,6 +1047,22 @@ a.bar-row:hover .bar-value {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* A theme swap loads a second embed over the first and fades it in, so the
+   card never drops back to an empty box while the new file is on the wire. */
+.frame-media object {
+  transition: opacity 200ms var(--ease);
+}
+
+.frame-media object.is-incoming {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.frame-media object.is-incoming.is-shown {
+  opacity: 1;
 }
 
 .frame-media::after {

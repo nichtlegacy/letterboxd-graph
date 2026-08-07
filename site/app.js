@@ -538,15 +538,16 @@ function createFrame(asset, manifest) {
 
     // The embed carries the radius as well. A clipping ancestor is not enough
     // on its own in WebKit, and an element that rounds its own box needs no
-    // help from one.
-    const object = media.querySelector('object');
-    if (object) object.style.borderRadius = radius;
+    // help from one. During a theme swap there are two embeds in the frame for
+    // a moment, and both are on screen.
+    for (const object of media.querySelectorAll('object')) {
+      object.style.borderRadius = radius;
+    }
   };
 
+  // Swapping themes replaces the embed. The outgoing one stays until its
+  // replacement has painted, so the card never blinks back to 'Loading…'.
   const embed = () => {
-    media.classList.remove('is-loaded');
-    media.replaceChildren();
-
     const object = document.createElement('object');
     object.type = 'image/svg+xml';
     object.data = asset.svg[theme];
@@ -556,8 +557,20 @@ function createFrame(asset, manifest) {
     // navigate the embed itself. Same origin, so they can be retargeted once
     // the document is there.
     object.addEventListener('load', () => {
+      if (object.classList.contains('is-incoming')) {
+        // Fade the new embed in over the old one, and only drop the old one
+        // once it is covered.
+        object.classList.add('is-shown');
+        setTimeout(() => {
+          for (const previous of [...media.children]) {
+            if (previous !== object) previous.remove();
+          }
+          object.classList.remove('is-incoming', 'is-shown');
+        }, 220);
+      }
       media.classList.add('is-loaded');
       fitCorners();
+      frame.dispatchEvent(new CustomEvent('frameload'));
 
       const doc = object.contentDocument;
       if (!doc) return;
@@ -583,6 +596,8 @@ function createFrame(asset, manifest) {
     fallback.alt = asset.label;
     object.append(fallback);
 
+    // Laid over whatever is already there, transparent, until it has loaded.
+    if (media.childElementCount) object.classList.add('is-incoming');
     media.append(object);
   };
 
@@ -595,6 +610,7 @@ function createFrame(asset, manifest) {
   };
 
   frame.__load = () => {
+    if (loaded) return;
     loaded = true;
     embed();
   };
@@ -632,9 +648,13 @@ function createFrame(asset, manifest) {
   return frame;
 }
 
+const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 300));
+
 /**
  * Render a section: one frame if the kind has a single asset, otherwise a tab
- * strip with one frame per period and only the selected one mounted.
+ * strip with the frames stacked on top of one another and the selected one
+ * faded in. Every card in a section is the same size, so the stack keeps its
+ * height across a switch and nothing below it moves.
  *
  * @param {HTMLElement} section
  * @param {Array<object>} assets
@@ -654,11 +674,23 @@ function renderSection(section, assets, manifest) {
   const tabs = el('div', 'tabs');
   tabs.setAttribute('role', 'tablist');
 
-  const built = assets.map((asset) => {
-    const frame = createFrame(asset, manifest);
-    frame.hidden = true;
-    return frame;
-  });
+  const stack = el('div', 'frame-stack');
+  const built = assets.map((asset) => createFrame(asset, manifest));
+
+  // `load` is off for the first call: which card shows is decided before the
+  // section is anywhere near the viewport, and the lazy observer still owns
+  // when the first one is fetched.
+  const show = (index, load = true) => {
+    built.forEach((frame, position) => {
+      const active = position === index;
+      frame.toggleAttribute('data-inactive', !active);
+      frame.inert = !active;
+      // A card that is faded out is still in the layout, so it has to be taken
+      // out of the accessibility tree by hand.
+      frame.setAttribute('aria-hidden', String(!active));
+      if (active && load) frame.__load();
+    });
+  };
 
   assets.forEach((asset, index) => {
     const tab = el('button', 'tab', asset.label);
@@ -669,14 +701,27 @@ function renderSection(section, assets, manifest) {
     tab.addEventListener('click', () => {
       for (const other of tabs.children) other.setAttribute('aria-selected', 'false');
       tab.setAttribute('aria-selected', 'true');
-      built.forEach((frame, position) => { frame.hidden = position !== index; });
+      show(index);
     });
+
+    // Pointing at a tab is a good enough sign the card behind it is wanted.
+    tab.addEventListener('pointerenter', () => built[index].__load());
+    tab.addEventListener('focus', () => built[index].__load());
 
     tabs.append(tab);
   });
 
-  built[0].hidden = false;
-  body.append(tabs, ...built);
+  // The cards behind the other tabs are fetched too, but only once the visible
+  // one has painted — a switch should not wait on a request, and the first
+  // card should not queue behind its siblings either.
+  for (const frame of built.slice(1)) lazy.unobserve(frame);
+  built[0].addEventListener('frameload', () => {
+    idle(() => { for (const frame of built) frame.__load(); });
+  }, { once: true });
+
+  show(0, false);
+  stack.append(...built);
+  body.append(tabs, stack);
 }
 
 /* ── Hero and diary ───────────────────────────────────────────────────────── */
