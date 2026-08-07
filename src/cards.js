@@ -41,18 +41,25 @@ const DIVIDER_X = CONTENT_LEFT + LEFT_WIDTH + COLUMN_GAP;
 const RIGHT_X = DIVIDER_X + COLUMN_GAP;
 const RIGHT_WIDTH = CONTENT_RIGHT - RIGHT_X;
 
-// Top rated rows. Without a heading above them the list starts level with the
-// profile block, which buys enough height for posters large enough to recognise.
-const ROW_TOP = CONTENT_TOP;
-const ROW_HEIGHT = 102;
+// Top rated rows. With nothing above them the list starts level with the
+// profile block; a heading pushes it down and the rows give up the difference,
+// so both columns still finish on the same line.
+const CONTENT_BOTTOM = CARD_HEIGHT - PADDING;
 const ROW_GAP = 11;
 const POSTER_WIDTH = 51;
 const POSTER_HEIGHT = 76;
 const TOP_FILM_COUNT = 5;
+const LIST_HEADING_Y = CONTENT_TOP + 14;
+const LIST_HEADING_SPACE = 28;
 
-// The film list defines where the content ends; the stat grid follows it so the
-// two columns finish on the same line.
-const CONTENT_BOTTOM = ROW_TOP + TOP_FILM_COUNT * ROW_HEIGHT + (TOP_FILM_COUNT - 1) * ROW_GAP;
+/**
+ * Row height that makes the list end exactly at the content bottom
+ * @param {number} top - Where the first row starts
+ * @returns {number}
+ */
+function rowHeightFrom(top) {
+  return (CONTENT_BOTTOM - top - (TOP_FILM_COUNT - 1) * ROW_GAP) / TOP_FILM_COUNT;
+}
 
 // Hero block between the profile and the tiles
 const HERO_BASELINE = 202;
@@ -429,6 +436,8 @@ function renderIcon(path, x, y, size, color) {
  * @param {Object} options
  * @param {number} options.year - Year to summarise
  * @param {number|null} options.month - Month 1-12 to narrow it to, or null for the whole year
+ * @param {string} options.topFilms - 'watched' ranks everything seen in the period,
+ *   'released' keeps only films released in its year
  * @param {string} options.theme - 'dark' or 'light'
  * @param {string} options.username - Letterboxd username
  * @param {string} options.displayName - Profile display name
@@ -445,6 +454,7 @@ export async function generateReviewCard(entries, options = {}) {
   const {
     year = new Date().getFullYear(),
     month = null,
+    topFilms: topFilmScope = 'watched',
     theme = 'dark',
     username = '',
     displayName = username,
@@ -496,30 +506,39 @@ export async function generateReviewCard(entries, options = {}) {
     <text x="${centerX}" y="${y + 136}" font-size="14" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(stat.label)}</text>`;
   }).join('');
 
-  const topFilms = pickTopFilms(yearEntries);
+  // 'released' turns the list from "the best I watched" into "the best of that
+  // year", which is a different claim and so gets a heading to say which it is.
+  const releasesOnly = topFilmScope === 'released';
+  const listEntries = releasesOnly
+    ? yearEntries.filter(entry => String(entry.year) === String(year))
+    : yearEntries;
+  const topFilms = pickTopFilms(listEntries);
+
+  const listTop = releasesOnly ? CONTENT_TOP + LIST_HEADING_SPACE : CONTENT_TOP;
+  const rowHeight = rowHeightFrom(listTop);
 
   // An empty period gets a panel the size of the list it replaces. A single
   // short row left the column looking broken rather than quiet.
-  const emptyHeight = CONTENT_BOTTOM - ROW_TOP;
+  const emptyHeight = CONTENT_BOTTOM - listTop;
   const rowsMarkup = topFilms.length === 0
     ? `
-    <rect x="${RIGHT_X}" y="${ROW_TOP}" width="${RIGHT_WIDTH}" height="${emptyHeight}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1" stroke-dasharray="6 6"/>
-    ${renderIcon(ICONS.films, RIGHT_X + RIGHT_WIDTH / 2 - 22, ROW_TOP + emptyHeight / 2 - 62, 44, t.textMuted)}
-    <text x="${RIGHT_X + RIGHT_WIDTH / 2}" y="${ROW_TOP + emptyHeight / 2 + 6}" font-size="19" font-weight="600" fill="${t.text}" text-anchor="middle">Nothing logged ${month === null ? 'this year' : 'this month'}</text>
-    <text x="${RIGHT_X + RIGHT_WIDTH / 2}" y="${ROW_TOP + emptyHeight / 2 + 32}" font-size="14" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(headline)}${month === null ? '' : ` ${year}`} is still waiting for its first film</text>`
+    <rect x="${RIGHT_X}" y="${listTop}" width="${RIGHT_WIDTH}" height="${emptyHeight}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1" stroke-dasharray="6 6"/>
+    ${renderIcon(ICONS.films, RIGHT_X + RIGHT_WIDTH / 2 - 22, listTop + emptyHeight / 2 - 62, 44, t.textMuted)}
+    <text x="${RIGHT_X + RIGHT_WIDTH / 2}" y="${listTop + emptyHeight / 2 + 6}" font-size="19" font-weight="600" fill="${t.text}" text-anchor="middle">${releasesOnly ? `No ${year} releases logged` : `Nothing logged ${month === null ? 'this year' : 'this month'}`}</text>
+    <text x="${RIGHT_X + RIGHT_WIDTH / 2}" y="${listTop + emptyHeight / 2 + 32}" font-size="14" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(headline)}${month === null ? '' : ` ${year}`} is still waiting for its first film</text>`
     : topFilms.map((film, index) => {
-      const y = ROW_TOP + index * (ROW_HEIGHT + ROW_GAP);
-      const midY = y + ROW_HEIGHT / 2;
+      const y = listTop + index * (rowHeight + ROW_GAP);
+      const midY = y + rowHeight / 2;
       const stars = formatStars(film.rating);
       const starsWidth = calculateTextWidth(stars, 18);
       const posterX = RIGHT_X + 58;
       const titleX = posterX + POSTER_WIDTH + 20;
       const titleMax = CONTENT_RIGHT - 26 - starsWidth - 18 - titleX;
-      const posterY = y + (ROW_HEIGHT - POSTER_HEIGHT) / 2;
+      const posterY = y + (rowHeight - POSTER_HEIGHT) / 2;
       const poster = posters.get(film.url);
 
       return `
-    <rect x="${RIGHT_X}" y="${y}" width="${RIGHT_WIDTH}" height="${ROW_HEIGHT}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
+    <rect x="${RIGHT_X}" y="${y}" width="${RIGHT_WIDTH}" height="${rowHeight}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
     <circle cx="${RIGHT_X + 32}" cy="${midY}" r="16" fill="${RANK_ACCENTS[index]}" fill-opacity="0.16" stroke="${RANK_ACCENTS[index]}" stroke-opacity="0.5" stroke-width="1"/>
     <text x="${RIGHT_X + 32}" y="${midY + 7}" font-size="19" font-weight="700" fill="${RANK_ACCENTS[index]}" text-anchor="middle">${index + 1}</text>
     <a href="${filmLink(film, profileUrl)}">
@@ -536,7 +555,7 @@ export async function generateReviewCard(entries, options = {}) {
 
   const posterClips = topFilms.map((film, index) => `
     <clipPath id="posterClip${index}">
-      <rect x="${RIGHT_X + 58}" y="${ROW_TOP + index * (ROW_HEIGHT + ROW_GAP) + (ROW_HEIGHT - POSTER_HEIGHT) / 2}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" rx="5"/>
+      <rect x="${RIGHT_X + 58}" y="${listTop + index * (rowHeight + ROW_GAP) + (rowHeight - POSTER_HEIGHT) / 2}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" rx="5"/>
     </clipPath>`).join('');
 
   const svg = `<svg width="${CARD_WIDTH}" height="${CARD_HEIGHT}" viewBox="0 0 ${CARD_WIDTH} ${CARD_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -596,6 +615,7 @@ export async function generateReviewCard(entries, options = {}) {
   <line x1="${DIVIDER_X}" y1="${CONTENT_TOP}" x2="${DIVIDER_X}" y2="${CONTENT_BOTTOM}" stroke="${surfaceBorder}" stroke-width="1"/>
 
   <!-- Top rated -->
+  ${releasesOnly ? `<text x="${RIGHT_X}" y="${LIST_HEADING_Y}" font-size="13" font-weight="700" fill="${t.textMuted}" letter-spacing="3">TOP ${year} RELEASES</text>` : ''}
   ${rowsMarkup}
 </svg>`;
 

@@ -145,6 +145,24 @@ Hovering reveals more than the graph shows at rest:
 Headline figures on the left, top rated films on the right with poster art,
 runtime and the Letterboxd community rating.
 
+By default the list ranks everything you watched in that period, whatever year
+it came out. Set `top-films: released` to keep only the films released in the
+card's year, turning "the best I saw in 2025" into "the best of 2025":
+
+<details>
+<summary><b><code>top-films: released</code></b> — the same year, narrowed to its own releases</summary>
+
+<p align="center">
+  <img alt="Year in review card limited to that year's releases" src=".github/assets/year-card-releases-dark.png" width="100%">
+</p>
+
+Only this list carries a heading. The two are different claims, and without one
+there is no way to tell which you are looking at. The heading takes its space
+out of the rows rather than off the bottom, so both columns still end on the
+same line.
+
+</details>
+
 ### Month in Review
 
 `letterboxd-review-current-month-{dark,light}.svg` and
@@ -230,6 +248,7 @@ All options are action inputs. Only `username` is required.
 | `years` | Comma-separated years, e.g. `2026,2025` | current year |
 | `scope` | Diary scope: `all` or `years` | `all` |
 | `month-cards` | Recent months to also make cards for, `0` to skip | `2` |
+| `top-films` | Card film list: `watched` or `released` | `watched` |
 | `mode` | Cell coloring: `count` or `rating` | `count` |
 | `week-start` | `sunday` or `monday` | `sunday` |
 | `gradient` | Gradient text: `true`, `false`, `name` or `year` | `true` |
@@ -256,6 +275,7 @@ env:
   YEARS: "2026,2025"                   # empty for the current year
   SCOPE: "all"                         # "all" (whole diary) or "years"
   MONTH_CARDS: "2"                     # recent months to card, 0 to skip
+  TOP_FILMS: "watched"                 # "watched" or "released" film list
   WEEK_START: "sunday"                 # "sunday" or "monday"
   GRADIENT: "true"                     # "true", "false", "name" or "year"
   ANIMATE: "true"                      # "false" disables the reveal animation
@@ -280,6 +300,7 @@ node src/cli.js <username> [options]
 | `-y <years>` | Year(s), comma-separated, e.g. `2026,2025` | current year |
 | `-s <scope>` | Diary scope: `all` or `years` | `all` |
 | `-c <count>` | Recent months to also card, `0` to skip | `2` |
+| `-r <scope>` | Card film list: `watched` or `released` | `watched` |
 | `-m <mode>` | Graph mode: `count` or `rating` | `count` |
 | `-w <day>` | Week start: `sunday` or `monday` | `sunday` |
 | `-g <targets>` | Gradient text: `true`, `false`, `name` or `year` | `true` |
@@ -293,6 +314,9 @@ node src/cli.js nichtlegacy -y 2026,2025
 
 # Only the requested year, no month cards
 node src/cli.js nichtlegacy -y 2025 -s years -c 0
+
+# Only that year's releases in the card list
+node src/cli.js nichtlegacy -y 2025 -r released
 
 # Rating mode, week starting Monday, plain text, with PNGs
 node src/cli.js nichtlegacy -m rating -w monday -g false -p

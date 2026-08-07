@@ -656,3 +656,62 @@ test('the hero rules keep clear of a wider subtitle', async () => {
   assert.ok(rulesOf(month)[0][1] < rulesOf(year)[0][1]);
   assert.ok(rulesOf(month)[1][0] > rulesOf(year)[1][0]);
 });
+
+test('topFilms released keeps only films released in the card year', async () => {
+  const entries = [
+    entry('2026-01-05', { title: 'New', year: '2026', rating: 4 }),
+    entry('2026-01-06', { title: 'Classic', year: '1977', rating: 5 })
+  ];
+
+  const watched = await generateReviewCard(entries, { year: 2026, username: 'someone' });
+  const released = await generateReviewCard(entries, { year: 2026, topFilms: 'released', username: 'someone' });
+
+  // Watching a 5 star classic does not make it a film of 2026.
+  assert.ok(textNodes(watched).includes('Classic'));
+  assert.ok(!textNodes(released).includes('Classic'));
+  assert.ok(textNodes(released).includes('New'));
+});
+
+test('the released list says which list it is', async () => {
+  const entries = [entry('2026-01-05', { title: 'New', year: '2026', rating: 4 })];
+
+  const watched = await generateReviewCard(entries, { year: 2026, username: 'someone' });
+  const released = await generateReviewCard(entries, { year: 2026, topFilms: 'released', username: 'someone' });
+
+  // "The best of 2026" is a different claim from "the best I saw in 2026", so
+  // only the narrowed list carries a heading.
+  assert.ok(textNodes(released).includes('TOP 2026 RELEASES'));
+  assert.ok(!textNodes(watched).some(text => text.includes('RELEASES')));
+});
+
+test('the heading takes its space out of the rows, not off the bottom', async () => {
+  const entries = Array.from({ length: 6 }, (_, i) =>
+    entry(`2026-01-0${i + 1}`, { title: `F${i}`, year: '2026', rating: 5 - i * 0.5 }));
+
+  const bottoms = async (options) => {
+    const svg = await generateReviewCard(entries, { year: 2026, username: 'someone', ...options });
+    const rows = [...svg.matchAll(/<rect x="626" y="([\d.]+)" width="536" height="([\d.]+)" rx="14"/g)]
+      .map(([, y, height]) => Number(y) + Number(height));
+    const tiles = [...svg.matchAll(/<rect x="38" y="([\d.]+)" width="176" height="([\d.]+)" rx="14"/g)]
+      .map(([, y, height]) => Number(y) + Number(height));
+    return { rows: Math.max(...rows), tiles: Math.max(...tiles), count: rows.length };
+  };
+
+  const watched = await bottoms({});
+  const released = await bottoms({ topFilms: 'released' });
+
+  assert.equal(watched.count, 5);
+  assert.equal(released.count, 5, 'still five rows, just shorter');
+  assert.equal(watched.rows, watched.tiles, 'columns end together');
+  assert.equal(released.rows, released.tiles, 'and still do with a heading');
+  assert.equal(watched.rows, released.rows, 'at the same line either way');
+});
+
+test('a year with no releases of its own says so', async () => {
+  const svg = await generateReviewCard(
+    [entry('2026-01-05', { title: 'Classic', year: '1977', rating: 5 })],
+    { year: 2026, topFilms: 'released', username: 'someone' }
+  );
+
+  assert.ok(textNodes(svg).includes('No 2026 releases logged'));
+});

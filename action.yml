@@ -41,6 +41,12 @@ inputs:
     description: 'Recent months to also make review cards for, "0" to skip'
     required: false
     default: '2'
+  top-films:
+    description: >-
+      What the card's film list ranks: "watched" for everything seen in the
+      period, "released" for only the films released in its year.
+    required: false
+    default: 'watched'
   export-png:
     description: 'Also write PNG versions next to the SVGs'
     required: false
@@ -123,12 +129,13 @@ runs:
         LB_ANIMATE: ${{ inputs.animate }}
         LB_SCOPE: ${{ inputs.scope }}
         LB_MONTH_CARDS: ${{ inputs.month-cards }}
+        LB_TOP_FILMS: ${{ inputs.top-films }}
         LB_EXPORT_PNG: ${{ inputs.export-png }}
         LB_OUTPUT: ${{ inputs.output }}
       run: |
         set -euo pipefail
 
-        args=("$LB_USERNAME" -o "$LB_OUTPUT" -w "$LB_WEEK_START" -m "$LB_MODE" -s "$LB_SCOPE" -c "$LB_MONTH_CARDS")
+        args=("$LB_USERNAME" -o "$LB_OUTPUT" -w "$LB_WEEK_START" -m "$LB_MODE" -s "$LB_SCOPE" -c "$LB_MONTH_CARDS" -r "$LB_TOP_FILMS")
         if [ -n "$LB_YEARS" ]; then args+=(-y "$LB_YEARS"); fi
         if [ -n "$LB_GRADIENT" ] && [ "$LB_GRADIENT" != "true" ]; then args+=(-g "$LB_GRADIENT"); fi
         if [ "$LB_ANIMATE" = "false" ]; then args+=(-a false); fi

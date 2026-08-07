@@ -32,6 +32,7 @@ async function main() {
     let animate = true; // CSS reveal animation for grid cells
     let scope = "all"; // 'all' fetches the whole diary, 'years' only the -y years
     let monthCards = 2; // recent months to also make review cards for
+    let topFilms = "watched"; // 'watched' or 'released' for the card's film list
 
     // Parse arguments
     for (let i = 0; i < args.length; i++) {
@@ -82,6 +83,10 @@ async function main() {
             scope = ['all', 'years'].includes(value) ? value : 'all';
             i++;
             break;
+          case 'r':
+            topFilms = ['watched', 'released'].includes(value) ? value : 'watched';
+            i++;
+            break;
           case 'c': {
             const parsed = Number.parseInt(value, 10);
             monthCards = Number.isInteger(parsed) && parsed >= 0 ? parsed : 2;
@@ -109,6 +114,7 @@ async function main() {
       console.log("  -a <bool>     Cell reveal animation: true or false (default: true)");
       console.log("  -s <scope>    Diary scope: all or years (default: all)");
       console.log("  -c <count>    Recent months to also make cards for, 0 to skip (default: 2)");
+      console.log("  -r <scope>    Card film list: watched or released (default: watched)");
       process.exit(1);
     }
 
@@ -124,6 +130,7 @@ async function main() {
     console.log(`Animation: ${animate ? '✓' : '✗'}`);
     console.log(`Scope: ${scope === 'all' ? 'complete diary' : `only ${years.join(', ')}`}`);
     console.log(`Month cards: ${monthCards === 0 ? '✗' : `last ${monthCards}`}`);
+    console.log(`Card films: ${topFilms === 'released' ? 'releases of that year' : 'everything watched'}`);
     console.log(`Gradient: name ${usernameGradient ? '✓' : '✗'}, year ${yearGradient ? '✓' : '✗'}`);
     console.log(`PNG Export: ${exportPng ? '✓' : '✗'}`);
     console.log(`Output: ${outputPathDark}, ${outputPathLight}, ${outputJsonPath}\n`);
@@ -188,7 +195,8 @@ async function main() {
       totalEntries,
       memberStatus,
       mode,
-      animate
+      animate,
+      topFilms
     };
     
     let svgDark, svgLight;
@@ -280,13 +288,19 @@ async function main() {
       }
     };
 
-    const topFilms = [
-      ...periods.flatMap(period => pickTopFilms(entriesForPeriod(allEntries, period))),
+    const listFor = (period) => {
+      const inPeriod = entriesForPeriod(allEntries, period);
+      return topFilms === 'released'
+        ? inPeriod.filter(entry => String(entry.year) === String(period.year))
+        : inPeriod;
+    };
+    const cardFilms = [
+      ...periods.flatMap(period => pickTopFilms(listFor(period))),
       ...pickTopFilms(allEntries, 3)
     ];
-    await loadFilm(topFilms, posters, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT);
+    await loadFilm(cardFilms, posters, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT);
     await loadFilm(favourites, favouritePosters, FAV_PIXEL_WIDTH, FAV_PIXEL_HEIGHT);
-    console.log(`   Posters: ${posters.size}/${new Set(topFilms.map(f => f.url)).size}`
+    console.log(`   Posters: ${posters.size}/${new Set(cardFilms.map(f => f.url)).size}`
       + `, favourites ${favouritePosters.size}/${favourites.length}`);
 
     for (const period of periods) {
