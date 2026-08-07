@@ -74,11 +74,14 @@ runs:
   using: 'composite'
   steps:
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: ${{ inputs.node-version }}
-        cache: 'npm'
-        cache-dependency-path: ${{ github.action_path }}/package-lock.json
+        # Deliberately no `cache: npm`. Its cache-dependency-path has to point at
+        # the lockfile inside the action, and `github.action_path` resolves to
+        # "<workspace>/." for a local `uses: ./`, which setup-node rejects as
+        # relative pathing. Caching the action's own dependencies is a minor win
+        # next to shipping a path that breaks for some callers.
 
     - name: Install Puppeteer system dependencies
       if: ${{ inputs.install-browser-deps == 'true' && runner.os == 'Linux' }}
