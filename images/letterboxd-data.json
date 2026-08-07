@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-07T20:40:50.388Z",
+  "generatedAt": "2026-08-07T21:24:02.089Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18749,11 +18749,11 @@
       },
       {
         "rating": 4,
-        "count": 130
+        "count": 129
       },
       {
         "rating": 4.5,
-        "count": 25
+        "count": 26
       },
       {
         "rating": 5,
@@ -19136,7 +19136,7 @@
         "date": "2024-02-22",
         "title": "Dune",
         "year": "2021",
-        "rating": 4,
+        "rating": 4.5,
         "url": "https://letterboxd.com/nichtlegacy/film/dune-2021/"
       },
       {
