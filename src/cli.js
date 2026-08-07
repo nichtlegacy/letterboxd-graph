@@ -10,7 +10,7 @@ import { fileURLToPath } from 'url';
 
 import { fetchProfileData, tryFetchMultipleYears, fetchSpecificYears, fetchAllDiaryEntries, fetchFilmDetails, imageToBase64, closeBrowser } from './fetcher.js';
 import { generateSvg, generateMultiYearSvg } from './generator.js';
-import { generateReviewCard, generateProfileCard, pickTopFilms, entriesForPeriod, periodSlug, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT, FAV_PIXEL_WIDTH, FAV_PIXEL_HEIGHT } from './cards.js';
+import { generateReviewCard, generateProfileCard, pickTopFilms, entriesForPeriod, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT, FAV_PIXEL_WIDTH, FAV_PIXEL_HEIGHT } from './cards.js';
 import { svgToPng, imageBufferToThumbnail } from './exporter.js';
 import { buildJsonExport } from './stats.js';
 
@@ -239,11 +239,16 @@ async function main() {
     const reviewCards = [];
     const sortedYears = [...years].sort((a, b) => b - a);
 
-    const periods = sortedYears.map(year => ({ year }));
+    // Years are named after themselves. Months are named by how recent they
+    // are, not by their date: a dated file would break every embed at the turn
+    // of the month, and nothing would ever delete the old ones.
+    const periods = sortedYears.map(year => ({ year, slug: String(year) }));
     const now = new Date();
+
     for (let back = 0; back < monthCards; back++) {
       const cursor = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - back, 1));
-      periods.push({ year: cursor.getUTCFullYear(), month: cursor.getUTCMonth() + 1 });
+      const slug = back === 0 ? 'current-month' : back === 1 ? 'previous-month' : `month-minus-${back}`;
+      periods.push({ year: cursor.getUTCFullYear(), month: cursor.getUTCMonth() + 1, slug });
     }
 
     // Posters are only needed for the films that actually make a card, so they
@@ -290,10 +295,11 @@ async function main() {
 
     for (const period of periods) {
       for (const theme of ['dark', 'light']) {
-        const cardPath = path.join(dir, `letterboxd-review-${periodSlug(period)}-${theme}.svg`);
+        const cardPath = path.join(dir, `letterboxd-review-${period.slug}-${theme}.svg`);
         const card = await generateReviewCard(allEntries, {
           ...svgOptions,
-          ...period,
+          year: period.year,
+          month: period.month ?? null,
           theme,
           posters,
           details

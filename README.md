@@ -38,6 +38,7 @@
 | 📈 **Rating Distribution + Summary** | Hover over the film count for the rating histogram, your average rating, and rewatch/like totals |
 | ↻ **Rewatches & Likes** | Rewatched entries are marked `↻` and liked entries `♥` in the day tooltips |
 | 🃏 **Year-in-Review Card** | A shareable 1200×630 card per year with the headline figures and your top rated films |
+| 🗓️ **Month-in-Review Card** | The same card for the current month and the one before it |
 | 🪪 **Profile Card** | A 1200×630 card for the profile itself, with your pinned Letterboxd favourites |
 | 🕰️ **Decade Breakdown** | Hover over the year label to see how your films spread across release decades |
 | ✨ **Cell Reveal Animation** | Cells fade in as a wave when the SVG loads; respects `prefers-reduced-motion` |
@@ -72,36 +73,40 @@ The graph updates daily at midnight UTC, or trigger manually via the **Actions**
 
 ---
 
-## 📸 Examples
+## 📸 What It Generates
 
-### Patron User (Single Year)
+Every run writes the same set of files into `images/`, each in a dark and a light
+variant. Use `<picture>` to let GitHub pick the one that matches the reader's
+theme — see [Embed in Your README](#️-embed-in-your-readme).
+
+### Contribution Graph
+
+`images/github-letterboxd-{dark,light}.svg` — the activity calendar, one row of
+weeks per requested year.
+
 <p align="center">
-  <img src=".github/assets/behaind-dark.svg" width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/github-letterboxd-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="images/github-letterboxd-light.svg">
+    <img alt="Letterboxd contribution graph" src="images/github-letterboxd-light.svg" width="100%">
+  </picture>
 </p>
 
-### Pro User (Single Year)
-<p align="center">
-  <img src=".github/assets/rufus_firefly-dark.svg" width="100%">
-</p>
+```yaml
+years: "2026,2025"     # one block per year
+week-start: "sunday"   # or monday
+mode: "count"          # or rating
+palette: "github"      # or letterboxd
+animate: "true"        # cell reveal animation
+```
 
-### Multi-Year Graph
-<p align="center">
-  <img src=".github/assets/nichtlegacy-dark.svg" width="100%">
-</p>
-
-### Interactive Features
-
-Hover over stats to reveal additional information:
+Hover over the stats to reveal more:
 
 - **Year label** → films grouped by release decade
 - **Film count** → rating distribution, average rating, rewatch and like totals
 - **Days Active** → weekday distribution
 - **Day Streak** → date range, film count, and the streak highlighted in the grid
 - **Any day cell** → the films watched, with `↻` for rewatches and `♥` for likes
-
-> **Note:** GitHub embeds the SVG through an `<img>` tag, which cannot receive mouse
-> events — hover states only work when you open the SVG file directly in a browser.
-> The cell reveal animation is declarative CSS and *does* play inside a README.
 
 <table>
   <tr>
@@ -115,6 +120,89 @@ Hover over stats to reveal additional information:
     <td><img src=".github/assets/hover-films.png" width="250"></td>
   </tr>
 </table>
+
+> **Note:** GitHub embeds the SVG through an `<img>` tag, which cannot receive
+> mouse events, so hover states and links only work when the SVG is opened
+> directly or embedded in a page you control. The cell reveal animation is
+> declarative CSS and *does* play inside a README.
+
+### Year in Review
+
+`images/letterboxd-review-<year>-{dark,light}.svg` — one card per year in `years`.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-review-2026-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-review-2026-light.svg">
+    <img alt="Letterboxd year in review card" src="images/letterboxd-review-2026-light.svg" width="100%">
+  </picture>
+</p>
+
+1200×630, the Open Graph default, so it works as a social preview as it stands.
+The headline figures sit on the left, the top rated films on the right with
+poster art, runtime and the Letterboxd community rating.
+
+### Month in Review
+
+`images/letterboxd-review-current-month-{dark,light}.svg` and
+`letterboxd-review-previous-month-{dark,light}.svg`.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-review-current-month-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-review-current-month-light.svg">
+    <img alt="Letterboxd month in review card" src="images/letterboxd-review-current-month-light.svg" width="100%">
+  </picture>
+</p>
+
+The same card narrowed to a single month. The files are named by how recent the
+month is rather than by its date, so an embed keeps working when the month turns
+over and old cards do not pile up in the repository.
+
+```yaml
+month-cards: "2"   # current month and the one before it, 0 to skip
+```
+
+### Profile Card
+
+`images/letterboxd-profile-{dark,light}.svg` — not tied to a year.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-profile-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-profile-light.svg">
+    <img alt="Letterboxd profile card" src="images/letterboxd-profile-light.svg" width="100%">
+  </picture>
+</p>
+
+The headline is your all-time films watched, taken from the profile page. The
+right column shows the favourites you pinned on Letterboxd. See
+[Diary Scope](#diary-scope) for what the figures below it cover.
+
+### Member Badges
+
+Letterboxd Pro and Patron members get their badge over the avatar, on the graph
+and on both cards.
+
+<table>
+  <tr>
+    <th width="50%">Patron</th>
+    <th width="50%">Pro</th>
+  </tr>
+  <tr>
+    <td><img src=".github/assets/profile-card-patron-dark.svg" width="100%"></td>
+    <td><img src=".github/assets/profile-card-pro-dark.svg" width="100%"></td>
+  </tr>
+  <tr>
+    <td><img src=".github/assets/graph-patron-dark.svg" width="100%"></td>
+    <td><img src=".github/assets/graph-pro-dark.svg" width="100%"></td>
+  </tr>
+</table>
+
+### JSON Export
+
+`images/letterboxd-data.json` — every figure the cards use, for building your
+own widgets. See [Glance Widgets](#glance-widgets-custom-api).
 
 ---
 
@@ -144,6 +232,7 @@ node src/cli.js <username> [options]
 | `-a <bool>` | Cell reveal animation: `true` or `false` | `true` |
 | `-t <palette>` | Color palette: `github` or `letterboxd` | `github` |
 | `-s <scope>` | Diary scope: `all` or `years` | `all` |
+| `-c <count>` | Recent months to also make cards for, `0` to skip | `2` |
 
 ### Examples
 
@@ -193,6 +282,10 @@ jobs:
           years: "2026,2025"        # optional, defaults to the current year
 ```
 
+That writes the contribution graph, a card per year, cards for the current and
+previous month, a profile card and the JSON export — see
+[What It Generates](#-what-it-generates).
+
 The action generates the SVGs plus `letterboxd-data.json` and commits them back to the
 checked-out branch. `actions/checkout` is required so the action has a repository to
 write into.
@@ -209,6 +302,7 @@ write into.
 | `animate` | Cell reveal animation | `true` |
 | `palette` | Color palette: `github` or `letterboxd` | `github` |
 | `scope` | Diary scope: `all` or `years` | `all` |
+| `month-cards` | Recent months to also make cards for, `0` to skip | `2` |
 | `export-png` | Also write PNG files | `false` |
 | `output` | Output path without extension | `images/github-letterboxd` |
 | `node-version` | Node.js version | `20` |
@@ -250,6 +344,7 @@ env:
   ANIMATE: "true"                      # "false" to disable the cell reveal animation
   PALETTE: "github"                    # "github" or "letterboxd"
   SCOPE: "all"                         # "all" (whole diary) or "years"
+  MONTH_CARDS: "2"                     # recent months to also make cards for, 0 to skip
 
 on:
   schedule:
@@ -283,6 +378,7 @@ jobs:
           if [ "${{ env.ANIMATE }}" = "false" ]; then CMD="$CMD -a false"; fi
           if [ -n "${{ env.PALETTE }}" ]; then CMD="$CMD -t ${{ env.PALETTE }}"; fi
           if [ -n "${{ env.SCOPE }}" ]; then CMD="$CMD -s ${{ env.SCOPE }}"; fi
+          if [ -n "${{ env.MONTH_CARDS }}" ]; then CMD="$CMD -c ${{ env.MONTH_CARDS }}"; fi
           if [ "${{ env.EXPORT_PNG }}" = "true" ]; then CMD="$CMD -p"; fi
           
           echo "Running: $CMD"
@@ -314,6 +410,7 @@ You can customize the graph directly in the workflow file by editing the `env` s
 - **ANIMATE**: Toggle the cell reveal animation
 - **PALETTE**: Heatmap colors, `github` or `letterboxd`
 - **SCOPE**: `all` fetches the complete diary, `years` only the years in `YEARS`
+- **MONTH_CARDS**: How many recent months get their own review card, `0` to skip
 
 ---
 
@@ -375,9 +472,13 @@ letterboxd-graph/
 ├── images/
 │   ├── github-letterboxd-dark.svg    # Generated dark theme
 │   ├── github-letterboxd-light.svg   # Generated light theme
-│   ├── letterboxd-review-2026-dark.svg   # Generated year-in-review card
+│   ├── letterboxd-review-2026-dark.svg           # Year in review card
 │   ├── letterboxd-review-2026-light.svg
-│   ├── letterboxd-profile-dark.svg       # Generated profile card
+│   ├── letterboxd-review-current-month-dark.svg  # Month in review card
+│   ├── letterboxd-review-current-month-light.svg
+│   ├── letterboxd-review-previous-month-dark.svg
+│   ├── letterboxd-review-previous-month-light.svg
+│   ├── letterboxd-profile-dark.svg               # Profile card
 │   ├── letterboxd-profile-light.svg
 │   └── letterboxd-data.json          # Generated JSON data for widgets
 ├── src/
@@ -436,46 +537,23 @@ Replace `YOUR_GITHUB_USERNAME` and `YOUR_LETTERBOXD_USERNAME` with your username
 
 ---
 
-## 🎨 Themes & Modes
+## 🎨 Behaviour & Options
 
-### Year-in-Review Card
+### Film Ranking
 
-Alongside the graph, every run writes a 1200×630 card per requested year:
-
-```
-images/letterboxd-review-<year>-dark.svg
-images/letterboxd-review-<year>-light.svg
-```
-
-It carries the headline figures (films, days active, streak, average rating,
-rewatches, likes) and your five top rated films with poster art, their runtime
-and the Letterboxd community rating, and your own rating in Letterboxd's green.
-
-Films are ranked by rating first. Likes and rewatches only decide the order
-*within* a rating: the bonuses add up to less than a half-star step, so a film
-can never overtake one rated higher. This matters because a typical year has a
-handful of films at the top rating and a dozen tied one step below, which would
-otherwise fill the last slots arbitrarily. Repeat viewings of the same film are
-merged into one entry at its best rating. Rewatches are
-collapsed to a single entry at their best rating, so one film cannot take two
-slots. 1200×630 is the Open Graph default, so the card works as a social preview
-or a README banner as is.
-
-### Profile Card
-
-Alongside the year cards, every run writes a profile card that is not tied to a
-single year:
+Films on the cards are ranked by rating first. Likes and rewatches only decide
+the order *within* a rating: the bonuses add up to less than a half-star step,
+so a film can never overtake one rated higher.
 
 ```
-images/letterboxd-profile-dark.svg
-images/letterboxd-profile-light.svg
+score = rating + 0.30 if liked + 0.08 per extra viewing, capped at 0.16
 ```
 
-The headline is your all-time film count from the profile page, labelled "films
-watched". The tiles below count diary entries, which is a different number, so
-they say so rather than both claiming to be films. The right column shows the favourites pinned on
-your Letterboxd profile — a profile can pin up to four, and the row is laid out
-left to right so pinning fewer reads as a short row rather than a row with gaps.
+This matters more than it sounds. A typical year has a handful of films at the
+top rating and a dozen tied one step below, so without it the last slots would
+be filled in whatever order the diary happened to return. Repeat viewings of one
+film are merged into a single entry at its best rating, so a favourite you
+rewatch cannot occupy two slots.
 
 ### Diary Scope
 
