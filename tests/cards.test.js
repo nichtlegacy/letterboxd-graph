@@ -512,5 +512,24 @@ test('a favourite title too long even for two lines is truncated on the last', a
   const texts = textNodes(svg);
 
   assert.ok(texts.some(text => text.endsWith('…')));
-  assert.ok(texts.includes('2022'), 'the year still lines up below');
+  assert.ok(texts.includes('2022'), 'the year still follows below');
+});
+
+test('the year follows a one line title without a gap', async () => {
+  const svg = await generateProfileCard([entry('2025-01-01', { title: 'A', rating: 4 })], {
+    years: [2025],
+    username: 'someone',
+    favourites: [
+      { title: 'Star Wars', year: '1977', url: 'https://letterboxd.com/film/star-wars/' },
+      { title: 'The Butterfly Effect', year: '2004', url: 'https://letterboxd.com/film/tbe/' }
+    ]
+  });
+  const caption = (label) => {
+    const match = svg.match(new RegExp(`<text x="[\\d.]+" y="([\\d.]+)"[^>]*>${label}<`));
+    return Number(match[1]);
+  };
+
+  // A short title keeps its year close; a wrapped one pushes it down by a line.
+  assert.equal(caption('1977') - caption('Star Wars'), 17);
+  assert.equal(caption('2004') - caption('The Butterfly'), 33);
 });

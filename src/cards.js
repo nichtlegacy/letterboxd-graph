@@ -490,11 +490,13 @@ const FAV_HEADING_Y = CONTENT_TOP + 14;
 const FAV_TOP = CONTENT_TOP + 25;
 const FAV_LABEL_TOP = FAV_TOP + FAV_POSTER_HEIGHT + 20;
 const FAV_LINE_HEIGHT = 16;
-// The year sits below two title lines whether the title needs them or not, so
-// the four captions stay on one baseline.
-const FAV_YEAR_TOP = FAV_LABEL_TOP + FAV_LINE_HEIGHT + 17;
+const FAV_TITLE_LINES = 2;
+// The year follows its own title, so a one line title keeps it close instead of
+// leaving a gap. The block below still has to clear the tallest caption, so the
+// heading below is placed against the two line case.
+const FAV_BLOCK_BOTTOM = FAV_LABEL_TOP + (FAV_TITLE_LINES - 1) * FAV_LINE_HEIGHT + 17;
 
-const PROFILE_HEADING_Y = FAV_YEAR_TOP + 22;
+const PROFILE_HEADING_Y = FAV_BLOCK_BOTTOM + 22;
 const PROFILE_ROW_TOP = PROFILE_HEADING_Y + 14;
 const PROFILE_ROW_COUNT = 3;
 const PROFILE_ROW_GAP = 8;
@@ -591,13 +593,14 @@ export async function generateProfileCard(entries, options = {}) {
     : favourites.map((film, index) => {
       const x = RIGHT_X + index * (FAV_POSTER_WIDTH + FAV_GAP);
       const poster = favouritePosters.get(film.url);
+      const titleLines = wrapToWidth(film.title, 13, FAV_POSTER_WIDTH, FAV_TITLE_LINES);
       return `
     <a href="${film.url}">
     <rect x="${x}" y="${FAV_TOP}" width="${FAV_POSTER_WIDTH}" height="${FAV_POSTER_HEIGHT}" rx="8" fill="${isDark ? '#0d1117' : '#dfe4e9'}"/>
     ${poster ? `<image href="${poster}" x="${x}" y="${FAV_TOP}" width="${FAV_POSTER_WIDTH}" height="${FAV_POSTER_HEIGHT}" clip-path="url(#favClip${index})" preserveAspectRatio="xMidYMid slice"/>` : ''}
     <rect x="${x}" y="${FAV_TOP}" width="${FAV_POSTER_WIDTH}" height="${FAV_POSTER_HEIGHT}" rx="8" fill="none" stroke="${isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'}" stroke-width="1"/>
-    ${wrapToWidth(film.title, 13, FAV_POSTER_WIDTH).map((line, lineIndex) => `<text x="${x + FAV_POSTER_WIDTH / 2}" y="${FAV_LABEL_TOP + lineIndex * FAV_LINE_HEIGHT}" font-size="13" font-weight="600" fill="${t.text}" text-anchor="middle">${escapeXml(line)}</text>`).join('')}
-    <text x="${x + FAV_POSTER_WIDTH / 2}" y="${FAV_YEAR_TOP}" font-size="12" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(film.year || '')}</text>
+    ${titleLines.map((line, lineIndex) => `<text x="${x + FAV_POSTER_WIDTH / 2}" y="${FAV_LABEL_TOP + lineIndex * FAV_LINE_HEIGHT}" font-size="13" font-weight="600" fill="${t.text}" text-anchor="middle">${escapeXml(line)}</text>`).join('')}
+    <text x="${x + FAV_POSTER_WIDTH / 2}" y="${FAV_LABEL_TOP + (titleLines.length - 1) * FAV_LINE_HEIGHT + 17}" font-size="12" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(film.year || '')}</text>
     </a>`;
     }).join('');
 
