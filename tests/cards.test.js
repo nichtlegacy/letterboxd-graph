@@ -11,7 +11,15 @@ import assert from 'node:assert/strict';
 import { generateReviewCard, generateProfileCard, pickTopFilms, aggregateFilms } from '../src/cards.js';
 
 function entry(dateString, { title = 'Film', year = '2020', rating = null, rewatch = false, liked = false } = {}) {
-  return { date: new Date(`${dateString}T00:00:00Z`), title, year, rating, rewatch, liked };
+  return {
+    date: new Date(`${dateString}T00:00:00Z`),
+    title,
+    year,
+    rating,
+    rewatch,
+    liked,
+    url: `https://letterboxd.com/someone/film/${title.toLowerCase().replace(/\s+/g, '-')}/`
+  };
 }
 
 /**
@@ -344,4 +352,58 @@ test('profile card handles a profile with nothing rated', async () => {
 
   assert.ok(textNodes(svg).includes('No rated films yet'));
   assert.ok(svg.includes('width="1200"'));
+});
+
+test('cards link the profile block, the logo and every film', async () => {
+  const film = entry('2025-01-01', { title: 'A', rating: 5 });
+  const svg = await generateReviewCard([film], {
+    year: 2025,
+    username: 'someone',
+    displayName: 'Someone',
+    logoBase64: 'data:image/png;base64,X'
+  });
+  const links = [...svg.matchAll(/<a href="([^"]+)"/g)].map(match => match[1]);
+
+  assert.equal(links.filter(href => href === 'https://letterboxd.com/someone/').length, 3,
+    'avatar, display name and handle');
+  assert.ok(links.includes('https://letterboxd.com/'), 'the logo links to Letterboxd');
+  assert.equal(links.filter(href => href === film.url).length, 2, 'poster and title');
+});
+
+test('profile card links the favourites to their film pages', async () => {
+  const svg = await generateProfileCard([entry('2025-01-01', { title: 'A', rating: 4 })], {
+    years: [2025],
+    username: 'someone',
+    favourites: [{ title: 'Fav', year: '1999', url: 'https://letterboxd.com/film/fav/' }]
+  });
+
+  assert.ok(svg.includes('<a href="https://letterboxd.com/film/fav/">'));
+});
+
+test('a film without a URL falls back to the profile rather than a dead link', async () => {
+  const svg = await generateReviewCard(
+    [{ date: new Date('2025-01-01T00:00:00Z'), title: 'No link', year: '2020', rating: 4 }],
+    { year: 2025, username: 'someone' }
+  );
+
+  assert.ok(!svg.includes('<a href="undefined"'));
+  assert.ok(!svg.includes('<a href="">'));
+});
+
+test('a rewatch links to the film, not to one viewing of it', async () => {
+  // Letterboxd logs a rewatch at /<user>/film/<slug>/2/, which is that single
+  // viewing. The card lists films, so the trailing index is dropped.
+  const svg = await generateReviewCard(
+    [{
+      date: new Date('2025-01-01T00:00:00Z'),
+      title: 'Heat',
+      year: '1995',
+      rating: 5,
+      url: 'https://letterboxd.com/someone/film/heat/3/'
+    }],
+    { year: 2025, username: 'someone' }
+  );
+
+  assert.ok(svg.includes('<a href="https://letterboxd.com/someone/film/heat/">'));
+  assert.ok(!svg.includes('/film/heat/3/'));
 });

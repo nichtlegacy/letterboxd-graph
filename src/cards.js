@@ -71,7 +71,7 @@ const HISTOGRAM_HEIGHT = 14;
  * 24x24 icon paths, drawn with a stroke so they stay legible when scaled down
  */
 const ICONS = {
-  films: '<path d="M3 8h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/><path d="M3 8 5.5 3h3L6 8m4 0 2.5-5h3L13 8m4 0 2.5-5h1.5A1.5 1.5 0 0 1 22.5 4.5V8"/>',
+  films: '<rect x="2" y="9" width="20" height="12" rx="2"/><path d="M2 9V5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5V9"/><path d="m7 4-2 5M12 4l-2 5M17 4l-2 5"/>',
   daysActive: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/>',
   streak: '<path d="M12 2c.5 3 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3a2.5 2.5 0 0 0 2.5 2.5A2.5 2.5 0 0 0 11 11c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6Z"/>',
   rating: '<path d="m12 3 2.6 5.6 6 .8-4.4 4.2 1.1 6.1L12 16.8 6.7 19.7l1.1-6.1L3.4 9.4l6-.8L12 3Z"/>',
@@ -82,7 +82,8 @@ const ICONS = {
 // One accent per tile, matching the roles the colors already have elsewhere:
 // Letterboxd orange, green and blue, then the streak and like accents.
 const TILE_ACCENTS = ['#ff8000', '#00e054', '#40bcf4', '#a78bfa', '#ff6b35', '#ff5c8a'];
-const RANK_ACCENTS = ['#00e054', '#2ed46a', '#40bcf4', '#5b9dff', '#a78bfa'];
+// The three Letterboxd brand colors, cycled in the order of the logo dots
+const RANK_ACCENTS = ['#FF8000', '#00E054', '#40BCF4', '#FF8000', '#00E054'];
 
 /**
  * Render a rating the way Letterboxd does, with a half star for the .5 steps
@@ -134,6 +135,21 @@ function ratingHistogram(entries) {
     if (index >= 0 && index < RATING_STEPS) buckets[index]++;
   }
   return buckets;
+}
+
+/**
+ * Link target for an aggregated film.
+ *
+ * A rewatch is logged at /<user>/film/<slug>/2/, which is that one viewing. The
+ * card shows the film, not a viewing, so the trailing index is dropped.
+ *
+ * @param {Object} film - Aggregated film record
+ * @param {string} fallback - Used when the film carries no URL
+ * @returns {string}
+ */
+function filmLink(film, fallback) {
+  if (!film.url) return fallback;
+  return film.url.replace(/\/\d+\/?$/, '/');
 }
 
 /**
@@ -264,6 +280,7 @@ export async function generateReviewCard(entries, options = {}) {
 
   const t = getTheme(theme, palette);
   const isDark = theme !== 'light';
+  const profileUrl = `https://letterboxd.com/${username}/`;
 
   // Surfaces sit slightly above the card background so the tiles read as raised
   // without needing shadows, which rasterise poorly at small sizes.
@@ -307,9 +324,9 @@ export async function generateReviewCard(entries, options = {}) {
     return `
     <rect x="${x}" y="${y}" width="${TILE_WIDTH}" height="${TILE_HEIGHT}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
     ${renderIcon(ICONS[stat.icon], centerX - 13, y + 22, 26, TILE_ACCENTS[index])}
-    <text x="${centerX}" y="${y + 92}" font-size="36" font-weight="700" fill="${t.text}" text-anchor="middle">${escapeXml(stat.value)}</text>
+    <text x="${centerX}" y="${y + 84}" font-size="36" font-weight="700" fill="${t.text}" text-anchor="middle">${escapeXml(stat.value)}</text>
     ${bars}
-    <text x="${centerX}" y="${y + 126}" font-size="14" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(stat.label)}</text>`;
+    <text x="${centerX}" y="${y + 128}" font-size="14" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(stat.label)}</text>`;
   }).join('');
 
   const topFilms = pickTopFilms(yearEntries);
@@ -333,10 +350,14 @@ export async function generateReviewCard(entries, options = {}) {
     <rect x="${RIGHT_X}" y="${y}" width="${RIGHT_WIDTH}" height="${ROW_HEIGHT}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
     <circle cx="${RIGHT_X + 32}" cy="${midY}" r="16" fill="${RANK_ACCENTS[index]}" fill-opacity="0.16" stroke="${RANK_ACCENTS[index]}" stroke-opacity="0.5" stroke-width="1"/>
     <text x="${RIGHT_X + 32}" y="${midY + 7}" font-size="19" font-weight="700" fill="${RANK_ACCENTS[index]}" text-anchor="middle">${index + 1}</text>
-    <rect x="${posterX}" y="${posterY}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" rx="5" fill="${isDark ? '#0d1117' : '#dfe4e9'}"/>
-    ${poster ? `<image href="${poster}" x="${posterX}" y="${posterY}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" clip-path="url(#posterClip${index})" preserveAspectRatio="xMidYMid slice"/>` : ''}
-    <rect x="${posterX}" y="${posterY}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" rx="5" fill="none" stroke="${isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'}" stroke-width="1"/>
-    <text x="${titleX}" y="${midY - 4}" font-size="20" font-weight="600" fill="${t.text}">${escapeXml(truncateToWidth(film.title, 20, titleMax))}</text>
+    <a href="${filmLink(film, profileUrl)}">
+      <rect x="${posterX}" y="${posterY}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" rx="5" fill="${isDark ? '#0d1117' : '#dfe4e9'}"/>
+      ${poster ? `<image href="${poster}" x="${posterX}" y="${posterY}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" clip-path="url(#posterClip${index})" preserveAspectRatio="xMidYMid slice"/>` : ''}
+      <rect x="${posterX}" y="${posterY}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" rx="5" fill="none" stroke="${isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'}" stroke-width="1"/>
+    </a>
+    <a href="${filmLink(film, profileUrl)}">
+      <text x="${titleX}" y="${midY - 4}" font-size="20" font-weight="600" fill="${t.text}">${escapeXml(truncateToWidth(film.title, 20, titleMax))}</text>
+    </a>
     <text x="${titleX}" y="${midY + 20}" font-size="14" font-weight="500" fill="${t.textMuted}">${escapeXml(film.year || '')}</text>
     <text x="${CONTENT_RIGHT - 26}" y="${midY + 6}" font-size="18" fill="${STAR_COLOR}" text-anchor="end">${escapeXml(stars)}</text>`;
     }).join('');
@@ -360,6 +381,7 @@ export async function generateReviewCard(entries, options = {}) {
       <![CDATA[
       ${FONT_FACE_PLACEHOLDER}
       text { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; }
+      a { cursor: pointer; }
       ]]>
     </style>
   </defs>
@@ -368,17 +390,25 @@ export async function generateReviewCard(entries, options = {}) {
 
   <!-- Profile -->
   <g transform="translate(${CONTENT_LEFT}, ${CONTENT_TOP})">
-    <circle cx="30" cy="30" r="31" fill="${surfaceBorder}"/>
-    ${profileImage
-      ? `<image href="${profileImage}" x="0" y="0" width="60" height="60" clip-path="url(#reviewAvatarClip)"/>`
-      : `<circle cx="30" cy="30" r="30" fill="${t.colors[2]}"/>`}
-    <text x="76" y="27" font-size="27" font-weight="700" fill="${usernameGradient ? 'url(#reviewGradient)' : t.text}">${escapeXml(displayName)}</text>
-    <text x="76" y="50" font-size="15" font-weight="500" fill="${t.textMuted}">@${escapeXml(username)}</text>
-    ${logoBase64
-      ? `<image href="${logoBase64}" x="${LEFT_WIDTH - 60}" y="0" width="60" height="60"/>`
-      : `<circle cx="${LEFT_WIDTH - 46}" cy="30" r="8" fill="#FF8000"/>
-    <circle cx="${LEFT_WIDTH - 24}" cy="30" r="8" fill="#00E054"/>
-    <circle cx="${LEFT_WIDTH - 2}" cy="30" r="8" fill="#40BCF4"/>`}
+    <a href="${profileUrl}">
+      <circle cx="30" cy="30" r="31" fill="${surfaceBorder}"/>
+      ${profileImage
+        ? `<image href="${profileImage}" x="0" y="0" width="60" height="60" clip-path="url(#reviewAvatarClip)"/>`
+        : `<circle cx="30" cy="30" r="30" fill="${t.colors[2]}"/>`}
+    </a>
+    <a href="${profileUrl}">
+      <text x="76" y="27" font-size="27" font-weight="700" fill="${usernameGradient ? 'url(#reviewGradient)' : t.text}">${escapeXml(displayName)}</text>
+    </a>
+    <a href="${profileUrl}">
+      <text x="76" y="50" font-size="15" font-weight="500" fill="${t.textMuted}">@${escapeXml(username)}</text>
+    </a>
+    <a href="https://letterboxd.com/">
+      ${logoBase64
+        ? `<image href="${logoBase64}" x="${LEFT_WIDTH - 60}" y="0" width="60" height="60"/>`
+        : `<circle cx="${LEFT_WIDTH - 46}" cy="30" r="8" fill="#FF8000"/>
+      <circle cx="${LEFT_WIDTH - 24}" cy="30" r="8" fill="#00E054"/>
+      <circle cx="${LEFT_WIDTH - 2}" cy="30" r="8" fill="#40BCF4"/>`}
+    </a>
   </g>
 
   <!-- Hero -->
@@ -449,6 +479,7 @@ export async function generateProfileCard(entries, options = {}) {
 
   const t = getTheme(theme, palette);
   const isDark = theme !== 'light';
+  const profileUrl = `https://letterboxd.com/${username}/`;
   const surface = isDark ? '#171c23' : '#f4f6f8';
   const surfaceBorder = isDark ? '#252c35' : '#e2e6ea';
   const cardBg = isDark ? '#12161c' : '#ffffff';
@@ -489,9 +520,9 @@ export async function generateProfileCard(entries, options = {}) {
     return `
     <rect x="${x}" y="${y}" width="${TILE_WIDTH}" height="${TILE_HEIGHT}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
     ${renderIcon(ICONS[stat.icon], centerX - 13, y + 22, 26, TILE_ACCENTS[index])}
-    <text x="${centerX}" y="${y + 92}" font-size="36" font-weight="700" fill="${t.text}" text-anchor="middle">${escapeXml(stat.value)}</text>
+    <text x="${centerX}" y="${y + 84}" font-size="36" font-weight="700" fill="${t.text}" text-anchor="middle">${escapeXml(stat.value)}</text>
     ${bars}
-    <text x="${centerX}" y="${y + 126}" font-size="14" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(stat.label)}</text>`;
+    <text x="${centerX}" y="${y + 128}" font-size="14" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(stat.label)}</text>`;
   }).join('');
 
   // Favourites are left aligned rather than centred: a profile with two of them
@@ -504,9 +535,11 @@ export async function generateProfileCard(entries, options = {}) {
       const x = RIGHT_X + index * (FAV_POSTER_WIDTH + FAV_GAP);
       const poster = favouritePosters.get(film.url);
       return `
+    <a href="${film.url}">
     <rect x="${x}" y="${FAV_TOP}" width="${FAV_POSTER_WIDTH}" height="${FAV_POSTER_HEIGHT}" rx="8" fill="${isDark ? '#0d1117' : '#dfe4e9'}"/>
     ${poster ? `<image href="${poster}" x="${x}" y="${FAV_TOP}" width="${FAV_POSTER_WIDTH}" height="${FAV_POSTER_HEIGHT}" clip-path="url(#favClip${index})" preserveAspectRatio="xMidYMid slice"/>` : `<text x="${x + FAV_POSTER_WIDTH / 2}" y="${FAV_TOP + FAV_POSTER_HEIGHT / 2}" font-size="12" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(truncateToWidth(film.title, 12, FAV_POSTER_WIDTH - 12))}</text>`}
-    <rect x="${x}" y="${FAV_TOP}" width="${FAV_POSTER_WIDTH}" height="${FAV_POSTER_HEIGHT}" rx="8" fill="none" stroke="${isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'}" stroke-width="1"/>`;
+    <rect x="${x}" y="${FAV_TOP}" width="${FAV_POSTER_WIDTH}" height="${FAV_POSTER_HEIGHT}" rx="8" fill="none" stroke="${isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'}" stroke-width="1"/>
+    </a>`;
     }).join('');
 
   const topFilms = pickTopFilms(entries, PROFILE_ROW_COUNT);
@@ -530,10 +563,14 @@ export async function generateProfileCard(entries, options = {}) {
     <rect x="${RIGHT_X}" y="${y}" width="${RIGHT_WIDTH}" height="${PROFILE_ROW_HEIGHT}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
     <circle cx="${RIGHT_X + 30}" cy="${midY}" r="15" fill="${RANK_ACCENTS[index]}" fill-opacity="0.16" stroke="${RANK_ACCENTS[index]}" stroke-opacity="0.5" stroke-width="1"/>
     <text x="${RIGHT_X + 30}" y="${midY + 6}" font-size="18" font-weight="700" fill="${RANK_ACCENTS[index]}" text-anchor="middle">${index + 1}</text>
-    <rect x="${posterX}" y="${posterY}" width="${PROFILE_POSTER_WIDTH}" height="${PROFILE_POSTER_HEIGHT}" rx="4" fill="${isDark ? '#0d1117' : '#dfe4e9'}"/>
-    ${poster ? `<image href="${poster}" x="${posterX}" y="${posterY}" width="${PROFILE_POSTER_WIDTH}" height="${PROFILE_POSTER_HEIGHT}" clip-path="url(#profilePosterClip${index})" preserveAspectRatio="xMidYMid slice"/>` : ''}
-    <rect x="${posterX}" y="${posterY}" width="${PROFILE_POSTER_WIDTH}" height="${PROFILE_POSTER_HEIGHT}" rx="4" fill="none" stroke="${isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'}" stroke-width="1"/>
-    <text x="${titleX}" y="${midY - 3}" font-size="18" font-weight="600" fill="${t.text}">${escapeXml(truncateToWidth(film.title, 18, titleMax))}</text>
+    <a href="${filmLink(film, profileUrl)}">
+      <rect x="${posterX}" y="${posterY}" width="${PROFILE_POSTER_WIDTH}" height="${PROFILE_POSTER_HEIGHT}" rx="4" fill="${isDark ? '#0d1117' : '#dfe4e9'}"/>
+      ${poster ? `<image href="${poster}" x="${posterX}" y="${posterY}" width="${PROFILE_POSTER_WIDTH}" height="${PROFILE_POSTER_HEIGHT}" clip-path="url(#profilePosterClip${index})" preserveAspectRatio="xMidYMid slice"/>` : ''}
+      <rect x="${posterX}" y="${posterY}" width="${PROFILE_POSTER_WIDTH}" height="${PROFILE_POSTER_HEIGHT}" rx="4" fill="none" stroke="${isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'}" stroke-width="1"/>
+    </a>
+    <a href="${filmLink(film, profileUrl)}">
+      <text x="${titleX}" y="${midY - 3}" font-size="18" font-weight="600" fill="${t.text}">${escapeXml(truncateToWidth(film.title, 18, titleMax))}</text>
+    </a>
     <text x="${titleX}" y="${midY + 18}" font-size="13" font-weight="500" fill="${t.textMuted}">${escapeXml(film.year || '')}</text>
     <text x="${CONTENT_RIGHT - 24}" y="${midY + 6}" font-size="17" fill="${STAR_COLOR}" text-anchor="end">${escapeXml(stars)}</text>`;
     }).join('');
@@ -560,6 +597,7 @@ export async function generateProfileCard(entries, options = {}) {
       <![CDATA[
       ${FONT_FACE_PLACEHOLDER}
       text { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; }
+      a { cursor: pointer; }
       ]]>
     </style>
   </defs>
@@ -568,14 +606,20 @@ export async function generateProfileCard(entries, options = {}) {
 
   <!-- Profile -->
   <g transform="translate(${CONTENT_LEFT}, ${CONTENT_TOP})">
-    <circle cx="30" cy="30" r="31" fill="${surfaceBorder}"/>
-    ${profileImage
-      ? `<image href="${profileImage}" x="0" y="0" width="60" height="60" clip-path="url(#reviewAvatarClip)"/>`
-      : `<circle cx="30" cy="30" r="30" fill="${t.colors[2]}"/>`}
-    <text x="76" y="27" font-size="27" font-weight="700" fill="${usernameGradient ? 'url(#reviewGradient)' : t.text}">${escapeXml(displayName)}</text>
-    <text x="76" y="50" font-size="15" font-weight="500" fill="${t.textMuted}">@${escapeXml(username)}</text>
+    <a href="${profileUrl}">
+      <circle cx="30" cy="30" r="31" fill="${surfaceBorder}"/>
+      ${profileImage
+        ? `<image href="${profileImage}" x="0" y="0" width="60" height="60" clip-path="url(#reviewAvatarClip)"/>`
+        : `<circle cx="30" cy="30" r="30" fill="${t.colors[2]}"/>`}
+    </a>
+    <a href="${profileUrl}">
+      <text x="76" y="27" font-size="27" font-weight="700" fill="${usernameGradient ? 'url(#reviewGradient)' : t.text}">${escapeXml(displayName)}</text>
+    </a>
+    <a href="${profileUrl}">
+      <text x="76" y="50" font-size="15" font-weight="500" fill="${t.textMuted}">@${escapeXml(username)}</text>
+    </a>
     ${logoBase64
-      ? `<image href="${logoBase64}" x="${LEFT_WIDTH - 60}" y="0" width="60" height="60"/>`
+      ? `<a href="https://letterboxd.com/"><image href="${logoBase64}" x="${LEFT_WIDTH - 60}" y="0" width="60" height="60"/></a>`
       : ''}
   </g>
 
