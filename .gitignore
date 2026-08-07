@@ -34,3 +34,9 @@ __pycache__/
 
 # generated pages site
 /_site
+
+# local plans and browser output
+/docs/plans/
+/docs/superpowers/plans/
+/.playwright-cli/
+.DS_Store

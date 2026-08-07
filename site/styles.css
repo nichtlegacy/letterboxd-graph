@@ -58,6 +58,10 @@
   --brand-green-mid: #00c030;
   --accent-orange: #ff8000;
   --accent-blue: #40bcf4;
+  --hero-grid: rgba(102, 119, 136, 0.14);
+  /* A neutral block that carries a letter: darker than a surface, quieter than
+     the accent. */
+  --weekday-bar: #2c3440;
 
   --border-subtle: #2c3440;
   --border-medium: #445566;
@@ -88,6 +92,8 @@
   --brand-green-mid: #009127;
   --accent-orange: #d96a00;
   --accent-blue: #1c86c4;
+  --hero-grid: rgba(92, 107, 122, 0.12);
+  --weekday-bar: #dbe3ea;
 
   --border-subtle: #d9e1e8;
   --border-medium: #b7c4cf;
@@ -111,6 +117,17 @@ body {
   font-size: 14px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  /* iOS inflates text in landscape unless it is told the page can cope. */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Two readings of the same sentence: one for a page that can be hovered, one
+   for a page that can only be touched. */
+.on-touch { display: none; }
+
+@media (hover: none) {
+  .on-hover { display: none; }
+  .on-touch { display: inline; }
 }
 
 h1,
@@ -180,6 +197,7 @@ b {
   z-index: 5;
   background: color-mix(in srgb, var(--background) 92%, transparent);
   border-bottom: 1px solid var(--border-subtle);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 
@@ -187,7 +205,7 @@ b {
   max-width: var(--page-max);
   height: 56px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 max(24px, env(safe-area-inset-right)) 0 max(24px, env(safe-area-inset-left));
   display: flex;
   align-items: center;
   gap: 24px;
@@ -282,26 +300,94 @@ b {
   background: transparent;
 }
 
-.theme-toggle[data-mode='system'] .theme-icon {
-  background: linear-gradient(90deg, currentColor 50%, transparent 50%);
-}
-
 /* ── Layout ───────────────────────────────────────────────────────────────── */
 
 main {
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: 0 24px;
+  /* The insets matter on a phone held sideways, where the notch eats into the
+     side of the page. */
+  padding: 0 max(24px, env(safe-area-inset-right)) 0 max(24px, env(safe-area-inset-left));
 }
 
 .hero {
-  padding: 72px 0 48px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 88px 0 0;
+  text-align: center;
 }
 
-/* The copy is set to a readable measure; the figures below it run the full
-   width of the page, in step with the cards. */
+.hero-art {
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 auto;
+  height: 280px;
+  pointer-events: none;
+}
+
+.hero-art::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--hero-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--hero-grid) 1px, transparent 1px);
+  background-position: center top;
+  background-size: 80px 80px;
+  content: '';
+  mask-image: linear-gradient(to bottom, #000 0 52%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0 52%, transparent 100%);
+}
+
+.hero-art-pattern {
+  position: absolute;
+  top: 0;
+  width: 320px;
+  height: 280px;
+  opacity: 0.92;
+}
+
+.hero-art-pattern-left {
+  right: calc(50% + 400px);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 18%, #000 76%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 18%, #000 76%, transparent 100%);
+}
+
+.hero-art-pattern-right {
+  left: calc(50% + 400px);
+  -webkit-mask-image: linear-gradient(to left, transparent 0, #000 18%, #000 76%, transparent 100%);
+  mask-image: linear-gradient(to left, transparent 0, #000 18%, #000 76%, transparent 100%);
+}
+
+.hero-art-line {
+  shape-rendering: geometricPrecision;
+}
+
+.hero-art-line-blue {
+  fill: var(--accent-blue);
+}
+
+.hero-art-line-green {
+  fill: var(--brand-green);
+}
+
+.hero-art-line-orange {
+  fill: var(--accent-orange);
+}
+
+.hero-art::after {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 100% at center, var(--background) 0 42%, transparent 78%);
+  content: '';
+  pointer-events: none;
+}
+
 .hero-text {
-  max-width: 720px;
+  max-width: none;
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow {
@@ -313,87 +399,103 @@ main {
 }
 
 .display {
-  margin: 12px 0 16px;
+  margin: 0;
   font-family: var(--font-serif);
-  font-size: clamp(40px, 7vw, 64px);
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  font-size: clamp(48px, 9vw, 88px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  text-shadow: 0 1px 0 var(--background);
 }
 
-.lead {
-  color: var(--text-primary);
-  font-size: 15px;
-  max-width: 62ch;
+.hero-subtitle {
+  margin: 14px 0 0;
+  color: var(--text-secondary);
+  font-size: 16px;
 }
 
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 24px;
+.hero-subtitle a {
+  color: var(--text-light);
 }
 
-.button {
+.hero-subtitle a:hover {
+  color: var(--brand-green);
+}
+
+.hero-profile-link {
   display: inline-flex;
   align-items: center;
-  height: 36px;
-  padding: 0 16px;
-  border: 1px solid var(--border-medium);
-  border-radius: 4px;
-  color: var(--text-light);
-  font-size: 13px;
-  font-weight: 500;
-  transition: background 150ms var(--ease), border-color 150ms var(--ease), color 150ms var(--ease);
+  gap: 8px;
+  vertical-align: middle;
 }
 
-.button:hover {
-  background: var(--surface-hover);
-  color: var(--text-light);
+.hero-avatar {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.button-primary {
-  background: var(--brand-green);
-  border-color: transparent;
-  color: var(--text-on-accent);
-}
-
-.button-primary:hover {
-  background: var(--brand-green-mid);
-  color: var(--text-on-accent);
-}
-
-/* ── Stats ────────────────────────────────────────────────────────────────── */
-
-.stats {
+.hero-kpis {
+  position: relative;
+  z-index: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 24px;
-  margin: 48px 0 0;
-  padding-top: 24px;
+  max-width: 1040px;
+  margin: 64px auto 0;
+  padding: 24px 0;
   border-top: 1px solid var(--border-subtle);
 }
 
-.stats div {
+.hero-kpi {
   display: flex;
+  min-width: 0;
   flex-direction: column-reverse;
-  gap: 2px;
+  gap: 5px;
 }
 
-.stats dt {
+.hero-kpi-label {
   color: var(--text-secondary);
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 600;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.stats dd {
+.hero-kpi-value {
   margin: 0;
   color: var(--text-light);
-  font-size: 28px;
+  font-size: clamp(24px, 3vw, 40px);
   font-weight: 700;
   font-variant-numeric: tabular-nums;
-  line-height: 1.1;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.hero-kpi-label,
+.hero-kpi-value {
+  margin: 0;
+}
+
+/* Until the sections are filled in, the hero is the page. Everything under it
+   waits rather than showing for a frame at the wrong height, and the hero
+   holds a screen's worth of room so the arrival is an addition, not a jump. */
+.is-loading main {
+  min-block-size: 100svh;
+}
+
+.is-loading main > :not(.hero),
+.is-loading .footer {
+  display: none;
+}
+
+/* The subtitle ships with a placeholder handle in it, which app.js swaps for
+   the real one. Held back rather than hidden outright, so the line keeps its
+   height and the hero does not shift when the name arrives. */
+.is-loading .hero-subtitle {
+  visibility: hidden;
 }
 
 /* ── Sections ─────────────────────────────────────────────────────────────── */
@@ -401,12 +503,45 @@ main {
 .section {
   padding: 48px 0;
   border-top: 1px solid var(--border-subtle);
-  scroll-margin-top: 72px;
+  scroll-margin-top: 76px;
+}
+
+/* Each section fades up as it comes into view, so a long page arrives in
+   reading order rather than as one wall of figures. The starting state is set
+   from JavaScript, so a page whose script never runs shows everything. */
+.section.will-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.section.will-reveal.is-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 480ms var(--ease), transform 480ms var(--ease);
+}
+
+/* Landing from the nav: the section's own top rule carries the accent for a
+   moment, which points at where the click went without adding any chrome. */
+@keyframes section-arrive {
+  from { border-top-color: var(--brand-green); }
+  to { border-top-color: var(--border-subtle); }
+}
+
+.section.is-target {
+  animation: section-arrive 1400ms var(--ease);
+}
+
+.section:focus {
+  outline: none;
 }
 
 .section-head {
   max-width: 62ch;
   margin-bottom: 24px;
+}
+
+.section-head .eyebrow {
+  margin-bottom: 8px;
 }
 
 .section-head h2 {
@@ -467,23 +602,770 @@ main {
   border-bottom-color: var(--brand-green);
 }
 
+/* The years, written out. A bar each was a chart that grew a row per year and
+   pushed the section past its own length on a long diary; the figures carry the
+   comparison on their own and wrap instead of stacking. */
+.years {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.years-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.years-title + .section-note {
+  margin-top: 4px;
+}
+
+/* auto-fit, not auto-fill: a diary of three years would otherwise sit in the
+   first three of eleven tracks with two thirds of the row empty beside it.
+   Collapsing the unused tracks spreads the figures over the full width, the way
+   the hero spreads its six. */
+.years-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.year {
+  display: grid;
+  gap: 3px;
+  align-content: start;
+  min-width: 0;
+}
+
+.year-value {
+  color: var(--text-light);
+  font-size: 26px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  transition: color 150ms var(--ease);
+}
+
+a.year:hover .year-value {
+  color: var(--brand-green);
+}
+
+.year-label {
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.year-days {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Charts ───────────────────────────────────────────────────────────────── */
+
+.chart {
+  margin-bottom: 8px;
+}
+
+.plot {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 180px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Seven blocks read as a row of days, not as a chart: no baseline under them and
+   no room needed underneath, since the initials sit in the bars. */
+.plot.is-weekday {
+  height: 76px;
+  gap: 4px;
+  border-bottom: 0;
+}
+
+.plot.is-ratings {
+  height: 140px;
+  gap: 6px;
+}
+
+.column {
+  position: relative;
+  flex: 1;
+  min-width: 5px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: default;
+}
+
+/* A bar that leads somewhere says so on hover, and nowhere else — the chart is
+   read far more often than it is clicked. */
+a.column {
+  cursor: pointer;
+}
+
+.column-fill {
+  display: block;
+  width: 100%;
+  min-height: 1px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(180deg, var(--brand-green) 0%, var(--brand-green-mid) 100%);
+  transition: opacity 150ms var(--ease);
+}
+
+/* The weekday strip is a supporting figure, not the point of its section, so it
+   stays muted until it is read. Its bars carry their own initial, so each one
+   keeps enough height for a letter however quiet that day was. */
+.plot.is-weekday .column-fill {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 22px;
+  border-radius: 2px;
+  background: var(--weekday-bar);
+}
+
+.plot.is-weekday .column:hover .column-fill,
+.plot.is-weekday .column.is-active .column-fill {
+  background: var(--brand-green);
+}
+
+.plot.is-weekday .column:hover .column-caption,
+.plot.is-weekday .column.is-active .column-caption {
+  color: var(--text-on-accent);
+}
+
+/* Muted until hovered is muted for good on a phone, so there the strip is
+   drawn in the accent from the start. */
+@media (hover: none) {
+  .plot.is-weekday .column-fill {
+    background: var(--brand-green);
+  }
+
+  .plot.is-weekday .column-caption {
+    color: var(--text-on-accent);
+  }
+}
+
+/* The distribution reads as a shape first, so the bars stay quiet and the star
+   captions underneath carry the accent. A bar takes the colour only while it is
+   being read. */
+.plot.is-ratings .column-fill {
+  background: var(--surface-elevated);
+  border-top: 1px solid var(--border-medium);
+}
+
+.plot.is-ratings .column:hover .column-fill,
+.plot.is-ratings .column.is-active .column-fill {
+  background: var(--brand-green);
+  border-top-color: var(--brand-green);
+}
+
+@media (hover: none) {
+  .plot.is-ratings .column-fill {
+    background: var(--brand-green);
+    border-top-color: var(--brand-green);
+  }
+}
+
+.plot.is-hovered .column:not(.is-active) .column-fill {
+  opacity: 0.35;
+}
+
+.column-caption {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding-top: 6px;
+  color: var(--text-muted);
+  font-size: 10px;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.column.is-active .column-caption {
+  color: var(--text-light);
+}
+
+.plot.is-weekday .column-caption {
+  position: static;
+  padding: 0 0 5px;
+  color: var(--text-light);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+/* Ten captions of up to five glyphs share the width of the plot, so the stars
+   drop the tracking and size themselves against the plot rather than against the
+   window: the chart is half the page on a desk and all of it on a phone. */
+.plot.is-ratings {
+  container-type: inline-size;
+}
+
+.plot.is-ratings .column-caption {
+  color: var(--brand-green);
+  font-size: clamp(8px, 1.75cqw, 11px);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.plot.is-ratings .column.is-active .column-caption {
+  color: var(--brand-green);
+}
+
+.plot.is-ratings {
+  margin-bottom: 22px;
+}
+
+/* `hidden` alone loses to the display below, and a stray empty tooltip is very
+   visible. */
+.chart-tip[hidden] {
+  display: none;
+}
+
+.chart-tip {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
+  display: grid;
+  gap: 2px;
+  padding: 8px 12px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.chart-tip b {
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-tip span {
+  color: var(--text-secondary);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.chart-tip .muted {
+  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.when-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.blocks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 20px 36px;
+}
+
+.block {
+  display: grid;
+  gap: 6px;
+}
+
+/* The count and the two averages are the loudest figures on the page, so they
+   are large and light rather than large and heavy — the number does the work,
+   not the weight. */
+.block-value {
+  color: var(--text-light);
+  font-size: clamp(40px, 5vw, 58px);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.block-label {
+  color: var(--text-muted);
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+/* Level with the middle of the figures rather than with their baseline: the
+   arrow points between two numbers, not under them. */
+.block-arrow {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  padding-bottom: 30px;
+  color: var(--text-secondary);
+}
+
+.block-arrow .icon {
+  width: 30px;
+  height: 30px;
+  stroke-width: 1.5;
+}
+
+.weekday {
+  width: 100%;
+  max-width: 260px;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.fact {
+  display: grid;
+  gap: 2px;
+}
+
+.fact-value {
+  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.fact-meta {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ratings-grid,
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+  gap: 48px;
+  align-items: start;
+}
+
+.ratings-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.side-item {
+  display: grid;
+  gap: 2px;
+}
+
+.side-label {
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.side-value {
+  color: var(--text-light);
+  font-size: 22px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.side-meta {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Stars are a reading of the number above them, not a footnote to it. */
+.side-meta.is-stars {
+  color: var(--brand-green);
+  letter-spacing: 0.04em;
+}
+
+.side-heading {
+  color: var(--text-light);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* ── Bars ─────────────────────────────────────────────────────────────────── */
+
+.bars {
+  display: grid;
+  gap: 10px;
+  max-width: 840px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 10ch;
+  align-items: center;
+  gap: 16px;
+}
+
+a.bar-row:hover .bar-label,
+a.bar-row:hover .bar-percent,
+a.bar-row:hover .bar-value {
+  color: var(--text-light);
+}
+
+.bar-label {
+  color: var(--text-primary);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  transition: color 150ms var(--ease);
+}
+
+.bar-track {
+  flex: 1;
+  height: 10px;
+  background: var(--surface-elevated);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  display: block;
+  height: 100%;
+  background: var(--brand-green);
+}
+
+.bar-track-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 40px;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.bar-percent {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.bar-value {
+  color: var(--text-primary);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  display: grid;
+  grid-template-columns: 3ch 1.25rem minmax(0, 1fr);
+  align-items: baseline;
+  width: 100%;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.bar-average-symbol {
+  color: var(--brand-green);
+}
+
+.bar-average,
+.repeat-rating {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.bar-separator,
+.repeat-separator {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1;
+  text-align: center;
+}
+
+.bar-count {
+  text-align: right;
+}
+
+.repeat-rating {
+  color: var(--text-muted);
+}
+
+a.bar-row:hover .bar-average {
+  color: var(--text-light);
+}
+
+.repeat-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.rewatched {
+  padding-top: 0;
+}
+
+.rewatched .side-heading {
+  margin-bottom: 4px;
+}
+
+.repeat-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.repeat-film {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.repeat-title {
+  color: var(--text-light);
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.25;
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+a.repeat-title:hover {
+  color: var(--brand-green);
+}
+
+.repeat-year {
+  flex: none;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.repeat-count {
+  color: var(--brand-green);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.repeat-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  flex: none;
+  white-space: nowrap;
+}
+
+.repeat-rating-symbol {
+  color: var(--brand-green);
+}
+
+.repeat-rating {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Milestones ───────────────────────────────────────────────────────────── */
+
+/* Milestones are a sequence, so they are laid out as one: equal columns along a
+   single track, read left to right. An auto-fill grid wrapped them into rows,
+   which both lost the ordering and left the last row half empty — how many
+   markers there are depends on the size of the diary, so no fixed column count
+   can avoid that. The number of markers is capped in `chooseMilestoneStep`,
+   which is what makes one row viable at all. */
+.milestones {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto auto auto;
+  gap: 6px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The four parts of a marker sit on the rows of the list itself rather than in
+   a box of their own. Titles run from one line to four at this width, and a box
+   each would leave every date and rating at a different height. */
+.milestone {
+  display: contents;
+}
+
+.milestone-badge {
+  position: relative;
+  padding-top: 22px;
+  color: var(--brand-green);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The rail between one marker and the next. It runs past the gap to meet the
+   following dot, so the last one carries no segment. */
+.milestone-badge::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: -24px;
+  left: 0;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.milestone:last-child .milestone-badge::before {
+  display: none;
+}
+
+.milestone-badge::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--border-medium);
+  border-radius: 50%;
+  background: var(--background);
+}
+
+/* Both ends of the run are filled in: they are the two markers a reader looks
+   for first, and the numbered ones in between are already labelled. */
+.milestone:first-child .milestone-badge::after,
+.milestone:last-child .milestone-badge::after {
+  border-color: var(--brand-green);
+  background: var(--brand-green);
+}
+
+.milestone-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 10px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.milestone-title {
+  align-self: start;
+  margin: 2px 0 0;
+  color: var(--text-light);
+  font-family: var(--font-serif);
+  font-size: clamp(15px, 1.35vw, 18px);
+  line-height: 1.25;
+  /* A column is a seventh of the page here, so an unbroken title would set the
+     minimum width of the whole grid and push the page sideways. */
+  overflow-wrap: anywhere;
+}
+
+/* Trails the title at the size of the meta line rather than the size of the
+   title, so it reads as a footnote to the film and not as part of its name. */
+.milestone-year {
+  margin-left: 6px;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* On the last row of the list, so the ratings run along one line across the
+   whole section however deep the title above each of them happens to sit. */
+.milestone-rating {
+  align-self: end;
+  color: var(--brand-green);
+  font-size: 13px;
+}
+
 /* ── Frames ───────────────────────────────────────────────────────────────── */
 
 .frame {
+  display: grid;
   margin: 0;
-  border: 1px solid var(--border-subtle);
-  border-radius: 4px;
-  overflow: hidden;
-  background: var(--surface);
 }
 
 .frame[hidden] {
   display: none;
 }
 
+/* Tabbed sections stack their cards in one cell rather than swapping one for
+   another: the cards in a section are all the same size, so the stack holds its
+   height and a switch is a crossfade instead of a jump. */
+.frame-stack {
+  display: grid;
+}
+
+.frame-stack > .frame {
+  grid-area: 1 / 1;
+  min-width: 0;
+  z-index: 1;
+  transition: opacity 220ms var(--ease);
+}
+
+/* The card being left behind holds at full opacity underneath and is dropped
+   once the incoming one has faded in over it. Fading both at once would let
+   the page show through the pair halfway across the switch. */
+.frame-stack > .frame[data-inactive] {
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0s linear 220ms, visibility 0s linear 220ms;
+}
+
+/* The card draws its own rounded edge, so the frame adds none of its own — the
+   media is clipped to that same radius and filled with the card's own colour,
+   which is what keeps an <object> canvas from showing through the corners.
+   The radius itself is set from the manifest, since it belongs to the drawing.
+
+   The mask is not decoration. WebKit does not clip replaced content — an
+   <object>, an iframe, a video — to an ancestor's border-radius through
+   `overflow: hidden` alone; the embedded document keeps painting its square
+   canvas over the rounded corner. A mask forces the whole subtree through one
+   compositing pass, which does respect the radius. */
 .frame-media {
   position: relative;
-  background: var(--background);
+  overflow: hidden;
+  /* A long press opens the card's own menu, so iOS is asked not to raise its
+     own callout over it. */
+  -webkit-touch-callout: none;
+  isolation: isolate;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+
+  /* A card is drawn in almost the same colour as the page it sits on, so
+     without a line around it there is nothing to say where it ends. */
+  border: 1px solid var(--border-subtle);
 }
 
 .frame-media object,
@@ -492,6 +1374,19 @@ main {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* A frame holds both themes of its card at once, stacked, with the one in use
+   on top. A swap is then a class change rather than a request, which is what
+   keeps the cards in step with the page recolouring around them. */
+.frame-media object {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+}
+
+.frame-media object.is-current {
+  visibility: visible;
 }
 
 .frame-media::after {
@@ -514,29 +1409,90 @@ main {
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
-  padding: 10px 16px;
-  border-top: 1px solid var(--border-subtle);
+  padding: 12px 2px 0;
   color: var(--text-muted);
   font-size: 12px;
 }
 
 .frame-file {
-  font-family: var(--font-mono);
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+  padding: 6px 10px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--text-primary);
+  line-height: 1.25;
+  white-space: nowrap;
+  transition: color 150ms var(--ease), border-color 150ms var(--ease),
+    background-color 150ms var(--ease);
+}
+
+.frame-file code {
+  min-width: 0;
+  overflow: hidden;
+  color: inherit;
   font-size: 11.5px;
-  overflow-wrap: anywhere;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.frame-file::after {
+  content: '↗';
+  flex: none;
+  margin-left: 8px;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  transition: color 150ms var(--ease);
+}
+
+.frame-file:hover {
+  background: var(--surface-hover);
+  border-color: var(--brand-green);
+  color: var(--text-light);
+}
+
+.frame-file:hover::after {
+  color: var(--brand-green);
 }
 
 .frame-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-left: auto;
+}
+
+/* Shown only where the card is wider than the screen. */
+.frame-hint {
+  display: none;
+  color: var(--text-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .chip {
   display: inline-flex;
   align-items: center;
-  height: 28px;
-  padding: 0 12px;
+  gap: 7px;
+  height: 30px;
+  padding: 0 13px;
   background: transparent;
   border: 1px solid var(--border-subtle);
   border-radius: 9999px;
@@ -547,19 +1503,127 @@ main {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   cursor: pointer;
-  transition: color 150ms var(--ease), border-color 150ms var(--ease);
+  transition: color 150ms var(--ease), border-color 150ms var(--ease),
+    background-color 150ms var(--ease);
+}
+
+.chip .icon {
+  color: var(--text-muted);
+  transition: color 150ms var(--ease);
 }
 
 .chip:hover {
+  background: var(--surface);
   color: var(--text-light);
   border-color: var(--brand-green);
 }
 
+.chip:hover .icon {
+  color: var(--brand-green);
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 2px;
+}
+
+/* ── Back to top ──────────────────────────────────────────────────────────── */
+
+.to-top {
+  position: fixed;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 220ms var(--ease), transform 220ms var(--ease),
+    color 150ms var(--ease), border-color 150ms var(--ease);
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.to-top:hover {
+  color: var(--text-light);
+  border-color: var(--brand-green);
+}
+
+.to-top .icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Card menu ────────────────────────────────────────────────────────────── */
+
+.card-menu {
+  position: absolute;
+  z-index: 3;
+  min-width: 210px;
+  padding: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+}
+
+.card-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  background: none;
+  border: 0;
+  border-radius: 3px;
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.card-menu-item .icon {
+  color: var(--text-muted);
+}
+
+.card-menu-item:hover,
+.card-menu-item:focus-visible {
+  outline: none;
+  background: var(--surface-hover);
+  color: var(--text-light);
+}
+
+.card-menu-item:hover .icon,
+.card-menu-item:focus-visible .icon {
+  color: var(--brand-green);
+}
+
 /* ── Diary ────────────────────────────────────────────────────────────────── */
 
+.diary-columns {
+  display: block;
+}
+
 .diary-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 48px;
   margin: 0;
-  max-width: 900px;
   padding: 0;
   list-style: none;
   border-top: 1px solid var(--border-subtle);
@@ -568,13 +1632,13 @@ main {
 .diary-row {
   display: flex;
   align-items: baseline;
-  gap: 16px;
-  padding: 16px 0;
+  gap: 12px;
+  padding: 14px 0;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .diary-date {
-  width: 88px;
+  width: 60px;
   flex: none;
   color: var(--text-muted);
   font-size: 12px;
@@ -634,25 +1698,180 @@ main {
   overflow-x: auto;
 }
 
+/* ── Steps ────────────────────────────────────────────────────────────────── */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.step-number {
+  color: var(--brand-green);
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.12em;
+}
+
+.step h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.step p {
+  color: var(--text-secondary);
+  font-size: 13px;
+  max-width: 46ch;
+}
+
+.step .code {
+  font-size: 11.5px;
+  padding: 12px 14px;
+}
+
+.step-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+.step-link {
+  color: var(--text-light);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  width: fit-content;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--border-medium);
+}
+
+.step-link::after {
+  content: ' →';
+  color: var(--text-muted);
+}
+
+.step-link:hover {
+  color: var(--brand-green);
+  border-bottom-color: var(--brand-green);
+}
+
 /* ── Footer ───────────────────────────────────────────────────────────────── */
 
 .footer {
-  margin-top: 48px;
-  border-top: 1px solid var(--border-subtle);
+  margin-top: 64px;
+}
+
+/* One rule across the page with the three dots sitting on it, which is the only
+   ornament the whole page allows itself. It runs edge to edge like the nav's
+   border; the columns below it line up with the page. */
+.footer-rule {
+  position: relative;
+  height: 1px;
+  margin-bottom: 40px;
+  background: var(--border-subtle);
+}
+
+.footer-rule .dots {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 14px;
+  background: var(--background);
 }
 
 .footer-inner {
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: 32px 24px 64px;
+  padding: 0 max(24px, env(safe-area-inset-right)) 48px max(24px, env(safe-area-inset-left));
   display: grid;
-  gap: 8px;
+  grid-template-columns: 1fr 1fr 1.8fr;
+  gap: 48px;
 }
 
-.footer-note {
+.footer-brand {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.footer-brand .wordmark {
+  color: var(--text-light);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.footer-nav,
+.footer-colophon {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.footer-label {
   color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+
+.footer-nav a {
+  color: var(--text-secondary);
+  font-size: 13px;
+  width: fit-content;
+}
+
+.footer-nav a:hover {
+  color: var(--text-light);
+}
+
+.footer-colophon p {
+  color: var(--text-muted);
+  font-family: var(--font-serif);
   font-size: 12px;
-  max-width: 72ch;
+  line-height: 1.55;
+}
+
+.footer-colophon em {
+  color: var(--text-secondary);
+}
+
+.footer-colophon a {
+  color: var(--text-secondary);
+}
+
+.footer-colophon a:hover {
+  color: var(--brand-green);
+}
+
+/* The one line that is about neither the page nor its author: it belongs under
+   both columns rather than inside one. */
+.footer-note {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 20px max(24px, env(safe-area-inset-right)) 40px max(24px, env(safe-area-inset-left));
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-family: var(--font-serif);
+  font-size: 12px;
+  line-height: 1.55;
+  text-align: center;
 }
 
 /* ── Toast ────────────────────────────────────────────────────────────────── */
@@ -679,9 +1898,142 @@ main {
 
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 
-@media (max-width: 860px) {
-  .nav-links {
+@media (max-width: 980px) {
+  .ratings-grid,
+  .split {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .when-foot {
+    align-items: flex-start;
+  }
+
+  /* Stacked under the figures rather than beside them, the strip has the whole
+     row to itself and may as well use it. */
+  .weekday {
+    max-width: none;
+  }
+
+  .diary-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Seven columns of film titles stop being readable well before the page is a
+     phone. The same markup turns on its side: the rail moves to the left edge
+     and the sequence reads downwards, which is what a timeline does anyway.
+     Each marker gets its own box back, so the rail can be drawn on it and span
+     the whole entry however tall the title runs. */
+  .milestones {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-rows: none;
+    gap: 0;
+  }
+
+  .milestone {
+    position: relative;
+    display: grid;
+    gap: 6px;
+    align-content: start;
+    padding: 0 0 22px 24px;
+  }
+
+  .milestone:last-child {
+    padding-bottom: 0;
+  }
+
+  .milestone-badge {
+    padding-top: 0;
+  }
+
+  .milestone-badge::before,
+  .milestone-badge::after {
     display: none;
+  }
+
+  .milestone::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    bottom: -3px;
+    left: 4px;
+    width: 1px;
+    background: var(--border-subtle);
+  }
+
+  .milestone:last-child::before {
+    display: none;
+  }
+
+  .milestone::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border: 1px solid var(--border-medium);
+    border-radius: 50%;
+    background: var(--background);
+  }
+
+  .milestone:first-child::after,
+  .milestone:last-child::after {
+    border-color: var(--brand-green);
+    background: var(--brand-green);
+  }
+
+  .milestone-title {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 860px) {
+  /* The links do not fit beside the wordmark, and dropping them would leave a
+     page this long with no way through it but the scrollbar. They move to a
+     second row and scroll sideways, bleeding to both edges so it is clear
+     there is more of them. */
+  .nav-inner {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 0 16px;
+    padding-top: 10px;
+  }
+
+  .wordmark {
+    height: 36px;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    margin: 0 0 0 -24px;
+    padding: 4px 24px 10px;
+    gap: 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    width: calc(100% + 48px);
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Padded to something a thumb can hit; the underline follows the padding
+     down to the bottom of the row. */
+  .nav-links a {
+    padding: 8px 0;
+    white-space: nowrap;
+  }
+
+  .footer-nav a {
+    padding: 4px 0;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .theme-toggle {
@@ -689,27 +2041,204 @@ main {
   }
 
   .hero {
-    padding: 48px 0 32px;
+    padding: 48px 0 0;
+  }
+
+  .hero-art {
+    height: 190px;
+  }
+
+  .hero-art-pattern {
+    width: 280px;
+    height: 190px;
+  }
+
+  .hero-art-pattern-left {
+    left: 0;
+    right: auto;
+  }
+
+  .hero-art-pattern-right {
+    right: 0;
+    left: auto;
+  }
+
+  .hero-kpis {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 48px;
   }
 }
 
 /* A day cell is 10px wide in the source drawing, so squeezing the graph into a
    phone would make it unreadable. Below this width the card keeps a usable size
-   and the frame scrolls sideways instead. */
+   and scrolls sideways instead — the caption under it does not, so the actions
+   stay where a thumb can reach them. */
 @media (max-width: 700px) {
-  .frame {
-    overflow-x: auto;
+  /* A long diary turns this row into a wall: thirty years at the desktop size
+     run to 888px on a phone, nearly two screens of nothing but figures. Tighter
+     type and a narrower track fit five across instead of three, and the days
+     line — the weakest of the three readings — is dropped, which together bring
+     the same thirty years down to roughly a quarter of that. */
+  .years-row {
+    grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+    gap: 16px;
   }
 
-  .frame-media,
-  .frame-foot {
+  .year-value {
+    font-size: 19px;
+  }
+
+  .year-days {
+    display: none;
+  }
+
+  .frame-scroll {
+    overflow-x: auto;
+    scrollbar-width: none;
+    /* A grid item is as wide as its content unless it is told otherwise, and
+       the content here is a card 620px across. */
+    min-width: 0;
+  }
+
+  .frame-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .frame-media {
     min-width: 620px;
+  }
+
+  .frame-hint {
+    display: block;
+  }
+
+  .frame-foot {
+    gap: 8px 12px;
+    /* Same story as the file name inside it: a grid item is as wide as its
+       widest unbreakable child unless it is told to shrink. */
+    min-width: 0;
+  }
+
+  .frame-actions {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* The path is long enough to take two lines of a phone on its own, and the
+     card it belongs to is named by the tab above it. */
+  .frame-file {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* Thirty months at four pixels each is a texture, not a chart. The plots keep
+     a readable bar width and scroll instead. */
+  .chart,
+  .histogram {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .chart::-webkit-scrollbar,
+  .histogram::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chart .plot {
+    min-width: 620px;
+  }
+
+  /* Wide enough that five stars under a bar stay stars and not a smudge. */
+  .histogram .plot {
+    min-width: 520px;
   }
 }
 
 @media (max-width: 560px) {
   .theme-label {
     display: none;
+  }
+
+  .hero-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 16px;
+    margin-top: 40px;
+  }
+
+  .hero-art {
+    height: 180px;
+  }
+
+  .hero-art::after {
+    display: block;
+  }
+
+  .hero-art-pattern {
+    top: -40px;
+    width: 260px;
+    height: 180px;
+    opacity: 0.82;
+  }
+
+  .hero-art-pattern-left {
+    right: 50%;
+    left: auto;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24%, #000 62%, transparent 88%);
+    mask-image: linear-gradient(to right, transparent 0, #000 24%, #000 62%, transparent 88%);
+    clip-path: inset(0 55% 0 0);
+  }
+
+  .hero-art-pattern-right {
+    right: auto;
+    left: 50%;
+    margin-left: 0;
+    -webkit-mask-image: linear-gradient(to left, transparent 0, #000 24%, #000 62%, transparent 88%);
+    mask-image: linear-gradient(to left, transparent 0, #000 24%, #000 62%, transparent 88%);
+    clip-path: inset(0 0 0 55%);
+  }
+
+  .hero-art-pattern-left,
+  .hero-art-pattern-right {
+    overflow: visible;
+  }
+
+  .hero-kpi-value {
+    font-size: 30px;
+  }
+
+  /* Thumb-sized: 30px of chip is fine under a mouse and mean under a finger. */
+  .chip {
+    height: 36px;
+    padding: 0 14px;
+  }
+
+  .tab {
+    padding: 4px 0 12px;
+  }
+
+  .column-caption,
+  .footer-label {
+    font-size: 11px;
+  }
+
+  /* A row that is a link needs to be worth aiming at: 21px of bar is a miss
+     waiting to happen. */
+  .bar-row {
+    padding: 7px 0;
+  }
+
+  .step-link {
+    padding: 6px 0;
+  }
+
+  /* Stacked, the arrows point at the wrong thing. */
+  .block-arrow {
+    display: none;
+  }
+
+  .blocks {
+    gap: 20px 32px;
   }
 
   .theme-toggle {
@@ -723,6 +2252,16 @@ main {
 
   .diary-date {
     width: auto;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-art-pattern {
+    display: none;
+  }
+
+  .hero-art::after {
+    display: none;
   }
 }
 

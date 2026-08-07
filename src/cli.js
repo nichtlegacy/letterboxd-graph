@@ -13,6 +13,7 @@ import { generateSvg, generateMultiYearSvg } from './generator.js';
 import { generateReviewCard, generateProfileCard, pickTopFilms, entriesForPeriod, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT, FAV_PIXEL_WIDTH, FAV_PIXEL_HEIGHT } from './cards.js';
 import { svgToPng, imageBufferToThumbnail } from './exporter.js';
 import { buildJsonExport, markRewatches } from './stats.js';
+import { resolveReviewYears, resolveYears } from './years.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,7 +23,7 @@ async function main() {
     const args = process.argv.slice(2);
 
     let username = null;
-    let years = [new Date().getFullYear()]; // Default to current year
+    let years = resolveYears(''); // Default to the current year, UTC like the diary
     let weekStart = "sunday";
     let outputBasePath = path.join("images", "github-letterboxd");
     let usernameGradient = true;
@@ -33,21 +34,18 @@ async function main() {
     let scope = "all"; // 'all' fetches the whole diary, 'years' only the -y years
     let monthCards = 2; // recent months to also make review cards for
     let topFilms = "watched"; // 'watched' or 'released' for the card's film list
+    let reviewYearsSpec = "all"; // 'all', a list, or a relative span for year cards
 
     // Parse arguments
     for (let i = 0; i < args.length; i++) {
       if (args[i].startsWith('-')) {
-        const flag = args[i].substring(1).toLowerCase();
+        const flag = args[i].replace(/^-+/, '').toLowerCase();
         const value = args[i + 1] || "";
         
         switch (flag) {
           case 'y':
-            // Handle comma-separated years (e.g. 2024,2023)
-            if (value.includes(',')) {
-              years = value.split(',').map(y => parseInt(y.trim())).filter(y => !isNaN(y));
-            } else {
-              years = [Number.parseInt(value) || new Date().getFullYear()];
-            }
+            // A list ("2026,2025") or a relative span ("last 2")
+            years = resolveYears(value);
             i++;
             break;
           case 'w':
@@ -68,7 +66,7 @@ async function main() {
             break;
           }
           case 'p':
-          case '-png':
+          case 'png':
             exportPng = true;
             break;
           case 'm':
@@ -85,6 +83,10 @@ async function main() {
             break;
           case 'r':
             topFilms = ['watched', 'released'].includes(value) ? value : 'watched';
+            i++;
+            break;
+          case 'review-years':
+            reviewYearsSpec = value || 'all';
             i++;
             break;
           case 'c': {
@@ -105,7 +107,7 @@ async function main() {
       console.error("Error: No username provided.");
       console.log("Usage: node src/cli.js <username> [options]");
       console.log("Options:");
-      console.log("  -y <years>    Specify year(s), comma-separated (e.g. 2024,2023)");
+      console.log("  -y <years>    Year(s): a list like 2026,2025 or a span like \"last 2\"");
       console.log("  -w <day>      Week start: sunday or monday (default: sunday)");
       console.log("  -o <path>     Output path (default: images/github-letterboxd)");
       console.log("  -g <targets>  Gradient text: true, false, name or year (default: true)");
@@ -115,6 +117,7 @@ async function main() {
       console.log("  -s <scope>    Diary scope: all or years (default: all)");
       console.log("  -c <count>    Recent months to also make cards for, 0 to skip (default: 2)");
       console.log("  -r <scope>    Card film list: watched or released (default: watched)");
+      console.log("  --review-years <years>  Year cards: all, a list, or last N (default: all)");
       process.exit(1);
     }
 
@@ -129,6 +132,7 @@ async function main() {
     console.log(`Mode: ${mode}`);
     console.log(`Animation: ${animate ? '✓' : '✗'}`);
     console.log(`Scope: ${scope === 'all' ? 'complete diary' : `only ${years.join(', ')}`}`);
+    console.log(`Review years: ${reviewYearsSpec}`);
     console.log(`Month cards: ${monthCards === 0 ? '✗' : `last ${monthCards}`}`);
     console.log(`Card films: ${topFilms === 'released' ? 'releases of that year' : 'everything watched'}`);
     console.log(`Gradient: name ${usernameGradient ? '✓' : '✗'}, year ${yearGradient ? '✓' : '✗'}`);
@@ -171,7 +175,9 @@ async function main() {
     // reads the entries, so tooltips, stats, cards and the export agree.
     allEntries = markRewatches(allEntries);
 
-    // The graphs and the year cards only ever show the requested years
+    // The graph only shows the requested years. Review cards can cover every
+    // year from the same fetched diary without another Letterboxd request.
+    const reviewYears = resolveReviewYears(reviewYearsSpec, allEntries);
     const filmEntries = scope === 'all'
       ? allEntries.filter(entry => years.includes(entry.date.getUTCFullYear()))
       : allEntries;
@@ -229,7 +235,13 @@ async function main() {
       year: years.length === 1 ? years[0] : null,
       years,
       weekStart,
-      recentLimit: 10
+      recentLimit: 16,
+      // The graph and its cells stay scoped to the requested years; the all-time
+      // block covers whatever was fetched, which in 'all' scope is the lot.
+      allEntries,
+      totalFilms: totalEntries,
+      profileImage: profileImageBase64,
+      scope
     });
     fs.writeFileSync(outputJsonPath, JSON.stringify(jsonExport, null, 2));
 
@@ -241,7 +253,7 @@ async function main() {
     // is the same either way, so both come out of the same loop.
     console.log("\n🃏 Generating review cards...");
     const reviewCards = [];
-    const sortedYears = [...years].sort((a, b) => b - a);
+    const sortedYears = [...reviewYears].sort((a, b) => b - a);
 
     // Years are named after themselves. Months are named by how recent they
     // are, not by their date: a dated file would break every embed at the turn

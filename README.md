@@ -63,7 +63,7 @@ jobs:
       - uses: nichtlegacy/letterboxd-graph@v2
         with:
           username: YOUR_LETTERBOXD_USERNAME
-          years: "2026,2025"        # optional, defaults to the current year
+          years: "last 2"           # this year and last, defaults to the current year
 ```
 
 Run it once from the **Actions** tab. A healthy first run logs the diary pages
@@ -132,7 +132,7 @@ Hovering reveals more than the graph shows at rest:
 
 ### Year in Review
 
-`letterboxd-review-<year>-{dark,light}.svg` — one card per year in `years`.
+`letterboxd-review-<year>-{dark,light}.svg` — one card per year in `review-years`.
 
 <p align="center">
   <picture>
@@ -260,7 +260,8 @@ All options are action inputs. Only `username` is required.
 | Input | Description | Default |
 |-------|-------------|---------|
 | `username` | Letterboxd username (**required**) | – |
-| `years` | Comma-separated years, e.g. `2026,2025` | current year |
+| `years` | Contribution graph years: `last N` or a list like `2026,2025` | current year |
+| `review-years` | Year cards: `all`, `last N`, or a list like `2026,2025`; `all` uses every year in the fetched diary | `all` |
 | `scope` | Diary scope: `all` or `years` | `all` |
 | `month-cards` | Recent months to also make cards for, `0` to skip | `2` |
 | `top-films` | Year card film list: `watched` or `released` | `watched` |
@@ -278,6 +279,14 @@ All options are action inputs. Only `username` is required.
 Outputs `svg-dark`, `svg-light` and `data-json` carry the paths written, for
 chaining into an upload or deploy step.
 
+`years` controls the contribution graph. `last 2` is read as *this year and last*
+on the day the run happens, so the graph rolls over on its own; a pinned
+`2026,2025` keeps drawing 2025 all through 2027, and nothing in the run looks
+wrong while it does. `review-years` controls the year cards independently. Its
+default `all` creates one card for every year present in the fetched diary, while
+a list or `last N` limits the cards deliberately. Cards for a year that drops out
+of the selection are deleted on the next run.
+
 <details>
 <summary><b>Alternative: fork and run the CLI directly</b></summary>
 
@@ -287,10 +296,12 @@ To own the whole workflow instead, fork this repository and edit
 ```yaml
 env:
   LETTERBOXD_USERNAME: "YOUR_USERNAME"
-  YEARS: "2026,2025"                   # empty for the current year
+  YEARS: "last 2"                      # this year and last, or a list like "2026,2025"
+  REVIEW_YEARS: "all"                  # every year in the fetched diary, or a selection
   SCOPE: "all"                         # "all" (whole diary) or "years"
   MONTH_CARDS: "2"                     # recent months to card, 0 to skip
   TOP_FILMS: "watched"                 # "watched" or "released" film list
+  MODE: "count"                        # "count" of films or average "rating"
   WEEK_START: "sunday"                 # "sunday" or "monday"
   GRADIENT: "true"                     # "true", "false", "name" or "year"
   ANIMATE: "true"                      # "false" disables the reveal animation
@@ -312,7 +323,8 @@ node src/cli.js <username> [options]
 
 | Flag | Description | Default |
 |------|-------------|---------|
-| `-y <years>` | Year(s), comma-separated, e.g. `2026,2025` | current year |
+| `-y <years>` | Contribution graph years: `last N` or a list like `2026,2025` | current year |
+| `--review-years <years>` | Year cards: `all`, `last N`, or a list like `2026,2025` | all |
 | `-s <scope>` | Diary scope: `all` or `years` | `all` |
 | `-c <count>` | Recent months to also card, `0` to skip | `2` |
 | `-r <scope>` | Year card film list: `watched` or `released` | `watched` |
@@ -324,8 +336,8 @@ node src/cli.js <username> [options]
 | `-o <path>` | Output path without extension | `images/github-letterboxd` |
 
 ```bash
-# Two years
-node src/cli.js nichtlegacy -y 2026,2025
+# Two graph years, cards for every year in the diary
+node src/cli.js nichtlegacy -y 2026,2025 --review-years all
 
 # Only the requested year, no month cards
 node src/cli.js nichtlegacy -y 2025 -s years -c 0
@@ -378,10 +390,11 @@ called *Leo*. @Rufus_Firefly has 55 titles that are actually different films, so
 matching on the title alone would invent rewatches and merge unrelated films in
 the [ranking](#film-ranking).
 
-The graph and the year cards still only cover the years in `years`; the rest is
-filtered out of the same fetch rather than requested again. Set `scope: years`
-to fetch only those years — cheaper on a large diary, but it leaves the profile
-card scoped to them and labelled with the range.
+The graph covers the years in `years`; year cards cover `review-years`. Under the
+default `scope: all`, both are filtered from the same complete fetch rather than
+requested again. Set `scope: years` to fetch only the graph years — cheaper on a
+large diary, but it leaves the profile card and `review-years: all` scoped to the
+years that were fetched.
 
 ### Film Ranking
 
@@ -456,9 +469,34 @@ https://raw.githubusercontent.com/<github-user>/letterboxd-graph/main/images/let
   ],
   "recent": [
     { "date": "2026-02-16", "title": "Film A", "year": "2024", "rating": 3.5, "rewatch": false, "liked": true, "url": "https://letterboxd.com/..." }
-  ]
+  ],
+  "allTime": {
+    "scope": "all",
+    "films": 626, "entries": 599, "distinctFilms": 517,
+    "firstEntry": "2019-05-05", "lastEntry": "2026-07-30", "spanDays": 2644,
+    "daysActive": 427, "rewatches": 83, "liked": 76, "rated": 540, "averageRating": 3.3,
+    "perDay": 0.23, "perWeek": 1.6, "perMonth": 6.9,
+    "streak": { "length": 34, "startDate": "2025-01-27", "endDate": "2025-03-01", "films": 47 },
+    "busiestDay": { "date": "2025-04-16", "count": 5 },
+    "longestGap": { "days": 61, "from": "2021-02-03", "to": "2021-04-05" },
+    "perYear": [{ "year": 2025, "films": 381, "days": 263 }],
+    "perWeekday": [65, 65, 55, 59, 62, 69, 81],
+    "perMonthOfYear": [51, 44, 39, 47, 38, 30, 41, 33, 29, 36, 34, 37],
+    "monthSeries": [{ "month": "2026-02", "count": 12 }],
+    "ratings": [{ "rating": 3.5, "count": 125 }],
+    "decades": [{ "decade": 2020, "label": "2020s", "count": 89, "averageRating": 3.5 }],
+    "mostRewatched": [{ "title": "Half Baked", "year": "1998", "url": "https://letterboxd.com/...", "views": 5, "averageRating": 4.5 }],
+    "milestoneStep": 100,
+    "milestones": [{ "n": 100, "kind": "step", "date": "2025-03-08", "title": "Film B", "year": "2004", "rating": 3, "url": "https://letterboxd.com/..." }]
+  }
 }
 ```
+
+`stats` and `cells` are scoped to the years in `years`, the same window the graph
+draws. `allTime` covers everything the run fetched, which under the default
+`scope: all` is the whole diary — `films` is the profile's own count, `entries`
+the dated ones. It is aggregates only, so it stays a few kilobytes whatever the
+diary weighs, and `scope` says which of the two it was built from.
 
 </details>
 
@@ -485,44 +523,119 @@ or `letterboxd-profile` to embed a card instead.
 
 ## Pages Site
 
-A README has room for one card, maybe two. Everything else ends up behind a
-`<details>` or not embedded at all — so the same files are also published as a
-page: **[nichtlegacy.github.io/letterboxd-graph](https://nichtlegacy.github.io/letterboxd-graph/)**.
+A README has room for one card, maybe two, and a card has room for a headline
+and ten films. The same files are also published as a page, which has neither
+limit — the cards at full size, and the figures behind them read out at length.
 
-<p align="center">
-  <img alt="The generated cards on the Pages site" src=".github/assets/pages-dark.png" width="100%">
-</p>
+<div align="center">
 
-It is the one place where the cards behave as they were drawn. GitHub embeds an
-SVG through an `<img>` tag, which receives no mouse events and is served under a
-`sandbox` CSP; the page embeds each card as an `<object>`, so tooltips, links and
-the reveal animation all work, and every card keeps its own ids and stylesheet
-instead of colliding with its neighbours.
+**[nichtlegacy.github.io/letterboxd-graph](https://nichtlegacy.github.io/letterboxd-graph/)**
 
-- Dark and light, following the system by default and switchable in the header.
-  The page swaps to the matching SVG rather than filtering the one it has.
-- Assembled from what the last run actually wrote, so years and month cards
-  appear and disappear on their own. Nothing about the site is hardcoded.
-- **Copy embed** under each card puts the `<picture>` block for it on your
-  clipboard, both themes filled in.
-- Type is served from `fonts/`, figures from a slim cut of the JSON export.
-  Nothing is fetched from a third party.
+<img alt="The generated cards on the Pages site" src=".github/assets/pages-dark.png" width="100%">
 
-### Enabling it
+</div>
 
-`.github/workflows/pages.yml` is already in the repository. In **Settings →
-Pages**, set **Source** to **GitHub Actions**. The workflow then runs after every
-generator run, on pushes that touch the site, and on demand from the **Actions**
-tab — which is also how a branch can be published before it is merged.
+| Section | What is on it |
+|---------|---------------|
+| **A Life in Film** | The opening: films watched, distinct films, diary entries, days active, average rating and longest streak, on one row |
+| **When you watched** | A column per month, empty ones included; weekday distribution, weekly and monthly averages, busiest day, longest streak, longest quiet stretch — and a figure per year, written out rather than drawn, so a twenty-year diary reads as cleanly as a two-year one |
+| **How you rated** | The half-star histogram, empty steps kept, beside the average, the most given rating and how much is rated or liked at all |
+| **What you reached for** | Films by release decade, and the five you went back to most |
+| **Where it turned over** | The first entry, the round numbers after it, and the latest, on one track. `milestoneStep` scales with the diary — every 25th at a hundred entries, every thousandth at five thousand — so the row holds its length instead of growing a marker per hundred |
+| **The cards** | Graph, profile, a tab per year, a tab per month — each with **Copy image**, **Copy SVG**, **Copy embed** and **Open SVG**, the same four on a right click anywhere on the card |
+| **Recent diary** | The last sixteen entries, out of the JSON export, in two columns |
 
-To preview it locally, generate the images once and serve the build:
+The figures cover whatever the run fetched — the whole diary under `scope: all`,
+the graph years under `scope: years`, which the page says out loud rather than
+passing narrow numbers off as all-time.
+
+### Sharing it
+
+Paste the page's address into Discord, Slack, X, WhatsApp, Signal, Bluesky,
+iMessage or Teams and it unfurls as a card: the profile card as the image, the
+diary's headline figures as the text.
+
+None of that can come from the page as it runs. A crawler reads the HTML that
+was served and stops there — it does not run the JavaScript that fetches
+`data.json` and fills the page in — so the build writes the figures into the
+head instead. The same step rasterises the profile card to `og.png`, because
+every one of those platforms drops an SVG preview rather than drawing it, and
+moves the image's URL with each run so a reshared link is not answered from a
+cache holding last week's numbers.
+
+| Written into the built page | What reads it |
+|-----------------------------|---------------|
+| `<title>`, `description`, `canonical` | Google's result listing |
+| `og:*`, including `og:image` at 1200×630 | Discord, Slack, WhatsApp, Signal, Bluesky, iMessage, Teams, LinkedIn |
+| `twitter:card` as `summary_large_image` | X |
+| JSON-LD: `WebSite`, `Person`, `ProfilePage` | Search engines reading structured data |
+| `robots.txt`, `sitemap.xml` | Crawlers, and the `lastmod` that tells them it changed |
+
+The addresses in all of it are absolute, taken from the deployment itself, so a
+custom domain needs no second place to be configured.
+
+It is also the one place where the cards work as drawn: GitHub serves an SVG
+through an `<img>` tag, which gets no mouse events, while the page embeds each
+one as an `<object>`, so tooltips, links and the reveal animation all behave.
+The rest follows from the same build — themes swap the file rather than filter
+it, sections come and go with whatever the last run wrote, embeds load as they
+scroll into view, and type is served from `fonts/`, so nothing is fetched from a
+third party.
+
+<details>
+<summary><b>Publishing it for your own profile</b></summary>
+
+Which route you take depends on which [Quick Start](#quick-start) you took.
+
+**If you forked this repository**, everything is already in place. Set
+`LETTERBOXD_USERNAME` in `.github/workflows/update-graph.yml`, then open
+**Settings → Pages** and set **Source** to **GitHub Actions**. Run **Update
+Letterboxd Graph + JSON Export** once from the **Actions** tab; the deploy
+follows on its own, and the site lands at
+`https://<github-user>.github.io/<repository>/`.
+
+**If you added the action to a repository of your own**, copy four things
+across:
+
+| Copy | Why |
+|------|-----|
+| `site/` | the page: one HTML file, one stylesheet, one module |
+| `scripts/build-site.mjs` | assembles `_site/` and writes the two files the page reads |
+| `src/stats.js` | the aggregates behind the figures; the build imports it |
+| `fonts/` | Inter as `.woff2`, plus its license |
+| `.github/workflows/pages.yml` | builds and deploys on every generator run |
+
+Then:
+
+1. In `pages.yml`, set the `workflows:` list under `workflow_run` to the `name:`
+   of your own generator workflow. GitHub matches it by name, not by filename,
+   and a name that matches nothing simply never fires. Check `branches:` against
+   your default branch while you are in there.
+2. Your `package.json` needs `"type": "module"` — `build-site.mjs` imports
+   `src/stats.js`, and without it Node reads that file as CommonJS and the build
+   dies on the `export` keyword.
+3. Keep the `npm ci` step in `pages.yml`. The build uses `sharp` to rasterise
+   the share preview; without it the page still deploys, but a shared link
+   unfurls with no image.
+4. Leave `commit` at its default. The build reads `images/` out of the
+   repository and fetches nothing, so the files have to be committed for it to
+   have anything to publish.
+5. **Settings → Pages → Source → GitHub Actions**, then run the generator once.
+
+A private repository needs a paid plan for Pages; a public one does not.
+
+To preview any of it locally, generate the images once and serve the build:
 
 ```bash
 npm run build:site     # writes _site/
 npm run serve:site     # builds, then serves it on :8080
 ```
 
-The build only reads `images/`, so it costs no requests against Letterboxd.
+The build only reads `images/`, so previewing costs no requests against
+Letterboxd. Deploys can also be triggered by hand from the **Actions** tab,
+which is how a branch gets published before it is merged.
+
+</details>
 
 ## Requirements
 
