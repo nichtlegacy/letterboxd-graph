@@ -26,6 +26,7 @@ async function main() {
     let weekStart = "sunday";
     let outputBasePath = path.join("images", "github-letterboxd");
     let usernameGradient = true;
+    let yearGradient = true;
     let exportPng = false;
     let mode = "count"; // 'count' or 'rating'
     let animate = true; // CSS reveal animation for grid cells
@@ -55,10 +56,15 @@ async function main() {
             outputBasePath = path.join(path.dirname(value), path.basename(value));
             i++;
             break;
-          case 'g':
-            usernameGradient = value.toLowerCase() !== 'false';
+          case 'g': {
+            // Accepts the original true/false as well as naming the individual
+            // targets, so existing workflows keep working.
+            const targets = value.toLowerCase();
+            usernameGradient = ['true', 'both', 'name', ''].includes(targets);
+            yearGradient = ['true', 'both', 'year', ''].includes(targets);
             i++;
             break;
+          }
           case 'p':
           case '-png':
             exportPng = true;
@@ -90,7 +96,7 @@ async function main() {
       console.log("  -y <years>    Specify year(s), comma-separated (e.g. 2024,2023)");
       console.log("  -w <day>      Week start: sunday or monday (default: sunday)");
       console.log("  -o <path>     Output path (default: images/github-letterboxd)");
-      console.log("  -g <bool>     Username gradient: true or false (default: true)");
+      console.log("  -g <targets>  Gradient text: true, false, name or year (default: true)");
       console.log("  -p            Also export PNG files");
       console.log("  -m <mode>     Graph mode: count or rating (default: count)");
       console.log("  -a <bool>     Cell reveal animation: true or false (default: true)");
@@ -109,7 +115,7 @@ async function main() {
     console.log(`Mode: ${mode}`);
     console.log(`Animation: ${animate ? '✓' : '✗'}`);
     console.log(`Palette: ${palette}`);
-    console.log(`Gradient: ${usernameGradient ? '✓' : '✗'}`);
+    console.log(`Gradient: name ${usernameGradient ? '✓' : '✗'}, year ${yearGradient ? '✓' : '✗'}`);
     console.log(`PNG Export: ${exportPng ? '✓' : '✗'}`);
     console.log(`Output: ${outputPathDark}, ${outputPathLight}, ${outputJsonPath}\n`);
 
@@ -152,6 +158,7 @@ async function main() {
       displayName,
       logoBase64,
       usernameGradient,
+      yearGradient,
       followers,
       following,
       totalEntries,

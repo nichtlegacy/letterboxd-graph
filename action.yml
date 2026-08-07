@@ -23,7 +23,7 @@ inputs:
     required: false
     default: 'count'
   gradient:
-    description: 'Render the display name with the Letterboxd color gradient'
+    description: 'Gradient text: "true" (name and year), "false", "name" or "year"'
     required: false
     default: 'true'
   animate:
@@ -122,7 +122,7 @@ runs:
 
         args=("$LB_USERNAME" -o "$LB_OUTPUT" -w "$LB_WEEK_START" -m "$LB_MODE" -t "$LB_PALETTE")
         if [ -n "$LB_YEARS" ]; then args+=(-y "$LB_YEARS"); fi
-        if [ "$LB_GRADIENT" = "false" ]; then args+=(-g false); fi
+        if [ -n "$LB_GRADIENT" ] && [ "$LB_GRADIENT" != "true" ]; then args+=(-g "$LB_GRADIENT"); fi
         if [ "$LB_ANIMATE" = "false" ]; then args+=(-a false); fi
         if [ "$LB_EXPORT_PNG" = "true" ]; then args+=(-p); fi
 

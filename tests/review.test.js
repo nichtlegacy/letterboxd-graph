@@ -147,3 +147,29 @@ test('card is a fixed 1200x630 so it works as an Open Graph image', async () => 
   assert.ok(svg.includes('height="630"'));
   assert.ok(svg.includes('@font-face'), 'fonts are embedded');
 });
+
+test('card can render the year and the name plain instead of gradient', async () => {
+  const film = entry('2025-01-01', { title: 'A', rating: 4 });
+  const both = await generateReviewCard([film], { year: 2025, username: 'someone', displayName: 'Someone' });
+  assert.equal(both.match(/url\(#reviewGradient\)/g).length, 2, 'name and year');
+
+  const yearOnly = await generateReviewCard([film], {
+    year: 2025, username: 'someone', displayName: 'Someone', usernameGradient: false
+  });
+  assert.equal(yearOnly.match(/url\(#reviewGradient\)/g).length, 1);
+
+  const plain = await generateReviewCard([film], {
+    year: 2025, username: 'someone', displayName: 'Someone', usernameGradient: false, yearGradient: false
+  });
+  assert.equal(plain.match(/url\(#reviewGradient\)/g), null);
+});
+
+test('card uses the Letterboxd green for ratings, not gold', async () => {
+  const svg = await generateReviewCard(
+    [entry('2025-01-01', { title: 'A', rating: 4 })],
+    { year: 2025, username: 'someone' }
+  );
+
+  assert.ok(svg.includes('fill="#00e054" text-anchor="end"'), 'stars');
+  assert.ok(!svg.includes('#f5c518'), 'no gold left over');
+});

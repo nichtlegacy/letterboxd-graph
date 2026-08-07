@@ -52,7 +52,9 @@ const TOP_FILM_COUNT = 5;
 export const POSTER_PIXEL_WIDTH = POSTER_WIDTH * 2;
 export const POSTER_PIXEL_HEIGHT = POSTER_HEIGHT * 2;
 
-const STAR_COLOR = '#f5c518';
+// Letterboxd renders ratings in its signature green, so the stars and the crown
+// that heads the list follow suit rather than using a generic gold.
+const STAR_COLOR = '#00e054';
 
 /**
  * 24x24 icon paths, drawn with a stroke so they stay legible when scaled down
@@ -166,6 +168,7 @@ function renderIcon(path, x, y, size, color) {
  * @param {string|null} options.profileImage - Data URI for the avatar
  * @param {Map<string, string>} options.posters - Film URL to poster data URI
  * @param {boolean} options.usernameGradient - Color the display name
+ * @param {boolean} options.yearGradient - Color the year headline
  * @returns {Promise<string>} SVG markup
  */
 export async function generateReviewCard(entries, options = {}) {
@@ -177,7 +180,8 @@ export async function generateReviewCard(entries, options = {}) {
     displayName = username,
     profileImage = null,
     posters = new Map(),
-    usernameGradient = true
+    usernameGradient = true,
+    yearGradient = true
   } = options;
 
   const t = getTheme(theme, palette);
@@ -285,7 +289,7 @@ export async function generateReviewCard(entries, options = {}) {
   </g>
 
   <!-- Hero -->
-  <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="216" font-size="88" font-weight="700" fill="url(#reviewGradient)" text-anchor="middle">${year}</text>
+  <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="216" font-size="88" font-weight="700" fill="${yearGradient ? 'url(#reviewGradient)' : t.text}" text-anchor="middle">${year}</text>
   <line x1="${CONTENT_LEFT + 40}" y1="243" x2="${CONTENT_LEFT + 150}" y2="243" stroke="${surfaceBorder}" stroke-width="1"/>
   <line x1="${CONTENT_LEFT + LEFT_WIDTH - 150}" y1="243" x2="${CONTENT_LEFT + LEFT_WIDTH - 40}" y2="243" stroke="${surfaceBorder}" stroke-width="1"/>
   <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="248" font-size="14" font-weight="600" fill="${t.textMuted}" text-anchor="middle" letter-spacing="7">IN REVIEW</text>

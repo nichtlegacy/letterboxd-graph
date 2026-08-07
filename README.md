@@ -137,7 +137,7 @@ node src/cli.js <username> [options]
 | `-y <years>` | Year(s) to generate, comma-separated (e.g. `2024,2023`) | Current year |
 | `-w <day>` | Week start: `sunday` or `monday` | `sunday` |
 | `-o <path>` | Output path (without extension) | `images/github-letterboxd` |
-| `-g <bool>` | Enable username gradient: `true` or `false` | `true` |
+| `-g <targets>` | Gradient text: `true` (name and year), `false`, `name` or `year` | `true` |
 | `-p` | Export PNG files in addition to SVG | Disabled |
 | `-m <mode>` | Graph mode: `count` or `rating` | `count` |
 | `-a <bool>` | Cell reveal animation: `true` or `false` | `true` |
@@ -203,7 +203,7 @@ write into.
 | `years` | Comma-separated years, e.g. `2026,2025` | current year |
 | `week-start` | `sunday` or `monday` | `sunday` |
 | `mode` | `count` or `rating` | `count` |
-| `gradient` | Letterboxd color gradient on the display name | `true` |
+| `gradient` | Gradient text: `true`, `false`, `name` or `year` | `true` |
 | `animate` | Cell reveal animation | `true` |
 | `palette` | Color palette: `github` or `letterboxd` | `github` |
 | `export-png` | Also write PNG files | `false` |
@@ -243,7 +243,7 @@ env:
   YEARS: ""                            # e.g. "2025,2024" or leave empty for current year
   EXPORT_PNG: "false"                  # Set to "true" to also generate PNG files
   WEEK_START: "sunday"                 # "sunday" or "monday"
-  GRADIENT: "true"                     # "true" for colored name, "false" for white
+  GRADIENT: "true"                     # "true", "false", "name" or "year"
   ANIMATE: "true"                      # "false" to disable the cell reveal animation
   PALETTE: "github"                    # "github" or "letterboxd"
 
@@ -275,7 +275,7 @@ jobs:
           
           if [ -n "${{ env.YEARS }}" ]; then CMD="$CMD -y ${{ env.YEARS }}"; fi
           if [ "${{ env.WEEK_START }}" = "monday" ]; then CMD="$CMD -w monday"; fi
-          if [ "${{ env.GRADIENT }}" = "false" ]; then CMD="$CMD -g false"; fi
+          if [ -n "${{ env.GRADIENT }}" ] && [ "${{ env.GRADIENT }}" != "true" ]; then CMD="$CMD -g ${{ env.GRADIENT }}"; fi
           if [ "${{ env.ANIMATE }}" = "false" ]; then CMD="$CMD -a false"; fi
           if [ -n "${{ env.PALETTE }}" ]; then CMD="$CMD -t ${{ env.PALETTE }}"; fi
           if [ "${{ env.EXPORT_PNG }}" = "true" ]; then CMD="$CMD -p"; fi
@@ -305,7 +305,7 @@ You can customize the graph directly in the workflow file by editing the `env` s
 - **YEARS**: Comma-separated list of years (e.g., `2025,2024`)
 - **EXPORT_PNG**: Set to `true` if you want PNG versions alongside SVGs
 - **WEEK_START**: Start week on `sunday` or `monday`
-- **GRADIENT**: Toggle the username text gradient
+- **GRADIENT**: Gradient text — `true`, `false`, `name` or `year`
 - **ANIMATE**: Toggle the cell reveal animation
 - **PALETTE**: Heatmap colors, `github` or `letterboxd`
 
@@ -440,7 +440,8 @@ images/letterboxd-review-<year>-light.svg
 ```
 
 It carries the headline figures (films, days active, streak, average rating,
-rewatches, likes) and your five highest rated films of that year. Rewatches are
+rewatches, likes) and your five highest rated films of that year, with poster
+art and ratings in Letterboxd's green. Rewatches are
 collapsed to a single entry at their best rating, so one film cannot take two
 slots. 1200×630 is the Open Graph default, so the card works as a social preview
 or a README banner as is.
