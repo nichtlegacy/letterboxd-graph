@@ -119,6 +119,29 @@ function link(href, className, text) {
   return node;
 }
 
+/* Line icons, 24×24, drawn in the current text colour. */
+const ICONS = {
+  open: ['M14 4h6v6', 'M20 4 11 13', 'M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6'],
+  code: ['m9 8-4 4 4 4', 'm15 8 4 4-4 4'],
+  clipboard: ['M9 4h6v3H9z', 'M15 5.5h2a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1h2'],
+  image: ['M4 6h16v12H4z', 'M4 15.5 8.5 11l3.5 3.5L15 12l5 4.5', 'M9 9.5h.01']
+};
+
+function icon(name) {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('class', 'icon');
+
+  for (const d of ICONS[name]) {
+    const path = document.createElementNS(svg.namespaceURI, 'path');
+    path.setAttribute('d', d);
+    svg.append(path);
+  }
+
+  return svg;
+}
+
 let toastTimer = null;
 
 function toast(message) {
@@ -493,8 +516,128 @@ const lazy = new IntersectionObserver((entries) => {
   }
 }, { rootMargin: '300px' });
 
+async function copyText(text, message) {
+  try {
+    await navigator.clipboard.writeText(text);
+    toast(message);
+  } catch {
+    toast('Clipboard blocked by the browser');
+  }
+}
+
 /**
- * Build one card frame: the embed, its filename and the two actions under it.
+ * Draw an SVG file into a canvas and hand back the PNG. The cards carry their
+ * fonts and poster art as data URIs, so nothing external is pulled in and the
+ * canvas stays readable.
+ *
+ * @param {string} url
+ * @param {number} width - Drawing width, in its own units
+ * @param {number} height
+ * @param {number} scale - Pixel density of the result
+ * @returns {Promise<Blob>}
+ */
+async function renderToPng(url, width, height, scale = 2) {
+  const source = await (await fetch(url)).text();
+  const blobUrl = URL.createObjectURL(new Blob([source], { type: 'image/svg+xml' }));
+
+  try {
+    const image = new Image();
+    await new Promise((resolve, reject) => {
+      image.addEventListener('load', resolve, { once: true });
+      image.addEventListener('error', reject, { once: true });
+      image.src = blobUrl;
+    });
+
+    const canvas = document.createElement('canvas');
+    canvas.width = width * scale;
+    canvas.height = height * scale;
+    canvas.getContext('2d').drawImage(image, 0, 0, canvas.width, canvas.height);
+
+    const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
+    if (!blob) throw new Error('canvas produced nothing');
+    return blob;
+  } finally {
+    URL.revokeObjectURL(blobUrl);
+  }
+}
+
+async function copyImage(url, width, height) {
+  if (typeof ClipboardItem === 'undefined') {
+    toast('This browser cannot copy images — copy the SVG instead');
+    return;
+  }
+
+  try {
+    // The blob is handed over as a promise: Safari only allows a write it can
+    // tie to the click, and awaiting the render first breaks that.
+    await navigator.clipboard.write([
+      new ClipboardItem({ 'image/png': renderToPng(url, width, height) })
+    ]);
+    toast('Card copied as a PNG');
+  } catch {
+    toast('Could not copy the image — copy the SVG instead');
+  }
+}
+
+/* ── Card menu ────────────────────────────────────────────────────────────── */
+
+let cardMenu = null;
+
+function closeCardMenu() {
+  cardMenu?.remove();
+  cardMenu = null;
+}
+
+/**
+ * Open a small menu inside a card. A card is an <object>, so a right click
+ * lands in the embedded document and gets the browser's own menu for it, which
+ * offers nothing useful — the embed is same origin, so the click can be caught
+ * there and answered with this instead.
+ *
+ * @param {HTMLElement} host - Positioned ancestor the menu is placed in
+ * @param {{x: number, y: number}} at - Where the click landed, inside the host
+ * @param {Array<{icon: string, label: string, run: Function}>} items
+ */
+function openCardMenu(host, at, items) {
+  closeCardMenu();
+
+  const menu = el('div', 'card-menu');
+  menu.setAttribute('role', 'menu');
+
+  for (const item of items) {
+    const button = el('button', 'card-menu-item');
+    button.type = 'button';
+    button.setAttribute('role', 'menuitem');
+    button.append(icon(item.icon), el('span', null, item.label));
+    button.addEventListener('click', () => {
+      closeCardMenu();
+      item.run();
+    });
+    menu.append(button);
+  }
+
+  host.append(menu);
+  cardMenu = menu;
+
+  // Kept inside the card, so a click near an edge does not push it off.
+  const left = Math.min(Math.max(at.x, 8), Math.max(8, host.clientWidth - menu.offsetWidth - 8));
+  const top = Math.min(Math.max(at.y, 8), Math.max(8, host.clientHeight - menu.offsetHeight - 8));
+  menu.style.left = `${left}px`;
+  menu.style.top = `${top}px`;
+
+  menu.querySelector('button')?.focus({ preventScroll: true });
+}
+
+document.addEventListener('pointerdown', (event) => {
+  if (!cardMenu?.contains(event.target)) closeCardMenu();
+});
+document.addEventListener('scroll', closeCardMenu, { capture: true, passive: true });
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeCardMenu();
+});
+
+/**
+ * Build one card frame: the embed, its filename and the actions under it.
  * The embed is only fetched once the frame is close to the viewport — the SVGs
  * carry inlined fonts and poster art and run to a few hundred kilobytes each.
  *
@@ -511,19 +654,72 @@ function createFrame(asset, manifest) {
   const file = el('span', 'frame-file');
   const actions = el('span', 'frame-actions');
 
-  const open = el('a', 'chip', 'Open SVG');
-  open.target = '_blank';
-  open.rel = 'noopener';
-
-  const copy = el('button', 'chip', 'Copy embed');
-  copy.type = 'button';
-
-  actions.append(open, copy);
-  foot.append(file, actions);
-  frame.append(media, foot);
-
   let theme = activeTheme();
   let loaded = false;
+
+  const embedSnippet = () => {
+    const base = manifest.rawBase;
+    return [
+      '<picture>',
+      `  <source media="(prefers-color-scheme: dark)" srcset="${base}/${asset.svg.dark}">`,
+      `  <source media="(prefers-color-scheme: light)" srcset="${base}/${asset.svg.light}">`,
+      `  <img alt="Letterboxd ${asset.label.toLowerCase()}" src="${base}/${asset.svg.light}" width="100%">`,
+      '</picture>'
+    ].join('\n');
+  };
+
+  // The same four things the right-click menu offers, so the card behaves the
+  // same whichever way it is asked.
+  const commands = {
+    image: {
+      icon: 'image',
+      label: 'Copy image',
+      menuLabel: 'Copy as PNG',
+      run: () => copyImage(asset.svg[theme], asset.width, asset.height)
+    },
+    svg: {
+      icon: 'code',
+      label: 'Copy SVG',
+      menuLabel: 'Copy SVG markup',
+      run: async () => {
+        try {
+          const source = await (await fetch(asset.svg[theme])).text();
+          await copyText(source, 'SVG markup copied');
+        } catch {
+          toast('Could not read the SVG');
+        }
+      }
+    },
+    embed: {
+      icon: 'clipboard',
+      label: 'Copy embed',
+      menuLabel: 'Copy embed code',
+      run: () => copyText(embedSnippet(), 'Embed copied — paste it into a README')
+    },
+    open: {
+      icon: 'open',
+      label: 'Open SVG',
+      menuLabel: 'Open the SVG in a new tab',
+      run: () => window.open(asset.svg[theme], '_blank', 'noopener')
+    }
+  };
+
+  const open = el('a', 'chip');
+  open.target = '_blank';
+  open.rel = 'noopener';
+  open.append(icon(commands.open.icon), el('span', null, commands.open.label));
+
+  const chip = (command) => {
+    const button = el('button', 'chip');
+    button.type = 'button';
+    button.append(icon(command.icon), el('span', null, command.label));
+    button.addEventListener('click', command.run);
+    return button;
+  };
+
+  actions.append(chip(commands.image), chip(commands.svg), chip(commands.embed), open);
+  foot.append(file, actions);
+  frame.append(media, foot);
 
   // The card draws its own rounded background and leaves the corners
   // transparent. In an <object> those corners fall through to the embedded
@@ -544,6 +740,19 @@ function createFrame(asset, manifest) {
       object.style.borderRadius = radius;
     }
   };
+
+  const showMenu = (x, y) => openCardMenu(
+    media,
+    { x, y },
+    [commands.image, commands.svg, commands.embed, commands.open]
+      .map(({ icon: name, menuLabel, run }) => ({ icon: name, label: menuLabel, run }))
+  );
+
+  media.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+    const box = media.getBoundingClientRect();
+    showMenu(event.clientX - box.left, event.clientY - box.top);
+  });
 
   // Swapping themes replaces the embed. The outgoing one stays until its
   // replacement has painted, so the card never blinks back to 'Loading…'.
@@ -589,6 +798,17 @@ function createFrame(asset, manifest) {
         anchor.setAttribute('target', '_blank');
         anchor.setAttribute('rel', 'noopener');
       }
+
+      // A right click on the card lands in here rather than on the page, and
+      // the browser's menu for an embedded document offers nothing worth
+      // having. The document's viewport is the embed's own box, so its client
+      // coordinates are already offsets into the frame.
+      doc.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+        showMenu(event.clientX, event.clientY);
+      });
+
+      doc.addEventListener('pointerdown', closeCardMenu);
     });
 
     const fallback = el('img');
@@ -614,24 +834,6 @@ function createFrame(asset, manifest) {
     loaded = true;
     embed();
   };
-
-  copy.addEventListener('click', async () => {
-    const base = manifest.rawBase;
-    const snippet = [
-      '<picture>',
-      `  <source media="(prefers-color-scheme: dark)" srcset="${base}/${asset.svg.dark}">`,
-      `  <source media="(prefers-color-scheme: light)" srcset="${base}/${asset.svg.light}">`,
-      `  <img alt="Letterboxd ${asset.label.toLowerCase()}" src="${base}/${asset.svg.light}" width="100%">`,
-      '</picture>'
-    ].join('\n');
-
-    try {
-      await navigator.clipboard.writeText(snippet);
-      toast('Embed copied to clipboard');
-    } catch {
-      toast('Clipboard blocked — open the SVG instead');
-    }
-  });
 
   new ResizeObserver(fitCorners).observe(media);
 

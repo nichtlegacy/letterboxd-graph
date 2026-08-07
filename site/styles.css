@@ -1098,15 +1098,28 @@ a.bar-row:hover .bar-value {
 
 .frame-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-left: auto;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .chip {
   display: inline-flex;
   align-items: center;
-  height: 28px;
-  padding: 0 12px;
+  gap: 7px;
+  height: 30px;
+  padding: 0 13px;
   background: transparent;
   border: 1px solid var(--border-subtle);
   border-radius: 9999px;
@@ -1117,12 +1130,72 @@ a.bar-row:hover .bar-value {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   cursor: pointer;
-  transition: color 150ms var(--ease), border-color 150ms var(--ease);
+  transition: color 150ms var(--ease), border-color 150ms var(--ease),
+    background-color 150ms var(--ease);
+}
+
+.chip .icon {
+  color: var(--text-muted);
+  transition: color 150ms var(--ease);
 }
 
 .chip:hover {
+  background: var(--surface);
   color: var(--text-light);
   border-color: var(--brand-green);
+}
+
+.chip:hover .icon {
+  color: var(--brand-green);
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 2px;
+}
+
+/* ── Card menu ────────────────────────────────────────────────────────────── */
+
+.card-menu {
+  position: absolute;
+  z-index: 3;
+  min-width: 210px;
+  padding: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+}
+
+.card-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  background: none;
+  border: 0;
+  border-radius: 3px;
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.card-menu-item .icon {
+  color: var(--text-muted);
+}
+
+.card-menu-item:hover,
+.card-menu-item:focus-visible {
+  outline: none;
+  background: var(--surface-hover);
+  color: var(--text-light);
+}
+
+.card-menu-item:hover .icon,
+.card-menu-item:focus-visible .icon {
+  color: var(--brand-green);
 }
 
 /* ── Diary ────────────────────────────────────────────────────────────────── */

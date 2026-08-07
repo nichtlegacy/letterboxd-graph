@@ -535,8 +535,8 @@ limit — the cards at full size, and the figures behind them read out at length
 | **How you rated** | The half-star histogram, empty steps kept, beside the average, the most given rating and how much is rated or liked at all |
 | **What you reached for** | Films by release decade, and the five you went back to most |
 | **Where it turned over** | The first entry, every hundredth after it, and the latest |
-| **The cards** | Graph, a tab per year, a tab per month, profile — each with **Open SVG** and **Copy embed** |
-| **Recent diary** | The last ten entries, out of the JSON export |
+| **The cards** | Graph, a tab per year, a tab per month, profile — each with **Copy image**, **Copy SVG**, **Copy embed** and **Open SVG**, the same four on a right click anywhere on the card |
+| **Recent diary** | The last sixteen entries, out of the JSON export, in two columns |
 
 The figures cover whatever the run fetched — the whole diary under `scope: all`,
 the graph years under `scope: years`, which the page says out loud rather than
