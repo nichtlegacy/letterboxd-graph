@@ -542,7 +542,7 @@ limit — the cards at full size, and the figures behind them read out at length
 | **How you rated** | The half-star histogram, empty steps kept, beside the average, the most given rating and how much is rated or liked at all |
 | **What you reached for** | Films by release decade, and the five you went back to most |
 | **Where it turned over** | The first entry, the round numbers after it, and the latest, on one track. `milestoneStep` scales with the diary — every 25th at a hundred entries, every thousandth at five thousand — so the row holds its length instead of growing a marker per hundred |
-| **The cards** | Graph, a tab per year, a tab per month, profile — each with **Copy image**, **Copy SVG**, **Copy embed** and **Open SVG**, the same four on a right click anywhere on the card |
+| **The cards** | Graph, profile, a tab per year, a tab per month — each with **Copy image**, **Copy SVG**, **Copy embed** and **Open SVG**, the same four on a right click anywhere on the card |
 | **Recent diary** | The last sixteen entries, out of the JSON export, in two columns |
 
 The figures cover whatever the run fetched — the whole diary under `scope: all`,
