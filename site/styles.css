@@ -1164,25 +1164,168 @@ a.bar-row:hover .bar-value {
   overflow-x: auto;
 }
 
+/* ── Steps ────────────────────────────────────────────────────────────────── */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.step-number {
+  color: var(--brand-green);
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.12em;
+}
+
+.step h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.step p {
+  color: var(--text-secondary);
+  font-size: 13px;
+  max-width: 46ch;
+}
+
+.step .code {
+  font-size: 11.5px;
+  padding: 12px 14px;
+}
+
+.step-link {
+  color: var(--text-light);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  width: fit-content;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--border-medium);
+}
+
+.step-link::after {
+  content: ' →';
+  color: var(--text-muted);
+}
+
+.step-link:hover {
+  color: var(--brand-green);
+  border-bottom-color: var(--brand-green);
+}
+
 /* ── Footer ───────────────────────────────────────────────────────────────── */
 
 .footer {
-  margin-top: 48px;
-  border-top: 1px solid var(--border-subtle);
+  margin-top: 64px;
+}
+
+/* One rule across the page with the three dots sitting on it, which is the only
+   ornament the whole page allows itself. It runs edge to edge like the nav's
+   border; the columns below it line up with the page. */
+.footer-rule {
+  position: relative;
+  height: 1px;
+  margin-bottom: 40px;
+  background: var(--border-subtle);
+}
+
+.footer-rule .dots {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 14px;
+  background: var(--background);
 }
 
 .footer-inner {
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: 32px 24px 64px;
+  padding: 0 24px 64px;
   display: grid;
-  gap: 8px;
+  grid-template-columns: 1.6fr 1fr 1.4fr;
+  gap: 48px;
 }
 
-.footer-note {
+.footer-brand {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.footer-brand .wordmark {
+  color: var(--text-light);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.footer-tagline {
+  max-width: 28ch;
+  color: var(--text-secondary);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13px;
+}
+
+.footer-nav,
+.footer-colophon {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.footer-label {
   color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+
+.footer-nav a {
+  color: var(--text-secondary);
+  font-size: 13px;
+  width: fit-content;
+}
+
+.footer-nav a:hover {
+  color: var(--text-light);
+}
+
+.footer-colophon p {
+  color: var(--text-muted);
+  font-family: var(--font-serif);
   font-size: 12px;
-  max-width: 72ch;
+  line-height: 1.55;
+}
+
+.footer-colophon em {
+  color: var(--text-secondary);
+}
+
+.footer-colophon a {
+  color: var(--text-secondary);
+}
+
+.footer-colophon a:hover {
+  color: var(--brand-green);
 }
 
 /* ── Toast ────────────────────────────────────────────────────────────────── */
@@ -1224,6 +1367,11 @@ a.bar-row:hover .bar-value {
 @media (max-width: 860px) {
   .nav-links {
     display: none;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   /* Stacked, the vertical rules land in the middle of a row instead of between

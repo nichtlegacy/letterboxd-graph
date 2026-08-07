@@ -686,7 +686,6 @@ function renderHero(data, manifest) {
 
   document.querySelector('[data-hero-title]').textContent = `@${data.user}`;
   document.title = `@${data.user} — Letterboxd Graph`;
-  document.querySelector('[data-profile-link]').href = profile;
 
   const years = data.years?.length ? data.years.slice().sort((a, b) => a - b) : [];
   const span = years.length > 1 ? `${years[0]}–${years.at(-1)}` : years[0];
@@ -697,10 +696,19 @@ function renderHero(data, manifest) {
     span ? `graph covers ${span}` : null
   ].filter(Boolean).join(' · ') || 'Film diary';
 
+  // A value on the attribute is an anchor into the README, which GitHub renders
+  // on the repository page: data-repo-link="#embedding" lands on that section.
   for (const anchor of document.querySelectorAll('[data-repo-link]')) {
-    anchor.href = `https://github.com/${manifest.repository}`;
+    anchor.href = `https://github.com/${manifest.repository}${anchor.dataset.repoLink || ''}`;
   }
-  document.querySelector('[data-export-link]').href = manifest.export;
+
+  for (const anchor of document.querySelectorAll('[data-export-link]')) {
+    anchor.href = manifest.export;
+  }
+
+  for (const anchor of document.querySelectorAll('[data-profile-link]')) {
+    anchor.href = profile;
+  }
 
   if (data.generatedAt) {
     const stamp = new Date(data.generatedAt);
