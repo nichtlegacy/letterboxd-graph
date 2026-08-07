@@ -33,9 +33,10 @@ const LEFT_WIDTH = 538;
 const RIGHT_X = 622;
 const RIGHT_WIDTH = CONTENT_RIGHT - RIGHT_X;
 
-// Stat tile grid: three columns, two rows
+// Stat tile grid: three columns, two rows. The height is derived so the grid
+// ends level with the last film row on the right, rather than being picked and
+// leaving the two columns to drift apart.
 const TILE_WIDTH = 170;
-const TILE_HEIGHT = 116;
 const TILE_GAP = 14;
 const TILE_TOP = 280;
 
@@ -47,15 +48,13 @@ const POSTER_WIDTH = 42;
 const POSTER_HEIGHT = 63;
 const TOP_FILM_COUNT = 5;
 
+const CONTENT_BOTTOM = ROW_TOP + TOP_FILM_COUNT * ROW_HEIGHT + (TOP_FILM_COUNT - 1) * ROW_GAP;
+const TILE_HEIGHT = (CONTENT_BOTTOM - TILE_TOP - TILE_GAP) / 2;
+
 // Poster thumbnails are embedded at twice their rendered size so they stay
 // crisp when the card is rasterised at 2x for social previews.
 export const POSTER_PIXEL_WIDTH = POSTER_WIDTH * 2;
 export const POSTER_PIXEL_HEIGHT = POSTER_HEIGHT * 2;
-
-// Weekly activity strip filling the space below the tiles
-const STRIP_TOP = 554;
-const STRIP_CELL = 8;
-const STRIP_HEIGHT = 11;
 
 // Letterboxd renders ratings in its signature green, so the stars and the crown
 // that heads the list follow suit rather than using a generic gold.
@@ -147,38 +146,6 @@ export function entriesForYear(entries, year) {
 }
 
 /**
- * Bucket a year's entries into calendar weeks.
- *
- * Weeks are aligned the same way the contribution graph aligns its columns, so
- * a strip and a graph for the same year line up column for column.
- *
- * @param {Array} yearEntries - Entries already filtered to the year
- * @param {number} year
- * @param {string} weekStart - 'sunday' or 'monday'
- * @returns {number[]} Film count per week
- */
-export function weeklyActivity(yearEntries, year, weekStart = 'sunday') {
-  const firstOfYear = new Date(Date.UTC(year, 0, 1));
-  const startDay = firstOfYear.getUTCDay();
-  const shift = weekStart === 'monday' ? (startDay + 6) % 7 : startDay;
-
-  const alignedStart = new Date(firstOfYear);
-  alignedStart.setUTCDate(alignedStart.getUTCDate() - shift);
-
-  const lastOfYear = new Date(Date.UTC(year, 11, 31));
-  const weekCount = Math.ceil(
-    ((lastOfYear.getTime() - alignedStart.getTime()) / 86400000 + 1) / 7
-  );
-
-  const weeks = new Array(weekCount).fill(0);
-  for (const entry of yearEntries) {
-    const index = Math.floor((entry.date.getTime() - alignedStart.getTime()) / (86400000 * 7));
-    if (index >= 0 && index < weekCount) weeks[index]++;
-  }
-  return weeks;
-}
-
-/**
  * Place a 24x24 icon at a given position and size
  * @param {string} path - Icon path markup
  * @param {number} x - Left edge
@@ -206,7 +173,6 @@ function renderIcon(path, x, y, size, color) {
  * @param {Map<string, string>} options.posters - Film URL to poster data URI
  * @param {boolean} options.usernameGradient - Color the display name
  * @param {boolean} options.yearGradient - Color the year headline
- * @param {string} options.weekStart - 'sunday' or 'monday', aligns the activity strip
  * @returns {Promise<string>} SVG markup
  */
 export async function generateReviewCard(entries, options = {}) {
@@ -219,8 +185,7 @@ export async function generateReviewCard(entries, options = {}) {
     profileImage = null,
     posters = new Map(),
     usernameGradient = true,
-    yearGradient = true,
-    weekStart = 'sunday'
+    yearGradient = true
   } = options;
 
   const t = getTheme(theme, palette);
@@ -252,9 +217,9 @@ export async function generateReviewCard(entries, options = {}) {
     const centerX = x + TILE_WIDTH / 2;
     return `
     <rect x="${x}" y="${y}" width="${TILE_WIDTH}" height="${TILE_HEIGHT}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
-    ${renderIcon(ICONS[stat.icon], centerX - 12, y + 20, 24, TILE_ACCENTS[index])}
-    <text x="${centerX}" y="${y + 80}" font-size="32" font-weight="700" fill="${t.text}" text-anchor="middle">${escapeXml(stat.value)}</text>
-    <text x="${centerX}" y="${y + 102}" font-size="13" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(stat.label)}</text>`;
+    ${renderIcon(ICONS[stat.icon], centerX - 13, y + 26, 26, TILE_ACCENTS[index])}
+    <text x="${centerX}" y="${y + 96}" font-size="36" font-weight="700" fill="${t.text}" text-anchor="middle">${escapeXml(stat.value)}</text>
+    <text x="${centerX}" y="${y + 120}" font-size="14" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(stat.label)}</text>`;
   }).join('');
 
   const topFilms = pickTopFilms(yearEntries);
@@ -278,23 +243,9 @@ export async function generateReviewCard(entries, options = {}) {
     ${poster ? `<image href="${poster}" x="${RIGHT_X + 52}" y="${y + 12}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" clip-path="url(#posterClip${index})" preserveAspectRatio="xMidYMid slice"/>` : ''}
     <rect x="${RIGHT_X + 52}" y="${y + 12}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" rx="5" fill="none" stroke="${isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'}" stroke-width="1"/>
     <text x="${titleX}" y="${y + 40}" font-size="19" font-weight="600" fill="${t.text}">${escapeXml(truncateToWidth(film.title, 19, titleMax))}</text>
-    <text x="${titleX}" y="${y + 62}" font-size="14" font-weight="500" fill="${t.textMuted}">${escapeXml([film.year, film.rewatch ? '↻' : ''].filter(Boolean).join('  '))}</text>
+    <text x="${titleX}" y="${y + 62}" font-size="14" font-weight="500" fill="${t.textMuted}">${escapeXml(film.year || '')}</text>
     <text x="${CONTENT_RIGHT - 24}" y="${y + 52}" font-size="17" fill="${STAR_COLOR}" text-anchor="end">${escapeXml(stars)}</text>`;
     }).join('');
-
-  // Weekly activity strip. The whole year is drawn, so the strip stays the same
-  // width whether the year is complete or still running.
-  const weeks = weeklyActivity(yearEntries, year, weekStart);
-  const peakWeek = Math.max(...weeks, 0);
-  const stripStep = (LEFT_WIDTH - STRIP_CELL) / Math.max(weeks.length - 1, 1);
-
-  const stripMarkup = weeks.map((count, index) => {
-    const level = peakWeek > 0 && count > 0
-      ? Math.min(Math.ceil((count / peakWeek) * 4), 4)
-      : 0;
-    const x = CONTENT_LEFT + index * stripStep;
-    return `<rect x="${x.toFixed(2)}" y="${STRIP_TOP}" width="${STRIP_CELL}" height="${STRIP_HEIGHT}" rx="2" fill="${t.colors[level]}"/>`;
-  }).join('');
 
   const posterClips = topFilms.map((film, index) => `
     <clipPath id="posterClip${index}">
@@ -350,11 +301,6 @@ export async function generateReviewCard(entries, options = {}) {
 
   <!-- Headline figures -->
   ${tilesMarkup}
-
-  <!-- Weekly activity -->
-  <text x="${CONTENT_LEFT}" y="${STRIP_TOP - 12}" font-size="11" font-weight="600" fill="${t.textMuted}" letter-spacing="2">WEEKLY ACTIVITY</text>
-  <text x="${CONTENT_LEFT + LEFT_WIDTH}" y="${STRIP_TOP - 12}" font-size="11" font-weight="500" fill="${t.textMuted}" text-anchor="end">${peakWeek > 0 ? `peak ${peakWeek}` : ''}</text>
-  ${stripMarkup}
 
   <line x1="${DIVIDER_X}" y1="52" x2="${DIVIDER_X}" y2="${CARD_HEIGHT - 52}" stroke="${surfaceBorder}" stroke-width="1"/>
 

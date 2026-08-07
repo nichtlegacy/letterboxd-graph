@@ -8,7 +8,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { generateReviewCard, weeklyActivity } from '../src/review.js';
+import { generateReviewCard } from '../src/review.js';
 
 function entry(dateString, { title = 'Film', year = '2020', rating = null, rewatch = false, liked = false } = {}) {
   return { date: new Date(`${dateString}T00:00:00Z`), title, year, rating, rewatch, liked };
@@ -174,74 +174,22 @@ test('card uses the Letterboxd green for ratings, not gold', async () => {
   assert.ok(!svg.includes('#f5c518'), 'no gold left over');
 });
 
-test('weeklyActivity buckets a whole year without losing entries', () => {
-  const entries = [];
-  for (let month = 0; month < 12; month++) {
-    for (const day of [1, 15, 28]) {
-      entries.push(entry(`2025-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`));
-    }
-  }
-  const weeks = weeklyActivity(entries, 2025);
 
-  assert.equal(weeks.length, 53, 'a year spans 53 aligned columns');
-  assert.equal(weeks.reduce((sum, count) => sum + count, 0), entries.length, 'no entry falls outside');
-});
 
-test('weeklyActivity puts the year boundaries in the first and last week', () => {
-  const weeks = weeklyActivity(
-    [entry('2025-01-01'), entry('2025-12-31')],
-    2025
-  );
 
-  assert.equal(weeks[0], 1);
-  assert.equal(weeks[weeks.length - 1], 1);
-});
 
-test('weeklyActivity honours the week start', () => {
-  // 1 Jan 2025 is a Wednesday, so a Monday-aligned year starts two days
-  // earlier than a Sunday-aligned one, which shifts the boundary weeks.
-  const sunday = weeklyActivity([entry('2025-01-01')], 2025, 'sunday');
-  const monday = weeklyActivity([entry('2025-01-01')], 2025, 'monday');
 
-  assert.equal(sunday[0], 1);
-  assert.equal(monday[0], 1);
-  assert.equal(sunday.reduce((a, b) => a + b, 0), 1);
-  assert.equal(monday.reduce((a, b) => a + b, 0), 1);
-});
 
-test('weeklyActivity returns all zeroes for a year with no films', () => {
-  const weeks = weeklyActivity([], 2025);
-
-  assert.equal(weeks.length, 53);
-  assert.ok(weeks.every(count => count === 0));
-});
-
-test('card draws one activity cell per week and reports the peak', async () => {
+test('the stat grid ends level with the last film row', async () => {
   const svg = await generateReviewCard(
-    [
-      entry('2025-03-01', { rating: 4 }),
-      entry('2025-03-02', { rating: 4 }),
-      entry('2025-03-03', { rating: 4 })
-    ],
+    [entry('2025-01-01', { title: 'A', rating: 4 })],
     { year: 2025, username: 'someone' }
   );
-  const cells = svg.match(/<rect x="[\d.]+" y="554"/g) || [];
 
-  assert.equal(cells.length, 53);
-  assert.ok(textNodes(svg).includes('WEEKLY ACTIVITY'));
-  assert.ok(textNodes(svg).some(text => text.startsWith('peak ')));
-});
+  const bottomOf = (match) => Number(match[1]) + Number(match[2]);
+  const rects = [...svg.matchAll(/<rect x="(?:52|236|420|622)" y="(\d+(?:\.\d+)?)" width="(?:170|526)" height="(\d+(?:\.\d+)?)"/g)]
+    .map(m => bottomOf(m));
 
-test('card marks a rewatched film in the top rated list', async () => {
-  const svg = await generateReviewCard(
-    [
-      entry('2025-01-01', { title: 'Rewatched', year: '1999', rating: 5, rewatch: true }),
-      entry('2025-01-02', { title: 'First time', year: '2001', rating: 4 })
-    ],
-    { year: 2025, username: 'someone' }
-  );
-  const texts = textNodes(svg);
-
-  assert.ok(texts.some(text => text.startsWith('1999') && text.includes('↻')));
-  assert.ok(texts.includes('2001'), 'a first watch carries no marker');
+  assert.ok(rects.length > 0);
+  assert.equal(Math.max(...rects), 568, 'both columns end on the same line');
 });
