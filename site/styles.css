@@ -282,10 +282,6 @@ b {
   background: transparent;
 }
 
-.theme-toggle[data-mode='system'] .theme-icon {
-  background: linear-gradient(90deg, currentColor 50%, transparent 50%);
-}
-
 /* ── Layout ───────────────────────────────────────────────────────────────── */
 
 main {
@@ -1049,20 +1045,17 @@ a.bar-row:hover .bar-value {
   border: 0;
 }
 
-/* A theme swap loads a second embed over the first and fades it in, so the
-   card never drops back to an empty box while the new file is on the wire. */
+/* A frame holds both themes of its card at once, stacked, with the one in use
+   on top. A swap is then a class change rather than a request, which is what
+   keeps the cards in step with the page recolouring around them. */
 .frame-media object {
-  transition: opacity 200ms var(--ease);
-}
-
-.frame-media object.is-incoming {
   position: absolute;
   inset: 0;
-  opacity: 0;
+  visibility: hidden;
 }
 
-.frame-media object.is-incoming.is-shown {
-  opacity: 1;
+.frame-media object.is-current {
+  visibility: visible;
 }
 
 .frame-media::after {

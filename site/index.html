@@ -16,12 +16,13 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Applied before first paint so the page never flashes the wrong theme. -->
+  <!-- Applied before first paint so the page never flashes the wrong theme.
+       Nothing stored means the system setting decides. -->
   <script>
     (() => {
-      const stored = localStorage.getItem('lbg-theme') || 'system';
+      const stored = localStorage.getItem('lbg-theme');
       const system = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      document.documentElement.dataset.theme = stored === 'system' ? system : stored;
+      document.documentElement.dataset.theme = stored === 'dark' || stored === 'light' ? stored : system;
     })();
   </script>
 
@@ -49,7 +50,7 @@
 
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Change theme">
         <span class="theme-icon" data-theme-icon aria-hidden="true"></span>
-        <span class="theme-label" data-theme-label>System</span>
+        <span class="theme-label" data-theme-label>Dark</span>
       </button>
     </div>
   </header>
@@ -162,11 +163,6 @@
       <div class="section-head">
         <p class="eyebrow">The cards</p>
         <h2>Contribution graph</h2>
-        <p class="section-note">
-          One block of weeks per year. Hovering a day cell lists the films watched
-          that day, the year label breaks the films down by release decade, and the
-          headline figures each open a distribution of their own.
-        </p>
       </div>
       <div class="section-body"></div>
     </section>
@@ -174,11 +170,6 @@
     <section class="section" id="years" data-section="year" hidden>
       <div class="section-head">
         <h2>Year in review</h2>
-        <p class="section-note">
-          1200&times;630, the Open Graph default, so a card works as a social
-          preview as it stands. Headline figures on the left, top rated films on
-          the right with poster art, runtime and the community rating.
-        </p>
       </div>
       <div class="section-body"></div>
     </section>

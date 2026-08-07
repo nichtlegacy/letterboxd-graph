@@ -14,7 +14,7 @@
  * since every card names its clip paths and gradients the same way.
  */
 
-const THEME_MODES = ['system', 'light', 'dark'];
+const THEMES = ['dark', 'light'];
 const STORAGE_KEY = 'lbg-theme';
 
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -23,39 +23,43 @@ const WEEKDAY_INITIALS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 const systemQuery = matchMedia('(prefers-color-scheme: light)');
 const frames = new Set();
 
-let mode = THEME_MODES.includes(localStorage.getItem(STORAGE_KEY))
+// The system setting is the starting point, not a mode of its own: until the
+// switch is used the page follows it, and after that it stays where it is put.
+let pageTheme = THEMES.includes(localStorage.getItem(STORAGE_KEY))
   ? localStorage.getItem(STORAGE_KEY)
-  : 'system';
+  : (systemQuery.matches ? 'light' : 'dark');
 
 /* ── Theme ────────────────────────────────────────────────────────────────── */
 
 function activeTheme() {
-  if (mode !== 'system') return mode;
-  return systemQuery.matches ? 'light' : 'dark';
+  return pageTheme;
 }
 
 function applyTheme() {
-  const theme = activeTheme();
-  document.documentElement.dataset.theme = theme;
+  document.documentElement.dataset.theme = pageTheme;
 
   const toggle = document.getElementById('theme-toggle');
-  toggle.dataset.mode = mode;
+  const next = pageTheme === 'dark' ? 'light' : 'dark';
+  toggle.dataset.mode = pageTheme;
   toggle.querySelector('[data-theme-label]').textContent =
-    mode.charAt(0).toUpperCase() + mode.slice(1);
-  toggle.setAttribute('aria-label', `Theme: ${mode}. Click to change.`);
+    pageTheme.charAt(0).toUpperCase() + pageTheme.slice(1);
+  toggle.setAttribute('aria-label', `Theme: ${pageTheme}. Switch to ${next}.`);
 
-  for (const frame of frames) frame.setTheme(theme);
+  for (const frame of frames) frame.setTheme(pageTheme);
 }
 
 function setupTheme() {
   document.getElementById('theme-toggle').addEventListener('click', () => {
-    mode = THEME_MODES[(THEME_MODES.indexOf(mode) + 1) % THEME_MODES.length];
-    localStorage.setItem(STORAGE_KEY, mode);
+    pageTheme = pageTheme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem(STORAGE_KEY, pageTheme);
     applyTheme();
   });
 
   systemQuery.addEventListener('change', () => {
-    if (mode === 'system') applyTheme();
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      pageTheme = systemQuery.matches ? 'light' : 'dark';
+      applyTheme();
+    }
   });
 
   applyTheme();
@@ -141,6 +145,8 @@ function icon(name) {
 
   return svg;
 }
+
+const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 300));
 
 let toastTimer = null;
 
@@ -754,32 +760,60 @@ function createFrame(asset, manifest) {
     showMenu(event.clientX - box.left, event.clientY - box.top);
   });
 
-  // Swapping themes replaces the embed. The outgoing one stays until its
-  // replacement has painted, so the card never blinks back to 'Loading…'.
-  const embed = () => {
+  // Both themes of a card are kept in the frame at once, one shown and one
+  // waiting. Swapping used to mean a fresh request, so the page recoloured and
+  // the cards followed a beat later; with the other file already parsed the
+  // swap is a class change in the same frame as the page's own.
+  const embeds = new Map();
+
+  // Same origin, so an embedded document can be told what colour it is sitting
+  // on. The card's corners are transparent by design, and left to itself a
+  // browser paints the document canvas behind them white; painting it the
+  // page's own colour makes the corner read as transparent even where the clip
+  // above is ignored. It has to be redone on a theme swap, since an embed can
+  // be fetched under one theme and shown under the other.
+  const paintCanvas = () => {
+    const background = getComputedStyle(document.documentElement)
+      .getPropertyValue('--background').trim();
+
+    for (const object of embeds.values()) {
+      const doc = object.contentDocument;
+      if (doc) doc.documentElement.style.background = background;
+    }
+  };
+
+  const reveal = () => {
+    const wanted = embeds.get(theme);
+    // Until the wanted embed has parsed, whatever is up stays up.
+    if (wanted?.dataset.ready !== 'true') return;
+
+    for (const [name, object] of embeds) object.classList.toggle('is-current', name === theme);
+    media.classList.add('is-loaded');
+    paintCanvas();
+    fitCorners();
+  };
+
+  const mount = (which) => {
+    if (embeds.has(which)) return;
+
     const object = document.createElement('object');
     object.type = 'image/svg+xml';
-    object.data = asset.svg[theme];
+    object.data = asset.svg[which];
     object.setAttribute('aria-label', asset.label);
 
     // The generated links carry no target, so inside an <object> they would
     // navigate the embed itself. Same origin, so they can be retargeted once
     // the document is there.
     object.addEventListener('load', () => {
-      if (object.classList.contains('is-incoming')) {
-        // Fade the new embed in over the old one, and only drop the old one
-        // once it is covered.
-        object.classList.add('is-shown');
-        setTimeout(() => {
-          for (const previous of [...media.children]) {
-            if (previous !== object) previous.remove();
-          }
-          object.classList.remove('is-incoming', 'is-shown');
-        }, 220);
+      object.dataset.ready = 'true';
+      reveal();
+
+      if (which === theme) {
+        frame.dispatchEvent(new CustomEvent('frameload'));
+        // The other theme is fetched in the background, so the switch itself
+        // never waits on the network.
+        idle(() => mount(which === 'dark' ? 'light' : 'dark'));
       }
-      media.classList.add('is-loaded');
-      fitCorners();
-      frame.dispatchEvent(new CustomEvent('frameload'));
 
       const doc = object.contentDocument;
       if (!doc) return;
@@ -812,13 +846,12 @@ function createFrame(asset, manifest) {
     });
 
     const fallback = el('img');
-    fallback.src = asset.svg[theme];
+    fallback.src = asset.svg[which];
     fallback.alt = asset.label;
     object.append(fallback);
 
-    // Laid over whatever is already there, transparent, until it has loaded.
-    if (media.childElementCount) object.classList.add('is-incoming');
     media.append(object);
+    embeds.set(which, object);
   };
 
   const paint = () => {
@@ -826,13 +859,16 @@ function createFrame(asset, manifest) {
     open.href = asset.svg[theme];
     media.style.background = asset.background?.[theme] || 'var(--background)';
     fitCorners();
-    if (loaded) embed();
+
+    if (!loaded) return;
+    mount(theme);
+    reveal();
   };
 
   frame.__load = () => {
     if (loaded) return;
     loaded = true;
-    embed();
+    mount(theme);
   };
 
   new ResizeObserver(fitCorners).observe(media);
@@ -849,8 +885,6 @@ function createFrame(asset, manifest) {
   lazy.observe(frame);
   return frame;
 }
-
-const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 300));
 
 /**
  * Render a section: one frame if the kind has a single asset, otherwise a tab
@@ -932,7 +966,11 @@ function renderHero(data, manifest) {
   const profile = `https://letterboxd.com/${data.user}/`;
 
   document.querySelector('[data-hero-title]').textContent = `@${data.user}`;
-  document.title = `@${data.user} — Letterboxd Graph`;
+
+  // The build step already wrote this into the served HTML, because a crawler
+  // does not get this far. Setting it again keeps a locally served, unbuilt
+  // copy of the page honest, and matches what the build writes.
+  document.title = `@${data.user}'s film diary — Letterboxd Graph`;
 
   const years = data.years?.length ? data.years.slice().sort((a, b) => a - b) : [];
   const span = years.length > 1 ? `${years[0]}–${years.at(-1)}` : years[0];
