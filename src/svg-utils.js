@@ -1,6 +1,6 @@
 /**
  * Shared SVG primitives: font embedding and subsetting, text measurement,
- * XML escaping and the color palettes.
+ * XML escaping and the theme colors.
  *
  * Used by both the contribution graph and the year-in-review card.
  */
@@ -256,72 +256,39 @@ export function calculateTextWidth(text, fontSize, letterSpacing = 0) {
 }
 
 /**
- * Card chrome and heatmap ramps, keyed by palette and then by theme.
+ * Card chrome and the heatmap ramp, keyed by theme.
  *
- * The `github` palette reproduces the contribution graph people already know.
- * The `letterboxd` palette uses Letterboxd's own UI greys and anchors the ramp
- * on its signature green. The ramp stays single-hue on purpose: shifting hue
- * across a sequential scale reads as separate categories rather than as more or
- * less activity. Letterboxd's orange and blue keep their existing roles as
- * accents on the streak flame and the member badge.
+ * The ramp stays single-hue on purpose: shifting hue across a sequential scale
+ * reads as separate categories rather than as more or less activity.
  */
-const PALETTES = {
-  github: {
-    dark: {
-      bg: '#0d1117',
-      cardBorder: '#21262d',
-      text: '#e6edf3',
-      textMuted: '#7d8590',
-      tooltipBg: '#161b22',
-      tooltipBorder: '#30363d',
-      tooltipText: '#f0f6fc',
-      colors: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353']
-    },
-    light: {
-      bg: '#ffffff',
-      cardBorder: '#d1d9e0',
-      text: '#1f2328',
-      textMuted: '#656d76',
-      tooltipBg: '#ffffff',
-      tooltipBorder: '#d1d9e0',
-      tooltipText: '#1f2328',
-      colors: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
-    }
+const THEMES = {
+  dark: {
+    bg: '#0d1117',
+    cardBorder: '#21262d',
+    text: '#e6edf3',
+    textMuted: '#7d8590',
+    tooltipBg: '#161b22',
+    tooltipBorder: '#30363d',
+    tooltipText: '#f0f6fc',
+    colors: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353']
   },
-  letterboxd: {
-    dark: {
-      bg: '#14181c',
-      cardBorder: '#2c3440',
-      text: '#d8e0e8',
-      textMuted: '#89a',
-      tooltipBg: '#1c2228',
-      tooltipBorder: '#2c3440',
-      tooltipText: '#f0f4f8',
-      colors: ['#1c2228', '#0a5230', '#008443', '#00b34c', '#00e054']
-    },
-    light: {
-      bg: '#ffffff',
-      cardBorder: '#d8e0e8',
-      text: '#14181c',
-      textMuted: '#5c6873',
-      tooltipBg: '#ffffff',
-      tooltipBorder: '#d8e0e8',
-      tooltipText: '#14181c',
-      colors: ['#e8ecef', '#a3f0c4', '#4dd98d', '#00c052', '#00873a']
-    }
+  light: {
+    bg: '#ffffff',
+    cardBorder: '#d1d9e0',
+    text: '#1f2328',
+    textMuted: '#656d76',
+    tooltipBg: '#ffffff',
+    tooltipBorder: '#d1d9e0',
+    tooltipText: '#1f2328',
+    colors: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
   }
 };
 
-export const DEFAULT_PALETTE = 'github';
-
 /**
- * Resolve a theme, falling back to the GitHub dark theme for unknown names
+ * Resolve a theme, falling back to dark for unknown names
  * @param {string} theme - 'dark' or 'light'
- * @param {string} palette - Key in PALETTES
  * @returns {Object} Theme colors
  */
-export function getTheme(theme, palette) {
-  const chosen = PALETTES[palette] || PALETTES[DEFAULT_PALETTE];
-  return chosen[theme] || chosen.dark || PALETTES[DEFAULT_PALETTE].dark;
+export function getTheme(theme) {
+  return THEMES[theme] || THEMES.dark;
 }
-

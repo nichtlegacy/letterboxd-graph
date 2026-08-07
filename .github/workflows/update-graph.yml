@@ -10,7 +10,6 @@ env:
   WEEK_START: "sunday"                 # "sunday" or "monday"
   GRADIENT: "true"                     # "true" for colored name, "false" for white
   ANIMATE: "true"                      # "false" to disable the cell reveal animation
-  PALETTE: "github"                    # "github" or "letterboxd"
   SCOPE: "all"                         # "all" (whole diary) or "years"
   MONTH_CARDS: "2"                     # recent months to also make cards for, 0 to skip
 
@@ -77,7 +76,6 @@ jobs:
           week-start: ${{ env.WEEK_START }}
           gradient: ${{ env.GRADIENT }}
           animate: ${{ env.ANIMATE }}
-          palette: ${{ env.PALETTE }}
           scope: ${{ env.SCOPE }}
           month-cards: ${{ env.MONTH_CARDS }}
           export-png: ${{ env.EXPORT_PNG }}

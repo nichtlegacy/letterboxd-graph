@@ -2,7 +2,7 @@
 
 # Letterboxd Graph
 
-**Turn your Letterboxd diary into a contribution graph and shareable cards.**
+**Turn your Letterboxd diary into a contribution graph and shareable cards.**<br>
 Runs as a GitHub Action, commits the finished SVGs back to your repository.
 
 [![Workflow](https://img.shields.io/github/actions/workflow/status/nichtlegacy/letterboxd-graph/update-graph.yml?label=action&style=flat-square)](https://github.com/nichtlegacy/letterboxd-graph/actions)
@@ -231,7 +231,6 @@ All options are action inputs. Only `username` is required.
 | `scope` | Diary scope: `all` or `years` | `all` |
 | `month-cards` | Recent months to also make cards for, `0` to skip | `2` |
 | `mode` | Cell coloring: `count` or `rating` | `count` |
-| `palette` | Color palette: `github` or `letterboxd` | `github` |
 | `week-start` | `sunday` or `monday` | `sunday` |
 | `gradient` | Gradient text: `true`, `false`, `name` or `year` | `true` |
 | `animate` | Cell reveal animation | `true` |
@@ -260,7 +259,6 @@ env:
   WEEK_START: "sunday"                 # "sunday" or "monday"
   GRADIENT: "true"                     # "true", "false", "name" or "year"
   ANIMATE: "true"                      # "false" disables the reveal animation
-  PALETTE: "github"                    # "github" or "letterboxd"
   EXPORT_PNG: "false"                  # "true" also writes PNGs
 ```
 
@@ -283,7 +281,6 @@ node src/cli.js <username> [options]
 | `-s <scope>` | Diary scope: `all` or `years` | `all` |
 | `-c <count>` | Recent months to also card, `0` to skip | `2` |
 | `-m <mode>` | Graph mode: `count` or `rating` | `count` |
-| `-t <palette>` | Color palette: `github` or `letterboxd` | `github` |
 | `-w <day>` | Week start: `sunday` or `monday` | `sunday` |
 | `-g <targets>` | Gradient text: `true`, `false`, `name` or `year` | `true` |
 | `-a <bool>` | Cell reveal animation | `true` |
@@ -291,8 +288,8 @@ node src/cli.js <username> [options]
 | `-o <path>` | Output path without extension | `images/github-letterboxd` |
 
 ```bash
-# Two years, Letterboxd palette
-node src/cli.js nichtlegacy -y 2026,2025 -t letterboxd
+# Two years
+node src/cli.js nichtlegacy -y 2026,2025
 
 # Only the requested year, no month cards
 node src/cli.js nichtlegacy -y 2025 -s years -c 0
@@ -361,28 +358,6 @@ rated higher. This matters more than it sounds: a typical year has a handful of
 films at the top rating and a dozen tied one step below, so without it the last
 slots would be filled in whatever order the diary returned. Repeat viewings of
 one film merge into a single entry at its best rating.
-
-### Color Palettes
-
-Same diary, same year, both palettes:
-
-**`github`** — the familiar contribution graph greens
-
-<p align="center">
-  <img alt="Graph in the GitHub palette" src=".github/assets/palette-github-dark.png" width="100%">
-</p>
-
-**`letterboxd`** — Letterboxd's own UI greys, ramp anchored on its green `#00E054`
-
-<p align="center">
-  <img alt="Graph in the Letterboxd palette" src=".github/assets/palette-letterboxd-dark.png" width="100%">
-</p>
-
-The palette changes the card surfaces too, not just the grid.
-
-The ramp stays single-hue on purpose. Shifting hue across a sequential scale
-reads as separate categories rather than as more or less activity, so
-Letterboxd's orange and blue stay accents on the streak flame and the badge.
 
 ### Graph Modes
 
@@ -493,7 +468,7 @@ markedly slower and more prone to being challenged.
 - [`src/fetch_with_curl_cffi.py`](src/fetch_with_curl_cffi.py) — primary fetcher, Puppeteer is the fallback
 - [`src/generator.js`](src/generator.js) — contribution graph SVG
 - [`src/cards.js`](src/cards.js) — review and profile card SVGs
-- [`src/svg-utils.js`](src/svg-utils.js) — font subsetting, text measurement, palettes
+- [`src/svg-utils.js`](src/svg-utils.js) — font subsetting, text measurement, theme colors
 - [`src/stats.js`](src/stats.js) — streaks, distributions, JSON export
 - [`src/exporter.js`](src/exporter.js) — PNG rasterisation and poster thumbnails
 - [`action.yml`](action.yml) — the reusable action

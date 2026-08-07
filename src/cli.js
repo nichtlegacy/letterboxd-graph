@@ -30,7 +30,6 @@ async function main() {
     let exportPng = false;
     let mode = "count"; // 'count' or 'rating'
     let animate = true; // CSS reveal animation for grid cells
-    let palette = "github"; // 'github' or 'letterboxd' heatmap colors
     let scope = "all"; // 'all' fetches the whole diary, 'years' only the -y years
     let monthCards = 2; // recent months to also make review cards for
 
@@ -79,10 +78,6 @@ async function main() {
             animate = value.toLowerCase() !== 'false';
             i++;
             break;
-          case 't':
-            palette = ['github', 'letterboxd'].includes(value) ? value : 'github';
-            i++;
-            break;
           case 's':
             scope = ['all', 'years'].includes(value) ? value : 'all';
             i++;
@@ -112,7 +107,6 @@ async function main() {
       console.log("  -p            Also export PNG files");
       console.log("  -m <mode>     Graph mode: count or rating (default: count)");
       console.log("  -a <bool>     Cell reveal animation: true or false (default: true)");
-      console.log("  -t <palette>  Color palette: github or letterboxd (default: github)");
       console.log("  -s <scope>    Diary scope: all or years (default: all)");
       console.log("  -c <count>    Recent months to also make cards for, 0 to skip (default: 2)");
       process.exit(1);
@@ -128,7 +122,6 @@ async function main() {
     console.log(`Week starts on: ${weekStart}`);
     console.log(`Mode: ${mode}`);
     console.log(`Animation: ${animate ? '✓' : '✗'}`);
-    console.log(`Palette: ${palette}`);
     console.log(`Scope: ${scope === 'all' ? 'complete diary' : `only ${years.join(', ')}`}`);
     console.log(`Month cards: ${monthCards === 0 ? '✗' : `last ${monthCards}`}`);
     console.log(`Gradient: name ${usernameGradient ? '✓' : '✗'}, year ${yearGradient ? '✓' : '✗'}`);
@@ -195,8 +188,7 @@ async function main() {
       totalEntries,
       memberStatus,
       mode,
-      animate,
-      palette
+      animate
     };
     
     let svgDark, svgLight;

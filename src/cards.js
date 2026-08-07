@@ -19,7 +19,6 @@ import {
   inlineFonts,
   escapeXml,
   calculateTextWidth,
-  DEFAULT_PALETTE,
   getTheme
 } from './svg-utils.js';
 
@@ -431,7 +430,6 @@ function renderIcon(path, x, y, size, color) {
  * @param {number} options.year - Year to summarise
  * @param {number|null} options.month - Month 1-12 to narrow it to, or null for the whole year
  * @param {string} options.theme - 'dark' or 'light'
- * @param {string} options.palette - 'github' or 'letterboxd'
  * @param {string} options.username - Letterboxd username
  * @param {string} options.displayName - Profile display name
  * @param {string|null} options.profileImage - Data URI for the avatar
@@ -448,7 +446,6 @@ export async function generateReviewCard(entries, options = {}) {
     year = new Date().getFullYear(),
     month = null,
     theme = 'dark',
-    palette = DEFAULT_PALETTE,
     username = '',
     displayName = username,
     profileImage = null,
@@ -460,7 +457,7 @@ export async function generateReviewCard(entries, options = {}) {
     yearGradient = true
   } = options;
 
-  const t = getTheme(theme, palette);
+  const t = getTheme(theme);
   const isDark = theme !== 'light';
   const profileUrl = `https://letterboxd.com/${username}/`;
 
@@ -658,7 +655,6 @@ export async function generateProfileCard(entries, options = {}) {
     totalEntries = 0,
     favourites = [],
     theme = 'dark',
-    palette = DEFAULT_PALETTE,
     username = '',
     displayName = username,
     profileImage = null,
@@ -671,7 +667,7 @@ export async function generateProfileCard(entries, options = {}) {
     yearGradient = true
   } = options;
 
-  const t = getTheme(theme, palette);
+  const t = getTheme(theme);
   const isDark = theme !== 'light';
   const profileUrl = `https://letterboxd.com/${username}/`;
   const surface = isDark ? '#171c23' : '#f4f6f8';

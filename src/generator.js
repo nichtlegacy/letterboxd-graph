@@ -16,7 +16,6 @@ import {
   inlineFonts,
   escapeXml,
   calculateTextWidth,
-  DEFAULT_PALETTE,
   getTheme
 } from './svg-utils.js';
 
@@ -209,7 +208,6 @@ export async function generateSvg(entries, options = {}) {
     memberStatus = null, // 'patron', 'pro', or null
     mode = 'count', // 'count' or 'rating'
     animate = true, // reveal cells with a CSS animation
-    palette = DEFAULT_PALETTE // 'github' or 'letterboxd'
   } = options;
 
   // Calculate precise width for badge placement (28px font) + 4px gap
@@ -281,7 +279,7 @@ export async function generateSvg(entries, options = {}) {
   const DAYS = weekStart === 'monday' ? DAYS_MONDAY : DAYS_SUNDAY;
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  const t = getTheme(theme, palette);
+  const t = getTheme(theme);
 
   function getColor(count, films) {
     if (count === 0) return t.colors[0];
@@ -628,7 +626,6 @@ export async function generateMultiYearSvg(entries, options = {}) {
     memberStatus = null,
     mode = 'count', // 'count' or 'rating'
     animate = true, // reveal cells with a CSS animation
-    palette = DEFAULT_PALETTE // 'github' or 'letterboxd'
   } = options;
 
   // Calculate precise width for badge placement (28px font) + 4px gap
@@ -652,7 +649,7 @@ export async function generateMultiYearSvg(entries, options = {}) {
   const DAYS = weekStart === 'monday' ? DAYS_MONDAY : DAYS_SUNDAY;
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  const t = getTheme(theme, palette);
+  const t = getTheme(theme);
 
   // Start building SVG
   let svg = `<svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg">

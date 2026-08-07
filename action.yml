@@ -30,10 +30,6 @@ inputs:
     description: 'Reveal grid cells with a CSS animation when the SVG loads'
     required: false
     default: 'true'
-  palette:
-    description: 'Color palette: "github" or "letterboxd"'
-    required: false
-    default: 'github'
   scope:
     description: >-
       Diary scope. "all" fetches the complete diary, which costs one request per
@@ -125,7 +121,6 @@ runs:
         LB_MODE: ${{ inputs.mode }}
         LB_GRADIENT: ${{ inputs.gradient }}
         LB_ANIMATE: ${{ inputs.animate }}
-        LB_PALETTE: ${{ inputs.palette }}
         LB_SCOPE: ${{ inputs.scope }}
         LB_MONTH_CARDS: ${{ inputs.month-cards }}
         LB_EXPORT_PNG: ${{ inputs.export-png }}
@@ -133,7 +128,7 @@ runs:
       run: |
         set -euo pipefail
 
-        args=("$LB_USERNAME" -o "$LB_OUTPUT" -w "$LB_WEEK_START" -m "$LB_MODE" -t "$LB_PALETTE" -s "$LB_SCOPE" -c "$LB_MONTH_CARDS")
+        args=("$LB_USERNAME" -o "$LB_OUTPUT" -w "$LB_WEEK_START" -m "$LB_MODE" -s "$LB_SCOPE" -c "$LB_MONTH_CARDS")
         if [ -n "$LB_YEARS" ]; then args+=(-y "$LB_YEARS"); fi
         if [ -n "$LB_GRADIENT" ] && [ "$LB_GRADIENT" != "true" ]; then args+=(-g "$LB_GRADIENT"); fi
         if [ "$LB_ANIMATE" = "false" ]; then args+=(-a false); fi

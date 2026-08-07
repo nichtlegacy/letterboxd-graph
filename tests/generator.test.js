@@ -108,16 +108,13 @@ test('the two modes disagree where they should', async () => {
   assert.deepEqual(active(rating), ['#39d353', '#0e4429'], 'rating: the 5 star day is brightest');
 });
 
-test('both palettes render and differ', async () => {
+test('the theme changes the ramp', async () => {
   const entries = [entry('2025-01-01', 5)];
-  const options = { year: 2025, username: 'someone', theme: 'dark' };
-  const github = await generateSvg(entries, { ...options, palette: 'github' });
-  const letterboxd = await generateSvg(entries, { ...options, palette: 'letterboxd' });
+  const dark = await generateSvg(entries, { year: 2025, username: 'someone', theme: 'dark' });
+  const light = await generateSvg(entries, { year: 2025, username: 'someone', theme: 'light' });
 
-  assert.ok(github.includes('#39d353'), 'GitHub green');
-  assert.ok(letterboxd.includes('#00e054'), 'Letterboxd green');
-  assert.ok(letterboxd.includes('#14181c'), 'Letterboxd card background');
-  assert.ok(!letterboxd.includes('#39d353'));
+  assert.ok(dark.includes('#39d353') && dark.includes('#0d1117'));
+  assert.ok(light.includes('#216e39') && light.includes('#ffffff'));
 });
 
 test('the multi-year graph applies the same modes', async () => {
