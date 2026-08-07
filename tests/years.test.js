@@ -9,7 +9,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { resolveYears } from '../src/years.js';
+import { resolveReviewYears, resolveYears } from '../src/years.js';
 
 const at = (iso) => new Date(`${iso}T00:00:00Z`);
 
@@ -58,4 +58,25 @@ test('resolveYears: nonsense falls back to the current year rather than failing'
   assert.deepEqual(resolveYears('recent', at('2026-08-07')), [2026]);
   assert.deepEqual(resolveYears('last', at('2026-08-07')), [2026]);
   assert.deepEqual(resolveYears('last 0', at('2026-08-07')), [2026], 'zero years is no graph at all');
+});
+
+test('resolveReviewYears: all finds every year in the fetched diary', () => {
+  const entries = [
+    { date: at('2024-03-01') },
+    { date: at('2026-08-07') },
+    { date: at('2025-01-12') },
+    { date: at('2024-11-03') }
+  ];
+
+  assert.deepEqual(resolveReviewYears('all', entries), [2026, 2025, 2024]);
+  assert.deepEqual(resolveReviewYears('ALL', entries), [2026, 2025, 2024]);
+});
+
+test('resolveReviewYears: explicit and relative selections use graph syntax', () => {
+  assert.deepEqual(resolveReviewYears('2024,2026', [], at('2026-08-07')), [2024, 2026]);
+  assert.deepEqual(resolveReviewYears('last 2', [], at('2026-08-07')), [2026, 2025]);
+});
+
+test('resolveReviewYears: empty diary produces no all-time cards', () => {
+  assert.deepEqual(resolveReviewYears('all', [], at('2026-08-07')), []);
 });

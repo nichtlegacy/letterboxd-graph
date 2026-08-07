@@ -16,9 +16,19 @@
 
 const THEMES = ['dark', 'light'];
 const STORAGE_KEY = 'lbg-theme';
+const SCROLL_POSITION_KEY = `lbg-scroll:${location.pathname}${location.search}`;
 
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+const MONTHS = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
+];
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const WEEKDAY_INITIALS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+// The diary counts weekdays from Sunday, the way `getUTCDay` does; the strip is
+// read from Monday, the way a week is.
+const WEEKDAY_ORDER = [1, 2, 3, 4, 5, 6, 0];
 
 const systemQuery = matchMedia('(prefers-color-scheme: light)');
 const frames = new Set();
@@ -84,6 +94,12 @@ function formatDecimal(value, digits = 1) {
     : '—';
 }
 
+function formatRating(value) {
+  return typeof value === 'number'
+    ? (Number.isInteger(value) ? formatNumber(value) : formatDecimal(value))
+    : '—';
+}
+
 function formatDate(iso, options = { day: '2-digit', month: 'short', year: 'numeric' }) {
   return new Date(`${iso.slice(0, 10)}T00:00:00Z`)
     .toLocaleDateString('en-GB', { timeZone: 'UTC', ...options });
@@ -129,7 +145,8 @@ const ICONS = {
   code: ['m9 8-4 4 4 4', 'm15 8 4 4-4 4'],
   clipboard: ['M9 4h6v3H9z', 'M15 5.5h2a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1h2'],
   image: ['M4 6h16v12H4z', 'M4 15.5 8.5 11l3.5 3.5L15 12l5 4.5', 'M9 9.5h.01'],
-  arrowUp: ['M12 19V6', 'm6 12 6-6 6 6']
+  arrowUp: ['M12 19V6', 'm6 12 6-6 6 6'],
+  arrowRight: ['M3 12h17', 'm14 6 6 6-6 6']
 };
 
 function icon(name) {
@@ -187,9 +204,9 @@ document.addEventListener('pointerdown', (event) => {
  *
  * @param {HTMLElement} host - Element to render into
  * @param {Array<{value: number, label: string, meta?: string, caption?: string, href?: string}>} bars
- * @param {{variant?: string, axis?: [string, string]}} options
+ * @param {{variant?: string, axis?: [string, string], colorScale?: [string, string], captionInside?: boolean}} options
  */
-function columnChart(host, bars, { variant = '', axis = null } = {}) {
+function columnChart(host, bars, { variant = '', axis = null, colorScale = null, captionInside = false } = {}) {
   host.replaceChildren();
   if (!bars.length) return;
 
@@ -198,12 +215,13 @@ function columnChart(host, bars, { variant = '', axis = null } = {}) {
   const tooltip = el('div', 'chart-tip');
   tooltip.hidden = true;
 
-  bars.forEach((bar) => {
+  bars.forEach((bar, index) => {
     const column = bar.href ? link(bar.href, 'column') : el('div', 'column');
     const fill = el('span', 'column-fill');
     // A zero stays flat; everything else keeps a sliver so a single film is
     // still visible next to a month of thirty.
     fill.style.height = bar.value === 0 ? '0' : `${Math.max((bar.value / max) * 100, 3)}%`;
+    if (colorScale) fill.style.background = interpolateColor(colorScale, index, bars.length);
     if (bar.value === 0) column.classList.add('is-empty');
     column.append(fill);
 
@@ -270,7 +288,9 @@ function columnChart(host, bars, { variant = '', axis = null } = {}) {
       column.setAttribute('aria-label', `${bar.label}: ${bar.value}`);
     }
 
-    if (bar.caption) column.append(el('span', 'column-caption', bar.caption));
+    // A caption under the bar needs the room; one inside it rides along, which
+    // is what turns the weekday strip into seven labelled blocks.
+    if (bar.caption) (captionInside ? fill : column).append(el('span', 'column-caption', bar.caption));
     plot.append(column);
   });
 
@@ -286,87 +306,61 @@ function columnChart(host, bars, { variant = '', axis = null } = {}) {
 
 /* ── All time ─────────────────────────────────────────────────────────────── */
 
-function tile(label, value, meta, accent) {
-  const node = el('div', `tile${accent ? ' is-accent' : ''}`);
-  node.append(el('span', 'tile-label', label), el('span', 'tile-value', value));
-  if (meta) node.append(el('span', 'tile-meta', meta));
-  return node;
-}
-
-function renderAllTime(all, data, diary) {
-  const section = document.querySelector('[data-alltime]');
-  if (!all) return;
-
-  document.querySelector('[data-alltime-title]').textContent =
-    data.user ? `@${data.user} in numbers` : 'The diary in numbers';
-
-  const note = document.querySelector('[data-alltime-note]');
-  note.textContent = all.scope === 'all'
-    ? `Every entry from ${formatDate(all.firstEntry)} to ${formatDate(all.lastEntry)}.`
-    : `Covers ${formatDate(all.firstEntry)} to ${formatDate(all.lastEntry)} — the run fetched only the graph years, so this is not the whole diary.`;
-
-  // Films watched is the profile's own figure and counts films ticked off
-  // without a diary entry, which is why it outruns the entry count.
-  const headline = [
-    all.films
-      ? tile('Films watched', formatNumber(all.films), `${formatNumber(all.entries)} of them dated in the diary`, true)
-      : tile('Diary entries', formatNumber(all.entries), `${formatNumber(all.distinctFilms)} distinct films`, true),
-    tile('Days active', formatNumber(all.daysActive), `${formatDecimal(all.perWeek)} films a week on average`),
-    tile('Average rating', all.averageRating ? formatDecimal(all.averageRating, 2) : '—',
-      `${formatNumber(all.rated)} of ${formatNumber(all.entries)} rated`)
-  ];
-
-  document.querySelector('[data-alltime-tiles]').replaceChildren(...headline);
-
-  const strip = [
-    ['Distinct films', formatNumber(all.distinctFilms)],
-    ['Rewatches', formatNumber(all.rewatches)],
-    ['Liked', formatNumber(all.liked)],
-    ['Longest streak', `${formatNumber(all.streak?.length ?? 0)} days`]
-  ].map(([label, value]) => {
-    const node = el('div', 'strip-item');
-    node.append(el('span', 'strip-label', label), el('span', 'strip-value', value));
-    return node;
-  });
-
-  document.querySelector('[data-alltime-strip]').replaceChildren(...strip);
-
-  const years = (all.perYear || []).slice().sort((a, b) => b.year - a.year);
-  if (years.length > 1) {
-    const busiest = Math.max(...years.map(year => year.films));
-    const nodes = years.map((year) => {
-      const node = diary
-        ? link(`${diary}/for/${year.year}/`, 'year-cell')
-        : el('div', 'year-cell');
-      const track = el('span', 'year-track');
-      const bar = el('span', 'year-bar');
-      bar.style.width = `${Math.max((year.films / busiest) * 100, 2)}%`;
-      track.append(bar);
-
-      node.append(
-        el('span', 'year-label', String(year.year)),
-        track,
-        el('span', 'year-count', `${formatNumber(year.films)} films · ${formatNumber(year.days)} days`)
-      );
-      return node;
-    });
-
-    document.querySelector('[data-alltime-years]').replaceChildren(...nodes);
-  }
-
-  section.hidden = false;
+function interpolateColor([start, end], index, count) {
+  const ratio = count < 2 ? 0 : index / (count - 1);
+  const channels = (color) => color.match(/[\da-f]{2}/gi).map(value => parseInt(value, 16));
+  const from = channels(start);
+  const to = channels(end);
+  const blended = from.map((value, channel) => Math.round(value + (to[channel] - value) * ratio));
+  return `rgb(${blended.join(', ')})`;
 }
 
 /* ── When you watched ─────────────────────────────────────────────────────── */
 
-function renderWhen(all) {
+/**
+ * The years as figures rather than as bars.
+ *
+ * A bar per year is a chart that outgrows its section: a diary spanning twenty
+ * years wants twenty rows, and the whole point of the comparison is legible in
+ * the numbers alone. Written as a wrapping row of figures it costs three lines
+ * per year and reads the same at three years as at thirty.
+ */
+function renderYears(all, diary) {
+  const years = (all.perYear || []).slice().sort((a, b) => a.year - b.year);
+  if (years.length < 2) return;
+
+  const nodes = years.map((year) => {
+    const node = diary ? link(`${diary}/for/${year.year}/`, 'year') : el('div', 'year');
+    // The year leads, not the count: it is what a reader scans the row for, and
+    // the counts only mean anything once you know which year you are looking at.
+    node.append(
+      el('span', 'year-value', String(year.year)),
+      el('span', 'year-label', `${formatNumber(year.films)} films`),
+      el('span', 'year-days', `${formatNumber(year.days)} days`)
+    );
+    return node;
+  });
+
+  document.querySelector('[data-when-year-list]').replaceChildren(...nodes);
+
+  document.querySelector('[data-when-years-note]').textContent = all.scope === 'all'
+    ? `Every entry from ${formatDate(all.firstEntry)} to ${formatDate(all.lastEntry)}.`
+    : `Covers ${formatDate(all.firstEntry)} to ${formatDate(all.lastEntry)} — the run fetched only the graph years, so this is not the whole diary.`;
+
+  document.querySelector('[data-when-years]').hidden = false;
+}
+
+function renderWhen(all, diary) {
   const series = all?.monthSeries || [];
   if (series.length < 2) return;
 
   columnChart(
     document.querySelector('[data-month-chart]'),
     series.map(point => ({ value: point.count, label: formatMonth(point.month) })),
-    { axis: [formatMonth(series[0].month), formatMonth(series.at(-1).month)] }
+    {
+      axis: [formatMonth(series[0].month), formatMonth(series.at(-1).month)],
+      colorScale: ['#00E054', '#40BCF4']
+    }
   );
 
   const blocks = [
@@ -377,7 +371,13 @@ function renderWhen(all) {
 
   const blockNodes = [];
   blocks.forEach(([label, value], index) => {
-    if (index > 0) blockNodes.push(el('span', 'block-arrow', '→'));
+    // The three figures are one sentence — the same films, divided twice — so an
+    // arrow carries the reading from one to the next instead of a bare gap.
+    if (index > 0) {
+      const arrow = el('span', 'block-arrow');
+      arrow.append(icon('arrowRight'));
+      blockNodes.push(arrow);
+    }
     const node = el('div', 'block');
     node.append(el('span', 'block-value', value), el('span', 'block-label', label));
     blockNodes.push(node);
@@ -389,24 +389,58 @@ function renderWhen(all) {
   if (weekday.some(Boolean)) {
     columnChart(
       document.querySelector('[data-weekday-chart]'),
-      weekday.map((count, index) => ({
-        value: count,
-        label: WEEKDAYS[index],
-        caption: WEEKDAY_INITIALS[index]
+      WEEKDAY_ORDER.map(day => ({
+        value: weekday[day] || 0,
+        label: WEEKDAYS[day],
+        caption: WEEKDAY_INITIALS[day]
       })),
-      { variant: 'is-small' }
+      { variant: 'is-weekday', captionInside: true }
     );
   }
 
+  // The records, each a figure with the date or span it belongs to. Three of
+  // them left most of the row empty; these six also put `monthSeries`,
+  // `perMonthOfYear` and `streak.films` to use, which the page carried in its
+  // data and never showed.
   const facts = [];
+
   if (all.busiestDay?.count > 1) {
     facts.push([`${all.busiestDay.count} films in a day`, formatDate(all.busiestDay.date)]);
   }
-  if (all.streak?.length > 1) {
-    facts.push([`${all.streak.length} days running`, `${formatDate(all.streak.startDate)} – ${formatDate(all.streak.endDate)}`]);
+
+  const fullestMonth = series.reduce((best, point) => (point.count > best.count ? point : best), series[0]);
+  if (fullestMonth?.count > 1) {
+    facts.push([`${fullestMonth.count} films in a month`, formatMonth(fullestMonth.month)]);
   }
+
+  if (all.streak?.length > 1) {
+    const span = `${formatDate(all.streak.startDate)} – ${formatDate(all.streak.endDate)}`;
+    facts.push([
+      `${all.streak.length}-day streak`,
+      all.streak.films ? `${span}, ${formatNumber(all.streak.films)} films` : span
+    ]);
+  }
+
   if (all.longestGap?.days > 1) {
     facts.push([`${all.longestGap.days} days quiet`, `${formatDate(all.longestGap.from)} – ${formatDate(all.longestGap.to)}`]);
+  }
+
+  if (all.daysActive > 0 && all.spanDays > 0) {
+    facts.push([
+      `${Math.round((all.daysActive / all.spanDays) * 100)}% of days watched`,
+      `${formatNumber(all.daysActive)} of ${formatNumber(all.spanDays)} days`
+    ]);
+  }
+
+  // Which month of the calendar carries the most, counted across every year —
+  // a different reading from the single fullest month above.
+  const byMonth = all.perMonthOfYear || [];
+  if (byMonth.length === 12 && Math.max(...byMonth) > 0) {
+    const peak = byMonth.indexOf(Math.max(...byMonth));
+    facts.push([
+      `${byMonth[peak]} entries in ${MONTHS[peak]}`,
+      'Counted across every year'
+    ]);
   }
 
   document.querySelector('[data-when-facts]').replaceChildren(...facts.map(([value, meta]) => {
@@ -414,6 +448,8 @@ function renderWhen(all) {
     node.append(el('span', 'fact-value', value), el('span', 'fact-meta', meta));
     return node;
   }));
+
+  renderYears(all, diary);
 
   document.querySelector('[data-when]').hidden = false;
 }
@@ -434,7 +470,9 @@ function renderRatings(all, diary) {
     return {
       value: count,
       label: `${rating} out of 5`,
-      caption: rating % 1 === 0 ? '★'.repeat(rating) : '',
+      // Every step names itself in the currency it was given in, half stars
+      // included, which is what lets the chart go without an axis.
+      caption: stars(rating),
       // Letterboxd writes a half star without its leading zero. A step nobody
       // ever gave leads to an empty page, so it stays a plain bar.
       href: diary && count ? `${diary}/rated/${String(rating).replace(/^0/, '')}/` : null
@@ -445,14 +483,16 @@ function renderRatings(all, diary) {
 
   const top = ratings.reduce((best, entry) => (entry.count > best.count ? entry : best), ratings[0]);
   const side = [
-    ['Average', all.averageRating ? formatDecimal(all.averageRating, 2) : '—', stars(Math.round(all.averageRating * 2) / 2)],
+    // The stars under the average are the same currency as the ones under the
+    // bars, so they are drawn in the same colour rather than as grey small print.
+    ['Average', all.averageRating ? formatDecimal(all.averageRating, 2) : '—', stars(Math.round(all.averageRating * 2) / 2), 'is-stars'],
     ['Most given', formatDecimal(top.rating, 1), `${formatNumber(top.count)} entries`],
     ['Rated', `${Math.round((all.rated / all.entries) * 100)}%`, `${formatNumber(all.rated)} of ${formatNumber(all.entries)}`],
     ['Liked', `${Math.round((all.liked / all.entries) * 100)}%`, `${formatNumber(all.liked)} entries`]
-  ].map(([label, value, meta]) => {
+  ].map(([label, value, meta, metaClass]) => {
     const node = el('div', 'side-item');
     node.append(el('span', 'side-label', label), el('span', 'side-value', value));
-    if (meta) node.append(el('span', 'side-meta', meta));
+    if (meta) node.append(el('span', `side-meta ${metaClass || ''}`.trim(), meta));
     return node;
   });
 
@@ -464,11 +504,12 @@ function renderRatings(all, diary) {
 
 function renderDecades(all, diary) {
   const decades = all?.decades || [];
-  const rewatched = all?.mostRewatched || [];
+  const rewatched = (all?.mostRewatched || []).slice(0, Math.max(decades.length - 2, 0));
   if (!decades.length && !rewatched.length) return;
 
   if (decades.length) {
     const max = Math.max(...decades.map(decade => decade.count));
+    const total = decades.reduce((sum, decade) => sum + decade.count, 0);
     const nodes = decades.slice().reverse().map((decade) => {
       // The label is the slug: Letterboxd files a decade under "2020s" too.
       const node = diary
@@ -479,10 +520,27 @@ function renderDecades(all, diary) {
       fill.style.width = `${Math.max((decade.count / max) * 100, 1.5)}%`;
       track.append(fill);
 
+      const trackWrap = el('span', 'bar-track-wrap');
+      trackWrap.append(
+        track,
+        el('span', 'bar-percent', `${formatDecimal((decade.count / total) * 100)}%`)
+      );
+
+      const value = el('span', 'bar-value');
+      value.append(el('span', 'bar-count', formatNumber(decade.count)));
+      if (typeof decade.averageRating === 'number') {
+        const average = el('span', 'bar-average');
+        average.append(
+          el('span', 'bar-average-symbol', '⌀'),
+          document.createTextNode(` ${formatRating(decade.averageRating)}`)
+        );
+        value.append(el('span', 'bar-separator', '·'), average);
+      }
+
       node.append(
         el('span', 'bar-label', decade.label),
-        track,
-        el('span', 'bar-value', formatNumber(decade.count))
+        trackWrap,
+        value
       );
       return node;
     });
@@ -501,9 +559,26 @@ function renderDecades(all, diary) {
         ? link(film.url, 'repeat-title', film.title)
         : el('span', 'repeat-title', film.title);
 
-      row.append(title);
-      if (film.year) row.append(el('span', 'repeat-year', film.year));
-      row.append(el('span', 'repeat-count', `${film.views}×`));
+      const filmInfo = el('span', 'repeat-film');
+      filmInfo.append(title);
+      if (film.year) filmInfo.append(el('span', 'repeat-year', film.year));
+      row.append(filmInfo);
+
+      const meta = el('span', 'repeat-meta');
+      const count = el('span', 'repeat-count');
+      count.append(el('span', 'repeat-symbol', '↻'), document.createTextNode(` ${film.views}×`));
+      meta.append(count);
+
+      if (typeof film.averageRating === 'number') {
+        const rating = el('span', 'repeat-rating');
+        rating.append(
+          el('span', 'repeat-rating-symbol', '★'),
+          document.createTextNode(` ${formatRating(film.averageRating)}`)
+        );
+        meta.append(el('span', 'repeat-separator', '·'), rating);
+      }
+
+      row.append(meta);
       list.append(row);
     }
 
@@ -519,31 +594,50 @@ function renderMilestones(all) {
   const milestones = all?.milestones || [];
   if (milestones.length < 2) return;
 
-  const nodes = milestones.map((entry, index) => {
+  const nodes = milestones.map((entry) => {
     const node = el('li', 'milestone');
-    const badge = index === 0
+    // The item has no box of its own on wide screens (see `.milestone` in the
+    // stylesheet), and a WebKit reader drops the list semantics with it.
+    node.setAttribute('role', 'listitem');
+    const badge = entry.kind === 'first'
       ? 'First'
-      : index === milestones.length - 1 && entry.n % 100 !== 0
+      : entry.kind === 'latest'
         ? 'Latest'
         : ordinal(entry.n);
 
     node.append(el('span', 'milestone-badge', badge));
 
-    const title = entry.url
-      ? link(entry.url, 'milestone-title', entry.title)
-      : el('span', 'milestone-title', entry.title);
-    node.append(title);
-
+    // When the diary turned over, directly under the marker it belongs to.
     const meta = el('span', 'milestone-meta');
-    meta.append(el('span', null, formatDate(entry.date)));
-    if (entry.year) meta.append(el('span', 'milestone-year', entry.year));
+    meta.append(el('span', 'milestone-date', formatDate(entry.date)));
     node.append(meta);
 
-    if (entry.rating) node.append(el('span', 'milestone-rating', stars(entry.rating)));
+    // The release year rides with the title the way Letterboxd writes it. Set
+    // beside the watch date it read as a second date rather than as the year
+    // the film came out.
+    const title = el('p', 'milestone-title');
+    title.append(entry.url ? link(entry.url, null, entry.title) : el('span', null, entry.title));
+    if (entry.year) title.append(el('span', 'milestone-year', `(${entry.year})`));
+    node.append(title);
+
+    // Always appended, even unrated: the markers share the rows of the list, so
+    // a missing fourth part would pull the next column up a row and the ratings
+    // would stop lining up along the foot of the section.
+    node.append(el('span', 'milestone-rating', entry.rating ? stars(entry.rating) : ''));
     return node;
   });
 
-  document.querySelector('[data-milestone-list]').replaceChildren(...nodes);
+  const list = document.querySelector('[data-milestone-list]');
+  list.setAttribute('role', 'list');
+  list.replaceChildren(...nodes);
+
+  // The interval scales with the diary, so the note has to name the actual one
+  // rather than promise every hundredth to a reader who is seeing every 25th.
+  const step = milestones.some((entry) => entry.kind === 'step') ? all.milestoneStep : 0;
+  document.querySelector('[data-milestone-note]').textContent = step > 0
+    ? `The first entry, every ${ordinal(step)} after it, and the latest one.`
+    : 'The first entry and the latest one.';
+
   document.querySelector('[data-milestones]').hidden = false;
 }
 
@@ -696,7 +790,11 @@ function createFrame(asset, manifest) {
   scroll.append(media);
 
   const foot = el('figcaption', 'frame-foot');
-  const file = el('span', 'frame-file');
+  const file = el('a', 'frame-file');
+  const fileCode = el('code');
+  file.append(fileCode);
+  file.target = '_blank';
+  file.rel = 'noopener';
   const actions = el('span', 'frame-actions');
 
   let theme = activeTheme();
@@ -895,7 +993,9 @@ function createFrame(asset, manifest) {
   };
 
   const paint = () => {
-    file.textContent = asset.svg[theme];
+    fileCode.textContent = asset.svg[theme];
+    file.href = asset.svg[theme];
+    file.title = `Open ${asset.svg[theme]}`;
     open.href = asset.svg[theme];
     media.style.background = asset.background?.[theme] || 'var(--background)';
     fitCorners();
@@ -1005,21 +1105,32 @@ function renderSection(section, assets, manifest) {
 function renderHero(data, manifest) {
   const profile = `https://letterboxd.com/${data.user}/`;
 
-  document.querySelector('[data-hero-title]').textContent = `@${data.user}`;
+  document.querySelector('[data-hero-title]').textContent = 'A Life in Film';
+  document.querySelector('[data-hero-user]').textContent = data.user ? `@${data.user}` : 'Film diary';
 
   // The build step already wrote this into the served HTML, because a crawler
   // does not get this far. Setting it again keeps a locally served, unbuilt
   // copy of the page honest, and matches what the build writes.
   document.title = `@${data.user}'s film diary — Letterboxd Graph`;
 
-  const years = data.years?.length ? data.years.slice().sort((a, b) => a - b) : [];
-  const span = years.length > 1 ? `${years[0]}–${years.at(-1)}` : years[0];
-  const films = data.allTime?.films || data.allTime?.entries;
-
-  document.querySelector('[data-hero-eyebrow]').textContent = [
-    films ? `${formatNumber(films)} films` : null,
-    span ? `graph covers ${span}` : null
-  ].filter(Boolean).join(' · ') || 'Film diary';
+  const all = data.allTime || {};
+  const kpis = [
+    ['Films watched', all.films ?? all.entries],
+    ['Distinct films', all.distinctFilms],
+    ['Diary entries', all.entries],
+    ['Days active', all.daysActive],
+    ['Average rating', typeof all.averageRating === 'number' ? formatDecimal(all.averageRating, 2) : '—'],
+    ['Longest streak', all.streak?.length ? `${formatNumber(all.streak.length)}d` : '—']
+  ];
+  const formatKpiValue = value => typeof value === 'number' ? formatNumber(value) : value ?? '—';
+  document.querySelector('[data-hero-kpis]').replaceChildren(...kpis.map(([label, value]) => {
+    const item = el('div', 'hero-kpi');
+    item.append(
+      el('dt', 'hero-kpi-label', label),
+      el('dd', 'hero-kpi-value', formatKpiValue(value))
+    );
+    return item;
+  }));
 
   // A value on the attribute is an anchor into the README, which GitHub renders
   // on the repository page: data-repo-link="#embedding" lands on that section.
@@ -1042,23 +1153,19 @@ function renderHero(data, manifest) {
   }
 }
 
-const DIARY_PER_COLUMN = 8;
+const DIARY_LIMIT = 16;
 
 function renderDiary(recent) {
   if (!recent?.length) return;
 
   const host = document.querySelector('[data-diary-list]');
-  const entries = recent.slice(0, DIARY_PER_COLUMN * 2);
+  const entries = recent.slice(0, DIARY_LIMIT);
+  const list = el('ol', 'diary-list');
 
-  // One list per column, so each column carries its own top rule and the
-  // entries read downwards rather than across.
-  for (let start = 0; start < entries.length; start += DIARY_PER_COLUMN) {
-    const list = el('ol', 'diary-list');
-    for (const entry of entries.slice(start, start + DIARY_PER_COLUMN)) {
-      list.append(diaryRow(entry));
-    }
-    host.append(list);
-  }
+  // Grid fills rows left to right, so an odd count leaves only the final cell
+  // alone instead of creating a long half-empty second column.
+  for (const entry of entries) list.append(diaryRow(entry));
+  host.append(list);
 
   document.querySelector('[data-diary]').hidden = false;
 }
@@ -1183,10 +1290,44 @@ function scrollToSection(target) {
   setTimeout(() => target.classList.remove('is-target'), 1400);
 }
 
+function removeHash() {
+  if (location.hash) history.replaceState(null, '', `${location.pathname}${location.search}`);
+}
+
+function readScrollPosition() {
+  const stored = sessionStorage.getItem(SCROLL_POSITION_KEY);
+  if (stored === null) return null;
+
+  const value = Number(stored);
+  return Number.isFinite(value) && value >= 0 ? value : null;
+}
+
+function saveScrollPosition() {
+  sessionStorage.setItem(SCROLL_POSITION_KEY, String(Math.round(window.scrollY)));
+}
+
+function restoreScrollPosition(hashTarget) {
+  const saved = readScrollPosition();
+  const restore = () => {
+    const requested = saved ?? (hashTarget ? documentTop(hashTarget) - navOffset() : 0);
+    const limit = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    window.scrollTo(0, Math.max(0, Math.min(requested, limit)));
+  };
+
+  // Data and card frames fill asynchronously, so wait for two layout passes
+  // before calculating the position.
+  requestAnimationFrame(() => requestAnimationFrame(restore));
+}
+
 function setupNavigation() {
   for (const event of ['wheel', 'touchstart', 'pointerdown', 'keydown']) {
     window.addEventListener(event, stopScrolling, { passive: true });
   }
+
+  const hashTarget = location.hash.length > 1
+    ? document.getElementById(location.hash.slice(1))
+    : null;
+  removeHash();
 
   for (const anchor of document.querySelectorAll('a[href^="#"]')) {
     anchor.addEventListener('click', (clicked) => {
@@ -1196,7 +1337,7 @@ function setupNavigation() {
 
       clicked.preventDefault();
       scrollToSection(target);
-      history.replaceState(null, '', `#${id}`);
+      removeHash();
 
       // Moving the page is not moving the reader: without this, the next tab
       // press would carry on from the link in the bar.
@@ -1205,12 +1346,7 @@ function setupNavigation() {
     });
   }
 
-  // An address that already carries a section: the browser has jumped there
-  // before the sections were filled in, so it is done again from here.
-  if (location.hash.length > 1) {
-    const target = document.getElementById(location.hash.slice(1));
-    if (target) requestAnimationFrame(() => window.scrollTo(0, documentTop(target) - navOffset()));
-  }
+  restoreScrollPosition(hashTarget);
 }
 
 /**
@@ -1251,7 +1387,7 @@ function setupScrollSpy() {
   toTop.append(icon('arrowUp'));
   toTop.addEventListener('click', () => {
     scrollToY(0);
-    history.replaceState(null, '', location.pathname);
+    removeHash();
   });
   document.body.append(toTop);
 
@@ -1261,6 +1397,7 @@ function setupScrollSpy() {
 
   const update = () => {
     queued = false;
+    saveScrollPosition();
     const line = window.scrollY + navOffset() + 8;
 
     let current = null;
@@ -1292,6 +1429,7 @@ function setupScrollSpy() {
   }, { passive: true });
 
   window.addEventListener('resize', update, { passive: true });
+  window.addEventListener('pagehide', saveScrollPosition);
   update();
 }
 
@@ -1311,8 +1449,7 @@ async function main() {
     const diary = data.user ? `https://letterboxd.com/${data.user}/diary/films` : null;
 
     renderHero(data, manifest);
-    renderAllTime(data.allTime, data, diary);
-    renderWhen(data.allTime);
+    renderWhen(data.allTime, diary);
     renderRatings(data.allTime, diary);
     renderDecades(data.allTime, diary);
     renderMilestones(data.allTime);
@@ -1323,6 +1460,10 @@ async function main() {
     renderSection(section, manifest.assets.filter(asset => asset.kind === section.dataset.section), manifest);
   }
 
+  // The page is its full height now, so the closing block and the footer can
+  // come through — and the scroll position restored below lands where it left.
+  document.documentElement.classList.remove('is-loading');
+
   setupNavigation();
   setupReveal();
   setupScrollSpy();
@@ -1330,6 +1471,8 @@ async function main() {
 
 main().catch((error) => {
   console.error(error);
-  document.querySelector('[data-hero-eyebrow]').textContent =
+  // Whatever failed, the page must not stay half-drawn.
+  document.documentElement.classList.remove('is-loading');
+  document.querySelector('[data-hero-title]').textContent =
     'Could not load the generated files';
 });

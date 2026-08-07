@@ -18,6 +18,12 @@ inputs:
       years after New Year, and nothing about the run looks wrong.
     required: false
     default: ''
+  review-years:
+    description: >-
+      Years for review cards. "all" creates one card for every year present in
+      the fetched diary; a list or "last N" selects specific years.
+    required: false
+    default: 'all'
   week-start:
     description: 'First day of the week: "sunday" or "monday"'
     required: false
@@ -127,6 +133,7 @@ runs:
       env:
         LB_USERNAME: ${{ inputs.username }}
         LB_YEARS: ${{ inputs.years }}
+        LB_REVIEW_YEARS: ${{ inputs.review-years }}
         LB_WEEK_START: ${{ inputs.week-start }}
         LB_MODE: ${{ inputs.mode }}
         LB_GRADIENT: ${{ inputs.gradient }}
@@ -139,7 +146,7 @@ runs:
       run: |
         set -euo pipefail
 
-        args=("$LB_USERNAME" -o "$LB_OUTPUT" -w "$LB_WEEK_START" -m "$LB_MODE" -s "$LB_SCOPE" -c "$LB_MONTH_CARDS" -r "$LB_TOP_FILMS")
+        args=("$LB_USERNAME" -o "$LB_OUTPUT" -w "$LB_WEEK_START" -m "$LB_MODE" -s "$LB_SCOPE" -c "$LB_MONTH_CARDS" -r "$LB_TOP_FILMS" --review-years "$LB_REVIEW_YEARS")
         if [ -n "$LB_YEARS" ]; then args+=(-y "$LB_YEARS"); fi
         if [ -n "$LB_GRADIENT" ] && [ "$LB_GRADIENT" != "true" ]; then args+=(-g "$LB_GRADIENT"); fi
         if [ "$LB_ANIMATE" = "false" ]; then args+=(-a false); fi

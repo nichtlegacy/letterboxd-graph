@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-07T17:10:18.311Z",
+  "generatedAt": "2026-08-07T20:40:50.388Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18764,37 +18764,44 @@
       {
         "decade": 1950,
         "label": "1950s",
-        "count": 1
+        "count": 1,
+        "averageRating": 4
       },
       {
         "decade": 1970,
         "label": "1970s",
-        "count": 7
+        "count": 7,
+        "averageRating": 4
       },
       {
         "decade": 1980,
         "label": "1980s",
-        "count": 24
+        "count": 24,
+        "averageRating": 3
       },
       {
         "decade": 1990,
         "label": "1990s",
-        "count": 96
+        "count": 96,
+        "averageRating": 3.5
       },
       {
         "decade": 2000,
         "label": "2000s",
-        "count": 220
+        "count": 220,
+        "averageRating": 3
       },
       {
         "decade": 2010,
         "label": "2010s",
-        "count": 137
+        "count": 137,
+        "averageRating": 3.5
       },
       {
         "decade": 2020,
         "label": "2020s",
-        "count": 114
+        "count": 114,
+        "averageRating": 3.5
       }
     ],
     "mostRewatched": [
@@ -18802,36 +18809,330 @@
         "title": "Half Baked",
         "year": "1998",
         "url": "https://letterboxd.com/nichtlegacy/film/half-baked/",
-        "views": 6
+        "views": 6,
+        "averageRating": 4
       },
       {
         "title": "The Big Lebowski",
         "year": "1998",
         "url": "https://letterboxd.com/nichtlegacy/film/the-big-lebowski/",
-        "views": 6
+        "views": 6,
+        "averageRating": 5
       },
       {
         "title": "Smiley Face",
         "year": "2007",
         "url": "https://letterboxd.com/nichtlegacy/film/smiley-face/",
-        "views": 5
+        "views": 5,
+        "averageRating": 4
       },
       {
         "title": "Dude, Where's My Car?",
         "year": "2000",
         "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/",
-        "views": 3
+        "views": 3,
+        "averageRating": 3.5
       },
       {
         "title": "High School",
         "year": "2010",
         "url": "https://letterboxd.com/nichtlegacy/film/high-school-2010/",
-        "views": 3
+        "views": 3,
+        "averageRating": 3.5
+      },
+      {
+        "title": "Jay and Silent Bob Strike Back",
+        "year": "2001",
+        "url": "https://letterboxd.com/nichtlegacy/film/jay-and-silent-bob-strike-back/",
+        "views": 3,
+        "averageRating": 3.5
+      },
+      {
+        "title": "Nirvanna the Band the Show the Movie",
+        "year": "2025",
+        "url": "https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/",
+        "views": 3,
+        "averageRating": 4
+      },
+      {
+        "title": "Scary Movie",
+        "year": "2000",
+        "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2000/",
+        "views": 3,
+        "averageRating": 3.5
+      },
+      {
+        "title": "Star Wars",
+        "year": "1977",
+        "url": "https://letterboxd.com/nichtlegacy/film/star-wars/",
+        "views": 3,
+        "averageRating": 4.5
+      },
+      {
+        "title": "Ted",
+        "year": "2012",
+        "url": "https://letterboxd.com/nichtlegacy/film/ted/",
+        "views": 3,
+        "averageRating": 4
+      },
+      {
+        "title": "The Prestige",
+        "year": "2006",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-prestige/",
+        "views": 3,
+        "averageRating": 4.5
+      },
+      {
+        "title": "21 Jump Street",
+        "year": "2012",
+        "url": "https://letterboxd.com/nichtlegacy/film/21-jump-street/",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
+        "title": "Anchorman: The Legend of Ron Burgundy",
+        "year": "2004",
+        "url": "https://letterboxd.com/nichtlegacy/film/anchorman-the-legend-of-ron-burgundy/",
+        "views": 2,
+        "averageRating": 3
+      },
+      {
+        "title": "Bad Santa",
+        "year": "2003",
+        "url": "https://letterboxd.com/nichtlegacy/film/bad-santa/",
+        "views": 2,
+        "averageRating": 3
+      },
+      {
+        "title": "Bad Teacher",
+        "year": "2011",
+        "url": "https://letterboxd.com/nichtlegacy/film/bad-teacher/",
+        "views": 2,
+        "averageRating": 2.5
+      },
+      {
+        "title": "Bill & Ted's Bogus Journey",
+        "year": "1991",
+        "url": "https://letterboxd.com/nichtlegacy/film/bill-teds-bogus-journey/",
+        "views": 2,
+        "averageRating": 2.5
+      },
+      {
+        "title": "Bill & Ted's Excellent Adventure",
+        "year": "1989",
+        "url": "https://letterboxd.com/nichtlegacy/film/bill-teds-excellent-adventure/",
+        "views": 2,
+        "averageRating": 3.5
+      },
+      {
+        "title": "Dazed and Confused",
+        "year": "1993",
+        "url": "https://letterboxd.com/nichtlegacy/film/dazed-and-confused/",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
+        "title": "Detroit Rock City",
+        "year": "1999",
+        "url": "https://letterboxd.com/nichtlegacy/film/detroit-rock-city/",
+        "views": 2,
+        "averageRating": 2.5
+      },
+      {
+        "title": "Deuce Bigalow: European Gigolo",
+        "year": "2005",
+        "url": "https://letterboxd.com/nichtlegacy/film/deuce-bigalow-european-gigolo/",
+        "views": 2,
+        "averageRating": 3
+      },
+      {
+        "title": "Donnie Darko",
+        "year": "2001",
+        "url": "https://letterboxd.com/nichtlegacy/film/donnie-darko/",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
+        "title": "Family Guy Presents: Blue Harvest",
+        "year": "2007",
+        "url": "https://letterboxd.com/nichtlegacy/film/family-guy-presents-blue-harvest/",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
+        "title": "Family Guy Presents: Something, Something, Something, Dark Side",
+        "year": "2009",
+        "url": "https://letterboxd.com/nichtlegacy/film/family-guy-presents-something-something-something-dark-side/",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
+        "title": "Fast Times at Ridgemont High",
+        "year": "1982",
+        "url": "https://letterboxd.com/nichtlegacy/film/fast-times-at-ridgemont-high/",
+        "views": 2,
+        "averageRating": 3
+      },
+      {
+        "title": "Ferris Bueller's Day Off",
+        "year": "1986",
+        "url": "https://letterboxd.com/nichtlegacy/film/ferris-buellers-day-off/",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
+        "title": "Grandma's Boy",
+        "year": "2006",
+        "url": "https://letterboxd.com/nichtlegacy/film/grandmas-boy-2006/",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
+        "title": "Man on the Moon",
+        "year": "1999",
+        "url": "https://letterboxd.com/nichtlegacy/film/man-on-the-moon/",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
+        "title": "Mardi Gras: Spring Break",
+        "year": "2011",
+        "url": "https://letterboxd.com/nichtlegacy/film/mardi-gras-spring-break/",
+        "views": 2,
+        "averageRating": 2.5
+      },
+      {
+        "title": "Scary Movie 4",
+        "year": "2006",
+        "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-4/",
+        "views": 2,
+        "averageRating": 2.5
+      },
+      {
+        "title": "Shaun of the Dead",
+        "year": "2004",
+        "url": "https://letterboxd.com/nichtlegacy/film/shaun-of-the-dead/",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
+        "title": "Snatch",
+        "year": "2000",
+        "url": "https://letterboxd.com/nichtlegacy/film/snatch/",
+        "views": 2,
+        "averageRating": 3
+      },
+      {
+        "title": "Strange Wilderness",
+        "year": "2008",
+        "url": "https://letterboxd.com/nichtlegacy/film/strange-wilderness/",
+        "views": 2,
+        "averageRating": 3.5
+      },
+      {
+        "title": "Super Troopers",
+        "year": "2001",
+        "url": "https://letterboxd.com/nichtlegacy/film/super-troopers/",
+        "views": 2,
+        "averageRating": 3
+      },
+      {
+        "title": "Ted 2",
+        "year": "2015",
+        "url": "https://letterboxd.com/nichtlegacy/film/ted-2/",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
+        "title": "The 40 Year Old Virgin",
+        "year": "2005",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-40-year-old-virgin/",
+        "views": 2,
+        "averageRating": 3.5
+      },
+      {
+        "title": "The Grand Budapest Hotel",
+        "year": "2014",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-grand-budapest-hotel/",
+        "views": 2,
+        "averageRating": 3.5
+      },
+      {
+        "title": "The Naked Gun",
+        "year": "2025",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-naked-gun/",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
+        "title": "The Nice Guys",
+        "year": "2016",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-nice-guys/",
+        "views": 2,
+        "averageRating": 3
+      },
+      {
+        "title": "The Stöned Age",
+        "year": "1994",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-stoned-age/",
+        "views": 2,
+        "averageRating": 3.5
+      },
+      {
+        "title": "The Ten",
+        "year": "2007",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-ten/",
+        "views": 2,
+        "averageRating": 2.5
+      },
+      {
+        "title": "The World's End",
+        "year": "2013",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-worlds-end/",
+        "views": 2,
+        "averageRating": 3.5
+      },
+      {
+        "title": "There's Something About Mary",
+        "year": "1998",
+        "url": "https://letterboxd.com/nichtlegacy/film/theres-something-about-mary/",
+        "views": 2,
+        "averageRating": 3
+      },
+      {
+        "title": "They Came Together",
+        "year": "2014",
+        "url": "https://letterboxd.com/nichtlegacy/film/they-came-together/",
+        "views": 2,
+        "averageRating": 2.5
+      },
+      {
+        "title": "Up in Smoke",
+        "year": "1978",
+        "url": "https://letterboxd.com/nichtlegacy/film/up-in-smoke-1978/",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
+        "title": "Your Highness",
+        "year": "2011",
+        "url": "https://letterboxd.com/nichtlegacy/film/your-highness/",
+        "views": 2,
+        "averageRating": 2.5
+      },
+      {
+        "title": "Your Name.",
+        "year": "2016",
+        "url": "https://letterboxd.com/nichtlegacy/film/your-name/",
+        "views": 2,
+        "averageRating": 4.5
       }
     ],
+    "milestoneStep": 100,
     "milestones": [
       {
         "n": 1,
+        "kind": "first",
         "date": "2024-02-22",
         "title": "Dune",
         "year": "2021",
@@ -18840,6 +19141,7 @@
       },
       {
         "n": 100,
+        "kind": "step",
         "date": "2024-11-15",
         "title": "The Number 23",
         "year": "2007",
@@ -18848,6 +19150,7 @@
       },
       {
         "n": 200,
+        "kind": "step",
         "date": "2025-02-03",
         "title": "There's Something About Mary",
         "year": "1998",
@@ -18856,6 +19159,7 @@
       },
       {
         "n": 300,
+        "kind": "step",
         "date": "2025-04-16",
         "title": "Liar Liar",
         "year": "1997",
@@ -18864,6 +19168,7 @@
       },
       {
         "n": 400,
+        "kind": "step",
         "date": "2025-07-04",
         "title": "Kill Bill: Vol. 1",
         "year": "2003",
@@ -18872,6 +19177,7 @@
       },
       {
         "n": 500,
+        "kind": "step",
         "date": "2025-11-27",
         "title": "The Tunnel to Summer, the Exit of Goodbyes",
         "year": "2022",
@@ -18880,6 +19186,7 @@
       },
       {
         "n": 599,
+        "kind": "latest",
         "date": "2026-07-30",
         "title": "Spider-Man: Brand New Day",
         "year": "2026",

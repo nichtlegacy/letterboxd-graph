@@ -7,7 +7,7 @@ name: Update Letterboxd Graph + JSON Export
 # What one run writes with the settings below:
 #
 #   github-letterboxd-{dark,light}.svg          this year and last, one block each
-#   letterboxd-review-<year>-{dark,light}.svg   a card per year in YEARS
+#   letterboxd-review-<year>-{dark,light}.svg   a card per year in REVIEW_YEARS
 #   letterboxd-review-current-month-*.svg       this month
 #   letterboxd-review-previous-month-*.svg      last month
 #   letterboxd-profile-{dark,light}.svg         all-time, not tied to a year
@@ -16,6 +16,7 @@ name: Update Letterboxd Graph + JSON Export
 env:
   LETTERBOXD_USERNAME: "nichtlegacy"  # Your Letterboxd username
   YEARS: "last 2"                      # "last 2" = this year and last, or a list like "2026,2025"
+  REVIEW_YEARS: "all"                  # "all" = every year present in the fetched diary
   SCOPE: "all"                         # "all" reads the whole diary — needed for all-time figures
   MONTH_CARDS: "2"                     # this month and last month, 0 to skip
   TOP_FILMS: "released"                # year cards rank "released" that year or everything "watched"
@@ -91,6 +92,7 @@ jobs:
         with:
           username: ${{ env.LETTERBOXD_USERNAME }}
           years: ${{ env.YEARS }}
+          review-years: ${{ env.REVIEW_YEARS }}
           scope: ${{ env.SCOPE }}
           month-cards: ${{ env.MONTH_CARDS }}
           top-films: ${{ env.TOP_FILMS }}

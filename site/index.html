@@ -39,12 +39,19 @@
   <link rel="stylesheet" href="styles.css">
 
   <!-- Applied before first paint so the page never flashes the wrong theme.
-       Nothing stored means the system setting decides. -->
+       Nothing stored means the system setting decides.
+
+       `is-loading` goes on in the same breath: every data section below starts
+       hidden, so until app.js has filled them in the page is short enough that
+       the closing block and the footer land inside the first screen and are
+       then shoved out of it. The class holds them back. It is set from script
+       so a reader without JavaScript still gets the whole page. -->
   <script>
     (() => {
       const stored = localStorage.getItem('lbg-theme');
       const system = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
       document.documentElement.dataset.theme = stored === 'dark' || stored === 'light' ? stored : system;
+      document.documentElement.classList.add('is-loading');
     })();
   </script>
 
@@ -62,7 +69,6 @@
       </a>
 
       <nav class="nav-links" aria-label="Sections">
-        <a href="#alltime">All time</a>
         <a href="#when">When</a>
         <a href="#ratings">Ratings</a>
         <a href="#milestones">Milestones</a>
@@ -79,25 +85,199 @@
 
   <main id="main">
     <section class="hero" id="top">
-      <div class="hero-text">
-        <p class="eyebrow" data-hero-eyebrow>Film diary, rendered</p>
-        <h1 class="display" data-hero-title>Letterboxd Graph</h1>
-        <p class="lead">
-          A film diary read straight off Letterboxd and drawn as a contribution
-          graph, a card per year and month, and the figures behind them.
-          <!-- A phone has no hover, so it is told what it does have instead. -->
-          <span class="on-hover">Hover works here</span><span class="on-touch">A
-          bar answers to a tap here</span> — inside a README neither does,
-          because GitHub serves the SVGs through an <code>&lt;img&gt;</code> tag
-          that receives no events at all.
-        </p>
-
-        <div class="actions">
-          <a class="button button-primary" data-profile-link href="https://letterboxd.com/" rel="noopener">Letterboxd profile</a>
-          <a class="button" data-export-link href="images/letterboxd-data.json">JSON export</a>
-          <a class="button" data-repo-link href="https://github.com/nichtlegacy/letterboxd-graph" rel="noopener">Source on GitHub</a>
-        </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg class="hero-art-pattern hero-art-pattern-left" viewBox="0 0 320 390" preserveAspectRatio="none" focusable="false">
+          <g transform="translate(-2 127)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="10" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="42" width="5" height="76" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="194" width="5" height="44" rx="2.5" />
+          </g>
+          <g transform="translate(18 117)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="30" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="84" width="5" height="70" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="184" width="5" height="44" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="232" width="5" height="4" rx="2.5" />
+          </g>
+          <g transform="translate(38 77)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="24" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-blue" y="32" width="5" height="50" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="104" width="5" height="90" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="204" width="5" height="64" rx="2.5" />
+          </g>
+          <g transform="translate(58 127)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="20" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="64" width="5" height="40" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="144" width="5" height="74" rx="2.5" />
+          </g>
+          <g transform="translate(78 74)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="4" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-blue" y="23" width="5" height="20" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="51" width="5" height="170" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="246" width="5" height="34" rx="2.5" />
+          </g>
+          <g transform="translate(98 82)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="28" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="46" width="5" height="60" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="114" width="5" height="4" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="142" width="5" height="42" rx="2.5" />
+          </g>
+          <g transform="translate(118 111)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="28" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="36" width="5" height="80" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="132" width="5" height="32" rx="2.5" />
+          </g>
+          <g transform="translate(138 86)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="28" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="36" width="5" height="80" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="132" width="5" height="32" rx="2.5" />
+          </g>
+          <g transform="translate(158 86)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="28" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="36" width="5" height="80" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="132" width="5" height="32" rx="2.5" />
+          </g>
+          <g transform="translate(178 40)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="70" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="102" width="5" height="100" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="210" width="5" height="12" rx="2.5" />
+          </g>
+          <g transform="translate(198 111)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="28" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="46" width="5" height="60" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="142" width="5" height="42" rx="2.5" />
+          </g>
+          <g transform="translate(218 96)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="4" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-blue" y="12" width="5" height="18" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="48" width="5" height="70" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="144" width="5" height="22" rx="2.5" />
+          </g>
+          <g transform="translate(238 80)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="47" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="68" width="5" height="20" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="96" width="5" height="90" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="212" width="5" height="32" rx="2.5" />
+          </g>
+          <g transform="translate(258 84)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="60" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="78" width="5" height="90" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="201" width="5" height="52" rx="2.5" />
+          </g>
+          <g transform="translate(278 111)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="28" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="66" width="5" height="70" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="152" width="5" height="52" rx="2.5" />
+          </g>
+          <g transform="translate(298 121)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="48" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="55" width="5" height="90" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="169" width="5" height="22" rx="2.5" />
+          </g>
+          <g transform="translate(318 70)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="77" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="86" width="5" height="80" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="202" width="5" height="32" rx="2.5" />
+          </g>
+        </svg>
+        <svg class="hero-art-pattern hero-art-pattern-right" viewBox="0 0 320 390" preserveAspectRatio="none" focusable="false">
+          <g transform="translate(-2 101)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="10" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="36" width="5" height="80" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="124" width="5" height="72" rx="2.5" />
+          </g>
+          <g transform="translate(18 81)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="28" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="56" width="5" height="70" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="172" width="5" height="42" rx="2.5" />
+          </g>
+          <g transform="translate(38 39)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="77" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="83" width="5" height="74" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="214" width="5" height="22" rx="2.5" />
+          </g>
+          <g transform="translate(58 76)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="10" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-blue" y="18" width="5" height="28" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="63" width="5" height="60" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="185" width="5" height="36" rx="2.5" />
+          </g>
+          <g transform="translate(78 107)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="10" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="46" width="5" height="60" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="149" width="5" height="32" rx="2.5" />
+          </g>
+          <g transform="translate(98 110)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="38" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="66" width="5" height="30" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="131" width="5" height="42" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="182" width="5" height="12" rx="2.5" />
+          </g>
+          <g transform="translate(118 100)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="28" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="66" width="5" height="50" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="172" width="5" height="32" rx="2.5" />
+          </g>
+          <g transform="translate(138 100)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="28" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="63" width="5" height="50" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="138" width="5" height="82" rx="2.5" />
+          </g>
+          <g transform="translate(158 91)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="28" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="88" width="5" height="80" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="184" width="5" height="32" rx="2.5" />
+          </g>
+          <g transform="translate(178 64)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="68" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="100" width="5" height="119" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="226" width="5" height="10" rx="2.5" />
+          </g>
+          <g transform="translate(198 78)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="80" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="112" width="5" height="60" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="184" width="5" height="30" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="222" width="5" height="10" rx="2.5" />
+          </g>
+          <g transform="translate(218 108)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="48" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="79" width="5" height="40" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="152" width="5" height="62" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="222" width="5" height="4" rx="2.5" />
+          </g>
+          <g transform="translate(238 83)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="58" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="104" width="5" height="80" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="192" width="5" height="32" rx="2.5" />
+          </g>
+          <g transform="translate(258 94)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="48" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="70" width="5" height="99" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="196" width="5" height="30" rx="2.5" />
+          </g>
+          <g transform="translate(278 78)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="70" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="86" width="5" height="50" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="174" width="5" height="60" rx="2.5" />
+          </g>
+          <g transform="translate(298 88)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="28" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="59" width="5" height="70" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="162" width="5" height="42" rx="2.5" />
+          </g>
+          <g transform="translate(318 63)">
+            <rect class="hero-art-line hero-art-line-blue" width="5" height="58" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-green" y="67" width="5" height="80" rx="2.5" />
+            <rect class="hero-art-line hero-art-line-orange" y="172" width="5" height="62" rx="2.5" />
+          </g>
+        </svg>
       </div>
+      <div class="hero-text">
+        <h1 class="display" data-hero-title>A Life in Film</h1>
+        <p class="hero-subtitle">
+          <a data-profile-link href="https://letterboxd.com/" rel="noopener"><span data-hero-user>@username</span></a>’s all-time stats
+        </p>
+      </div>
+      <dl class="hero-kpis" data-hero-kpis></dl>
     </section>
 
     <noscript>
@@ -108,26 +288,10 @@
       </p>
     </noscript>
 
-    <section class="section" id="alltime" data-alltime hidden>
-      <div class="section-head">
-        <p class="eyebrow">All time</p>
-        <h2 data-alltime-title>The diary in numbers</h2>
-        <p class="section-note" data-alltime-note></p>
-      </div>
-
-      <div class="tiles" data-alltime-tiles></div>
-      <div class="strip" data-alltime-strip></div>
-      <div class="year-strip" data-alltime-years></div>
-    </section>
-
     <section class="section" id="when" data-when hidden>
       <div class="section-head">
-        <p class="eyebrow">By month</p>
+        <p class="eyebrow">Over time</p>
         <h2>When you watched</h2>
-        <p class="section-note">
-          Every month between the first diary entry and the last, quiet ones
-          included — a gap is as much a part of a viewing history as a run.
-        </p>
       </div>
 
       <div class="chart" data-month-chart></div>
@@ -138,16 +302,18 @@
       </div>
 
       <div class="facts" data-when-facts></div>
+
+      <div class="years" data-when-years hidden>
+        <h3 class="years-title">By year</h3>
+        <p class="section-note" data-when-years-note></p>
+        <div class="years-row" data-when-year-list></div>
+      </div>
     </section>
 
     <section class="section" id="ratings" data-ratings hidden>
       <div class="section-head">
         <p class="eyebrow">Distribution</p>
         <h2>How you rated</h2>
-        <p class="section-note">
-          Every rating in the diary, half stars and all. Unrated entries are left
-          out rather than counted as zero.
-        </p>
       </div>
 
       <div class="ratings-grid">
@@ -161,8 +327,7 @@
         <p class="eyebrow">Release decades &amp; repeats</p>
         <h2>What you reached for</h2>
         <p class="section-note">
-          Which decades the films came out in, and the ones you went back to more
-          than once.
+          Which decades you pull from, how they scored, and the films you came back to.
         </p>
       </div>
 
@@ -176,9 +341,7 @@
       <div class="section-head">
         <p class="eyebrow">Milestones</p>
         <h2>Where the diary turned over</h2>
-        <p class="section-note">
-          The first entry, every hundredth after it, and the latest one.
-        </p>
+        <p class="section-note" data-milestone-note></p>
       </div>
 
       <ol class="milestones" data-milestone-list></ol>
@@ -218,10 +381,8 @@
         <p class="eyebrow">Latest</p>
         <h2>Recent diary</h2>
         <p class="section-note">
-          The last sixteen entries, straight out of the JSON export, newest first
-          and read down one column then the other.
-          <span class="marker marker-rewatch">&#8635;</span> marks a rewatch,
-          <span class="marker marker-like">&#9829;</span> a like.
+          Recent entries, newest first. <span class="marker marker-rewatch">&#8635;</span>
+          marks a rewatch; <span class="marker marker-like">&#9829;</span> a like.
         </p>
       </div>
       <div class="diary-columns" data-diary-list></div>

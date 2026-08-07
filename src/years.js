@@ -41,3 +41,28 @@ export function resolveYears(value, now = new Date()) {
   // run: the graph is worth more than the typo is worth stopping for.
   return explicit.length > 0 ? [...new Set(explicit)] : [current];
 }
+
+/**
+ * Turn the review-card selection into the years available in the fetched diary.
+ *
+ * `all` means every year with at least one diary entry. Other values use the
+ * same explicit-list and relative-span syntax as the graph selection.
+ *
+ * @param {string|number|null} value - The option as written
+ * @param {Array} entries - Fetched diary entries
+ * @param {Date} now - Clock, injectable so the tests do not drift
+ * @returns {Array<number>} Years, newest first for `all`
+ */
+export function resolveReviewYears(value, entries = [], now = new Date()) {
+  const spec = String(value ?? 'all').trim().toLowerCase();
+
+  if (spec === 'all' || !spec) {
+    return [...new Set(
+      entries
+        .map((entry) => entry.date.getUTCFullYear())
+        .filter((year) => Number.isInteger(year))
+    )].sort((a, b) => b - a);
+  }
+
+  return resolveYears(spec, now);
+}

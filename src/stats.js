@@ -155,25 +155,59 @@ export function calculateAverageRating(entries) {
   return Math.round((sum / rated.length) * 10) / 10;
 }
 
+function roundRating(value) {
+  return Math.round(value * 2) / 2;
+}
+
 /**
  * Group entries by the release decade of the film
  * @param {Array} entries - Array of diary entries
- * @returns {Array<{decade: number, label: string, count: number}>} Decades in ascending order, gaps omitted
+ * @returns {Array<{decade: number, label: string, count: number, averageRating: number|null}>} Decades in ascending order, gaps omitted
  */
 export function calculateDecadeDistribution(entries) {
-  const counts = new Map();
+  const groups = new Map();
 
   for (const entry of entries) {
     const filmYear = Number.parseInt(entry.year, 10);
     if (!Number.isFinite(filmYear) || filmYear < 1870 || filmYear > 2999) continue;
 
     const decade = Math.floor(filmYear / 10) * 10;
-    counts.set(decade, (counts.get(decade) || 0) + 1);
+    const group = groups.get(decade) || { decade, count: 0, ratingTotal: 0, rated: 0 };
+    group.count += 1;
+    if (entry.rating !== null && entry.rating !== undefined) {
+      group.ratingTotal += entry.rating;
+      group.rated += 1;
+    }
+    groups.set(decade, group);
   }
 
-  return [...counts.entries()]
-    .sort((a, b) => a[0] - b[0])
-    .map(([decade, count]) => ({ decade, label: `${decade}s`, count }));
+  return [...groups.values()]
+    .sort((a, b) => a.decade - b.decade)
+    .map(({ decade, count, ratingTotal, rated }) => ({
+      decade,
+      label: `${decade}s`,
+      count,
+      averageRating: rated > 0 ? roundRating(ratingTotal / rated) : null
+    }));
+}
+
+const MILESTONE_STEPS = [25, 50, 100, 250, 500, 1000, 2500, 5000, 10000, 25000];
+
+/**
+ * Choose the interval between numbered milestones.
+ *
+ * A fixed hundred reads well for a six hundred entry diary and falls apart for
+ * a five thousand entry one: the same rule would mark fifty-two of them. Take
+ * the smallest interval that leaves at most `limit` numbered marks, so the
+ * section stays one readable span whatever the size of the diary.
+ *
+ * @param {number} total - Diary entries available
+ * @param {number} limit - Most numbered milestones to allow
+ * @returns {number} Interval between milestones
+ */
+export function chooseMilestoneStep(total, limit = 5) {
+  return MILESTONE_STEPS.find((step) => Math.floor(total / step) <= limit)
+    ?? MILESTONE_STEPS.at(-1);
 }
 
 /**
@@ -189,11 +223,12 @@ export function calculateDecadeDistribution(entries) {
  * @param {number|null} options.totalFilms - Films watched per the profile page, which
  *   counts films ticked off without a diary entry and is therefore higher
  * @param {string} options.scope - "all" when the whole diary was fetched, "years" otherwise
- * @param {number} options.milestoneStep - Diary entry interval to mark, 0 to skip
+ * @param {number|'auto'} options.milestoneStep - Diary entry interval to mark, 0 to skip,
+ *   "auto" to scale the interval with the size of the diary
  * @returns {Object|null} Aggregates, or null without entries
  */
 export function buildAllTimeStats(entries, options = {}) {
-  const { totalFilms = null, scope = 'all', milestoneStep = 100 } = options;
+  const { totalFilms = null, scope = 'all', milestoneStep = 'auto' } = options;
   if (!entries || entries.length === 0) return null;
 
   const sorted = [...entries].sort((a, b) => a.date.getTime() - b.date.getTime());
@@ -228,8 +263,19 @@ export function buildAllTimeStats(entries, options = {}) {
     }
 
     const key = filmKey(entry);
-    const seen = views.get(key) || { title: entry.title, year: entry.year, url: entry.url || null, views: 0 };
+    const seen = views.get(key) || {
+      title: entry.title,
+      year: entry.year,
+      url: entry.url || null,
+      views: 0,
+      ratingTotal: 0,
+      rated: 0
+    };
     seen.views += 1;
+    if (entry.rating !== null && entry.rating !== undefined) {
+      seen.ratingTotal += entry.rating;
+      seen.rated += 1;
+    }
     views.set(key, seen);
   }
 
@@ -256,8 +302,15 @@ export function buildAllTimeStats(entries, options = {}) {
     if (gap > longestGap.days) longestGap = { days: gap, from, to };
   }
 
-  const milestone = (entry, position) => ({
+  // The step scales with the diary unless a caller pins it, so the row holds its
+  // length instead of growing a marker every hundred entries forever.
+  const step = milestoneStep === 'auto' ? chooseMilestoneStep(sorted.length) : milestoneStep;
+
+  // The label is decided here rather than in a consumer: only this function knows
+  // the step, so only it can tell a round number from the end of the diary.
+  const milestone = (entry, position, kind) => ({
     n: position,
+    kind,
     date: iso(entry.date),
     title: entry.title,
     year: entry.year || null,
@@ -265,14 +318,14 @@ export function buildAllTimeStats(entries, options = {}) {
     url: entry.url || null
   });
 
-  const milestones = [milestone(sorted[0], 1)];
-  if (milestoneStep > 0) {
-    for (let position = milestoneStep; position <= sorted.length; position += milestoneStep) {
-      milestones.push(milestone(sorted[position - 1], position));
+  const milestones = [milestone(sorted[0], 1, 'first')];
+  if (step > 0) {
+    for (let position = step; position <= sorted.length; position += step) {
+      milestones.push(milestone(sorted[position - 1], position, 'step'));
     }
   }
   if (sorted.length > 1 && milestones.at(-1).n !== sorted.length) {
-    milestones.push(milestone(sorted.at(-1), sorted.length));
+    milestones.push(milestone(sorted.at(-1), sorted.length, 'latest'));
   }
 
   const spanDays = Math.round((sorted.at(-1).date.getTime() - sorted[0].date.getTime()) / 86400000) + 1;
@@ -310,7 +363,11 @@ export function buildAllTimeStats(entries, options = {}) {
     mostRewatched: [...views.values()]
       .filter((film) => film.views > 1)
       .sort((a, b) => b.views - a.views || a.title.localeCompare(b.title))
-      .slice(0, 5),
+      .map(({ ratingTotal, rated, ...film }) => ({
+        ...film,
+        averageRating: rated > 0 ? roundRating(ratingTotal / rated) : null
+      })),
+    milestoneStep: step,
     milestones
   };
 }

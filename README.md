@@ -132,7 +132,7 @@ Hovering reveals more than the graph shows at rest:
 
 ### Year in Review
 
-`letterboxd-review-<year>-{dark,light}.svg` — one card per year in `years`.
+`letterboxd-review-<year>-{dark,light}.svg` — one card per year in `review-years`.
 
 <p align="center">
   <picture>
@@ -260,7 +260,8 @@ All options are action inputs. Only `username` is required.
 | Input | Description | Default |
 |-------|-------------|---------|
 | `username` | Letterboxd username (**required**) | – |
-| `years` | `last N` for the last N years, or a list like `2026,2025` | current year |
+| `years` | Contribution graph years: `last N` or a list like `2026,2025` | current year |
+| `review-years` | Year cards: `all`, `last N`, or a list like `2026,2025`; `all` uses every year in the fetched diary | `all` |
 | `scope` | Diary scope: `all` or `years` | `all` |
 | `month-cards` | Recent months to also make cards for, `0` to skip | `2` |
 | `top-films` | Year card film list: `watched` or `released` | `watched` |
@@ -278,11 +279,13 @@ All options are action inputs. Only `username` is required.
 Outputs `svg-dark`, `svg-light` and `data-json` carry the paths written, for
 chaining into an upload or deploy step.
 
-`years` is worth a second look. `last 2` is read as *this year and last* on the
-day the run happens, so the graph rolls over on its own; a pinned `2026,2025`
-keeps drawing 2025 all through 2027, and nothing in the run looks wrong while it
-does. Cards for a year that drops out of the list are deleted on the next run,
-so nothing is left behind either way.
+`years` controls the contribution graph. `last 2` is read as *this year and last*
+on the day the run happens, so the graph rolls over on its own; a pinned
+`2026,2025` keeps drawing 2025 all through 2027, and nothing in the run looks
+wrong while it does. `review-years` controls the year cards independently. Its
+default `all` creates one card for every year present in the fetched diary, while
+a list or `last N` limits the cards deliberately. Cards for a year that drops out
+of the selection are deleted on the next run.
 
 <details>
 <summary><b>Alternative: fork and run the CLI directly</b></summary>
@@ -294,6 +297,7 @@ To own the whole workflow instead, fork this repository and edit
 env:
   LETTERBOXD_USERNAME: "YOUR_USERNAME"
   YEARS: "last 2"                      # this year and last, or a list like "2026,2025"
+  REVIEW_YEARS: "all"                  # every year in the fetched diary, or a selection
   SCOPE: "all"                         # "all" (whole diary) or "years"
   MONTH_CARDS: "2"                     # recent months to card, 0 to skip
   TOP_FILMS: "watched"                 # "watched" or "released" film list
@@ -319,7 +323,8 @@ node src/cli.js <username> [options]
 
 | Flag | Description | Default |
 |------|-------------|---------|
-| `-y <years>` | `last N`, or a list like `2026,2025` | current year |
+| `-y <years>` | Contribution graph years: `last N` or a list like `2026,2025` | current year |
+| `--review-years <years>` | Year cards: `all`, `last N`, or a list like `2026,2025` | all |
 | `-s <scope>` | Diary scope: `all` or `years` | `all` |
 | `-c <count>` | Recent months to also card, `0` to skip | `2` |
 | `-r <scope>` | Year card film list: `watched` or `released` | `watched` |
@@ -331,8 +336,8 @@ node src/cli.js <username> [options]
 | `-o <path>` | Output path without extension | `images/github-letterboxd` |
 
 ```bash
-# Two years
-node src/cli.js nichtlegacy -y 2026,2025
+# Two graph years, cards for every year in the diary
+node src/cli.js nichtlegacy -y 2026,2025 --review-years all
 
 # Only the requested year, no month cards
 node src/cli.js nichtlegacy -y 2025 -s years -c 0
@@ -385,10 +390,11 @@ called *Leo*. @Rufus_Firefly has 55 titles that are actually different films, so
 matching on the title alone would invent rewatches and merge unrelated films in
 the [ranking](#film-ranking).
 
-The graph and the year cards still only cover the years in `years`; the rest is
-filtered out of the same fetch rather than requested again. Set `scope: years`
-to fetch only those years — cheaper on a large diary, but it leaves the profile
-card scoped to them and labelled with the range.
+The graph covers the years in `years`; year cards cover `review-years`. Under the
+default `scope: all`, both are filtered from the same complete fetch rather than
+requested again. Set `scope: years` to fetch only the graph years — cheaper on a
+large diary, but it leaves the profile card and `review-years: all` scoped to the
+years that were fetched.
 
 ### Film Ranking
 
@@ -478,9 +484,10 @@ https://raw.githubusercontent.com/<github-user>/letterboxd-graph/main/images/let
     "perMonthOfYear": [51, 44, 39, 47, 38, 30, 41, 33, 29, 36, 34, 37],
     "monthSeries": [{ "month": "2026-02", "count": 12 }],
     "ratings": [{ "rating": 3.5, "count": 125 }],
-    "decades": [{ "decade": 2020, "label": "2020s", "count": 89 }],
-    "mostRewatched": [{ "title": "Half Baked", "year": "1998", "url": "https://letterboxd.com/...", "views": 5 }],
-    "milestones": [{ "n": 100, "date": "2025-03-08", "title": "Film B", "year": "2004", "rating": 3, "url": "https://letterboxd.com/..." }]
+    "decades": [{ "decade": 2020, "label": "2020s", "count": 89, "averageRating": 3.5 }],
+    "mostRewatched": [{ "title": "Half Baked", "year": "1998", "url": "https://letterboxd.com/...", "views": 5, "averageRating": 4.5 }],
+    "milestoneStep": 100,
+    "milestones": [{ "n": 100, "kind": "step", "date": "2025-03-08", "title": "Film B", "year": "2004", "rating": 3, "url": "https://letterboxd.com/..." }]
   }
 }
 ```
@@ -530,11 +537,11 @@ limit — the cards at full size, and the figures behind them read out at length
 
 | Section | What is on it |
 |---------|---------------|
-| **The diary in numbers** | Films, days active and average rating, then distinct films, rewatches, likes, longest streak — and a bar per year |
-| **When you watched** | A column per month, empty ones included; weekday distribution, weekly and monthly averages, busiest day, longest streak, longest quiet stretch |
+| **A Life in Film** | The opening: films watched, distinct films, diary entries, days active, average rating and longest streak, on one row |
+| **When you watched** | A column per month, empty ones included; weekday distribution, weekly and monthly averages, busiest day, longest streak, longest quiet stretch — and a figure per year, written out rather than drawn, so a twenty-year diary reads as cleanly as a two-year one |
 | **How you rated** | The half-star histogram, empty steps kept, beside the average, the most given rating and how much is rated or liked at all |
 | **What you reached for** | Films by release decade, and the five you went back to most |
-| **Where it turned over** | The first entry, every hundredth after it, and the latest |
+| **Where it turned over** | The first entry, the round numbers after it, and the latest, on one track. `milestoneStep` scales with the diary — every 25th at a hundred entries, every thousandth at five thousand — so the row holds its length instead of growing a marker per hundred |
 | **The cards** | Graph, a tab per year, a tab per month, profile — each with **Copy image**, **Copy SVG**, **Copy embed** and **Open SVG**, the same four on a right click anywhere on the card |
 | **Recent diary** | The last sixteen entries, out of the JSON export, in two columns |
 
