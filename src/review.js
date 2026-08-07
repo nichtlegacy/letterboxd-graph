@@ -40,12 +40,13 @@ const TILE_WIDTH = 170;
 const TILE_GAP = 14;
 const TILE_TOP = 280;
 
-// Top rated rows
-const ROW_HEIGHT = 88;
-const ROW_GAP = 8;
-const ROW_TOP = 96;
-const POSTER_WIDTH = 42;
-const POSTER_HEIGHT = 63;
+// Top rated rows. Without a heading above them the list starts level with the
+// profile block, which buys enough height for posters large enough to recognise.
+const ROW_HEIGHT = 96;
+const ROW_GAP = 9;
+const ROW_TOP = 52;
+const POSTER_WIDTH = 47;
+const POSTER_HEIGHT = 70;
 const TOP_FILM_COUNT = 5;
 
 const CONTENT_BOTTOM = ROW_TOP + TOP_FILM_COUNT * ROW_HEIGHT + (TOP_FILM_COUNT - 1) * ROW_GAP;
@@ -56,9 +57,14 @@ const TILE_HEIGHT = (CONTENT_BOTTOM - TILE_TOP - TILE_GAP) / 2;
 export const POSTER_PIXEL_WIDTH = POSTER_WIDTH * 2;
 export const POSTER_PIXEL_HEIGHT = POSTER_HEIGHT * 2;
 
-// Letterboxd renders ratings in its signature green, so the stars and the crown
-// that heads the list follow suit rather than using a generic gold.
+// Letterboxd renders ratings in its signature green, so the stars follow suit
+// rather than using a generic gold.
 const STAR_COLOR = '#00e054';
+
+// Rating histogram drawn inside the average rating tile
+const RATING_STEPS = 10;
+const HISTOGRAM_BAR = 8;
+const HISTOGRAM_HEIGHT = 14;
 
 /**
  * 24x24 icon paths, drawn with a stroke so they stay legible when scaled down
@@ -69,8 +75,7 @@ const ICONS = {
   streak: '<path d="M12 2c.5 3 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3a2.5 2.5 0 0 0 2.5 2.5A2.5 2.5 0 0 0 11 11c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6Z"/>',
   rating: '<path d="m12 3 2.6 5.6 6 .8-4.4 4.2 1.1 6.1L12 16.8 6.7 19.7l1.1-6.1L3.4 9.4l6-.8L12 3Z"/>',
   rewatches: '<path d="M3 12a9 9 0 0 1 15.3-6.4L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.3 6.4L3 16"/><path d="M3 21v-5h5"/>',
-  liked: '<path d="M12 20.3 4.6 13a4.6 4.6 0 0 1 6.5-6.5l.9.9.9-.9A4.6 4.6 0 1 1 19.4 13L12 20.3Z"/>',
-  crown: '<path d="M3 7l4.5 4L12 4l4.5 7L21 7l-1.8 11H4.8L3 7Z"/>'
+  liked: '<path d="M12 20.3 4.6 13a4.6 4.6 0 0 1 6.5-6.5l.9.9.9-.9A4.6 4.6 0 1 1 19.4 13L12 20.3Z"/>'
 };
 
 // One accent per tile, matching the roles the colors already have elsewhere:
@@ -105,33 +110,99 @@ function truncateToWidth(text, fontSize, maxWidth) {
   return `${cut.trimEnd()}…`;
 }
 
+// Ranking weights. A rating step is 0.5, and the bonuses add up to at most
+// 0.46, so a film can never overtake one rated half a star higher. They only
+// decide the order *within* a rating, which is where the real problem is: a
+// typical year has a handful of films at the top rating and a dozen tied one
+// step below, and the last slots would otherwise be filled arbitrarily.
+const LIKE_BONUS = 0.3;
+const REWATCH_BONUS = 0.08;
+const MAX_REWATCH_BONUS = 0.16;
+
 /**
- * Pick the highest rated films of the year.
- *
- * Deduplicated by title, because a rewatch is a separate diary entry and would
- * otherwise take two of the five slots. Ties are broken by the more recent
- * watch so the list stays stable rather than depending on input order.
- *
- * @param {Array} entries - Diary entries for the year
- * @param {number} limit
- * @returns {Array} Entries, highest rated first
+ * Count films per half-star step, from 0.5 to 5
+ * @param {Array} entries
+ * @returns {number[]} Ten counts
  */
-export function pickTopFilms(entries, limit = TOP_FILM_COUNT) {
-  const best = new Map();
+function ratingHistogram(entries) {
+  const buckets = new Array(RATING_STEPS).fill(0);
 
   for (const entry of entries) {
     if (!entry.rating) continue;
+    const index = Math.round(entry.rating * 2) - 1;
+    if (index >= 0 && index < RATING_STEPS) buckets[index]++;
+  }
+  return buckets;
+}
 
-    const existing = best.get(entry.title);
-    if (!existing
-      || entry.rating > existing.rating
-      || (entry.rating === existing.rating && entry.date > existing.date)) {
-      best.set(entry.title, entry);
+/**
+ * Score a film for the top rated list.
+ *
+ * Rating is the primary signal. A like is the strongest secondary one — people
+ * like sparingly, so it says more than a rewatch. Repeat viewings add a little,
+ * with diminishing returns, so a comfort watch does not outrank everything.
+ *
+ * @param {Object} film - Aggregated film record
+ * @returns {number}
+ */
+function scoreFilm(film) {
+  const rewatchBonus = Math.min((film.watches - 1) * REWATCH_BONUS, MAX_REWATCH_BONUS);
+  return film.rating + (film.liked ? LIKE_BONUS : 0) + rewatchBonus;
+}
+
+/**
+ * Aggregate diary entries into one record per film.
+ *
+ * A rewatch is a separate diary entry, so without this a film could take
+ * several of the available slots. The best rating wins, and the like and
+ * rewatch signals are merged across all viewings of that film.
+ *
+ * @param {Array} entries - Diary entries for the period
+ * @returns {Array} One record per film, carrying watches/liked/rating
+ */
+export function aggregateFilms(entries) {
+  const films = new Map();
+
+  for (const entry of entries) {
+    const existing = films.get(entry.title);
+
+    if (!existing) {
+      films.set(entry.title, {
+        ...entry,
+        rating: entry.rating || 0,
+        watches: 1,
+        liked: Boolean(entry.liked)
+      });
+      continue;
     }
+
+    existing.watches++;
+    existing.liked = existing.liked || Boolean(entry.liked);
+    if ((entry.rating || 0) > existing.rating) {
+      existing.rating = entry.rating;
+      existing.url = entry.url;
+      existing.year = entry.year;
+    }
+    if (entry.date > existing.date) existing.date = entry.date;
   }
 
-  return [...best.values()]
-    .sort((a, b) => b.rating - a.rating || b.date.getTime() - a.date.getTime())
+  return [...films.values()];
+}
+
+/**
+ * Pick the top rated films of a period, best first.
+ *
+ * @param {Array} entries - Diary entries for the period
+ * @param {number} limit
+ * @returns {Array} Aggregated film records, highest scoring first
+ */
+export function pickTopFilms(entries, limit = TOP_FILM_COUNT) {
+  return aggregateFilms(entries)
+    .filter(film => film.rating > 0)
+    .sort((a, b) =>
+      scoreFilm(b) - scoreFilm(a)
+      || b.watches - a.watches
+      || b.date.getTime() - a.date.getTime())
     .slice(0, limit);
 }
 
@@ -170,6 +241,7 @@ function renderIcon(path, x, y, size, color) {
  * @param {string} options.username - Letterboxd username
  * @param {string} options.displayName - Profile display name
  * @param {string|null} options.profileImage - Data URI for the avatar
+ * @param {string|null} options.logoBase64 - Data URI for the Letterboxd logo
  * @param {Map<string, string>} options.posters - Film URL to poster data URI
  * @param {boolean} options.usernameGradient - Color the display name
  * @param {boolean} options.yearGradient - Color the year headline
@@ -183,6 +255,7 @@ export async function generateReviewCard(entries, options = {}) {
     username = '',
     displayName = username,
     profileImage = null,
+    logoBase64 = null,
     posters = new Map(),
     usernameGradient = true,
     yearGradient = true
@@ -211,15 +284,32 @@ export async function generateReviewCard(entries, options = {}) {
     { icon: 'liked', value: String(yearEntries.filter(entry => entry.liked).length), label: 'Liked' }
   ];
 
+  // The rating tile carries the distribution the average was taken from, drawn
+  // in the space between the figure and the label so every tile keeps the same
+  // baselines and the grid stays aligned.
+  const histogram = ratingHistogram(yearEntries);
+  const histogramPeak = Math.max(...histogram);
+
   const tilesMarkup = stats.map((stat, index) => {
     const x = CONTENT_LEFT + (index % 3) * (TILE_WIDTH + TILE_GAP);
     const y = TILE_TOP + Math.floor(index / 3) * (TILE_HEIGHT + TILE_GAP);
     const centerX = x + TILE_WIDTH / 2;
+
+    const bars = stat.icon === 'rating' && histogramPeak > 0
+      ? histogram.map((count, step) => {
+        const barHeight = Math.max(Math.round((count / histogramPeak) * HISTOGRAM_HEIGHT), 1);
+        const barX = centerX - (RATING_STEPS * HISTOGRAM_BAR + (RATING_STEPS - 1) * 3) / 2
+          + step * (HISTOGRAM_BAR + 3);
+        return `<rect x="${barX.toFixed(1)}" y="${y + 110 - barHeight}" width="${HISTOGRAM_BAR}" height="${barHeight}" rx="1.5" fill="${TILE_ACCENTS[index]}" fill-opacity="${count > 0 ? 0.85 : 0.25}"/>`;
+      }).join('')
+      : '';
+
     return `
     <rect x="${x}" y="${y}" width="${TILE_WIDTH}" height="${TILE_HEIGHT}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
-    ${renderIcon(ICONS[stat.icon], centerX - 13, y + 26, 26, TILE_ACCENTS[index])}
-    <text x="${centerX}" y="${y + 96}" font-size="36" font-weight="700" fill="${t.text}" text-anchor="middle">${escapeXml(stat.value)}</text>
-    <text x="${centerX}" y="${y + 120}" font-size="14" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(stat.label)}</text>`;
+    ${renderIcon(ICONS[stat.icon], centerX - 13, y + 22, 26, TILE_ACCENTS[index])}
+    <text x="${centerX}" y="${y + 92}" font-size="36" font-weight="700" fill="${t.text}" text-anchor="middle">${escapeXml(stat.value)}</text>
+    ${bars}
+    <text x="${centerX}" y="${y + 126}" font-size="14" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(stat.label)}</text>`;
   }).join('');
 
   const topFilms = pickTopFilms(yearEntries);
@@ -227,29 +317,33 @@ export async function generateReviewCard(entries, options = {}) {
   const rowsMarkup = topFilms.length === 0
     ? `
     <rect x="${RIGHT_X}" y="${ROW_TOP}" width="${RIGHT_WIDTH}" height="${ROW_HEIGHT}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
-    <text x="${RIGHT_X + RIGHT_WIDTH / 2}" y="${ROW_TOP + 48}" font-size="16" font-weight="500" fill="${t.textMuted}" text-anchor="middle">No rated films this year</text>`
+    <text x="${RIGHT_X + RIGHT_WIDTH / 2}" y="${ROW_TOP + ROW_HEIGHT / 2 + 6}" font-size="16" font-weight="500" fill="${t.textMuted}" text-anchor="middle">No rated films this year</text>`
     : topFilms.map((film, index) => {
       const y = ROW_TOP + index * (ROW_HEIGHT + ROW_GAP);
+      const midY = y + ROW_HEIGHT / 2;
       const stars = formatStars(film.rating);
-      const starsWidth = calculateTextWidth(stars, 17);
-      const titleX = RIGHT_X + 112;
-      const titleMax = CONTENT_RIGHT - 24 - starsWidth - 16 - titleX;
+      const starsWidth = calculateTextWidth(stars, 18);
+      const posterX = RIGHT_X + 58;
+      const titleX = posterX + POSTER_WIDTH + 20;
+      const titleMax = CONTENT_RIGHT - 26 - starsWidth - 18 - titleX;
+      const posterY = y + (ROW_HEIGHT - POSTER_HEIGHT) / 2;
       const poster = posters.get(film.url);
 
       return `
     <rect x="${RIGHT_X}" y="${y}" width="${RIGHT_WIDTH}" height="${ROW_HEIGHT}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
-    <text x="${RIGHT_X + 28}" y="${y + 50}" font-size="22" font-weight="700" fill="${RANK_ACCENTS[index]}" text-anchor="middle">${index + 1}</text>
-    <rect x="${RIGHT_X + 52}" y="${y + 12}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" rx="5" fill="${isDark ? '#0d1117' : '#dfe4e9'}"/>
-    ${poster ? `<image href="${poster}" x="${RIGHT_X + 52}" y="${y + 12}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" clip-path="url(#posterClip${index})" preserveAspectRatio="xMidYMid slice"/>` : ''}
-    <rect x="${RIGHT_X + 52}" y="${y + 12}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" rx="5" fill="none" stroke="${isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'}" stroke-width="1"/>
-    <text x="${titleX}" y="${y + 40}" font-size="19" font-weight="600" fill="${t.text}">${escapeXml(truncateToWidth(film.title, 19, titleMax))}</text>
-    <text x="${titleX}" y="${y + 62}" font-size="14" font-weight="500" fill="${t.textMuted}">${escapeXml(film.year || '')}</text>
-    <text x="${CONTENT_RIGHT - 24}" y="${y + 52}" font-size="17" fill="${STAR_COLOR}" text-anchor="end">${escapeXml(stars)}</text>`;
+    <circle cx="${RIGHT_X + 32}" cy="${midY}" r="16" fill="${RANK_ACCENTS[index]}" fill-opacity="0.16" stroke="${RANK_ACCENTS[index]}" stroke-opacity="0.5" stroke-width="1"/>
+    <text x="${RIGHT_X + 32}" y="${midY + 7}" font-size="19" font-weight="700" fill="${RANK_ACCENTS[index]}" text-anchor="middle">${index + 1}</text>
+    <rect x="${posterX}" y="${posterY}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" rx="5" fill="${isDark ? '#0d1117' : '#dfe4e9'}"/>
+    ${poster ? `<image href="${poster}" x="${posterX}" y="${posterY}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" clip-path="url(#posterClip${index})" preserveAspectRatio="xMidYMid slice"/>` : ''}
+    <rect x="${posterX}" y="${posterY}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" rx="5" fill="none" stroke="${isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'}" stroke-width="1"/>
+    <text x="${titleX}" y="${midY - 4}" font-size="20" font-weight="600" fill="${t.text}">${escapeXml(truncateToWidth(film.title, 20, titleMax))}</text>
+    <text x="${titleX}" y="${midY + 20}" font-size="14" font-weight="500" fill="${t.textMuted}">${escapeXml(film.year || '')}</text>
+    <text x="${CONTENT_RIGHT - 26}" y="${midY + 6}" font-size="18" fill="${STAR_COLOR}" text-anchor="end">${escapeXml(stars)}</text>`;
     }).join('');
 
   const posterClips = topFilms.map((film, index) => `
     <clipPath id="posterClip${index}">
-      <rect x="${RIGHT_X + 52}" y="${ROW_TOP + index * (ROW_HEIGHT + ROW_GAP) + 12}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" rx="5"/>
+      <rect x="${RIGHT_X + 58}" y="${ROW_TOP + index * (ROW_HEIGHT + ROW_GAP) + (ROW_HEIGHT - POSTER_HEIGHT) / 2}" width="${POSTER_WIDTH}" height="${POSTER_HEIGHT}" rx="5"/>
     </clipPath>`).join('');
 
   const svg = `<svg width="${CARD_WIDTH}" height="${CARD_HEIGHT}" viewBox="0 0 ${CARD_WIDTH} ${CARD_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -288,9 +382,11 @@ export async function generateReviewCard(entries, options = {}) {
       : `<circle cx="30" cy="30" r="30" fill="${t.colors[2]}"/>`}
     <text x="76" y="27" font-size="27" font-weight="700" fill="${usernameGradient ? 'url(#reviewGradient)' : t.text}">${escapeXml(displayName)}</text>
     <text x="76" y="50" font-size="15" font-weight="500" fill="${t.textMuted}">@${escapeXml(username)}</text>
-    <circle cx="${LEFT_WIDTH - 54}" cy="24" r="8" fill="#FF8000"/>
-    <circle cx="${LEFT_WIDTH - 32}" cy="24" r="8" fill="#00E054"/>
-    <circle cx="${LEFT_WIDTH - 10}" cy="24" r="8" fill="#40BCF4"/>
+    ${logoBase64
+      ? `<image href="${logoBase64}" x="${LEFT_WIDTH - 60}" y="0" width="60" height="60"/>`
+      : `<circle cx="${LEFT_WIDTH - 46}" cy="30" r="8" fill="#FF8000"/>
+    <circle cx="${LEFT_WIDTH - 24}" cy="30" r="8" fill="#00E054"/>
+    <circle cx="${LEFT_WIDTH - 2}" cy="30" r="8" fill="#40BCF4"/>`}
   </g>
 
   <!-- Hero -->
@@ -305,8 +401,6 @@ export async function generateReviewCard(entries, options = {}) {
   <line x1="${DIVIDER_X}" y1="52" x2="${DIVIDER_X}" y2="${CARD_HEIGHT - 52}" stroke="${surfaceBorder}" stroke-width="1"/>
 
   <!-- Top rated -->
-  ${renderIcon(ICONS.crown, RIGHT_X, 44, 24, STAR_COLOR)}
-  <text x="${RIGHT_X + 36}" y="64" font-size="15" font-weight="700" fill="${t.text}" letter-spacing="3">TOP RATED</text>
   ${rowsMarkup}
 </svg>`;
 

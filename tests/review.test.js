@@ -8,7 +8,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { generateReviewCard } from '../src/review.js';
+import { generateReviewCard, pickTopFilms, aggregateFilms } from '../src/review.js';
 
 function entry(dateString, { title = 'Film', year = '2020', rating = null, rewatch = false, liked = false } = {}) {
   return { date: new Date(`${dateString}T00:00:00Z`), title, year, rating, rewatch, liked };
@@ -192,4 +192,99 @@ test('the stat grid ends level with the last film row', async () => {
 
   assert.ok(rects.length > 0);
   assert.equal(Math.max(...rects), 568, 'both columns end on the same line');
+});
+
+test('aggregateFilms merges repeat viewings of the same film', () => {
+  const films = aggregateFilms([
+    entry('2025-01-01', { title: 'Heat', rating: 4 }),
+    entry('2025-06-01', { title: 'Heat', rating: 5, rewatch: true, liked: true }),
+    entry('2025-02-01', { title: 'Other', rating: 3 })
+  ]);
+  const heat = films.find(film => film.title === 'Heat');
+
+  assert.equal(films.length, 2);
+  assert.equal(heat.watches, 2);
+  assert.equal(heat.rating, 5, 'the best rating wins');
+  assert.equal(heat.liked, true, 'a like on any viewing counts');
+});
+
+test('ranking: a higher rating always beats likes and rewatches', () => {
+  // The bonuses are capped below a half-star step on purpose, so no amount of
+  // liking or rewatching can lift a film past one rated higher.
+  const top = pickTopFilms([
+    entry('2025-01-01', { title: 'Plain 4.5', rating: 4.5 }),
+    entry('2025-02-01', { title: 'Beloved 4', rating: 4, liked: true }),
+    entry('2025-02-02', { title: 'Beloved 4', rating: 4, liked: true, rewatch: true }),
+    entry('2025-02-03', { title: 'Beloved 4', rating: 4, liked: true, rewatch: true })
+  ]);
+
+  assert.equal(top[0].title, 'Plain 4.5');
+  assert.equal(top[1].title, 'Beloved 4');
+});
+
+test('ranking: a like breaks a tie between equally rated films', () => {
+  const top = pickTopFilms([
+    entry('2025-01-01', { title: 'Unliked', rating: 4 }),
+    entry('2025-01-02', { title: 'Liked', rating: 4, liked: true })
+  ]);
+
+  assert.equal(top[0].title, 'Liked');
+});
+
+test('ranking: rewatches break a tie when neither film is liked', () => {
+  const top = pickTopFilms([
+    entry('2025-01-01', { title: 'Once', rating: 4 }),
+    entry('2025-01-02', { title: 'Twice', rating: 4 }),
+    entry('2025-03-02', { title: 'Twice', rating: 4, rewatch: true })
+  ]);
+
+  assert.equal(top[0].title, 'Twice');
+});
+
+test('ranking: a like outweighs a rewatch', () => {
+  // Likes are rarer than rewatches on a typical profile, so they say more.
+  const top = pickTopFilms([
+    entry('2025-01-01', { title: 'Rewatched', rating: 4 }),
+    entry('2025-02-01', { title: 'Rewatched', rating: 4, rewatch: true }),
+    entry('2025-01-02', { title: 'Liked', rating: 4, liked: true })
+  ]);
+
+  assert.equal(top[0].title, 'Liked');
+});
+
+test('ranking: the rewatch bonus stops growing', () => {
+  // Otherwise a comfort watch would climb indefinitely.
+  const many = ['2025-01-01', '2025-02-01', '2025-03-01', '2025-04-01', '2025-05-01']
+    .map(date => entry(date, { title: 'Comfort', rating: 4, rewatch: date !== '2025-01-01' }));
+  const top = pickTopFilms([
+    ...many,
+    entry('2025-06-01', { title: 'Liked', rating: 4, liked: true })
+  ]);
+
+  assert.equal(top[0].title, 'Liked');
+});
+
+test('card draws the rating distribution inside the average tile', async () => {
+  const svg = await generateReviewCard(
+    [
+      entry('2025-01-01', { title: 'A', rating: 4 }),
+      entry('2025-01-02', { title: 'B', rating: 4 }),
+      entry('2025-01-03', { title: 'C', rating: 2 })
+    ],
+    { year: 2025, username: 'someone' }
+  );
+  const bars = svg.match(/<rect x="[\d.]+" y="\d+" width="8" height="\d+" rx="1.5"/g) || [];
+
+  assert.equal(bars.length, 10, 'one bar per half-star step');
+});
+
+test('card renders the Letterboxd logo when one is supplied', async () => {
+  const film = entry('2025-01-01', { title: 'A', rating: 4 });
+  const withLogo = await generateReviewCard([film], {
+    year: 2025, username: 'someone', logoBase64: 'data:image/png;base64,BBBB'
+  });
+  const withoutLogo = await generateReviewCard([film], { year: 2025, username: 'someone' });
+
+  assert.ok(withLogo.includes('data:image/png;base64,BBBB'));
+  assert.ok(withoutLogo.includes('fill="#FF8000"'), 'falls back to the dots');
 });

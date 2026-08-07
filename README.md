@@ -439,9 +439,16 @@ images/letterboxd-review-<year>-dark.svg
 images/letterboxd-review-<year>-light.svg
 ```
 
-It carries the headline figures (films, days active, streak, average rating,
-rewatches, likes) and your five highest rated films with poster art and ratings
-in Letterboxd's green. Rewatches are
+It carries the headline figures (films, days active, streak, average rating with
+its distribution, rewatches, likes) and your five top rated films with poster art
+and ratings in Letterboxd's green.
+
+Films are ranked by rating first. Likes and rewatches only decide the order
+*within* a rating: the bonuses add up to less than a half-star step, so a film
+can never overtake one rated higher. This matters because a typical year has a
+handful of films at the top rating and a dozen tied one step below, which would
+otherwise fill the last slots arbitrarily. Repeat viewings of the same film are
+merged into one entry at its best rating. Rewatches are
 collapsed to a single entry at their best rating, so one film cannot take two
 slots. 1200×630 is the Open Graph default, so the card works as a social preview
 or a README banner as is.

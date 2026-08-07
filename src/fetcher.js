@@ -923,8 +923,15 @@ export async function fetchFilmPoster(filmUrl) {
     if (!response.ok) return null;
 
     const html = await response.text();
-    const match = html.match(/https:\/\/a\.ltrbxd\.com\/resized\/film-poster\/[^"'\s\\]+/);
-    return match ? match[0].replace(/&amp;/g, '&') : null;
+
+    // The JSON-LD "image" field is the canonical poster and covers both asset
+    // paths Letterboxd uses (/resized/film-poster/... and /resized/sm/upload/...).
+    // The bare URL match is only a fallback for pages without JSON-LD.
+    const structured = html.match(/"image"\s*:\s*"(https:\/\/a\.ltrbxd\.com\/resized\/[^"]+)"/);
+    const fallback = html.match(/https:\/\/a\.ltrbxd\.com\/resized\/film-poster\/[^"'\s\\]+/);
+    const posterUrl = structured?.[1] || fallback?.[0];
+
+    return posterUrl ? posterUrl.replace(/&amp;/g, '&') : null;
   } catch (error) {
     console.warn(`   Could not resolve poster for ${url}: ${error.message}`);
     return null;
