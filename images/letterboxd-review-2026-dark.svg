@@ -114,6 +114,7 @@
 
   <!-- Top rated -->
   
+  
     <rect x="626" y="38" width="536" height="102" rx="14" fill="#171c23" stroke="#252c35" stroke-width="1"/>
     <circle cx="658" cy="89" r="16" fill="#FF8000" fill-opacity="0.16" stroke="#FF8000" stroke-opacity="0.5" stroke-width="1"/>
     <text x="658" y="96" font-size="19" font-weight="700" fill="#FF8000" text-anchor="middle">1</text>
