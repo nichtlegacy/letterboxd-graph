@@ -234,6 +234,7 @@ export function buildAssets(filenames, readSvg) {
 export function slimData(data) {
   return {
     user: data.user,
+    profileImage: data.profileImage || null,
     years: data.years || (data.year ? [data.year] : []),
     generatedAt: data.generatedAt,
     stats: data.stats,

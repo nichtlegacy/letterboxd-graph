@@ -421,6 +421,22 @@ main {
   color: var(--brand-green);
 }
 
+.hero-profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  vertical-align: middle;
+}
+
+.hero-avatar {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .hero-kpis {
   position: relative;
   z-index: 1;

@@ -149,6 +149,7 @@ test('buildAssets records a PNG next to a card only when it was exported', () =>
 test('slimData keeps the figures and drops the calendar', () => {
   const slim = slimData({
     user: 'nichtlegacy',
+    profileImage: 'data:image/png;base64,avatar',
     years: [2026, 2025],
     generatedAt: '2026-08-07T13:47:48.026Z',
     stats: { films: 456, daysActive: 322, streak: 34 },
@@ -162,6 +163,7 @@ test('slimData keeps the figures and drops the calendar', () => {
   });
 
   assert.equal(slim.user, 'nichtlegacy');
+  assert.equal(slim.profileImage, 'data:image/png;base64,avatar');
   assert.equal(slim.calendar, undefined);
   assert.equal(slim.cells, undefined);
   assert.equal(slim.recent.length, 16);

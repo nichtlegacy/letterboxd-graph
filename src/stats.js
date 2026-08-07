@@ -383,6 +383,7 @@ export function buildAllTimeStats(entries, options = {}) {
  * @param {number} options.recentLimit - Number of recent entries to include
  * @param {Array} options.allEntries - The whole diary, when more than the export years was fetched
  * @param {number|null} options.totalFilms - Films watched per the profile page
+ * @param {string|null} options.profileImage - Embedded profile image data URI
  * @param {string} options.scope - Diary scope the run used
  * @returns {Object} JSON-serializable export object
  */
@@ -395,6 +396,7 @@ export function buildJsonExport(entries, options = {}) {
     recentLimit = 10,
     allEntries = null,
     totalFilms = null,
+    profileImage = null,
     scope = 'all'
   } = options;
 
@@ -559,6 +561,7 @@ export function buildJsonExport(entries, options = {}) {
 
   return {
     user: username,
+    profileImage,
     year,
     years: selectedYears,
     generatedAt: new Date().toISOString(),

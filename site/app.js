@@ -1108,6 +1108,16 @@ function renderHero(data, manifest) {
   document.querySelector('[data-hero-title]').textContent = 'A Life in Film';
   document.querySelector('[data-hero-user]').textContent = data.user ? `@${data.user}` : 'Film diary';
 
+  const avatar = document.querySelector('[data-hero-avatar]');
+  avatar.onerror = () => {
+    avatar.hidden = true;
+    avatar.removeAttribute('src');
+  };
+  if (data.profileImage) {
+    avatar.src = data.profileImage;
+    avatar.hidden = false;
+  }
+
   // The build step already wrote this into the served HTML, because a crawler
   // does not get this far. Setting it again keeps a locally served, unbuilt
   // copy of the page honest, and matches what the build writes.

@@ -240,6 +240,7 @@ async function main() {
       // block covers whatever was fetched, which in 'all' scope is the lot.
       allEntries,
       totalFilms: totalEntries,
+      profileImage: profileImageBase64,
       scope
     });
     fs.writeFileSync(outputJsonPath, JSON.stringify(jsonExport, null, 2));

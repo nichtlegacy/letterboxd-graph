@@ -533,9 +533,11 @@ test('buildJsonExport carries an all-time block covering more than the graph yea
     years: [2026],
     allEntries: whole,
     totalFilms: 42,
+    profileImage: 'data:image/png;base64,avatar',
     scope: 'all'
   });
 
+  assert.equal(exported.profileImage, 'data:image/png;base64,avatar');
   assert.equal(exported.stats.films, 1, 'the graph figures stay scoped to the years');
   assert.equal(exported.allTime.entries, 2, 'the all-time block sees the whole diary');
   assert.equal(exported.allTime.firstEntry, '2019-05-05');
