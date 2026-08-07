@@ -260,6 +260,76 @@ function calculateTextWidth(text, fontSize, letterSpacing = 0) {
   return text.length * fontSize * 0.55;
 }
 
+/**
+ * Card chrome and heatmap ramps, keyed by palette and then by theme.
+ *
+ * The `github` palette reproduces the contribution graph people already know.
+ * The `letterboxd` palette uses Letterboxd's own UI greys and anchors the ramp
+ * on its signature green. The ramp stays single-hue on purpose: shifting hue
+ * across a sequential scale reads as separate categories rather than as more or
+ * less activity. Letterboxd's orange and blue keep their existing roles as
+ * accents on the streak flame and the member badge.
+ */
+const PALETTES = {
+  github: {
+    dark: {
+      bg: '#0d1117',
+      cardBorder: '#21262d',
+      text: '#e6edf3',
+      textMuted: '#7d8590',
+      tooltipBg: '#161b22',
+      tooltipBorder: '#30363d',
+      tooltipText: '#f0f6fc',
+      colors: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353']
+    },
+    light: {
+      bg: '#ffffff',
+      cardBorder: '#d1d9e0',
+      text: '#1f2328',
+      textMuted: '#656d76',
+      tooltipBg: '#ffffff',
+      tooltipBorder: '#d1d9e0',
+      tooltipText: '#1f2328',
+      colors: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
+    }
+  },
+  letterboxd: {
+    dark: {
+      bg: '#14181c',
+      cardBorder: '#2c3440',
+      text: '#d8e0e8',
+      textMuted: '#89a',
+      tooltipBg: '#1c2228',
+      tooltipBorder: '#2c3440',
+      tooltipText: '#f0f4f8',
+      colors: ['#1c2228', '#0a5230', '#008443', '#00b34c', '#00e054']
+    },
+    light: {
+      bg: '#ffffff',
+      cardBorder: '#d8e0e8',
+      text: '#14181c',
+      textMuted: '#5c6873',
+      tooltipBg: '#ffffff',
+      tooltipBorder: '#d8e0e8',
+      tooltipText: '#14181c',
+      colors: ['#e8ecef', '#a3f0c4', '#4dd98d', '#00c052', '#00873a']
+    }
+  }
+};
+
+const DEFAULT_PALETTE = 'github';
+
+/**
+ * Resolve a theme, falling back to the GitHub dark theme for unknown names
+ * @param {string} theme - 'dark' or 'light'
+ * @param {string} palette - Key in PALETTES
+ * @returns {Object} Theme colors
+ */
+function getTheme(theme, palette) {
+  const chosen = PALETTES[palette] || PALETTES[DEFAULT_PALETTE];
+  return chosen[theme] || chosen.dark || PALETTES[DEFAULT_PALETTE].dark;
+}
+
 // Shared tooltip geometry so single-year and multi-year layouts stay in sync
 // Heights are constrained by the card top edge: the stats row sits at y=115, so a
 // tooltip taller than ~110px would be clipped out of the viewBox.
@@ -399,7 +469,8 @@ export async function generateSvg(entries, options = {}) {
     totalEntries = 0,
     memberStatus = null, // 'patron', 'pro', or null
     mode = 'count', // 'count' or 'rating'
-    animate = true // reveal cells with a CSS animation
+    animate = true, // reveal cells with a CSS animation
+    palette = DEFAULT_PALETTE // 'github' or 'letterboxd'
   } = options;
 
   // Calculate precise width for badge placement (28px font) + 4px gap
@@ -471,31 +542,7 @@ export async function generateSvg(entries, options = {}) {
   const DAYS = weekStart === 'monday' ? DAYS_MONDAY : DAYS_SUNDAY;
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  // Theme colors - GitHub contribution graph style
-  const themes = {
-    dark: {
-      bg: '#0d1117',
-      cardBorder: '#21262d',
-      text: '#e6edf3',
-      textMuted: '#7d8590',
-      tooltipBg: '#161b22',
-      tooltipBorder: '#30363d',
-      tooltipText: '#f0f6fc',
-      colors: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353']
-    },
-    light: {
-      bg: '#ffffff',
-      cardBorder: '#d1d9e0',
-      text: '#1f2328',
-      textMuted: '#656d76',
-      tooltipBg: '#ffffff',
-      tooltipBorder: '#d1d9e0',
-      tooltipText: '#1f2328',
-      colors: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
-    }
-  };
-
-  const t = themes[theme] || themes.dark;
+  const t = getTheme(theme, palette);
 
   function getColor(count, films) {
     if (count === 0) return t.colors[0];
@@ -850,7 +897,8 @@ export async function generateMultiYearSvg(entries, options = {}) {
     totalEntries = 0,
     memberStatus = null,
     mode = 'count', // 'count' or 'rating'
-    animate = true // reveal cells with a CSS animation
+    animate = true, // reveal cells with a CSS animation
+    palette = DEFAULT_PALETTE // 'github' or 'letterboxd'
   } = options;
 
   // Calculate precise width for badge placement (28px font) + 4px gap
@@ -874,31 +922,7 @@ export async function generateMultiYearSvg(entries, options = {}) {
   const DAYS = weekStart === 'monday' ? DAYS_MONDAY : DAYS_SUNDAY;
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  // Theme colors - GitHub contribution graph style
-  const themes = {
-    dark: {
-      bg: '#0d1117',
-      cardBorder: '#21262d',
-      text: '#e6edf3',
-      textMuted: '#7d8590',
-      tooltipBg: '#161b22',
-      tooltipBorder: '#30363d',
-      tooltipText: '#f0f6fc',
-      colors: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353']
-    },
-    light: {
-      bg: '#ffffff',
-      cardBorder: '#d1d9e0',
-      text: '#1f2328',
-      textMuted: '#656d76',
-      tooltipBg: '#ffffff',
-      tooltipBorder: '#d1d9e0',
-      tooltipText: '#1f2328',
-      colors: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
-    }
-  };
-
-  const t = themes[theme] || themes.dark;
+  const t = getTheme(theme, palette);
 
   // Start building SVG
   let svg = `<svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg">

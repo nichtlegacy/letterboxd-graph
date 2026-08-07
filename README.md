@@ -38,6 +38,7 @@
 | 📈 **Rating Distribution + Average** | Hover over the film count for the rating histogram and your average rating |
 | 🕰️ **Decade Breakdown** | Hover over the year label to see how your films spread across release decades |
 | ✨ **Cell Reveal Animation** | Cells fade in as a wave when the SVG loads; respects `prefers-reduced-motion` |
+| 🎨 **Color Palettes** | GitHub green, or a Letterboxd-native palette built on its signature green |
 | ⭐ **Rating Mode** | Color cells by average rating instead of watch count |
 | 📦 **JSON Export** | Writes `images/letterboxd-data.json` for external widgets (e.g. Glance `custom-api`) |
 | 🔄 **Daily Updates** | Automated updates via GitHub Actions |
@@ -137,6 +138,7 @@ node src/cli.js <username> [options]
 | `-p` | Export PNG files in addition to SVG | Disabled |
 | `-m <mode>` | Graph mode: `count` or `rating` | `count` |
 | `-a <bool>` | Cell reveal animation: `true` or `false` | `true` |
+| `-t <palette>` | Color palette: `github` or `letterboxd` | `github` |
 
 ### Examples
 
@@ -200,6 +202,7 @@ write into.
 | `mode` | `count` or `rating` | `count` |
 | `gradient` | Letterboxd color gradient on the display name | `true` |
 | `animate` | Cell reveal animation | `true` |
+| `palette` | Color palette: `github` or `letterboxd` | `github` |
 | `export-png` | Also write PNG files | `false` |
 | `output` | Output path without extension | `images/github-letterboxd` |
 | `node-version` | Node.js version | `20` |
@@ -239,6 +242,7 @@ env:
   WEEK_START: "sunday"                 # "sunday" or "monday"
   GRADIENT: "true"                     # "true" for colored name, "false" for white
   ANIMATE: "true"                      # "false" to disable the cell reveal animation
+  PALETTE: "github"                    # "github" or "letterboxd"
 
 on:
   schedule:
@@ -270,6 +274,7 @@ jobs:
           if [ "${{ env.WEEK_START }}" = "monday" ]; then CMD="$CMD -w monday"; fi
           if [ "${{ env.GRADIENT }}" = "false" ]; then CMD="$CMD -g false"; fi
           if [ "${{ env.ANIMATE }}" = "false" ]; then CMD="$CMD -a false"; fi
+          if [ -n "${{ env.PALETTE }}" ]; then CMD="$CMD -t ${{ env.PALETTE }}"; fi
           if [ "${{ env.EXPORT_PNG }}" = "true" ]; then CMD="$CMD -p"; fi
           
           echo "Running: $CMD"
@@ -299,6 +304,7 @@ You can customize the graph directly in the workflow file by editing the `env` s
 - **WEEK_START**: Start week on `sunday` or `monday`
 - **GRADIENT**: Toggle the username text gradient
 - **ANIMATE**: Toggle the cell reveal animation
+- **PALETTE**: Heatmap colors, `github` or `letterboxd`
 
 ---
 
@@ -369,6 +375,7 @@ letterboxd-graph/
 │   ├── stats.js              # Statistics calculations
 │   └── exporter.js           # PNG export functionality
 ├── tests/
+│   ├── stats.test.js                 # Tests for the statistics helpers
 │   └── test_fetch_with_curl_cffi.py  # Tests for the curl_cffi fetcher
 ├── package.json
 └── README.md
@@ -377,7 +384,9 @@ letterboxd-graph/
 Run the test suite with:
 
 ```bash
-npm test
+npm test          # JavaScript and Python tests
+npm run test:js   # node:test suite for src/stats.js
+npm run test:py   # unittest suite for the curl_cffi fetcher
 ```
 
 ---
@@ -412,6 +421,18 @@ Replace `YOUR_GITHUB_USERNAME` and `YOUR_LETTERBOXD_USERNAME` with your username
 ---
 
 ## 🎨 Themes & Modes
+
+### Color Palettes
+
+| Palette | Description |
+|---------|-------------|
+| **github** (default) | The familiar GitHub contribution graph greens |
+| **letterboxd** | Letterboxd's own UI greys with a ramp anchored on its signature green `#00E054` |
+
+The ramp stays single-hue on purpose. Shifting hue across a sequential scale
+reads as separate categories rather than as more or less activity, so
+Letterboxd's orange and blue keep their existing roles as accents on the streak
+flame and the member badge.
 
 ### Graph Modes
 

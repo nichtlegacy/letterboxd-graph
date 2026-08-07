@@ -28,6 +28,7 @@ async function main() {
     let exportPng = false;
     let mode = "count"; // 'count' or 'rating'
     let animate = true; // CSS reveal animation for grid cells
+    let palette = "github"; // 'github' or 'letterboxd' heatmap colors
 
     // Parse arguments
     for (let i = 0; i < args.length; i++) {
@@ -69,6 +70,10 @@ async function main() {
             animate = value.toLowerCase() !== 'false';
             i++;
             break;
+          case 't':
+            palette = ['github', 'letterboxd'].includes(value) ? value : 'github';
+            i++;
+            break;
           default:
             console.warn(`Unknown flag "${flag}", ignoring`);
         }
@@ -88,6 +93,7 @@ async function main() {
       console.log("  -p            Also export PNG files");
       console.log("  -m <mode>     Graph mode: count or rating (default: count)");
       console.log("  -a <bool>     Cell reveal animation: true or false (default: true)");
+      console.log("  -t <palette>  Color palette: github or letterboxd (default: github)");
       process.exit(1);
     }
 
@@ -101,6 +107,7 @@ async function main() {
     console.log(`Week starts on: ${weekStart}`);
     console.log(`Mode: ${mode}`);
     console.log(`Animation: ${animate ? '✓' : '✗'}`);
+    console.log(`Palette: ${palette}`);
     console.log(`Gradient: ${usernameGradient ? '✓' : '✗'}`);
     console.log(`PNG Export: ${exportPng ? '✓' : '✗'}`);
     console.log(`Output: ${outputPathDark}, ${outputPathLight}, ${outputJsonPath}\n`);
@@ -149,7 +156,8 @@ async function main() {
       totalEntries,
       memberStatus,
       mode,
-      animate
+      animate,
+      palette
     };
     
     let svgDark, svgLight;
