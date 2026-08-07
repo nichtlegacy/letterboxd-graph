@@ -31,7 +31,8 @@
     "puppeteer": "^24.0.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
-    "sharp": "^0.35.3"
+    "sharp": "^0.35.3",
+    "subset-font": "^2.5.0"
   },
   "overrides": {
     "cheerio": {

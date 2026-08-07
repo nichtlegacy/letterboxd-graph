@@ -19,19 +19,24 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const FONTS_DIR = path.join(__dirname, '..', 'fonts');
 
+const FONT_FILES = {
+  regular: 'Inter-Regular.woff2',
+  medium: 'Inter-Medium.woff2',
+  semibold: 'Inter-SemiBold.woff2',
+  bold: 'Inter-Bold.woff2'
+};
+
+// The @font-face block is written last, once the finished markup tells us which
+// characters actually need glyphs. Until then the style block carries this marker.
+const FONT_FACE_PLACEHOLDER = '/*__INTER_FONT_FACE__*/';
+
 /**
  * Load Inter font files as Base64 for embedding in SVG
  */
 function loadFontsBase64() {
   const fonts = {};
-  const fontFiles = {
-    regular: 'Inter-Regular.woff2',
-    medium: 'Inter-Medium.woff2',
-    semibold: 'Inter-SemiBold.woff2',
-    bold: 'Inter-Bold.woff2'
-  };
 
-  for (const [weight, filename] of Object.entries(fontFiles)) {
+  for (const [weight, filename] of Object.entries(FONT_FILES)) {
     const fontPath = path.join(FONTS_DIR, filename);
     if (fs.existsSync(fontPath)) {
       const fontData = fs.readFileSync(fontPath);
@@ -50,41 +55,131 @@ function getEmbeddedFonts() {
   return embeddedFonts;
 }
 
+const subsetCache = new Map();
+let subsetFontModule = null;
+let subsetWarningShown = false;
+
+/**
+ * Cut the Inter files down to the glyphs a specific SVG needs.
+ *
+ * A full Inter weight is ~108KB and we embed four of them, which dwarfs the
+ * actual graph. Since we generate every character in the document ourselves,
+ * the exact glyph set is known and everything else can be dropped.
+ *
+ * @param {string} characters - Every character that may be rendered
+ * @returns {Promise<Object>} Map of weight name to data URI
+ */
+async function loadFontsSubset(characters, weights) {
+  const cacheKey = `${[...weights].sort().join(',')}|${characters}`;
+  const cached = subsetCache.get(cacheKey);
+  if (cached) return cached;
+
+  if (!subsetFontModule) {
+    subsetFontModule = (await import('subset-font')).default;
+  }
+
+  const fonts = {};
+  for (const [weight, filename] of Object.entries(FONT_FILES)) {
+    if (!weights.has(weight)) continue;
+
+    const fontPath = path.join(FONTS_DIR, filename);
+    if (!fs.existsSync(fontPath)) continue;
+
+    const subsetted = await subsetFontModule(fs.readFileSync(fontPath), characters, {
+      targetFormat: 'woff2'
+    });
+    fonts[weight] = `data:font/woff2;base64,${subsetted.toString('base64')}`;
+  }
+
+  subsetCache.set(cacheKey, fonts);
+  return fonts;
+}
+
+const WEIGHT_NAMES = { 400: 'regular', 500: 'medium', 600: 'semibold', 700: 'bold' };
+
+/**
+ * Find which Inter weights a document actually uses.
+ *
+ * Every weight in the generated markup is written numerically, either as a
+ * `font-weight="600"` attribute or a `font-weight: 600` CSS declaration, so a
+ * scan over the finished SVG is exact. Text without an explicit weight inherits
+ * the default, hence regular is always included.
+ *
+ * @param {string} svg
+ * @returns {Set<string>} Weight names present in FONT_FILES
+ */
+function collectFontWeights(svg) {
+  const weights = new Set(['regular']);
+
+  for (const match of svg.matchAll(/font-weight\s*[:=]\s*"?(\d{3})/g)) {
+    const name = WEIGHT_NAMES[match[1]];
+    if (name) weights.add(name);
+  }
+  return weights;
+}
+
+/**
+ * Collect every distinct character in a string, iterating by code point so
+ * characters outside the BMP survive intact.
+ * @param {string} text
+ * @returns {string}
+ */
+function collectCharacters(text) {
+  return [...new Set(text)].join('');
+}
+
+/**
+ * Replace the font-face placeholder with subsetted @font-face rules.
+ *
+ * The character set is taken from the finished markup rather than from the text
+ * nodes alone. That is a superset — it also picks up tag and attribute names,
+ * which are ASCII we need anyway — and it guarantees no rendered glyph is ever
+ * missing, including accented or non-Latin film titles.
+ *
+ * Falls back to embedding the complete fonts if subsetting fails, so a broken
+ * or missing subset-font install degrades to the previous behaviour.
+ *
+ * @param {string} svg - Finished SVG containing FONT_FACE_PLACEHOLDER
+ * @returns {Promise<string>} SVG with fonts embedded
+ */
+async function inlineFonts(svg) {
+  if (!svg.includes(FONT_FACE_PLACEHOLDER)) return svg;
+
+  const markup = svg.replace(FONT_FACE_PLACEHOLDER, '');
+
+  let fonts;
+  try {
+    fonts = await loadFontsSubset(collectCharacters(markup), collectFontWeights(markup));
+  } catch (error) {
+    if (!subsetWarningShown) {
+      console.warn(`   Font subsetting failed, embedding full fonts: ${error.message}`);
+      subsetWarningShown = true;
+    }
+    fonts = getEmbeddedFonts();
+  }
+
+  return svg.replace(FONT_FACE_PLACEHOLDER, generateFontFaceCSS(fonts));
+}
+
 /**
  * Generate @font-face CSS declarations for embedded fonts
+ * @param {Object} fonts - Map of weight name to data URI
  */
-function generateFontFaceCSS() {
-  const fonts = getEmbeddedFonts();
+function generateFontFaceCSS(fonts) {
   if (Object.keys(fonts).length === 0) {
     return ''; // Fallback to system fonts if no embedded fonts available
   }
 
-  return `
+  return Object.entries(WEIGHT_NAMES)
+    .filter(([, name]) => fonts[name])
+    .map(([weight, name]) => `
       @font-face {
         font-family: 'Inter';
         font-style: normal;
-        font-weight: 400;
-        src: url('${fonts.regular}') format('woff2');
-      }
-      @font-face {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 500;
-        src: url('${fonts.medium}') format('woff2');
-      }
-      @font-face {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 600;
-        src: url('${fonts.semibold}') format('woff2');
-      }
-      @font-face {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        src: url('${fonts.bold}') format('woff2');
-      }
-  `;
+        font-weight: ${weight};
+        src: url('${fonts[name]}') format('woff2');
+      }`)
+    .join('') + '\n  ';
 }
 
 /**
@@ -289,7 +384,7 @@ function buildDecadeTooltip(entries, t) {
 /**
  * Generate the SVG contribution graph
  */
-export function generateSvg(entries, options = {}) {
+export async function generateSvg(entries, options = {}) {
   const { 
     theme = 'dark', 
     year = new Date().getFullYear(),
@@ -438,7 +533,7 @@ export function generateSvg(entries, options = {}) {
     </linearGradient>
     <style type="text/css">
       <![CDATA[
-      ${generateFontFaceCSS()}
+      ${FONT_FACE_PLACEHOLDER}
       .tooltip-group {
         opacity: 0;
         transition: opacity 0.2s ease;
@@ -663,6 +758,15 @@ export function generateSvg(entries, options = {}) {
         continue;
       }
 
+      // Days without films render as a bare rect: no link, no tooltip. That skips
+      // the tooltip markup for most of the grid and keeps the SVG small. A day
+      // inside a streak always has at least one film, so it never lands here.
+      if (count === 0) {
+        svg += `
+    <rect class="cell" x="${x}" y="${y}" width="${CELL_SIZE}" height="${CELL_SIZE}" rx="2" fill="${color}"${buildCellDelay(animate, week, day, yearIndex)}/>`;
+        continue;
+      }
+
       // Diary URL for this date
       const yearStr = cellDate.getUTCFullYear();
       const monthStr = String(cellDate.getUTCMonth() + 1).padStart(2, '0');
@@ -724,14 +828,14 @@ export function generateSvg(entries, options = {}) {
   </g>
 </svg>`;
 
-  return svg;
+  return await inlineFonts(svg);
 }
 
 /**
  * Generate a multi-year SVG contribution graph
  * Shows multiple years stacked vertically with a shared header
  */
-export function generateMultiYearSvg(entries, options = {}) {
+export async function generateMultiYearSvg(entries, options = {}) {
   const { 
     theme = 'dark', 
     years = [new Date().getFullYear()],
@@ -812,7 +916,7 @@ export function generateMultiYearSvg(entries, options = {}) {
     </linearGradient>
     <style type="text/css">
       <![CDATA[
-      ${generateFontFaceCSS()}
+      ${FONT_FACE_PLACEHOLDER}
       .tooltip-group { opacity: 0; transition: opacity 0.2s ease; pointer-events: none; }
       .cell-group:hover .tooltip-group { opacity: 1; }
       .cell-group:hover .cell { filter: brightness(1.3); }
@@ -1048,6 +1152,13 @@ export function generateMultiYearSvg(entries, options = {}) {
         
         if (isOutsideYear) continue;
 
+        // See the single-year generator: empty days need no link or tooltip.
+        if (count === 0) {
+          svg += `
+    <rect class="cell" x="${x}" y="${y}" width="${CELL_SIZE}" height="${CELL_SIZE}" rx="2" fill="${color}"${buildCellDelay(animate, week, day, yearIndex)}/>`;
+          continue;
+        }
+
         const yearStr = cellDate.getUTCFullYear();
         const monthStr = String(cellDate.getUTCMonth() + 1).padStart(2, '0');
         const dayStr = String(cellDate.getUTCDate()).padStart(2, '0');
@@ -1108,5 +1219,5 @@ export function generateMultiYearSvg(entries, options = {}) {
   svg += `
 </svg>`;
 
-  return svg;
+  return await inlineFonts(svg);
 }

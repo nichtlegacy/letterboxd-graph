@@ -157,13 +157,13 @@ async function main() {
     if (years.length > 1) {
       // Multi-year generation
       const multiOptions = { ...svgOptions, years };
-      svgDark = generateMultiYearSvg(filmEntries, { ...multiOptions, theme: 'dark' });
-      svgLight = generateMultiYearSvg(filmEntries, { ...multiOptions, theme: 'light' });
+      svgDark = await generateMultiYearSvg(filmEntries, { ...multiOptions, theme: 'dark' });
+      svgLight = await generateMultiYearSvg(filmEntries, { ...multiOptions, theme: 'light' });
     } else {
       // Single year generation
       const singleOptions = { ...svgOptions, year: years[0] };
-      svgDark = generateSvg(filmEntries, { ...singleOptions, theme: 'dark' });
-      svgLight = generateSvg(filmEntries, { ...singleOptions, theme: 'light' });
+      svgDark = await generateSvg(filmEntries, { ...singleOptions, theme: 'dark' });
+      svgLight = await generateSvg(filmEntries, { ...singleOptions, theme: 'light' });
     }
 
     // Ensure output directory exists
