@@ -143,7 +143,11 @@ export function readChrome(svg) {
 
 /**
  * Sort assets into the order the page shows them: graph, years newest first,
- * months most recent first, then the profile card.
+ * then the months and the profile card.
+ *
+ * The months lead with the one that is over. A month card for the month in
+ * progress is a few days of figures — the finished one beside it is the one
+ * worth opening on.
  *
  * @param {{kind: string, slug: string}} a
  * @param {{kind: string, slug: string}} b
@@ -155,8 +159,8 @@ function compareAssets(a, b) {
 
   if (a.kind === 'month') {
     const rank = (slug) => {
-      if (slug === 'current-month') return 0;
-      if (slug === 'previous-month') return 1;
+      if (slug === 'previous-month') return 0;
+      if (slug === 'current-month') return 1;
       const back = /^month-minus-(\d+)$/.exec(slug);
       return back ? Number(back[1]) : 99;
     };

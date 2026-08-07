@@ -113,7 +113,7 @@ test('buildAssets measures each card so the page can reserve its space', () => {
   assert.deepEqual([card.width, card.height], [1200, 630]);
 });
 
-test('buildAssets orders the page: graph, newest year, most recent month, profile', () => {
+test('buildAssets orders the page: graph, newest year, the finished month, profile', () => {
   const assets = buildAssets(FILES, reader());
 
   assert.deepEqual(
@@ -122,8 +122,10 @@ test('buildAssets orders the page: graph, newest year, most recent month, profil
       'graph:github-letterboxd',
       'year:2026',
       'year:2025',
-      'month:current-month',
+      // The month that is over leads: the one in progress is a few days of
+      // figures beside it.
       'month:previous-month',
+      'month:current-month',
       'profile:profile'
     ]
   );
