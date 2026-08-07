@@ -38,6 +38,7 @@
 | 📈 **Rating Distribution + Summary** | Hover over the film count for the rating histogram, your average rating, and rewatch/like totals |
 | ↻ **Rewatches & Likes** | Rewatched entries are marked `↻` and liked entries `♥` in the day tooltips |
 | 🃏 **Year-in-Review Card** | A shareable 1200×630 card per year with the headline figures and your top rated films |
+| 🪪 **Profile Card** | A 1200×630 card for the profile itself, with your pinned Letterboxd favourites |
 | 🕰️ **Decade Breakdown** | Hover over the year label to see how your films spread across release decades |
 | ✨ **Cell Reveal Animation** | Cells fade in as a wave when the SVG loads; respects `prefers-reduced-motion` |
 | 🎨 **Color Palettes** | GitHub green, or a Letterboxd-native palette built on its signature green |
@@ -371,18 +372,20 @@ letterboxd-graph/
 │   ├── github-letterboxd-light.svg   # Generated light theme
 │   ├── letterboxd-review-2026-dark.svg   # Generated year-in-review card
 │   ├── letterboxd-review-2026-light.svg
+│   ├── letterboxd-profile-dark.svg       # Generated profile card
+│   ├── letterboxd-profile-light.svg
 │   └── letterboxd-data.json          # Generated JSON data for widgets
 ├── src/
 │   ├── cli.js                # CLI entry point
 │   ├── fetcher.js            # Letterboxd data fetching
 │   ├── fetch_with_curl_cffi.py  # curl_cffi fetcher (primary, Puppeteer is the fallback)
 │   ├── generator.js          # Contribution graph SVG generation
-│   ├── review.js             # Year-in-review card generation
+│   ├── cards.js              # Year-in-review and profile card generation
 │   ├── svg-utils.js          # Shared fonts, text measurement and palettes
 │   ├── stats.js              # Statistics calculations
 │   └── exporter.js           # PNG export functionality
 ├── tests/
-│   ├── review.test.js                # Tests for the year-in-review card
+│   ├── cards.test.js                 # Tests for the shareable cards
 │   ├── stats.test.js                 # Tests for the statistics helpers
 │   └── test_fetch_with_curl_cffi.py  # Tests for the curl_cffi fetcher
 ├── package.json
@@ -452,6 +455,22 @@ merged into one entry at its best rating. Rewatches are
 collapsed to a single entry at their best rating, so one film cannot take two
 slots. 1200×630 is the Open Graph default, so the card works as a social preview
 or a README banner as is.
+
+### Profile Card
+
+Alongside the year cards, every run writes a profile card that is not tied to a
+single year:
+
+```
+images/letterboxd-profile-dark.svg
+images/letterboxd-profile-light.svg
+```
+
+The headline is your all-time film count from the profile page. The tiles and
+the top rated list cover the years the run fetched, and say so, so the two are
+not mistaken for each other. The right column shows the favourites pinned on
+your Letterboxd profile — a profile can pin up to four, and the row is laid out
+left to right so pinning fewer reads as a short row rather than a row with gaps.
 
 ### Color Palettes
 

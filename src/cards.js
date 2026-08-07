@@ -1,10 +1,10 @@
 /**
- * Year-in-Review card generator
+ * Shareable card generators
  *
- * Renders a 1200x630 SVG summarising one year: the headline figures as icon
- * tiles on the left, the highest rated films as poster rows on the right. That
- * aspect ratio is the Open Graph default, so the card can be dropped into a
- * README, a blog post or a social preview as is.
+ * Two 1200x630 SVGs built from the same parts: a year-in-review card, and a
+ * profile card that is not tied to a single year. That aspect ratio is the Open
+ * Graph default, so either can be dropped into a README, a blog post or a
+ * social preview as is.
  */
 
 import {
@@ -25,7 +25,8 @@ import {
 const CARD_WIDTH = 1200;
 const CARD_HEIGHT = 630;
 
-// Content area inside the outer frame and the inner card
+// Content area. The card is full bleed, so these are plain margins.
+const CONTENT_TOP = 57;
 const CONTENT_LEFT = 52;
 const CONTENT_RIGHT = 1148;
 const DIVIDER_X = 606;
@@ -38,13 +39,13 @@ const RIGHT_WIDTH = CONTENT_RIGHT - RIGHT_X;
 // leaving the two columns to drift apart.
 const TILE_WIDTH = 170;
 const TILE_GAP = 14;
-const TILE_TOP = 280;
+const TILE_TOP = 285;
 
 // Top rated rows. Without a heading above them the list starts level with the
 // profile block, which buys enough height for posters large enough to recognise.
 const ROW_HEIGHT = 96;
 const ROW_GAP = 9;
-const ROW_TOP = 52;
+const ROW_TOP = CONTENT_TOP;
 const POSTER_WIDTH = 47;
 const POSTER_HEIGHT = 70;
 const TOP_FILM_COUNT = 5;
@@ -269,7 +270,6 @@ export async function generateReviewCard(entries, options = {}) {
   const surface = isDark ? '#171c23' : '#f4f6f8';
   const surfaceBorder = isDark ? '#252c35' : '#e2e6ea';
   const cardBg = isDark ? '#12161c' : '#ffffff';
-  const outerBg = isDark ? '#0b0e12' : '#eef1f4';
 
   const yearEntries = entriesForYear(entries, year);
   const streak = calculateStreak(yearEntries);
@@ -356,12 +356,6 @@ export async function generateReviewCard(entries, options = {}) {
       <stop offset="50%" stop-color="#00E054"/>
       <stop offset="100%" stop-color="#40BCF4"/>
     </linearGradient>
-    <linearGradient id="frameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00E054" stop-opacity="0.9"/>
-      <stop offset="35%" stop-color="#40BCF4" stop-opacity="0.25"/>
-      <stop offset="65%" stop-color="#FF8000" stop-opacity="0.25"/>
-      <stop offset="100%" stop-color="#00E054" stop-opacity="0.9"/>
-    </linearGradient>
     <style type="text/css">
       <![CDATA[
       ${FONT_FACE_PLACEHOLDER}
@@ -370,12 +364,10 @@ export async function generateReviewCard(entries, options = {}) {
     </style>
   </defs>
 
-  <rect width="100%" height="100%" fill="${outerBg}"/>
-  <rect x="8" y="8" width="${CARD_WIDTH - 16}" height="${CARD_HEIGHT - 16}" rx="26" fill="none" stroke="url(#frameGradient)" stroke-width="2"/>
-  <rect x="26" y="26" width="${CARD_WIDTH - 52}" height="${CARD_HEIGHT - 52}" rx="18" fill="${cardBg}" stroke="${surfaceBorder}" stroke-width="1"/>
+  <rect width="100%" height="100%" fill="${cardBg}"/>
 
   <!-- Profile -->
-  <g transform="translate(${CONTENT_LEFT}, 52)">
+  <g transform="translate(${CONTENT_LEFT}, ${CONTENT_TOP})">
     <circle cx="30" cy="30" r="31" fill="${surfaceBorder}"/>
     ${profileImage
       ? `<image href="${profileImage}" x="0" y="0" width="60" height="60" clip-path="url(#reviewAvatarClip)"/>`
@@ -390,17 +382,217 @@ export async function generateReviewCard(entries, options = {}) {
   </g>
 
   <!-- Hero -->
-  <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="216" font-size="88" font-weight="700" fill="${yearGradient ? 'url(#reviewGradient)' : t.text}" text-anchor="middle">${year}</text>
-  <line x1="${CONTENT_LEFT + 40}" y1="243" x2="${CONTENT_LEFT + 150}" y2="243" stroke="${surfaceBorder}" stroke-width="1"/>
-  <line x1="${CONTENT_LEFT + LEFT_WIDTH - 150}" y1="243" x2="${CONTENT_LEFT + LEFT_WIDTH - 40}" y2="243" stroke="${surfaceBorder}" stroke-width="1"/>
-  <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="248" font-size="14" font-weight="600" fill="${t.textMuted}" text-anchor="middle" letter-spacing="7">IN REVIEW</text>
+  <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="221" font-size="88" font-weight="700" fill="${yearGradient ? 'url(#reviewGradient)' : t.text}" text-anchor="middle">${year}</text>
+  <line x1="${CONTENT_LEFT + 40}" y1="248" x2="${CONTENT_LEFT + 150}" y2="248" stroke="${surfaceBorder}" stroke-width="1"/>
+  <line x1="${CONTENT_LEFT + LEFT_WIDTH - 150}" y1="248" x2="${CONTENT_LEFT + LEFT_WIDTH - 40}" y2="248" stroke="${surfaceBorder}" stroke-width="1"/>
+  <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="253" font-size="14" font-weight="600" fill="${t.textMuted}" text-anchor="middle" letter-spacing="7">IN REVIEW</text>
 
   <!-- Headline figures -->
   ${tilesMarkup}
 
-  <line x1="${DIVIDER_X}" y1="52" x2="${DIVIDER_X}" y2="${CARD_HEIGHT - 52}" stroke="${surfaceBorder}" stroke-width="1"/>
+  <line x1="${DIVIDER_X}" y1="${CONTENT_TOP}" x2="${DIVIDER_X}" y2="${CONTENT_BOTTOM}" stroke="${surfaceBorder}" stroke-width="1"/>
 
   <!-- Top rated -->
+  ${rowsMarkup}
+</svg>`;
+
+  return await inlineFonts(svg);
+}
+
+// Profile card: favourites row on the right, then a compact top rated list
+const FAV_POSTER_WIDTH = 118;
+const FAV_POSTER_HEIGHT = 177;
+const FAV_GAP = 18;
+const FAV_TOP = 82;
+const PROFILE_ROW_TOP = 302;
+const PROFILE_ROW_HEIGHT = 85;
+const PROFILE_ROW_GAP = 8;
+const PROFILE_ROW_COUNT = 3;
+const PROFILE_POSTER_WIDTH = 40;
+const PROFILE_POSTER_HEIGHT = 60;
+
+export const FAV_PIXEL_WIDTH = FAV_POSTER_WIDTH * 2;
+export const FAV_PIXEL_HEIGHT = FAV_POSTER_HEIGHT * 2;
+
+/**
+ * Generate the profile card.
+ *
+ * Not tied to a year: the figures cover every entry the run fetched, and the
+ * headline is the all-time film count taken from the profile itself. The year
+ * range is spelled out so the two are not mistaken for each other.
+ *
+ * @param {Array} entries - All fetched diary entries
+ * @param {Object} options
+ * @param {Array<number>} options.years - Years the entries cover
+ * @param {number} options.totalEntries - All-time film count from the profile
+ * @param {Array} options.favourites - Favourite films pinned on the profile
+ * @param {Map<string, string>} options.posters - Film URL to poster data URI for the list
+ * @param {Map<string, string>} options.favouritePosters - Larger posters for the favourites row
+ * @returns {Promise<string>} SVG markup
+ */
+export async function generateProfileCard(entries, options = {}) {
+  const {
+    years = [],
+    totalEntries = 0,
+    favourites = [],
+    theme = 'dark',
+    palette = DEFAULT_PALETTE,
+    username = '',
+    displayName = username,
+    profileImage = null,
+    logoBase64 = null,
+    posters = new Map(),
+    favouritePosters = new Map(),
+    usernameGradient = true,
+    yearGradient = true
+  } = options;
+
+  const t = getTheme(theme, palette);
+  const isDark = theme !== 'light';
+  const surface = isDark ? '#171c23' : '#f4f6f8';
+  const surfaceBorder = isDark ? '#252c35' : '#e2e6ea';
+  const cardBg = isDark ? '#12161c' : '#ffffff';
+
+  const covered = [...new Set(years)].sort((a, b) => a - b);
+  const range = covered.length === 0
+    ? ''
+    : covered.length === 1 ? String(covered[0]) : `${covered[0]}–${covered[covered.length - 1]}`;
+
+  const streak = calculateStreak(entries);
+  const average = calculateAverageRating(entries);
+  const stats = [
+    { icon: 'films', value: String(entries.length), label: range ? `Films ${range}` : 'Films' },
+    { icon: 'daysActive', value: String(calculateDaysActive(entries)), label: 'Days Active' },
+    { icon: 'streak', value: String(streak.length), label: 'Day Streak' },
+    { icon: 'rating', value: average === null ? '–' : average.toFixed(1), label: 'Average Rating' },
+    { icon: 'rewatches', value: String(entries.filter(entry => entry.rewatch).length), label: 'Rewatches' },
+    { icon: 'liked', value: String(entries.filter(entry => entry.liked).length), label: 'Liked' }
+  ];
+
+  const histogram = ratingHistogram(entries);
+  const histogramPeak = Math.max(...histogram);
+
+  const tilesMarkup = stats.map((stat, index) => {
+    const x = CONTENT_LEFT + (index % 3) * (TILE_WIDTH + TILE_GAP);
+    const y = TILE_TOP + Math.floor(index / 3) * (TILE_HEIGHT + TILE_GAP);
+    const centerX = x + TILE_WIDTH / 2;
+
+    const bars = stat.icon === 'rating' && histogramPeak > 0
+      ? histogram.map((count, step) => {
+        const barHeight = Math.max(Math.round((count / histogramPeak) * HISTOGRAM_HEIGHT), 1);
+        const barX = centerX - (RATING_STEPS * HISTOGRAM_BAR + (RATING_STEPS - 1) * 3) / 2
+          + step * (HISTOGRAM_BAR + 3);
+        return `<rect x="${barX.toFixed(1)}" y="${y + 110 - barHeight}" width="${HISTOGRAM_BAR}" height="${barHeight}" rx="1.5" fill="${TILE_ACCENTS[index]}" fill-opacity="${count > 0 ? 0.85 : 0.25}"/>`;
+      }).join('')
+      : '';
+
+    return `
+    <rect x="${x}" y="${y}" width="${TILE_WIDTH}" height="${TILE_HEIGHT}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
+    ${renderIcon(ICONS[stat.icon], centerX - 13, y + 22, 26, TILE_ACCENTS[index])}
+    <text x="${centerX}" y="${y + 92}" font-size="36" font-weight="700" fill="${t.text}" text-anchor="middle">${escapeXml(stat.value)}</text>
+    ${bars}
+    <text x="${centerX}" y="${y + 126}" font-size="14" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(stat.label)}</text>`;
+  }).join('');
+
+  // Favourites are left aligned rather than centred: a profile with two of them
+  // then reads as a short row instead of a row with holes in it.
+  const favouritesMarkup = favourites.length === 0
+    ? `
+    <rect x="${RIGHT_X}" y="${FAV_TOP}" width="${RIGHT_WIDTH}" height="${FAV_POSTER_HEIGHT}" rx="12" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
+    <text x="${RIGHT_X + RIGHT_WIDTH / 2}" y="${FAV_TOP + FAV_POSTER_HEIGHT / 2 + 6}" font-size="15" font-weight="500" fill="${t.textMuted}" text-anchor="middle">No favourites pinned</text>`
+    : favourites.map((film, index) => {
+      const x = RIGHT_X + index * (FAV_POSTER_WIDTH + FAV_GAP);
+      const poster = favouritePosters.get(film.url);
+      return `
+    <rect x="${x}" y="${FAV_TOP}" width="${FAV_POSTER_WIDTH}" height="${FAV_POSTER_HEIGHT}" rx="8" fill="${isDark ? '#0d1117' : '#dfe4e9'}"/>
+    ${poster ? `<image href="${poster}" x="${x}" y="${FAV_TOP}" width="${FAV_POSTER_WIDTH}" height="${FAV_POSTER_HEIGHT}" clip-path="url(#favClip${index})" preserveAspectRatio="xMidYMid slice"/>` : `<text x="${x + FAV_POSTER_WIDTH / 2}" y="${FAV_TOP + FAV_POSTER_HEIGHT / 2}" font-size="12" font-weight="500" fill="${t.textMuted}" text-anchor="middle">${escapeXml(truncateToWidth(film.title, 12, FAV_POSTER_WIDTH - 12))}</text>`}
+    <rect x="${x}" y="${FAV_TOP}" width="${FAV_POSTER_WIDTH}" height="${FAV_POSTER_HEIGHT}" rx="8" fill="none" stroke="${isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'}" stroke-width="1"/>`;
+    }).join('');
+
+  const topFilms = pickTopFilms(entries, PROFILE_ROW_COUNT);
+
+  const rowsMarkup = topFilms.length === 0
+    ? `
+    <rect x="${RIGHT_X}" y="${PROFILE_ROW_TOP}" width="${RIGHT_WIDTH}" height="${PROFILE_ROW_HEIGHT}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
+    <text x="${RIGHT_X + RIGHT_WIDTH / 2}" y="${PROFILE_ROW_TOP + PROFILE_ROW_HEIGHT / 2 + 6}" font-size="15" font-weight="500" fill="${t.textMuted}" text-anchor="middle">No rated films yet</text>`
+    : topFilms.map((film, index) => {
+      const y = PROFILE_ROW_TOP + index * (PROFILE_ROW_HEIGHT + PROFILE_ROW_GAP);
+      const midY = y + PROFILE_ROW_HEIGHT / 2;
+      const stars = formatStars(film.rating);
+      const starsWidth = calculateTextWidth(stars, 17);
+      const posterX = RIGHT_X + 54;
+      const titleX = posterX + PROFILE_POSTER_WIDTH + 18;
+      const titleMax = CONTENT_RIGHT - 24 - starsWidth - 16 - titleX;
+      const posterY = y + (PROFILE_ROW_HEIGHT - PROFILE_POSTER_HEIGHT) / 2;
+      const poster = posters.get(film.url);
+
+      return `
+    <rect x="${RIGHT_X}" y="${y}" width="${RIGHT_WIDTH}" height="${PROFILE_ROW_HEIGHT}" rx="14" fill="${surface}" stroke="${surfaceBorder}" stroke-width="1"/>
+    <circle cx="${RIGHT_X + 30}" cy="${midY}" r="15" fill="${RANK_ACCENTS[index]}" fill-opacity="0.16" stroke="${RANK_ACCENTS[index]}" stroke-opacity="0.5" stroke-width="1"/>
+    <text x="${RIGHT_X + 30}" y="${midY + 6}" font-size="18" font-weight="700" fill="${RANK_ACCENTS[index]}" text-anchor="middle">${index + 1}</text>
+    <rect x="${posterX}" y="${posterY}" width="${PROFILE_POSTER_WIDTH}" height="${PROFILE_POSTER_HEIGHT}" rx="4" fill="${isDark ? '#0d1117' : '#dfe4e9'}"/>
+    ${poster ? `<image href="${poster}" x="${posterX}" y="${posterY}" width="${PROFILE_POSTER_WIDTH}" height="${PROFILE_POSTER_HEIGHT}" clip-path="url(#profilePosterClip${index})" preserveAspectRatio="xMidYMid slice"/>` : ''}
+    <rect x="${posterX}" y="${posterY}" width="${PROFILE_POSTER_WIDTH}" height="${PROFILE_POSTER_HEIGHT}" rx="4" fill="none" stroke="${isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'}" stroke-width="1"/>
+    <text x="${titleX}" y="${midY - 3}" font-size="18" font-weight="600" fill="${t.text}">${escapeXml(truncateToWidth(film.title, 18, titleMax))}</text>
+    <text x="${titleX}" y="${midY + 18}" font-size="13" font-weight="500" fill="${t.textMuted}">${escapeXml(film.year || '')}</text>
+    <text x="${CONTENT_RIGHT - 24}" y="${midY + 6}" font-size="17" fill="${STAR_COLOR}" text-anchor="end">${escapeXml(stars)}</text>`;
+    }).join('');
+
+  const clips = `${favourites.map((film, index) => `
+    <clipPath id="favClip${index}">
+      <rect x="${RIGHT_X + index * (FAV_POSTER_WIDTH + FAV_GAP)}" y="${FAV_TOP}" width="${FAV_POSTER_WIDTH}" height="${FAV_POSTER_HEIGHT}" rx="8"/>
+    </clipPath>`).join('')}${topFilms.map((film, index) => `
+    <clipPath id="profilePosterClip${index}">
+      <rect x="${RIGHT_X + 54}" y="${PROFILE_ROW_TOP + index * (PROFILE_ROW_HEIGHT + PROFILE_ROW_GAP) + (PROFILE_ROW_HEIGHT - PROFILE_POSTER_HEIGHT) / 2}" width="${PROFILE_POSTER_WIDTH}" height="${PROFILE_POSTER_HEIGHT}" rx="4"/>
+    </clipPath>`).join('')}`;
+
+  const svg = `<svg width="${CARD_WIDTH}" height="${CARD_HEIGHT}" viewBox="0 0 ${CARD_WIDTH} ${CARD_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="reviewAvatarClip">
+      <circle cx="30" cy="30" r="30"/>
+    </clipPath>${clips}
+    <linearGradient id="reviewGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF8000"/>
+      <stop offset="50%" stop-color="#00E054"/>
+      <stop offset="100%" stop-color="#40BCF4"/>
+    </linearGradient>
+    <style type="text/css">
+      <![CDATA[
+      ${FONT_FACE_PLACEHOLDER}
+      text { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; }
+      ]]>
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="${cardBg}"/>
+
+  <!-- Profile -->
+  <g transform="translate(${CONTENT_LEFT}, ${CONTENT_TOP})">
+    <circle cx="30" cy="30" r="31" fill="${surfaceBorder}"/>
+    ${profileImage
+      ? `<image href="${profileImage}" x="0" y="0" width="60" height="60" clip-path="url(#reviewAvatarClip)"/>`
+      : `<circle cx="30" cy="30" r="30" fill="${t.colors[2]}"/>`}
+    <text x="76" y="27" font-size="27" font-weight="700" fill="${usernameGradient ? 'url(#reviewGradient)' : t.text}">${escapeXml(displayName)}</text>
+    <text x="76" y="50" font-size="15" font-weight="500" fill="${t.textMuted}">@${escapeXml(username)}</text>
+    ${logoBase64
+      ? `<image href="${logoBase64}" x="${LEFT_WIDTH - 60}" y="0" width="60" height="60"/>`
+      : ''}
+  </g>
+
+  <!-- Headline -->
+  <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="221" font-size="88" font-weight="700" fill="${yearGradient ? 'url(#reviewGradient)' : t.text}" text-anchor="middle">${totalEntries}</text>
+  <line x1="${CONTENT_LEFT + 40}" y1="248" x2="${CONTENT_LEFT + 150}" y2="248" stroke="${surfaceBorder}" stroke-width="1"/>
+  <line x1="${CONTENT_LEFT + LEFT_WIDTH - 150}" y1="248" x2="${CONTENT_LEFT + LEFT_WIDTH - 40}" y2="248" stroke="${surfaceBorder}" stroke-width="1"/>
+  <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="253" font-size="14" font-weight="600" fill="${t.textMuted}" text-anchor="middle" letter-spacing="7">FILMS LOGGED</text>
+
+  ${tilesMarkup}
+
+  <line x1="${DIVIDER_X}" y1="${CONTENT_TOP}" x2="${DIVIDER_X}" y2="${CONTENT_BOTTOM}" stroke="${surfaceBorder}" stroke-width="1"/>
+
+  <text x="${RIGHT_X}" y="71" font-size="13" font-weight="700" fill="${t.textMuted}" letter-spacing="3">FAVOURITES</text>
+  ${favouritesMarkup}
+
+  <text x="${RIGHT_X}" y="291" font-size="13" font-weight="700" fill="${t.textMuted}" letter-spacing="3">TOP RATED${range ? ` ${range}` : ''}</text>
   ${rowsMarkup}
 </svg>`;
 

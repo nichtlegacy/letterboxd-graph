@@ -10,7 +10,7 @@ import { fileURLToPath } from 'url';
 
 import { fetchProfileData, tryFetchMultipleYears, fetchSpecificYears, fetchFilmPoster, imageToBase64, closeBrowser } from './fetcher.js';
 import { generateSvg, generateMultiYearSvg } from './generator.js';
-import { generateReviewCard, pickTopFilms, entriesForYear, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT } from './review.js';
+import { generateReviewCard, generateProfileCard, pickTopFilms, entriesForYear, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT, FAV_PIXEL_WIDTH, FAV_PIXEL_HEIGHT } from './cards.js';
 import { svgToPng, imageBufferToThumbnail } from './exporter.js';
 import { buildJsonExport } from './stats.js';
 
@@ -121,12 +121,13 @@ async function main() {
 
     // Fetch profile data
     console.log("📋 Fetching profile data...");
-    const { profileImage, displayName, followers, following, totalEntries, memberStatus } = await fetchProfileData(username);
+    const { profileImage, displayName, followers, following, totalEntries, memberStatus, favourites } = await fetchProfileData(username);
     const profileImageBase64 = profileImage ? await imageToBase64(profileImage) : null;
     console.log(`   Display Name: ${displayName}`);
     console.log(`   Followers: ${followers}, Following: ${following}`);
     console.log(`   Total Films: ${totalEntries}, Member Status: ${memberStatus || 'None'}`);
-    console.log(`   Profile Image: ${profileImageBase64 ? '✓' : '✗'}\n`);
+    console.log(`   Profile Image: ${profileImageBase64 ? '✓' : '✗'}`);
+    console.log(`   Favourites: ${favourites.length}\n`);
 
     // Fetch Letterboxd logo
     console.log("🎬 Fetching Letterboxd logo...");
@@ -215,29 +216,39 @@ async function main() {
     // are resolved once here rather than per theme. A missing poster is not an
     // error: the card falls back to a plain placeholder.
     const posters = new Map();
-    const topFilms = sortedYears.flatMap(y => pickTopFilms(entriesForYear(filmEntries, y)));
+    const favouritePosters = new Map();
 
-    for (const film of topFilms) {
-      if (!film.url || posters.has(film.url)) continue;
+    const loadPosters = async (films, target, width, height) => {
+      for (const film of films) {
+        if (!film.url || target.has(film.url)) continue;
 
-      const posterUrl = await fetchFilmPoster(film.url);
-      if (!posterUrl) continue;
+        const posterUrl = await fetchFilmPoster(film.url);
+        if (!posterUrl) continue;
 
-      try {
-        const response = await fetch(posterUrl);
-        if (!response.ok) continue;
+        try {
+          const response = await fetch(posterUrl);
+          if (!response.ok) continue;
 
-        const thumbnail = await imageBufferToThumbnail(
-          Buffer.from(await response.arrayBuffer()),
-          POSTER_PIXEL_WIDTH,
-          POSTER_PIXEL_HEIGHT
-        );
-        if (thumbnail) posters.set(film.url, thumbnail);
-      } catch (error) {
-        console.warn(`   Could not load poster for ${film.title}: ${error.message}`);
+          const thumbnail = await imageBufferToThumbnail(
+            Buffer.from(await response.arrayBuffer()),
+            width,
+            height
+          );
+          if (thumbnail) target.set(film.url, thumbnail);
+        } catch (error) {
+          console.warn(`   Could not load poster for ${film.title}: ${error.message}`);
+        }
       }
-    }
-    console.log(`   Posters: ${posters.size}/${new Set(topFilms.map(f => f.url)).size}`);
+    };
+
+    const topFilms = [
+      ...sortedYears.flatMap(y => pickTopFilms(entriesForYear(filmEntries, y))),
+      ...pickTopFilms(filmEntries, 3)
+    ];
+    await loadPosters(topFilms, posters, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT);
+    await loadPosters(favourites, favouritePosters, FAV_PIXEL_WIDTH, FAV_PIXEL_HEIGHT);
+    console.log(`   Posters: ${posters.size}/${new Set(topFilms.map(f => f.url)).size}`
+      + `, favourites ${favouritePosters.size}/${favourites.length}`);
 
     for (const reviewYear of sortedYears) {
       for (const theme of ['dark', 'light']) {
@@ -253,6 +264,26 @@ async function main() {
         reviewCards.push({ path: cardPath, svg: card });
         console.log(`   ✓ ${cardPath}`);
       }
+    }
+
+    // Profile card, not tied to a single year
+    const profileCardPaths = ['dark', 'light'].map(theme =>
+      path.join(dir, `letterboxd-profile-${theme}.svg`));
+
+    for (const [index, theme] of ['dark', 'light'].entries()) {
+      const card = await generateProfileCard(filmEntries, {
+        ...svgOptions,
+        theme,
+        years,
+        totalEntries,
+        favourites,
+        posters,
+        favouritePosters
+      });
+
+      fs.writeFileSync(profileCardPaths[index], card);
+      reviewCards.push({ path: profileCardPaths[index], svg: card });
+      console.log(`   ✓ ${profileCardPaths[index]}`);
     }
 
     // Export PNGs if requested

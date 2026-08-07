@@ -854,6 +854,27 @@ export async function fetchProfileData(username) {
       if (match) totalEntries = parseInt(match[1].replace(/,/g, ''));
     }
 
+    // Favourite films pinned on the profile. A profile shows up to four, most
+    // show fewer, so callers have to cope with anything from zero to four.
+    // Parsed here rather than in a second request because profile pages are
+    // Cloudflare challenged and this HTML is already in hand.
+    const favourites = [];
+    $('#favourites .react-component[data-item-slug]').each((_, element) => {
+      if (favourites.length >= 4) return;
+
+      const slug = $(element).attr('data-item-slug');
+      const name = $(element).attr('data-item-name') || '';
+      const parsed = name.match(/^(.*)\s+\((\d{4})\)\s*$/);
+
+      if (slug) {
+        favourites.push({
+          title: parsed ? parsed[1] : name,
+          year: parsed ? parsed[2] : '',
+          url: `https://letterboxd.com/film/${slug}/`
+        });
+      }
+    });
+
     // Check for Member status
     let memberStatus = null;
     if ($('.badge.-patron').length > 0) memberStatus = 'patron';
@@ -865,7 +886,8 @@ export async function fetchProfileData(username) {
       followers,
       following,
       totalEntries,
-      memberStatus
+      memberStatus,
+      favourites
     };
   } catch (error) {
     console.warn(`Error fetching profile data for ${username}: ${error}. Using fallback values.`);

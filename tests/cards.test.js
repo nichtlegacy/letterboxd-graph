@@ -8,7 +8,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { generateReviewCard, pickTopFilms, aggregateFilms } from '../src/review.js';
+import { generateReviewCard, generateProfileCard, pickTopFilms, aggregateFilms } from '../src/cards.js';
 
 function entry(dateString, { title = 'Film', year = '2020', rating = null, rewatch = false, liked = false } = {}) {
   return { date: new Date(`${dateString}T00:00:00Z`), title, year, rating, rewatch, liked };
@@ -191,7 +191,7 @@ test('the stat grid ends level with the last film row', async () => {
     .map(m => bottomOf(m));
 
   assert.ok(rects.length > 0);
-  assert.equal(Math.max(...rects), 568, 'both columns end on the same line');
+  assert.equal(Math.max(...rects), 573, 'both columns end on the same line');
 });
 
 test('aggregateFilms merges repeat viewings of the same film', () => {
@@ -287,4 +287,61 @@ test('card renders the Letterboxd logo when one is supplied', async () => {
 
   assert.ok(withLogo.includes('data:image/png;base64,BBBB'));
   assert.ok(withoutLogo.includes('fill="#FF8000"'), 'falls back to the dots');
+});
+
+test('profile card reports the all-time count and scopes the fetched figures', async () => {
+  const svg = await generateProfileCard(
+    [
+      entry('2025-01-01', { title: 'A', rating: 4 }),
+      entry('2026-01-01', { title: 'B', rating: 3 })
+    ],
+    { years: [2025, 2026], totalEntries: 626, username: 'someone', displayName: 'Someone' }
+  );
+  const texts = textNodes(svg);
+
+  assert.ok(texts.includes('626'), 'the headline is the all-time count');
+  assert.ok(texts.includes('FILMS LOGGED'));
+  assert.ok(texts.includes('Films 2025–2026'), 'the tiles say which years they cover');
+  assert.ok(texts.includes('TOP RATED 2025–2026'));
+  assert.ok(texts.includes('2'), 'the tile counts only the fetched entries');
+});
+
+test('profile card lays out however many favourites a profile pins', async () => {
+  const film = entry('2025-01-01', { title: 'A', rating: 4 });
+  const favourite = { title: 'Fav', year: '1999', url: 'https://letterboxd.com/film/fav/' };
+
+  const none = await generateProfileCard([film], { years: [2025], username: 'someone' });
+  assert.ok(textNodes(none).includes('No favourites pinned'));
+
+  const two = await generateProfileCard([film], {
+    years: [2025],
+    username: 'someone',
+    favourites: [favourite, { ...favourite, title: 'Fav2', url: 'https://letterboxd.com/film/fav2/' }]
+  });
+  assert.equal((two.match(/id="favClip\d"/g) || []).length, 2, 'one clip per pinned favourite');
+});
+
+test('profile card keeps favourite and list posters apart', async () => {
+  const film = entry('2025-01-01', { title: 'Shared', rating: 5 });
+  const svg = await generateProfileCard([film], {
+    years: [2025],
+    username: 'someone',
+    favourites: [{ title: 'Shared', year: '1999', url: film.url }],
+    posters: new Map([[film.url, 'data:image/jpeg;base64,SMALL']]),
+    favouritePosters: new Map([[film.url, 'data:image/jpeg;base64,LARGE']])
+  });
+
+  // The same film can be both a favourite and a top rated entry, and the two
+  // are drawn at very different sizes.
+  assert.ok(svg.includes('SMALL'));
+  assert.ok(svg.includes('LARGE'));
+});
+
+test('profile card handles a profile with nothing rated', async () => {
+  const svg = await generateProfileCard([entry('2025-01-01', { title: 'A' })], {
+    years: [2025], totalEntries: 1, username: 'someone'
+  });
+
+  assert.ok(textNodes(svg).includes('No rated films yet'));
+  assert.ok(svg.includes('width="1200"'));
 });
