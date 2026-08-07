@@ -145,21 +145,29 @@ Hovering reveals more than the graph shows at rest:
 Headline figures on the left, top rated films on the right with poster art,
 runtime and the Letterboxd community rating.
 
-By default the list ranks everything you watched in that period, whatever year
-it came out. Set `top-films: released` to keep only the films released in the
-card's year, turning "the best I saw in 2025" into "the best of 2025":
+What the list ranks is a choice, because "the best I saw in 2026" and "the best
+of 2026" are different claims:
+
+| `top-films` | The list holds |
+|-------------|----------------|
+| `watched` (default) | Everything watched in the period, whatever year it came out |
+| `released` | Only the films released in the card's year |
+
+The card above is set to `released`, which is why it carries a **TOP 2026
+RELEASES** heading. The default needs no heading — everything watched is not a
+restriction, so there is nothing to announce. The heading takes its space out of
+the rows rather than off the bottom, so both columns end on the same line either
+way.
 
 <details>
-<summary><b><code>top-films: released</code></b> — the same year, narrowed to its own releases</summary>
+<summary><b><code>top-films: watched</code></b> — the default, for comparison</summary>
 
 <p align="center">
-  <img alt="Year in review card limited to that year's releases" src=".github/assets/year-card-releases-dark.png" width="100%">
+  <img alt="Year in review card ranking everything watched" src=".github/assets/year-card-watched-dark.png" width="100%">
 </p>
 
-Only this list carries a heading. The two are different claims, and without one
-there is no way to tell which you are looking at. The heading takes its space
-out of the rows rather than off the bottom, so both columns still end on the
-same line.
+Same year, same diary. A five star film from 1977 outranks everything released
+that year, which is true but says nothing about the year itself.
 
 </details>
 

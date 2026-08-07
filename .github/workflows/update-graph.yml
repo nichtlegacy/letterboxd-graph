@@ -12,7 +12,7 @@ env:
   ANIMATE: "true"                      # "false" to disable the cell reveal animation
   SCOPE: "all"                         # "all" (whole diary) or "years"
   MONTH_CARDS: "2"                     # recent months to also make cards for, 0 to skip
-  TOP_FILMS: "watched"                 # "watched" or "released" for the card film list
+  TOP_FILMS: "released"                # "watched" or "released" for the card film list
 
 on:
   # Daily at midnight UTC (main only)
