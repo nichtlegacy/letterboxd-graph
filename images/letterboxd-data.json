@@ -5,7 +5,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-07T14:10:23.805Z",
+  "generatedAt": "2026-08-07T16:27:52.183Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18474,5 +18474,364 @@
       "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/scouts-guide-to-the-zombie-apocalypse/"
     }
-  ]
+  ],
+  "allTime": {
+    "scope": "all",
+    "films": 626,
+    "entries": 599,
+    "distinctFilms": 534,
+    "firstEntry": "2024-02-22",
+    "lastEntry": "2026-07-30",
+    "spanDays": 890,
+    "daysActive": 427,
+    "rewatches": 83,
+    "liked": 76,
+    "rated": 599,
+    "averageRating": 3.3,
+    "perDay": 0.67,
+    "perWeek": 4.7,
+    "perMonth": 20.5,
+    "streak": {
+      "length": 34,
+      "startDate": "2025-01-27",
+      "endDate": "2025-03-01",
+      "films": 47
+    },
+    "busiestDay": {
+      "date": "2025-04-16",
+      "count": 5
+    },
+    "longestGap": {
+      "days": 86,
+      "from": "2024-05-22",
+      "to": "2024-08-17"
+    },
+    "perYear": [
+      {
+        "year": 2024,
+        "films": 143,
+        "days": 105
+      },
+      {
+        "year": 2025,
+        "films": 381,
+        "days": 263
+      },
+      {
+        "year": 2026,
+        "films": 75,
+        "days": 59
+      }
+    ],
+    "perWeekday": [
+      88,
+      84,
+      70,
+      82,
+      87,
+      88,
+      100
+    ],
+    "perMonthOfYear": [
+      71,
+      44,
+      62,
+      75,
+      59,
+      45,
+      51,
+      18,
+      27,
+      59,
+      39,
+      49
+    ],
+    "monthSeries": [
+      {
+        "month": "2024-02",
+        "count": 1
+      },
+      {
+        "month": "2024-03",
+        "count": 7
+      },
+      {
+        "month": "2024-04",
+        "count": 20
+      },
+      {
+        "month": "2024-05",
+        "count": 13
+      },
+      {
+        "month": "2024-06",
+        "count": 0
+      },
+      {
+        "month": "2024-07",
+        "count": 0
+      },
+      {
+        "month": "2024-08",
+        "count": 4
+      },
+      {
+        "month": "2024-09",
+        "count": 12
+      },
+      {
+        "month": "2024-10",
+        "count": 31
+      },
+      {
+        "month": "2024-11",
+        "count": 27
+      },
+      {
+        "month": "2024-12",
+        "count": 28
+      },
+      {
+        "month": "2025-01",
+        "count": 53
+      },
+      {
+        "month": "2025-02",
+        "count": 37
+      },
+      {
+        "month": "2025-03",
+        "count": 44
+      },
+      {
+        "month": "2025-04",
+        "count": 37
+      },
+      {
+        "month": "2025-05",
+        "count": 40
+      },
+      {
+        "month": "2025-06",
+        "count": 41
+      },
+      {
+        "month": "2025-07",
+        "count": 39
+      },
+      {
+        "month": "2025-08",
+        "count": 14
+      },
+      {
+        "month": "2025-09",
+        "count": 15
+      },
+      {
+        "month": "2025-10",
+        "count": 28
+      },
+      {
+        "month": "2025-11",
+        "count": 12
+      },
+      {
+        "month": "2025-12",
+        "count": 21
+      },
+      {
+        "month": "2026-01",
+        "count": 18
+      },
+      {
+        "month": "2026-02",
+        "count": 6
+      },
+      {
+        "month": "2026-03",
+        "count": 11
+      },
+      {
+        "month": "2026-04",
+        "count": 18
+      },
+      {
+        "month": "2026-05",
+        "count": 6
+      },
+      {
+        "month": "2026-06",
+        "count": 4
+      },
+      {
+        "month": "2026-07",
+        "count": 12
+      }
+    ],
+    "ratings": [
+      {
+        "rating": 1,
+        "count": 2
+      },
+      {
+        "rating": 1.5,
+        "count": 12
+      },
+      {
+        "rating": 2,
+        "count": 25
+      },
+      {
+        "rating": 2.5,
+        "count": 83
+      },
+      {
+        "rating": 3,
+        "count": 161
+      },
+      {
+        "rating": 3.5,
+        "count": 153
+      },
+      {
+        "rating": 4,
+        "count": 130
+      },
+      {
+        "rating": 4.5,
+        "count": 25
+      },
+      {
+        "rating": 5,
+        "count": 8
+      }
+    ],
+    "decades": [
+      {
+        "decade": 1950,
+        "label": "1950s",
+        "count": 1
+      },
+      {
+        "decade": 1970,
+        "label": "1970s",
+        "count": 7
+      },
+      {
+        "decade": 1980,
+        "label": "1980s",
+        "count": 24
+      },
+      {
+        "decade": 1990,
+        "label": "1990s",
+        "count": 96
+      },
+      {
+        "decade": 2000,
+        "label": "2000s",
+        "count": 220
+      },
+      {
+        "decade": 2010,
+        "label": "2010s",
+        "count": 137
+      },
+      {
+        "decade": 2020,
+        "label": "2020s",
+        "count": 114
+      }
+    ],
+    "mostRewatched": [
+      {
+        "title": "Half Baked",
+        "year": "1998",
+        "url": "https://letterboxd.com/nichtlegacy/film/half-baked/",
+        "views": 6
+      },
+      {
+        "title": "The Big Lebowski",
+        "year": "1998",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-big-lebowski/",
+        "views": 6
+      },
+      {
+        "title": "Smiley Face",
+        "year": "2007",
+        "url": "https://letterboxd.com/nichtlegacy/film/smiley-face/",
+        "views": 5
+      },
+      {
+        "title": "Dude, Where's My Car?",
+        "year": "2000",
+        "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/",
+        "views": 3
+      },
+      {
+        "title": "High School",
+        "year": "2010",
+        "url": "https://letterboxd.com/nichtlegacy/film/high-school-2010/",
+        "views": 3
+      }
+    ],
+    "milestones": [
+      {
+        "n": 1,
+        "date": "2024-02-22",
+        "title": "Dune",
+        "year": "2021",
+        "rating": 4,
+        "url": "https://letterboxd.com/nichtlegacy/film/dune-2021/"
+      },
+      {
+        "n": 100,
+        "date": "2024-11-15",
+        "title": "The Number 23",
+        "year": "2007",
+        "rating": 3,
+        "url": "https://letterboxd.com/nichtlegacy/film/the-number-23/"
+      },
+      {
+        "n": 200,
+        "date": "2025-02-03",
+        "title": "There's Something About Mary",
+        "year": "1998",
+        "rating": 3,
+        "url": "https://letterboxd.com/nichtlegacy/film/theres-something-about-mary/1/"
+      },
+      {
+        "n": 300,
+        "date": "2025-04-16",
+        "title": "Liar Liar",
+        "year": "1997",
+        "rating": 3,
+        "url": "https://letterboxd.com/nichtlegacy/film/liar-liar/"
+      },
+      {
+        "n": 400,
+        "date": "2025-07-04",
+        "title": "Kill Bill: Vol. 1",
+        "year": "2003",
+        "rating": 3.5,
+        "url": "https://letterboxd.com/nichtlegacy/film/kill-bill-vol-1/"
+      },
+      {
+        "n": 500,
+        "date": "2025-11-27",
+        "title": "The Tunnel to Summer, the Exit of Goodbyes",
+        "year": "2022",
+        "rating": 3.5,
+        "url": "https://letterboxd.com/nichtlegacy/film/the-tunnel-to-summer-the-exit-of-goodbyes/"
+      },
+      {
+        "n": 599,
+        "date": "2026-07-30",
+        "title": "Spider-Man: Brand New Day",
+        "year": "2026",
+        "rating": 4,
+        "url": "https://letterboxd.com/nichtlegacy/film/spider-man-brand-new-day/"
+      }
+    ]
+  }
 }
