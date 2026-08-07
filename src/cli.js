@@ -8,7 +8,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { fetchProfileData, tryFetchMultipleYears, fetchSpecificYears, fetchAllDiaryEntries, fetchFilmPoster, imageToBase64, closeBrowser } from './fetcher.js';
+import { fetchProfileData, tryFetchMultipleYears, fetchSpecificYears, fetchAllDiaryEntries, fetchFilmDetails, imageToBase64, closeBrowser } from './fetcher.js';
 import { generateSvg, generateMultiYearSvg } from './generator.js';
 import { generateReviewCard, generateProfileCard, pickTopFilms, entriesForYear, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT, FAV_PIXEL_WIDTH, FAV_PIXEL_HEIGHT } from './cards.js';
 import { svgToPng, imageBufferToThumbnail } from './exporter.js';
@@ -234,16 +234,20 @@ async function main() {
     // error: the card falls back to a plain placeholder.
     const posters = new Map();
     const favouritePosters = new Map();
+    const details = new Map();
 
-    const loadPosters = async (films, target, width, height) => {
+    // One request per film covers the poster, the runtime and the community
+    // rating, so details are cached across the year and profile cards.
+    const loadFilm = async (films, target, width, height) => {
       for (const film of films) {
         if (!film.url || target.has(film.url)) continue;
 
-        const posterUrl = await fetchFilmPoster(film.url);
-        if (!posterUrl) continue;
+        const detail = details.get(film.url) || await fetchFilmDetails(film.url);
+        details.set(film.url, detail);
+        if (!detail.poster) continue;
 
         try {
-          const response = await fetch(posterUrl);
+          const response = await fetch(detail.poster);
           if (!response.ok) continue;
 
           const thumbnail = await imageBufferToThumbnail(
@@ -262,8 +266,8 @@ async function main() {
       ...sortedYears.flatMap(y => pickTopFilms(entriesForYear(filmEntries, y))),
       ...pickTopFilms(allEntries, 3)
     ];
-    await loadPosters(topFilms, posters, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT);
-    await loadPosters(favourites, favouritePosters, FAV_PIXEL_WIDTH, FAV_PIXEL_HEIGHT);
+    await loadFilm(topFilms, posters, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT);
+    await loadFilm(favourites, favouritePosters, FAV_PIXEL_WIDTH, FAV_PIXEL_HEIGHT);
     console.log(`   Posters: ${posters.size}/${new Set(topFilms.map(f => f.url)).size}`
       + `, favourites ${favouritePosters.size}/${favourites.length}`);
 
@@ -274,7 +278,8 @@ async function main() {
           ...svgOptions,
           year: reviewYear,
           theme,
-          posters
+          posters,
+          details
         });
 
         fs.writeFileSync(cardPath, card);
@@ -298,7 +303,8 @@ async function main() {
         totalEntries,
         favourites,
         posters,
-        favouritePosters
+        favouritePosters,
+        details
       });
 
       fs.writeFileSync(profileCardPaths[index], card);

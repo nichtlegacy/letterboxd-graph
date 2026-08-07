@@ -966,29 +966,29 @@ export function canonicalFilmUrl(filmUrl) {
 }
 
 /**
- * Resolve the poster image URL for a film.
+ * Read the details a card shows for a film.
  *
- * Diary rows only carry lazy-loading placeholders, so the poster has to come
- * from the film page. Both the JSON-LD block and the markup reference the same
- * resized poster asset, so matching that URL shape is enough and avoids parsing
- * the whole document.
+ * Poster, runtime and the community rating all come from the same page, so
+ * they are read in one request rather than three. Diary rows only carry
+ * lazy-loading placeholders, which is why the film page is needed at all.
  *
  * Uses a plain request rather than the Cloudflare-resilient fetchPage: film
- * pages are not challenged the way diary pages are, and fetchPage validates
- * responses against diary markup, so it would reject a film page and fall
- * through to the much slower Puppeteer path. A poster is decorative, so any
- * failure just returns null and the card renders a placeholder.
+ * pages are not challenged the way diary and profile pages are, and fetchPage
+ * validates responses against diary markup, so it would reject a film page and
+ * fall through to the much slower Puppeteer path. Everything here is
+ * decorative, so a failure yields nulls and the card simply shows less.
  *
  * @param {string} filmUrl - Any Letterboxd link to the film
- * @returns {Promise<string|null>} Poster URL, or null when none was found
+ * @returns {Promise<{poster: string|null, runtime: number|null, averageRating: number|null}>}
  */
-export async function fetchFilmPoster(filmUrl) {
+export async function fetchFilmDetails(filmUrl) {
+  const empty = { poster: null, runtime: null, averageRating: null };
   const url = canonicalFilmUrl(filmUrl);
-  if (!url) return null;
+  if (!url) return empty;
 
   try {
     const response = await fetch(url, { headers: BROWSER_HEADERS });
-    if (!response.ok) return null;
+    if (!response.ok) return empty;
 
     const html = await response.text();
 
@@ -999,10 +999,17 @@ export async function fetchFilmPoster(filmUrl) {
     const fallback = html.match(/https:\/\/a\.ltrbxd\.com\/resized\/film-poster\/[^"'\s\\]+/);
     const posterUrl = structured?.[1] || fallback?.[0];
 
-    return posterUrl ? posterUrl.replace(/&amp;/g, '&') : null;
+    const runtime = html.match(/(\d+)\s*(?:&nbsp;|\s)mins/);
+    const rating = html.match(/"ratingValue"\s*:\s*([\d.]+)/);
+
+    return {
+      poster: posterUrl ? posterUrl.replace(/&amp;/g, '&') : null,
+      runtime: runtime ? Number.parseInt(runtime[1], 10) : null,
+      averageRating: rating ? Number.parseFloat(rating[1]) : null
+    };
   } catch (error) {
-    console.warn(`   Could not resolve poster for ${url}: ${error.message}`);
-    return null;
+    console.warn(`   Could not read details for ${url}: ${error.message}`);
+    return empty;
   }
 }
 

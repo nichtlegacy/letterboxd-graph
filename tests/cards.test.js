@@ -190,16 +190,25 @@ test('card uses the Letterboxd green for ratings, not gold', async () => {
 
 test('the stat grid ends level with the last film row', async () => {
   const svg = await generateReviewCard(
-    [entry('2025-01-01', { title: 'A', rating: 4 })],
+    ['A', 'B', 'C', 'D', 'E'].map((title, i) => entry(`2025-01-0${i + 1}`, { title, rating: 5 - i * 0.5 })),
     { year: 2025, username: 'someone' }
   );
 
-  const bottomOf = (match) => Number(match[1]) + Number(match[2]);
-  const rects = [...svg.matchAll(/<rect x="(?:52|236|420|622)" y="(\d+(?:\.\d+)?)" width="(?:170|526)" height="(\d+(?:\.\d+)?)"/g)]
-    .map(m => bottomOf(m));
+  // Read the panels straight out of the markup rather than hard coding the
+  // layout, so the assertion survives a change of padding or column widths.
+  const panels = [...svg.matchAll(/<rect x="([\d.]+)" y="([\d.]+)" width="([\d.]+)" height="([\d.]+)" rx="14"/g)]
+    .map(([, x, y, width, height]) => ({
+      x: Number(x),
+      bottom: Number(y) + Number(height),
+      width: Number(width)
+    }));
+  const widest = Math.max(...panels.map(panel => panel.width));
+  const rows = panels.filter(panel => panel.width === widest);
+  const tiles = panels.filter(panel => panel.width !== widest);
 
-  assert.ok(rects.length > 0);
-  assert.equal(Math.max(...rects), 573, 'both columns end on the same line');
+  assert.ok(rows.length === 5 && tiles.length === 6);
+  assert.equal(Math.max(...tiles.map(t => t.bottom)), Math.max(...rows.map(r => r.bottom)),
+    'both columns end on the same line');
 });
 
 test('aggregateFilms merges repeat viewings of the same film', () => {
@@ -272,19 +281,6 @@ test('ranking: the rewatch bonus stops growing', () => {
   assert.equal(top[0].title, 'Liked');
 });
 
-test('card draws the rating distribution inside the average tile', async () => {
-  const svg = await generateReviewCard(
-    [
-      entry('2025-01-01', { title: 'A', rating: 4 }),
-      entry('2025-01-02', { title: 'B', rating: 4 }),
-      entry('2025-01-03', { title: 'C', rating: 2 })
-    ],
-    { year: 2025, username: 'someone' }
-  );
-  const bars = svg.match(/<rect x="[\d.]+" y="\d+" width="8" height="\d+" rx="1.5"/g) || [];
-
-  assert.equal(bars.length, 10, 'one bar per half-star step');
-});
 
 test('card renders the Letterboxd logo when one is supplied', async () => {
   const film = entry('2025-01-01', { title: 'A', rating: 4 });
@@ -438,4 +434,83 @@ test('profile card names the favourites under their posters', async () => {
 
   assert.ok(texts.includes('Solaris'));
   assert.ok(texts.includes('1972'));
+});
+
+test('film rows carry runtime and the community rating when known', async () => {
+  const film = entry('2025-01-01', { title: 'The Big Lebowski', year: '1998', rating: 5 });
+  const svg = await generateReviewCard([film], {
+    year: 2025,
+    username: 'someone',
+    details: new Map([[film.url, { runtime: 117, averageRating: 4.11 }]])
+  });
+
+  assert.ok(textNodes(svg).includes('1998  ·  1h 57m  ·  ★ 4.1'));
+});
+
+test('film rows fall back gracefully when the film page gave nothing', async () => {
+  const film = entry('2025-01-01', { title: 'A', year: '1998', rating: 5 });
+  const svg = await generateReviewCard([film], { year: 2025, username: 'someone' });
+
+  assert.ok(textNodes(svg).includes('1998'));
+  assert.ok(!svg.includes('·'), 'no separators left dangling');
+});
+
+test('a runtime under an hour drops the hours part', async () => {
+  const film = entry('2025-01-01', { title: 'Short', year: '2020', rating: 4 });
+  const svg = await generateReviewCard([film], {
+    year: 2025,
+    username: 'someone',
+    details: new Map([[film.url, { runtime: 48, averageRating: null }]])
+  });
+
+  assert.ok(textNodes(svg).includes('2020  ·  48m'));
+});
+
+test('rank colors group the ranks into tiers', async () => {
+  const films = ['A', 'B', 'C', 'D', 'E'].map((title, i) =>
+    entry(`2025-01-0${i + 1}`, { title, rating: 5 - i * 0.5 }));
+  const svg = await generateReviewCard(films, { year: 2025, username: 'someone' });
+  const colors = [...svg.matchAll(/<circle cx="[\d.]+" cy="[\d.]+" r="16" fill="(#[0-9A-F]{6})"/gi)]
+    .map(match => match[1]);
+
+  assert.deepEqual(colors, ['#FF8000', '#FF8000', '#00E054', '#00E054', '#40BCF4']);
+});
+
+test('both cards have rounded corners', async () => {
+  const film = entry('2025-01-01', { title: 'A', rating: 4 });
+  const year = await generateReviewCard([film], { year: 2025, username: 'someone' });
+  const profile = await generateProfileCard([film], { years: [2025], username: 'someone' });
+
+  for (const svg of [year, profile]) {
+    assert.match(svg, /<rect width="100%" height="100%" rx="\d+"/);
+  }
+});
+
+test('a long favourite title wraps instead of being cut mid-word', async () => {
+  const svg = await generateProfileCard([entry('2025-01-01', { title: 'A', rating: 4 })], {
+    years: [2025],
+    username: 'someone',
+    favourites: [{ title: 'The Butterfly Effect', year: '2004', url: 'https://letterboxd.com/film/tbe/' }]
+  });
+  const texts = textNodes(svg);
+
+  assert.ok(texts.includes('The Butterfly'), 'first line breaks on a space');
+  assert.ok(texts.includes('Effect'), 'the rest goes on a second line');
+  assert.ok(!texts.some(text => text.startsWith('The Butterfly Eff…')));
+});
+
+test('a favourite title too long even for two lines is truncated on the last', async () => {
+  const svg = await generateProfileCard([entry('2025-01-01', { title: 'A', rating: 4 })], {
+    years: [2025],
+    username: 'someone',
+    favourites: [{
+      title: 'Everything Everywhere All at Once Forever and Ever',
+      year: '2022',
+      url: 'https://letterboxd.com/film/eeaao/'
+    }]
+  });
+  const texts = textNodes(svg);
+
+  assert.ok(texts.some(text => text.endsWith('…')));
+  assert.ok(texts.includes('2022'), 'the year still lines up below');
 });

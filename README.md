@@ -447,9 +447,9 @@ images/letterboxd-review-<year>-dark.svg
 images/letterboxd-review-<year>-light.svg
 ```
 
-It carries the headline figures (films, days active, streak, average rating with
-its distribution, rewatches, likes) and your five top rated films with poster art
-and ratings in Letterboxd's green.
+It carries the headline figures (films, days active, streak, average rating,
+rewatches, likes) and your five top rated films with poster art, their runtime
+and the Letterboxd community rating, and your own rating in Letterboxd's green.
 
 Films are ranked by rating first. Likes and rewatches only decide the order
 *within* a rating: the bonuses add up to less than a half-star step, so a film
