@@ -128,6 +128,27 @@ const REWATCH_BONUS = 0.08;
 const MAX_REWATCH_BONUS = 0.16;
 
 /**
+ * Draw the Pro or Patron badge over the bottom left of the avatar.
+ *
+ * Same placement and colors as the contribution graph, scaled down for the
+ * card's smaller avatar so a profile looks the same wherever it is rendered.
+ *
+ * @param {string|null} memberStatus - 'patron', 'pro' or null
+ * @returns {string} SVG markup, empty for a member with neither
+ */
+function renderMemberBadge(memberStatus) {
+  if (memberStatus !== 'patron' && memberStatus !== 'pro') return '';
+
+  const isPatron = memberStatus === 'patron';
+  const width = isPatron ? 44 : 30;
+
+  return `<g transform="translate(-4, 44)">
+      <rect x="0" y="0" width="${width}" height="17" rx="3" fill="${isPatron ? '#40bcf4' : '#ff8000'}"/>
+      <text x="${width / 2}" y="12" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">${isPatron ? 'PATRON' : 'PRO'}</text>
+    </g>`;
+}
+
+/**
  * Format a runtime in minutes the way a viewer thinks about it
  * @param {number} minutes
  * @returns {string} e.g. "1h 57m" or "48m"
@@ -326,6 +347,7 @@ function renderIcon(path, x, y, size, color) {
  * @param {string|null} options.logoBase64 - Data URI for the Letterboxd logo
  * @param {Map<string, string>} options.posters - Film URL to poster data URI
  * @param {Map<string, Object>} options.details - Film URL to runtime and community rating
+ * @param {string|null} options.memberStatus - 'patron', 'pro' or null
  * @param {boolean} options.usernameGradient - Color the display name
  * @param {boolean} options.yearGradient - Color the year headline
  * @returns {Promise<string>} SVG markup
@@ -341,6 +363,7 @@ export async function generateReviewCard(entries, options = {}) {
     logoBase64 = null,
     posters = new Map(),
     details = new Map(),
+    memberStatus = null,
     usernameGradient = true,
     yearGradient = true
   } = options;
@@ -448,6 +471,7 @@ export async function generateReviewCard(entries, options = {}) {
         ? `<image href="${profileImage}" x="0" y="0" width="60" height="60" clip-path="url(#reviewAvatarClip)"/>`
         : `<circle cx="30" cy="30" r="30" fill="${t.colors[2]}"/>`}
     </a>
+    ${renderMemberBadge(memberStatus)}
     <a href="${profileUrl}">
       <text x="76" y="27" font-size="27" font-weight="700" fill="${usernameGradient ? 'url(#reviewGradient)' : t.text}">${escapeXml(displayName)}</text>
     </a>
@@ -524,6 +548,7 @@ export const FAV_PIXEL_HEIGHT = FAV_POSTER_HEIGHT * 2;
  * @param {Map<string, string>} options.posters - Film URL to poster data URI for the list
  * @param {Map<string, string>} options.favouritePosters - Larger posters for the favourites row
  * @param {Map<string, Object>} options.details - Film URL to runtime and community rating
+ * @param {string|null} options.memberStatus - 'patron', 'pro' or null
  * @returns {Promise<string>} SVG markup
  */
 export async function generateProfileCard(entries, options = {}) {
@@ -541,6 +566,7 @@ export async function generateProfileCard(entries, options = {}) {
     posters = new Map(),
     favouritePosters = new Map(),
     details = new Map(),
+    memberStatus = null,
     usernameGradient = true,
     yearGradient = true
   } = options;
@@ -563,7 +589,10 @@ export async function generateProfileCard(entries, options = {}) {
   const streak = calculateStreak(entries);
   const average = calculateAverageRating(entries);
   const stats = [
-    { icon: 'films', value: String(entries.length), label: range ? `Films ${range}` : 'Films' },
+    // A profile counts films watched, the diary counts logged viewings, and the
+    // two can differ wildly: a profile with 3,653 films may hold 1,254 diary
+    // entries. Calling both "Films" put two different numbers under one word.
+    { icon: 'films', value: String(entries.length), label: range ? `Diary Entries ${range}` : 'Diary Entries' },
     { icon: 'daysActive', value: String(calculateDaysActive(entries)), label: 'Days Active' },
     { icon: 'streak', value: String(streak.length), label: 'Day Streak' },
     { icon: 'rating', value: average === null ? '–' : average.toFixed(1), label: 'Average Rating' },
@@ -674,6 +703,7 @@ export async function generateProfileCard(entries, options = {}) {
         ? `<image href="${profileImage}" x="0" y="0" width="60" height="60" clip-path="url(#reviewAvatarClip)"/>`
         : `<circle cx="30" cy="30" r="30" fill="${t.colors[2]}"/>`}
     </a>
+    ${renderMemberBadge(memberStatus)}
     <a href="${profileUrl}">
       <text x="76" y="27" font-size="27" font-weight="700" fill="${usernameGradient ? 'url(#reviewGradient)' : t.text}">${escapeXml(displayName)}</text>
     </a>
@@ -689,7 +719,7 @@ export async function generateProfileCard(entries, options = {}) {
   <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="${HERO_BASELINE}" font-size="88" font-weight="700" fill="${yearGradient ? 'url(#reviewGradient)' : t.text}" text-anchor="middle">${totalEntries}</text>
   <line x1="${CONTENT_LEFT + 40}" y1="${HERO_RULE_Y}" x2="${CONTENT_LEFT + 150}" y2="${HERO_RULE_Y}" stroke="${surfaceBorder}" stroke-width="1"/>
   <line x1="${CONTENT_LEFT + LEFT_WIDTH - 150}" y1="${HERO_RULE_Y}" x2="${CONTENT_LEFT + LEFT_WIDTH - 40}" y2="${HERO_RULE_Y}" stroke="${surfaceBorder}" stroke-width="1"/>
-  <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="${HERO_LABEL_Y}" font-size="14" font-weight="600" fill="${t.textMuted}" text-anchor="middle" letter-spacing="7">FILMS LOGGED</text>
+  <text x="${CONTENT_LEFT + LEFT_WIDTH / 2}" y="${HERO_LABEL_Y}" font-size="14" font-weight="600" fill="${t.textMuted}" text-anchor="middle" letter-spacing="7">FILMS WATCHED</text>
 
   ${tilesMarkup}
 

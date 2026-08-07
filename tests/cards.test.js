@@ -304,8 +304,8 @@ test('profile card reports the all-time count and scopes the fetched figures', a
   const texts = textNodes(svg);
 
   assert.ok(texts.includes('626'), 'the headline is the all-time count');
-  assert.ok(texts.includes('FILMS LOGGED'));
-  assert.ok(texts.includes('Films 2025–2026'), 'the tiles say which years they cover');
+  assert.ok(texts.includes('FILMS WATCHED'));
+  assert.ok(texts.includes('Diary Entries 2025–2026'), 'the tiles say which years they cover');
   assert.ok(texts.includes('TOP RATED 2025–2026'));
   assert.ok(texts.includes('2'), 'the tile counts only the fetched entries');
 });
@@ -415,12 +415,12 @@ test('profile card drops the year range when the diary is complete', async () =>
   });
 
   assert.ok(textNodes(scoped).includes('TOP RATED 2024–2026'));
-  assert.ok(textNodes(scoped).includes('Films 2024–2026'));
+  assert.ok(textNodes(scoped).includes('Diary Entries 2024–2026'));
 
   // Labelling a complete diary with its span would read as a restriction that
   // is not there.
   assert.ok(textNodes(complete).includes('TOP RATED'));
-  assert.ok(textNodes(complete).includes('Films'));
+  assert.ok(textNodes(complete).includes('Diary Entries'));
   assert.ok(!complete.includes('2024–2026'));
 });
 
@@ -532,4 +532,44 @@ test('the year follows a one line title without a gap', async () => {
   // A short title keeps its year close; a wrapped one pushes it down by a line.
   assert.equal(caption('1977') - caption('Star Wars'), 17);
   assert.equal(caption('2004') - caption('The Butterfly'), 33);
+});
+
+test('both cards show the Pro and Patron badges', async () => {
+  const film = entry('2025-01-01', { title: 'A', rating: 4 });
+
+  for (const [status, label, color] of [['patron', 'PATRON', '#40bcf4'], ['pro', 'PRO', '#ff8000']]) {
+    const year = await generateReviewCard([film], { year: 2025, username: 'someone', memberStatus: status });
+    const profile = await generateProfileCard([film], { years: [2025], username: 'someone', memberStatus: status });
+
+    for (const svg of [year, profile]) {
+      assert.ok(textNodes(svg).includes(label));
+      assert.ok(svg.includes(color), `${label} keeps its colour`);
+    }
+  }
+});
+
+test('a member with neither badge gets none', async () => {
+  const film = entry('2025-01-01', { title: 'A', rating: 4 });
+  const year = await generateReviewCard([film], { year: 2025, username: 'someone' });
+  const profile = await generateProfileCard([film], { years: [2025], username: 'someone', memberStatus: null });
+
+  for (const svg of [year, profile]) {
+    assert.ok(!svg.includes('PATRON'));
+    assert.ok(!/>PRO</.test(svg));
+  }
+});
+
+test('the profile card does not label two different numbers as films', async () => {
+  // A profile counts films watched; the diary counts logged viewings. On a
+  // profile with 3,653 films and 1,254 diary entries the two are far apart.
+  const svg = await generateProfileCard(
+    [entry('2025-01-01', { title: 'A', rating: 4 })],
+    { years: [2025], allTime: true, totalEntries: 3653, username: 'someone' }
+  );
+  const texts = textNodes(svg);
+
+  assert.ok(texts.includes('3653'));
+  assert.ok(texts.includes('FILMS WATCHED'));
+  assert.ok(texts.includes('Diary Entries'));
+  assert.ok(!texts.includes('Films'), 'the bare word would be ambiguous here');
 });

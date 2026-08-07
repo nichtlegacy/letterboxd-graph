@@ -471,9 +471,9 @@ images/letterboxd-profile-dark.svg
 images/letterboxd-profile-light.svg
 ```
 
-The headline is your all-time film count from the profile page. The tiles and
-the top rated list cover the years the run fetched, and say so, so the two are
-not mistaken for each other. The right column shows the favourites pinned on
+The headline is your all-time film count from the profile page, labelled "films
+watched". The tiles below count diary entries, which is a different number, so
+they say so rather than both claiming to be films. The right column shows the favourites pinned on
 your Letterboxd profile — a profile can pin up to four, and the row is laid out
 left to right so pinning fewer reads as a short row rather than a row with gaps.
 
@@ -482,11 +482,15 @@ left to right so pinning fewer reads as a short row rather than a row with gaps.
 By default the complete diary is fetched, so the profile card can report
 all-time figures. Paginating the diary costs one request per 50 entries:
 
-| Library | Requests | Roughly |
-|---------|----------|---------|
-| 600 films | ~13 | a few seconds |
-| 3,500 films | ~73 | about a minute |
-| 6,000 films | ~120 | a few minutes |
+| Profile | Films watched | Diary entries | Requests |
+|---------|---------------|---------------|----------|
+| nichtlegacy | 626 | 599 | 12 |
+| BeHaind | 3,653 | 1,254 | 26 |
+| Rufus_Firefly | 5,848 | 3,783 | 76 |
+
+Note that the two counts differ: a profile counts films watched, the diary counts
+logged viewings, and only the latter drives the request count. A large library
+with few diary entries is cheap to fetch.
 
 The graph and the year cards still only cover the years in `-y`; the extra
 years are filtered out of the same fetch rather than requested again. Set
