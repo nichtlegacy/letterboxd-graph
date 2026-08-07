@@ -11,7 +11,11 @@ inputs:
     description: 'Letterboxd username to generate the graph for'
     required: true
   years:
-    description: 'Comma-separated years, e.g. "2026,2025". Empty means the current year.'
+    description: >-
+      Years to draw. A list, e.g. "2026,2025", or a span counted back from the
+      current year, e.g. "last 2" for this year and last. Empty means the
+      current year. Prefer the span: a pinned list keeps drawing the same two
+      years after New Year, and nothing about the run looks wrong.
     required: false
     default: ''
   week-start:

@@ -63,7 +63,7 @@ jobs:
       - uses: nichtlegacy/letterboxd-graph@v2
         with:
           username: YOUR_LETTERBOXD_USERNAME
-          years: "2026,2025"        # optional, defaults to the current year
+          years: "last 2"           # this year and last, defaults to the current year
 ```
 
 Run it once from the **Actions** tab. A healthy first run logs the diary pages
@@ -260,7 +260,7 @@ All options are action inputs. Only `username` is required.
 | Input | Description | Default |
 |-------|-------------|---------|
 | `username` | Letterboxd username (**required**) | – |
-| `years` | Comma-separated years, e.g. `2026,2025` | current year |
+| `years` | `last N` for the last N years, or a list like `2026,2025` | current year |
 | `scope` | Diary scope: `all` or `years` | `all` |
 | `month-cards` | Recent months to also make cards for, `0` to skip | `2` |
 | `top-films` | Year card film list: `watched` or `released` | `watched` |
@@ -278,6 +278,12 @@ All options are action inputs. Only `username` is required.
 Outputs `svg-dark`, `svg-light` and `data-json` carry the paths written, for
 chaining into an upload or deploy step.
 
+`years` is worth a second look. `last 2` is read as *this year and last* on the
+day the run happens, so the graph rolls over on its own; a pinned `2026,2025`
+keeps drawing 2025 all through 2027, and nothing in the run looks wrong while it
+does. Cards for a year that drops out of the list are deleted on the next run,
+so nothing is left behind either way.
+
 <details>
 <summary><b>Alternative: fork and run the CLI directly</b></summary>
 
@@ -287,10 +293,11 @@ To own the whole workflow instead, fork this repository and edit
 ```yaml
 env:
   LETTERBOXD_USERNAME: "YOUR_USERNAME"
-  YEARS: "2026,2025"                   # empty for the current year
+  YEARS: "last 2"                      # this year and last, or a list like "2026,2025"
   SCOPE: "all"                         # "all" (whole diary) or "years"
   MONTH_CARDS: "2"                     # recent months to card, 0 to skip
   TOP_FILMS: "watched"                 # "watched" or "released" film list
+  MODE: "count"                        # "count" of films or average "rating"
   WEEK_START: "sunday"                 # "sunday" or "monday"
   GRADIENT: "true"                     # "true", "false", "name" or "year"
   ANIMATE: "true"                      # "false" disables the reveal animation
@@ -312,7 +319,7 @@ node src/cli.js <username> [options]
 
 | Flag | Description | Default |
 |------|-------------|---------|
-| `-y <years>` | Year(s), comma-separated, e.g. `2026,2025` | current year |
+| `-y <years>` | `last N`, or a list like `2026,2025` | current year |
 | `-s <scope>` | Diary scope: `all` or `years` | `all` |
 | `-c <count>` | Recent months to also card, `0` to skip | `2` |
 | `-r <scope>` | Year card film list: `watched` or `released` | `watched` |
