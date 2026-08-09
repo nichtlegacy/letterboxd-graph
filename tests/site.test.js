@@ -290,7 +290,7 @@ test('describe names the user and the span the diary covers', () => {
   const text = describe(SLIM);
 
   assert.match(text.title, /^@someone's film diary/);
-  assert.match(text.ogTitle, /626 films/);
+  assert.equal(text.ogTitle, "@someone's Letterboxd diary");
   assert.match(text.description, /626 films logged on Letterboxd by @someone, 2024–2026/);
   assert.ok(text.description.length <= 160, `description is ${text.description.length} characters, Google cuts at about 160`);
 });
@@ -303,8 +303,10 @@ test('describe prefers the diary span over the years that were drawn', () => {
 test('describe leads the share card with the figures', () => {
   const text = describe(SLIM);
 
-  assert.match(text.ogDescription, /^599 diary entries across 427 days\./);
-  assert.match(text.ogDescription, /Longest streak 34 days, average rating 3\.3/);
+  assert.equal(
+    text.ogDescription,
+    '599 entries. 427 active days. 83 rewatches. One 34-day streak. A visual Letterboxd diary with yearly and monthly cards, ratings, milestones, and more.'
+  );
   assert.ok(text.ogDescription.length <= 200, `card description is ${text.ogDescription.length} characters, X cuts at about 200`);
   assert.match(text.imageAlt, /Pages site/);
   assert.match(text.imageAlt, /626 films watched/);
@@ -326,6 +328,7 @@ test('renderMeta writes absolute URLs, because a crawler resolves nothing', () =
   });
 
   assert.match(html, /<link rel="canonical" href="https:\/\/someone\.github\.io\/letterboxd-graph\/">/);
+  assert.equal(meta(html, 'theme-color'), '#00e054');
   assert.equal(meta(html, 'og:url'), 'https://someone.github.io/letterboxd-graph/');
   assert.match(meta(html, 'og:image'), /^https:\/\/someone\.github\.io\/letterboxd-graph\/og\.png/);
   assert.match(meta(html, 'twitter:image'), /^https:\/\//);

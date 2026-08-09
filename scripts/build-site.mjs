@@ -46,6 +46,7 @@ const TOUCH_ICON_SIZE = { width: 180, height: 180 };
 // transparent corners is shown over whatever colour the reader's client uses,
 // and a share card is as often on white as on black.
 const CARD_BACKGROUND = '#12161a';
+const LETTERBOXD_GREEN = '#00e054';
 
 /**
  * Split a generated filename into what it shows, which period it covers and
@@ -349,7 +350,7 @@ export function describe(data) {
   // named; a share card is already framed as one, and reads better leading with
   // the figure that makes it worth opening.
   const title = `${user}'s film diary — Letterboxd Graph`;
-  const ogTitle = films ? `${user} — ${count(films)} films on Letterboxd` : title;
+  const ogTitle = `${user}'s Letterboxd diary`;
 
   const description = [
     films ? `${count(films)} films logged on Letterboxd by ${user}` : `${user}'s Letterboxd diary`,
@@ -360,21 +361,12 @@ export function describe(data) {
   // Two sentences of figures, then what the page is. X cuts a card's
   // description at around 200 characters, so the figures go first and the
   // sentence that survives being cut is the one that says the least.
-  const logged = [
-    all.entries ? `${count(all.entries)} diary entries` : null,
-    all.daysActive ? `across ${count(all.daysActive)} days` : null
-  ].filter(Boolean).join(' ');
-
-  const then = [
-    all.streak?.length ? `longest streak ${all.streak.length} days` : null,
-    all.averageRating ? `average rating ${all.averageRating}` : null,
-    all.rewatches ? `${count(all.rewatches)} rewatches` : null
-  ].filter(Boolean).join(', ');
-
   const ogDescription = [
-    logged ? `${logged}.` : null,
-    then ? `${then.charAt(0).toUpperCase()}${then.slice(1)}.` : null,
-    'Drawn as a contribution graph, a card per year and month, and every figure behind them.'
+    all.entries ? `${count(all.entries)} entries.` : null,
+    all.daysActive ? `${count(all.daysActive)} active days.` : null,
+    all.rewatches ? `${count(all.rewatches)} rewatches.` : null,
+    all.streak?.length ? `One ${all.streak.length}-day streak.` : null,
+    'A visual Letterboxd diary with yearly and monthly cards, ratings, milestones, and more.'
   ].filter(Boolean).join(' ');
 
   const imageAlt = films
@@ -408,6 +400,7 @@ export function renderMeta({ base, data, repository, image, imageSize = { width:
     ['title', text.title],
     ['meta', 'name', 'description', text.description],
     ['link', 'canonical', url],
+    ['meta', 'name', 'theme-color', LETTERBOXD_GREEN],
     null,
     ['meta', 'property', 'og:type', 'website'],
     ['meta', 'property', 'og:site_name', 'Letterboxd Graph'],
