@@ -570,7 +570,7 @@ async function fetchPageWithPuppeteer(url, retries = 7) {
  * @param {string} html
  * @param {number|null} year - Restrict to this year, or null to accept any
  */
-function parseDiaryEntries(html, year) {
+export function parseDiaryEntries(html, year) {
   const $ = cheerio.load(html);
   const entries = [];
   const pageText = $('body').text().replace(/\s+/g, ' ').trim();
@@ -652,6 +652,32 @@ function parseDiaryEntries(html, year) {
       const filmYearMatch = filmYearText.match(YEAR_TEXT_PATTERN);
       const filmYear = filmYearMatch?.[0] || '';
 
+      const filmMetadata = $row.find('[data-item-slug], [data-viewingable-slug]').first();
+      const identifierElement = $row
+        .find('[data-postered-identifier], [data-viewingable-identifier]')
+        .first();
+      const identifierJson = identifierElement.attr('data-postered-identifier')
+        || identifierElement.attr('data-viewingable-identifier')
+        || '';
+      let filmIdentifier = {};
+      try {
+        filmIdentifier = JSON.parse(identifierJson);
+      } catch {
+        // Older diary layouts may omit the structured film identifier.
+      }
+
+      const slugMatch = titleLink.match(/\/film\/([^/]+)/);
+      const slug = filmMetadata.attr('data-item-slug')
+        || filmMetadata.attr('data-viewingable-slug')
+        || slugMatch?.[1]
+        || null;
+
+      const reviewLink = $row.find('td.col-review a[href]').first().attr('href') || '';
+      const reviewed = Boolean(reviewLink);
+      const reviewUrl = reviewLink
+        ? new URL(reviewLink, 'https://letterboxd.com').toString()
+        : null;
+
       let rating = null;
       const ratingSpan = $row.find('td.col-rating .rating, .rating[class*="rated-"], [class*=" rated-"], [class^="rated-"]').first();
       if (ratingSpan.length > 0) {
@@ -690,7 +716,12 @@ function parseDiaryEntries(html, year) {
           rating,
           rewatch,
           liked,
-          url: filmUrl
+          url: filmUrl,
+          reviewed,
+          reviewUrl,
+          filmUid: filmIdentifier.uid || null,
+          lid: filmIdentifier.lid || null,
+          slug
         });
       }
     } catch (err) {

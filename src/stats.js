@@ -14,8 +14,11 @@
  * @returns {string}
  */
 export function filmKey(entry) {
-  const slug = (entry.url || '').match(/\/film\/([^/]+)/);
-  return slug ? `film:${slug[1]}` : `title:${entry.title}|${entry.year || ''}`;
+  if (entry.filmUid) return `uid:${entry.filmUid}`;
+  if (entry.slug) return `slug:${entry.slug}`;
+
+  const urlSlug = (entry.url || '').match(/\/film\/([^/]+)/);
+  return urlSlug ? `film:${urlSlug[1]}` : `title:${entry.title}|${entry.year || ''}`;
 }
 
 /**
@@ -234,12 +237,26 @@ export function buildAllTimeStats(entries, options = {}) {
   const sorted = [...entries].sort((a, b) => a.date.getTime() - b.date.getTime());
   const iso = (date) => date.toISOString().split('T')[0];
   const rated = sorted.filter((entry) => entry.rating !== null && entry.rating !== undefined);
+  const releaseBreakdown = { sameYear: 0, older: 0, other: 0 };
+
+  for (const entry of sorted) {
+    const releaseYear = Number.parseInt(entry.year, 10);
+    const watchYear = entry.date.getUTCFullYear();
+
+    if (releaseYear === watchYear) releaseBreakdown.sameYear += 1;
+    else if (Number.isInteger(releaseYear) && releaseYear < watchYear) releaseBreakdown.older += 1;
+    else releaseBreakdown.other += 1;
+  }
+
+  const rewatches = sorted.filter((entry) => entry.rewatch).length;
+  const reviewed = sorted.filter((entry) => entry.reviewed).length;
 
   const days = new Map();
   const perYear = new Map();
   const perWeekday = new Array(7).fill(0);
   const perMonthOfYear = new Array(12).fill(0);
   const perMonth = new Map();
+  const perWeek = new Map();
   const ratings = new Map();
   const views = new Map();
 
@@ -247,9 +264,14 @@ export function buildAllTimeStats(entries, options = {}) {
     const date = iso(entry.date);
     const year = entry.date.getUTCFullYear();
     const month = `${date.slice(0, 7)}`;
+    const weekStart = new Date(entry.date);
+    weekStart.setUTCHours(0, 0, 0, 0);
+    weekStart.setUTCDate(weekStart.getUTCDate() - ((weekStart.getUTCDay() + 6) % 7));
+    const week = iso(weekStart);
 
     days.set(date, (days.get(date) || 0) + 1);
     perMonth.set(month, (perMonth.get(month) || 0) + 1);
+    perWeek.set(week, (perWeek.get(week) || 0) + 1);
     perWeekday[entry.date.getUTCDay()] += 1;
     perMonthOfYear[entry.date.getUTCMonth()] += 1;
 
@@ -267,6 +289,9 @@ export function buildAllTimeStats(entries, options = {}) {
       title: entry.title,
       year: entry.year,
       url: entry.url || null,
+      filmUid: entry.filmUid || null,
+      lid: entry.lid || null,
+      slug: entry.slug || null,
       views: 0,
       ratingTotal: 0,
       rated: 0
@@ -288,6 +313,24 @@ export function buildAllTimeStats(entries, options = {}) {
   for (let cursor = new Date(firstDate); cursor <= lastDate; cursor.setUTCMonth(cursor.getUTCMonth() + 1)) {
     const month = iso(cursor).slice(0, 7);
     monthSeries.push({ month, count: perMonth.get(month) || 0 });
+  }
+
+  const weekSeries = [];
+  if (scope === 'year') {
+    const year = sorted[0].date.getUTCFullYear();
+    const firstWeek = new Date(Date.UTC(year, 0, 1));
+    firstWeek.setUTCDate(firstWeek.getUTCDate() - ((firstWeek.getUTCDay() + 6) % 7));
+    const lastWeek = new Date(Date.UTC(year, 11, 31));
+    lastWeek.setUTCDate(lastWeek.getUTCDate() - ((lastWeek.getUTCDay() + 6) % 7));
+
+    let week = 1;
+    for (let cursor = new Date(firstWeek); cursor <= lastWeek; cursor.setUTCDate(cursor.getUTCDate() + 7)) {
+      const start = iso(cursor);
+      const endDate = new Date(cursor);
+      endDate.setUTCDate(endDate.getUTCDate() + 6);
+      weekSeries.push({ week, start, end: iso(endDate), count: perWeek.get(start) || 0 });
+      week += 1;
+    }
   }
 
   const dayList = [...days.entries()].sort((a, b) => a[0].localeCompare(b[0]));
@@ -315,7 +358,12 @@ export function buildAllTimeStats(entries, options = {}) {
     title: entry.title,
     year: entry.year || null,
     rating: entry.rating ?? null,
-    url: entry.url || null
+    url: entry.url || null,
+    reviewed: Boolean(entry.reviewed),
+    reviewUrl: entry.reviewUrl || null,
+    filmUid: entry.filmUid || null,
+    lid: entry.lid || null,
+    slug: entry.slug || null
   });
 
   const milestones = [milestone(sorted[0], 1, 'first')];
@@ -340,9 +388,19 @@ export function buildAllTimeStats(entries, options = {}) {
     lastEntry: iso(sorted.at(-1).date),
     spanDays,
     daysActive: days.size,
-    rewatches: sorted.filter((entry) => entry.rewatch).length,
+    multiFilmDays: dayList.filter(([, count]) => count > 1).length,
+    rewatches,
     liked: sorted.filter((entry) => entry.liked).length,
     rated: rated.length,
+    releaseBreakdown,
+    watchBreakdown: {
+      firstWatches: sorted.length - rewatches,
+      rewatches
+    },
+    reviewBreakdown: {
+      reviewed,
+      notReviewed: sorted.length - reviewed
+    },
     averageRating: calculateAverageRating(sorted),
     perDay: round(sorted.length / spanDays, 2),
     perWeek: round((sorted.length / spanDays) * 7),
@@ -356,6 +414,7 @@ export function buildAllTimeStats(entries, options = {}) {
     perWeekday,
     perMonthOfYear,
     monthSeries,
+    weekSeries,
     ratings: [...ratings.entries()]
       .sort((a, b) => a[0] - b[0])
       .map(([rating, count]) => ({ rating, count })),
@@ -432,7 +491,12 @@ export function buildJsonExport(entries, options = {}) {
         rating: item.rating,
         rewatch: Boolean(item.rewatch),
         liked: Boolean(item.liked),
-        url: item.url || null
+        url: item.url || null,
+        reviewed: Boolean(item.reviewed),
+        reviewUrl: item.reviewUrl || null,
+        filmUid: item.filmUid || null,
+        lid: item.lid || null,
+        slug: item.slug || null
       })),
       url
     };
@@ -522,7 +586,12 @@ export function buildJsonExport(entries, options = {}) {
         rating: item.rating,
         rewatch: Boolean(item.rewatch),
         liked: Boolean(item.liked),
-        url: item.url || null
+        url: item.url || null,
+        reviewed: Boolean(item.reviewed),
+        reviewUrl: item.reviewUrl || null,
+        filmUid: item.filmUid || null,
+        lid: item.lid || null,
+        slug: item.slug || null
       })),
       level: 0,
       inRange: !isPadding,
@@ -556,8 +625,29 @@ export function buildJsonExport(entries, options = {}) {
       rating: entry.rating,
       rewatch: Boolean(entry.rewatch),
       liked: Boolean(entry.liked),
-      url: entry.url || null
+      url: entry.url || null,
+      reviewed: Boolean(entry.reviewed),
+      reviewUrl: entry.reviewUrl || null,
+      filmUid: entry.filmUid || null,
+      lid: entry.lid || null,
+      slug: entry.slug || null
     }));
+
+  const aggregateEntries = allEntries || sortedEntries;
+  const entriesByYear = new Map();
+
+  for (const entry of aggregateEntries) {
+    const watchYear = entry.date.getUTCFullYear();
+    if (!entriesByYear.has(watchYear)) entriesByYear.set(watchYear, []);
+    entriesByYear.get(watchYear).push(entry);
+  }
+
+  const byYear = Object.fromEntries(
+    [...entriesByYear.entries()].map(([watchYear, yearEntries]) => [
+      String(watchYear),
+      buildAllTimeStats(yearEntries, { totalFilms: null, scope: 'year' })
+    ])
+  );
 
   return {
     user: username,
@@ -587,6 +677,7 @@ export function buildJsonExport(entries, options = {}) {
     calendar,
     cells,
     recent,
-    allTime: buildAllTimeStats(allEntries || sortedEntries, { totalFilms, scope })
+    byYear,
+    allTime: buildAllTimeStats(aggregateEntries, { totalFilms, scope })
   };
 }
