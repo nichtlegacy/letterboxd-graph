@@ -153,6 +153,10 @@ test('slimData keeps the figures and drops the calendar', () => {
     years: [2026, 2025],
     generatedAt: '2026-08-07T13:47:48.026Z',
     stats: { films: 456, daysActive: 322, streak: 34 },
+    byYear: {
+      2026: { scope: 'year', entries: 3 },
+      2025: { scope: 'year', entries: 3 }
+    },
     calendar: new Array(500).fill({ date: '2025-01-01', count: 0 }),
     cells: [
       { date: '2025-01-02', count: 2, films: [{ title: 'A' }, { title: 'B' }] },
@@ -168,6 +172,10 @@ test('slimData keeps the figures and drops the calendar', () => {
   assert.equal(slim.cells, undefined);
   assert.equal(slim.recent.length, 16);
   assert.deepEqual(slim.stats, { films: 456, daysActive: 322, streak: 34 });
+  assert.deepEqual(slim.byYear, {
+    2026: { scope: 'year', entries: 3 },
+    2025: { scope: 'year', entries: 3 }
+  });
 
   // The figures the page draws are aggregated here so it never has to load the
   // cells the totals came from.
@@ -175,6 +183,11 @@ test('slimData keeps the figures and drops the calendar', () => {
     { year: 2025, films: 3, days: 2 },
     { year: 2026, films: 3, days: 1 }
   ]);
+});
+
+test('slimData leaves old exports in All Time-only mode', () => {
+  const slim = slimData({ user: 'someone', allTime: { entries: 10 }, recent: [] });
+  assert.deepEqual(slim.byYear, {});
 });
 
 test('readChrome reads the radius and fill of the card background', () => {

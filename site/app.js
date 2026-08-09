@@ -14,6 +14,9 @@
  * since every card names its clip paths and gradients the same way.
  */
 
+import { availableYears, periodPath, resolvePeriod } from './period.js';
+import { buildDonutSegments } from './donut.js';
+
 const THEMES = ['dark', 'light'];
 const STORAGE_KEY = 'lbg-theme';
 const SCROLL_POSITION_KEY = `lbg-scroll:${location.pathname}${location.search}`;
@@ -108,6 +111,17 @@ function formatDate(iso, options = { day: '2-digit', month: 'short', year: 'nume
 function formatMonth(iso) {
   return new Date(`${iso}-01T00:00:00Z`)
     .toLocaleDateString('en-GB', { timeZone: 'UTC', month: 'short', year: 'numeric' });
+}
+
+function formatWeekSpan(startIso, endIso) {
+  const start = new Date(`${startIso}T00:00:00Z`);
+  const end = new Date(`${endIso}T00:00:00Z`);
+  const month = date => date.toLocaleDateString('en-GB', { timeZone: 'UTC', month: 'short' });
+  const day = date => date.getUTCDate();
+
+  return start.getUTCMonth() === end.getUTCMonth()
+    ? `${month(start)} ${day(start)}–${day(end)}`
+    : `${month(start)} ${day(start)} – ${month(end)} ${day(end)}`;
 }
 
 function stars(rating) {
@@ -279,13 +293,14 @@ function columnChart(host, bars, { variant = '', axis = null, colorScale = null,
       show();
     });
 
+    const accessibleLabel = [bar.label, bar.meta].filter(Boolean).join(', ');
     if (bar.href) {
-      column.setAttribute('aria-label', `${bar.label}: ${bar.value}. Open in the diary.`);
+      column.setAttribute('aria-label', `${accessibleLabel}: ${bar.value}. Open in the diary.`);
     } else {
       // A link is focusable already; a plain bar has to be made so.
       column.tabIndex = 0;
       column.setAttribute('role', 'img');
-      column.setAttribute('aria-label', `${bar.label}: ${bar.value}`);
+      column.setAttribute('aria-label', `${accessibleLabel}: ${bar.value}`);
     }
 
     // A caption under the bar needs the room; one inside it rides along, which
@@ -313,6 +328,129 @@ function interpolateColor([start, end], index, count) {
   const to = channels(end);
   const blended = from.map((value, channel) => Math.round(value + (to[channel] - value) * ratio));
   return `rgb(${blended.join(', ')})`;
+}
+
+const DONUT_COLORS = ['var(--brand-green)', 'var(--donut-muted)', 'var(--accent-orange)'];
+
+function donutCard(title, segments) {
+  const visible = buildDonutSegments(segments);
+  if (!visible.length) return null;
+
+  const card = el('article', 'donut-card');
+  const chart = el('div', 'donut-chart');
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('class', 'donut-svg');
+  svg.setAttribute('viewBox', '0 0 100 100');
+  svg.setAttribute('role', 'group');
+  svg.setAttribute('aria-label', title);
+  const tooltip = el('div', 'donut-tip');
+  tooltip.hidden = true;
+
+  const copy = el('div', 'donut-copy');
+  copy.append(el('h3', 'donut-title', title));
+  const legend = el('div', 'donut-legend');
+  const interactive = [];
+
+  visible.forEach((segment) => {
+    const color = DONUT_COLORS[segment.index] || 'var(--donut-muted)';
+    const circle = document.createElementNS(svg.namespaceURI, 'circle');
+    circle.setAttribute('class', 'donut-segment');
+    circle.setAttribute('cx', '50');
+    circle.setAttribute('cy', '50');
+    circle.setAttribute('r', '41');
+    circle.setAttribute('pathLength', '100');
+    circle.setAttribute('fill', 'none');
+    circle.setAttribute('stroke', color);
+    circle.setAttribute('stroke-width', '18');
+    circle.setAttribute('stroke-dasharray', `${segment.percentage} ${100 - segment.percentage}`);
+    circle.setAttribute('stroke-dashoffset', String(-segment.offset));
+    circle.setAttribute('transform', 'rotate(-90 50 50)');
+    circle.setAttribute('tabindex', '0');
+    circle.setAttribute(
+      'aria-label',
+      `${segment.label}: ${formatDecimal(segment.percentage)}%, ${formatNumber(segment.value)} of ${formatNumber(segment.total)}`
+    );
+    svg.append(circle);
+
+    const row = el('div', 'donut-legend-row');
+    const swatch = el('span', 'donut-swatch');
+    swatch.style.background = color;
+    swatch.setAttribute('aria-hidden', 'true');
+    const detail = el('span', 'donut-legend-copy');
+    detail.append(
+      el('span', 'donut-label', segment.label),
+      el('span', 'donut-value', `${formatNumber(segment.value)} ${segment.value === 1 ? 'entry' : 'entries'} · ${formatDecimal(segment.percentage)}%`)
+    );
+    row.append(swatch, detail);
+    legend.append(row);
+    interactive.push({ circle, row, segment });
+  });
+
+  const hideTooltip = () => {
+    tooltip.hidden = true;
+    svg.classList.remove('is-interacting');
+    legend.classList.remove('is-interacting');
+    interactive.forEach(({ circle, row }) => {
+      circle.classList.remove('is-active');
+      row.classList.remove('is-active');
+    });
+  };
+
+  const showTooltip = (active) => {
+    const { circle, row, segment } = active;
+    tooltip.replaceChildren(
+      el('strong', null, `${formatDecimal(segment.percentage)}%`),
+      el('span', null, `${formatNumber(segment.value)} of ${formatNumber(segment.total)}`)
+    );
+    tooltip.hidden = false;
+    svg.classList.add('is-interacting');
+    legend.classList.add('is-interacting');
+    interactive.forEach((item) => {
+      item.circle.classList.toggle('is-active', item === active);
+      item.row.classList.toggle('is-active', item === active);
+    });
+  };
+
+  interactive.forEach((item) => {
+    item.circle.addEventListener('mouseenter', () => showTooltip(item));
+    item.circle.addEventListener('mouseleave', hideTooltip);
+    item.circle.addEventListener('focus', () => showTooltip(item));
+    item.circle.addEventListener('blur', hideTooltip);
+    item.circle.addEventListener('click', () => showTooltip(item));
+  });
+
+  chart.append(svg, tooltip);
+  copy.append(legend);
+  card.append(chart, copy);
+  return card;
+}
+
+function renderBreakdown(all, year) {
+  const cards = [
+    donutCard('Release timing', [
+      {
+        label: year ? `${year} releases` : 'Watched in release year',
+        value: all.releaseBreakdown?.sameYear || 0
+      },
+      { label: 'Older', value: all.releaseBreakdown?.older || 0 },
+      { label: 'Other', value: all.releaseBreakdown?.other || 0 }
+    ]),
+    donutCard('Viewing mix', [
+      { label: 'First watches', value: all.watchBreakdown?.firstWatches || 0 },
+      { label: 'Rewatches', value: all.watchBreakdown?.rewatches || 0 }
+    ])
+  ];
+
+  if ((all.reviewBreakdown?.reviewed || 0) > 0) {
+    cards.push(donutCard('Reviews', [
+      { label: 'Reviewed', value: all.reviewBreakdown.reviewed },
+      { label: 'Not reviewed', value: all.reviewBreakdown.notReviewed || 0 }
+    ]));
+  }
+
+  const visible = cards.filter(Boolean);
+  document.querySelector('[data-breakdown-grid]').replaceChildren(...visible);
+  document.querySelector('[data-breakdown]').hidden = visible.length === 0;
 }
 
 /* ── When you watched ─────────────────────────────────────────────────────── */
@@ -350,15 +488,27 @@ function renderYears(all, diary) {
   document.querySelector('[data-when-years]').hidden = false;
 }
 
-function renderWhen(all, diary) {
-  const series = all?.monthSeries || [];
-  if (series.length < 2) return;
+function renderWhen(all, diary, year) {
+  const monthSeries = all?.monthSeries || [];
+  if (!monthSeries.length) return;
+
+  const weekSeries = year ? all?.weekSeries || [] : [];
+  document.querySelector('[data-when-eyebrow]').textContent = weekSeries.length ? 'By week' : 'Over time';
+  const chartBars = weekSeries.length
+    ? weekSeries.map(point => ({
+        value: point.count,
+        label: `Week ${point.week}`,
+        meta: formatWeekSpan(point.start, point.end)
+      }))
+    : monthSeries.map(point => ({ value: point.count, label: formatMonth(point.month) }));
 
   columnChart(
     document.querySelector('[data-month-chart]'),
-    series.map(point => ({ value: point.count, label: formatMonth(point.month) })),
+    chartBars,
     {
-      axis: [formatMonth(series[0].month), formatMonth(series.at(-1).month)],
+      axis: weekSeries.length
+        ? ['Jan', 'Dec']
+        : [formatMonth(monthSeries[0].month), formatMonth(monthSeries.at(-1).month)],
       colorScale: ['#00E054', '#40BCF4']
     }
   );
@@ -408,7 +558,10 @@ function renderWhen(all, diary) {
     facts.push([`${all.busiestDay.count} films in a day`, formatDate(all.busiestDay.date)]);
   }
 
-  const fullestMonth = series.reduce((best, point) => (point.count > best.count ? point : best), series[0]);
+  const fullestMonth = monthSeries.reduce(
+    (best, point) => (point.count > best.count ? point : best),
+    monthSeries[0]
+  );
   if (fullestMonth?.count > 1) {
     facts.push([`${fullestMonth.count} films in a month`, formatMonth(fullestMonth.month)]);
   }
@@ -1100,13 +1253,113 @@ function renderSection(section, assets, manifest) {
   body.append(tabs, stack);
 }
 
+/* ── Statistics periods ───────────────────────────────────────────────────── */
+
+function resetPeriodSections() {
+  dismissBar();
+
+  for (const selector of ['[data-when]', '[data-breakdown]', '[data-ratings]', '[data-decades]', '[data-milestones]']) {
+    document.querySelector(selector).hidden = true;
+  }
+
+  for (const selector of [
+    '[data-month-chart]',
+    '[data-when-blocks]',
+    '[data-weekday-chart]',
+    '[data-when-facts]',
+    '[data-when-year-list]',
+    '[data-breakdown-grid]',
+    '[data-rating-chart]',
+    '[data-rating-side]',
+    '[data-decade-chart]',
+    '[data-rewatched]',
+    '[data-milestone-list]'
+  ]) {
+    document.querySelector(selector).replaceChildren();
+  }
+
+  document.querySelector('[data-when-years]').hidden = true;
+}
+
+function diaryForPeriod(user, year) {
+  const base = user ? `https://letterboxd.com/${user}/diary/films` : null;
+  return base && year ? `${base}/for/${year}` : base;
+}
+
+function renderPeriodMenu(data, activeYear, selectPeriod) {
+  const years = availableYears(data.byYear);
+  const picker = document.querySelector('[data-period-picker]');
+
+  if (!years.length) {
+    picker.hidden = true;
+    return;
+  }
+
+  const choices = [
+    { year: null, label: 'All Time' },
+    ...years.map(year => ({ year, label: String(year) }))
+  ];
+
+  const options = choices.map(choice => {
+    const anchor = el('a', 'period-option');
+    anchor.href = periodPath(location.href, choice.year);
+    anchor.append(el('span', null, choice.label));
+
+    if (choice.year === activeYear) {
+      anchor.setAttribute('aria-current', 'page');
+      anchor.append(el('span', 'period-check', '✓'));
+    }
+
+    anchor.addEventListener('click', (event) => {
+      event.preventDefault();
+      history.pushState(null, '', periodPath(location.href, choice.year));
+      picker.open = false;
+      selectPeriod();
+    });
+
+    return anchor;
+  });
+
+  document.querySelector('[data-period-menu]').replaceChildren(...options);
+  picker.hidden = false;
+}
+
+function setupPeriodPicker() {
+  const picker = document.querySelector('[data-period-picker]');
+
+  document.addEventListener('pointerdown', (event) => {
+    if (picker.open && !event.target.closest('[data-period-picker]')) picker.open = false;
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || !picker.open) return;
+    picker.open = false;
+    picker.querySelector('summary').focus();
+  });
+}
+
+function animatePeriodSections() {
+  for (const section of document.querySelectorAll('.period-section:not([hidden])')) {
+    section.classList.remove('is-period-updated');
+    void section.offsetWidth;
+    section.classList.add('is-period-updated');
+  }
+}
+
 /* ── Hero and diary ───────────────────────────────────────────────────────── */
 
-function renderHero(data, manifest) {
+function renderHero(data, manifest, all, year) {
   const profile = `https://letterboxd.com/${data.user}/`;
+  const title = document.querySelector('[data-hero-title]');
+  const row = title.closest('.display-row');
 
-  document.querySelector('[data-hero-title]').textContent = 'A Life in Film';
-  document.querySelector('[data-hero-user]').textContent = data.user ? `@${data.user}` : 'Film diary';
+  title.textContent = year ? String(year) : 'A Life in Film';
+  title.classList.toggle('is-year', Boolean(year));
+  row.classList.toggle('is-year', Boolean(year));
+  document.querySelector('.hero').classList.toggle('is-year-period', Boolean(year));
+  document.querySelector('[data-hero-user]').textContent = data.user
+    ? `${year ? '' : '@'}${data.user}`
+    : 'Film diary';
 
   const avatar = document.querySelector('[data-hero-avatar]');
   avatar.onerror = () => {
@@ -1123,15 +1376,25 @@ function renderHero(data, manifest) {
   // copy of the page honest, and matches what the build writes.
   document.title = `@${data.user}'s film diary — Letterboxd Graph`;
 
-  const all = data.allTime || {};
-  const kpis = [
-    ['Films watched', all.films ?? all.entries],
-    ['Distinct films', all.distinctFilms],
-    ['Diary entries', all.entries],
-    ['Days active', all.daysActive],
-    ['Average rating', typeof all.averageRating === 'number' ? formatDecimal(all.averageRating, 2) : '—'],
-    ['Longest streak', all.streak?.length ? `${formatNumber(all.streak.length)}d` : '—']
-  ];
+  document.querySelector('[data-period-label]').textContent = year ? 'year in film' : 'all-time stats';
+
+  const kpis = year
+    ? [
+        ['Films watched', all.distinctFilms],
+        ['Diary entries', all.entries],
+        ['Rewatches', all.rewatches],
+        ['Days active', all.daysActive],
+        ['Average rating', typeof all.averageRating === 'number' ? formatDecimal(all.averageRating, 2) : '—'],
+        ['Longest streak', all.streak?.length ? `${formatNumber(all.streak.length)}d` : '—']
+      ]
+    : [
+        ['Films watched', all.films ?? all.entries],
+        ['Distinct films', all.distinctFilms],
+        ['Days active', all.daysActive],
+        ['Average rating', typeof all.averageRating === 'number' ? formatDecimal(all.averageRating, 2) : '—'],
+        ['Longest streak', all.streak?.length ? `${formatNumber(all.streak.length)}d` : '—'],
+        ...(all.multiFilmDays > 0 ? [['2+ Film Days', all.multiFilmDays]] : [])
+      ];
   const formatKpiValue = value => typeof value === 'number' ? formatNumber(value) : value ?? '—';
   document.querySelector('[data-hero-kpis]').replaceChildren(...kpis.map(([label, value]) => {
     const item = el('div', 'hero-kpi');
@@ -1496,15 +1759,28 @@ async function main() {
     throw new Error('Generated site data is incomplete');
   }
 
-  // Both distributions have a diary page behind every bar, filtered the same
-  // way the bar is.
-  const diary = data.user ? `https://letterboxd.com/${data.user}/diary/films` : null;
+  const selectPeriod = () => {
+    const resolved = resolvePeriod(location.search, data.byYear);
+    if (resolved.invalid) history.replaceState(null, '', periodPath(location.href, null));
 
-  renderHero(data, manifest);
-  renderWhen(data.allTime, diary);
-  renderRatings(data.allTime, diary);
-  renderDecades(data.allTime, diary);
-  renderMilestones(data.allTime);
+    const year = resolved.invalid ? null : resolved.year;
+    const all = year ? data.byYear[year] : data.allTime;
+    const diary = diaryForPeriod(data.user, year);
+
+    resetPeriodSections();
+    renderHero(data, manifest, all, year);
+    renderWhen(all, diary, year);
+    renderBreakdown(all, year);
+    renderRatings(all, diary);
+    renderDecades(all, diary);
+    renderMilestones(all);
+    renderPeriodMenu(data, year, selectPeriod);
+    animatePeriodSections();
+  };
+
+  selectPeriod();
+  setupPeriodPicker();
+  window.addEventListener('popstate', selectPeriod);
   renderDiary(data.recent);
 
   for (const section of document.querySelectorAll('[data-section]')) {
