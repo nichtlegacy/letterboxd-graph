@@ -36,7 +36,6 @@ __pycache__/
 /_site
 
 # local plans and browser output
-/docs/plans/
-/docs/superpowers/plans/
+/docs/
 /.playwright-cli/
 .DS_Store

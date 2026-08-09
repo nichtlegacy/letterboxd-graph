@@ -537,8 +537,9 @@ limit — the cards at full size, and the figures behind them read out at length
 
 | Section | What is on it |
 |---------|---------------|
-| **A Life in Film** | The opening: profile avatar, films watched, distinct films, diary entries, days active, average rating and longest streak, on one row |
-| **When you watched** | A column per month, empty ones included; weekday distribution, weekly and monthly averages, busiest day, fullest month, longest streak, longest quiet stretch, watched-day share and seasonal pattern — plus a figure per year, written out rather than drawn |
+| **A Life in Film** | The opening: profile avatar and headline figures, with an All Time/year selector that updates the statistical sections without reloading the page |
+| **When you watched** | A column per month for All Time and every Monday–Sunday week for a selected year, empty periods included; weekday distribution, weekly and monthly averages, busiest day, fullest month, longest streak, longest quiet stretch, watched-day share and seasonal pattern — plus a figure per year, written out rather than drawn |
+| **Breakdown** | Donuts compare films watched in their release year with older titles, first watches with rewatches, and—when reviews exist—reviewed with not reviewed. Counts and percentages stay visible without hover |
 | **How you rated** | The half-star histogram, empty steps kept, beside the average, the most given rating and how much is rated or liked at all |
 | **What you reached for** | Films by release decade with counts, share and average rating, plus the five you went back to most |
 | **Where it turned over** | The first entry, the round numbers after it, and the latest, on one track. `milestoneStep` scales with the diary — every 25th at a hundred entries, every thousandth at five thousand — so the row holds its length instead of growing a marker per hundred |
@@ -550,6 +551,9 @@ The figures cover whatever the run fetched — the whole diary under `scope: all
 the graph years under `scope: years`, which the page says out loud rather than
 passing narrow numbers off as all-time. Year entries, rating steps, decade rows,
 milestones and diary films link back to their matching Letterboxd pages.
+Selecting a year writes `?year=2025` into the URL and switches the hero, charts,
+breakdowns and milestones. The generated cards and Recent Diary remain the same
+snapshot, independent of that statistical view.
 
 The page follows the system theme until switched, then keeps the chosen dark or
 light card set. Sticky navigation, smooth section movement and a back-to-top

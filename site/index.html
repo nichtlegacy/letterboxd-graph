@@ -50,8 +50,12 @@
     (() => {
       const stored = localStorage.getItem('lbg-theme');
       const system = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      const requestedYear = new URLSearchParams(location.search).get('year');
       document.documentElement.dataset.theme = stored === 'dark' || stored === 'light' ? stored : system;
       document.documentElement.classList.add('is-loading');
+      if (/^\d{4}$/.test(requestedYear || '')) {
+        document.documentElement.classList.add('is-year-requested');
+      }
     })();
   </script>
 
@@ -70,6 +74,7 @@
 
       <nav class="nav-links" aria-label="Sections">
         <a href="#when">When</a>
+        <a href="#breakdown">Breakdown</a>
         <a href="#ratings">Ratings</a>
         <a href="#milestones">Milestones</a>
         <a href="#graph">Cards</a>
@@ -279,9 +284,17 @@
         </svg>
       </div>
       <div class="hero-text">
-        <h1 class="display" data-hero-title>A Life in Film</h1>
+        <div class="display-row">
+          <h1 class="display" data-hero-title>A Life in Film</h1>
+          <details class="period-picker" data-period-picker hidden>
+            <summary aria-label="Choose statistics period">
+              <span class="period-chevron" aria-hidden="true"></span>
+            </summary>
+            <nav class="period-menu" data-period-menu aria-label="Statistics period"></nav>
+          </details>
+        </div>
         <p class="hero-subtitle" data-hero-subtitle>
-          <a class="hero-profile-link" data-profile-link href="https://letterboxd.com/" rel="noopener"><img class="hero-avatar" data-hero-avatar alt="" aria-hidden="true" hidden><span data-hero-user>@username</span></a>’s all-time stats
+          <a class="hero-profile-link" data-profile-link href="https://letterboxd.com/" rel="noopener"><img class="hero-avatar" data-hero-avatar alt="" aria-hidden="true" hidden><span data-hero-user>@username</span></a>’s <span data-period-label>all-time stats</span>
         </p>
       </div>
       <dl class="hero-kpis" data-hero-kpis></dl>
@@ -308,9 +321,9 @@
       </div>
     </section>
 
-    <section class="section" id="when" data-when hidden>
+    <section class="section period-section" id="when" data-when hidden>
       <div class="section-head">
-        <p class="eyebrow">Over time</p>
+        <p class="eyebrow" data-when-eyebrow>Over time</p>
         <h2>When you watched</h2>
       </div>
 
@@ -330,7 +343,16 @@
       </div>
     </section>
 
-    <section class="section" id="ratings" data-ratings hidden>
+    <section class="section period-section" id="breakdown" data-breakdown hidden>
+      <div class="section-head">
+        <p class="eyebrow">Composition</p>
+        <h2>Breakdown</h2>
+      </div>
+
+      <div class="breakdown-grid" data-breakdown-grid></div>
+    </section>
+
+    <section class="section period-section" id="ratings" data-ratings hidden>
       <div class="section-head">
         <p class="eyebrow">Distribution</p>
         <h2>How you rated</h2>
@@ -342,7 +364,7 @@
       </div>
     </section>
 
-    <section class="section" id="decades" data-decades hidden>
+    <section class="section period-section" id="decades" data-decades hidden>
       <div class="section-head">
         <p class="eyebrow">Release decades &amp; repeats</p>
         <h2>What you reached for</h2>
@@ -357,7 +379,7 @@
       </div>
     </section>
 
-    <section class="section" id="milestones" data-milestones hidden>
+    <section class="section period-section" id="milestones" data-milestones hidden>
       <div class="section-head">
         <p class="eyebrow">Milestones</p>
         <h2>Where the diary turned over</h2>

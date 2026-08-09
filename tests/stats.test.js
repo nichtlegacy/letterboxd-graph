@@ -265,10 +265,40 @@ test('buildJsonExport: counts rewatches and likes', () => {
       rating: null,
       rewatch: true,
       liked: true,
-      url: 'https://letterboxd.com/film/a/'
+      url: 'https://letterboxd.com/film/a/',
+      reviewed: false,
+      reviewUrl: null,
+      filmUid: null,
+      lid: null,
+      slug: null
     }
   );
   assert.equal(result.recent[0].rewatch, false);
+});
+
+test('buildJsonExport preserves review and stable film identifiers', () => {
+  const film = entry('2025-02-01', { title: 'Heat' });
+  Object.assign(film, {
+    reviewed: true,
+    reviewUrl: 'https://letterboxd.com/someone/film/heat/',
+    filmUid: 'film:18003',
+    lid: '2G9K',
+    slug: 'heat-1995'
+  });
+
+  const result = buildJsonExport([film], {
+    username: 'someone',
+    year: 2025,
+    years: [2025]
+  });
+
+  for (const exported of [result.cells[0].films[0], result.calendar.find(day => day.count).films[0], result.recent[0]]) {
+    assert.equal(exported.reviewed, true);
+    assert.equal(exported.reviewUrl, 'https://letterboxd.com/someone/film/heat/');
+    assert.equal(exported.filmUid, 'film:18003');
+    assert.equal(exported.lid, '2G9K');
+    assert.equal(exported.slug, 'heat-1995');
+  }
 });
 
 test('buildJsonExport: no entries still yields a usable payload', () => {
@@ -298,6 +328,15 @@ test('filmKey identifies a film by its slug, not its title', () => {
 test('filmKey falls back to title and year without a URL', () => {
   assert.equal(filmKey({ title: 'Heat', year: '1995' }), 'title:Heat|1995');
   assert.notEqual(filmKey({ title: 'Heat', year: '1995' }), filmKey({ title: 'Heat', year: '2022' }));
+});
+
+test('filmKey prefers stable identifiers before URL and title fallbacks', () => {
+  const base = { title: 'Heat', year: '1995', url: 'https://letterboxd.com/film/wrong/' };
+
+  assert.equal(filmKey({ ...base, filmUid: 'film:18003', slug: 'heat-1995' }), 'uid:film:18003');
+  assert.equal(filmKey({ ...base, slug: 'heat-1995' }), 'slug:heat-1995');
+  assert.equal(filmKey(base), 'film:wrong');
+  assert.equal(filmKey({ title: 'Heat', year: '1995' }), 'title:Heat|1995');
 });
 
 test('markRewatches keeps every flag Letterboxd already set', () => {
@@ -355,12 +394,40 @@ test('buildAllTimeStats counts entries, distinct films and the profile figure ap
   assert.equal(all.distinctFilms, 2, 'of two films');
   assert.equal(all.films, 600, 'the profile figure is carried through untouched');
   assert.equal(all.daysActive, 2);
+  assert.equal(all.multiFilmDays, 1);
   assert.equal(all.rewatches, 1);
   assert.equal(all.liked, 1);
   assert.equal(all.rated, 3);
   assert.equal(all.averageRating, 4);
   assert.equal(all.firstEntry, '2024-01-01');
   assert.equal(all.lastEntry, '2024-03-05');
+});
+
+test('buildAllTimeStats counts days with two or more films', () => {
+  const all = buildAllTimeStats([
+    entry('2024-01-01', { title: 'A' }),
+    entry('2024-01-01', { title: 'B' }),
+    entry('2024-01-02', { title: 'C' }),
+    entry('2024-01-03', { title: 'D' }),
+    entry('2024-01-03', { title: 'E' }),
+    entry('2024-01-03', { title: 'F' })
+  ]);
+
+  assert.equal(all.multiFilmDays, 2);
+});
+
+test('buildAllTimeStats reports release, watch and review breakdowns', () => {
+  const first = entry('2025-01-01', { title: 'New', year: '2025' });
+  const older = entry('2025-01-02', { title: 'Old', year: '1995', rewatch: true });
+  const future = entry('2025-01-03', { title: 'Festival', year: '2026' });
+  const unknown = entry('2025-01-04', { title: 'Unknown', year: '' });
+  Object.assign(first, { reviewed: true });
+
+  const stats = buildAllTimeStats([first, older, future, unknown]);
+
+  assert.deepEqual(stats.releaseBreakdown, { sameYear: 1, older: 1, other: 2 });
+  assert.deepEqual(stats.watchBreakdown, { firstWatches: 3, rewatches: 1 });
+  assert.deepEqual(stats.reviewBreakdown, { reviewed: 1, notReviewed: 3 });
 });
 
 test('buildAllTimeStats: the month series runs continuously, gaps included', () => {
@@ -376,6 +443,35 @@ test('buildAllTimeStats: the month series runs continuously, gaps included', () 
     { month: '2024-03', count: 0 },
     { month: '2024-04', count: 2 }
   ]);
+});
+
+test('buildAllTimeStats: a year scope includes every Monday-to-Sunday week', () => {
+  const all = buildAllTimeStats([
+    entry('2025-01-01', { title: 'New year' }),
+    entry('2025-02-03', { title: 'A' }),
+    entry('2025-02-09', { title: 'B' }),
+    entry('2025-12-31', { title: 'Year end' })
+  ], { scope: 'year' });
+
+  assert.equal(all.weekSeries.length, 53);
+  assert.deepEqual(all.weekSeries[0], {
+    week: 1,
+    start: '2024-12-30',
+    end: '2025-01-05',
+    count: 1
+  });
+  assert.deepEqual(all.weekSeries[5], {
+    week: 6,
+    start: '2025-02-03',
+    end: '2025-02-09',
+    count: 2
+  });
+  assert.deepEqual(all.weekSeries.at(-1), {
+    week: 53,
+    start: '2025-12-29',
+    end: '2026-01-04',
+    count: 1
+  });
 });
 
 test('buildAllTimeStats: weekday and month distributions', () => {
@@ -550,4 +646,28 @@ test('buildJsonExport falls back to the exported entries when no diary was passe
 
   assert.equal(exported.allTime.entries, 1);
   assert.equal(exported.allTime.films, null, 'no profile figure to report');
+});
+
+test('buildJsonExport prepares one aggregate per diary watch year', () => {
+  const diary = markRewatches([
+    entry('2024-12-31', { title: 'Heat', year: '1995' }),
+    entry('2025-01-01', { title: 'Heat', year: '1995' }),
+    entry('2025-02-01', { title: 'New Film', year: '2025' })
+  ]);
+  diary[2].reviewed = true;
+
+  const result = buildJsonExport(diary.filter(item => item.date.getUTCFullYear() === 2025), {
+    username: 'someone',
+    years: [2025],
+    allEntries: diary,
+    scope: 'all'
+  });
+
+  assert.deepEqual(Object.keys(result.byYear).sort(), ['2024', '2025']);
+  assert.equal(result.byYear['2024'].entries, 1);
+  assert.equal(result.byYear['2025'].entries, 2);
+  assert.deepEqual(result.byYear['2025'].watchBreakdown, { firstWatches: 1, rewatches: 1 });
+  assert.deepEqual(result.byYear['2025'].reviewBreakdown, { reviewed: 1, notReviewed: 1 });
+  assert.equal(result.byYear['2025'].films, null);
+  assert.equal(result.byYear['2025'].scope, 'year');
 });

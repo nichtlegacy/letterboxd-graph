@@ -58,6 +58,7 @@
   --brand-green-mid: #00c030;
   --accent-orange: #ff8000;
   --accent-blue: #40bcf4;
+  --donut-muted: #8293a3;
   --hero-grid: rgba(102, 119, 136, 0.14);
   /* A neutral block that carries a letter: darker than a surface, quieter than
      the accent. */
@@ -92,6 +93,7 @@
   --brand-green-mid: #009127;
   --accent-orange: #d96a00;
   --accent-blue: #1c86c4;
+  --donut-muted: #a3afb9;
   --hero-grid: rgba(92, 107, 122, 0.12);
   --weekday-bar: #dbe3ea;
 
@@ -341,7 +343,7 @@ main {
 .hero {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
+  overflow: visible;
   padding: 88px 0 0;
   text-align: center;
 }
@@ -351,6 +353,7 @@ main {
   z-index: 0;
   inset: 0 0 auto;
   height: 280px;
+  overflow: hidden;
   pointer-events: none;
 }
 
@@ -415,7 +418,7 @@ main {
 .hero-text {
   max-width: none;
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
 .eyebrow {
@@ -435,10 +438,135 @@ main {
   text-shadow: 0 1px 0 var(--background);
 }
 
+.display.is-year {
+  font-family: var(--font-sans);
+  font-size: clamp(48px, 9vw, 88px);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  line-height: 1;
+}
+
+.display-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.display-row.is-year {
+  gap: 18px;
+}
+
+.display-row.is-year .period-picker summary {
+  width: 44px;
+  height: 44px;
+}
+
+.display-row.is-year .period-chevron {
+  width: 14px;
+  height: 14px;
+}
+
+.period-picker {
+  position: relative;
+  z-index: 4;
+}
+
+.period-picker summary {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  cursor: pointer;
+  list-style: none;
+  transition: color 150ms var(--ease), background-color 150ms var(--ease);
+}
+
+.period-picker summary::-webkit-details-marker {
+  display: none;
+}
+
+.period-picker summary:hover,
+.period-picker[open] summary {
+  background: var(--surface);
+  color: var(--text-light);
+}
+
+.period-chevron {
+  width: 11px;
+  height: 11px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-3px) rotate(45deg);
+  transition: transform 150ms var(--ease);
+}
+
+.period-picker[open] .period-chevron {
+  transform: translateY(3px) rotate(225deg);
+}
+
+.period-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: grid;
+  width: 190px;
+  max-height: min(420px, 70vh);
+  overflow-y: auto;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+  text-align: left;
+}
+
+.period-option {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.period-option:last-child {
+  border-bottom: 0;
+}
+
+.period-option:hover,
+.period-option:focus-visible,
+.period-option[aria-current='page'] {
+  background: var(--surface-hover);
+  color: var(--text-light);
+}
+
+.period-option:focus-visible {
+  outline-offset: -2px;
+}
+
+.period-check {
+  color: var(--brand-green);
+}
+
 .hero-subtitle {
   margin: 14px 0 0;
   color: var(--text-secondary);
   font-size: 16px;
+}
+
+.hero.is-year-period .hero-subtitle {
+  margin-top: 18px;
+  font-size: clamp(18px, 2.2vw, 24px);
+}
+
+.hero.is-year-period .hero-avatar {
+  width: 36px;
+  height: 36px;
 }
 
 .hero-subtitle a {
@@ -523,6 +651,10 @@ main {
    the real one. Held back rather than hidden outright, so the line keeps its
    height and the hero does not shift when the name arrives. */
 .is-loading .hero-subtitle {
+  visibility: hidden;
+}
+
+.is-loading.is-year-requested .hero-text {
   visibility: hidden;
 }
 
@@ -669,6 +801,147 @@ main {
   border: 1px solid var(--border-subtle);
   border-radius: 4px;
   color: var(--text-primary);
+}
+
+/* ── Breakdown ───────────────────────────────────────────────────────────── */
+
+.breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.donut-card {
+  display: grid;
+  grid-template-columns: 148px minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+  min-width: 0;
+  padding: 8px 0;
+}
+
+.donut-chart {
+  position: relative;
+  width: 148px;
+  aspect-ratio: 1;
+}
+
+.donut-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.donut-segment {
+  cursor: pointer;
+  transition: opacity 150ms var(--ease), stroke-width 150ms var(--ease);
+}
+
+.donut-segment:focus-visible {
+  outline: none;
+  stroke-width: 20;
+}
+
+.donut-svg.is-interacting .donut-segment:not(.is-active) {
+  opacity: 0.28;
+}
+
+.donut-tip {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  min-width: 88px;
+  padding: 7px 10px;
+  transform: translate(-50%, -50%);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.28);
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.25;
+  pointer-events: none;
+  text-align: center;
+}
+
+.donut-tip[hidden] {
+  display: none;
+}
+
+.donut-tip strong {
+  color: var(--text-light);
+  font-size: 18px;
+}
+
+.donut-tip span {
+  color: var(--text-primary);
+  font-size: 12px;
+}
+
+.donut-copy {
+  display: grid;
+  gap: 14px;
+  max-width: 320px;
+  min-width: 0;
+}
+
+.donut-title {
+  font-size: 15px;
+}
+
+.donut-legend {
+  display: grid;
+  gap: 8px;
+}
+
+.donut-legend-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  transition: opacity 150ms var(--ease);
+}
+
+.donut-legend.is-interacting .donut-legend-row:not(.is-active) {
+  opacity: 0.4;
+}
+
+.donut-swatch {
+  width: 8px;
+  height: 8px;
+  margin-top: 5px;
+  border-radius: 50%;
+}
+
+.donut-legend-copy {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+
+.donut-label {
+  min-width: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.donut-value {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@keyframes period-update {
+  from { opacity: 0.45; }
+  to { opacity: 1; }
+}
+
+.period-section.is-period-updated {
+  animation: period-update 220ms var(--ease);
 }
 
 /* ── Tabs ─────────────────────────────────────────────────────────────────── */
@@ -974,8 +1247,9 @@ a.column {
   display: flex;
   justify-content: space-between;
   margin-top: 8px;
-  color: var(--text-muted);
-  font-size: 11px;
+  color: var(--text-light);
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .when-foot {
@@ -2180,6 +2454,29 @@ a.repeat-title:hover {
    and scrolls sideways instead — the caption under it does not, so the actions
    stay where a thumb can reach them. */
 @media (max-width: 700px) {
+  .donut-card {
+    grid-template-columns: 112px minmax(0, 1fr);
+    padding: 8px 0;
+  }
+
+  .donut-chart {
+    width: 112px;
+  }
+
+  .donut-tip {
+    min-width: 76px;
+    padding: 5px 6px;
+    line-height: 1.15;
+  }
+
+  .donut-tip strong {
+    font-size: 16px;
+  }
+
+  .donut-tip span {
+    font-size: 10px;
+  }
+
   /* A long diary turns this row into a wall: thirty years at the desktop size
      run to 888px on a phone, nearly two screens of nothing but figures. Tighter
      type and a narrower track fit five across instead of three, and the days
@@ -2250,7 +2547,8 @@ a.repeat-title:hover {
     display: none;
   }
 
-  .chart .plot {
+  .chart .plot,
+  .chart .axis {
     min-width: 620px;
   }
 
@@ -2261,6 +2559,10 @@ a.repeat-title:hover {
 }
 
 @media (max-width: 560px) {
+  .breakdown-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .load-error {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -2380,5 +2682,9 @@ a.repeat-title:hover {
 @media (prefers-reduced-motion: reduce) {
   * {
     transition-duration: 0.01ms !important;
+  }
+
+  .period-section.is-period-updated {
+    animation: none;
   }
 }
