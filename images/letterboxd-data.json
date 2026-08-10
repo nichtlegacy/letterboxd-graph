@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-09T14:27:53.874Z",
+  "generatedAt": "2026-08-10T02:02:37.153Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,8 +18,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 457,
-    "daysActive": 323,
+    "films": 458,
+    "daysActive": 324,
     "streak": 34,
     "streakFilms": 47,
     "rewatches": 62,
@@ -12860,10 +12860,24 @@
       "date": "2026-08-09",
       "week": 84,
       "weekday": 0,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Ministry of Ungentlemanly Warfare",
+          "year": "2024",
+          "rating": 3,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-ministry-of-ungentlemanly-warfare/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:717126",
+          "lid": "u5zu",
+          "slug": "the-ministry-of-ungentlemanly-warfare"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/08/09/"
     },
@@ -22977,9 +22991,44 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/08/07/"
+    },
+    {
+      "date": "2026-08-09",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "The Ministry of Ungentlemanly Warfare",
+          "year": "2024",
+          "rating": 3,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-ministry-of-ungentlemanly-warfare/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:717126",
+          "lid": "u5zu",
+          "slug": "the-ministry-of-ungentlemanly-warfare"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/08/09/"
     }
   ],
   "recent": [
+    {
+      "date": "2026-08-09",
+      "title": "The Ministry of Ungentlemanly Warfare",
+      "year": "2024",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-ministry-of-ungentlemanly-warfare/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:717126",
+      "lid": "u5zu",
+      "slug": "the-ministry-of-ungentlemanly-warfare"
+    },
     {
       "date": "2026-08-07",
       "title": "Entergalactic",
@@ -23189,20 +23238,6 @@
       "filmUid": "film:1041012",
       "lid": "HG9a",
       "slug": "nirvanna-the-band-the-show-the-movie"
-    },
-    {
-      "date": "2026-06-19",
-      "title": "Ted 2",
-      "year": "2015",
-      "rating": 3.5,
-      "rewatch": true,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/ted-2/1/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:152464",
-      "lid": "6oCY",
-      "slug": "ted-2"
     }
   ],
   "byYear": {
@@ -24703,28 +24738,28 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 76,
-      "distinctFilms": 73,
+      "entries": 77,
+      "distinctFilms": 74,
       "firstEntry": "2026-01-01",
-      "lastEntry": "2026-08-07",
-      "spanDays": 219,
-      "daysActive": 60,
+      "lastEntry": "2026-08-09",
+      "spanDays": 221,
+      "daysActive": 61,
       "multiFilmDays": 11,
       "rewatches": 14,
       "liked": 7,
-      "rated": 76,
+      "rated": 77,
       "releaseBreakdown": {
         "sameYear": 11,
-        "older": 65,
+        "older": 66,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 62,
+        "firstWatches": 63,
         "rewatches": 14
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 76
+        "notReviewed": 77
       },
       "averageRating": 3.3,
       "perDay": 0.35,
@@ -24748,12 +24783,12 @@
       "perYear": [
         {
           "year": 2026,
-          "films": 76,
-          "days": 60
+          "films": 77,
+          "days": 61
         }
       ],
       "perWeekday": [
-        14,
+        15,
         9,
         6,
         9,
@@ -24769,7 +24804,7 @@
         6,
         4,
         12,
-        1,
+        2,
         0,
         0,
         0,
@@ -24806,7 +24841,7 @@
         },
         {
           "month": "2026-08",
-          "count": 1
+          "count": 2
         }
       ],
       "weekSeries": [
@@ -25000,7 +25035,7 @@
           "week": 32,
           "start": "2026-08-03",
           "end": "2026-08-09",
-          "count": 1
+          "count": 2
         },
         {
           "week": 33,
@@ -25140,7 +25175,7 @@
         },
         {
           "rating": 3,
-          "count": 21
+          "count": 22
         },
         {
           "rating": 3.5,
@@ -25189,7 +25224,7 @@
         {
           "decade": 2020,
           "label": "2020s",
-          "count": 28,
+          "count": 29,
           "averageRating": 3.5
         }
       ],
@@ -25274,47 +25309,47 @@
           "slug": "spider-man-brand-new-day"
         },
         {
-          "n": 76,
+          "n": 77,
           "kind": "latest",
-          "date": "2026-08-07",
-          "title": "Entergalactic",
-          "year": "2022",
+          "date": "2026-08-09",
+          "title": "The Ministry of Ungentlemanly Warfare",
+          "year": "2024",
           "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/entergalactic/",
+          "url": "https://letterboxd.com/nichtlegacy/film/the-ministry-of-ungentlemanly-warfare/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:925555",
-          "lid": "CPN4",
-          "slug": "entergalactic"
+          "filmUid": "film:717126",
+          "lid": "u5zu",
+          "slug": "the-ministry-of-ungentlemanly-warfare"
         }
       ]
     }
   },
   "allTime": {
     "scope": "all",
-    "films": 627,
-    "entries": 600,
-    "distinctFilms": 535,
+    "films": 628,
+    "entries": 601,
+    "distinctFilms": 536,
     "firstEntry": "2024-02-22",
-    "lastEntry": "2026-08-07",
-    "spanDays": 898,
-    "daysActive": 428,
+    "lastEntry": "2026-08-09",
+    "spanDays": 900,
+    "daysActive": 429,
     "multiFilmDays": 134,
     "rewatches": 83,
     "liked": 76,
-    "rated": 600,
+    "rated": 601,
     "releaseBreakdown": {
       "sameYear": 57,
-      "older": 543,
+      "older": 544,
       "other": 0
     },
     "watchBreakdown": {
-      "firstWatches": 517,
+      "firstWatches": 518,
       "rewatches": 83
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 599
+      "notReviewed": 600
     },
     "averageRating": 3.3,
     "perDay": 0.67,
@@ -25348,12 +25383,12 @@
       },
       {
         "year": 2026,
-        "films": 76,
-        "days": 60
+        "films": 77,
+        "days": 61
       }
     ],
     "perWeekday": [
-      88,
+      89,
       84,
       70,
       82,
@@ -25369,7 +25404,7 @@
       59,
       45,
       51,
-      19,
+      20,
       27,
       59,
       39,
@@ -25498,7 +25533,7 @@
       },
       {
         "month": "2026-08",
-        "count": 1
+        "count": 2
       }
     ],
     "weekSeries": [],
@@ -25521,7 +25556,7 @@
       },
       {
         "rating": 3,
-        "count": 162
+        "count": 163
       },
       {
         "rating": 3.5,
@@ -25580,7 +25615,7 @@
       {
         "decade": 2020,
         "label": "2020s",
-        "count": 115,
+        "count": 116,
         "averageRating": 3.5
       }
     ],
@@ -26091,18 +26126,18 @@
         "slug": "the-tunnel-to-summer-the-exit-of-goodbyes"
       },
       {
-        "n": 600,
+        "n": 601,
         "kind": "latest",
-        "date": "2026-08-07",
-        "title": "Entergalactic",
-        "year": "2022",
+        "date": "2026-08-09",
+        "title": "The Ministry of Ungentlemanly Warfare",
+        "year": "2024",
         "rating": 3,
-        "url": "https://letterboxd.com/nichtlegacy/film/entergalactic/",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-ministry-of-ungentlemanly-warfare/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:925555",
-        "lid": "CPN4",
-        "slug": "entergalactic"
+        "filmUid": "film:717126",
+        "lid": "u5zu",
+        "slug": "the-ministry-of-ungentlemanly-warfare"
       }
     ]
   }
