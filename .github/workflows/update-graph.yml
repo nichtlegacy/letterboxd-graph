@@ -33,7 +33,8 @@ on:
 
   # On push to main or dev. Every run reads the whole diary off someone else's
   # servers, so pushes that cannot change what is drawn do not trigger one — the
-  # page is built from the committed images by its own workflow.
+  # page is built from the committed images by the Pages workflow after a
+  # successful main run.
   push:
     branches:
       - main
@@ -52,6 +53,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: update-letterboxd-graph-${{ github.ref }}
@@ -102,3 +104,12 @@ jobs:
           animate: ${{ env.ANIMATE }}
           export-png: ${{ env.EXPORT_PNG }}
           output: images/github-letterboxd
+
+      # A push made with GITHUB_TOKEN does not trigger another workflow from a
+      # push event. Dispatch Pages explicitly after the action has pushed the
+      # generated images, so it builds from the current main branch tip.
+      - name: Deploy updated site
+        if: ${{ github.ref_name == 'main' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main

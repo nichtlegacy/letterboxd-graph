@@ -5,11 +5,8 @@ name: Deploy Pages
 # is cheap and can follow every generator run.
 
 on:
-  # After the generator committed a fresh set of images
-  workflow_run:
-    workflows: ["Update Letterboxd Graph + JSON Export"]
-    types: [completed]
-    branches: [main]
+  # The generator dispatches this explicitly after it has pushed fresh images
+  # to main. This is reliable even though that push uses GITHUB_TOKEN.
 
   # And whenever the page itself changes
   push:
@@ -36,10 +33,6 @@ concurrency:
 
 jobs:
   deploy:
-    # A failed generator run leaves the previous images in place, so there is
-    # nothing new to publish.
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
-
     runs-on: ubuntu-latest
 
     environment:
@@ -49,11 +42,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
-        with:
-          # A workflow_run event points at the commit that started the
-          # generator, which predates the images it went on to push. Checking
-          # out the branch tip instead picks those up.
-          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_branch || github.ref }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
