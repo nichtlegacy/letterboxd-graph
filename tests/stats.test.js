@@ -14,6 +14,7 @@ import {
   calculateDecadeDistribution,
   groupEntriesByDate,
   buildJsonExport,
+  buildOnThisDay,
   buildAllTimeStats,
   chooseMilestoneStep,
   filmKey,
@@ -229,6 +230,22 @@ test('buildJsonExport: reports stats over the entries it is given', () => {
   assert.equal(result.stats.liked, 0);
   assert.equal(result.cells.length, 3);
   assert.deepEqual(result.years, [2025]);
+});
+
+test('buildOnThisDay: matches month and day across viewing years', () => {
+  const result = buildOnThisDay([
+    entry('2026-08-15', { title: 'Newest', rating: 4, liked: true }),
+    entry('2025-08-15', { title: 'Older', rewatch: true }),
+    entry('2025-08-16', { title: 'Different day' })
+  ], '2026-08-15T01:23:00Z');
+
+  assert.deepEqual(result.map(item => [item.date, item.title]), [
+    ['2026-08-15', 'Newest'],
+    ['2025-08-15', 'Older']
+  ]);
+  assert.equal(result[0].liked, true);
+  assert.equal(result[1].rewatch, true);
+  assert.equal(result[0].reviewed, false);
 });
 
 test('buildJsonExport: `year` labels the export, it does not filter entries', () => {

@@ -1042,6 +1042,47 @@ a.year:hover .year-value {
   font-variant-numeric: tabular-nums;
 }
 
+/* A dated snapshot stays in the same flat editorial language as By year and
+   Recent diary. It is absent altogether when the snapshot date has no match. */
+.on-this-day {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.on-this-day-list {
+  display: grid;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.on-this-day-year {
+  display: grid;
+  grid-template-columns: minmax(56px, 84px) minmax(0, 1fr);
+  gap: 24px;
+}
+
+.on-this-day-year-label {
+  padding-top: 14px;
+  color: var(--text-light);
+  font-size: 26px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.on-this-day-films {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.on-this-day-film {
+  /* The row intentionally uses the same rules as Recent diary. */
+}
+
 /* ── Charts ───────────────────────────────────────────────────────────────── */
 
 .chart {
@@ -2064,6 +2105,7 @@ a.repeat-title:hover {
 
 .marker-rewatch { color: var(--accent-blue); }
 .marker-like { color: var(--accent-orange); }
+.marker-review { color: var(--brand-green); }
 
 /* ── Code ─────────────────────────────────────────────────────────────────── */
 
@@ -2485,6 +2527,15 @@ a.repeat-title:hover {
   .years-row {
     grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
     gap: 16px;
+  }
+
+  .on-this-day-year {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .on-this-day-year-label {
+    font-size: 19px;
   }
 
   .year-value {

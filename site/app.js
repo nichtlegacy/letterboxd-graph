@@ -488,7 +488,84 @@ function renderYears(all, diary) {
   document.querySelector('[data-when-years]').hidden = false;
 }
 
-function renderWhen(all, diary, year) {
+function renderOnThisDay(snapshot, year) {
+  const entries = (snapshot?.films || []).filter(entry => {
+    if (!year) return true;
+    return entry.date?.slice(0, 4) === String(year);
+  });
+
+  // An empty day is deliberately not an empty section: the daily page should
+  // simply carry on to the next section when there is nothing to remember.
+  if (!entries.length) return;
+
+  const groups = new Map();
+  for (const entry of entries) {
+    const watchYear = entry.date?.slice(0, 4) || '—';
+    if (!groups.has(watchYear)) groups.set(watchYear, []);
+    groups.get(watchYear).push(entry);
+  }
+
+  const dateLabel = snapshot.date
+    ? formatDate(snapshot.date, { day: 'numeric', month: 'long' })
+    : 'This date';
+  const filmLabel = `${formatNumber(entries.length)} ${entries.length === 1 ? 'film' : 'films'}`;
+  const yearLabel = `${formatNumber(groups.size)} ${groups.size === 1 ? 'year' : 'years'}`;
+
+  document.querySelector('[data-on-this-day-note]').textContent =
+    `${dateLabel} · ${filmLabel} · ${yearLabel}`;
+
+  const list = document.querySelector('[data-on-this-day-list]');
+  const nodes = [...groups.entries()].map(([watchYear, films]) => {
+    const group = el('div', 'on-this-day-year');
+    group.append(el('span', 'on-this-day-year-label', watchYear));
+
+    const filmList = el('ul', 'on-this-day-films');
+    for (const entry of films) filmList.append(onThisDayRow(entry));
+    group.append(filmList);
+    return group;
+  });
+
+  list.replaceChildren(...nodes);
+  document.querySelector('[data-on-this-day]').hidden = false;
+}
+
+function onThisDayRow(entry) {
+  const row = el('li', 'diary-row on-this-day-film');
+  const main = el('div', 'diary-main');
+  const title = entry.url
+    ? link(entry.url, 'diary-title', entry.title)
+    : el('span', 'diary-title', entry.title);
+  main.append(title);
+
+  if (entry.year) main.append(el('span', 'diary-year', entry.year));
+
+  const markers = el('span', 'markers');
+  if (entry.rewatch) {
+    const mark = el('span', 'marker marker-rewatch', '↻');
+    mark.title = 'Rewatch';
+    markers.append(mark);
+  }
+  if (entry.liked) {
+    const mark = el('span', 'marker marker-like', '♥');
+    mark.title = 'Liked';
+    markers.append(mark);
+  }
+  if (entry.reviewed) {
+    const mark = el('span', 'marker marker-review', '✎');
+    mark.title = 'Reviewed';
+    markers.append(mark);
+  }
+  if (markers.childElementCount) main.append(markers);
+
+  const rating = el('span', 'diary-rating', entry.rating ? stars(entry.rating) : '—');
+  if (!entry.rating) rating.classList.add('is-empty');
+  rating.title = entry.rating ? `${entry.rating} out of 5` : 'Not rated';
+
+  row.append(main, rating);
+  return row;
+}
+
+function renderWhen(all, diary, year, onThisDay) {
   const monthSeries = all?.monthSeries || [];
   if (!monthSeries.length) return;
 
@@ -603,6 +680,7 @@ function renderWhen(all, diary, year) {
   }));
 
   renderYears(all, diary);
+  renderOnThisDay(onThisDay, year);
 
   document.querySelector('[data-when]').hidden = false;
 }
@@ -1258,7 +1336,7 @@ function renderSection(section, assets, manifest) {
 function resetPeriodSections() {
   dismissBar();
 
-  for (const selector of ['[data-when]', '[data-breakdown]', '[data-ratings]', '[data-decades]', '[data-milestones]']) {
+  for (const selector of ['[data-when]', '[data-breakdown]', '[data-ratings]', '[data-decades]', '[data-milestones]', '[data-on-this-day]']) {
     document.querySelector(selector).hidden = true;
   }
 
@@ -1268,6 +1346,7 @@ function resetPeriodSections() {
     '[data-weekday-chart]',
     '[data-when-facts]',
     '[data-when-year-list]',
+    '[data-on-this-day-list]',
     '[data-breakdown-grid]',
     '[data-rating-chart]',
     '[data-rating-side]',
@@ -1278,6 +1357,7 @@ function resetPeriodSections() {
     document.querySelector(selector).replaceChildren();
   }
 
+  document.querySelector('[data-on-this-day-note]').textContent = '';
   document.querySelector('[data-when-years]').hidden = true;
 }
 
@@ -1769,7 +1849,7 @@ async function main() {
 
     resetPeriodSections();
     renderHero(data, manifest, all, year);
-    renderWhen(all, diary, year);
+    renderWhen(all, diary, year, data.onThisDay);
     renderBreakdown(all, year);
     renderRatings(all, diary);
     renderDecades(all, diary);

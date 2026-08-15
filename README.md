@@ -539,6 +539,7 @@ limit — the cards at full size, and the figures behind them read out at length
 |---------|---------------|
 | **A Life in Film** | The opening: profile avatar and headline figures, with an All Time/year selector that updates the statistical sections without reloading the page |
 | **When you watched** | A column per month for All Time and every Monday–Sunday week for a selected year, empty periods included; weekday distribution, weekly and monthly averages, busiest day, fullest month, longest streak, longest quiet stretch, watched-day share and seasonal pattern — plus a figure per year, written out rather than drawn |
+| **On this day** | When the snapshot date has been logged in an earlier year, the films watched on that calendar date, grouped by viewing year and linked back to their diary entries; when there is nothing to remember, the section stays hidden |
 | **Breakdown** | Donuts compare films watched in their release year with older titles, first watches with rewatches, and—when reviews exist—reviewed with not reviewed. Counts and percentages stay visible without hover |
 | **How you rated** | The half-star histogram, empty steps kept, beside the average, the most given rating and how much is rated or liked at all |
 | **What you reached for** | Films by release decade with counts, share and average rating, plus the five you went back to most |
