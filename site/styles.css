@@ -2480,6 +2480,24 @@ a.repeat-title:hover {
    that is genuinely longer than the viewport keeps a small horizontal overflow;
    the caption under it does not scroll independently. */
 @media (max-width: 700px) {
+  /* A live backdrop blur makes every scroll frame repaint the content under
+     the sticky controls. The page background is already the visual surface on
+     a phone, so keep the controls opaque there and leave the desktop treatment
+     unchanged. */
+  .nav,
+  .to-top {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .nav {
+    background: var(--background);
+  }
+
+  .to-top {
+    background: var(--surface);
+  }
+
   /* The full timeline fits the current diary on a phone. Keep a small minimum
      for unusually long diaries, but do not force every graph into a 620px
      horizontal strip. */
