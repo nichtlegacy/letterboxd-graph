@@ -178,7 +178,9 @@ function icon(name) {
   return svg;
 }
 
-const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 300));
+const idle = window.requestIdleCallback
+  ? (fn, options) => window.requestIdleCallback(fn, options)
+  : (fn, options = {}) => setTimeout(fn, Math.min(options.timeout ?? 300, 300));
 
 let toastTimer = null;
 
@@ -908,11 +910,37 @@ function renderMilestones(all) {
 
 /* ── Frames ───────────────────────────────────────────────────────────────── */
 
+const pendingFrameLoads = [];
+let pendingFrameLoadHandle = null;
+
+function loadNextFrameWhenIdle() {
+  pendingFrameLoadHandle = null;
+  const frame = pendingFrameLoads.shift();
+  if (!frame) return;
+
+  frame.__loadQueued = false;
+  frame.__load?.();
+
+  if (pendingFrameLoads.length) {
+    pendingFrameLoadHandle = idle(loadNextFrameWhenIdle, { timeout: 900 });
+  }
+}
+
+function scheduleFrameLoad(frame) {
+  if (frame.__loadQueued) return;
+  frame.__loadQueued = true;
+  pendingFrameLoads.push(frame);
+
+  if (pendingFrameLoadHandle === null) {
+    pendingFrameLoadHandle = idle(loadNextFrameWhenIdle, { timeout: 900 });
+  }
+}
+
 const lazy = new IntersectionObserver((entries) => {
   for (const entry of entries) {
     if (!entry.isIntersecting) continue;
     lazy.unobserve(entry.target);
-    entry.target.__load?.();
+    scheduleFrameLoad(entry.target);
   }
 }, { rootMargin: '300px' });
 
@@ -1272,6 +1300,7 @@ function createFrame(asset, manifest) {
 
   frame.__load = () => {
     if (loaded) return;
+    frame.__loadQueued = false;
     loaded = true;
     mount(theme);
   };
@@ -1352,13 +1381,9 @@ function renderSection(section, assets, manifest) {
     tabs.append(tab);
   });
 
-  // The cards behind the other tabs are fetched too, but only once the visible
-  // one has painted — a switch should not wait on a request, and the first
-  // card should not queue behind its siblings either.
+  // Only the visible card is observed. The other tabs stay as lightweight
+  // shells until the reader selects, focuses, or points at one of them.
   for (const frame of built.slice(1)) lazy.unobserve(frame);
-  built[0].addEventListener('frameload', () => {
-    idle(() => { for (const frame of built) frame.__load(); });
-  }, { once: true });
 
   show(0, false);
   stack.append(...built);
@@ -1779,27 +1804,68 @@ function setupScrollSpy() {
   document.body.append(toTop);
 
   const strip = document.querySelector('.nav-links');
+  const nav = document.querySelector('.nav');
   let queued = false;
   let marked = null;
+  let lineOffset = 76;
+  let sectionPositions = [];
+  let saveTimer = null;
+
+  // Section boxes do not move as the page scrolls. Measuring them once here,
+  // and again only after a resize or period change, keeps the scroll path free
+  // of offsetParent/layout reads.
+  const measureLayout = () => {
+    lineOffset = (nav?.offsetHeight || 56) + 20;
+    sectionPositions = targets.map(entry => ({
+      ...entry,
+      top: documentTop(entry.section)
+    }));
+  };
+
+  const queueScrollPositionSave = () => {
+    if (saveTimer !== null) return;
+    saveTimer = setTimeout(() => {
+      saveTimer = null;
+      saveScrollPosition();
+    }, 240);
+  };
+
+  const flushScrollPositionSave = () => {
+    if (saveTimer !== null) {
+      clearTimeout(saveTimer);
+      saveTimer = null;
+    }
+    saveScrollPosition();
+  };
 
   const update = () => {
     queued = false;
-    saveScrollPosition();
-    const line = window.scrollY + navOffset() + 8;
+    queueScrollPositionSave();
+    const scrollY = window.scrollY;
+    const line = scrollY + lineOffset + 8;
 
     let current = null;
-    for (const entry of targets) {
-      if (documentTop(entry.section) <= line) current = entry;
+    for (const entry of sectionPositions) {
+      if (entry.top > line) break;
+      current = entry;
     }
 
-    for (const { anchor } of targets) anchor.classList.toggle('is-active', anchor === current?.anchor);
-    toTop.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.6);
+    const nextMarked = current?.anchor || null;
+    const markedChanged = nextMarked !== marked;
+    if (markedChanged) {
+      marked?.classList.remove('is-active');
+      nextMarked?.classList.add('is-active');
+      marked = nextMarked;
+    }
+
+    const shouldShowToTop = scrollY > window.innerHeight * 0.6;
+    if (shouldShowToTop !== toTop.classList.contains('is-visible')) {
+      toTop.classList.toggle('is-visible', shouldShowToTop);
+    }
 
     // On a phone the links are a strip that scrolls sideways, so the one being
     // marked has to be brought into it.
-    if (current?.anchor !== marked) {
-      marked = current?.anchor || null;
-
+    if (markedChanged) {
       if (marked && strip.scrollWidth > strip.clientWidth + 4) {
         strip.scrollTo({
           left: Math.max(0, marked.offsetLeft - (strip.clientWidth - marked.offsetWidth) / 2),
@@ -1809,14 +1875,31 @@ function setupScrollSpy() {
     }
   };
 
-  window.addEventListener('scroll', () => {
+  const requestUpdate = () => {
     if (queued) return;
     queued = true;
     requestAnimationFrame(update);
-  }, { passive: true });
+  };
 
-  window.addEventListener('resize', update, { passive: true });
-  window.addEventListener('pagehide', saveScrollPosition);
+  const refreshLayout = () => {
+    measureLayout();
+    requestUpdate();
+  };
+
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', refreshLayout, { passive: true });
+  window.addEventListener('orientationchange', refreshLayout, { passive: true });
+  window.addEventListener('lbg:layoutchange', refreshLayout, { passive: true });
+  window.addEventListener('pagehide', flushScrollPositionSave);
+
+  // Period switching and font/layout changes can alter section heights without
+  // changing the viewport. ResizeObserver catches those changes without making
+  // the scroll handler responsible for watching every mutation.
+  const layoutObserver = new ResizeObserver(refreshLayout);
+  if (nav) layoutObserver.observe(nav);
+  for (const { section } of targets) layoutObserver.observe(section);
+
+  measureLayout();
   update();
 }
 
@@ -1890,6 +1973,7 @@ async function main() {
     renderMilestones(all);
     renderPeriodMenu(data, year, selectPeriod);
     animatePeriodSections();
+    window.dispatchEvent(new Event('lbg:layoutchange'));
   };
 
   selectPeriod();
