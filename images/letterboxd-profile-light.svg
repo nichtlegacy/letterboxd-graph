@@ -82,7 +82,7 @@
   </g>
 
   <!-- Headline -->
-  <text x="316" y="202" font-size="88" font-weight="700" fill="url(#reviewGradient)" text-anchor="middle">628</text>
+  <text x="316" y="202" font-size="88" font-weight="700" fill="url(#reviewGradient)" text-anchor="middle">627</text>
   <line x1="78" y1="229" x2="192.69140625" y2="229" stroke="#e2e6ea" stroke-width="1"/>
   <line x1="439.30859375" y1="229" x2="554" y2="229" stroke="#e2e6ea" stroke-width="1"/>
   <text x="316" y="234" font-size="14" font-weight="600" fill="#656d76" text-anchor="middle" letter-spacing="7">FILMS WATCHED</text>

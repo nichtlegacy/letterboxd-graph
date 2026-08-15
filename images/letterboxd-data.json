@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-14T02:10:42.149Z",
+  "generatedAt": "2026-08-15T01:23:48.961Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -25327,7 +25327,7 @@
   },
   "allTime": {
     "scope": "all",
-    "films": 628,
+    "films": 627,
     "entries": 601,
     "distinctFilms": 536,
     "firstEntry": "2024-02-22",
