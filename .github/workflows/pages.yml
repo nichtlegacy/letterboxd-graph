@@ -46,7 +46,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '22.12'
 
       # sharp rasterises the share preview. `--ignore-scripts` skips
       # puppeteer's Chromium download, which this job has no use for; sharp

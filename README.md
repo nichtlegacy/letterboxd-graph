@@ -7,7 +7,7 @@ Runs as a GitHub Action, commits the finished SVGs back to your repository.
 
 [![Workflow](https://img.shields.io/github/actions/workflow/status/nichtlegacy/letterboxd-graph/update-graph.yml?label=action&style=flat-square)](https://github.com/nichtlegacy/letterboxd-graph/actions)
 [![Release](https://img.shields.io/github/release/nichtlegacy/letterboxd-graph.svg?style=flat-square)](https://github.com/nichtlegacy/letterboxd-graph/releases)
-[![Node](https://img.shields.io/badge/node-%E2%89%A520.9-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Node](https://img.shields.io/badge/node-%E2%89%A522.12-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Reusable Action](https://img.shields.io/badge/GitHub_Action-reusable-2088FF?style=flat-square&logo=githubactions&logoColor=white)](#quick-start)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
 
@@ -281,7 +281,7 @@ All options are action inputs. Only `username` is required.
 | `output` | Output path without extension | `images/github-letterboxd` |
 | `commit` | Commit and push the generated files | `true` |
 | `commit-message` | Commit message (branch and UTC timestamp appended) | `Update Letterboxd graph` |
-| `node-version` | Node.js version | `20` |
+| `node-version` | Node.js version | `22.12` |
 | `install-browser-deps` | Install Puppeteer system libraries (Ubuntu runners) | `true` |
 
 Outputs `svg-dark`, `svg-light` and `data-json` carry the paths written, for
@@ -637,7 +637,7 @@ all. For local runs:
 
 | Requirement | Why |
 |-------------|-----|
-| **Node.js ≥ 20.9** | Required by `sharp` v0.35, which rasterises the PNG exports |
+| **Node.js ≥ 22.12** | Required by Puppeteer 25 and `sharp` v0.35 |
 | **Python 3 with `curl_cffi`** | The primary fetcher, and needed for the Python tests — `pip install curl_cffi` |
 | **A public Letterboxd profile** | Only pages a logged-out visitor can see are read |
 
