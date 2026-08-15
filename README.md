@@ -13,7 +13,7 @@ Runs as a GitHub Action, commits the finished SVGs back to your repository.
 
 [Quick Start](#quick-start) • [What It Generates](#what-it-generates) • [Configuration](#configuration) • [CLI](#cli) • [How It Works](#how-it-works) • [Pages Site](#pages-site) • [License](#license)
 
-<a href="https://letterboxd.com/nichtlegacy/">
+<a href="https://letterboxd.nichtlegacy.com/images/github-letterboxd-dark.svg" title="Open the complete graph SVG">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nichtlegacy/letterboxd-graph/main/images/github-letterboxd-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/nichtlegacy/letterboxd-graph/main/images/github-letterboxd-light.svg">
@@ -93,11 +93,13 @@ theme — see [Embedding](#embedding).
 per requested year.
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/github-letterboxd-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="images/github-letterboxd-light.svg">
-    <img alt="Letterboxd contribution graph" src="images/github-letterboxd-light.svg" width="100%">
-  </picture>
+  <a href="https://letterboxd.nichtlegacy.com/images/github-letterboxd-dark.svg" title="Open the complete graph SVG">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="images/github-letterboxd-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="images/github-letterboxd-light.svg">
+      <img alt="Letterboxd contribution graph" src="images/github-letterboxd-light.svg" width="100%">
+    </picture>
+  </a>
 </p>
 
 Hovering reveals more than the graph shows at rest:
@@ -135,11 +137,13 @@ Hovering reveals more than the graph shows at rest:
 `letterboxd-review-<year>-{dark,light}.svg` — one card per year in `review-years`.
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-review-2026-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-review-2026-light.svg">
-    <img alt="Letterboxd year in review card" src="images/letterboxd-review-2026-light.svg" width="100%">
-  </picture>
+  <a href="https://letterboxd.nichtlegacy.com/images/letterboxd-review-2026-dark.svg" title="Open the complete year card SVG">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-review-2026-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-review-2026-light.svg">
+      <img alt="Letterboxd year in review card" src="images/letterboxd-review-2026-light.svg" width="100%">
+    </picture>
+  </a>
 </p>
 
 1200×630, the Open Graph default, so it works as a social preview as it stands.
@@ -182,11 +186,13 @@ that year, which is true but says nothing about the year itself.
 `letterboxd-review-previous-month-{dark,light}.svg`.
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-review-previous-month-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-review-previous-month-light.svg">
-    <img alt="Letterboxd month in review card" src="images/letterboxd-review-previous-month-light.svg" width="100%">
-  </picture>
+  <a href="https://letterboxd.nichtlegacy.com/images/letterboxd-review-previous-month-dark.svg" title="Open the complete month card SVG">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-review-previous-month-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-review-previous-month-light.svg">
+      <img alt="Letterboxd month in review card" src="images/letterboxd-review-previous-month-light.svg" width="100%">
+    </picture>
+  </a>
 </p>
 
 The same card narrowed to a single month. A month with nothing logged says so
@@ -203,11 +209,13 @@ keeps working when the month turns over and old cards do not pile up.
 `letterboxd-profile-{dark,light}.svg` — not tied to a year.
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-profile-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-profile-light.svg">
-    <img alt="Letterboxd profile card" src="images/letterboxd-profile-light.svg" width="100%">
-  </picture>
+  <a href="https://letterboxd.nichtlegacy.com/images/letterboxd-profile-dark.svg" title="Open the complete profile card SVG">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-profile-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-profile-light.svg">
+      <img alt="Letterboxd profile card" src="images/letterboxd-profile-light.svg" width="100%">
+    </picture>
+  </a>
 </p>
 
 The headline is your all-time films watched, taken from the profile page. The
@@ -503,10 +511,12 @@ diary weighs, and `scope` says which of the two it was built from.
 ## Embedding
 
 Point at the raw file, not the `blob` URL — GitHub serves `blob` as HTML and the
-image will not render.
+image will not render. If the image should open with the complete SVG, link it
+to the SVG served by your Pages site. GitHub renders README images as `<img>`,
+while the Pages deployment serves the SVG with the correct content type.
 
 ```html
-<a href="https://letterboxd.com/YOUR_LETTERBOXD_USERNAME/">
+<a href="https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPOSITORY/images/github-letterboxd-dark.svg">
   <picture>
     <source media="(prefers-color-scheme: dark)"
             srcset="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/letterboxd-graph/main/images/github-letterboxd-dark.svg">
