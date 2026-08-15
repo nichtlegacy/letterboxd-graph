@@ -214,6 +214,61 @@ export function chooseMilestoneStep(total, limit = 5) {
 }
 
 /**
+ * Keep the diary fields that can be shown by the page and external consumers.
+ * The date is deliberately not part of this shape: cells already carry it,
+ * while the on-this-day index adds it back to identify the viewing year.
+ *
+ * @param {Object} entry - Diary entry
+ * @returns {Object}
+ */
+function serializeDiaryEntry(entry) {
+  return {
+    title: entry.title,
+    year: entry.year,
+    rating: entry.rating,
+    rewatch: Boolean(entry.rewatch),
+    liked: Boolean(entry.liked),
+    url: entry.url || null,
+    reviewed: Boolean(entry.reviewed),
+    reviewUrl: entry.reviewUrl || null,
+    filmUid: entry.filmUid || null,
+    lid: entry.lid || null,
+    slug: entry.slug || null
+  };
+}
+
+/**
+ * Select viewings that happened on the same month and day as a snapshot.
+ *
+ * The caller can pass the complete diary that was already fetched during the
+ * run. This creates no Letterboxd request and keeps the page payload small:
+ * only today's anniversary entries are exported, rather than a second copy
+ * of the complete diary.
+ *
+ * @param {Array} entries - Diary entries, any order
+ * @param {Date|string} snapshotDate - Date whose month/day should be matched
+ * @returns {Array<Object>} Dated diary entries, newest viewing year first
+ */
+export function buildOnThisDay(entries, snapshotDate = new Date()) {
+  if (!entries || entries.length === 0) return [];
+
+  const snapshot = snapshotDate instanceof Date
+    ? snapshotDate
+    : new Date(snapshotDate);
+  if (Number.isNaN(snapshot.getTime())) return [];
+
+  const monthDay = snapshot.toISOString().slice(5, 10);
+
+  return [...entries]
+    .filter(entry => entry.date.toISOString().slice(5, 10) === monthDay)
+    .sort((a, b) => b.date.getTime() - a.date.getTime())
+    .map(entry => ({
+      date: entry.date.toISOString().split('T')[0],
+      ...serializeDiaryEntry(entry)
+    }));
+}
+
+/**
  * Aggregate the whole diary, not just the years the graph covers.
  *
  * Everything here is derived from entries that were already fetched, so it
@@ -485,19 +540,7 @@ export function buildJsonExport(entries, options = {}) {
       date,
       count: dayEntries.length,
       ratingAvg,
-      films: dayEntries.map((item) => ({
-        title: item.title,
-        year: item.year,
-        rating: item.rating,
-        rewatch: Boolean(item.rewatch),
-        liked: Boolean(item.liked),
-        url: item.url || null,
-        reviewed: Boolean(item.reviewed),
-        reviewUrl: item.reviewUrl || null,
-        filmUid: item.filmUid || null,
-        lid: item.lid || null,
-        slug: item.slug || null
-      })),
+      films: dayEntries.map(serializeDiaryEntry),
       url
     };
   });
@@ -580,19 +623,7 @@ export function buildJsonExport(entries, options = {}) {
       weekday: cellWeekday,
       count,
       ratingAvg,
-      films: dayEntries.map((item) => ({
-        title: item.title,
-        year: item.year,
-        rating: item.rating,
-        rewatch: Boolean(item.rewatch),
-        liked: Boolean(item.liked),
-        url: item.url || null,
-        reviewed: Boolean(item.reviewed),
-        reviewUrl: item.reviewUrl || null,
-        filmUid: item.filmUid || null,
-        lid: item.lid || null,
-        slug: item.slug || null
-      })),
+      films: dayEntries.map(serializeDiaryEntry),
       level: 0,
       inRange: !isPadding,
       url
@@ -618,22 +649,10 @@ export function buildJsonExport(entries, options = {}) {
   const recent = [...sortedEntries]
     .sort((a, b) => b.date.getTime() - a.date.getTime())
     .slice(0, recentLimit)
-    .map((entry) => ({
-      date: entry.date.toISOString().split('T')[0],
-      title: entry.title,
-      year: entry.year,
-      rating: entry.rating,
-      rewatch: Boolean(entry.rewatch),
-      liked: Boolean(entry.liked),
-      url: entry.url || null,
-      reviewed: Boolean(entry.reviewed),
-      reviewUrl: entry.reviewUrl || null,
-      filmUid: entry.filmUid || null,
-      lid: entry.lid || null,
-      slug: entry.slug || null
-    }));
+    .map((entry) => ({ date: entry.date.toISOString().split('T')[0], ...serializeDiaryEntry(entry) }));
 
   const aggregateEntries = allEntries || sortedEntries;
+  const generatedAt = new Date().toISOString();
   const entriesByYear = new Map();
 
   for (const entry of aggregateEntries) {
@@ -654,7 +673,7 @@ export function buildJsonExport(entries, options = {}) {
     profileImage,
     year,
     years: selectedYears,
-    generatedAt: new Date().toISOString(),
+    generatedAt,
     meta: {
       weekStart: normalizedWeekStart,
       minYear,
@@ -676,6 +695,10 @@ export function buildJsonExport(entries, options = {}) {
     monthLabels,
     calendar,
     cells,
+    onThisDay: {
+      date: generatedAt.split('T')[0],
+      films: buildOnThisDay(aggregateEntries, generatedAt)
+    },
     recent,
     byYear,
     allTime: buildAllTimeStats(aggregateEntries, { totalFilms, scope })

@@ -10,7 +10,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
-  classify, label, readDimensions, readChrome, buildAssets, slimData, allTimeFromCells,
+  classify, label, readDimensions, readChrome, buildAssets, slimData, allTimeFromCells, onThisDayFromCells,
   siteBase, describe, renderMeta, injectMeta, previewAsset, renderSitemap, renderRobots
 } from '../scripts/build-site.mjs';
 
@@ -171,6 +171,7 @@ test('slimData keeps the figures and drops the calendar', () => {
   assert.equal(slim.calendar, undefined);
   assert.equal(slim.cells, undefined);
   assert.equal(slim.recent.length, 16);
+  assert.deepEqual(slim.onThisDay, { date: '2026-08-07', films: [] });
   assert.deepEqual(slim.stats, { films: 456, daysActive: 322, streak: 34 });
   assert.deepEqual(slim.byYear, {
     2026: { scope: 'year', entries: 3 },
@@ -183,6 +184,21 @@ test('slimData keeps the figures and drops the calendar', () => {
     { year: 2025, films: 3, days: 2 },
     { year: 2026, films: 3, days: 1 }
   ]);
+});
+
+test('onThisDayFromCells keeps matching graph-year entries for old exports', () => {
+  const result = onThisDayFromCells({
+    generatedAt: '2026-08-15T13:47:48.026Z',
+    cells: [
+      { date: '2025-08-15', films: [{ title: 'Remembered', rating: 4 }] },
+      { date: '2025-08-16', films: [{ title: 'Not today' }] }
+    ]
+  });
+
+  assert.deepEqual(result, {
+    date: '2026-08-15',
+    films: [{ date: '2025-08-15', title: 'Remembered', rating: 4 }]
+  });
 });
 
 test('slimData leaves old exports in All Time-only mode', () => {

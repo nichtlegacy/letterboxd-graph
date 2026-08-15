@@ -241,6 +241,9 @@ export function slimData(data) {
     stats: data.stats,
     allTime: data.allTime || allTimeFromCells(data),
     byYear: data.byYear && typeof data.byYear === 'object' ? data.byYear : {},
+    // New exports carry this from the complete diary. Older exports can still
+    // show the graph-year part of it from their existing active cells.
+    onThisDay: data.onThisDay || onThisDayFromCells(data),
     // Keep payload bounded; page balances entries row-wise across two columns.
     recent: (data.recent || []).slice(0, 16)
   };
@@ -259,6 +262,26 @@ export function allTimeFromCells(data) {
     (cell.films || []).map(film => ({ ...film, date: new Date(`${cell.date}T00:00:00Z`) })));
 
   return buildAllTimeStats(entries, { scope: 'years', totalFilms: null });
+}
+
+/**
+ * Backward-compatible on-this-day data for exports written before the index
+ * existed. It can only see the graph years, but it costs no new request and
+ * disappears naturally when the snapshot date has no matching cell.
+ *
+ * @param {object} data - Parsed `letterboxd-data.json`
+ * @returns {{date: string, films: Array}|null}
+ */
+export function onThisDayFromCells(data) {
+  const date = typeof data.generatedAt === 'string' ? data.generatedAt.slice(0, 10) : '';
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !Array.isArray(data.cells)) return null;
+
+  const monthDay = date.slice(5);
+  const films = data.cells
+    .filter(cell => typeof cell.date === 'string' && cell.date.slice(5) === monthDay)
+    .flatMap(cell => (cell.films || []).map(film => ({ date: cell.date, ...film })));
+
+  return { date, films };
 }
 
 /* ── The head ─────────────────────────────────────────────────────────────── */
