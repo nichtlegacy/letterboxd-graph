@@ -250,14 +250,20 @@ function columnChart(host, bars, { variant = '', axis = null, colorScale = null,
       plot.classList.add('is-hovered');
       column.classList.add('is-active');
 
-      // Sit just above the bar rather than above the whole plot, and stay
-      // inside it: a tooltip over the first column would otherwise hang off the
-      // left edge, and one over a short bar would float far above it.
+      // Sit just above the bar, but keep the whole tooltip inside the plot.
+      // Mobile charts scroll horizontally, which also clips anything that
+      // escapes vertically from the chart host; a full-height bar must not
+      // push its tooltip through the top edge.
       const half = tooltip.offsetWidth / 2;
       const centre = column.offsetLeft + column.offsetWidth / 2;
+      const gap = 10;
+      const tooltipHeight = tooltip.offsetHeight;
+      const desiredTop = plot.clientHeight - fill.offsetHeight - gap - tooltipHeight;
+      const latestTop = Math.max(8, plot.clientHeight - tooltipHeight - 8);
 
       tooltip.style.left = `${Math.min(Math.max(centre, half), plot.clientWidth - half)}px`;
-      tooltip.style.bottom = `${fill.offsetHeight + 10}px`;
+      tooltip.style.top = `${Math.max(8, Math.min(desiredTop, latestTop))}px`;
+      tooltip.style.bottom = 'auto';
     };
 
     const hide = () => {
@@ -332,6 +338,18 @@ function interpolateColor([start, end], index, count) {
 
 const DONUT_COLORS = ['var(--brand-green)', 'var(--donut-muted)', 'var(--accent-orange)'];
 
+function donutArcPath(offset, percentage, radius = 41) {
+  const point = angle => {
+    const radians = angle * Math.PI * 2;
+    return [50 + radius * Math.cos(radians), 50 + radius * Math.sin(radians)];
+  };
+
+  const [startX, startY] = point(offset / 100);
+  const [endX, endY] = point((offset + percentage) / 100);
+  const largeArc = percentage > 50 ? 1 : 0;
+  return `M ${startX} ${startY} A ${radius} ${radius} 0 ${largeArc} 1 ${endX} ${endY}`;
+}
+
 function donutCard(title, segments) {
   const visible = buildDonutSegments(segments);
   if (!visible.length) return null;
@@ -346,6 +364,17 @@ function donutCard(title, segments) {
   const tooltip = el('div', 'donut-tip');
   tooltip.hidden = true;
 
+  const track = document.createElementNS(svg.namespaceURI, 'circle');
+  track.setAttribute('class', 'donut-track');
+  track.setAttribute('cx', '50');
+  track.setAttribute('cy', '50');
+  track.setAttribute('r', '41');
+  track.setAttribute('fill', 'none');
+  track.setAttribute('stroke', 'var(--surface-elevated)');
+  track.setAttribute('stroke-width', '18');
+  track.setAttribute('pathLength', '100');
+  svg.append(track);
+
   const copy = el('div', 'donut-copy');
   copy.append(el('h3', 'donut-title', title));
   const legend = el('div', 'donut-legend');
@@ -353,17 +382,22 @@ function donutCard(title, segments) {
 
   visible.forEach((segment) => {
     const color = DONUT_COLORS[segment.index] || 'var(--donut-muted)';
-    const circle = document.createElementNS(svg.namespaceURI, 'circle');
+    const circle = document.createElementNS(
+      svg.namespaceURI,
+      segment.percentage >= 99.999 ? 'circle' : 'path'
+    );
     circle.setAttribute('class', 'donut-segment');
-    circle.setAttribute('cx', '50');
-    circle.setAttribute('cy', '50');
-    circle.setAttribute('r', '41');
-    circle.setAttribute('pathLength', '100');
+    if (segment.percentage >= 99.999) {
+      circle.setAttribute('cx', '50');
+      circle.setAttribute('cy', '50');
+      circle.setAttribute('r', '41');
+    } else {
+      circle.setAttribute('d', donutArcPath(segment.offset, segment.percentage));
+    }
     circle.setAttribute('fill', 'none');
     circle.setAttribute('stroke', color);
     circle.setAttribute('stroke-width', '18');
-    circle.setAttribute('stroke-dasharray', `${segment.percentage} ${100 - segment.percentage}`);
-    circle.setAttribute('stroke-dashoffset', String(-segment.offset));
+    circle.setAttribute('stroke-linecap', 'butt');
     circle.setAttribute('transform', 'rotate(-90 50 50)');
     circle.setAttribute('tabindex', '0');
     circle.setAttribute(

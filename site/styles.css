@@ -838,6 +838,10 @@ main {
   transition: opacity 150ms var(--ease), stroke-width 150ms var(--ease);
 }
 
+.donut-track {
+  pointer-events: none;
+}
+
 .donut-segment:focus-visible {
   outline: none;
   stroke-width: 20;
@@ -1159,18 +1163,6 @@ a.column {
   color: var(--text-on-accent);
 }
 
-/* Muted until hovered is muted for good on a phone, so there the strip is
-   drawn in the accent from the start. */
-@media (hover: none) {
-  .plot.is-weekday .column-fill {
-    background: var(--brand-green);
-  }
-
-  .plot.is-weekday .column-caption {
-    color: var(--text-on-accent);
-  }
-}
-
 /* The distribution reads as a shape first, so the bars stay quiet and the star
    captions underneath carry the accent. A bar takes the colour only while it is
    being read. */
@@ -1183,13 +1175,6 @@ a.column {
 .plot.is-ratings .column.is-active .column-fill {
   background: var(--brand-green);
   border-top-color: var(--brand-green);
-}
-
-@media (hover: none) {
-  .plot.is-ratings .column-fill {
-    background: var(--brand-green);
-    border-top-color: var(--brand-green);
-  }
 }
 
 .plot.is-hovered .column:not(.is-active) .column-fill {
@@ -2491,11 +2476,68 @@ a.repeat-title:hover {
   }
 }
 
-/* A day cell is 10px wide in the source drawing, so squeezing the graph into a
-   phone would make it unreadable. Below this width the card keeps a usable size
-   and scrolls sideways instead — the caption under it does not, so the actions
-   stay where a thumb can reach them. */
+/* Below this width the timeline uses the available width first. Only a diary
+   that is genuinely longer than the viewport keeps a small horizontal overflow;
+   the caption under it does not scroll independently. */
 @media (max-width: 700px) {
+  /* The full timeline fits the current diary on a phone. Keep a small minimum
+     for unusually long diaries, but do not force every graph into a 620px
+     horizontal strip. */
+  .chart .plot,
+  .chart .axis,
+  .histogram .plot {
+    min-width: 0;
+  }
+
+  .chart .plot {
+    gap: 2px;
+  }
+
+  .chart .plot .column {
+    min-width: 3px;
+  }
+
+  .plot.is-ratings {
+    gap: 4px;
+  }
+
+  /* One card per row leaves the whole width available and avoids a lone card
+     with an empty neighbour at the end of the grid. */
+  .breakdown-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .donut-copy {
+    max-width: none;
+  }
+
+  /* The rating figures follow the histogram as a full-width two-column grid;
+     each item keeps the page's normal left alignment. */
+  .ratings-side {
+    max-width: none;
+    margin-inline: 0;
+    text-align: left;
+  }
+
+  .ratings-side .side-item {
+    justify-items: start;
+  }
+
+  /* The large SVG bars are useful at desktop scale, but become clipped noise
+     around a narrow title. The grid and the soft centre fade keep the hero
+     graphic language without letting decoration break the layout. */
+  .hero-art {
+    height: 200px;
+  }
+
+  .hero-art::after {
+    display: block;
+  }
+
+  .hero-art-pattern {
+    display: none;
+  }
+
   .donut-card {
     grid-template-columns: 112px minmax(0, 1fr);
     padding: 8px 0;
@@ -2585,8 +2627,8 @@ a.repeat-title:hover {
     max-width: 100%;
   }
 
-  /* Thirty months at four pixels each is a texture, not a chart. The plots keep
-     a readable bar width and scroll instead. */
+  /* Longer diaries may still need a little horizontal room, but the current
+     timeline stays fully visible and does not start wider than the viewport. */
   .chart,
   .histogram {
     overflow-x: auto;
@@ -2598,15 +2640,6 @@ a.repeat-title:hover {
     display: none;
   }
 
-  .chart .plot,
-  .chart .axis {
-    min-width: 620px;
-  }
-
-  /* Wide enough that five stars under a bar stay stars and not a smudge. */
-  .histogram .plot {
-    min-width: 520px;
-  }
 }
 
 @media (max-width: 560px) {
@@ -2633,39 +2666,6 @@ a.repeat-title:hover {
 
   .hero-art {
     height: 180px;
-  }
-
-  .hero-art::after {
-    display: block;
-  }
-
-  .hero-art-pattern {
-    top: -40px;
-    width: 260px;
-    height: 180px;
-    opacity: 0.82;
-  }
-
-  .hero-art-pattern-left {
-    right: 50%;
-    left: auto;
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24%, #000 62%, transparent 88%);
-    mask-image: linear-gradient(to right, transparent 0, #000 24%, #000 62%, transparent 88%);
-    clip-path: inset(0 55% 0 0);
-  }
-
-  .hero-art-pattern-right {
-    right: auto;
-    left: 50%;
-    margin-left: 0;
-    -webkit-mask-image: linear-gradient(to left, transparent 0, #000 24%, #000 62%, transparent 88%);
-    mask-image: linear-gradient(to left, transparent 0, #000 24%, #000 62%, transparent 88%);
-    clip-path: inset(0 0 0 55%);
-  }
-
-  .hero-art-pattern-left,
-  .hero-art-pattern-right {
-    overflow: visible;
   }
 
   .hero-kpi-value {
