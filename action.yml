@@ -68,7 +68,7 @@ inputs:
   node-version:
     description: 'Node.js version used to run the generator'
     required: false
-    default: '20'
+    default: '22.12'
   install-browser-deps:
     description: 'Install the system libraries the Puppeteer fallback needs (Ubuntu runners only)'
     required: false
