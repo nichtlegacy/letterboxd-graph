@@ -7,13 +7,13 @@ Runs as a GitHub Action, commits the finished SVGs back to your repository.
 
 [![Workflow](https://img.shields.io/github/actions/workflow/status/nichtlegacy/letterboxd-graph/update-graph.yml?label=action&style=flat-square)](https://github.com/nichtlegacy/letterboxd-graph/actions)
 [![Release](https://img.shields.io/github/release/nichtlegacy/letterboxd-graph.svg?style=flat-square)](https://github.com/nichtlegacy/letterboxd-graph/releases)
-[![Node](https://img.shields.io/badge/node-%E2%89%A520.9-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Node](https://img.shields.io/badge/node-%E2%89%A522.12-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Reusable Action](https://img.shields.io/badge/GitHub_Action-reusable-2088FF?style=flat-square&logo=githubactions&logoColor=white)](#quick-start)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
 
 [Quick Start](#quick-start) • [What It Generates](#what-it-generates) • [Configuration](#configuration) • [CLI](#cli) • [How It Works](#how-it-works) • [Pages Site](#pages-site) • [License](#license)
 
-<a href="https://letterboxd.com/nichtlegacy/">
+<a href="https://letterboxd.nichtlegacy.com/images/github-letterboxd-dark.svg" title="Open the complete graph SVG">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nichtlegacy/letterboxd-graph/main/images/github-letterboxd-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/nichtlegacy/letterboxd-graph/main/images/github-letterboxd-light.svg">
@@ -93,11 +93,13 @@ theme — see [Embedding](#embedding).
 per requested year.
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/github-letterboxd-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="images/github-letterboxd-light.svg">
-    <img alt="Letterboxd contribution graph" src="images/github-letterboxd-light.svg" width="100%">
-  </picture>
+  <a href="https://letterboxd.nichtlegacy.com/images/github-letterboxd-dark.svg" title="Open the complete graph SVG">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="images/github-letterboxd-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="images/github-letterboxd-light.svg">
+      <img alt="Letterboxd contribution graph" src="images/github-letterboxd-light.svg" width="100%">
+    </picture>
+  </a>
 </p>
 
 Hovering reveals more than the graph shows at rest:
@@ -135,11 +137,13 @@ Hovering reveals more than the graph shows at rest:
 `letterboxd-review-<year>-{dark,light}.svg` — one card per year in `review-years`.
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-review-2026-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-review-2026-light.svg">
-    <img alt="Letterboxd year in review card" src="images/letterboxd-review-2026-light.svg" width="100%">
-  </picture>
+  <a href="https://letterboxd.nichtlegacy.com/images/letterboxd-review-2026-dark.svg" title="Open the complete year card SVG">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-review-2026-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-review-2026-light.svg">
+      <img alt="Letterboxd year in review card" src="images/letterboxd-review-2026-light.svg" width="100%">
+    </picture>
+  </a>
 </p>
 
 1200×630, the Open Graph default, so it works as a social preview as it stands.
@@ -182,11 +186,13 @@ that year, which is true but says nothing about the year itself.
 `letterboxd-review-previous-month-{dark,light}.svg`.
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-review-previous-month-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-review-previous-month-light.svg">
-    <img alt="Letterboxd month in review card" src="images/letterboxd-review-previous-month-light.svg" width="100%">
-  </picture>
+  <a href="https://letterboxd.nichtlegacy.com/images/letterboxd-review-previous-month-dark.svg" title="Open the complete month card SVG">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-review-previous-month-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-review-previous-month-light.svg">
+      <img alt="Letterboxd month in review card" src="images/letterboxd-review-previous-month-light.svg" width="100%">
+    </picture>
+  </a>
 </p>
 
 The same card narrowed to a single month. A month with nothing logged says so
@@ -203,11 +209,13 @@ keeps working when the month turns over and old cards do not pile up.
 `letterboxd-profile-{dark,light}.svg` — not tied to a year.
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-profile-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-profile-light.svg">
-    <img alt="Letterboxd profile card" src="images/letterboxd-profile-light.svg" width="100%">
-  </picture>
+  <a href="https://letterboxd.nichtlegacy.com/images/letterboxd-profile-dark.svg" title="Open the complete profile card SVG">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="images/letterboxd-profile-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="images/letterboxd-profile-light.svg">
+      <img alt="Letterboxd profile card" src="images/letterboxd-profile-light.svg" width="100%">
+    </picture>
+  </a>
 </p>
 
 The headline is your all-time films watched, taken from the profile page. The
@@ -273,7 +281,7 @@ All options are action inputs. Only `username` is required.
 | `output` | Output path without extension | `images/github-letterboxd` |
 | `commit` | Commit and push the generated files | `true` |
 | `commit-message` | Commit message (branch and UTC timestamp appended) | `Update Letterboxd graph` |
-| `node-version` | Node.js version | `20` |
+| `node-version` | Node.js version | `22.12` |
 | `install-browser-deps` | Install Puppeteer system libraries (Ubuntu runners) | `true` |
 
 Outputs `svg-dark`, `svg-light` and `data-json` carry the paths written, for
@@ -503,10 +511,12 @@ diary weighs, and `scope` says which of the two it was built from.
 ## Embedding
 
 Point at the raw file, not the `blob` URL — GitHub serves `blob` as HTML and the
-image will not render.
+image will not render. If the image should open with the complete SVG, link it
+to the SVG served by your Pages site. GitHub renders README images as `<img>`,
+while the Pages deployment serves the SVG with the correct content type.
 
 ```html
-<a href="https://letterboxd.com/YOUR_LETTERBOXD_USERNAME/">
+<a href="https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPOSITORY/images/github-letterboxd-dark.svg">
   <picture>
     <source media="(prefers-color-scheme: dark)"
             srcset="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/letterboxd-graph/main/images/github-letterboxd-dark.svg">
@@ -539,6 +549,7 @@ limit — the cards at full size, and the figures behind them read out at length
 |---------|---------------|
 | **A Life in Film** | The opening: profile avatar and headline figures, with an All Time/year selector that updates the statistical sections without reloading the page |
 | **When you watched** | A column per month for All Time and every Monday–Sunday week for a selected year, empty periods included; weekday distribution, weekly and monthly averages, busiest day, fullest month, longest streak, longest quiet stretch, watched-day share and seasonal pattern — plus a figure per year, written out rather than drawn |
+| **On this day** | When the snapshot date has been logged in an earlier year, the films watched on that calendar date, grouped by viewing year and linked back to their diary entries; when there is nothing to remember, the section stays hidden |
 | **Breakdown** | Donuts compare films watched in their release year with older titles, first watches with rewatches, and—when reviews exist—reviewed with not reviewed. Counts and percentages stay visible without hover |
 | **How you rated** | The half-star histogram, empty steps kept, beside the average, the most given rating and how much is rated or liked at all |
 | **What you reached for** | Films by release decade with counts, share and average rating, plus the five you went back to most |
@@ -626,7 +637,7 @@ all. For local runs:
 
 | Requirement | Why |
 |-------------|-----|
-| **Node.js ≥ 20.9** | Required by `sharp` v0.35, which rasterises the PNG exports |
+| **Node.js ≥ 22.12** | Required by Puppeteer 25 and `sharp` v0.35 |
 | **Python 3 with `curl_cffi`** | The primary fetcher, and needed for the Python tests — `pip install curl_cffi` |
 | **A public Letterboxd profile** | Only pages a logged-out visitor can see are read |
 

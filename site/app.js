@@ -178,7 +178,9 @@ function icon(name) {
   return svg;
 }
 
-const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 300));
+const idle = window.requestIdleCallback
+  ? (fn, options) => window.requestIdleCallback(fn, options)
+  : (fn, options = {}) => setTimeout(fn, Math.min(options.timeout ?? 300, 300));
 
 let toastTimer = null;
 
@@ -250,14 +252,20 @@ function columnChart(host, bars, { variant = '', axis = null, colorScale = null,
       plot.classList.add('is-hovered');
       column.classList.add('is-active');
 
-      // Sit just above the bar rather than above the whole plot, and stay
-      // inside it: a tooltip over the first column would otherwise hang off the
-      // left edge, and one over a short bar would float far above it.
+      // Sit just above the bar, but keep the whole tooltip inside the plot.
+      // Mobile charts scroll horizontally, which also clips anything that
+      // escapes vertically from the chart host; a full-height bar must not
+      // push its tooltip through the top edge.
       const half = tooltip.offsetWidth / 2;
       const centre = column.offsetLeft + column.offsetWidth / 2;
+      const gap = 10;
+      const tooltipHeight = tooltip.offsetHeight;
+      const desiredTop = plot.clientHeight - fill.offsetHeight - gap - tooltipHeight;
+      const latestTop = Math.max(8, plot.clientHeight - tooltipHeight - 8);
 
       tooltip.style.left = `${Math.min(Math.max(centre, half), plot.clientWidth - half)}px`;
-      tooltip.style.bottom = `${fill.offsetHeight + 10}px`;
+      tooltip.style.top = `${Math.max(8, Math.min(desiredTop, latestTop))}px`;
+      tooltip.style.bottom = 'auto';
     };
 
     const hide = () => {
@@ -332,6 +340,18 @@ function interpolateColor([start, end], index, count) {
 
 const DONUT_COLORS = ['var(--brand-green)', 'var(--donut-muted)', 'var(--accent-orange)'];
 
+function donutArcPath(offset, percentage, radius = 41) {
+  const point = angle => {
+    const radians = angle * Math.PI * 2;
+    return [50 + radius * Math.cos(radians), 50 + radius * Math.sin(radians)];
+  };
+
+  const [startX, startY] = point(offset / 100);
+  const [endX, endY] = point((offset + percentage) / 100);
+  const largeArc = percentage > 50 ? 1 : 0;
+  return `M ${startX} ${startY} A ${radius} ${radius} 0 ${largeArc} 1 ${endX} ${endY}`;
+}
+
 function donutCard(title, segments) {
   const visible = buildDonutSegments(segments);
   if (!visible.length) return null;
@@ -346,6 +366,17 @@ function donutCard(title, segments) {
   const tooltip = el('div', 'donut-tip');
   tooltip.hidden = true;
 
+  const track = document.createElementNS(svg.namespaceURI, 'circle');
+  track.setAttribute('class', 'donut-track');
+  track.setAttribute('cx', '50');
+  track.setAttribute('cy', '50');
+  track.setAttribute('r', '41');
+  track.setAttribute('fill', 'none');
+  track.setAttribute('stroke', 'var(--surface-elevated)');
+  track.setAttribute('stroke-width', '18');
+  track.setAttribute('pathLength', '100');
+  svg.append(track);
+
   const copy = el('div', 'donut-copy');
   copy.append(el('h3', 'donut-title', title));
   const legend = el('div', 'donut-legend');
@@ -353,17 +384,22 @@ function donutCard(title, segments) {
 
   visible.forEach((segment) => {
     const color = DONUT_COLORS[segment.index] || 'var(--donut-muted)';
-    const circle = document.createElementNS(svg.namespaceURI, 'circle');
+    const circle = document.createElementNS(
+      svg.namespaceURI,
+      segment.percentage >= 99.999 ? 'circle' : 'path'
+    );
     circle.setAttribute('class', 'donut-segment');
-    circle.setAttribute('cx', '50');
-    circle.setAttribute('cy', '50');
-    circle.setAttribute('r', '41');
-    circle.setAttribute('pathLength', '100');
+    if (segment.percentage >= 99.999) {
+      circle.setAttribute('cx', '50');
+      circle.setAttribute('cy', '50');
+      circle.setAttribute('r', '41');
+    } else {
+      circle.setAttribute('d', donutArcPath(segment.offset, segment.percentage));
+    }
     circle.setAttribute('fill', 'none');
     circle.setAttribute('stroke', color);
     circle.setAttribute('stroke-width', '18');
-    circle.setAttribute('stroke-dasharray', `${segment.percentage} ${100 - segment.percentage}`);
-    circle.setAttribute('stroke-dashoffset', String(-segment.offset));
+    circle.setAttribute('stroke-linecap', 'butt');
     circle.setAttribute('transform', 'rotate(-90 50 50)');
     circle.setAttribute('tabindex', '0');
     circle.setAttribute(
@@ -488,7 +524,84 @@ function renderYears(all, diary) {
   document.querySelector('[data-when-years]').hidden = false;
 }
 
-function renderWhen(all, diary, year) {
+function renderOnThisDay(snapshot, year) {
+  const entries = (snapshot?.films || []).filter(entry => {
+    if (!year) return true;
+    return entry.date?.slice(0, 4) === String(year);
+  });
+
+  // An empty day is deliberately not an empty section: the daily page should
+  // simply carry on to the next section when there is nothing to remember.
+  if (!entries.length) return;
+
+  const groups = new Map();
+  for (const entry of entries) {
+    const watchYear = entry.date?.slice(0, 4) || '—';
+    if (!groups.has(watchYear)) groups.set(watchYear, []);
+    groups.get(watchYear).push(entry);
+  }
+
+  const dateLabel = snapshot.date
+    ? formatDate(snapshot.date, { day: 'numeric', month: 'long' })
+    : 'This date';
+  const filmLabel = `${formatNumber(entries.length)} ${entries.length === 1 ? 'film' : 'films'}`;
+  const yearLabel = `${formatNumber(groups.size)} ${groups.size === 1 ? 'year' : 'years'}`;
+
+  document.querySelector('[data-on-this-day-note]').textContent =
+    `${dateLabel} · ${filmLabel} · ${yearLabel}`;
+
+  const list = document.querySelector('[data-on-this-day-list]');
+  const nodes = [...groups.entries()].map(([watchYear, films]) => {
+    const group = el('div', 'on-this-day-year');
+    group.append(el('span', 'on-this-day-year-label', watchYear));
+
+    const filmList = el('ul', 'on-this-day-films');
+    for (const entry of films) filmList.append(onThisDayRow(entry));
+    group.append(filmList);
+    return group;
+  });
+
+  list.replaceChildren(...nodes);
+  document.querySelector('[data-on-this-day]').hidden = false;
+}
+
+function onThisDayRow(entry) {
+  const row = el('li', 'diary-row on-this-day-film');
+  const main = el('div', 'diary-main');
+  const title = entry.url
+    ? link(entry.url, 'diary-title', entry.title)
+    : el('span', 'diary-title', entry.title);
+  main.append(title);
+
+  if (entry.year) main.append(el('span', 'diary-year', entry.year));
+
+  const markers = el('span', 'markers');
+  if (entry.rewatch) {
+    const mark = el('span', 'marker marker-rewatch', '↻');
+    mark.title = 'Rewatch';
+    markers.append(mark);
+  }
+  if (entry.liked) {
+    const mark = el('span', 'marker marker-like', '♥');
+    mark.title = 'Liked';
+    markers.append(mark);
+  }
+  if (entry.reviewed) {
+    const mark = el('span', 'marker marker-review', '✎');
+    mark.title = 'Reviewed';
+    markers.append(mark);
+  }
+  if (markers.childElementCount) main.append(markers);
+
+  const rating = el('span', 'diary-rating', entry.rating ? stars(entry.rating) : '—');
+  if (!entry.rating) rating.classList.add('is-empty');
+  rating.title = entry.rating ? `${entry.rating} out of 5` : 'Not rated';
+
+  row.append(main, rating);
+  return row;
+}
+
+function renderWhen(all, diary, year, onThisDay) {
   const monthSeries = all?.monthSeries || [];
   if (!monthSeries.length) return;
 
@@ -603,6 +716,7 @@ function renderWhen(all, diary, year) {
   }));
 
   renderYears(all, diary);
+  renderOnThisDay(onThisDay, year);
 
   document.querySelector('[data-when]').hidden = false;
 }
@@ -796,11 +910,37 @@ function renderMilestones(all) {
 
 /* ── Frames ───────────────────────────────────────────────────────────────── */
 
+const pendingFrameLoads = [];
+let pendingFrameLoadHandle = null;
+
+function loadNextFrameWhenIdle() {
+  pendingFrameLoadHandle = null;
+  const frame = pendingFrameLoads.shift();
+  if (!frame) return;
+
+  frame.__loadQueued = false;
+  frame.__load?.();
+
+  if (pendingFrameLoads.length) {
+    pendingFrameLoadHandle = idle(loadNextFrameWhenIdle, { timeout: 900 });
+  }
+}
+
+function scheduleFrameLoad(frame) {
+  if (frame.__loadQueued) return;
+  frame.__loadQueued = true;
+  pendingFrameLoads.push(frame);
+
+  if (pendingFrameLoadHandle === null) {
+    pendingFrameLoadHandle = idle(loadNextFrameWhenIdle, { timeout: 900 });
+  }
+}
+
 const lazy = new IntersectionObserver((entries) => {
   for (const entry of entries) {
     if (!entry.isIntersecting) continue;
     lazy.unobserve(entry.target);
-    entry.target.__load?.();
+    scheduleFrameLoad(entry.target);
   }
 }, { rootMargin: '300px' });
 
@@ -1160,6 +1300,7 @@ function createFrame(asset, manifest) {
 
   frame.__load = () => {
     if (loaded) return;
+    frame.__loadQueued = false;
     loaded = true;
     mount(theme);
   };
@@ -1240,13 +1381,9 @@ function renderSection(section, assets, manifest) {
     tabs.append(tab);
   });
 
-  // The cards behind the other tabs are fetched too, but only once the visible
-  // one has painted — a switch should not wait on a request, and the first
-  // card should not queue behind its siblings either.
+  // Only the visible card is observed. The other tabs stay as lightweight
+  // shells until the reader selects, focuses, or points at one of them.
   for (const frame of built.slice(1)) lazy.unobserve(frame);
-  built[0].addEventListener('frameload', () => {
-    idle(() => { for (const frame of built) frame.__load(); });
-  }, { once: true });
 
   show(0, false);
   stack.append(...built);
@@ -1258,7 +1395,7 @@ function renderSection(section, assets, manifest) {
 function resetPeriodSections() {
   dismissBar();
 
-  for (const selector of ['[data-when]', '[data-breakdown]', '[data-ratings]', '[data-decades]', '[data-milestones]']) {
+  for (const selector of ['[data-when]', '[data-breakdown]', '[data-ratings]', '[data-decades]', '[data-milestones]', '[data-on-this-day]']) {
     document.querySelector(selector).hidden = true;
   }
 
@@ -1268,6 +1405,7 @@ function resetPeriodSections() {
     '[data-weekday-chart]',
     '[data-when-facts]',
     '[data-when-year-list]',
+    '[data-on-this-day-list]',
     '[data-breakdown-grid]',
     '[data-rating-chart]',
     '[data-rating-side]',
@@ -1278,6 +1416,7 @@ function resetPeriodSections() {
     document.querySelector(selector).replaceChildren();
   }
 
+  document.querySelector('[data-on-this-day-note]').textContent = '';
   document.querySelector('[data-when-years]').hidden = true;
 }
 
@@ -1665,27 +1804,68 @@ function setupScrollSpy() {
   document.body.append(toTop);
 
   const strip = document.querySelector('.nav-links');
+  const nav = document.querySelector('.nav');
   let queued = false;
   let marked = null;
+  let lineOffset = 76;
+  let sectionPositions = [];
+  let saveTimer = null;
+
+  // Section boxes do not move as the page scrolls. Measuring them once here,
+  // and again only after a resize or period change, keeps the scroll path free
+  // of offsetParent/layout reads.
+  const measureLayout = () => {
+    lineOffset = (nav?.offsetHeight || 56) + 20;
+    sectionPositions = targets.map(entry => ({
+      ...entry,
+      top: documentTop(entry.section)
+    }));
+  };
+
+  const queueScrollPositionSave = () => {
+    if (saveTimer !== null) return;
+    saveTimer = setTimeout(() => {
+      saveTimer = null;
+      saveScrollPosition();
+    }, 240);
+  };
+
+  const flushScrollPositionSave = () => {
+    if (saveTimer !== null) {
+      clearTimeout(saveTimer);
+      saveTimer = null;
+    }
+    saveScrollPosition();
+  };
 
   const update = () => {
     queued = false;
-    saveScrollPosition();
-    const line = window.scrollY + navOffset() + 8;
+    queueScrollPositionSave();
+    const scrollY = window.scrollY;
+    const line = scrollY + lineOffset + 8;
 
     let current = null;
-    for (const entry of targets) {
-      if (documentTop(entry.section) <= line) current = entry;
+    for (const entry of sectionPositions) {
+      if (entry.top > line) break;
+      current = entry;
     }
 
-    for (const { anchor } of targets) anchor.classList.toggle('is-active', anchor === current?.anchor);
-    toTop.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.6);
+    const nextMarked = current?.anchor || null;
+    const markedChanged = nextMarked !== marked;
+    if (markedChanged) {
+      marked?.classList.remove('is-active');
+      nextMarked?.classList.add('is-active');
+      marked = nextMarked;
+    }
+
+    const shouldShowToTop = scrollY > window.innerHeight * 0.6;
+    if (shouldShowToTop !== toTop.classList.contains('is-visible')) {
+      toTop.classList.toggle('is-visible', shouldShowToTop);
+    }
 
     // On a phone the links are a strip that scrolls sideways, so the one being
     // marked has to be brought into it.
-    if (current?.anchor !== marked) {
-      marked = current?.anchor || null;
-
+    if (markedChanged) {
       if (marked && strip.scrollWidth > strip.clientWidth + 4) {
         strip.scrollTo({
           left: Math.max(0, marked.offsetLeft - (strip.clientWidth - marked.offsetWidth) / 2),
@@ -1695,14 +1875,31 @@ function setupScrollSpy() {
     }
   };
 
-  window.addEventListener('scroll', () => {
+  const requestUpdate = () => {
     if (queued) return;
     queued = true;
     requestAnimationFrame(update);
-  }, { passive: true });
+  };
 
-  window.addEventListener('resize', update, { passive: true });
-  window.addEventListener('pagehide', saveScrollPosition);
+  const refreshLayout = () => {
+    measureLayout();
+    requestUpdate();
+  };
+
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', refreshLayout, { passive: true });
+  window.addEventListener('orientationchange', refreshLayout, { passive: true });
+  window.addEventListener('lbg:layoutchange', refreshLayout, { passive: true });
+  window.addEventListener('pagehide', flushScrollPositionSave);
+
+  // Period switching and font/layout changes can alter section heights without
+  // changing the viewport. ResizeObserver catches those changes without making
+  // the scroll handler responsible for watching every mutation.
+  const layoutObserver = new ResizeObserver(refreshLayout);
+  if (nav) layoutObserver.observe(nav);
+  for (const { section } of targets) layoutObserver.observe(section);
+
+  measureLayout();
   update();
 }
 
@@ -1769,13 +1966,14 @@ async function main() {
 
     resetPeriodSections();
     renderHero(data, manifest, all, year);
-    renderWhen(all, diary, year);
+    renderWhen(all, diary, year, data.onThisDay);
     renderBreakdown(all, year);
     renderRatings(all, diary);
     renderDecades(all, diary);
     renderMilestones(all);
     renderPeriodMenu(data, year, selectPeriod);
     animatePeriodSections();
+    window.dispatchEvent(new Event('lbg:layoutchange'));
   };
 
   selectPeriod();

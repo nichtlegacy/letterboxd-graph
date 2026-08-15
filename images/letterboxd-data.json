@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-15T01:23:48.961Z",
+  "generatedAt": "2026-08-15T23:41:55.406Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23014,6 +23014,25 @@
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/08/09/"
     }
   ],
+  "onThisDay": {
+    "date": "2026-08-15",
+    "films": [
+      {
+        "date": "2025-08-15",
+        "title": "The Edge of Seventeen",
+        "year": "2016",
+        "rating": 3.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/the-edge-of-seventeen/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:311894",
+        "lid": "d5nu",
+        "slug": "the-edge-of-seventeen"
+      }
+    ]
+  },
   "recent": [
     {
       "date": "2026-08-09",
