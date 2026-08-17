@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-16T01:33:02.194Z",
+  "generatedAt": "2026-08-17T01:25:44.974Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23050,35 +23050,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-08-16",
+    "date": "2026-08-17",
     "films": [
       {
-        "date": "2025-08-16",
-        "title": "Sorority Boys",
-        "year": "2002",
-        "rating": 2.5,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/sorority-boys/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:48497",
-        "lid": "22a6",
-        "slug": "sorority-boys"
-      },
-      {
-        "date": "2025-08-16",
-        "title": "Robot Dreams",
-        "year": "2023",
+        "date": "2025-08-17",
+        "title": "Superman",
+        "year": "2025",
         "rating": 4,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/robot-dreams/",
+        "url": "https://letterboxd.com/nichtlegacy/film/superman-2025/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:753420",
-        "lid": "vBZm",
-        "slug": "robot-dreams"
+        "filmUid": "film:957050",
+        "lid": "E9IU",
+        "slug": "superman-2025"
+      },
+      {
+        "date": "2024-08-17",
+        "title": "Going in Style",
+        "year": "2017",
+        "rating": 3.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/going-in-style-2017/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:283209",
+        "lid": "bSKS",
+        "slug": "going-in-style-2017"
       }
     ]
   },
