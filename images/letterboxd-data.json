@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-20T01:23:31.939Z",
+  "generatedAt": "2026-08-21T01:27:30.670Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,8 +18,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 459,
-    "daysActive": 325,
+    "films": 460,
+    "daysActive": 326,
     "streak": 34,
     "streakFilms": 47,
     "rewatches": 62,
@@ -13009,10 +13009,24 @@
       "date": "2026-08-20",
       "week": 85,
       "weekday": 4,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Obsession",
+          "year": "2025",
+          "rating": 4,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/obsession-2025/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:1234472",
+          "lid": "PNqo",
+          "slug": "obsession-2025"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/08/20/"
     },
@@ -23047,13 +23061,48 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/08/15/"
+    },
+    {
+      "date": "2026-08-20",
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Obsession",
+          "year": "2025",
+          "rating": 4,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/obsession-2025/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:1234472",
+          "lid": "PNqo",
+          "slug": "obsession-2025"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/08/20/"
     }
   ],
   "onThisDay": {
-    "date": "2026-08-20",
+    "date": "2026-08-21",
     "films": []
   },
   "recent": [
+    {
+      "date": "2026-08-20",
+      "title": "Obsession",
+      "year": "2025",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/obsession-2025/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:1234472",
+      "lid": "PNqo",
+      "slug": "obsession-2025"
+    },
     {
       "date": "2026-08-15",
       "title": "Minions & Monsters",
@@ -23263,20 +23312,6 @@
       "filmUid": "film:47108",
       "lid": "1Yy4",
       "slug": "half-baked"
-    },
-    {
-      "date": "2026-06-28",
-      "title": "Ghost World",
-      "year": "2001",
-      "rating": 2.5,
-      "rewatch": false,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/ghost-world/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:50986",
-      "lid": "28Dy",
-      "slug": "ghost-world"
     }
   ],
   "byYear": {
@@ -24777,33 +24812,33 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 78,
-      "distinctFilms": 75,
+      "entries": 79,
+      "distinctFilms": 76,
       "firstEntry": "2026-01-01",
-      "lastEntry": "2026-08-15",
-      "spanDays": 227,
-      "daysActive": 62,
+      "lastEntry": "2026-08-20",
+      "spanDays": 232,
+      "daysActive": 63,
       "multiFilmDays": 11,
       "rewatches": 14,
       "liked": 7,
-      "rated": 78,
+      "rated": 79,
       "releaseBreakdown": {
         "sameYear": 12,
-        "older": 66,
+        "older": 67,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 64,
+        "firstWatches": 65,
         "rewatches": 14
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 78
+        "notReviewed": 79
       },
       "averageRating": 3.3,
       "perDay": 0.34,
       "perWeek": 2.4,
-      "perMonth": 10.5,
+      "perMonth": 10.4,
       "streak": {
         "length": 6,
         "startDate": "2026-03-28",
@@ -24822,8 +24857,8 @@
       "perYear": [
         {
           "year": 2026,
-          "films": 78,
-          "days": 62
+          "films": 79,
+          "days": 63
         }
       ],
       "perWeekday": [
@@ -24831,7 +24866,7 @@
         9,
         6,
         9,
-        8,
+        9,
         14,
         17
       ],
@@ -24843,7 +24878,7 @@
         6,
         4,
         12,
-        3,
+        4,
         0,
         0,
         0,
@@ -24880,7 +24915,7 @@
         },
         {
           "month": "2026-08",
-          "count": 3
+          "count": 4
         }
       ],
       "weekSeries": [
@@ -25086,7 +25121,7 @@
           "week": 34,
           "start": "2026-08-17",
           "end": "2026-08-23",
-          "count": 0
+          "count": 1
         },
         {
           "week": 35,
@@ -25222,7 +25257,7 @@
         },
         {
           "rating": 4,
-          "count": 17
+          "count": 18
         },
         {
           "rating": 4.5,
@@ -25263,7 +25298,7 @@
         {
           "decade": 2020,
           "label": "2020s",
-          "count": 30,
+          "count": 31,
           "averageRating": 3.5
         }
       ],
@@ -25348,52 +25383,52 @@
           "slug": "spider-man-brand-new-day"
         },
         {
-          "n": 78,
+          "n": 79,
           "kind": "latest",
-          "date": "2026-08-15",
-          "title": "Minions & Monsters",
-          "year": "2026",
-          "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/minions-monsters-2026/",
+          "date": "2026-08-20",
+          "title": "Obsession",
+          "year": "2025",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/obsession-2025/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:1196808",
-          "lid": "Odry",
-          "slug": "minions-monsters-2026"
+          "filmUid": "film:1234472",
+          "lid": "PNqo",
+          "slug": "obsession-2025"
         }
       ]
     }
   },
   "allTime": {
     "scope": "all",
-    "films": 628,
-    "entries": 602,
-    "distinctFilms": 537,
+    "films": 629,
+    "entries": 603,
+    "distinctFilms": 538,
     "firstEntry": "2024-02-22",
-    "lastEntry": "2026-08-15",
-    "spanDays": 906,
-    "daysActive": 430,
+    "lastEntry": "2026-08-20",
+    "spanDays": 911,
+    "daysActive": 431,
     "multiFilmDays": 134,
     "rewatches": 83,
     "liked": 76,
-    "rated": 602,
+    "rated": 603,
     "releaseBreakdown": {
       "sameYear": 58,
-      "older": 544,
+      "older": 545,
       "other": 0
     },
     "watchBreakdown": {
-      "firstWatches": 519,
+      "firstWatches": 520,
       "rewatches": 83
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 601
+      "notReviewed": 602
     },
     "averageRating": 3.3,
     "perDay": 0.66,
-    "perWeek": 4.7,
-    "perMonth": 20.2,
+    "perWeek": 4.6,
+    "perMonth": 20.1,
     "streak": {
       "length": 34,
       "startDate": "2025-01-27",
@@ -25422,8 +25457,8 @@
       },
       {
         "year": 2026,
-        "films": 78,
-        "days": 62
+        "films": 79,
+        "days": 63
       }
     ],
     "perWeekday": [
@@ -25431,7 +25466,7 @@
       84,
       70,
       82,
-      87,
+      88,
       89,
       101
     ],
@@ -25443,7 +25478,7 @@
       59,
       45,
       51,
-      21,
+      22,
       27,
       59,
       39,
@@ -25572,7 +25607,7 @@
       },
       {
         "month": "2026-08",
-        "count": 3
+        "count": 4
       }
     ],
     "weekSeries": [],
@@ -25603,7 +25638,7 @@
       },
       {
         "rating": 4,
-        "count": 129
+        "count": 130
       },
       {
         "rating": 4.5,
@@ -25654,7 +25689,7 @@
       {
         "decade": 2020,
         "label": "2020s",
-        "count": 117,
+        "count": 118,
         "averageRating": 3.5
       }
     ],
@@ -26165,18 +26200,18 @@
         "slug": "the-tunnel-to-summer-the-exit-of-goodbyes"
       },
       {
-        "n": 602,
+        "n": 603,
         "kind": "latest",
-        "date": "2026-08-15",
-        "title": "Minions & Monsters",
-        "year": "2026",
-        "rating": 3,
-        "url": "https://letterboxd.com/nichtlegacy/film/minions-monsters-2026/",
+        "date": "2026-08-20",
+        "title": "Obsession",
+        "year": "2025",
+        "rating": 4,
+        "url": "https://letterboxd.com/nichtlegacy/film/obsession-2025/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:1196808",
-        "lid": "Odry",
-        "slug": "minions-monsters-2026"
+        "filmUid": "film:1234472",
+        "lid": "PNqo",
+        "slug": "obsession-2025"
       }
     ]
   }
