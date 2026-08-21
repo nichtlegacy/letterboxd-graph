@@ -972,7 +972,10 @@ export async function fetchProfileData(username) {
       profileImage: null,
       displayName: username,
       followers: 0,
-      following: 0
+      following: 0,
+      totalEntries: 0,
+      memberStatus: null,
+      favourites: []
     };
   }
 }

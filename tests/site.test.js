@@ -11,7 +11,8 @@ import assert from 'node:assert/strict';
 
 import {
   classify, label, readDimensions, readChrome, buildAssets, slimData, allTimeFromCells, onThisDayFromCells,
-  siteBase, describe, renderMeta, injectMeta, previewAsset, renderSitemap, renderRobots
+  diaryEntries, siteBase, describe, renderMeta, renderDiaryMeta, injectMeta, previewAsset, renderSitemap,
+  renderRobots
 } from '../scripts/build-site.mjs';
 
 const svg = (width, height) =>
@@ -262,6 +263,51 @@ test('allTimeFromCells has nothing to rebuild from an empty export', () => {
   assert.equal(allTimeFromCells({ cells: [] }), null);
 });
 
+test('diaryEntries reads the exported diary, newest first', () => {
+  const entries = diaryEntries({
+    diary: [
+      { date: '2025-01-02', title: 'A' },
+      { date: '2026-02-16', title: 'C', rating: 4 },
+      { date: '2024-03-09', title: 'Z' }
+    ]
+  });
+
+  assert.deepEqual(entries.map(entry => entry.title), ['C', 'A', 'Z']);
+  assert.equal(entries[0].date, '2026-02-16');
+});
+
+// The graph's cells cover only the years it draws, so an export that has both
+// has to be read from `diary` — otherwise every earlier year vanishes from the
+// diary page without anything looking wrong.
+test('diaryEntries prefers the full diary over the graph years', () => {
+  const entries = diaryEntries({
+    diary: [
+      { date: '2026-02-16', title: 'C' },
+      { date: '2024-03-09', title: 'Z' }
+    ],
+    cells: [{ date: '2026-02-16', films: [{ title: 'C' }] }]
+  });
+
+  assert.deepEqual(entries.map(entry => entry.title), ['C', 'Z']);
+});
+
+test('diaryEntries falls back to flattening cells for an export without a diary', () => {
+  const entries = diaryEntries({
+    cells: [
+      { date: '2025-01-02', films: [{ title: 'A' }, { title: 'B' }] },
+      { date: '2026-02-16', films: [{ title: 'C', rating: 4 }] },
+      { date: '2025-01-03', films: [] }
+    ]
+  });
+
+  assert.deepEqual(entries.map(entry => entry.title), ['C', 'A', 'B']);
+});
+
+test('diaryEntries copes with an export that has neither', () => {
+  assert.deepEqual(diaryEntries({}), []);
+  assert.deepEqual(diaryEntries(null), []);
+});
+
 /* ── The head ─────────────────────────────────────────────────────────────── */
 
 const SLIM = {
@@ -439,10 +485,42 @@ test('previewAsset falls back to the most recent year, then to anything', () => 
   assert.equal(previewAsset([]), null);
 });
 
-test('the sitemap carries the URL and the date it was last drawn', () => {
+test('the diary head points at its own URL rather than the front page', () => {
+  const html = renderDiaryMeta({
+    base: 'https://x.test/',
+    data: SLIM,
+    entries: 603,
+    image: 'og.png'
+  });
+
+  assert.match(html, /<link rel="canonical" href="https:\/\/x\.test\/diary\.html">/);
+  assert.match(html, /og:url" content="https:\/\/x\.test\/diary\.html"/);
+  assert.match(html, /All 603 diary entries/);
+
+  // Parsed rather than matched: the block is printed for a reader, so a regex
+  // over it would be asserting the indentation as much as the content.
+  const ld = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+
+  assert.equal(ld['@type'], 'CollectionPage');
+  assert.equal(ld['@id'], 'https://x.test/diary.html#page');
+  assert.equal(ld.isPartOf['@id'], 'https://x.test/#website');
+  assert.equal(ld.mainEntity.numberOfItems, 603);
+});
+
+test('the diary head still renders without an export or a preview', () => {
+  const html = renderDiaryMeta({ base: 'https://x.test/', data: null, entries: null, image: null });
+
+  assert.match(html, /<title>Film diary — every entry — Letterboxd Graph<\/title>/);
+  assert.match(html, /The complete film diary/);
+  assert.doesNotMatch(html, /og:image/);
+  assert.match(html, /twitter:card" content="summary"/);
+});
+
+test('the sitemap carries both pages and the date they were last drawn', () => {
   const xml = renderSitemap('https://x.test/', '2026-08-07T17:10:18.311Z');
 
   assert.match(xml, /<loc>https:\/\/x\.test\/<\/loc>/);
+  assert.match(xml, /<loc>https:\/\/x\.test\/diary\.html<\/loc>/);
   assert.match(xml, /<lastmod>2026-08-07<\/lastmod>/);
 });
 

@@ -700,6 +700,12 @@ export function buildJsonExport(entries, options = {}) {
       films: buildOnThisDay(aggregateEntries, generatedAt)
     },
     recent,
+    // The complete fetched diary, newest first. `cells` stays scoped to the
+    // graph years, so a consumer that wants every entry — the site's diary page
+    // does — would otherwise silently see only the years the graph draws.
+    diary: [...aggregateEntries]
+      .sort((a, b) => b.date.getTime() - a.date.getTime())
+      .map((entry) => ({ date: entry.date.toISOString().split('T')[0], ...serializeDiaryEntry(entry) })),
     byYear,
     allTime: buildAllTimeStats(aggregateEntries, { totalFilms, scope })
   };

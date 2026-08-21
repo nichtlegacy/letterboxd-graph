@@ -39,3 +39,6 @@ __pycache__/
 /docs/
 /.playwright-cli/
 .DS_Store
+
+# Local Python venv for the curl_cffi fetcher
+.venv/
