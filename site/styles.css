@@ -800,6 +800,48 @@ main {
   font-size: 13px;
 }
 
+/* The end of a section that carries on somewhere else. Centred, because it is
+   not part of the reading column above it — it is the way out of it. No rule
+   above it: the list it follows already ends in one. */
+.section-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 0 20px;
+  background: var(--surface);
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+  color: var(--text-light);
+  font-size: 13px;
+  font-weight: 500;
+  transition: color 150ms var(--ease), background-color 150ms var(--ease),
+    border-color 150ms var(--ease);
+}
+
+.cta:hover {
+  background: var(--surface-hover);
+  border-color: var(--brand-green);
+  color: var(--brand-green);
+}
+
+.cta .icon {
+  color: var(--text-muted);
+  transition: color 150ms var(--ease), transform 200ms var(--ease);
+}
+
+/* The arrow leans the way it points. The shared reduced-motion rule flattens
+   every transition on the page, so this needs no exception of its own. */
+.cta:hover .icon {
+  color: var(--brand-green);
+  transform: translateX(3px);
+}
 
 .notice {
   margin: 24px 0;

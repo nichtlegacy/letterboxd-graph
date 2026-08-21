@@ -1567,7 +1567,7 @@ function renderHero(data, manifest, all, year) {
 
 const DIARY_LIMIT = 16;
 
-function renderDiary(recent) {
+function renderDiary(recent, total) {
   if (!recent?.length) return;
 
   const host = document.querySelector('[data-diary-list]');
@@ -1579,7 +1579,31 @@ function renderDiary(recent) {
   for (const entry of entries) list.append(diaryRow(entry));
   host.append(list);
 
-  document.querySelector('[data-diary]').hidden = false;
+  const section = document.querySelector('[data-diary]');
+  section.append(diaryAction(total));
+  section.hidden = false;
+}
+
+/**
+ * The way out of the recent cut and into the whole diary.
+ *
+ * It carries the total, because sixteen rows give no sense of how much more
+ * there is, and the figure is what makes the rest worth opening. The count is
+ * the diary page's own: both are the entries the generator fetched.
+ */
+function diaryAction(total) {
+  const row = el('div', 'section-cta');
+
+  // Not the link() helper: that opens a new tab, which is for leaving the site.
+  const action = el('a', 'cta');
+  action.href = 'diary.html';
+  action.append(el('span', null, typeof total === 'number' && total > 0
+    ? `Browse all ${formatNumber(total)} entries`
+    : 'Browse the complete diary'));
+  action.append(icon('arrowRight'));
+
+  row.append(action);
+  return row;
 }
 
 function diaryRow(entry) {
@@ -1788,7 +1812,7 @@ function setupReveal() {
  * whichever crossed the line last is the one the reader is in.
  */
 function setupScrollSpy() {
-  const links = [...document.querySelectorAll('.nav-links a')];
+  const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
   const targets = links
     .map(anchor => ({ anchor, section: document.getElementById(anchor.getAttribute('href').slice(1)) }))
     .filter(entry => entry.section);
@@ -1979,7 +2003,7 @@ async function main() {
   selectPeriod();
   setupPeriodPicker();
   window.addEventListener('popstate', selectPeriod);
-  renderDiary(data.recent);
+  renderDiary(data.recent, data.allTime?.entries);
 
   for (const section of document.querySelectorAll('[data-section]')) {
     renderSection(section, manifest.assets.filter(asset => asset.kind === section.dataset.section), manifest);
