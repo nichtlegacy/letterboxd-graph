@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="color-scheme" content="dark light">
+
+  <!-- meta:start -->
+  <title>Diary — Letterboxd Graph</title>
+  <meta name="description" content="The complete Letterboxd film diary — every entry, filterable by rating, release year, watch year and month, sortable any which way.">
+  <!-- meta:end -->
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- The page is nothing without the diary, and `type="module"` defers the
+       script that asks for it. Preloading overlaps the fetch with the module. -->
+  <link rel="preload" href="diary.json" as="fetch" type="application/json">
+
+  <!-- Applied before first paint so the page never flashes the wrong theme.
+       The same rule the front page follows: nothing stored means the system
+       setting decides. -->
+  <script>
+    (() => {
+      const stored = localStorage.getItem('lbg-theme');
+      const system = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.dataset.theme = stored === 'dark' || stored === 'light' ? stored : system;
+    })();
+  </script>
+
+  <script type="module" src="diary.js"></script>
+</head>
+
+<body class="diary-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- One definition per mark, referenced from the table, the toolbar and the
+       legend, so a like reads the same everywhere it appears. -->
+  <svg class="icon-defs" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-heart" viewBox="0 0 16 16">
+        <path d="M8 14.2C7.3 13.7 2 10.3 2 6.9A3.4 3.4 0 0 1 8 4.7a3.4 3.4 0 0 1 6 2.2c0 3.4-5.3 6.8-6 7.3Z" fill="currentColor" />
+      </symbol>
+      <symbol id="i-rewatch" viewBox="0 0 16 16">
+        <path d="M13.2 8a5.2 5.2 0 1 1-1.6-3.7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+        <path d="M13.4 1.9v3.1h-3.1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+      </symbol>
+      <symbol id="i-review" viewBox="0 0 16 16">
+        <path d="M2.6 3.6h10.8M2.6 7.1h10.8M2.6 10.6h6.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+      </symbol>
+      <symbol id="i-search" viewBox="0 0 16 16">
+        <circle cx="6.8" cy="6.8" r="4.4" fill="none" stroke="currentColor" stroke-width="1.7" />
+        <path d="M10.2 10.2 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+      </symbol>
+      <symbol id="i-arrow-up" viewBox="0 0 24 24">
+        <path d="M12 19V6" />
+        <path d="m6 12 6-6 6 6" />
+      </symbol>
+      <symbol id="i-close" viewBox="0 0 16 16">
+        <path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="wordmark" href="index.html">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        Letterboxd Graph
+      </a>
+
+      <nav class="nav-links" aria-label="Sections">
+        <a href="index.html">Overview</a>
+        <a class="is-active" href="diary.html" aria-current="page">Diary</a>
+      </nav>
+
+      <a class="github-link" href="https://github.com/nichtlegacy/letterboxd-graph" rel="noopener">
+        <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+        </svg>
+        <span>GitHub</span>
+      </a>
+
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Change theme">
+        <span class="theme-icon" data-theme-icon aria-hidden="true"></span>
+        <span class="theme-label" data-theme-label>Dark</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section diary-section">
+      <div class="section-head">
+        <p class="eyebrow">Every entry</p>
+        <h1>Film diary</h1>
+        <p class="section-note" data-diary-summary>Loading the diary&hellip;</p>
+      </div>
+
+      <div class="load-error" data-load-error hidden role="alert" aria-labelledby="diary-error-title">
+        <div class="load-error-mark" aria-hidden="true">!</div>
+        <div class="load-error-copy">
+          <p class="eyebrow">Data unavailable</p>
+          <h2 id="diary-error-title">The diary could not be loaded</h2>
+          <p class="load-error-message">
+            The generated diary data is missing or temporarily unavailable. Try again
+            in a moment.
+          </p>
+          <button class="load-error-action" data-retry type="button">Try again</button>
+        </div>
+      </div>
+
+      <!-- The toolbar is a form so a phone keyboard offers "search" and Enter
+           does not navigate; nothing here submits. -->
+      <form class="diary-toolbar" data-toolbar hidden autocomplete="off">
+        <div class="diary-years" data-years role="group" aria-label="Filter by year watched"></div>
+
+        <div class="diary-controls">
+          <div class="diary-search-field">
+            <svg class="diary-search-icon" aria-hidden="true" focusable="false"><use href="#i-search" /></svg>
+            <input class="diary-search" data-filter-q type="search" placeholder="Search films" aria-label="Search films by title" enterkeyhint="search">
+            <button class="diary-search-clear" data-search-clear type="button" aria-label="Clear search" hidden>
+              <svg aria-hidden="true" focusable="false"><use href="#i-close" /></svg>
+            </button>
+          </div>
+
+          <div class="diary-pills">
+            <label class="diary-pill">
+              <span class="diary-pill-label">Month</span>
+              <span class="diary-pill-value" data-pill-value aria-hidden="true"></span>
+              <select data-filter-month aria-label="Filter by month watched"></select>
+            </label>
+
+            <label class="diary-pill">
+              <span class="diary-pill-label">Released</span>
+              <span class="diary-pill-value" data-pill-value aria-hidden="true"></span>
+              <select data-filter-released aria-label="Filter by release year"></select>
+            </label>
+
+            <label class="diary-pill">
+              <span class="diary-pill-label">Rating</span>
+              <span class="diary-pill-value" data-pill-value aria-hidden="true"></span>
+              <select data-filter-rating aria-label="Filter by rating"></select>
+            </label>
+
+            <label class="diary-pill diary-pill-sort">
+              <span class="diary-pill-label">Sort</span>
+              <span class="diary-pill-value" data-pill-value aria-hidden="true"></span>
+              <select data-filter-sort aria-label="Sort order">
+                <option value="date-desc">Newest first</option>
+                <option value="date-asc">Earliest first</option>
+                <option value="title-asc">Film name A&ndash;Z</option>
+                <option value="title-desc">Film name Z&ndash;A</option>
+                <option value="rating-desc">Highest rated</option>
+                <option value="rating-asc">Lowest rated</option>
+                <option value="released-desc">Release date, newest</option>
+                <option value="released-asc">Release date, earliest</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="diary-toggles" role="group" aria-label="Show only">
+          <button class="diary-toggle" data-filter-rewatch type="button" aria-pressed="false">
+            <svg class="diary-toggle-icon is-rewatch" aria-hidden="true" focusable="false"><use href="#i-rewatch" /></svg>
+            Rewatches
+          </button>
+
+          <button class="diary-toggle" data-filter-liked type="button" aria-pressed="false">
+            <svg class="diary-toggle-icon is-like" aria-hidden="true" focusable="false"><use href="#i-heart" /></svg>
+            Liked
+          </button>
+
+          <button class="diary-toggle" data-filter-reviewed type="button" aria-pressed="false">
+            <svg class="diary-toggle-icon is-review" aria-hidden="true" focusable="false"><use href="#i-review" /></svg>
+            Reviewed
+          </button>
+
+          <button class="diary-clear" data-reset type="button" hidden>Clear filters</button>
+        </div>
+      </form>
+
+      <div class="diary-result" data-result aria-live="polite" hidden></div>
+
+      <div class="diary-table-wrap" data-table>
+        <div class="diary-skeleton" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="diary-more-row">
+        <button class="diary-more" data-more type="button" hidden>Show more</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-rule" aria-hidden="true">
+      <span class="dots"><i></i><i></i><i></i></span>
+    </div>
+
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="wordmark">Letterboxd Graph</span>
+      </div>
+
+      <nav class="footer-nav" aria-label="Elsewhere">
+        <span class="footer-label">Elsewhere</span>
+        <a data-profile-link href="https://letterboxd.com/" rel="noopener">Letterboxd profile</a>
+        <a data-diary-link href="https://letterboxd.com/" rel="noopener">Diary on Letterboxd</a>
+        <a href="https://github.com/nichtlegacy/letterboxd-graph" rel="noopener">Source</a>
+        <a href="index.html">Overview</a>
+      </nav>
+
+      <div class="footer-colophon">
+        <span class="footer-label">Colophon</span>
+        <p data-generated></p>
+        <p>
+          Generated by
+          <a href="https://github.com/nichtlegacy/letterboxd-graph" rel="noopener"><em>letterboxd-graph</em></a>, released
+          under the <a href="https://github.com/nichtlegacy/letterboxd-graph/blob/main/LICENSE" rel="noopener">MIT
+          License</a>. Set in <a href="fonts/LICENSE.txt">Inter</a>, under the
+          SIL Open Font License.
+        </p>
+      </div>
+    </div>
+
+    <p class="footer-note">
+      Not affiliated with, endorsed by, or connected to Letterboxd. Every figure
+      comes from pages a logged-out visitor can see.
+    </p>
+  </footer>
+
+  <button class="to-top" data-to-top type="button" aria-label="Back to top">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow-up" /></svg>
+  </button>
+
+  <noscript>
+    <p class="notice">
+      This page filters and sorts the diary in the browser, so it needs JavaScript.
+      The raw entries sit in
+      <a href="https://github.com/nichtlegacy/letterboxd-graph/tree/main/images">images/</a>.
+    </p>
+  </noscript>
+</body>
+</html>

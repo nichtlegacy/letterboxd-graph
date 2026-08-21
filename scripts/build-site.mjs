@@ -284,6 +284,30 @@ export function onThisDayFromCells(data) {
   return { date, films };
 }
 
+/**
+ * The complete diary, newest first.
+ *
+ * The generator writes `diary` — every entry it fetched, which in the default
+ * 'all' scope is the lot. `cells` is not a substitute: it stays scoped to the
+ * years the graph draws, so falling back to it silently drops every earlier
+ * year. The fallback is there for exports written before `diary` existed, and
+ * it is the reason this returns the flattened cells rather than nothing.
+ *
+ * @param {object} data - Parsed `letterboxd-data.json`
+ * @returns {Array<object>} Entries with their watch date attached
+ */
+export function diaryEntries(data) {
+  if (Array.isArray(data?.diary)) {
+    return [...data.diary].sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  }
+
+  const cells = Array.isArray(data?.cells) ? data.cells : [];
+
+  return cells
+    .flatMap(cell => (cell.films || []).map(film => ({ date: cell.date, ...film })))
+    .sort((a, b) => String(b.date).localeCompare(String(a.date)));
+}
+
 /* ── The head ─────────────────────────────────────────────────────────────── */
 
 /**
@@ -331,6 +355,39 @@ function attribute(value) {
  */
 function count(value) {
   return Number(value).toLocaleString('en-GB');
+}
+
+/**
+ * Render the tag table both heads are built from. A falsy entry is a blank
+ * line, which is what groups the tags into blocks inside the `<head>`.
+ *
+ * @param {Array<Array<string>|null|false>} tags
+ * @returns {Array<string>} Lines, indented to sit inside `<head>`
+ */
+function renderTagLines(tags) {
+  return tags.map((tag) => {
+    if (!tag) return '';
+    if (tag[0] === 'title') return `  <title>${attribute(tag[1])}</title>`;
+    if (tag[0] === 'link') return `  <link rel="${tag[1]}" href="${attribute(tag[2])}">`;
+    return `  <meta ${tag[1]}="${tag[2]}" content="${attribute(tag[3])}">`;
+  });
+}
+
+/**
+ * A structured-data block, indented to sit inside `<head>` and printed rather
+ * than minified: it is read by people looking at view-source as often as by a
+ * crawler.
+ *
+ * @param {object} payload - The JSON-LD document
+ * @returns {string}
+ */
+function renderLdScript(payload) {
+  const body = JSON.stringify(payload, null, 2)
+    .split('\n')
+    .map(line => `    ${line}`)
+    .join('\n');
+
+  return `  <script type="application/ld+json">\n${body}\n  </script>`;
 }
 
 /**
@@ -444,14 +501,89 @@ export function renderMeta({ base, data, repository, image, imageSize = { width:
     imageUrl && ['meta', 'name', 'twitter:image:alt', text.imageAlt]
   ];
 
-  const lines = tags.map((tag) => {
-    if (!tag) return '';
-    if (tag[0] === 'title') return `  <title>${attribute(tag[1])}</title>`;
-    if (tag[0] === 'link') return `  <link rel="${tag[1]}" href="${attribute(tag[2])}">`;
-    return `  <meta ${tag[1]}="${tag[2]}" content="${attribute(tag[3])}">`;
-  });
+  const lines = renderTagLines(tags);
 
   return [...lines, '', renderJsonLd({ base, data, repository, image: imageUrl, text })].join('\n');
+}
+
+/**
+ * The head for the diary page. It shares the site's share image and its voice,
+ * but it is a second URL with its own content: without a canonical of its own
+ * it competes with the front page for the same one, and a share of it shows the
+ * front page's title.
+ *
+ * @param {object} options
+ * @param {string} options.base - Absolute site URL, trailing slash
+ * @param {object|null} options.data - Slim payload
+ * @param {number|null} options.entries - How many diary entries the page lists
+ * @param {string|null} options.image - Preview image path relative to the site root
+ * @param {{width: number, height: number}} [options.imageSize]
+ * @returns {string} HTML, indented to sit inside `<head>`
+ */
+export function renderDiaryMeta({ base, data, entries, image, imageSize = { width: 1200, height: 630 } }) {
+  const url = `${base}diary.html`;
+  const user = data?.user ? `@${data.user}` : null;
+  const all = data?.allTime || {};
+
+  const title = user ? `${user}'s film diary — every entry` : 'Film diary — every entry';
+  const total = Number.isFinite(entries) && entries > 0 ? entries : (all.entries || null);
+
+  const span = all.firstEntry && all.lastEntry
+    ? `, ${all.firstEntry.slice(0, 4)}–${all.lastEntry.slice(0, 4)}`
+    : '';
+
+  const description = [
+    total ? `All ${count(total)} diary entries` : 'The complete film diary',
+    user ? ` logged on Letterboxd by ${user}` : '',
+    span,
+    '. Filter by rating, release year, month, rewatches and likes.'
+  ].join('');
+
+  const stamp = data?.generatedAt ? data.generatedAt.slice(0, 10).replace(/-/g, '') : null;
+  const imageUrl = image ? `${base}${image}${stamp ? `?v=${stamp}` : ''}` : null;
+  const imageAlt = user ? `Letterboxd Graph Pages site for ${user}` : 'A Letterboxd Graph Pages site screenshot';
+
+  const tags = [
+    ['title', `${title} — Letterboxd Graph`],
+    ['meta', 'name', 'description', description],
+    ['link', 'canonical', url],
+    ['meta', 'name', 'theme-color', LETTERBOXD_GREEN],
+    null,
+    ['meta', 'property', 'og:type', 'website'],
+    ['meta', 'property', 'og:site_name', 'Letterboxd Graph'],
+    ['meta', 'property', 'og:locale', 'en_GB'],
+    ['meta', 'property', 'og:url', url],
+    ['meta', 'property', 'og:title', title],
+    ['meta', 'property', 'og:description', description],
+    imageUrl && ['meta', 'property', 'og:image', imageUrl],
+    imageUrl && ['meta', 'property', 'og:image:type', 'image/png'],
+    imageUrl && ['meta', 'property', 'og:image:width', String(imageSize.width)],
+    imageUrl && ['meta', 'property', 'og:image:height', String(imageSize.height)],
+    imageUrl && ['meta', 'property', 'og:image:alt', imageAlt],
+    null,
+    ['meta', 'name', 'twitter:card', imageUrl ? 'summary_large_image' : 'summary'],
+    ['meta', 'name', 'twitter:title', title],
+    ['meta', 'name', 'twitter:description', description],
+    imageUrl && ['meta', 'name', 'twitter:image', imageUrl],
+    imageUrl && ['meta', 'name', 'twitter:image:alt', imageAlt]
+  ];
+
+  const lines = renderTagLines(tags);
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${url}#page`,
+    url,
+    name: title,
+    description,
+    isPartOf: { '@id': `${base}#website` },
+    inLanguage: 'en-GB',
+    ...(data?.generatedAt ? { dateModified: data.generatedAt } : {}),
+    ...(total ? { mainEntity: { '@type': 'ItemList', numberOfItems: total, name: title } } : {})
+  };
+
+  return [...lines, '', renderLdScript(jsonLd)].join('\n');
 }
 
 /**
@@ -511,12 +643,7 @@ export function renderJsonLd({ base, data, repository, image, text }) {
     });
   }
 
-  const graph = JSON.stringify({ '@context': 'https://schema.org', '@graph': nodes }, null, 2)
-    .split('\n')
-    .map(line => `    ${line}`)
-    .join('\n');
-
-  return `  <script type="application/ld+json">\n${graph}\n  </script>`;
+  return renderLdScript({ '@context': 'https://schema.org', '@graph': nodes });
 }
 
 const META_REGION = /([ \t]*)<!-- meta:start -->[\s\S]*?<!-- meta:end -->/;
@@ -538,8 +665,8 @@ export function injectMeta(html, block) {
 }
 
 /**
- * A sitemap for the one page there is. Small, but it is what carries the
- * last-modified date, and the page's content changes under a stable URL.
+ * A sitemap for the two pages there are. Small, but it is what carries the
+ * last-modified date, and the pages' content changes under stable URLs.
  *
  * @param {string} base - Absolute site URL
  * @param {string|null} lastmod - ISO timestamp of the last generator run
@@ -552,6 +679,10 @@ export function renderSitemap(base, lastmod) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>${base}</loc>${date}
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>${base}diary.html</loc>${date}
     <changefreq>daily</changefreq>
   </url>
 </urlset>
@@ -672,6 +803,35 @@ async function main() {
   const slim = data ? slimData(data) : null;
   if (slim) fs.writeFileSync(path.join(outDir, 'data.json'), JSON.stringify(slim));
 
+  // The diary page reads the complete export rather than the slim cut: it
+  // filters and sorts every entry the generator fetched. Only the fields the
+  // page actually renders are carried over — the export's internal ids are a
+  // quarter of the payload and nothing on the page reads them.
+  let diaryCount = null;
+
+  if (data) {
+    const entries = diaryEntries(data).map(entry => ({
+      date: entry.date,
+      title: entry.title,
+      year: entry.year || null,
+      rating: entry.rating ?? null,
+      rewatch: Boolean(entry.rewatch),
+      liked: Boolean(entry.liked),
+      reviewed: Boolean(entry.reviewed),
+      url: entry.url || null,
+      reviewUrl: entry.reviewUrl || null
+    }));
+
+    diaryCount = entries.length;
+
+    fs.writeFileSync(path.join(outDir, 'diary.json'), JSON.stringify({
+      user: data.user,
+      generatedAt: data.generatedAt,
+      count: entries.length,
+      entries
+    }));
+  }
+
   // Pages runs no Jekyll here, and its default build would drop the underscore
   // prefixed paths some tooling writes.
   fs.writeFileSync(path.join(outDir, '.nojekyll'), '');
@@ -699,6 +859,12 @@ async function main() {
   fs.writeFileSync(indexPath, injectMeta(
     fs.readFileSync(indexPath, 'utf8'),
     renderMeta({ base, data: slim, repository, image: wrotePreview ? 'og.png' : null, imageSize: OG_SIZE })
+  ));
+
+  const diaryPath = path.join(outDir, 'diary.html');
+  fs.writeFileSync(diaryPath, injectMeta(
+    fs.readFileSync(diaryPath, 'utf8'),
+    renderDiaryMeta({ base, data: slim, entries: diaryCount, image: wrotePreview ? 'og.png' : null, imageSize: OG_SIZE })
   ));
 
   fs.writeFileSync(path.join(outDir, 'sitemap.xml'), renderSitemap(base, slim?.generatedAt || null));

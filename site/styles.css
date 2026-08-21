@@ -72,6 +72,12 @@
   --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
 
   --page-max: 1280px;
+  /* The nav's height above the width where it wraps. The diary toolbar sticks
+     directly under it, so the two read it from here rather than repeating it. */
+  --nav-height: 56px;
+  /* The diary's sticky count bar. The column headings stick directly under it,
+     so the offset is stated once. */
+  --diary-bar-height: 30px;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
 
   color-scheme: dark;
@@ -205,7 +211,7 @@ b {
 
 .nav-inner {
   max-width: var(--page-max);
-  height: 56px;
+  height: var(--nav-height);
   margin: 0 auto;
   padding: 0 max(24px, env(safe-area-inset-right)) 0 max(24px, env(safe-area-inset-left));
   display: flex;
@@ -793,6 +799,7 @@ main {
   color: var(--text-secondary);
   font-size: 13px;
 }
+
 
 .notice {
   margin: 24px 0;
@@ -2755,5 +2762,940 @@ a.repeat-title:hover {
 
   .period-section.is-period-updated {
     animation: none;
+  }
+}
+
+/* ── Diary page ───────────────────────────────────────────────────────────────
+ *
+ * The complete diary, shaped like Letterboxd's own: a month heading, a day
+ * number down the left, then the film, its release year, the rating and the
+ * marks. One layout on a desk, and on a phone the same rows folded into cards —
+ * the released column moves next to the title, where it reads as part of the
+ * film rather than as a column that fell off the table.
+ */
+
+.icon-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.diary-section {
+  padding-top: 32px;
+  border-top: 0;
+}
+
+.diary-section .section-head {
+  margin-bottom: 14px;
+}
+
+.diary-section .section-head h1 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+.diary-section .section-note {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+/* ── The summary line and its legend ─────────────────────────────────────── */
+
+.diary-legend {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  vertical-align: baseline;
+}
+
+.diary-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.diary-legend-icon {
+  width: 12px;
+  height: 12px;
+}
+
+.diary-legend-icon.is-like,
+.diary-mark.is-like,
+.diary-toggle-icon.is-like { color: var(--accent-orange); }
+
+.diary-legend-icon.is-rewatch,
+.diary-mark.is-rewatch,
+.diary-toggle-icon.is-rewatch { color: var(--accent-blue); }
+
+.diary-legend-icon.is-review,
+.diary-mark.is-review,
+.diary-toggle-icon.is-review { color: var(--brand-green); }
+
+/* ── Toolbar ─────────────────────────────────────────────────────────────────
+ *
+ * Deliberately not sticky. It is tall, and it is only wanted when the reader
+ * goes looking for it; what follows them down the page instead is the count and
+ * the column headings, further down this file.
+ */
+
+.diary-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 0;
+  padding: 0 0 14px;
+  background: var(--background);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+
+
+/* ── Year tabs ───────────────────────────────────────────────────────────── */
+
+.diary-years {
+  display: flex;
+  gap: 6px;
+  margin: 0 -4px;
+  padding: 0 4px 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.diary-years::-webkit-scrollbar {
+  display: none;
+}
+
+.diary-year-tab {
+  flex: none;
+  padding: 5px 12px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 150ms var(--ease), background-color 150ms var(--ease), border-color 150ms var(--ease);
+}
+
+.diary-year-tab:hover {
+  color: var(--text-light);
+  background: var(--surface);
+}
+
+.diary-year-tab.is-active {
+  color: var(--text-on-accent);
+  background: var(--brand-green);
+  border-color: var(--brand-green);
+}
+
+/* ── Search and pills ────────────────────────────────────────────────────── */
+
+.diary-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.diary-search-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1 1 220px;
+  min-width: 0;
+  max-width: 320px;
+}
+
+.diary-search-icon {
+  position: absolute;
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.diary-search {
+  width: 100%;
+  height: 34px;
+  padding: 0 32px 0 30px;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--text-light);
+  font: inherit;
+  font-size: 13px;
+  transition: border-color 150ms var(--ease);
+}
+
+.diary-search::placeholder {
+  color: var(--text-muted);
+}
+
+.diary-search:focus {
+  outline: none;
+  border-color: var(--border-medium);
+}
+
+/* The native control draws its own cross, in the wrong place and the wrong
+   colour, next to the one this page draws. */
+.diary-search::-webkit-search-cancel-button,
+.diary-search::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.diary-search-clear {
+  position: absolute;
+  right: 6px;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 3px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.diary-search-clear svg {
+  width: 12px;
+  height: 12px;
+}
+
+.diary-search-clear:hover {
+  color: var(--text-light);
+  background: var(--surface-elevated);
+}
+
+.diary-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* A label and its value in one control, the way Letterboxd writes "Sort by
+   Newest".
+ *
+ * The select stays a real select — a phone opens its own picker, the keyboard
+ * works, the accessible name is the control's — but it is stretched invisibly
+ * across the whole pill. A select sitting inside a label only opens from the
+ * box the browser draws for it: clicking the label text merely focuses it, so
+ * the pill's own padding and its "Month" caption were dead to the touch. What
+ * the reader sees is drawn below it. */
+.diary-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 10px;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 150ms var(--ease);
+}
+
+.diary-pill:hover {
+  border-color: var(--border-medium);
+}
+
+.diary-pill:focus-within {
+  border-color: var(--brand-green);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand-green) 28%, transparent);
+}
+
+.diary-pill select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
+  appearance: none;
+  /* iOS zooms the viewport when it focuses a control under 16px. The control is
+     invisible, so the size costs nothing. */
+  font-size: 16px;
+}
+
+/* The option list is drawn by the browser from the control's own colours, and
+   an invisible control gives it nothing to go on. */
+.diary-pill select option {
+  background-color: var(--surface-elevated);
+  color: var(--text-light);
+}
+
+.diary-pill-label {
+  flex: none;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.diary-pill-value {
+  max-width: 148px;
+  overflow: hidden;
+  color: var(--text-light);
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.diary-pill-sort .diary-pill-value {
+  max-width: 168px;
+}
+
+/* Muted rather than currentColor: that would be the value's colour, the
+   brightest text on the page, and a caret should not compete with it. */
+.diary-pill::after {
+  content: '';
+  flex: none;
+  width: 0;
+  height: 0;
+  margin-left: 1px;
+  border-top: 4px solid var(--text-secondary);
+  border-right: 3.5px solid transparent;
+  border-left: 3.5px solid transparent;
+}
+
+/* ── Toggles ─────────────────────────────────────────────────────────────── */
+
+.diary-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.diary-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 11px;
+  background: none;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 150ms var(--ease), background-color 150ms var(--ease), border-color 150ms var(--ease);
+}
+
+.diary-toggle-icon {
+  width: 13px;
+  height: 13px;
+  opacity: 0.55;
+  transition: opacity 150ms var(--ease);
+}
+
+.diary-toggle:hover {
+  color: var(--text-light);
+  border-color: var(--border-medium);
+}
+
+.diary-toggle:hover .diary-toggle-icon,
+.diary-toggle.is-active .diary-toggle-icon {
+  opacity: 1;
+}
+
+.diary-toggle.is-active {
+  color: var(--text-light);
+  background: var(--surface-elevated);
+  border-color: var(--border-medium);
+}
+
+.diary-clear {
+  margin-left: auto;
+  padding: 0 4px;
+  background: none;
+  border: 0;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 12px;
+  text-decoration: underline;
+  text-decoration-color: var(--border-medium);
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 150ms var(--ease);
+}
+
+.diary-clear:hover {
+  color: var(--brand-green);
+}
+
+/* ── Result count ────────────────────────────────────────────────────────── */
+
+.diary-result {
+  margin-top: 14px;
+  padding: 6px 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* What follows the reader down the page is the count and the column headings —
+   the two things that say what a row means. The toolbar stays put: it is tall,
+   and it is only wanted when the reader goes looking for it.
+
+   Only above the width where the nav wraps to a second row: below that its
+   height is auto and there is no offset to stick to. */
+@media (min-width: 861px) {
+  .diary-result {
+    position: sticky;
+    top: var(--nav-height);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    height: var(--diary-bar-height);
+    padding: 0;
+    background: var(--background);
+  }
+
+  /* No gap between the two sticky bars, or rows show through it. */
+  .diary-table-wrap {
+    margin-top: 0;
+  }
+
+  .diary-table thead th {
+    position: sticky;
+    top: calc(var(--nav-height) + var(--diary-bar-height));
+    z-index: 2;
+    background: var(--background);
+    /* A collapsed border on a sticky cell scrolls away with the table; a shadow
+       is painted with the cell itself. */
+    border-bottom: 0;
+    box-shadow: inset 0 -1px 0 var(--border-medium);
+  }
+}
+
+/* ── The table ───────────────────────────────────────────────────────────── */
+
+.diary-table-wrap {
+  margin-top: 8px;
+}
+
+/* Roughly the shape of the rows that will replace it, so the page arrives with
+   its proportions already settled instead of jumping when the diary lands. */
+.diary-skeleton {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.diary-skeleton span {
+  height: 47px;
+  border-bottom: 1px solid var(--border-subtle);
+  background:
+    linear-gradient(90deg, var(--surface) 25%, var(--surface-elevated) 50%, var(--surface) 75%)
+    0 0 / 300% 100%;
+  animation: diary-shimmer 1400ms linear infinite;
+}
+
+/* Each bar starts a little further into the sweep, so the light reads as one
+   pass down the list rather than every row pulsing at once. */
+.diary-skeleton span:nth-child(2) { animation-delay: 90ms; }
+.diary-skeleton span:nth-child(3) { animation-delay: 180ms; }
+.diary-skeleton span:nth-child(4) { animation-delay: 270ms; }
+.diary-skeleton span:nth-child(5) { animation-delay: 360ms; }
+.diary-skeleton span:nth-child(6) { animation-delay: 450ms; }
+.diary-skeleton span:nth-child(7) { animation-delay: 540ms; }
+.diary-skeleton span:nth-child(8) { animation-delay: 630ms; }
+
+@keyframes diary-shimmer {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+/* A new table element is built on every filter change, so the animation runs
+   itself — there is no class to add or take away. Short and small: the list
+   should read as having refreshed, not as having been staged. */
+.diary-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  animation: diary-rise 200ms var(--ease) both;
+}
+
+@keyframes diary-rise {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Rows appended by "show more" animate on their own; the rows above them are
+   left alone, which is the point of appending rather than redrawing. */
+.diary-entry.is-new {
+  animation: diary-rise 240ms var(--ease) both;
+}
+
+.diary-table thead th {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-medium);
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 600;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.diary-col-when { width: 88px; }
+.diary-col-released { width: 90px; }
+.diary-col-rating { width: 112px; }
+.diary-col-marks { width: 108px; }
+
+/* The outer columns sit flush with the section, so the table lines up with the
+   text above it instead of being inset by a cell's padding. A pseudo-class
+   outranks `.diary-entry td`, which is what the padding is competing with. */
+.diary-table th:first-child,
+.diary-table td:first-child {
+  padding-left: 0;
+}
+
+.diary-table th:last-child,
+.diary-table td:last-child {
+  padding-right: 0;
+}
+
+/* ── Month heading ───────────────────────────────────────────────────────── */
+
+.diary-month th {
+  padding: 30px 0 8px;
+  text-align: left;
+  font-weight: 400;
+}
+
+.diary-month-label {
+  display: inline-block;
+  color: var(--text-light);
+  font-family: var(--font-serif);
+  font-size: 19px;
+  letter-spacing: -0.01em;
+}
+
+/* ── Entry rows ──────────────────────────────────────────────────────────── */
+
+.diary-entry {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.diary-entry td {
+  padding: 12px;
+  vertical-align: middle;
+}
+
+.diary-entry:hover {
+  background: var(--surface);
+}
+
+
+/* The day number is the anchor down the left, the way Letterboxd's diary reads.
+   It links to that day on Letterboxd, so a row is a way back to the source. */
+.diary-when-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 150ms var(--ease);
+}
+
+.diary-when-link:hover {
+  color: var(--brand-green);
+}
+
+.diary-day {
+  min-width: 26px;
+  color: var(--text-light);
+  font-size: 20px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.diary-when-link:hover .diary-day {
+  color: inherit;
+}
+
+.diary-weekday {
+  color: var(--text-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.diary-full-date {
+  color: var(--text-primary);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.diary-film {
+  min-width: 0;
+}
+
+.diary-page .diary-title {
+  color: var(--text-light);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.3;
+  text-decoration: none;
+  transition: color 150ms var(--ease);
+}
+
+.diary-page a.diary-title:hover {
+  color: var(--brand-green);
+}
+
+/* Only ever shown once: as a column on a desk, beside the title on a phone. */
+.diary-film-year {
+  display: none;
+}
+
+.diary-released {
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.diary-page .diary-rating {
+  white-space: nowrap;
+}
+
+.diary-stars {
+  color: var(--brand-green);
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.diary-rating-none {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+
+.diary-marks {
+  white-space: nowrap;
+}
+
+.diary-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 22px;
+  vertical-align: middle;
+  text-decoration: none;
+}
+
+.diary-mark svg {
+  width: 14px;
+  height: 14px;
+}
+
+a.diary-mark {
+  border-radius: 3px;
+  transition: background-color 150ms var(--ease);
+}
+
+a.diary-mark:hover {
+  background: var(--surface-elevated);
+}
+
+/* ── Empty state and pagination ──────────────────────────────────────────── */
+
+.diary-empty {
+  padding: 56px 0;
+  text-align: center;
+}
+
+.diary-empty-title {
+  margin: 0;
+  color: var(--text-light);
+  font-family: var(--font-serif);
+  font-size: 20px;
+}
+
+.diary-empty-note {
+  margin: 6px 0 20px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.diary-more-row {
+  display: flex;
+  justify-content: center;
+  padding: 28px 0 8px;
+}
+
+.diary-more {
+  padding: 9px 22px;
+  background: none;
+  border: 1px solid var(--border-medium);
+  border-radius: 3px;
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 150ms var(--ease), border-color 150ms var(--ease);
+}
+
+.diary-more:hover {
+  color: var(--brand-green);
+  border-color: var(--brand-green);
+}
+
+/* ── Tablet ──────────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .diary-col-released,
+  .diary-col-rating,
+  .diary-col-marks {
+    width: auto;
+  }
+
+  .diary-pill select { max-width: 118px; }
+  .diary-pill-sort select { max-width: 138px; }
+}
+
+/* ── Phone ───────────────────────────────────────────────────────────────────
+ *
+ * The table stops being a table: each row becomes a card with the day block on
+ * the left, the film and its year stacked in the middle, and the rating and
+ * marks on a line of their own. No horizontal scrolling, no 40px-wide columns.
+ */
+
+@media (max-width: 700px) {
+  .diary-section {
+    padding-top: 24px;
+  }
+
+  .diary-section .section-head h1 {
+    font-size: 21px;
+  }
+
+  .diary-toolbar {
+    gap: 10px;
+    padding: 0 0 12px;
+  }
+
+  .diary-search-field {
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  .diary-pills {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+  }
+
+  .diary-pill {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .diary-pill select {
+    flex: 1;
+    max-width: none;
+    text-align: right;
+  }
+
+  .diary-pill-sort {
+    grid-column: 1 / -1;
+  }
+
+  .diary-toggles {
+    gap: 6px;
+  }
+
+  .diary-toggle {
+    flex: 1 1 auto;
+    justify-content: center;
+    height: 32px;
+    padding: 0 8px;
+  }
+
+  .diary-clear {
+    flex: 1 1 100%;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .diary-result {
+    margin-top: 14px;
+  }
+
+  /* Neither `tr` nor `td` belongs in this list. At `.diary-table tr` / `td` the
+     selector scores (0,1,1) and silently outranks every single-class override
+     under it — which is how `.diary-entry` stayed a block instead of a grid,
+     and how `.diary-released` stayed visible with nowhere to go. Rows are
+     stated on their own below, and the cells of a grid row are blockified by
+     the grid, so they need no rule. */
+  .diary-table,
+  .diary-table tbody,
+  .diary-table th {
+    display: block;
+  }
+
+  .diary-table thead {
+    display: none;
+  }
+
+  .diary-month {
+    display: block;
+  }
+
+  .diary-month th {
+    padding: 26px 0 6px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .diary-month-label {
+    font-size: 17px;
+  }
+
+  .diary-entry {
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr) auto;
+    grid-template-areas:
+      'when film   film'
+      'when rating marks';
+    column-gap: 12px;
+    row-gap: 4px;
+    padding: 13px 0;
+  }
+
+  .diary-entry td {
+    padding: 0;
+  }
+
+  .diary-entry:hover {
+    background: none;
+  }
+
+  .diary-when {
+    grid-area: when;
+    align-self: start;
+  }
+
+  .diary-when-link {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .diary-day {
+    font-size: 22px;
+    line-height: 1.1;
+  }
+
+  .diary-full-date {
+    font-size: 12px;
+    white-space: normal;
+  }
+
+  .diary-film {
+    grid-area: film;
+  }
+
+  .diary-page .diary-title {
+    font-size: 17px;
+  }
+
+  /* The column is gone on a phone, so the year rides along with the title. */
+  .diary-film-year {
+    display: inline;
+    margin-left: 7px;
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .diary-released {
+    display: none;
+  }
+
+  .diary-page .diary-rating {
+    grid-area: rating;
+    align-self: center;
+  }
+
+  .diary-marks {
+    grid-area: marks;
+    justify-self: end;
+    align-self: center;
+  }
+
+  .diary-mark {
+    width: 24px;
+  }
+
+  /* Empty slots hold columns open on a desk; on a phone the marks sit in a row
+     beside the rating, where a gap would read as a missing icon. */
+  .diary-mark.is-empty {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .diary-pills {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .diary-pill-sort {
+    grid-column: auto;
+  }
+}
+
+/* ── Motion ──────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  /* The shimmer becomes a flat block rather than stopping mid-sweep. */
+  .diary-skeleton span {
+    background: var(--surface);
+    animation: none;
+  }
+
+  .diary-table,
+  .diary-entry.is-new {
+    animation: none;
+  }
+
+  .diary-year-tab,
+  .diary-toggle,
+  .diary-toggle-icon,
+  .diary-pill,
+  .diary-search,
+  .diary-when-link,
+  .diary-page .diary-title,
+  .diary-more,
+  .diary-clear,
+  a.diary-mark {
+    transition: none;
   }
 }
