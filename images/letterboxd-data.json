@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-22T01:23:01.039Z",
+  "generatedAt": "2026-08-23T01:36:19.823Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23085,21 +23085,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-08-22",
+    "date": "2026-08-23",
     "films": [
       {
-        "date": "2025-08-22",
-        "title": "Walk Hard: The Dewey Cox Story",
-        "year": "2007",
-        "rating": 3.5,
+        "date": "2025-08-23",
+        "title": "Empire Records",
+        "year": "1995",
+        "rating": 2.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/walk-hard-the-dewey-cox-story/",
+        "url": "https://letterboxd.com/nichtlegacy/film/empire-records/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:48253",
-        "lid": "21wK",
-        "slug": "walk-hard-the-dewey-cox-story"
+        "filmUid": "film:43810",
+        "lid": "1PY8",
+        "slug": "empire-records"
       }
     ]
   },
