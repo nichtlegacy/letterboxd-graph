@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-23T01:36:19.823Z",
+  "generatedAt": "2026-08-24T01:28:01.751Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23085,21 +23085,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-08-23",
+    "date": "2026-08-24",
     "films": [
       {
-        "date": "2025-08-23",
-        "title": "Empire Records",
-        "year": "1995",
-        "rating": 2.5,
+        "date": "2025-08-24",
+        "title": "Legally Blonde",
+        "year": "2001",
+        "rating": 3.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/empire-records/",
+        "url": "https://letterboxd.com/nichtlegacy/film/legally-blonde/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:43810",
-        "lid": "1PY8",
-        "slug": "empire-records"
+        "filmUid": "film:47586",
+        "lid": "1ZNa",
+        "slug": "legally-blonde"
+      },
+      {
+        "date": "2024-08-24",
+        "title": "21 Jump Street",
+        "year": "2012",
+        "rating": 4,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/21-jump-street/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:279",
+        "lid": "J0",
+        "slug": "21-jump-street"
       }
     ]
   },
