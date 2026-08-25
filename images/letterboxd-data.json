@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-24T01:28:01.751Z",
+  "generatedAt": "2026-08-25T01:24:39.116Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23085,37 +23085,8 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-08-24",
-    "films": [
-      {
-        "date": "2025-08-24",
-        "title": "Legally Blonde",
-        "year": "2001",
-        "rating": 3.5,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/legally-blonde/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:47586",
-        "lid": "1ZNa",
-        "slug": "legally-blonde"
-      },
-      {
-        "date": "2024-08-24",
-        "title": "21 Jump Street",
-        "year": "2012",
-        "rating": 4,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/21-jump-street/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:279",
-        "lid": "J0",
-        "slug": "21-jump-street"
-      }
-    ]
+    "date": "2026-08-25",
+    "films": []
   },
   "recent": [
     {
