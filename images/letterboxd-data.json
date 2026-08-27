@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-26T01:28:20.444Z",
+  "generatedAt": "2026-08-27T08:19:05.072Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -8479,7 +8479,7 @@
         },
         {
           "title": "One Battle After Another",
-          "year": "2025",
+          "year": "2014",
           "rating": 4.5,
           "rewatch": false,
           "liked": false,
@@ -20990,7 +20990,7 @@
         },
         {
           "title": "One Battle After Another",
-          "year": "2025",
+          "year": "2014",
           "rating": 4.5,
           "rewatch": false,
           "liked": false,
@@ -23085,7 +23085,7 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-08-26",
+    "date": "2026-08-27",
     "films": []
   },
   "recent": [
@@ -24830,7 +24830,7 @@
     {
       "date": "2025-11-15",
       "title": "One Battle After Another",
-      "year": "2025",
+      "year": "2014",
       "rating": 4.5,
       "rewatch": false,
       "liked": false,
@@ -32454,8 +32454,8 @@
       "liked": 19,
       "rated": 381,
       "releaseBreakdown": {
-        "sameYear": 33,
-        "older": 348,
+        "sameYear": 32,
+        "older": 349,
         "other": 0
       },
       "watchBreakdown": {
@@ -32957,13 +32957,13 @@
         {
           "decade": 2010,
           "label": "2010s",
-          "count": 83,
-          "averageRating": 3
+          "count": 84,
+          "averageRating": 3.5
         },
         {
           "decade": 2020,
           "label": "2020s",
-          "count": 62,
+          "count": 61,
           "averageRating": 3.5
         }
       ],
@@ -33857,8 +33857,8 @@
     "liked": 57,
     "rated": 603,
     "releaseBreakdown": {
-      "sameYear": 58,
-      "older": 545,
+      "sameYear": 57,
+      "older": 546,
       "other": 0
     },
     "watchBreakdown": {
@@ -34127,13 +34127,13 @@
       {
         "decade": 2010,
         "label": "2010s",
-        "count": 137,
+        "count": 138,
         "averageRating": 3.5
       },
       {
         "decade": 2020,
         "label": "2020s",
-        "count": 118,
+        "count": 117,
         "averageRating": 3.5
       }
     ],

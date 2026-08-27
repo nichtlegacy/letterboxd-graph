@@ -1784,10 +1784,10 @@
         <text x="127" y="27" font-size="8" fill="#f0f6fc" text-anchor="middle">139</text>
         <rect x="119" y="30" width="16" height="40" rx="2" fill="#26a641"/>
         <text x="127" y="84" font-size="7" fill="#e6edf3" text-anchor="middle">2000s</text>
-        <text x="153" y="43" font-size="8" fill="#f0f6fc" text-anchor="middle">83</text>
+        <text x="153" y="43" font-size="8" fill="#f0f6fc" text-anchor="middle">84</text>
         <rect x="145" y="46" width="16" height="24" rx="2" fill="#26a641"/>
         <text x="153" y="84" font-size="7" fill="#e6edf3" text-anchor="middle">2010s</text>
-        <text x="179" y="49" font-size="8" fill="#f0f6fc" text-anchor="middle">62</text>
+        <text x="179" y="49" font-size="8" fill="#f0f6fc" text-anchor="middle">61</text>
         <rect x="171" y="52" width="16" height="18" rx="2" fill="#26a641"/>
         <text x="179" y="84" font-size="7" fill="#e6edf3" text-anchor="middle">2020s</text>
     </g>
@@ -7011,7 +7011,7 @@
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#f0f6fc">
             <tspan x="10" dy="22" font-weight="600">Sat, 15. Nov 2025: 2 movies watched</tspan>
             <tspan x="10" dy="18">• ↻ They Came Together (2014) - 2.5★</tspan>
-            <tspan x="10" dy="18">• One Battle After Another (2025) - 4.5★</tspan>
+            <tspan x="10" dy="18">• One Battle After Another (2014) - 4.5★</tspan>
           </text>
         </g>
       </a>
