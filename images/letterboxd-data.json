@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-27T08:19:05.072Z",
+  "generatedAt": "2026-08-28T10:20:22.374Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -8479,7 +8479,7 @@
         },
         {
           "title": "One Battle After Another",
-          "year": "2014",
+          "year": "2025",
           "rating": 4.5,
           "rewatch": false,
           "liked": false,
@@ -20990,7 +20990,7 @@
         },
         {
           "title": "One Battle After Another",
-          "year": "2014",
+          "year": "2025",
           "rating": 4.5,
           "rewatch": false,
           "liked": false,
@@ -23085,8 +23085,23 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-08-27",
-    "films": []
+    "date": "2026-08-28",
+    "films": [
+      {
+        "date": "2024-08-28",
+        "title": "Evil Bong",
+        "year": "2006",
+        "rating": 3,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/evil-bong/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:46558",
+        "lid": "1X7m",
+        "slug": "evil-bong"
+      }
+    ]
   },
   "recent": [
     {
@@ -24830,7 +24845,7 @@
     {
       "date": "2025-11-15",
       "title": "One Battle After Another",
-      "year": "2014",
+      "year": "2025",
       "rating": 4.5,
       "rewatch": false,
       "liked": false,
@@ -32454,8 +32469,8 @@
       "liked": 19,
       "rated": 381,
       "releaseBreakdown": {
-        "sameYear": 32,
-        "older": 349,
+        "sameYear": 33,
+        "older": 348,
         "other": 0
       },
       "watchBreakdown": {
@@ -32957,13 +32972,13 @@
         {
           "decade": 2010,
           "label": "2010s",
-          "count": 84,
-          "averageRating": 3.5
+          "count": 83,
+          "averageRating": 3
         },
         {
           "decade": 2020,
           "label": "2020s",
-          "count": 61,
+          "count": 62,
           "averageRating": 3.5
         }
       ],
@@ -33857,8 +33872,8 @@
     "liked": 57,
     "rated": 603,
     "releaseBreakdown": {
-      "sameYear": 57,
-      "older": 546,
+      "sameYear": 58,
+      "older": 545,
       "other": 0
     },
     "watchBreakdown": {
@@ -34127,13 +34142,13 @@
       {
         "decade": 2010,
         "label": "2010s",
-        "count": 138,
+        "count": 137,
         "averageRating": 3.5
       },
       {
         "decade": 2020,
         "label": "2020s",
-        "count": 117,
+        "count": 118,
         "averageRating": 3.5
       }
     ],
