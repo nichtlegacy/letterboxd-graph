@@ -192,7 +192,19 @@ function filtered() {
   const q = state.q.trim().toLowerCase();
 
   const matches = entries.filter((entry) => {
-    if (q && !String(entry.title || '').toLowerCase().includes(q)) return false;
+    if (q) {
+      // Match title, released year, slug, watched date and URL — so "kubrick",
+      // "1999", "blade-runner" or "2025-03" all find something. The entry is
+      // one row, so every textual field that belongs to it is searchable.
+      const haystack = [
+        entry.title,
+        entry.year,
+        entry.slug,
+        entry.date,
+        entry.url
+      ].filter(Boolean).join(' ').toLowerCase();
+      if (!haystack.includes(q)) return false;
+    }
     if (state.year && entry.date.slice(0, 4) !== state.year) return false;
     if (state.month && entry.date.slice(5, 7) !== state.month) return false;
     if (state.released && String(entry.year || '') !== state.released) return false;

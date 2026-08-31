@@ -1336,8 +1336,12 @@ function renderSection(section, assets, manifest) {
   const body = section.querySelector('.section-body');
   section.hidden = false;
 
+  // Single-card sections still get an id so they can be deep-linked like
+  // the multi-card ones (e.g. #card-profile or #graph).
   if (assets.length === 1) {
-    body.append(createFrame(assets[0], manifest));
+    const frame = createFrame(assets[0], manifest);
+    frame.id = `card-${assets[0].slug}`;
+    body.append(frame);
     return;
   }
 
@@ -1345,7 +1349,21 @@ function renderSection(section, assets, manifest) {
   tabs.setAttribute('role', 'tablist');
 
   const stack = el('div', 'frame-stack');
-  const built = assets.map((asset) => createFrame(asset, manifest));
+  const built = assets.map((asset) => {
+    const frame = createFrame(asset, manifest);
+    frame.id = `card-${asset.slug}`;
+    return frame;
+  });
+
+  const hashFor = (asset) => `card-${asset.slug}`;
+  const indexForHash = (hash) => {
+    const raw = hash.replace(/^#/, '');
+    return assets.findIndex(asset =>
+      raw === asset.slug ||
+      raw === `${asset.kind}-${asset.slug}` ||
+      raw === hashFor(asset)
+    );
+  };
 
   // `load` is off for the first call: which card shows is decided before the
   // section is anywhere near the viewport, and the lazy observer still owns
@@ -1360,18 +1378,29 @@ function renderSection(section, assets, manifest) {
       frame.setAttribute('aria-hidden', String(!active));
       if (active && load) frame.__load();
     });
+    for (const [pos, tab] of [...tabs.children].entries()) {
+      tab.setAttribute('aria-selected', String(pos === index));
+    }
   };
+
+  let initial = 0;
+  const hashIndex = indexForHash(location.hash);
+  if (hashIndex >= 0) initial = hashIndex;
 
   assets.forEach((asset, index) => {
     const tab = el('button', 'tab', asset.label);
     tab.type = 'button';
     tab.setAttribute('role', 'tab');
-    tab.setAttribute('aria-selected', String(index === 0));
+    tab.setAttribute('aria-selected', String(index === initial));
+    tab.dataset.slug = asset.slug;
 
     tab.addEventListener('click', () => {
-      for (const other of tabs.children) other.setAttribute('aria-selected', 'false');
-      tab.setAttribute('aria-selected', 'true');
       show(index);
+      const hash = `#${hashFor(asset)}`;
+      if (location.hash !== hash) history.replaceState(null, '', hash);
+      // Keep the section in view — a tab change should not leave the reader
+      // looking at the previous card's caption while the new one is above.
+      section.scrollIntoView({ behavior: reducedMotion.matches ? 'auto' : 'smooth', block: 'nearest' });
     });
 
     // Pointing at a tab is a good enough sign the card behind it is wanted.
@@ -1385,9 +1414,18 @@ function renderSection(section, assets, manifest) {
   // shells until the reader selects, focuses, or points at one of them.
   for (const frame of built.slice(1)) lazy.unobserve(frame);
 
-  show(0, false);
+  show(initial, false);
   stack.append(...built);
   body.append(tabs, stack);
+
+  // A hash that lands on a card inside a tabbed section must open that tab
+  // even when the navigation was a back-button or a shared link.
+  window.addEventListener('hashchange', () => {
+    const next = indexForHash(location.hash);
+    if (next >= 0 && next !== [...tabs.children].findIndex(t => t.getAttribute('aria-selected') === 'true')) {
+      show(next);
+    }
+  });
 }
 
 /* ── Statistics periods ───────────────────────────────────────────────────── */
