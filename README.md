@@ -332,6 +332,17 @@ node src/cli.js nichtlegacy --badge-style flat --badge-stats films,rating,streak
 
 Badges are committed to `images/` like the cards. Rename `badge-stats` later and a stale badge file is removed on the next run; switching style keeps a `badge-films-flat.svg` fallback so an existing embed does not break overnight.
 
+<details>
+<summary><b>Alle Styles für <code>films</code></b> — Vorschau</summary>
+
+<p align="center">
+  <img alt="Alle Badge-Styles für films" src=".github/assets/badge-styles-preview.png" width="100%">
+</p>
+
+`flat` ist Default (normaler GitHub-Look). Die komplette Matrix — alle Stats (`films`, `rating`, `streak`, `days`, `liked`, `rewatches`) × alle 7 Styles — liegt als `preview-badges.html` im Repository: lokal im Browser öffnen oder `python3 -m http.server 8080` und `http://localhost:8080/preview-badges.html` aufrufen. Jeder `films`-Badge oben entspricht `badgeSvg('films','605',{style})` aus `src/badge.js:99`.
+
+</details>
+
 ### JSON & CSV Export
 
 `letterboxd-data.json` — every figure the cards use, for building your own
