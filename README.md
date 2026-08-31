@@ -333,13 +333,13 @@ node src/cli.js nichtlegacy --badge-style flat --badge-stats films,rating,streak
 Badges are committed to `images/` like the cards. Rename `badge-stats` later and a stale badge file is removed on the next run; switching style keeps a `badge-films-flat.svg` fallback so an existing embed does not break overnight.
 
 <details>
-<summary><b>Alle Styles für <code>films</code></b> — Vorschau</summary>
+<summary><b>Alle Badges in allen Styles</b></summary>
 
 <p align="center">
-  <img alt="Alle Badge-Styles für films" src=".github/assets/badge-styles-preview.png" width="100%">
+  <img alt="Alle Badges — alle Stats × alle Styles" src=".github/assets/badge-matrix-all-styles.png" width="100%">
 </p>
 
-`flat` ist Default (normaler GitHub-Look). Die komplette Matrix — alle Stats (`films`, `rating`, `streak`, `days`, `liked`, `rewatches`) × alle 7 Styles — liegt als `preview-badges.html` im Repository: lokal im Browser öffnen oder `python3 -m http.server 8080` und `http://localhost:8080/preview-badges.html` aufrufen. Jeder `films`-Badge oben entspricht `badgeSvg('films','605',{style})` aus `src/badge.js:99`.
+Alle 6 Stats × 7 Styles auf einen Blick (`films` 605 · `rating` 3.3 · `streak` 34 · `days` 433 · `liked` 57 · `rewatches` 85). `flat` ist Default (normaler GitHub-Look). Jeder Badge entspricht `badgeSvg(label,value,{style})` aus `src/badge.js:99`. Die gleiche Matrix liegt als `preview-badges.html` im Repo — lokal im Browser öffnen oder `python3 -m http.server 8080` und `http://localhost:8080/preview-badges.html` aufrufen.
 
 </details>
 
