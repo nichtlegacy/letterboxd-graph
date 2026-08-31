@@ -773,6 +773,12 @@ async function main() {
 
   copyTree(path.join(ROOT, 'site'), outDir);
   copyTree(imagesDir, path.join(outDir, 'images'));
+  // The film cache is an implementation detail of the generator — not an asset
+  // and not something the site needs to serve. Drop it from the deployed tree.
+  for (const cacheFile of ['.film-cache.json']) {
+    const deployed = path.join(outDir, 'images', cacheFile);
+    if (fs.existsSync(deployed)) fs.rmSync(deployed);
+  }
 
   // The page sets its own type in Inter, the same family the SVGs embed, so it
   // is served from the repository rather than fetched from a font CDN.
@@ -852,6 +858,20 @@ async function main() {
     : previewSource && path.join(outDir, previewSource);
   const wrotePreview = previewSource
     && await rasterise(previewPath, path.join(outDir, 'og.png'), OG_SIZE);
+
+  // Per-year (and profile) OG images — one 1200×630 PNG per card so a share of
+  // `?year=2025` or a direct card URL can point at its own preview. Sharing the
+  // main `og.png` for every year would show last year's card for this year's
+  // link after the next daily run.
+  for (const asset of assets) {
+    if (asset.kind !== 'year' && asset.kind !== 'profile') continue;
+    const assetSvg = asset.svg.dark || asset.svg.light;
+    if (!assetSvg) continue;
+    const assetPath = path.join(outDir, assetSvg);
+    if (!fs.existsSync(assetPath)) continue;
+    const ogName = asset.kind === 'profile' ? 'og-profile.png' : `og-${asset.slug}.png`;
+    await rasterise(assetPath, path.join(outDir, ogName), OG_SIZE);
+  }
 
   await rasterise(path.join(outDir, 'favicon.svg'), path.join(outDir, 'apple-touch-icon.png'), TOUCH_ICON_SIZE);
 

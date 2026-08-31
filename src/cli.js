@@ -14,6 +14,9 @@ import { generateReviewCard, generateProfileCard, pickTopFilms, entriesForPeriod
 import { svgToPng, imageBufferToThumbnail } from './exporter.js';
 import { buildJsonExport, markRewatches } from './stats.js';
 import { resolveReviewYears, resolveYears } from './years.js';
+import { loadFilmCache, saveFilmCache, getCachedDetail, setCachedDetail } from './film-cache.js';
+import { buildBadges, AVAILABLE_STYLES as BADGE_STYLES } from './badge.js';
+import { buildAllTimeStats } from './stats.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -35,6 +38,8 @@ async function main() {
     let monthCards = 2; // recent months to also make review cards for
     let topFilms = "watched"; // 'watched' or 'released' for the card's film list
     let reviewYearsSpec = "all"; // 'all', a list, or a relative span for year cards
+    let badgeStyle = "flat"; // flat | flat-square | for-the-badge | plastic
+    let badgeStats = "films,rating,streak"; // comma list from AVAILABLE_STATS
 
     // Parse arguments
     for (let i = 0; i < args.length; i++) {
@@ -95,6 +100,14 @@ async function main() {
             i++;
             break;
           }
+          case 'badge-style':
+            badgeStyle = BADGE_STYLES.includes(value) ? value : 'flat';
+            i++;
+            break;
+          case 'badge-stats':
+            badgeStats = value || 'films,rating,streak';
+            i++;
+            break;
           default:
             console.warn(`Unknown flag "${flag}", ignoring`);
         }
@@ -106,18 +119,20 @@ async function main() {
     if (!username) {
       console.error("Error: No username provided.");
       console.log("Usage: node src/cli.js <username> [options]");
-      console.log("Options:");
-      console.log("  -y <years>    Year(s): a list like 2026,2025 or a span like \"last 2\"");
-      console.log("  -w <day>      Week start: sunday or monday (default: sunday)");
-      console.log("  -o <path>     Output path (default: images/github-letterboxd)");
-      console.log("  -g <targets>  Gradient text: true, false, name or year (default: true)");
-      console.log("  -p            Also export PNG files");
-      console.log("  -m <mode>     Graph mode: count or rating (default: count)");
-      console.log("  -a <bool>     Cell reveal animation: true or false (default: true)");
-      console.log("  -s <scope>    Diary scope: all or years (default: all)");
-      console.log("  -c <count>    Recent months to also make cards for, 0 to skip (default: 2)");
-      console.log("  -r <scope>    Card film list: watched or released (default: watched)");
-      console.log("  --review-years <years>  Year cards: all, a list, or last N (default: all)");
+    console.log("Options:");
+    console.log("  -y <years>    Year(s): a list like 2026,2025 or a span like \"last 2\"");
+    console.log("  -w <day>      Week start: sunday or monday (default: sunday)");
+    console.log("  -o <path>     Output path (default: images/github-letterboxd)");
+    console.log("  -g <targets>  Gradient text: true, false, name or year (default: true)");
+    console.log("  -p            Also export PNG files");
+    console.log("  -m <mode>     Graph mode: count or rating (default: count)");
+    console.log("  -a <bool>     Cell reveal animation: true or false (default: true)");
+    console.log("  -s <scope>    Diary scope: all or years (default: all)");
+    console.log("  -c <count>    Recent months to also make cards for, 0 to skip (default: 2)");
+    console.log("  -r <scope>    Card film list: watched or released (default: watched)");
+    console.log("  --review-years <years>  Year cards: all, a list, or last N (default: all)");
+    console.log("  --badge-style <style>  Badge style: flat, flat-square, for-the-badge, plastic (default: flat)");
+    console.log("  --badge-stats <list>   Badge stats: films,rating,streak,days,liked,rewatches (default: films,rating,streak)");
       process.exit(1);
     }
 
@@ -136,6 +151,7 @@ async function main() {
     console.log(`Month cards: ${monthCards === 0 ? '✗' : `last ${monthCards}`}`);
     console.log(`Card films: ${topFilms === 'released' ? 'releases of that year' : 'everything watched'}`);
     console.log(`Gradient: name ${usernameGradient ? '✓' : '✗'}, year ${yearGradient ? '✓' : '✗'}`);
+    console.log(`Badges: ${badgeStyle} (${badgeStats})`);
     console.log(`PNG Export: ${exportPng ? '✓' : '✗'}`);
     console.log(`Output: ${outputPathDark}, ${outputPathLight}, ${outputJsonPath}\n`);
 
@@ -245,9 +261,37 @@ async function main() {
     });
     fs.writeFileSync(outputJsonPath, JSON.stringify(jsonExport, null, 2));
 
+    // Write CSV export — one row per diary entry, stable sort, Excel-friendly
+    const csvPath = path.join(dir, 'letterboxd-diary.csv');
+    const csvHeader = ['date','title','year','rating','rewatch','liked','reviewed','url','reviewUrl','slug','filmUid','lid'];
+    const escapeCsv = (value) => {
+      if (value === null || value === undefined) return '';
+      const str = String(value);
+      if (/[",\n]/.test(str)) return `"${str.replace(/"/g, '""')}"`;
+      return str;
+    };
+    const csvRows = [...allEntries]
+      .sort((a, b) => b.date.getTime() - a.date.getTime())
+      .map(entry => [
+        entry.date.toISOString().split('T')[0],
+        entry.title,
+        entry.year || '',
+        entry.rating ?? '',
+        entry.rewatch ? '1' : '0',
+        entry.liked ? '1' : '0',
+        entry.reviewed ? '1' : '0',
+        entry.url || '',
+        entry.reviewUrl || '',
+        entry.slug || '',
+        entry.filmUid || '',
+        entry.lid || ''
+      ].map(escapeCsv).join(','));
+    fs.writeFileSync(csvPath, [csvHeader.join(','), ...csvRows].join('\n') + '\n');
+
     console.log(`   ✓ ${outputPathDark}`);
     console.log(`   ✓ ${outputPathLight}`);
     console.log(`   ✓ ${outputJsonPath}`);
+    console.log(`   ✓ ${csvPath}`);
 
     // Review cards. A period is a year or a single month within one; the card
     // is the same either way, so both come out of the same loop.
@@ -273,15 +317,30 @@ async function main() {
     const posters = new Map();
     const favouritePosters = new Map();
     const details = new Map();
+    const filmCache = loadFilmCache(dir);
+    let cacheHits = 0;
+    let cacheMisses = 0;
 
     // One request per film covers the poster, the runtime and the community
-    // rating, so details are cached across the year and profile cards.
+    // rating, so details are cached across the year and profile cards. The
+    // persistent cache avoids re-fetching the same 30 films every daily run.
     const loadFilm = async (films, target, width, height) => {
       for (const film of films) {
         if (!film.url || target.has(film.url)) continue;
 
-        const detail = details.get(film.url) || await fetchFilmDetails(film.url);
-        details.set(film.url, detail);
+        let detail = details.get(film.url);
+        if (!detail) {
+          const cached = getCachedDetail(filmCache, film.url);
+          if (cached) {
+            detail = cached;
+            cacheHits++;
+          } else {
+            detail = await fetchFilmDetails(film.url);
+            setCachedDetail(filmCache, film.url, detail);
+            cacheMisses++;
+          }
+          details.set(film.url, detail);
+        }
         if (!detail.poster) continue;
 
         try {
@@ -313,8 +372,10 @@ async function main() {
     ];
     await loadFilm(cardFilms, posters, POSTER_PIXEL_WIDTH, POSTER_PIXEL_HEIGHT);
     await loadFilm(favourites, favouritePosters, FAV_PIXEL_WIDTH, FAV_PIXEL_HEIGHT);
+    saveFilmCache(dir, filmCache);
     console.log(`   Posters: ${posters.size}/${new Set(cardFilms.map(f => f.url)).size}`
-      + `, favourites ${favouritePosters.size}/${favourites.length}`);
+      + `, favourites ${favouritePosters.size}/${favourites.length}`
+      + `, cache ${cacheHits} hit / ${cacheMisses} miss`);
 
     for (const period of periods) {
       for (const theme of ['dark', 'light']) {
@@ -369,6 +430,46 @@ async function main() {
       fs.writeFileSync(profileCardPaths[index], card);
       reviewCards.push({ path: profileCardPaths[index], svg: card });
       console.log(`   ✓ ${profileCardPaths[index]}`);
+    }
+
+    // Badges — shields-style, one SVG per stat (no dark/light split)
+    console.log("\n🏷️  Generating badges...");
+    const allTimeForBadges = buildAllTimeStats(allEntries, { totalFilms: totalEntries, scope });
+    const wanted = badgeStats.split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
+    const badges = buildBadges(allTimeForBadges || { entries: allEntries.length, daysActive: 0, streak: { length: 0 }, averageRating: null, liked: 0, rewatches: 0 }, { style: badgeStyle, stats: wanted });
+    // Also write each style variant on request? For now the chosen style, plus
+    // an extra flat fallback so README embeds keep working if the style changes.
+    for (const badge of badges) {
+      const badgePath = path.join(dir, `${badge.slug}.svg`);
+      fs.writeFileSync(badgePath, badge.svg);
+      console.log(`   ✓ ${badgePath} (${badge.label}: ${badge.value})`);
+      // Keep a —flat copy for stable URLs when using non-flat styles
+      if (badgeStyle !== 'flat') {
+        const flatSvg = buildBadges(allTimeForBadges, { style: 'flat', stats: [badge.slug.replace('badge-','')] })[0]?.svg;
+        if (flatSvg) {
+          const flatPath = path.join(dir, `${badge.slug}-flat.svg`);
+          if (!fs.existsSync(flatPath)) fs.writeFileSync(flatPath, flatSvg);
+        }
+      }
+    }
+    // Stale badges from a previous stat list are removed like review cards
+    const wantedSlugs = new Set(badges.map(b => `${b.slug}.svg`));
+    wantedSlugs.add('badge-films-flat.svg'); // always keep flat fallback
+    for (const name of fs.readdirSync(dir)) {
+      if (!/^badge-.+\.svg$/.test(name)) continue;
+      if (!wantedSlugs.has(name) && !name.endsWith('-flat.svg')) {
+        // Check if it's a flat fallback for a still-wanted badge
+        const base = name.replace('-flat.svg', '.svg');
+        if (wantedSlugs.has(base)) continue;
+        if (!badges.some(b => b.slug + '.svg' === name)) {
+          // Only delete if not in wanted set at all
+          const isVariant = badges.some(b => b.slug + '-flat.svg' === name);
+          if (!isVariant) {
+            fs.unlinkSync(path.join(dir, name));
+            console.log(`   ✗ removed stale ${name}`);
+          }
+        }
+      }
     }
 
     // Export PNGs if requested

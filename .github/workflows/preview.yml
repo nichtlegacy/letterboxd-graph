@@ -1,0 +1,127 @@
+name: PR Preview
+
+# Renders the graph for the PR head without pushing, then leaves a comment
+# with the file list and an artifact so the SVG can be inspected visually.
+# The main Update workflow pushes only on main/dev + schedule.
+
+on:
+  pull_request:
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - '.gitignore'
+      - '.github/assets/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22.12'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install curl_cffi fetcher
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install curl_cffi==0.14.0
+
+      - name: Run tests
+        run: npm test
+
+      # Commit is disabled — the SVGs are kept as a workflow artifact so the
+      # PR diff stays reviewable as text (the SVGs themselves are large).
+      - name: Generate preview (no commit)
+        uses: ./
+        with:
+          username: ${{ vars.LETTERBOXD_USERNAME || 'nichtlegacy' }}
+          years: 'last 2'
+          review-years: 'all'
+          scope: 'all'
+          month-cards: '2'
+          top-films: 'watched'
+          output: 'images/github-letterboxd'
+          commit: 'false'
+
+      - name: List generated images
+        id: list
+        shell: bash
+        run: |
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          ls -lh images/*.svg images/*.json images/*.csv 2>/dev/null | awk '{print $9, "(" $5 ")"}' >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+          echo "count=$(ls -1 images/*.svg 2>/dev/null | wc -l)" >> "$GITHUB_OUTPUT"
+
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: images-preview
+          path: |
+            images/*.svg
+            images/*.json
+            images/*.csv
+          if-no-files-found: warn
+
+      - name: Comment on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const files = `${{ steps.list.outputs.files }}`.trim();
+            const count = `${{ steps.list.outputs.count }}`.trim();
+            const runUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              `### 🎬 Letterboxd Graph Preview — ${count} SVGs`,
+              ``,
+              `Generated from \`${context.payload.pull_request.head.sha.slice(0,7)}\` without pushing.`,
+              `Download the **images-preview** artifact from the workflow run to inspect the SVGs.`,
+              ``,
+              `<details><summary>Files</summary>`,
+              ``,
+              "```",
+              files || '(no images — check generator logs)',
+              "```",
+              `</details>`,
+              ``,
+              `[View workflow run](${runUrl})`
+            ].join('\n');
+
+            // Upsert: find our previous preview comment and update it instead of spamming.
+            const marker = '<!-- lbg-preview -->';
+            const fullBody = `${marker}\n${body}`;
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              per_page: 100
+            });
+            const existing = comments.find(c => c.body && c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body: fullBody
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: fullBody
+              });
+            }

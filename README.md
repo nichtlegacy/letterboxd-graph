@@ -11,6 +11,12 @@ Runs as a GitHub Action, commits the finished SVGs back to your repository.
 [![Reusable Action](https://img.shields.io/badge/GitHub_Action-reusable-2088FF?style=flat-square&logo=githubactions&logoColor=white)](#quick-start)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
 
+<p>
+  <img alt="films" src="https://raw.githubusercontent.com/nichtlegacy/letterboxd-graph/main/images/badge-films.svg">
+  <img alt="avg rating" src="https://raw.githubusercontent.com/nichtlegacy/letterboxd-graph/main/images/badge-rating.svg">
+  <img alt="day streak" src="https://raw.githubusercontent.com/nichtlegacy/letterboxd-graph/main/images/badge-streak.svg">
+</p>
+
 [Quick Start](#quick-start) • [What It Generates](#what-it-generates) • [Configuration](#configuration) • [CLI](#cli) • [How It Works](#how-it-works) • [Pages Site](#pages-site) • [License](#license)
 
 <a href="https://letterboxd.nichtlegacy.com/images/github-letterboxd-dark.svg" title="Open the complete graph SVG">
@@ -27,8 +33,9 @@ Runs as a GitHub Action, commits the finished SVGs back to your repository.
 
 Letterboxd Graph reads a public Letterboxd diary and renders it as SVG: a
 GitHub-style activity calendar, a review card per year and per month, and a card
-for the profile itself. It also writes a JSON export so you can build your own
-widgets from the same figures.
+for the profile itself. It also writes a JSON export and a CSV diary so you can
+build your own widgets from the same figures, plus small shields-style badges
+for a profile README.
 
 It is meant to be embedded — in a GitHub profile README, a blog post, or a
 social preview. Everything is a self-contained SVG with the fonts subset and
@@ -256,10 +263,77 @@ cards.
 
 </details>
 
-### JSON Export
+### Mini Badges
+
+`badge-{films,rating,streak,days,liked,rewatches}.svg` — small shields-style
+badges for a profile README. One SVG per stat, no dark/light split, so the same
+file works on both GitHub themes.
+
+<p align="center">
+  <img alt="films 626" src="https://raw.githubusercontent.com/nichtlegacy/letterboxd-graph/main/images/badge-films.svg">
+  <img alt="avg rating 3.4" src="https://raw.githubusercontent.com/nichtlegacy/letterboxd-graph/main/images/badge-rating.svg">
+  <img alt="day streak 12" src="https://raw.githubusercontent.com/nichtlegacy/letterboxd-graph/main/images/badge-streak.svg">
+  <img alt="days active 427" src="https://raw.githubusercontent.com/nichtlegacy/letterboxd-graph/main/images/badge-days.svg">
+</p>
+
+They are generated from the all-time figures (`buildAllTimeStats` in
+`src/stats.js:288`), not just the graph years, so a badge stays the same
+whether the graph shows one year or three.
+
+| Stat | Badge label | Value | Color |
+|------|-------------|-------|-------|
+| `films` | `films` | diary entries | green `#00e054` |
+| `days` | `days active` | unique days with films | blue `#40bcf4` |
+| `streak` | `day streak` | longest consecutive run | orange `#ff8000` |
+| `rating` | `avg rating` | average of rated entries | orange `#ff8000` |
+| `liked` | `liked` | liked entries | pink `#ff5c8a` |
+| `rewatches` | `rewatches` | repeat viewings | purple `#a78bfa` |
+
+| Style | Height | Look |
+|-------|--------|------|
+| `flat` (default) | 20px | rounded 3px, matches most README badge rows |
+| `flat-square` | 20px | square, for a flat-square row |
+| `for-the-badge` | 28px | uppercase, bold — the shields “for-the-badge” look |
+| `plastic` | 20px | flat with a light top highlight |
+
+Embed one badge (use the raw URL, not the `blob` URL):
+
+```md
+![films](https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/letterboxd-graph/main/images/badge-films.svg)
+![avg rating](https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/letterboxd-graph/main/images/badge-rating.svg)
+```
+
+Or all at once:
+
+```md
+![films](https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/letterboxd-graph/main/images/badge-films.svg)
+![streak](https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/letterboxd-graph/main/images/badge-streak.svg)
+![rating](https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/letterboxd-graph/main/images/badge-rating.svg)
+```
+
+Configuration is action inputs, CLI flags or the `.github/workflows/update-graph.yml` env block:
+
+```yaml
+# action
+- uses: nichtlegacy/letterboxd-graph@v2
+  with:
+    username: YOUR_LETTERBOXD_USERNAME
+    badge-style: "flat"                    # flat | flat-square | for-the-badge | plastic
+    badge-stats: "films,rating,streak"     # any of films,days,streak,rating,liked,rewatches
+```
+
+```bash
+# CLI
+node src/cli.js nichtlegacy --badge-style flat --badge-stats films,rating,streak
+```
+
+Badges are committed to `images/` like the cards. Rename `badge-stats` later and a stale badge file is removed on the next run; switching style keeps a `badge-films-flat.svg` fallback so an existing embed does not break overnight.
+
+### JSON & CSV Export
 
 `letterboxd-data.json` — every figure the cards use, for building your own
-widgets. See [JSON Export](#json-export-1) below.
+widgets. `letterboxd-diary.csv` — one row per diary entry, newest first, for
+spreadsheets and ad-hoc analysis. See [JSON Export](#json-export-1) below.
 
 ## Configuration
 
@@ -278,6 +352,8 @@ All options are action inputs. Only `username` is required.
 | `gradient` | Gradient text: `true`, `false`, `name` or `year` | `true` |
 | `animate` | Cell reveal animation | `true` |
 | `export-png` | Also write PNG files | `false` |
+| `badge-style` | Badge style: `flat`, `flat-square`, `for-the-badge`, `plastic` | `flat` |
+| `badge-stats` | Comma-separated badge stats: `films`, `rating`, `streak`, `days`, `liked`, `rewatches` | `films,rating,streak` |
 | `output` | Output path without extension | `images/github-letterboxd` |
 | `commit` | Commit and push the generated files | `true` |
 | `commit-message` | Commit message (branch and UTC timestamp appended) | `Update Letterboxd graph` |
@@ -306,14 +382,16 @@ env:
   LETTERBOXD_USERNAME: "YOUR_USERNAME"
   YEARS: "last 2"                      # this year and last, or a list like "2026,2025"
   REVIEW_YEARS: "all"                  # every year in the fetched diary, or a selection
-  SCOPE: "all"                         # "all" (whole diary) or "years"
-  MONTH_CARDS: "2"                     # recent months to card, 0 to skip
-  TOP_FILMS: "watched"                 # "watched" or "released" film list
-  MODE: "count"                        # "count" of films or average "rating"
+  SCOPE: "all"                         # "all" reads the whole diary — needed for all-time figures
+  MONTH_CARDS: "2"                     # this month and last month, 0 to skip
+  TOP_FILMS: "watched"                 # year cards rank "released" that year or everything "watched"
+  MODE: "count"                        # cell colour: "count" of films or average "rating"
   WEEK_START: "sunday"                 # "sunday" or "monday"
-  GRADIENT: "true"                     # "true", "false", "name" or "year"
-  ANIMATE: "true"                      # "false" disables the reveal animation
-  EXPORT_PNG: "false"                  # "true" also writes PNGs
+  GRADIENT: "true"                     # "true" for colored name, "false" for white
+  ANIMATE: "true"                      # "false" to disable the cell reveal animation
+  EXPORT_PNG: "false"                  # "true" to also generate PNG files
+  BADGE_STYLE: "flat"                  # flat | flat-square | for-the-badge | plastic
+  BADGE_STATS: "films,rating,streak"   # any of films,rating,streak,days,liked,rewatches
 ```
 
 This is the path this repository uses itself, except that it calls the action
@@ -341,6 +419,8 @@ node src/cli.js <username> [options]
 | `-g <targets>` | Gradient text: `true`, `false`, `name` or `year` | `true` |
 | `-a <bool>` | Cell reveal animation | `true` |
 | `-p` | Also export PNG files | off |
+| `--badge-style <style>` | Badge style: `flat`, `flat-square`, `for-the-badge`, `plastic` | `flat` |
+| `--badge-stats <list>` | Badge stats: `films`, `rating`, `streak`, `days`, `liked`, `rewatches` | `films,rating,streak` |
 | `-o <path>` | Output path without extension | `images/github-letterboxd` |
 
 ```bash
@@ -355,6 +435,9 @@ node src/cli.js nichtlegacy -y 2025 -r released
 
 # Rating mode, week starting Monday, plain text, with PNGs
 node src/cli.js nichtlegacy -m rating -w monday -g false -p
+
+# Badges: plastic style, only films + streak + days active
+node src/cli.js nichtlegacy --badge-style plastic --badge-stats films,streak,days
 ```
 
 ## How It Works
@@ -508,6 +591,48 @@ diary weighs, and `scope` says which of the two it was built from.
 
 </details>
 
+### CSV Export
+
+`images/letterboxd-diary.csv` — one row per diary entry, newest first, for
+spreadsheets, `q` or any ad-hoc analysis. Same source as the JSON, but flat:
+
+```
+https://raw.githubusercontent.com/<github-user>/letterboxd-graph/main/images/letterboxd-diary.csv
+```
+
+| Column | Content |
+|--------|---------|
+| `date` | Watch date `YYYY-MM-DD` (UTC, as Letterboxd stores it) |
+| `title` | Film title |
+| `year` | Release year |
+| `rating` | `0.5`–`5` or empty if unrated |
+| `rewatch` | `1` if rewatch, `0` otherwise (flag or repeat-derived) |
+| `liked` | `1`/`0` |
+| `reviewed` | `1`/`0` |
+| `url` | Letterboxd film URL |
+| `reviewUrl` | Review URL if the entry carries one |
+| `slug` | Film slug (`dune-part-two`) |
+| `filmUid` / `lid` | Stable Letterboxd identifiers when present |
+
+Always written alongside the JSON. Header row is included, values are RFC 4180
+escaped, UTF-8, LF — opens directly in Excel, Numbers or `pandas.read_csv`.
+
+```bash
+# quick check
+head images/letterboxd-diary.csv
+q "SELECT rating, count(*) FROM 'letterboxd-diary.csv' GROUP BY rating"
+```
+
+### Film Cache
+
+Poster, runtime and the community average on the cards all come from the film
+page itself (`src/fetcher.js:1018`). Those pages were fetched on every run for
+the 20–30 films that make the cards — the same 30 posters every day. The
+generator now keeps `images/.film-cache.json` alongside the SVGs: keyed by the
+canonical film URL, 30-day TTL, capped at 3000 entries. The cache is committed,
+so the next daily run only fetches films it has not seen before. Stale entries
+are re-fetched automatically; deleting the file forces a full refresh.
+
 ## Embedding
 
 Point at the raw file, not the `blob` URL — GitHub serves `blob` as HTML and the
@@ -529,7 +654,11 @@ while the Pages deployment serves the SVG with the correct content type.
 ```
 
 Swap the filename for `letterboxd-review-2026`, `letterboxd-review-current-month`
-or `letterboxd-profile` to embed a card instead.
+or `letterboxd-profile` to embed a card instead. Badges are single-file embeds:
+
+```md
+![films](https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/letterboxd-graph/main/images/badge-films.svg)
+```
 
 ## Pages Site
 
@@ -554,8 +683,8 @@ limit — the cards at full size, and the figures behind them read out at length
 | **How you rated** | The half-star histogram, empty steps kept, beside the average, the most given rating and how much is rated or liked at all |
 | **What you reached for** | Films by release decade with counts, share and average rating, plus the five you went back to most |
 | **Where it turned over** | The first entry, the round numbers after it, and the latest, on one track. `milestoneStep` scales with the diary — every 25th at a hundred entries, every thousandth at five thousand — so the row holds its length instead of growing a marker per hundred |
-| **The cards** | Graph, profile, a tab per year, a tab per month — the finished month opens first, tabs cross-fade, and each card has **Copy image**, **Copy SVG**, **Copy embed** and **Open SVG**, also available on right click |
-| **Recent diary** | The last sixteen entries from the JSON export, newest first, in two columns; rewatches and likes stay marked |
+| **The cards** | Graph, profile, a tab per year, a tab per month — the finished month opens first, tabs cross-fade and the URL updates to `#card-2025` (or `#card-current-month`) so a card can be deep-linked. Each card has **Copy image**, **Copy SVG**, **Copy embed** and **Open SVG**, also available on right click |
+| **Recent diary** | The last sixteen entries from the JSON export, newest first, in two columns; rewatches and likes stay marked. The full [Diary](https://letterboxd.nichtlegacy.com/diary.html) is searchable across title, release year, slug and watch date (`diary.html?q=blade+runner` or `?released=1999`) |
 | **Use them yourself** | Three short paths: copy a responsive embed, run the action on your own diary, or publish a Pages site like this one. The footer links back to the Letterboxd profile, source and JSON export |
 
 The figures cover whatever the run fetched — the whole diary under `scope: all`,
@@ -570,7 +699,10 @@ The page follows the system theme until switched, then keeps the chosen dark or
 light card set. Sticky navigation, smooth section movement and a back-to-top
 control keep the long page usable; on a phone the section links become a
 horizontal strip. Card embeds load as they scroll into view, and a missing
-generated export gets a retryable error state instead of an empty page.
+generated export gets a retryable error state instead of an empty page. For
+sharing, the build also writes `og-2025.png`, `og-2024.png` and `og-profile.png`
+alongside `og.png` — one 1200×630 PNG per year/profile from the already
+committed SVGs.
 
 <details>
 <summary><b>Publishing it for your own profile</b></summary>
@@ -654,6 +786,8 @@ markedly slower and more prone to being challenged.
 - [`src/fetch_with_curl_cffi.py`](src/fetch_with_curl_cffi.py) — primary fetcher, Puppeteer is the fallback
 - [`src/generator.js`](src/generator.js) — contribution graph SVG
 - [`src/cards.js`](src/cards.js) — review and profile card SVGs
+- [`src/badge.js`](src/badge.js) — shields-style badge SVGs
+- [`src/film-cache.js`](src/film-cache.js) — persistent film detail cache (`images/.film-cache.json`)
 - [`src/svg-utils.js`](src/svg-utils.js) — font subsetting, text measurement, theme colors
 - [`src/stats.js`](src/stats.js) — streaks, distributions, JSON export
 - [`src/exporter.js`](src/exporter.js) — PNG rasterisation and poster thumbnails

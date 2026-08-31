@@ -61,6 +61,14 @@ inputs:
     description: 'Also write PNG versions next to the SVGs'
     required: false
     default: 'false'
+  badge-style:
+    description: 'Badge style: flat, flat-square, for-the-badge, plastic'
+    required: false
+    default: 'flat'
+  badge-stats:
+    description: 'Comma-separated stats for badges: films, rating, streak, days, liked, rewatches'
+    required: false
+    default: 'films,rating,streak'
   output:
     description: 'Output path without extension, relative to the repository root'
     required: false
@@ -142,11 +150,13 @@ runs:
         LB_MONTH_CARDS: ${{ inputs.month-cards }}
         LB_TOP_FILMS: ${{ inputs.top-films }}
         LB_EXPORT_PNG: ${{ inputs.export-png }}
+        LB_BADGE_STYLE: ${{ inputs.badge-style }}
+        LB_BADGE_STATS: ${{ inputs.badge-stats }}
         LB_OUTPUT: ${{ inputs.output }}
       run: |
         set -euo pipefail
 
-        args=("$LB_USERNAME" -o "$LB_OUTPUT" -w "$LB_WEEK_START" -m "$LB_MODE" -s "$LB_SCOPE" -c "$LB_MONTH_CARDS" -r "$LB_TOP_FILMS" --review-years "$LB_REVIEW_YEARS")
+        args=("$LB_USERNAME" -o "$LB_OUTPUT" -w "$LB_WEEK_START" -m "$LB_MODE" -s "$LB_SCOPE" -c "$LB_MONTH_CARDS" -r "$LB_TOP_FILMS" --review-years "$LB_REVIEW_YEARS" --badge-style "$LB_BADGE_STYLE" --badge-stats "$LB_BADGE_STATS")
         if [ -n "$LB_YEARS" ]; then args+=(-y "$LB_YEARS"); fi
         if [ -n "$LB_GRADIENT" ] && [ "$LB_GRADIENT" != "true" ]; then args+=(-g "$LB_GRADIENT"); fi
         if [ "$LB_ANIMATE" = "false" ]; then args+=(-a false); fi
