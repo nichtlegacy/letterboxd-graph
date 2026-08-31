@@ -291,10 +291,10 @@ whether the graph shows one year or three.
 
 | Style | Height | Look |
 |-------|--------|------|
-| `flat` (default) | 20px | two-tone, no border — normal GitHub form in site palette |
+| `dot` (default) | 20px | pill with the three Letterboxd dots on the left |
 | `pill` | 20px | 1px border, accent dot — like the site's filter chips |
 | `card` | 20px | same as pill with radius 4, like a KPI tile |
-| `dot` | 20px | pill with the three Letterboxd dots on the left |
+| `flat` | 20px | two-tone, no border — normal GitHub form in site palette |
 | `flat-square` | 20px | square, no outer radius |
 | `for-the-badge` | 28px | big uppercase |
 | `plastic` | 20px | flat with light top highlight |
@@ -321,13 +321,13 @@ Configuration is action inputs, CLI flags or the `.github/workflows/update-graph
 - uses: nichtlegacy/letterboxd-graph@v2
   with:
     username: YOUR_LETTERBOXD_USERNAME
-    badge-style: "flat"                    # pill | card | dot | flat | flat-square | for-the-badge | plastic
+    badge-style: "dot"                     # pill | card | dot | flat | flat-square | for-the-badge | plastic
     badge-stats: "films,rating,streak"     # any of films,days,streak,rating,liked,rewatches
 ```
 
 ```bash
 # CLI
-node src/cli.js nichtlegacy --badge-style flat --badge-stats films,rating,streak
+node src/cli.js nichtlegacy --badge-style dot --badge-stats films,rating,streak
 ```
 
 Badges are committed to `images/` like the cards. Rename `badge-stats` later and a stale badge file is removed on the next run; switching style keeps a `badge-films-flat.svg` fallback so an existing embed does not break overnight.
@@ -339,7 +339,7 @@ Badges are committed to `images/` like the cards. Rename `badge-stats` later and
   <img alt="All badges — all stats × all styles" src=".github/assets/badge-matrix-all-styles.png" width="100%">
 </p>
 
-All 6 stats × 7 styles at a glance (`films` 605 · `rating` 3.3 · `streak` 34 · `days` 433 · `liked` 57 · `rewatches` 85). `flat` is the default (standard GitHub look). Each badge is `badgeSvg(label,value,{style})` from `src/badge.js:99`.
+All 6 stats × 7 styles at a glance (`films` 605 · `rating` 3.3 · `streak` 34 · `days` 433 · `liked` 57 · `rewatches` 85). `dot` is the default. Each badge is `badgeSvg(label,value,{style})` from `src/badge.js:99`.
 
 </details>
 
@@ -366,7 +366,7 @@ All options are action inputs. Only `username` is required.
 | `gradient` | Gradient text: `true`, `false`, `name` or `year` | `true` |
 | `animate` | Cell reveal animation | `true` |
 | `export-png` | Also write PNG files | `false` |
-| `badge-style` | Badge style: `flat` (default), `pill`, `card`, `dot`, `flat-square`, `for-the-badge`, `plastic` | `flat` |
+| `badge-style` | Badge style: `dot` (default), `pill`, `card`, `flat`, `flat-square`, `for-the-badge`, `plastic` | `dot` |
 | `badge-stats` | Comma-separated badge stats: `films`, `rating`, `streak`, `days`, `liked`, `rewatches` | `films,rating,streak` |
 | `output` | Output path without extension | `images/github-letterboxd` |
 | `commit` | Commit and push the generated files | `true` |
@@ -404,7 +404,7 @@ env:
   GRADIENT: "true"                     # "true" for colored name, "false" for white
   ANIMATE: "true"                      # "false" to disable the cell reveal animation
   EXPORT_PNG: "false"                  # "true" to also generate PNG files
-  BADGE_STYLE: "flat"                  # pill | card | dot | flat | flat-square | for-the-badge | plastic
+  BADGE_STYLE: "dot"                   # pill | card | dot | flat | flat-square | for-the-badge | plastic
   BADGE_STATS: "films,rating,streak"   # any of films,rating,streak,days,liked,rewatches
 ```
 

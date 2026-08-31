@@ -96,8 +96,8 @@ function measure(text, fontSize, weight = 400, uppercase = false) {
  * @param {string} options.valueColor - Right background
  * @returns {string} SVG markup
  */
-export function badgeSvg(label, value, { style = 'flat', labelColor = DEFAULT_LABEL_COLOR, valueColor = DEFAULT_VALUE_COLOR } = {}) {
-  const cfg = STYLES[style] || STYLES.flat;
+export function badgeSvg(label, value, { style = 'dot', labelColor = DEFAULT_LABEL_COLOR, valueColor = DEFAULT_VALUE_COLOR } = {}) {
+  const cfg = STYLES[style] || STYLES.dot;
   const fontFamily = "Inter, 'Segoe UI', system-ui, -apple-system, sans-serif";
 
   // ── Page-matched styles: pill / card / dot ─────────────────────────────
@@ -204,7 +204,7 @@ export const AVAILABLE_STATS = ['films','days','streak','rating','liked','rewatc
  * @param {string[]} options.stats - Which stats to render
  * @returns {Array<{slug: string, label: string, value: string, svg: string}>}
  */
-export function buildBadges(stats, { style = 'flat', stats: wanted = ['films','rating','streak'] } = {}) {
+export function buildBadges(stats, { style = 'dot', stats: wanted = ['films','rating','streak'] } = {}) {
   const all = {
     films: { label: 'films', value: String(stats.entries ?? stats.films ?? 0) },
     entries: { label: 'entries', value: String(stats.entries ?? 0) },

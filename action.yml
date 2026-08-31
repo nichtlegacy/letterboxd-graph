@@ -64,7 +64,7 @@ inputs:
   badge-style:
     description: 'Badge style: pill, card, dot, flat, flat-square, for-the-badge, plastic'
     required: false
-    default: 'flat'
+    default: 'dot'
   badge-stats:
     description: 'Comma-separated stats for badges: films, rating, streak, days, liked, rewatches'
     required: false
