@@ -68,7 +68,7 @@ inputs:
   badge-stats:
     description: 'Comma-separated stats for badges: films, rating, streak, days, liked, rewatches'
     required: false
-    default: 'films,rating,streak'
+    default: 'films,rating,streak,days'
   output:
     description: 'Output path without extension, relative to the repository root'
     required: false

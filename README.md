@@ -321,16 +321,16 @@ Configuration is action inputs, CLI flags or the `.github/workflows/update-graph
 - uses: nichtlegacy/letterboxd-graph@v2
   with:
     username: YOUR_LETTERBOXD_USERNAME
-    badge-style: "dot"                     # pill | card | dot | flat | flat-square | for-the-badge | plastic
-    badge-stats: "films,rating,streak"     # any of films,days,streak,rating,liked,rewatches
+    badge-style: "dot"                          # pill | card | dot | flat | flat-square | for-the-badge | plastic
+    badge-stats: "films,rating,streak,days"     # any of films,days,streak,rating,liked,rewatches
 ```
 
 ```bash
 # CLI
-node src/cli.js nichtlegacy --badge-style dot --badge-stats films,rating,streak
+node src/cli.js nichtlegacy --badge-style dot --badge-stats films,rating,streak,days
 ```
 
-Badges are committed to `images/` like the cards. Rename `badge-stats` later and a stale badge file is removed on the next run; switching style keeps a `badge-films-flat.svg` fallback so an existing embed does not break overnight.
+Badges are committed to `images/` like the cards. Change `badge-stats` later and a stale badge file is removed on the next run.
 
 <details>
 <summary><b>All badges in all styles</b></summary>
@@ -367,7 +367,7 @@ All options are action inputs. Only `username` is required.
 | `animate` | Cell reveal animation | `true` |
 | `export-png` | Also write PNG files | `false` |
 | `badge-style` | Badge style: `dot` (default), `pill`, `card`, `flat`, `flat-square`, `for-the-badge`, `plastic` | `dot` |
-| `badge-stats` | Comma-separated badge stats: `films`, `rating`, `streak`, `days`, `liked`, `rewatches` | `films,rating,streak` |
+| `badge-stats` | Comma-separated badge stats: `films`, `rating`, `streak`, `days`, `liked`, `rewatches` | `films,rating,streak,days` |
 | `output` | Output path without extension | `images/github-letterboxd` |
 | `commit` | Commit and push the generated files | `true` |
 | `commit-message` | Commit message (branch and UTC timestamp appended) | `Update Letterboxd graph` |
@@ -405,7 +405,7 @@ env:
   ANIMATE: "true"                      # "false" to disable the cell reveal animation
   EXPORT_PNG: "false"                  # "true" to also generate PNG files
   BADGE_STYLE: "dot"                   # pill | card | dot | flat | flat-square | for-the-badge | plastic
-  BADGE_STATS: "films,rating,streak"   # any of films,rating,streak,days,liked,rewatches
+  BADGE_STATS: "films,rating,streak,days"   # any of films,rating,streak,days,liked,rewatches
 ```
 
 This is the path this repository uses itself, except that it calls the action
@@ -433,8 +433,8 @@ node src/cli.js <username> [options]
 | `-g <targets>` | Gradient text: `true`, `false`, `name` or `year` | `true` |
 | `-a <bool>` | Cell reveal animation | `true` |
 | `-p` | Also export PNG files | off |
-| `--badge-style <style>` | Badge style: `flat`, `pill`, `card`, `dot`, `flat-square`, `for-the-badge`, `plastic` | `flat` |
-| `--badge-stats <list>` | Badge stats: `films`, `rating`, `streak`, `days`, `liked`, `rewatches` | `films,rating,streak` |
+| `--badge-style <style>` | Badge style: `dot` (default), `pill`, `card`, `flat`, `flat-square`, `for-the-badge`, `plastic` | `dot` |
+| `--badge-stats <list>` | Badge stats: `films`, `rating`, `streak`, `days`, `liked`, `rewatches` | `films,rating,streak,days` |
 | `-o <path>` | Output path without extension | `images/github-letterboxd` |
 
 ```bash

@@ -39,7 +39,7 @@ async function main() {
     let topFilms = "watched"; // 'watched' or 'released' for the card's film list
     let reviewYearsSpec = "all"; // 'all', a list, or a relative span for year cards
     let badgeStyle = "dot"; // pill | card | dot | flat | flat-square | for-the-badge | plastic
-    let badgeStats = "films,rating,streak"; // comma list from AVAILABLE_STATS
+    let badgeStats = "films,rating,streak,days"; // comma list from AVAILABLE_STATS — days active now included by default
 
     // Parse arguments
     for (let i = 0; i < args.length; i++) {
@@ -437,38 +437,18 @@ async function main() {
     const allTimeForBadges = buildAllTimeStats(allEntries, { totalFilms: totalEntries, scope });
     const wanted = badgeStats.split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
     const badges = buildBadges(allTimeForBadges || { entries: allEntries.length, daysActive: 0, streak: { length: 0 }, averageRating: null, liked: 0, rewatches: 0 }, { style: badgeStyle, stats: wanted });
-    // Also write each style variant on request? For now the chosen style, plus
-    // an extra flat fallback so README embeds keep working if the style changes.
     for (const badge of badges) {
       const badgePath = path.join(dir, `${badge.slug}.svg`);
       fs.writeFileSync(badgePath, badge.svg);
       console.log(`   ✓ ${badgePath} (${badge.label}: ${badge.value})`);
-      // Keep a —flat copy for stable URLs when using non-flat styles
-      if (badgeStyle !== 'flat') {
-        const flatSvg = buildBadges(allTimeForBadges, { style: 'flat', stats: [badge.slug.replace('badge-','')] })[0]?.svg;
-        if (flatSvg) {
-          const flatPath = path.join(dir, `${badge.slug}-flat.svg`);
-          if (!fs.existsSync(flatPath)) fs.writeFileSync(flatPath, flatSvg);
-        }
-      }
     }
     // Stale badges from a previous stat list are removed like review cards
     const wantedSlugs = new Set(badges.map(b => `${b.slug}.svg`));
-    wantedSlugs.add('badge-films-flat.svg'); // always keep flat fallback
     for (const name of fs.readdirSync(dir)) {
       if (!/^badge-.+\.svg$/.test(name)) continue;
-      if (!wantedSlugs.has(name) && !name.endsWith('-flat.svg')) {
-        // Check if it's a flat fallback for a still-wanted badge
-        const base = name.replace('-flat.svg', '.svg');
-        if (wantedSlugs.has(base)) continue;
-        if (!badges.some(b => b.slug + '.svg' === name)) {
-          // Only delete if not in wanted set at all
-          const isVariant = badges.some(b => b.slug + '-flat.svg' === name);
-          if (!isVariant) {
-            fs.unlinkSync(path.join(dir, name));
-            console.log(`   ✗ removed stale ${name}`);
-          }
-        }
+      if (!wantedSlugs.has(name)) {
+        fs.unlinkSync(path.join(dir, name));
+        console.log(`   ✗ removed stale ${name}`);
       }
     }
 
