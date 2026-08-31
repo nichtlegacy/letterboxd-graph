@@ -62,7 +62,7 @@ inputs:
     required: false
     default: 'false'
   badge-style:
-    description: 'Badge style: flat, flat-square, for-the-badge, plastic'
+    description: 'Badge style: pill, card, dot, flat, flat-square, for-the-badge, plastic'
     required: false
     default: 'flat'
   badge-stats:

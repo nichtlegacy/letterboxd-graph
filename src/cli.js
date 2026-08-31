@@ -38,7 +38,7 @@ async function main() {
     let monthCards = 2; // recent months to also make review cards for
     let topFilms = "watched"; // 'watched' or 'released' for the card's film list
     let reviewYearsSpec = "all"; // 'all', a list, or a relative span for year cards
-    let badgeStyle = "flat"; // flat | flat-square | for-the-badge | plastic
+    let badgeStyle = "flat"; // pill | card | dot | flat | flat-square | for-the-badge | plastic
     let badgeStats = "films,rating,streak"; // comma list from AVAILABLE_STATS
 
     // Parse arguments

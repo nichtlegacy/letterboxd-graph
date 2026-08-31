@@ -1,34 +1,63 @@
 /**
- * Badge generator — shields.io-style but self-contained and theme-matched
+ * Badge generator — editorial, site-matched
  *
- * Badges are small SVGs intended for GitHub README lines:
+ * Badges are small SVGs for GitHub README lines:
  *   ![Films](images/badge-films.svg)
  *
  * Unlike the contribution graph they are not theme split (dark/light) — a badge
- * is a single asset that works on both. Styles mirror the shields palette so
- * the README can pick the look that fits the rest of the profile.
+ * is a single asset that works on both. The default style (`pill`) is built
+ * from the Pages design tokens (site/styles.css:45) — 1px border, pill radius,
+ * Inter, uppercase 0.06em — so a README row reads like the site's own filter
+ * chips rather than a generic shields row.
  *
  * Styles:
- *   flat        — 20px, rounded 3, subtle shadow (default, most common)
- *   flat-square — same but square (no radius)
- *   for-the-badge — 28px, uppercase, heavier weight
- *   plastic     — flat + light gradient highlight
+ *   pill        — editorial pill, 26px, border, accent dot (default, site-matched)
+ *   card        — panel, 28px, surface + border + rounded 6, stacked KPI feel
+ *   dot         — pill with Letterboxd three-dot mark on the left
+ *   flat        — legacy shields flat (kept for compat, 20px, 2-tone)
+ *   flat-square — legacy shields square
+ *   for-the-badge — legacy big uppercase
+ *   plastic     — legacy flat with highlight
  */
 
 import { escapeXml } from './svg-utils.js';
 
+// Legacy shields palette kept for `flat*` compat — values are overridden by
+// page tokens when the page style is used.
 const STYLES = {
-  flat:        { height: 20, radius: 3, fontSize: 11, labelWeight: 400, valueWeight: 600, uppercase: false },
-  'flat-square': { height: 20, radius: 0, fontSize: 11, labelWeight: 400, valueWeight: 600, uppercase: false },
-  'for-the-badge': { height: 28, radius: 3, fontSize: 11, labelWeight: 600, valueWeight: 700, uppercase: true },
-  plastic:     { height: 20, radius: 3, fontSize: 11, labelWeight: 400, valueWeight: 600, uppercase: false, plastic: true },
+  // Page-matched — GitHub badge form (20× radius 3) but site palette
+  pill:           { height: 20, radius: 3, fontSize: 11, labelWeight: 500, valueWeight: 700, uppercase: true, kind: 'pill' },
+  card:           { height: 20, radius: 4, fontSize: 11, labelWeight: 500, valueWeight: 700, uppercase: true, kind: 'card' },
+  dot:            { height: 20, radius: 3, fontSize: 11, labelWeight: 500, valueWeight: 700, uppercase: true, kind: 'dot' },
+  // Legacy shields — unchanged geometry, page-tinted colours
+  flat:           { height: 20, radius: 3, fontSize: 11, labelWeight: 400, valueWeight: 600, uppercase: false, kind: 'shields' },
+  'flat-square':  { height: 20, radius: 0, fontSize: 11, labelWeight: 400, valueWeight: 600, uppercase: false, kind: 'shields' },
+  'for-the-badge':{ height: 28, radius: 3, fontSize: 11, labelWeight: 600, valueWeight: 700, uppercase: true, kind: 'shields' },
+  plastic:        { height: 20, radius: 3, fontSize: 11, labelWeight: 400, valueWeight: 600, uppercase: false, kind: 'shields', plastic: true },
 };
 
-const DEFAULT_LABEL_COLOR = '#2c3440';
-const DEFAULT_VALUE_COLOR = '#00e054';
+// Page tokens — from site/styles.css:45 (--surface etc.) — dark theme is the
+// source of truth, the same values the cards embed.
+const PAGE = {
+  background: '#12161a',
+  surface: '#1c2228',
+  surfaceElev: '#2c3440',
+  border: '#2c3440',
+  borderMed: '#445566',
+  textLight: '#ddeeff',
+  textPrimary: '#99aabb',
+  textSecondary: '#667788',
+  textMuted: '#556677',
+  green: '#00e054',
+  orange: '#ff8000',
+  blue: '#40bcf4',
+};
 
-// Letterboxd-ish palette for value sides, picked per stat so badges are
-// distinguishable at a glance without being rainbow.
+const DEFAULT_LABEL_COLOR = PAGE.surfaceElev;
+const DEFAULT_VALUE_COLOR = PAGE.green;
+
+// Letterboxd-ish palette for value sides / accent dots, picked per stat so
+// badges are distinguishable at a glance without being rainbow.
 const STAT_COLORS = {
   films: '#00e054',
   entries: '#00e054',
@@ -69,6 +98,60 @@ function measure(text, fontSize, weight = 400, uppercase = false) {
  */
 export function badgeSvg(label, value, { style = 'flat', labelColor = DEFAULT_LABEL_COLOR, valueColor = DEFAULT_VALUE_COLOR } = {}) {
   const cfg = STYLES[style] || STYLES.flat;
+  const fontFamily = "Inter, 'Segoe UI', system-ui, -apple-system, sans-serif";
+
+  // ── Page-matched styles: pill / card / dot ─────────────────────────────
+  // Editorial, quiet: 1px border, surface background, dot in the stat colour,
+  // uppercase 0.08em label (#667788) and tabular value (#ddeeff). The pill
+  // reads like the site's own filter chips; the card like its KPI tiles.
+  if (cfg.kind === 'pill' || cfg.kind === 'card' || cfg.kind === 'dot') {
+    const h = cfg.height;
+    const r = cfg.radius;
+    const isDot = cfg.kind === 'dot';
+    const isCard = cfg.kind === 'card';
+    const labelText = cfg.uppercase ? label.toUpperCase() : label;
+    const valueText = cfg.uppercase ? value.toUpperCase() : value;
+
+    const labelW = measure(labelText, cfg.fontSize, cfg.labelWeight, true);
+    const valueW = measure(valueText, cfg.fontSize, cfg.valueWeight, true);
+
+    const iconW = isDot ? 22 : 0; // three dots + gap
+    const dotR = isCard ? 3.5 : 3;
+    const pad = isCard ? 12 : 10;
+    const gapLabelToDivider = 8;
+    const gapDividerToDot = 8;
+    const gapDotToValue = 6;
+
+    // divider is 1px line, dot is 7-8px incl. gap
+    const dividerX = pad + iconW + labelW + gapLabelToDivider;
+    const dotX = dividerX + 1 + gapDividerToDot + dotR;
+    const valueX = dotX + dotR + gapDotToValue;
+    const width = Math.ceil(valueX + valueW + pad);
+
+    const bg = PAGE.surface;
+    const border = PAGE.border;
+    const labelFill = PAGE.textSecondary;
+    const valueFill = PAGE.textLight;
+
+    const dots = isDot
+      ? `<g aria-hidden="true"><circle cx="${pad + 4}" cy="${h/2}" r="3.5" fill="${PAGE.green}"/><circle cx="${pad + 12}" cy="${h/2}" r="3.5" fill="${PAGE.orange}"/><circle cx="${pad + 20}" cy="${h/2}" r="3.5" fill="${PAGE.blue}"/></g>`
+      : '';
+
+    const labelX = pad + iconW + labelW / 2;
+    const showLabel = !isDot || labelW > 0; // dot style keeps label but after dots
+
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${h}" role="img" aria-label="${escapeXml(label)}: ${escapeXml(value)}">
+  <title>${escapeXml(label)}: ${escapeXml(value)}</title>
+  <rect width="${width}" height="${h}" rx="${r}" fill="${bg}" stroke="${border}" stroke-width="1"/>
+  ${dots}
+  ${showLabel ? `<text x="${isDot ? pad + iconW + labelW/2 : labelX}" y="${h/2 + 3.5}" font-family="${fontFamily}" font-size="${cfg.fontSize}" font-weight="${cfg.labelWeight}" fill="${labelFill}" text-anchor="middle" letter-spacing="0.08em">${escapeXml(labelText)}</text>` : ''}
+  <rect x="${dividerX}" y="5" width="1" height="${h - 10}" rx="0.5" fill="${border}"/>
+  <circle cx="${dotX}" cy="${h/2}" r="${dotR}" fill="${valueColor}"/>
+  <text x="${valueX}" y="${h/2 + 4}" font-family="${fontFamily}" font-size="11" font-weight="${cfg.valueWeight}" fill="${valueFill}" letter-spacing="0" style="font-variant-numeric: tabular-nums" text-anchor="start">${escapeXml(valueText)}</text>
+</svg>`;
+  }
+
+  // ── Legacy shields path (flat / flat-square / for-the-badge / plastic) ─
   const h = cfg.height;
   const r = cfg.radius;
   const labelText = cfg.uppercase ? label.toUpperCase() : label;
@@ -78,21 +161,14 @@ export function badgeSvg(label, value, { style = 'flat', labelColor = DEFAULT_LA
   const rightW = Math.max(28, measure(valueText, cfg.fontSize, cfg.valueWeight, false) + 10);
   const width = leftW + rightW;
 
-  const fontFamily = "Inter, 'Segoe UI', system-ui, sans-serif";
-
-  // Plastic highlight — exactly the way shields does it: a white gradient over
-  // the top half of the badge.
   const plasticOverlay = cfg.plastic
     ? `<linearGradient id="p" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fff" stop-opacity="0.25"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/></linearGradient><rect width="${width}" height="${h/2}" rx="${r}" fill="url(#p)"/>`
     : '';
 
-  // For square badges the divider between label and value must be a sharp line;
-  // for rounded ones the two rects share the same outer radius and are clipped.
   const labelRect = r === 0
     ? `<rect width="${leftW}" height="${h}" fill="${labelColor}"/>`
     : `<rect width="${width}" height="${h}" rx="${r}" fill="${labelColor}"/><rect x="${leftW}" width="${rightW}" height="${h}" fill="${valueColor}"/>`;
 
-  // Rounded case needs clipping so the value rect does not square the right edge
   const clip = r !== 0 ? `<clipPath id="c"><rect width="${width}" height="${h}" rx="${r}"/></clipPath><g clip-path="url(#c)">` : '';
   const clipClose = r !== 0 ? `</g>` : '';
 

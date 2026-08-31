@@ -291,10 +291,13 @@ whether the graph shows one year or three.
 
 | Style | Height | Look |
 |-------|--------|------|
-| `flat` (default) | 20px | rounded 3px, matches most README badge rows |
-| `flat-square` | 20px | square, for a flat-square row |
-| `for-the-badge` | 28px | uppercase, bold — the shields “for-the-badge” look |
-| `plastic` | 20px | flat with a light top highlight |
+| `flat` (default) | 20px | two-tone, no border — normal GitHub form in site palette |
+| `pill` | 20px | 1px border, accent dot — like the site's filter chips |
+| `card` | 20px | same as pill with radius 4, like a KPI tile |
+| `dot` | 20px | pill with the three Letterboxd dots on the left |
+| `flat-square` | 20px | square, no outer radius |
+| `for-the-badge` | 28px | big uppercase |
+| `plastic` | 20px | flat with light top highlight |
 
 Embed one badge (use the raw URL, not the `blob` URL):
 
@@ -318,7 +321,7 @@ Configuration is action inputs, CLI flags or the `.github/workflows/update-graph
 - uses: nichtlegacy/letterboxd-graph@v2
   with:
     username: YOUR_LETTERBOXD_USERNAME
-    badge-style: "flat"                    # flat | flat-square | for-the-badge | plastic
+    badge-style: "flat"                    # pill | card | dot | flat | flat-square | for-the-badge | plastic
     badge-stats: "films,rating,streak"     # any of films,days,streak,rating,liked,rewatches
 ```
 
@@ -352,7 +355,7 @@ All options are action inputs. Only `username` is required.
 | `gradient` | Gradient text: `true`, `false`, `name` or `year` | `true` |
 | `animate` | Cell reveal animation | `true` |
 | `export-png` | Also write PNG files | `false` |
-| `badge-style` | Badge style: `flat`, `flat-square`, `for-the-badge`, `plastic` | `flat` |
+| `badge-style` | Badge style: `flat` (default), `pill`, `card`, `dot`, `flat-square`, `for-the-badge`, `plastic` | `flat` |
 | `badge-stats` | Comma-separated badge stats: `films`, `rating`, `streak`, `days`, `liked`, `rewatches` | `films,rating,streak` |
 | `output` | Output path without extension | `images/github-letterboxd` |
 | `commit` | Commit and push the generated files | `true` |
@@ -390,7 +393,7 @@ env:
   GRADIENT: "true"                     # "true" for colored name, "false" for white
   ANIMATE: "true"                      # "false" to disable the cell reveal animation
   EXPORT_PNG: "false"                  # "true" to also generate PNG files
-  BADGE_STYLE: "flat"                  # flat | flat-square | for-the-badge | plastic
+  BADGE_STYLE: "flat"                  # pill | card | dot | flat | flat-square | for-the-badge | plastic
   BADGE_STATS: "films,rating,streak"   # any of films,rating,streak,days,liked,rewatches
 ```
 
@@ -419,7 +422,7 @@ node src/cli.js <username> [options]
 | `-g <targets>` | Gradient text: `true`, `false`, `name` or `year` | `true` |
 | `-a <bool>` | Cell reveal animation | `true` |
 | `-p` | Also export PNG files | off |
-| `--badge-style <style>` | Badge style: `flat`, `flat-square`, `for-the-badge`, `plastic` | `flat` |
+| `--badge-style <style>` | Badge style: `flat`, `pill`, `card`, `dot`, `flat-square`, `for-the-badge`, `plastic` | `flat` |
 | `--badge-stats <list>` | Badge stats: `films`, `rating`, `streak`, `days`, `liked`, `rewatches` | `films,rating,streak` |
 | `-o <path>` | Output path without extension | `images/github-letterboxd` |
 
