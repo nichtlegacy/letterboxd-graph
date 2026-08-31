@@ -333,13 +333,13 @@ node src/cli.js nichtlegacy --badge-style flat --badge-stats films,rating,streak
 Badges are committed to `images/` like the cards. Rename `badge-stats` later and a stale badge file is removed on the next run; switching style keeps a `badge-films-flat.svg` fallback so an existing embed does not break overnight.
 
 <details>
-<summary><b>Alle Badges in allen Styles</b></summary>
+<summary><b>All badges in all styles</b></summary>
 
 <p align="center">
-  <img alt="Alle Badges — alle Stats × alle Styles" src=".github/assets/badge-matrix-all-styles.png" width="100%">
+  <img alt="All badges — all stats × all styles" src=".github/assets/badge-matrix-all-styles.png" width="100%">
 </p>
 
-Alle 6 Stats × 7 Styles auf einen Blick (`films` 605 · `rating` 3.3 · `streak` 34 · `days` 433 · `liked` 57 · `rewatches` 85). `flat` ist Default (normaler GitHub-Look). Jeder Badge entspricht `badgeSvg(label,value,{style})` aus `src/badge.js:99`.
+All 6 stats × 7 styles at a glance (`films` 605 · `rating` 3.3 · `streak` 34 · `days` 433 · `liked` 57 · `rewatches` 85). `flat` is the default (standard GitHub look). Each badge is `badgeSvg(label,value,{style})` from `src/badge.js:99`.
 
 </details>
 
