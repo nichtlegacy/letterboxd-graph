@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-21T10:42:16.918Z",
+  "generatedAt": "2026-08-31T14:31:44.615Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,11 +18,11 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 460,
-    "daysActive": 326,
+    "films": 462,
+    "daysActive": 328,
     "streak": 34,
     "streakFilms": 47,
-    "rewatches": 62,
+    "rewatches": 64,
     "liked": 26
   },
   "monthLabels": [
@@ -13111,10 +13111,24 @@
       "date": "2026-08-28",
       "week": 86,
       "weekday": 5,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Don't Be a Menace to South Central While Drinking Your Juice in the Hood",
+          "year": "1996",
+          "rating": 3,
+          "rewatch": true,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood/1/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:46067",
+          "lid": "1VQa",
+          "slug": "dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/08/28/"
     },
@@ -13122,10 +13136,24 @@
       "date": "2026-08-29",
       "week": 86,
       "weekday": 6,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Dude, Where's My Car?",
+          "year": "2000",
+          "rating": 3.5,
+          "rewatch": true,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/3/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:47562",
+          "lid": "1ZJi",
+          "slug": "dude-wheres-my-car"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/08/29/"
     },
@@ -23082,13 +23110,112 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/08/20/"
+    },
+    {
+      "date": "2026-08-28",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Don't Be a Menace to South Central While Drinking Your Juice in the Hood",
+          "year": "1996",
+          "rating": 3,
+          "rewatch": true,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood/1/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:46067",
+          "lid": "1VQa",
+          "slug": "dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/08/28/"
+    },
+    {
+      "date": "2026-08-29",
+      "count": 1,
+      "ratingAvg": 3.5,
+      "films": [
+        {
+          "title": "Dude, Where's My Car?",
+          "year": "2000",
+          "rating": 3.5,
+          "rewatch": true,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/3/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:47562",
+          "lid": "1ZJi",
+          "slug": "dude-wheres-my-car"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/08/29/"
     }
   ],
   "onThisDay": {
-    "date": "2026-08-21",
-    "films": []
+    "date": "2026-08-31",
+    "films": [
+      {
+        "date": "2025-08-31",
+        "title": "Barb & Star Go to Vista Del Mar",
+        "year": "2021",
+        "rating": 3,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/barb-star-go-to-vista-del-mar/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:523229",
+        "lid": "lX9M",
+        "slug": "barb-star-go-to-vista-del-mar"
+      },
+      {
+        "date": "2025-08-31",
+        "title": "The Gentlemen",
+        "year": "2019",
+        "rating": 4,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/the-gentlemen/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:452289",
+        "lid": "iYBQ",
+        "slug": "the-gentlemen"
+      }
+    ]
   },
   "recent": [
+    {
+      "date": "2026-08-29",
+      "title": "Dude, Where's My Car?",
+      "year": "2000",
+      "rating": 3.5,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/3/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:47562",
+      "lid": "1ZJi",
+      "slug": "dude-wheres-my-car"
+    },
+    {
+      "date": "2026-08-28",
+      "title": "Don't Be a Menace to South Central While Drinking Your Juice in the Hood",
+      "year": "1996",
+      "rating": 3,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:46067",
+      "lid": "1VQa",
+      "slug": "dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood"
+    },
     {
       "date": "2026-08-20",
       "title": "Obsession",
@@ -23284,37 +23411,37 @@
       "filmUid": "film:197624",
       "lid": "8i6Q",
       "slug": "scouts-guide-to-the-zombie-apocalypse"
-    },
-    {
-      "date": "2026-07-14",
-      "title": "High School",
-      "year": "2010",
-      "rating": 4,
-      "rewatch": true,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/high-school-2010/2/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:34391",
-      "lid": "1rsW",
-      "slug": "high-school-2010"
-    },
-    {
-      "date": "2026-07-13",
-      "title": "Half Baked",
-      "year": "1998",
-      "rating": 4.5,
-      "rewatch": true,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/half-baked/5/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:47108",
-      "lid": "1Yy4",
-      "slug": "half-baked"
     }
   ],
   "diary": [
+    {
+      "date": "2026-08-29",
+      "title": "Dude, Where's My Car?",
+      "year": "2000",
+      "rating": 3.5,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/3/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:47562",
+      "lid": "1ZJi",
+      "slug": "dude-wheres-my-car"
+    },
+    {
+      "date": "2026-08-28",
+      "title": "Don't Be a Menace to South Central While Drinking Your Juice in the Hood",
+      "year": "1996",
+      "rating": 3,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:46067",
+      "lid": "1VQa",
+      "slug": "dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood"
+    },
     {
       "date": "2026-08-20",
       "title": "Obsession",
@@ -30517,7 +30644,7 @@
       "year": "2022",
       "rating": 4,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/harry-potter-20th-anniversary-return-to-hogwarts/",
       "reviewed": false,
       "reviewUrl": null,
@@ -30909,7 +31036,7 @@
       "year": "2008",
       "rating": 4,
       "rewatch": true,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/21/",
       "reviewed": false,
       "reviewUrl": null,
@@ -30937,7 +31064,7 @@
       "year": "2011",
       "rating": 4,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/the-sitter/",
       "reviewed": false,
       "reviewUrl": null,
@@ -30951,7 +31078,7 @@
       "year": "2024",
       "rating": 4,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/deadpool-wolverine/",
       "reviewed": false,
       "reviewUrl": null,
@@ -30993,7 +31120,7 @@
       "year": "2014",
       "rating": 3.5,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/neighbors-2014/",
       "reviewed": false,
       "reviewUrl": null,
@@ -31231,7 +31358,7 @@
       "year": "2024",
       "rating": 4,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/godzilla-kong-the-new-empire/",
       "reviewed": false,
       "reviewUrl": null,
@@ -31243,7 +31370,7 @@
       "date": "2024-05-13",
       "title": "Argylle",
       "year": "2024",
-      "rating": 3.5,
+      "rating": 3,
       "rewatch": false,
       "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/argylle/",
@@ -31259,7 +31386,7 @@
       "year": "2009",
       "rating": 4,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/angels-demons/",
       "reviewed": false,
       "reviewUrl": null,
@@ -31355,7 +31482,7 @@
       "date": "2024-05-01",
       "title": "The Family Plan",
       "year": "2023",
-      "rating": 3.5,
+      "rating": 3,
       "rewatch": false,
       "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/the-family-plan/",
@@ -31383,9 +31510,9 @@
       "date": "2024-04-29",
       "title": "Deadpool 2",
       "year": "2018",
-      "rating": 4,
+      "rating": 3.5,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/deadpool-2/",
       "reviewed": false,
       "reviewUrl": null,
@@ -31397,9 +31524,9 @@
       "date": "2024-04-28",
       "title": "The Founder",
       "year": "2016",
-      "rating": 4,
+      "rating": 3,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/the-founder/",
       "reviewed": false,
       "reviewUrl": null,
@@ -31411,9 +31538,9 @@
       "date": "2024-04-28",
       "title": "The Rock",
       "year": "1996",
-      "rating": 3.5,
+      "rating": 3,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/the-rock/",
       "reviewed": false,
       "reviewUrl": null,
@@ -31427,7 +31554,7 @@
       "year": "2016",
       "rating": 4,
       "rewatch": true,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/deadpool/",
       "reviewed": false,
       "reviewUrl": null,
@@ -31439,7 +31566,7 @@
       "date": "2024-04-26",
       "title": "Bullyparade: The Movie",
       "year": "2017",
-      "rating": 4,
+      "rating": 3.5,
       "rewatch": false,
       "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/bullyparade-the-movie/",
@@ -31497,7 +31624,7 @@
       "year": "2011",
       "rating": 3.5,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/the-hangover-part-ii/",
       "reviewed": false,
       "reviewUrl": null,
@@ -31539,7 +31666,7 @@
       "year": "2024",
       "rating": 3.5,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/the-beekeeper-2024/",
       "reviewed": false,
       "reviewUrl": null,
@@ -31581,7 +31708,7 @@
       "year": "2017",
       "rating": 4,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/guardians-of-the-galaxy-vol-2/",
       "reviewed": false,
       "reviewUrl": null,
@@ -31593,9 +31720,9 @@
       "date": "2024-04-12",
       "title": "Sherlock Holmes",
       "year": "2009",
-      "rating": 4,
+      "rating": 3.5,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/sherlock-holmes-2009/",
       "reviewed": false,
       "reviewUrl": null,
@@ -31621,9 +31748,9 @@
       "date": "2024-04-06",
       "title": "57 Seconds",
       "year": "2023",
-      "rating": 3.5,
+      "rating": 3,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/57-seconds/",
       "reviewed": false,
       "reviewUrl": null,
@@ -31651,7 +31778,7 @@
       "year": "2024",
       "rating": 3.5,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/ricky-stanicky/",
       "reviewed": false,
       "reviewUrl": null,
@@ -31665,7 +31792,7 @@
       "year": "2007",
       "rating": 4,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/i-now-pronounce-you-chuck-larry/",
       "reviewed": false,
       "reviewUrl": null,
@@ -31705,9 +31832,9 @@
       "date": "2024-03-24",
       "title": "Road House",
       "year": "2024",
-      "rating": 4,
+      "rating": 3.5,
       "rewatch": false,
-      "liked": true,
+      "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/road-house-2024/",
       "reviewed": false,
       "reviewUrl": null,
@@ -31770,7 +31897,7 @@
       "daysActive": 105,
       "multiFilmDays": 30,
       "rewatches": 21,
-      "liked": 50,
+      "liked": 31,
       "rated": 143,
       "releaseBreakdown": {
         "sameYear": 13,
@@ -32219,7 +32346,7 @@
         },
         {
           "rating": 3,
-          "count": 34
+          "count": 39
         },
         {
           "rating": 3.5,
@@ -32227,7 +32354,7 @@
         },
         {
           "rating": 4,
-          "count": 45
+          "count": 40
         },
         {
           "rating": 4.5,
@@ -32360,7 +32487,7 @@
           "date": "2024-04-28",
           "title": "The Founder",
           "year": "2016",
-          "rating": 4,
+          "rating": 3,
           "url": "https://letterboxd.com/nichtlegacy/film/the-founder/",
           "reviewed": false,
           "reviewUrl": null,
@@ -33256,33 +33383,33 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 79,
-      "distinctFilms": 76,
+      "entries": 81,
+      "distinctFilms": 78,
       "firstEntry": "2026-01-01",
-      "lastEntry": "2026-08-20",
-      "spanDays": 232,
-      "daysActive": 63,
+      "lastEntry": "2026-08-29",
+      "spanDays": 241,
+      "daysActive": 65,
       "multiFilmDays": 11,
-      "rewatches": 14,
+      "rewatches": 16,
       "liked": 7,
-      "rated": 79,
+      "rated": 81,
       "releaseBreakdown": {
         "sameYear": 12,
-        "older": 67,
+        "older": 69,
         "other": 0
       },
       "watchBreakdown": {
         "firstWatches": 65,
-        "rewatches": 14
+        "rewatches": 16
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 79
+        "notReviewed": 81
       },
       "averageRating": 3.3,
       "perDay": 0.34,
       "perWeek": 2.4,
-      "perMonth": 10.4,
+      "perMonth": 10.2,
       "streak": {
         "length": 6,
         "startDate": "2026-03-28",
@@ -33301,8 +33428,8 @@
       "perYear": [
         {
           "year": 2026,
-          "films": 79,
-          "days": 63
+          "films": 81,
+          "days": 65
         }
       ],
       "perWeekday": [
@@ -33311,8 +33438,8 @@
         6,
         9,
         9,
-        14,
-        17
+        15,
+        18
       ],
       "perMonthOfYear": [
         18,
@@ -33322,7 +33449,7 @@
         6,
         4,
         12,
-        4,
+        6,
         0,
         0,
         0,
@@ -33359,7 +33486,7 @@
         },
         {
           "month": "2026-08",
-          "count": 4
+          "count": 6
         }
       ],
       "weekSeries": [
@@ -33571,7 +33698,7 @@
           "week": 35,
           "start": "2026-08-24",
           "end": "2026-08-30",
-          "count": 0
+          "count": 2
         },
         {
           "week": 36,
@@ -33693,11 +33820,11 @@
         },
         {
           "rating": 3,
-          "count": 23
+          "count": 24
         },
         {
           "rating": 3.5,
-          "count": 21
+          "count": 22
         },
         {
           "rating": 4,
@@ -33724,13 +33851,13 @@
         {
           "decade": 1990,
           "label": "1990s",
-          "count": 13,
+          "count": 14,
           "averageRating": 3.5
         },
         {
           "decade": 2000,
           "label": "2000s",
-          "count": 17,
+          "count": 18,
           "averageRating": 3
         },
         {
@@ -33827,18 +33954,18 @@
           "slug": "spider-man-brand-new-day"
         },
         {
-          "n": 79,
+          "n": 81,
           "kind": "latest",
-          "date": "2026-08-20",
-          "title": "Obsession",
-          "year": "2025",
-          "rating": 4,
-          "url": "https://letterboxd.com/nichtlegacy/film/obsession-2025/",
+          "date": "2026-08-29",
+          "title": "Dude, Where's My Car?",
+          "year": "2000",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/3/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:1234472",
-          "lid": "PNqo",
-          "slug": "obsession-2025"
+          "filmUid": "film:47562",
+          "lid": "1ZJi",
+          "slug": "dude-wheres-my-car"
         }
       ]
     }
@@ -33846,33 +33973,33 @@
   "allTime": {
     "scope": "all",
     "films": 629,
-    "entries": 603,
+    "entries": 605,
     "distinctFilms": 538,
     "firstEntry": "2024-02-22",
-    "lastEntry": "2026-08-20",
-    "spanDays": 911,
-    "daysActive": 431,
+    "lastEntry": "2026-08-29",
+    "spanDays": 920,
+    "daysActive": 433,
     "multiFilmDays": 134,
-    "rewatches": 83,
-    "liked": 76,
-    "rated": 603,
+    "rewatches": 85,
+    "liked": 57,
+    "rated": 605,
     "releaseBreakdown": {
       "sameYear": 58,
-      "older": 545,
+      "older": 547,
       "other": 0
     },
     "watchBreakdown": {
       "firstWatches": 520,
-      "rewatches": 83
+      "rewatches": 85
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 602
+      "notReviewed": 604
     },
     "averageRating": 3.3,
     "perDay": 0.66,
     "perWeek": 4.6,
-    "perMonth": 20.1,
+    "perMonth": 20,
     "streak": {
       "length": 34,
       "startDate": "2025-01-27",
@@ -33901,8 +34028,8 @@
       },
       {
         "year": 2026,
-        "films": 79,
-        "days": 63
+        "films": 81,
+        "days": 65
       }
     ],
     "perWeekday": [
@@ -33911,8 +34038,8 @@
       70,
       82,
       88,
-      89,
-      101
+      90,
+      102
     ],
     "perMonthOfYear": [
       71,
@@ -33922,7 +34049,7 @@
       59,
       45,
       51,
-      22,
+      24,
       27,
       59,
       39,
@@ -34051,7 +34178,7 @@
       },
       {
         "month": "2026-08",
-        "count": 4
+        "count": 6
       }
     ],
     "weekSeries": [],
@@ -34074,15 +34201,15 @@
       },
       {
         "rating": 3,
-        "count": 164
+        "count": 170
       },
       {
         "rating": 3.5,
-        "count": 153
+        "count": 154
       },
       {
         "rating": 4,
-        "count": 130
+        "count": 125
       },
       {
         "rating": 4.5,
@@ -34115,13 +34242,13 @@
       {
         "decade": 1990,
         "label": "1990s",
-        "count": 96,
+        "count": 97,
         "averageRating": 3.5
       },
       {
         "decade": 2000,
         "label": "2000s",
-        "count": 220,
+        "count": 221,
         "averageRating": 3
       },
       {
@@ -34175,7 +34302,7 @@
         "filmUid": "film:47562",
         "lid": "1ZJi",
         "slug": "dude-wheres-my-car",
-        "views": 3,
+        "views": 4,
         "averageRating": 3.5
       },
       {
@@ -34337,6 +34464,16 @@
         "slug": "deuce-bigalow-european-gigolo",
         "views": 2,
         "averageRating": 3
+      },
+      {
+        "title": "Don't Be a Menace to South Central While Drinking Your Juice in the Hood",
+        "year": "1996",
+        "url": "https://letterboxd.com/nichtlegacy/film/dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood/",
+        "filmUid": "film:46067",
+        "lid": "1VQa",
+        "slug": "dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood",
+        "views": 2,
+        "averageRating": 3.5
       },
       {
         "title": "Donnie Darko",
@@ -34644,18 +34781,18 @@
         "slug": "the-tunnel-to-summer-the-exit-of-goodbyes"
       },
       {
-        "n": 603,
+        "n": 605,
         "kind": "latest",
-        "date": "2026-08-20",
-        "title": "Obsession",
-        "year": "2025",
-        "rating": 4,
-        "url": "https://letterboxd.com/nichtlegacy/film/obsession-2025/",
+        "date": "2026-08-29",
+        "title": "Dude, Where's My Car?",
+        "year": "2000",
+        "rating": 3.5,
+        "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/3/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:1234472",
-        "lid": "PNqo",
-        "slug": "obsession-2025"
+        "filmUid": "film:47562",
+        "lid": "1ZJi",
+        "slug": "dude-wheres-my-car"
       }
     ]
   }

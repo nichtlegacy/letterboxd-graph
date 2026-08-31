@@ -1,4 +1,173 @@
 {
   "version": 1,
-  "films": {}
+  "films": {
+    "https://letterboxd.com/film/the-odyssey-2026/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/1/2/5/5/3/9/4/1255394-the-odyssey-2026-0-600-0-900-crop.jpg?v=1eed046d0c",
+      "runtime": 173,
+      "averageRating": 4.36,
+      "fetchedAt": "2026-08-31T14:31:44.771Z"
+    },
+    "https://letterboxd.com/film/project-hail-mary/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/6/1/1/2/8/8/611288-project-hail-mary-0-600-0-900-crop.jpg?v=ac31b6ec03",
+      "runtime": 156,
+      "averageRating": 4.32,
+      "fetchedAt": "2026-08-31T14:31:44.993Z"
+    },
+    "https://letterboxd.com/film/spider-man-brand-new-day/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/8/7/2/8/7/1/872871-spider-man-brand-new-day-0-600-0-900-crop.jpg?v=ebe6beb4fc",
+      "runtime": 145,
+      "averageRating": 4.05,
+      "fetchedAt": "2026-08-31T14:31:45.120Z"
+    },
+    "https://letterboxd.com/film/roommates-2026/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/1/3/8/7/2/3/7/1387237-roommates-2026-0-600-0-900-crop.jpg?v=f91e0d4396",
+      "runtime": 108,
+      "averageRating": 2.91,
+      "fetchedAt": "2026-08-31T14:31:45.332Z"
+    },
+    "https://letterboxd.com/film/hoppers/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/1/2/0/7/5/5/7/1207557-hoppers-0-600-0-900-crop.jpg?v=7711e7b5a7",
+      "runtime": 104,
+      "averageRating": 3.69,
+      "fetchedAt": "2026-08-31T14:31:45.447Z"
+    },
+    "https://letterboxd.com/film/one-battle-after-another/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/9/5/1/2/7/7/951277-one-battle-after-another-0-600-0-900-crop.jpg?v=d27c4cc662",
+      "runtime": 162,
+      "averageRating": 4.12,
+      "fetchedAt": "2026-08-31T14:31:45.569Z"
+    },
+    "https://letterboxd.com/film/the-naked-gun/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/9/3/3/3/8/1/933381-the-naked-gun-0-600-0-900-crop.jpg?v=6acd6cd210",
+      "runtime": 85,
+      "averageRating": 3.26,
+      "fetchedAt": "2026-08-31T14:31:45.693Z"
+    },
+    "https://letterboxd.com/film/the-running-man-2025/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/7/1/6/1/7/8/716178-the-running-man-2025-0-600-0-900-crop.jpg?v=51fba45d13",
+      "runtime": 133,
+      "averageRating": 3.13,
+      "fetchedAt": "2026-08-31T14:31:45.826Z"
+    },
+    "https://letterboxd.com/film/freakier-friday/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/1/3/8/6/7/1013867-freakier-friday-0-600-0-900-crop.jpg?v=9956bf7519",
+      "runtime": 110,
+      "averageRating": 3.07,
+      "fetchedAt": "2026-08-31T14:31:49.820Z"
+    },
+    "https://letterboxd.com/film/the-fantastic-4-first-steps/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/5/4/3/9/6/7/543967-the-fantastic-four-first-steps-0-600-0-900-crop.jpg?v=ab7c919b04",
+      "runtime": 115,
+      "averageRating": 3.34,
+      "fetchedAt": "2026-08-31T14:31:50.605Z"
+    },
+    "https://letterboxd.com/film/dune-part-two/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/6/1/7/4/4/3/617443-dune-part-two-0-600-0-900-crop.jpg?v=cc533700f8",
+      "runtime": 167,
+      "averageRating": 4.38,
+      "fetchedAt": "2026-08-31T14:31:51.383Z"
+    },
+    "https://letterboxd.com/film/furiosa-a-mad-max-saga/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/7/0/5/2/2/1/705221-furiosa-a-mad-max-saga-0-600-0-900-crop.jpg?v=3c0e322842",
+      "runtime": 149,
+      "averageRating": 3.77,
+      "fetchedAt": "2026-08-31T14:31:51.637Z"
+    },
+    "https://letterboxd.com/film/deadpool-wolverine/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/4/6/2/8/7/0/462870-deadpool-wolverine-0-600-0-900-crop.jpg?v=1aa778d2c6",
+      "runtime": 128,
+      "averageRating": 3.46,
+      "fetchedAt": "2026-08-31T14:31:51.924Z"
+    },
+    "https://letterboxd.com/film/despicable-me-4/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/4/4/8/5/0/6/448506-despicable-me-4-0-600-0-900-crop.jpg?v=e3dceb2dac",
+      "runtime": 94,
+      "averageRating": 2.76,
+      "fetchedAt": "2026-08-31T14:31:52.514Z"
+    },
+    "https://letterboxd.com/film/godzilla-kong-the-new-empire/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/9/5/2/2/739522-godzilla-x-kong-the-new-empire-0-600-0-900-crop.jpg?v=7c2eb6e620",
+      "runtime": 115,
+      "averageRating": 2.72,
+      "fetchedAt": "2026-08-31T14:31:52.756Z"
+    },
+    "https://letterboxd.com/film/obsession-2025/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/1/2/3/4/4/7/2/1234472-obsession-2025-2-0-600-0-900-crop.jpg?v=cff6fc00b6",
+      "runtime": 109,
+      "averageRating": 4.08,
+      "fetchedAt": "2026-08-31T14:31:52.889Z"
+    },
+    "https://letterboxd.com/film/dude-wheres-my-car/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/4/7/5/6/2/47562-dude-where-s-my-car--0-600-0-900-crop.jpg?v=8182d1eea5",
+      "runtime": 83,
+      "averageRating": 2.75,
+      "fetchedAt": "2026-08-31T14:31:53.122Z"
+    },
+    "https://letterboxd.com/film/dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/4/6/0/6/7/46067-don-t-be-a-menace-to-south-central-while-drinking-your-jui-0-600-0-900-crop.jpg?v=69dd2a9f56",
+      "runtime": 89,
+      "averageRating": 3.27,
+      "fetchedAt": "2026-08-31T14:31:53.253Z"
+    },
+    "https://letterboxd.com/film/minions-monsters-2026/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/1/1/9/6/8/0/8/1196808-minions-monsters-2026-0-600-0-900-crop.jpg?v=8ff282e996",
+      "runtime": 90,
+      "averageRating": 3.2,
+      "fetchedAt": "2026-08-31T14:31:53.510Z"
+    },
+    "https://letterboxd.com/film/the-ministry-of-ungentlemanly-warfare/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/7/1/7/1/2/6/717126-the-ministry-of-ungentlemanly-warfare-0-600-0-900-crop.jpg?v=63fba9c252",
+      "runtime": 120,
+      "averageRating": 3.22,
+      "fetchedAt": "2026-08-31T14:31:53.723Z"
+    },
+    "https://letterboxd.com/film/half-baked/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/4/7/1/0/8/47108-half-baked-0-600-0-900-crop.jpg?v=4b4240a08c",
+      "runtime": 82,
+      "averageRating": 3.17,
+      "fetchedAt": "2026-08-31T14:31:53.939Z"
+    },
+    "https://letterboxd.com/film/high-school-2010/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/3/4/3/9/1/34391-high-school-0-600-0-900-crop.jpg?v=503ca1d1c6",
+      "runtime": 99,
+      "averageRating": 2.77,
+      "fetchedAt": "2026-08-31T14:31:54.154Z"
+    },
+    "https://letterboxd.com/film/jay-and-silent-bob-strike-back/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/5/0/3/5/5/50355-jay-and-silent-bob-strike-back-0-600-0-900-crop.jpg?v=cc2522999c",
+      "runtime": 104,
+      "averageRating": 3.26,
+      "fetchedAt": "2026-08-31T14:31:54.734Z"
+    },
+    "https://letterboxd.com/film/the-big-lebowski/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/5/1/9/3/5/51935-the-big-lebowski-0-600-0-900-crop.jpg?v=5cd64defcf",
+      "runtime": 117,
+      "averageRating": 4.11,
+      "fetchedAt": "2026-08-31T14:31:54.943Z"
+    },
+    "https://letterboxd.com/film/star-wars/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/2/7/0/6/2706-star-wars-0-600-0-900-crop.jpg?v=f1f1271bf5",
+      "runtime": 121,
+      "averageRating": 4.16,
+      "fetchedAt": "2026-08-31T14:31:55.154Z"
+    },
+    "https://letterboxd.com/film/john-wick-chapter-4/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/5/3/0/8/8/2/530882-john-wick-chapter-4-0-600-0-900-crop.jpg?v=bc32219057",
+      "runtime": 170,
+      "averageRating": 3.9,
+      "fetchedAt": "2026-08-31T14:31:55.375Z"
+    },
+    "https://letterboxd.com/film/the-butterfly-effect/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/5/0/6/5/4/50654-the-butterfly-effect-0-600-0-900-crop.jpg?v=90d4b26497",
+      "runtime": 113,
+      "averageRating": 3.61,
+      "fetchedAt": "2026-08-31T14:31:55.601Z"
+    },
+    "https://letterboxd.com/film/spider-man-2/": {
+      "poster": "https://a.ltrbxd.com/resized/sm/upload/pq/mi/kb/ck/7JtMVM58MnzxWeyubzLpXBiVnDC-0-600-0-900-crop.jpg?v=c5f2675b28",
+      "runtime": 127,
+      "averageRating": 3.94,
+      "fetchedAt": "2026-08-31T14:31:55.832Z"
+    }
+  }
 }
