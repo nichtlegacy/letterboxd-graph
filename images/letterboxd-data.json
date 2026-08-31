@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-30T04:29:43.399Z",
+  "generatedAt": "2026-08-31T04:34:12.818Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23155,21 +23155,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-08-30",
+    "date": "2026-08-31",
     "films": [
       {
-        "date": "2024-08-30",
-        "title": "The World's End",
-        "year": "2013",
+        "date": "2025-08-31",
+        "title": "Barb & Star Go to Vista Del Mar",
+        "year": "2021",
+        "rating": 3,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/barb-star-go-to-vista-del-mar/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:523229",
+        "lid": "lX9M",
+        "slug": "barb-star-go-to-vista-del-mar"
+      },
+      {
+        "date": "2025-08-31",
+        "title": "The Gentlemen",
+        "year": "2019",
         "rating": 4,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-worlds-end/",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-gentlemen/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:86991",
-        "lid": "3EiO",
-        "slug": "the-worlds-end"
+        "filmUid": "film:452289",
+        "lid": "iYBQ",
+        "slug": "the-gentlemen"
       }
     ]
   },
