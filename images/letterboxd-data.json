@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-08-31T18:01:55.959Z",
+  "generatedAt": "2026-09-01T04:15:56.622Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23155,37 +23155,8 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-08-31",
-    "films": [
-      {
-        "date": "2025-08-31",
-        "title": "Barb & Star Go to Vista Del Mar",
-        "year": "2021",
-        "rating": 3,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/barb-star-go-to-vista-del-mar/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:523229",
-        "lid": "lX9M",
-        "slug": "barb-star-go-to-vista-del-mar"
-      },
-      {
-        "date": "2025-08-31",
-        "title": "The Gentlemen",
-        "year": "2019",
-        "rating": 4,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-gentlemen/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:452289",
-        "lid": "iYBQ",
-        "slug": "the-gentlemen"
-      }
-    ]
+    "date": "2026-09-01",
+    "films": []
   },
   "recent": [
     {
