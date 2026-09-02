@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-01T04:15:56.622Z",
+  "generatedAt": "2026-09-02T03:38:49.476Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23155,8 +23155,23 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-01",
-    "films": []
+    "date": "2026-09-02",
+    "films": [
+      {
+        "date": "2024-09-02",
+        "title": "Cats & Dogs",
+        "year": "2001",
+        "rating": 4,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/cats-dogs/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:45709",
+        "lid": "1UUq",
+        "slug": "cats-dogs"
+      }
+    ]
   },
   "recent": [
     {
