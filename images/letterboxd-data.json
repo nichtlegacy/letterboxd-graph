@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-02T03:38:49.476Z",
+  "generatedAt": "2026-09-03T03:38:51.955Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -3921,17 +3921,17 @@
           "slug": "family-guy-presents-something-something-something-dark-side"
         },
         {
-          "title": "The Robot Chicken: Star Wars",
+          "title": "Robot Chicken: Star Wars",
           "year": "2007",
           "rating": 2.5,
           "rewatch": false,
           "liked": false,
-          "url": "https://letterboxd.com/nichtlegacy/film/the-robot-chicken-star-wars/",
+          "url": "https://letterboxd.com/nichtlegacy/film/robot-chicken-star-wars/",
           "reviewed": false,
           "reviewUrl": null,
           "filmUid": "film:22143",
           "lid": "VBs",
-          "slug": "the-robot-chicken-star-wars"
+          "slug": "robot-chicken-star-wars"
         },
         {
           "title": "Family Guy Presents: Blue Harvest",
@@ -17737,17 +17737,17 @@
           "slug": "family-guy-presents-something-something-something-dark-side"
         },
         {
-          "title": "The Robot Chicken: Star Wars",
+          "title": "Robot Chicken: Star Wars",
           "year": "2007",
           "rating": 2.5,
           "rewatch": false,
           "liked": false,
-          "url": "https://letterboxd.com/nichtlegacy/film/the-robot-chicken-star-wars/",
+          "url": "https://letterboxd.com/nichtlegacy/film/robot-chicken-star-wars/",
           "reviewed": false,
           "reviewUrl": null,
           "filmUid": "film:22143",
           "lid": "VBs",
-          "slug": "the-robot-chicken-star-wars"
+          "slug": "robot-chicken-star-wars"
         },
         {
           "title": "Family Guy Presents: Blue Harvest",
@@ -23155,23 +23155,8 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-02",
-    "films": [
-      {
-        "date": "2024-09-02",
-        "title": "Cats & Dogs",
-        "year": "2001",
-        "rating": 4,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/cats-dogs/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:45709",
-        "lid": "1UUq",
-        "slug": "cats-dogs"
-      }
-    ]
+    "date": "2026-09-03",
+    "films": []
   },
   "recent": [
     {
@@ -27378,17 +27363,17 @@
     },
     {
       "date": "2025-05-04",
-      "title": "The Robot Chicken: Star Wars",
+      "title": "Robot Chicken: Star Wars",
       "year": "2007",
       "rating": 2.5,
       "rewatch": false,
       "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/the-robot-chicken-star-wars/",
+      "url": "https://letterboxd.com/nichtlegacy/film/robot-chicken-star-wars/",
       "reviewed": false,
       "reviewUrl": null,
       "filmUid": "film:22143",
       "lid": "VBs",
-      "slug": "the-robot-chicken-star-wars"
+      "slug": "robot-chicken-star-wars"
     },
     {
       "date": "2025-05-04",
