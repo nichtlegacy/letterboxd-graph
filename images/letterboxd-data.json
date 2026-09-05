@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-04T03:47:55.535Z",
+  "generatedAt": "2026-09-05T03:39:01.564Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23155,8 +23155,23 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-04",
-    "films": []
+    "date": "2026-09-05",
+    "films": [
+      {
+        "date": "2025-09-05",
+        "title": "Bad Teacher",
+        "year": "2011",
+        "rating": 3,
+        "rewatch": true,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/bad-teacher/1/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:13439",
+        "lid": "yXA",
+        "slug": "bad-teacher"
+      }
+    ]
   },
   "recent": [
     {
