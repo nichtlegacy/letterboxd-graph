@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-06T03:40:47.020Z",
+  "generatedAt": "2026-09-07T03:40:26.262Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,11 +18,11 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 462,
-    "daysActive": 328,
+    "films": 464,
+    "daysActive": 330,
     "streak": 34,
     "streakFilms": 47,
-    "rewatches": 64,
+    "rewatches": 66,
     "liked": 26
   },
   "monthLabels": [
@@ -13227,10 +13227,24 @@
       "date": "2026-09-05",
       "week": 87,
       "weekday": 6,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Superbad",
+          "year": "2007",
+          "rating": 4,
+          "rewatch": true,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/superbad/1/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:47776",
+          "lid": "20hO",
+          "slug": "superbad"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/05/"
     },
@@ -13238,10 +13252,24 @@
       "date": "2026-09-06",
       "week": 88,
       "weekday": 0,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "It's What's Inside",
+          "year": "2024",
+          "rating": 4,
+          "rewatch": true,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/its-whats-inside/1/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:949053",
+          "lid": "DOV4",
+          "slug": "its-whats-inside"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/06/"
     },
@@ -23152,28 +23180,112 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/08/29/"
+    },
+    {
+      "date": "2026-09-05",
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "Superbad",
+          "year": "2007",
+          "rating": 4,
+          "rewatch": true,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/superbad/1/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:47776",
+          "lid": "20hO",
+          "slug": "superbad"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/05/"
+    },
+    {
+      "date": "2026-09-06",
+      "count": 1,
+      "ratingAvg": 4,
+      "films": [
+        {
+          "title": "It's What's Inside",
+          "year": "2024",
+          "rating": 4,
+          "rewatch": true,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/its-whats-inside/1/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:949053",
+          "lid": "DOV4",
+          "slug": "its-whats-inside"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/06/"
     }
   ],
   "onThisDay": {
-    "date": "2026-09-06",
+    "date": "2026-09-07",
     "films": [
       {
-        "date": "2025-09-06",
-        "title": "Nobody 2",
-        "year": "2025",
+        "date": "2024-09-07",
+        "title": "Despicable Me 4",
+        "year": "2024",
+        "rating": 4,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/despicable-me-4/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:448506",
+        "lid": "iOLG",
+        "slug": "despicable-me-4"
+      },
+      {
+        "date": "2024-09-07",
+        "title": "Adventureland",
+        "year": "2009",
         "rating": 3.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/nobody-2/",
+        "url": "https://letterboxd.com/nichtlegacy/film/adventureland/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:907861",
-        "lid": "C5Lc",
-        "slug": "nobody-2"
+        "filmUid": "film:41477",
+        "lid": "1JTQ",
+        "slug": "adventureland"
       }
     ]
   },
   "recent": [
+    {
+      "date": "2026-09-06",
+      "title": "It's What's Inside",
+      "year": "2024",
+      "rating": 4,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/its-whats-inside/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:949053",
+      "lid": "DOV4",
+      "slug": "its-whats-inside"
+    },
+    {
+      "date": "2026-09-05",
+      "title": "Superbad",
+      "year": "2007",
+      "rating": 4,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/superbad/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:47776",
+      "lid": "20hO",
+      "slug": "superbad"
+    },
     {
       "date": "2026-08-29",
       "title": "Dude, Where's My Car?",
@@ -23369,37 +23481,37 @@
       "filmUid": "film:371005",
       "lid": "fz9w",
       "slug": "minions-the-rise-of-gru"
-    },
-    {
-      "date": "2026-07-17",
-      "title": "What We Do in the Shadows",
-      "year": "2014",
-      "rating": 3,
-      "rewatch": false,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/what-we-do-in-the-shadows/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:172537",
-      "lid": "7eQy",
-      "slug": "what-we-do-in-the-shadows"
-    },
-    {
-      "date": "2026-07-15",
-      "title": "Scouts Guide to the Zombie Apocalypse",
-      "year": "2015",
-      "rating": 2.5,
-      "rewatch": false,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/scouts-guide-to-the-zombie-apocalypse/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:197624",
-      "lid": "8i6Q",
-      "slug": "scouts-guide-to-the-zombie-apocalypse"
     }
   ],
   "diary": [
+    {
+      "date": "2026-09-06",
+      "title": "It's What's Inside",
+      "year": "2024",
+      "rating": 4,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/its-whats-inside/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:949053",
+      "lid": "DOV4",
+      "slug": "its-whats-inside"
+    },
+    {
+      "date": "2026-09-05",
+      "title": "Superbad",
+      "year": "2007",
+      "rating": 4,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/superbad/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:47776",
+      "lid": "20hO",
+      "slug": "superbad"
+    },
     {
       "date": "2026-08-29",
       "title": "Dude, Where's My Car?",
@@ -33369,33 +33481,33 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 81,
-      "distinctFilms": 78,
+      "entries": 83,
+      "distinctFilms": 79,
       "firstEntry": "2026-01-01",
-      "lastEntry": "2026-08-29",
-      "spanDays": 241,
-      "daysActive": 65,
+      "lastEntry": "2026-09-06",
+      "spanDays": 249,
+      "daysActive": 67,
       "multiFilmDays": 11,
-      "rewatches": 16,
+      "rewatches": 18,
       "liked": 7,
-      "rated": 81,
+      "rated": 83,
       "releaseBreakdown": {
         "sameYear": 12,
-        "older": 69,
+        "older": 71,
         "other": 0
       },
       "watchBreakdown": {
         "firstWatches": 65,
-        "rewatches": 16
+        "rewatches": 18
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 81
+        "notReviewed": 83
       },
-      "averageRating": 3.3,
-      "perDay": 0.34,
-      "perWeek": 2.4,
-      "perMonth": 10.2,
+      "averageRating": 3.4,
+      "perDay": 0.33,
+      "perWeek": 2.3,
+      "perMonth": 10.1,
       "streak": {
         "length": 6,
         "startDate": "2026-03-28",
@@ -33414,18 +33526,18 @@
       "perYear": [
         {
           "year": 2026,
-          "films": 81,
-          "days": 65
+          "films": 83,
+          "days": 67
         }
       ],
       "perWeekday": [
-        15,
+        16,
         9,
         6,
         9,
         9,
         15,
-        18
+        19
       ],
       "perMonthOfYear": [
         18,
@@ -33436,7 +33548,7 @@
         4,
         12,
         6,
-        0,
+        2,
         0,
         0,
         0
@@ -33473,6 +33585,10 @@
         {
           "month": "2026-08",
           "count": 6
+        },
+        {
+          "month": "2026-09",
+          "count": 2
         }
       ],
       "weekSeries": [
@@ -33690,7 +33806,7 @@
           "week": 36,
           "start": "2026-08-31",
           "end": "2026-09-06",
-          "count": 0
+          "count": 2
         },
         {
           "week": 37,
@@ -33814,7 +33930,7 @@
         },
         {
           "rating": 4,
-          "count": 18
+          "count": 20
         },
         {
           "rating": 4.5,
@@ -33843,7 +33959,7 @@
         {
           "decade": 2000,
           "label": "2000s",
-          "count": 18,
+          "count": 19,
           "averageRating": 3
         },
         {
@@ -33855,7 +33971,7 @@
         {
           "decade": 2020,
           "label": "2020s",
-          "count": 31,
+          "count": 32,
           "averageRating": 3.5
         }
       ],
@@ -33868,6 +33984,16 @@
           "lid": "HG9a",
           "slug": "nirvanna-the-band-the-show-the-movie",
           "views": 3,
+          "averageRating": 4
+        },
+        {
+          "title": "It's What's Inside",
+          "year": "2024",
+          "url": "https://letterboxd.com/nichtlegacy/film/its-whats-inside/",
+          "filmUid": "film:949053",
+          "lid": "DOV4",
+          "slug": "its-whats-inside",
+          "views": 2,
           "averageRating": 4
         },
         {
@@ -33940,18 +34066,18 @@
           "slug": "spider-man-brand-new-day"
         },
         {
-          "n": 81,
+          "n": 83,
           "kind": "latest",
-          "date": "2026-08-29",
-          "title": "Dude, Where's My Car?",
-          "year": "2000",
-          "rating": 3.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/3/",
+          "date": "2026-09-06",
+          "title": "It's What's Inside",
+          "year": "2024",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/its-whats-inside/1/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:47562",
-          "lid": "1ZJi",
-          "slug": "dude-wheres-my-car"
+          "filmUid": "film:949053",
+          "lid": "DOV4",
+          "slug": "its-whats-inside"
         }
       ]
     }
@@ -33959,33 +34085,33 @@
   "allTime": {
     "scope": "all",
     "films": 629,
-    "entries": 605,
+    "entries": 607,
     "distinctFilms": 538,
     "firstEntry": "2024-02-22",
-    "lastEntry": "2026-08-29",
-    "spanDays": 920,
-    "daysActive": 433,
+    "lastEntry": "2026-09-06",
+    "spanDays": 928,
+    "daysActive": 435,
     "multiFilmDays": 134,
-    "rewatches": 85,
+    "rewatches": 87,
     "liked": 57,
-    "rated": 605,
+    "rated": 607,
     "releaseBreakdown": {
       "sameYear": 58,
-      "older": 547,
+      "older": 549,
       "other": 0
     },
     "watchBreakdown": {
       "firstWatches": 520,
-      "rewatches": 85
+      "rewatches": 87
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 604
+      "notReviewed": 606
     },
     "averageRating": 3.3,
-    "perDay": 0.66,
+    "perDay": 0.65,
     "perWeek": 4.6,
-    "perMonth": 20,
+    "perMonth": 19.9,
     "streak": {
       "length": 34,
       "startDate": "2025-01-27",
@@ -34014,18 +34140,18 @@
       },
       {
         "year": 2026,
-        "films": 81,
-        "days": 65
+        "films": 83,
+        "days": 67
       }
     ],
     "perWeekday": [
-      89,
+      90,
       84,
       70,
       82,
       88,
       90,
-      102
+      103
     ],
     "perMonthOfYear": [
       71,
@@ -34036,7 +34162,7 @@
       45,
       51,
       24,
-      27,
+      29,
       59,
       39,
       49
@@ -34165,6 +34291,10 @@
       {
         "month": "2026-08",
         "count": 6
+      },
+      {
+        "month": "2026-09",
+        "count": 2
       }
     ],
     "weekSeries": [],
@@ -34195,7 +34325,7 @@
       },
       {
         "rating": 4,
-        "count": 125
+        "count": 127
       },
       {
         "rating": 4.5,
@@ -34234,7 +34364,7 @@
       {
         "decade": 2000,
         "label": "2000s",
-        "count": 221,
+        "count": 222,
         "averageRating": 3
       },
       {
@@ -34246,7 +34376,7 @@
       {
         "decade": 2020,
         "label": "2020s",
-        "count": 118,
+        "count": 119,
         "averageRating": 3.5
       }
     ],
@@ -34522,6 +34652,16 @@
         "averageRating": 4
       },
       {
+        "title": "It's What's Inside",
+        "year": "2024",
+        "url": "https://letterboxd.com/nichtlegacy/film/its-whats-inside/",
+        "filmUid": "film:949053",
+        "lid": "DOV4",
+        "slug": "its-whats-inside",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
         "title": "Man on the Moon",
         "year": "1999",
         "url": "https://letterboxd.com/nichtlegacy/film/man-on-the-moon/",
@@ -34590,6 +34730,16 @@
         "slug": "super-troopers",
         "views": 2,
         "averageRating": 3
+      },
+      {
+        "title": "Superbad",
+        "year": "2007",
+        "url": "https://letterboxd.com/nichtlegacy/film/superbad/",
+        "filmUid": "film:47776",
+        "lid": "20hO",
+        "slug": "superbad",
+        "views": 2,
+        "averageRating": 4.5
       },
       {
         "title": "Ted 2",
@@ -34767,18 +34917,18 @@
         "slug": "the-tunnel-to-summer-the-exit-of-goodbyes"
       },
       {
-        "n": 605,
+        "n": 607,
         "kind": "latest",
-        "date": "2026-08-29",
-        "title": "Dude, Where's My Car?",
-        "year": "2000",
-        "rating": 3.5,
-        "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/3/",
+        "date": "2026-09-06",
+        "title": "It's What's Inside",
+        "year": "2024",
+        "rating": 4,
+        "url": "https://letterboxd.com/nichtlegacy/film/its-whats-inside/1/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:47562",
-        "lid": "1ZJi",
-        "slug": "dude-wheres-my-car"
+        "filmUid": "film:949053",
+        "lid": "DOV4",
+        "slug": "its-whats-inside"
       }
     ]
   }

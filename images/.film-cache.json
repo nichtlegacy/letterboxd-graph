@@ -168,6 +168,18 @@
       "runtime": 127,
       "averageRating": 3.94,
       "fetchedAt": "2026-08-31T14:31:55.832Z"
+    },
+    "https://letterboxd.com/film/its-whats-inside/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/9/4/9/0/5/3/949053-its-whats-inside-0-600-0-900-crop.jpg?v=ea1abf3c49",
+      "runtime": 105,
+      "averageRating": 3.47,
+      "fetchedAt": "2026-09-07T03:40:26.938Z"
+    },
+    "https://letterboxd.com/film/superbad/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/4/7/7/7/6/47776-superbad-0-600-0-900-crop.jpg?v=b43686efcb",
+      "runtime": 113,
+      "averageRating": 3.88,
+      "fetchedAt": "2026-09-07T03:40:27.054Z"
     }
   }
 }
