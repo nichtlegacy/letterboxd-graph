@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-07T03:40:26.262Z",
+  "generatedAt": "2026-09-08T03:45:05.354Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23225,35 +23225,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-07",
+    "date": "2026-09-08",
     "films": [
       {
-        "date": "2024-09-07",
-        "title": "Despicable Me 4",
-        "year": "2024",
-        "rating": 4,
+        "date": "2025-09-08",
+        "title": "Bubble Boy",
+        "year": "2001",
+        "rating": 3,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/despicable-me-4/",
+        "url": "https://letterboxd.com/nichtlegacy/film/bubble-boy/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:448506",
-        "lid": "iOLG",
-        "slug": "despicable-me-4"
-      },
-      {
-        "date": "2024-09-07",
-        "title": "Adventureland",
-        "year": "2009",
-        "rating": 3.5,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/adventureland/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:41477",
-        "lid": "1JTQ",
-        "slug": "adventureland"
+        "filmUid": "film:46921",
+        "lid": "1Y3U",
+        "slug": "bubble-boy"
       }
     ]
   },
