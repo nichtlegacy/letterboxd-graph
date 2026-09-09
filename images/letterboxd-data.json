@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-08T03:45:05.354Z",
+  "generatedAt": "2026-09-09T03:50:00.029Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23225,23 +23225,8 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-08",
-    "films": [
-      {
-        "date": "2025-09-08",
-        "title": "Bubble Boy",
-        "year": "2001",
-        "rating": 3,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/bubble-boy/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:46921",
-        "lid": "1Y3U",
-        "slug": "bubble-boy"
-      }
-    ]
+    "date": "2026-09-09",
+    "films": []
   },
   "recent": [
     {
