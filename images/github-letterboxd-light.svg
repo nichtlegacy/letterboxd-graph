@@ -560,10 +560,10 @@
           fill="#40c463" style="animation-delay:148ms"
         />
         <g class="tooltip-group" transform="translate(221, -47)">
-          <rect x="0" y="0" width="490" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <rect x="0" y="0" width="448" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Mon, 30. Mar 2026: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• Shriek If You Know What I Did Last Friday the Thirteenth (2000) - 2★</tspan>
+            <tspan x="10" dy="18">• Shriek If You Know What I Did Last Friday the 13th (2000) - 2★</tspan>
           </text>
         </g>
       </a>

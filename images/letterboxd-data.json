@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-09T03:50:00.029Z",
+  "generatedAt": "2026-09-10T03:48:45.181Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -10792,17 +10792,17 @@
       "ratingAvg": 2,
       "films": [
         {
-          "title": "Shriek If You Know What I Did Last Friday the Thirteenth",
+          "title": "Shriek If You Know What I Did Last Friday the 13th",
           "year": "2000",
           "rating": 2,
           "rewatch": false,
           "liked": false,
-          "url": "https://letterboxd.com/nichtlegacy/film/shriek-if-you-know-what-i-did-last-friday-the-thirteenth/",
+          "url": "https://letterboxd.com/nichtlegacy/film/shriek-if-you-know-what-i-did-last-friday/",
           "reviewed": false,
           "reviewUrl": null,
           "filmUid": "film:49461",
           "lid": "24FA",
-          "slug": "shriek-if-you-know-what-i-did-last-friday-the-thirteenth"
+          "slug": "shriek-if-you-know-what-i-did-last-friday"
         }
       ],
       "level": 1,
@@ -22217,17 +22217,17 @@
       "ratingAvg": 2,
       "films": [
         {
-          "title": "Shriek If You Know What I Did Last Friday the Thirteenth",
+          "title": "Shriek If You Know What I Did Last Friday the 13th",
           "year": "2000",
           "rating": 2,
           "rewatch": false,
           "liked": false,
-          "url": "https://letterboxd.com/nichtlegacy/film/shriek-if-you-know-what-i-did-last-friday-the-thirteenth/",
+          "url": "https://letterboxd.com/nichtlegacy/film/shriek-if-you-know-what-i-did-last-friday/",
           "reviewed": false,
           "reviewUrl": null,
           "filmUid": "film:49461",
           "lid": "24FA",
-          "slug": "shriek-if-you-know-what-i-did-last-friday-the-thirteenth"
+          "slug": "shriek-if-you-know-what-i-did-last-friday"
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/30/"
@@ -23225,8 +23225,23 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-09",
-    "films": []
+    "date": "2026-09-10",
+    "films": [
+      {
+        "date": "2025-09-10",
+        "title": "The Goods: Live Hard, Sell Hard",
+        "year": "2009",
+        "rating": 2.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/the-goods-live-hard-sell-hard/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:39353",
+        "lid": "1Eng",
+        "slug": "the-goods-live-hard-sell-hard"
+      }
+    ]
   },
   "recent": [
     {
@@ -24171,17 +24186,17 @@
     },
     {
       "date": "2026-03-30",
-      "title": "Shriek If You Know What I Did Last Friday the Thirteenth",
+      "title": "Shriek If You Know What I Did Last Friday the 13th",
       "year": "2000",
       "rating": 2,
       "rewatch": false,
       "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/shriek-if-you-know-what-i-did-last-friday-the-thirteenth/",
+      "url": "https://letterboxd.com/nichtlegacy/film/shriek-if-you-know-what-i-did-last-friday/",
       "reviewed": false,
       "reviewUrl": null,
       "filmUid": "film:49461",
       "lid": "24FA",
-      "slug": "shriek-if-you-know-what-i-did-last-friday-the-thirteenth"
+      "slug": "shriek-if-you-know-what-i-did-last-friday"
     },
     {
       "date": "2026-03-29",
