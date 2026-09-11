@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-10T03:48:45.181Z",
+  "generatedAt": "2026-09-11T03:45:41.595Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23225,23 +23225,8 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-10",
-    "films": [
-      {
-        "date": "2025-09-10",
-        "title": "The Goods: Live Hard, Sell Hard",
-        "year": "2009",
-        "rating": 2.5,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-goods-live-hard-sell-hard/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:39353",
-        "lid": "1Eng",
-        "slug": "the-goods-live-hard-sell-hard"
-      }
-    ]
+    "date": "2026-09-11",
+    "films": []
   },
   "recent": [
     {
