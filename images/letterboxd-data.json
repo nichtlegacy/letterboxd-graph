@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-11T03:45:41.595Z",
+  "generatedAt": "2026-09-12T03:49:02.570Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23225,8 +23225,37 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-11",
-    "films": []
+    "date": "2026-09-12",
+    "films": [
+      {
+        "date": "2024-09-12",
+        "title": "New Kids Turbo",
+        "year": "2010",
+        "rating": 4,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/new-kids-turbo/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:18828",
+        "lid": "MYM",
+        "slug": "new-kids-turbo"
+      },
+      {
+        "date": "2024-09-12",
+        "title": "Furiosa: A Mad Max Saga",
+        "year": "2024",
+        "rating": 4,
+        "rewatch": false,
+        "liked": true,
+        "url": "https://letterboxd.com/nichtlegacy/film/furiosa-a-mad-max-saga/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:705221",
+        "lid": "tABk",
+        "slug": "furiosa-a-mad-max-saga"
+      }
+    ]
   },
   "recent": [
     {
