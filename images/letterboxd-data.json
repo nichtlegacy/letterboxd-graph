@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-13T03:57:20.167Z",
+  "generatedAt": "2026-09-14T04:04:50.521Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23225,8 +23225,23 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-13",
-    "films": []
+    "date": "2026-09-14",
+    "films": [
+      {
+        "date": "2025-09-14",
+        "title": "Snatch",
+        "year": "2000",
+        "rating": 3,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/snatch/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:51943",
+        "lid": "2b7U",
+        "slug": "snatch"
+      }
+    ]
   },
   "recent": [
     {
