@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-14T04:04:50.521Z",
+  "generatedAt": "2026-09-15T04:03:42.194Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23225,21 +23225,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-14",
+    "date": "2026-09-15",
     "films": [
       {
-        "date": "2025-09-14",
-        "title": "Snatch",
-        "year": "2000",
+        "date": "2025-09-15",
+        "title": "Mystery Men",
+        "year": "1999",
+        "rating": 2.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/mystery-men/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:46790",
+        "lid": "1XIM",
+        "slug": "mystery-men"
+      },
+      {
+        "date": "2025-09-15",
+        "title": "Big Stan",
+        "year": "2007",
         "rating": 3,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/snatch/",
+        "url": "https://letterboxd.com/nichtlegacy/film/big-stan/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:51943",
-        "lid": "2b7U",
-        "slug": "snatch"
+        "filmUid": "film:44088",
+        "lid": "1QGY",
+        "slug": "big-stan"
       }
     ]
   },
