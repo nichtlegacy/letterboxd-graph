@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-16T04:00:51.351Z",
+  "generatedAt": "2026-09-17T04:07:38.696Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23225,8 +23225,37 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-16",
-    "films": []
+    "date": "2026-09-17",
+    "films": [
+      {
+        "date": "2025-09-17",
+        "title": "Ghostbusters",
+        "year": "1984",
+        "rating": 4,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/ghostbusters/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:6166",
+        "lid": "g2w",
+        "slug": "ghostbusters"
+      },
+      {
+        "date": "2024-09-17",
+        "title": "Late Night with the Devil",
+        "year": "2023",
+        "rating": 4,
+        "rewatch": false,
+        "liked": true,
+        "url": "https://letterboxd.com/nichtlegacy/film/late-night-with-the-devil/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:843415",
+        "lid": "zo6G",
+        "slug": "late-night-with-the-devil"
+      }
+    ]
   },
   "recent": [
     {
