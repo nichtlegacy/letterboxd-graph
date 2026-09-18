@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-17T04:07:38.696Z",
+  "generatedAt": "2026-09-18T03:53:21.564Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23225,35 +23225,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-17",
+    "date": "2026-09-18",
     "films": [
       {
-        "date": "2025-09-17",
-        "title": "Ghostbusters",
-        "year": "1984",
-        "rating": 4,
+        "date": "2025-09-18",
+        "title": "Kung Pow: Enter the Fist",
+        "year": "2002",
+        "rating": 2,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/ghostbusters/",
+        "url": "https://letterboxd.com/nichtlegacy/film/kung-pow-enter-the-fist/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:6166",
-        "lid": "g2w",
-        "slug": "ghostbusters"
-      },
-      {
-        "date": "2024-09-17",
-        "title": "Late Night with the Devil",
-        "year": "2023",
-        "rating": 4,
-        "rewatch": false,
-        "liked": true,
-        "url": "https://letterboxd.com/nichtlegacy/film/late-night-with-the-devil/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:843415",
-        "lid": "zo6G",
-        "slug": "late-night-with-the-devil"
+        "filmUid": "film:44915",
+        "lid": "1SQm",
+        "slug": "kung-pow-enter-the-fist"
       }
     ]
   },
