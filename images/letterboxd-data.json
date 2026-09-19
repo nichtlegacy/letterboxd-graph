@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-18T03:53:21.564Z",
+  "generatedAt": "2026-09-19T03:51:08.555Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23225,21 +23225,49 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-18",
+    "date": "2026-09-19",
     "films": [
       {
-        "date": "2025-09-18",
-        "title": "Kung Pow: Enter the Fist",
-        "year": "2002",
-        "rating": 2,
+        "date": "2025-09-19",
+        "title": "Paprika",
+        "year": "2006",
+        "rating": 3,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/kung-pow-enter-the-fist/",
+        "url": "https://letterboxd.com/nichtlegacy/film/paprika-2006/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:44915",
-        "lid": "1SQm",
-        "slug": "kung-pow-enter-the-fist"
+        "filmUid": "film:49023",
+        "lid": "23wW",
+        "slug": "paprika-2006"
+      },
+      {
+        "date": "2025-09-19",
+        "title": "(T)Raumschiff Surprise - Periode 1",
+        "year": "2004",
+        "rating": 3,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/traumschiff-surprise-periode-1/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:46807",
+        "lid": "1XLw",
+        "slug": "traumschiff-surprise-periode-1"
+      },
+      {
+        "date": "2024-09-19",
+        "title": "Incoming",
+        "year": "2024",
+        "rating": 3,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/incoming-2024/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:908689",
+        "lid": "C7UK",
+        "slug": "incoming-2024"
       }
     ]
   },
