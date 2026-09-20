@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-19T03:51:08.555Z",
+  "generatedAt": "2026-09-20T04:06:48.389Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,8 +18,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 464,
-    "daysActive": 330,
+    "films": 465,
+    "daysActive": 331,
     "streak": 34,
     "streakFilms": 47,
     "rewatches": 66,
@@ -13409,10 +13409,24 @@
       "date": "2026-09-19",
       "week": 89,
       "weekday": 6,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Sugar & Spice",
+          "year": "2001",
+          "rating": 3,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/sugar-spice/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:41417",
+          "lid": "1JKa",
+          "slug": "sugar-spice"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/19/"
     },
@@ -23222,56 +23236,63 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/06/"
+    },
+    {
+      "date": "2026-09-19",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Sugar & Spice",
+          "year": "2001",
+          "rating": 3,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/sugar-spice/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:41417",
+          "lid": "1JKa",
+          "slug": "sugar-spice"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/19/"
     }
   ],
   "onThisDay": {
-    "date": "2026-09-19",
+    "date": "2026-09-20",
     "films": [
       {
-        "date": "2025-09-19",
-        "title": "Paprika",
-        "year": "2006",
-        "rating": 3,
+        "date": "2025-09-20",
+        "title": "Loser",
+        "year": "2000",
+        "rating": 2.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/paprika-2006/",
+        "url": "https://letterboxd.com/nichtlegacy/film/loser/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:49023",
-        "lid": "23wW",
-        "slug": "paprika-2006"
-      },
-      {
-        "date": "2025-09-19",
-        "title": "(T)Raumschiff Surprise - Periode 1",
-        "year": "2004",
-        "rating": 3,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/traumschiff-surprise-periode-1/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:46807",
-        "lid": "1XLw",
-        "slug": "traumschiff-surprise-periode-1"
-      },
-      {
-        "date": "2024-09-19",
-        "title": "Incoming",
-        "year": "2024",
-        "rating": 3,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/incoming-2024/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:908689",
-        "lid": "C7UK",
-        "slug": "incoming-2024"
+        "filmUid": "film:46032",
+        "lid": "1VKw",
+        "slug": "loser"
       }
     ]
   },
   "recent": [
+    {
+      "date": "2026-09-19",
+      "title": "Sugar & Spice",
+      "year": "2001",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/sugar-spice/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:41417",
+      "lid": "1JKa",
+      "slug": "sugar-spice"
+    },
     {
       "date": "2026-09-06",
       "title": "It's What's Inside",
@@ -23481,23 +23502,23 @@
       "filmUid": "film:150541",
       "lid": "6jCO",
       "slug": "minions"
-    },
-    {
-      "date": "2026-07-19",
-      "title": "Minions: The Rise of Gru",
-      "year": "2022",
-      "rating": 3,
-      "rewatch": false,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/minions-the-rise-of-gru/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:371005",
-      "lid": "fz9w",
-      "slug": "minions-the-rise-of-gru"
     }
   ],
   "diary": [
+    {
+      "date": "2026-09-19",
+      "title": "Sugar & Spice",
+      "year": "2001",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/sugar-spice/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:41417",
+      "lid": "1JKa",
+      "slug": "sugar-spice"
+    },
     {
       "date": "2026-09-06",
       "title": "It's What's Inside",
@@ -33495,33 +33516,33 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 83,
-      "distinctFilms": 79,
+      "entries": 84,
+      "distinctFilms": 80,
       "firstEntry": "2026-01-01",
-      "lastEntry": "2026-09-06",
-      "spanDays": 249,
-      "daysActive": 67,
+      "lastEntry": "2026-09-19",
+      "spanDays": 262,
+      "daysActive": 68,
       "multiFilmDays": 11,
       "rewatches": 18,
       "liked": 7,
-      "rated": 83,
+      "rated": 84,
       "releaseBreakdown": {
         "sameYear": 12,
-        "older": 71,
+        "older": 72,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 65,
+        "firstWatches": 66,
         "rewatches": 18
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 83
+        "notReviewed": 84
       },
       "averageRating": 3.4,
-      "perDay": 0.33,
-      "perWeek": 2.3,
-      "perMonth": 10.1,
+      "perDay": 0.32,
+      "perWeek": 2.2,
+      "perMonth": 9.8,
       "streak": {
         "length": 6,
         "startDate": "2026-03-28",
@@ -33540,8 +33561,8 @@
       "perYear": [
         {
           "year": 2026,
-          "films": 83,
-          "days": 67
+          "films": 84,
+          "days": 68
         }
       ],
       "perWeekday": [
@@ -33551,7 +33572,7 @@
         9,
         9,
         15,
-        19
+        20
       ],
       "perMonthOfYear": [
         18,
@@ -33562,7 +33583,7 @@
         4,
         12,
         6,
-        2,
+        3,
         0,
         0,
         0
@@ -33602,7 +33623,7 @@
         },
         {
           "month": "2026-09",
-          "count": 2
+          "count": 3
         }
       ],
       "weekSeries": [
@@ -33832,7 +33853,7 @@
           "week": 38,
           "start": "2026-09-14",
           "end": "2026-09-20",
-          "count": 0
+          "count": 1
         },
         {
           "week": 39,
@@ -33936,7 +33957,7 @@
         },
         {
           "rating": 3,
-          "count": 24
+          "count": 25
         },
         {
           "rating": 3.5,
@@ -33973,7 +33994,7 @@
         {
           "decade": 2000,
           "label": "2000s",
-          "count": 19,
+          "count": 20,
           "averageRating": 3
         },
         {
@@ -34080,52 +34101,52 @@
           "slug": "spider-man-brand-new-day"
         },
         {
-          "n": 83,
+          "n": 84,
           "kind": "latest",
-          "date": "2026-09-06",
-          "title": "It's What's Inside",
-          "year": "2024",
-          "rating": 4,
-          "url": "https://letterboxd.com/nichtlegacy/film/its-whats-inside/1/",
+          "date": "2026-09-19",
+          "title": "Sugar & Spice",
+          "year": "2001",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/sugar-spice/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:949053",
-          "lid": "DOV4",
-          "slug": "its-whats-inside"
+          "filmUid": "film:41417",
+          "lid": "1JKa",
+          "slug": "sugar-spice"
         }
       ]
     }
   },
   "allTime": {
     "scope": "all",
-    "films": 629,
-    "entries": 607,
-    "distinctFilms": 538,
+    "films": 630,
+    "entries": 608,
+    "distinctFilms": 539,
     "firstEntry": "2024-02-22",
-    "lastEntry": "2026-09-06",
-    "spanDays": 928,
-    "daysActive": 435,
+    "lastEntry": "2026-09-19",
+    "spanDays": 941,
+    "daysActive": 436,
     "multiFilmDays": 134,
     "rewatches": 87,
     "liked": 57,
-    "rated": 607,
+    "rated": 608,
     "releaseBreakdown": {
       "sameYear": 58,
-      "older": 549,
+      "older": 550,
       "other": 0
     },
     "watchBreakdown": {
-      "firstWatches": 520,
+      "firstWatches": 521,
       "rewatches": 87
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 606
+      "notReviewed": 607
     },
     "averageRating": 3.3,
     "perDay": 0.65,
-    "perWeek": 4.6,
-    "perMonth": 19.9,
+    "perWeek": 4.5,
+    "perMonth": 19.7,
     "streak": {
       "length": 34,
       "startDate": "2025-01-27",
@@ -34154,8 +34175,8 @@
       },
       {
         "year": 2026,
-        "films": 83,
-        "days": 67
+        "films": 84,
+        "days": 68
       }
     ],
     "perWeekday": [
@@ -34165,7 +34186,7 @@
       82,
       88,
       90,
-      103
+      104
     ],
     "perMonthOfYear": [
       71,
@@ -34176,7 +34197,7 @@
       45,
       51,
       24,
-      29,
+      30,
       59,
       39,
       49
@@ -34308,7 +34329,7 @@
       },
       {
         "month": "2026-09",
-        "count": 2
+        "count": 3
       }
     ],
     "weekSeries": [],
@@ -34331,7 +34352,7 @@
       },
       {
         "rating": 3,
-        "count": 170
+        "count": 171
       },
       {
         "rating": 3.5,
@@ -34378,7 +34399,7 @@
       {
         "decade": 2000,
         "label": "2000s",
-        "count": 222,
+        "count": 223,
         "averageRating": 3
       },
       {
@@ -34931,18 +34952,18 @@
         "slug": "the-tunnel-to-summer-the-exit-of-goodbyes"
       },
       {
-        "n": 607,
+        "n": 608,
         "kind": "latest",
-        "date": "2026-09-06",
-        "title": "It's What's Inside",
-        "year": "2024",
-        "rating": 4,
-        "url": "https://letterboxd.com/nichtlegacy/film/its-whats-inside/1/",
+        "date": "2026-09-19",
+        "title": "Sugar & Spice",
+        "year": "2001",
+        "rating": 3,
+        "url": "https://letterboxd.com/nichtlegacy/film/sugar-spice/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:949053",
-        "lid": "DOV4",
-        "slug": "its-whats-inside"
+        "filmUid": "film:41417",
+        "lid": "1JKa",
+        "slug": "sugar-spice"
       }
     ]
   }

@@ -180,6 +180,12 @@
       "runtime": 113,
       "averageRating": 3.88,
       "fetchedAt": "2026-09-07T03:40:27.054Z"
+    },
+    "https://letterboxd.com/film/sugar-spice/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/4/1/4/1/7/41417-sugar-spice-0-600-0-900-crop.jpg?v=7c98a835c3",
+      "runtime": 81,
+      "averageRating": 3.56,
+      "fetchedAt": "2026-09-20T04:06:48.957Z"
     }
   }
 }
