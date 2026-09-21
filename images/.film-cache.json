@@ -186,6 +186,12 @@
       "runtime": 81,
       "averageRating": 3.56,
       "fetchedAt": "2026-09-20T04:06:48.957Z"
+    },
+    "https://letterboxd.com/film/yes-man/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/4/6/4/5/0/46450-yes-man-0-600-0-900-crop.jpg?v=57249aaf75",
+      "runtime": 104,
+      "averageRating": 3.19,
+      "fetchedAt": "2026-09-21T04:04:17.495Z"
     }
   }
 }

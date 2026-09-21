@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-20T04:06:48.389Z",
+  "generatedAt": "2026-09-21T04:04:16.933Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,8 +18,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 465,
-    "daysActive": 331,
+    "films": 467,
+    "daysActive": 332,
     "streak": 34,
     "streakFilms": 47,
     "rewatches": 66,
@@ -13409,9 +13409,22 @@
       "date": "2026-09-19",
       "week": 89,
       "weekday": 6,
-      "count": 1,
+      "count": 2,
       "ratingAvg": 3,
       "films": [
+        {
+          "title": "Yes Man",
+          "year": "2008",
+          "rating": 3,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/yes-man/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:46450",
+          "lid": "1WPW",
+          "slug": "yes-man"
+        },
         {
           "title": "Sugar & Spice",
           "year": "2001",
@@ -13426,7 +13439,7 @@
           "slug": "sugar-spice"
         }
       ],
-      "level": 1,
+      "level": 2,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/19/"
     },
@@ -13434,10 +13447,24 @@
       "date": "2026-09-20",
       "week": 90,
       "weekday": 0,
-      "count": 0,
+      "count": 1,
       "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "films": [
+        {
+          "title": "Crime 101",
+          "year": "2026",
+          "rating": null,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/crime-101/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:1058132",
+          "lid": "IoGs",
+          "slug": "crime-101"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/20/"
     },
@@ -23239,9 +23266,22 @@
     },
     {
       "date": "2026-09-19",
-      "count": 1,
+      "count": 2,
       "ratingAvg": 3,
       "films": [
+        {
+          "title": "Yes Man",
+          "year": "2008",
+          "rating": 3,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/yes-man/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:46450",
+          "lid": "1WPW",
+          "slug": "yes-man"
+        },
         {
           "title": "Sugar & Spice",
           "year": "2001",
@@ -23257,28 +23297,77 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/19/"
+    },
+    {
+      "date": "2026-09-20",
+      "count": 1,
+      "ratingAvg": null,
+      "films": [
+        {
+          "title": "Crime 101",
+          "year": "2026",
+          "rating": null,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/crime-101/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:1058132",
+          "lid": "IoGs",
+          "slug": "crime-101"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/20/"
     }
   ],
   "onThisDay": {
-    "date": "2026-09-20",
+    "date": "2026-09-21",
     "films": [
       {
-        "date": "2025-09-20",
-        "title": "Loser",
-        "year": "2000",
-        "rating": 2.5,
+        "date": "2024-09-21",
+        "title": "Pulp Fiction",
+        "year": "1994",
+        "rating": 4,
         "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/loser/",
+        "liked": true,
+        "url": "https://letterboxd.com/nichtlegacy/film/pulp-fiction/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:46032",
-        "lid": "1VKw",
-        "slug": "loser"
+        "filmUid": "film:51444",
+        "lid": "29Pq",
+        "slug": "pulp-fiction"
       }
     ]
   },
   "recent": [
+    {
+      "date": "2026-09-20",
+      "title": "Crime 101",
+      "year": "2026",
+      "rating": null,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/crime-101/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:1058132",
+      "lid": "IoGs",
+      "slug": "crime-101"
+    },
+    {
+      "date": "2026-09-19",
+      "title": "Yes Man",
+      "year": "2008",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/yes-man/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:46450",
+      "lid": "1WPW",
+      "slug": "yes-man"
+    },
     {
       "date": "2026-09-19",
       "title": "Sugar & Spice",
@@ -23474,37 +23563,37 @@
       "filmUid": "film:1255394",
       "lid": "QFQU",
       "slug": "the-odyssey-2026"
-    },
-    {
-      "date": "2026-07-19",
-      "title": "Jay and Silent Bob Strike Back",
-      "year": "2001",
-      "rating": 3.5,
-      "rewatch": true,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/jay-and-silent-bob-strike-back/2/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:50355",
-      "lid": "26ZM",
-      "slug": "jay-and-silent-bob-strike-back"
-    },
-    {
-      "date": "2026-07-19",
-      "title": "Minions",
-      "year": "2015",
-      "rating": 3.5,
-      "rewatch": false,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/minions/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:150541",
-      "lid": "6jCO",
-      "slug": "minions"
     }
   ],
   "diary": [
+    {
+      "date": "2026-09-20",
+      "title": "Crime 101",
+      "year": "2026",
+      "rating": null,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/crime-101/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:1058132",
+      "lid": "IoGs",
+      "slug": "crime-101"
+    },
+    {
+      "date": "2026-09-19",
+      "title": "Yes Man",
+      "year": "2008",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/yes-man/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:46450",
+      "lid": "1WPW",
+      "slug": "yes-man"
+    },
     {
       "date": "2026-09-19",
       "title": "Sugar & Spice",
@@ -33516,33 +33605,33 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 84,
-      "distinctFilms": 80,
+      "entries": 86,
+      "distinctFilms": 82,
       "firstEntry": "2026-01-01",
-      "lastEntry": "2026-09-19",
-      "spanDays": 262,
-      "daysActive": 68,
-      "multiFilmDays": 11,
+      "lastEntry": "2026-09-20",
+      "spanDays": 263,
+      "daysActive": 69,
+      "multiFilmDays": 12,
       "rewatches": 18,
       "liked": 7,
-      "rated": 84,
+      "rated": 85,
       "releaseBreakdown": {
-        "sameYear": 12,
-        "older": 72,
+        "sameYear": 13,
+        "older": 73,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 66,
+        "firstWatches": 68,
         "rewatches": 18
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 84
+        "notReviewed": 86
       },
       "averageRating": 3.4,
-      "perDay": 0.32,
-      "perWeek": 2.2,
-      "perMonth": 9.8,
+      "perDay": 0.33,
+      "perWeek": 2.3,
+      "perMonth": 10,
       "streak": {
         "length": 6,
         "startDate": "2026-03-28",
@@ -33561,18 +33650,18 @@
       "perYear": [
         {
           "year": 2026,
-          "films": 84,
-          "days": 68
+          "films": 86,
+          "days": 69
         }
       ],
       "perWeekday": [
-        16,
+        17,
         9,
         6,
         9,
         9,
         15,
-        20
+        21
       ],
       "perMonthOfYear": [
         18,
@@ -33583,7 +33672,7 @@
         4,
         12,
         6,
-        3,
+        5,
         0,
         0,
         0
@@ -33623,7 +33712,7 @@
         },
         {
           "month": "2026-09",
-          "count": 3
+          "count": 5
         }
       ],
       "weekSeries": [
@@ -33853,7 +33942,7 @@
           "week": 38,
           "start": "2026-09-14",
           "end": "2026-09-20",
-          "count": 1
+          "count": 3
         },
         {
           "week": 39,
@@ -33957,7 +34046,7 @@
         },
         {
           "rating": 3,
-          "count": 25
+          "count": 26
         },
         {
           "rating": 3.5,
@@ -33994,7 +34083,7 @@
         {
           "decade": 2000,
           "label": "2000s",
-          "count": 20,
+          "count": 21,
           "averageRating": 3
         },
         {
@@ -34006,7 +34095,7 @@
         {
           "decade": 2020,
           "label": "2020s",
-          "count": 32,
+          "count": 33,
           "averageRating": 3.5
         }
       ],
@@ -34101,47 +34190,47 @@
           "slug": "spider-man-brand-new-day"
         },
         {
-          "n": 84,
+          "n": 86,
           "kind": "latest",
-          "date": "2026-09-19",
-          "title": "Sugar & Spice",
-          "year": "2001",
-          "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/sugar-spice/",
+          "date": "2026-09-20",
+          "title": "Crime 101",
+          "year": "2026",
+          "rating": null,
+          "url": "https://letterboxd.com/nichtlegacy/film/crime-101/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:41417",
-          "lid": "1JKa",
-          "slug": "sugar-spice"
+          "filmUid": "film:1058132",
+          "lid": "IoGs",
+          "slug": "crime-101"
         }
       ]
     }
   },
   "allTime": {
     "scope": "all",
-    "films": 630,
-    "entries": 608,
-    "distinctFilms": 539,
+    "films": 632,
+    "entries": 610,
+    "distinctFilms": 541,
     "firstEntry": "2024-02-22",
-    "lastEntry": "2026-09-19",
-    "spanDays": 941,
-    "daysActive": 436,
-    "multiFilmDays": 134,
+    "lastEntry": "2026-09-20",
+    "spanDays": 942,
+    "daysActive": 437,
+    "multiFilmDays": 135,
     "rewatches": 87,
     "liked": 57,
-    "rated": 608,
+    "rated": 609,
     "releaseBreakdown": {
-      "sameYear": 58,
-      "older": 550,
+      "sameYear": 59,
+      "older": 551,
       "other": 0
     },
     "watchBreakdown": {
-      "firstWatches": 521,
+      "firstWatches": 523,
       "rewatches": 87
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 607
+      "notReviewed": 609
     },
     "averageRating": 3.3,
     "perDay": 0.65,
@@ -34175,18 +34264,18 @@
       },
       {
         "year": 2026,
-        "films": 84,
-        "days": 68
+        "films": 86,
+        "days": 69
       }
     ],
     "perWeekday": [
-      90,
+      91,
       84,
       70,
       82,
       88,
       90,
-      104
+      105
     ],
     "perMonthOfYear": [
       71,
@@ -34197,7 +34286,7 @@
       45,
       51,
       24,
-      30,
+      32,
       59,
       39,
       49
@@ -34329,7 +34418,7 @@
       },
       {
         "month": "2026-09",
-        "count": 3
+        "count": 5
       }
     ],
     "weekSeries": [],
@@ -34352,7 +34441,7 @@
       },
       {
         "rating": 3,
-        "count": 171
+        "count": 172
       },
       {
         "rating": 3.5,
@@ -34399,7 +34488,7 @@
       {
         "decade": 2000,
         "label": "2000s",
-        "count": 223,
+        "count": 224,
         "averageRating": 3
       },
       {
@@ -34411,7 +34500,7 @@
       {
         "decade": 2020,
         "label": "2020s",
-        "count": 119,
+        "count": 120,
         "averageRating": 3.5
       }
     ],
@@ -34952,18 +35041,18 @@
         "slug": "the-tunnel-to-summer-the-exit-of-goodbyes"
       },
       {
-        "n": 608,
+        "n": 610,
         "kind": "latest",
-        "date": "2026-09-19",
-        "title": "Sugar & Spice",
-        "year": "2001",
-        "rating": 3,
-        "url": "https://letterboxd.com/nichtlegacy/film/sugar-spice/",
+        "date": "2026-09-20",
+        "title": "Crime 101",
+        "year": "2026",
+        "rating": null,
+        "url": "https://letterboxd.com/nichtlegacy/film/crime-101/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:41417",
-        "lid": "1JKa",
-        "slug": "sugar-spice"
+        "filmUid": "film:1058132",
+        "lid": "IoGs",
+        "slug": "crime-101"
       }
     ]
   }
