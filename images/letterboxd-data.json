@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-21T04:04:16.933Z",
+  "generatedAt": "2026-09-22T04:01:25.554Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23321,21 +23321,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-21",
+    "date": "2026-09-22",
     "films": [
       {
-        "date": "2024-09-21",
-        "title": "Pulp Fiction",
-        "year": "1994",
+        "date": "2025-09-22",
+        "title": "The Naked Gun",
+        "year": "2025",
         "rating": 4,
-        "rewatch": false,
-        "liked": true,
-        "url": "https://letterboxd.com/nichtlegacy/film/pulp-fiction/",
+        "rewatch": true,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/the-naked-gun/1/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:51444",
-        "lid": "29Pq",
-        "slug": "pulp-fiction"
+        "filmUid": "film:933381",
+        "lid": "Da9k",
+        "slug": "the-naked-gun"
+      },
+      {
+        "date": "2024-09-22",
+        "title": "Smiley Face",
+        "year": "2007",
+        "rating": 4,
+        "rewatch": true,
+        "liked": true,
+        "url": "https://letterboxd.com/nichtlegacy/film/smiley-face/1/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:44082",
+        "lid": "1QG0",
+        "slug": "smiley-face"
       }
     ]
   },
