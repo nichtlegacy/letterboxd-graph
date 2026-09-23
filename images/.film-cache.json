@@ -192,6 +192,12 @@
       "runtime": 104,
       "averageRating": 3.19,
       "fetchedAt": "2026-09-21T04:04:17.495Z"
+    },
+    "https://letterboxd.com/film/crime-101/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/5/8/1/3/2/1058132-crime-101-0-600-0-900-crop.jpg?v=eaba4b3224",
+      "runtime": 141,
+      "averageRating": 3.09,
+      "fetchedAt": "2026-09-23T03:58:43.484Z"
     }
   }
 }

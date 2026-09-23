@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-22T04:01:25.554Z",
+  "generatedAt": "2026-09-23T03:58:43.005Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -13448,12 +13448,12 @@
       "week": 90,
       "weekday": 0,
       "count": 1,
-      "ratingAvg": null,
+      "ratingAvg": 3,
       "films": [
         {
           "title": "Crime 101",
           "year": "2026",
-          "rating": null,
+          "rating": 3,
           "rewatch": false,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/crime-101/",
@@ -23301,12 +23301,12 @@
     {
       "date": "2026-09-20",
       "count": 1,
-      "ratingAvg": null,
+      "ratingAvg": 3,
       "films": [
         {
           "title": "Crime 101",
           "year": "2026",
-          "rating": null,
+          "rating": 3,
           "rewatch": false,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/crime-101/",
@@ -23321,35 +23321,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-22",
+    "date": "2026-09-23",
     "films": [
       {
-        "date": "2025-09-22",
-        "title": "The Naked Gun",
-        "year": "2025",
-        "rating": 4,
-        "rewatch": true,
+        "date": "2025-09-23",
+        "title": "The SpongeBob Movie: Sponge on the Run",
+        "year": "2020",
+        "rating": 3.5,
+        "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-naked-gun/1/",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-spongebob-movie-sponge-on-the-run/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:933381",
-        "lid": "Da9k",
-        "slug": "the-naked-gun"
-      },
-      {
-        "date": "2024-09-22",
-        "title": "Smiley Face",
-        "year": "2007",
-        "rating": 4,
-        "rewatch": true,
-        "liked": true,
-        "url": "https://letterboxd.com/nichtlegacy/film/smiley-face/1/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:44082",
-        "lid": "1QG0",
-        "slug": "smiley-face"
+        "filmUid": "film:334268",
+        "lid": "e1Ac",
+        "slug": "the-spongebob-movie-sponge-on-the-run"
       }
     ]
   },
@@ -23358,7 +23344,7 @@
       "date": "2026-09-20",
       "title": "Crime 101",
       "year": "2026",
-      "rating": null,
+      "rating": 3,
       "rewatch": false,
       "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/crime-101/",
@@ -23584,7 +23570,7 @@
       "date": "2026-09-20",
       "title": "Crime 101",
       "year": "2026",
-      "rating": null,
+      "rating": 3,
       "rewatch": false,
       "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/crime-101/",
@@ -33628,7 +33614,7 @@
       "multiFilmDays": 12,
       "rewatches": 18,
       "liked": 7,
-      "rated": 85,
+      "rated": 86,
       "releaseBreakdown": {
         "sameYear": 13,
         "older": 73,
@@ -33642,7 +33628,7 @@
         "reviewed": 0,
         "notReviewed": 86
       },
-      "averageRating": 3.4,
+      "averageRating": 3.3,
       "perDay": 0.33,
       "perWeek": 2.3,
       "perMonth": 10,
@@ -34060,7 +34046,7 @@
         },
         {
           "rating": 3,
-          "count": 26
+          "count": 27
         },
         {
           "rating": 3.5,
@@ -34209,7 +34195,7 @@
           "date": "2026-09-20",
           "title": "Crime 101",
           "year": "2026",
-          "rating": null,
+          "rating": 3,
           "url": "https://letterboxd.com/nichtlegacy/film/crime-101/",
           "reviewed": false,
           "reviewUrl": null,
@@ -34232,7 +34218,7 @@
     "multiFilmDays": 135,
     "rewatches": 87,
     "liked": 57,
-    "rated": 609,
+    "rated": 610,
     "releaseBreakdown": {
       "sameYear": 59,
       "older": 551,
@@ -34455,7 +34441,7 @@
       },
       {
         "rating": 3,
-        "count": 172
+        "count": 173
       },
       {
         "rating": 3.5,
@@ -35060,7 +35046,7 @@
         "date": "2026-09-20",
         "title": "Crime 101",
         "year": "2026",
-        "rating": null,
+        "rating": 3,
         "url": "https://letterboxd.com/nichtlegacy/film/crime-101/",
         "reviewed": false,
         "reviewUrl": null,
