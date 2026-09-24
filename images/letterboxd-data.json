@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-23T03:58:43.005Z",
+  "generatedAt": "2026-09-24T03:52:33.811Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23321,21 +23321,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-23",
+    "date": "2026-09-24",
     "films": [
       {
-        "date": "2025-09-23",
-        "title": "The SpongeBob Movie: Sponge on the Run",
-        "year": "2020",
-        "rating": 3.5,
+        "date": "2025-09-24",
+        "title": "The Fast and the Furious",
+        "year": "2001",
+        "rating": 3,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-spongebob-movie-sponge-on-the-run/",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-fast-and-the-furious-2001/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:334268",
-        "lid": "e1Ac",
-        "slug": "the-spongebob-movie-sponge-on-the-run"
+        "filmUid": "film:46813",
+        "lid": "1XMu",
+        "slug": "the-fast-and-the-furious-2001"
       }
     ]
   },
