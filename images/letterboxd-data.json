@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-24T03:52:33.811Z",
+  "generatedAt": "2026-09-25T04:07:31.536Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23321,21 +23321,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-24",
+    "date": "2026-09-25",
     "films": [
       {
-        "date": "2025-09-24",
-        "title": "The Fast and the Furious",
-        "year": "2001",
-        "rating": 3,
+        "date": "2024-09-25",
+        "title": "Neighbors",
+        "year": "2014",
+        "rating": 3.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-fast-and-the-furious-2001/",
+        "url": "https://letterboxd.com/nichtlegacy/film/neighbors-2014/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:46813",
-        "lid": "1XMu",
-        "slug": "the-fast-and-the-furious-2001"
+        "filmUid": "film:140512",
+        "lid": "5Txe",
+        "slug": "neighbors-2014"
       }
     ]
   },
