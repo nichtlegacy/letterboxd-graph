@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-25T04:07:31.536Z",
+  "generatedAt": "2026-09-26T04:12:09.511Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23321,21 +23321,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-25",
+    "date": "2026-09-26",
     "films": [
       {
-        "date": "2024-09-25",
-        "title": "Neighbors",
-        "year": "2014",
-        "rating": 3.5,
+        "date": "2024-09-26",
+        "title": "Neighbors 2: Sorority Rising",
+        "year": "2016",
+        "rating": 3,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/neighbors-2014/",
+        "url": "https://letterboxd.com/nichtlegacy/film/neighbors-2-sorority-rising/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:140512",
-        "lid": "5Txe",
-        "slug": "neighbors-2014"
+        "filmUid": "film:252216",
+        "lid": "aA80",
+        "slug": "neighbors-2-sorority-rising"
       }
     ]
   },
