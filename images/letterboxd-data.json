@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-26T04:12:09.511Z",
+  "generatedAt": "2026-09-27T04:27:27.264Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,8 +18,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 467,
-    "daysActive": 332,
+    "films": 468,
+    "daysActive": 333,
     "streak": 34,
     "streakFilms": 47,
     "rewatches": 66,
@@ -13516,10 +13516,24 @@
       "date": "2026-09-25",
       "week": 90,
       "weekday": 5,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "The Mitchells vs. the Machines",
+          "year": "2021",
+          "rating": 2.5,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-mitchells-vs-the-machines/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:431888",
+          "lid": "i7xm",
+          "slug": "the-mitchells-vs-the-machines"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/25/"
     },
@@ -23318,28 +23332,63 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/20/"
+    },
+    {
+      "date": "2026-09-25",
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "The Mitchells vs. the Machines",
+          "year": "2021",
+          "rating": 2.5,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-mitchells-vs-the-machines/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:431888",
+          "lid": "i7xm",
+          "slug": "the-mitchells-vs-the-machines"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/25/"
     }
   ],
   "onThisDay": {
-    "date": "2026-09-26",
+    "date": "2026-09-27",
     "films": [
       {
-        "date": "2024-09-26",
-        "title": "Neighbors 2: Sorority Rising",
-        "year": "2016",
-        "rating": 3,
+        "date": "2024-09-27",
+        "title": "Kick-Ass",
+        "year": "2010",
+        "rating": 3.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/neighbors-2-sorority-rising/",
+        "url": "https://letterboxd.com/nichtlegacy/film/kick-ass/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:252216",
-        "lid": "aA80",
-        "slug": "neighbors-2-sorority-rising"
+        "filmUid": "film:37354",
+        "lid": "1zaQ",
+        "slug": "kick-ass"
       }
     ]
   },
   "recent": [
+    {
+      "date": "2026-09-25",
+      "title": "The Mitchells vs. the Machines",
+      "year": "2021",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-mitchells-vs-the-machines/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:431888",
+      "lid": "i7xm",
+      "slug": "the-mitchells-vs-the-machines"
+    },
     {
       "date": "2026-09-20",
       "title": "Crime 101",
@@ -23549,23 +23598,23 @@
       "filmUid": "film:420473",
       "lid": "hDQe",
       "slug": "never-goin-back"
-    },
-    {
-      "date": "2026-07-21",
-      "title": "The Odyssey",
-      "year": "2026",
-      "rating": 4.5,
-      "rewatch": false,
-      "liked": true,
-      "url": "https://letterboxd.com/nichtlegacy/film/the-odyssey-2026/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:1255394",
-      "lid": "QFQU",
-      "slug": "the-odyssey-2026"
     }
   ],
   "diary": [
+    {
+      "date": "2026-09-25",
+      "title": "The Mitchells vs. the Machines",
+      "year": "2021",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-mitchells-vs-the-machines/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:431888",
+      "lid": "i7xm",
+      "slug": "the-mitchells-vs-the-machines"
+    },
     {
       "date": "2026-09-20",
       "title": "Crime 101",
@@ -33605,33 +33654,33 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 86,
-      "distinctFilms": 82,
+      "entries": 87,
+      "distinctFilms": 83,
       "firstEntry": "2026-01-01",
-      "lastEntry": "2026-09-20",
-      "spanDays": 263,
-      "daysActive": 69,
+      "lastEntry": "2026-09-25",
+      "spanDays": 268,
+      "daysActive": 70,
       "multiFilmDays": 12,
       "rewatches": 18,
       "liked": 7,
-      "rated": 86,
+      "rated": 87,
       "releaseBreakdown": {
         "sameYear": 13,
-        "older": 73,
+        "older": 74,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 68,
+        "firstWatches": 69,
         "rewatches": 18
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 86
+        "notReviewed": 87
       },
       "averageRating": 3.3,
-      "perDay": 0.33,
+      "perDay": 0.32,
       "perWeek": 2.3,
-      "perMonth": 10,
+      "perMonth": 9.9,
       "streak": {
         "length": 6,
         "startDate": "2026-03-28",
@@ -33650,8 +33699,8 @@
       "perYear": [
         {
           "year": 2026,
-          "films": 86,
-          "days": 69
+          "films": 87,
+          "days": 70
         }
       ],
       "perWeekday": [
@@ -33660,7 +33709,7 @@
         6,
         9,
         9,
-        15,
+        16,
         21
       ],
       "perMonthOfYear": [
@@ -33672,7 +33721,7 @@
         4,
         12,
         6,
-        5,
+        6,
         0,
         0,
         0
@@ -33712,7 +33761,7 @@
         },
         {
           "month": "2026-09",
-          "count": 5
+          "count": 6
         }
       ],
       "weekSeries": [
@@ -33948,7 +33997,7 @@
           "week": 39,
           "start": "2026-09-21",
           "end": "2026-09-27",
-          "count": 0
+          "count": 1
         },
         {
           "week": 40,
@@ -34042,7 +34091,7 @@
         },
         {
           "rating": 2.5,
-          "count": 12
+          "count": 13
         },
         {
           "rating": 3,
@@ -34095,7 +34144,7 @@
         {
           "decade": 2020,
           "label": "2020s",
-          "count": 33,
+          "count": 34,
           "averageRating": 3.5
         }
       ],
@@ -34190,52 +34239,52 @@
           "slug": "spider-man-brand-new-day"
         },
         {
-          "n": 86,
+          "n": 87,
           "kind": "latest",
-          "date": "2026-09-20",
-          "title": "Crime 101",
-          "year": "2026",
-          "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/crime-101/",
+          "date": "2026-09-25",
+          "title": "The Mitchells vs. the Machines",
+          "year": "2021",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-mitchells-vs-the-machines/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:1058132",
-          "lid": "IoGs",
-          "slug": "crime-101"
+          "filmUid": "film:431888",
+          "lid": "i7xm",
+          "slug": "the-mitchells-vs-the-machines"
         }
       ]
     }
   },
   "allTime": {
     "scope": "all",
-    "films": 632,
-    "entries": 610,
-    "distinctFilms": 541,
+    "films": 633,
+    "entries": 611,
+    "distinctFilms": 542,
     "firstEntry": "2024-02-22",
-    "lastEntry": "2026-09-20",
-    "spanDays": 942,
-    "daysActive": 437,
+    "lastEntry": "2026-09-25",
+    "spanDays": 947,
+    "daysActive": 438,
     "multiFilmDays": 135,
     "rewatches": 87,
     "liked": 57,
-    "rated": 610,
+    "rated": 611,
     "releaseBreakdown": {
       "sameYear": 59,
-      "older": 551,
+      "older": 552,
       "other": 0
     },
     "watchBreakdown": {
-      "firstWatches": 523,
+      "firstWatches": 524,
       "rewatches": 87
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 609
+      "notReviewed": 610
     },
     "averageRating": 3.3,
     "perDay": 0.65,
     "perWeek": 4.5,
-    "perMonth": 19.7,
+    "perMonth": 19.6,
     "streak": {
       "length": 34,
       "startDate": "2025-01-27",
@@ -34264,8 +34313,8 @@
       },
       {
         "year": 2026,
-        "films": 86,
-        "days": 69
+        "films": 87,
+        "days": 70
       }
     ],
     "perWeekday": [
@@ -34274,7 +34323,7 @@
       70,
       82,
       88,
-      90,
+      91,
       105
     ],
     "perMonthOfYear": [
@@ -34286,7 +34335,7 @@
       45,
       51,
       24,
-      32,
+      33,
       59,
       39,
       49
@@ -34418,7 +34467,7 @@
       },
       {
         "month": "2026-09",
-        "count": 5
+        "count": 6
       }
     ],
     "weekSeries": [],
@@ -34437,7 +34486,7 @@
       },
       {
         "rating": 2.5,
-        "count": 83
+        "count": 84
       },
       {
         "rating": 3,
@@ -34500,7 +34549,7 @@
       {
         "decade": 2020,
         "label": "2020s",
-        "count": 120,
+        "count": 121,
         "averageRating": 3.5
       }
     ],
@@ -35041,18 +35090,18 @@
         "slug": "the-tunnel-to-summer-the-exit-of-goodbyes"
       },
       {
-        "n": 610,
+        "n": 611,
         "kind": "latest",
-        "date": "2026-09-20",
-        "title": "Crime 101",
-        "year": "2026",
-        "rating": 3,
-        "url": "https://letterboxd.com/nichtlegacy/film/crime-101/",
+        "date": "2026-09-25",
+        "title": "The Mitchells vs. the Machines",
+        "year": "2021",
+        "rating": 2.5,
+        "url": "https://letterboxd.com/nichtlegacy/film/the-mitchells-vs-the-machines/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:1058132",
-        "lid": "IoGs",
-        "slug": "crime-101"
+        "filmUid": "film:431888",
+        "lid": "i7xm",
+        "slug": "the-mitchells-vs-the-machines"
       }
     ]
   }
