@@ -40,7 +40,7 @@ date,title,year,rating,rewatch,liked,reviewed,url,reviewUrl,slug,filmUid,lid
 2026-04-20,Hoppers,2026,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/hoppers/,,hoppers,film:1207557,OFpg
 2026-04-18,Swiss Army Man,2016,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/swiss-army-man/,,swiss-army-man,film:277413,bDG2
 2026-04-18,The Banker,2020,3,0,0,0,https://letterboxd.com/nichtlegacy/film/the-banker-2020/,,the-banker-2020,film:554135,nfyC
-2026-04-17,Step Brothers,2008,3,0,0,0,https://letterboxd.com/nichtlegacy/film/step-brothers/,,step-brothers,film:44768,1SsE
+2026-04-17,Step Brothers,2008,3,1,0,0,https://letterboxd.com/nichtlegacy/film/step-brothers/,,step-brothers,film:44768,1SsE
 2026-04-12,Ted,2012,4,1,0,0,https://letterboxd.com/nichtlegacy/film/ted/2/,,ted,film:57376,2pgc
 2026-04-06,Memento,2000,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/memento/,,memento,film:51973,2bcK
 2026-04-05,Taxi Driver,1976,3,0,0,0,https://letterboxd.com/nichtlegacy/film/taxi-driver/,,taxi-driver,film:51947,2b8y
@@ -59,6 +59,8 @@ date,title,year,rating,rewatch,liked,reviewed,url,reviewUrl,slug,filmUid,lid
 2026-03-29,Zootopia 2,2025,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/zootopia-2/1/,,zootopia-2,film:977342,F0vO
 2026-03-28,Nirvanna the Band the Show the Movie,2025,4,0,0,0,https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/,,nirvanna-the-band-the-show-the-movie,film:1041012,HG9a
 2026-03-25,Peaky Blinders: The Immortal Man,2026,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/peaky-blinders-the-immortal-man/,,peaky-blinders-the-immortal-man,film:787849,x3yq
+2026-03-22,Smiley Face,2007,4.5,1,0,0,https://letterboxd.com/nichtlegacy/film/smiley-face/8/,,smiley-face,film:44082,1QG0
+2026-03-21,"Dude, Where's My Car?",2000,3.5,1,0,0,https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/5/,,dude-wheres-my-car,film:47562,1ZJi
 2026-03-20,Fun with Dick and Jane,2005,3,0,0,0,https://letterboxd.com/nichtlegacy/film/fun-with-dick-and-jane-1996/,,fun-with-dick-and-jane-1996,film:47986,20PG
 2026-03-18,Mercy,2026,3,0,0,0,https://letterboxd.com/nichtlegacy/film/mercy-2026/,,mercy-2026,film:1119565,KYv0
 2026-03-14,Scary Movie,2000,4,1,1,0,https://letterboxd.com/nichtlegacy/film/scary-movie-2000/2/,,scary-movie-2000,film:49443,24CG
@@ -68,6 +70,7 @@ date,title,year,rating,rewatch,liked,reviewed,url,reviewUrl,slug,filmUid,lid
 2026-02-13,The Housemaid,2025,3,0,0,0,https://letterboxd.com/nichtlegacy/film/the-housemaid-2025/,,the-housemaid-2025,film:1255319,QFEO
 2026-02-07,Bill & Ted's Bogus Journey,1991,2.5,1,0,0,https://letterboxd.com/nichtlegacy/film/bill-teds-bogus-journey/1/,,bill-teds-bogus-journey,film:50893,28oy
 2026-02-05,The Shadow's Edge,2025,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/the-shadows-edge-2025/,,the-shadows-edge-2025,film:1299958,SxME
+2026-01-24,High School High,1996,2,0,0,0,https://letterboxd.com/nichtlegacy/film/high-school-high/,,high-school-high,film:47285,1Z0C
 2026-01-24,Election,1999,3,0,0,0,https://letterboxd.com/nichtlegacy/film/election/,,election,film:47146,1YEc
 2026-01-24,The SpongeBob Movie: Search for SquarePants,2025,4,0,0,0,https://letterboxd.com/nichtlegacy/film/the-spongebob-movie-search-for-squarepants/,,the-spongebob-movie-search-for-squarepants,film:892884,BsNy
 2026-01-22,Once Upon a Time... in Hollywood,2019,4,0,0,0,https://letterboxd.com/nichtlegacy/film/once-upon-a-time-in-hollywood/,,once-upon-a-time-in-hollywood,film:397859,gH0O
@@ -225,6 +228,7 @@ date,title,year,rating,rewatch,liked,reviewed,url,reviewUrl,slug,filmUid,lid
 2025-06-24,Under the Silver Lake,2018,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/under-the-silver-lake/,,under-the-silver-lake,film:330810,dSAs
 2025-06-23,The Lego Movie 2: The Second Part,2019,3,0,0,0,https://letterboxd.com/nichtlegacy/film/the-lego-movie-2-the-second-part/,,the-lego-movie-2-the-second-part,film:205114,8BAU
 2025-06-23,12 Angry Men,1957,4,0,0,0,https://letterboxd.com/nichtlegacy/film/12-angry-men/,,12-angry-men,film:51700,2auI
+2025-06-22,Harry Potter and the Philosopher's Stone,2001,4,1,1,0,https://letterboxd.com/nichtlegacy/film/harry-potter-and-the-philosophers-stone/1/,,harry-potter-and-the-philosophers-stone,film:51453,29QS
 2025-06-22,Donnie Darko,2001,4,0,0,0,https://letterboxd.com/nichtlegacy/film/donnie-darko/,,donnie-darko,film:51910,2b2A
 2025-06-21,Land of the Lost,2009,1.5,0,0,0,https://letterboxd.com/nichtlegacy/film/land-of-the-lost/,,land-of-the-lost,film:40543,1Htc
 2025-06-21,Grandma's Boy,2006,4,1,0,0,https://letterboxd.com/nichtlegacy/film/grandmas-boy-2006/1/,,grandmas-boy-2006,film:46734,1XzK
@@ -255,19 +259,20 @@ date,title,year,rating,rewatch,liked,reviewed,url,reviewUrl,slug,filmUid,lid
 2025-06-04,DuckTales: The Movie – Treasure of the Lost Lamp,1990,3,0,0,0,https://letterboxd.com/nichtlegacy/film/ducktales-the-movie-treasure-of-the-lost-lamp/,,ducktales-the-movie-treasure-of-the-lost-lamp,film:45848,1VgQ
 2025-06-04,(500) Days of Summer,2009,4,0,0,0,https://letterboxd.com/nichtlegacy/film/500-days-of-summer/,,500-days-of-summer,film:39350,1EmM
 2025-06-04,CB4,1993,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/cb4/,,cb4,film:42483,1Mw6
+2025-06-03,Zombieland,2009,3,0,0,0,https://letterboxd.com/nichtlegacy/film/zombieland/,,zombieland,film:39352,1En6
 2025-06-03,The Stöned Age,1994,3.5,1,0,0,https://letterboxd.com/nichtlegacy/film/the-stoned-age/1/,,the-stoned-age,film:38752,1COk
 2025-05-31,The New Guy,2002,2,0,0,0,https://letterboxd.com/nichtlegacy/film/the-new-guy/,,the-new-guy,film:45716,1UVy
 2025-05-31,Lilo & Stitch,2025,4,0,0,0,https://letterboxd.com/nichtlegacy/film/lilo-stitch-2025/,,lilo-stitch-2025,film:481233,kbUe
 2025-05-30,The Campaign,2012,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/the-campaign/,,the-campaign,film:64412,2Hz2
-2025-05-29,Superhero Movie,2008,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/superhero-movie/,,superhero-movie,film:44888,1SM0
+2025-05-29,Superhero Movie,2008,2.5,1,0,0,https://letterboxd.com/nichtlegacy/film/superhero-movie/,,superhero-movie,film:44888,1SM0
 2025-05-27,"I Love You, Man",2009,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/i-love-you-man/,,i-love-you-man,film:41512,1JZu
 2025-05-26,Idiocracy,2006,3,0,0,0,https://letterboxd.com/nichtlegacy/film/idiocracy/,,idiocracy,film:48000,20RW
 2025-05-25,Saving Bikini Bottom: The Sandy Cheeks Movie,2024,3,0,0,0,https://letterboxd.com/nichtlegacy/film/saving-bikini-bottom-the-sandy-cheeks-movie/,,saving-bikini-bottom-the-sandy-cheeks-movie,film:747378,vmgQ
 2025-05-24,Things Are Tough All Over,1982,3,0,0,0,https://letterboxd.com/nichtlegacy/film/things-are-tough-all-over/,,things-are-tough-all-over,film:39167,1DTg
 2025-05-24,Final Destination Bloodlines,2025,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/final-destination-bloodlines/,,final-destination-bloodlines,film:502622,l5y4
 2025-05-23,Up in Smoke,1978,4,1,0,0,https://letterboxd.com/nichtlegacy/film/up-in-smoke-1978/1/,,up-in-smoke-1978,film:45287,1TOm
-2025-05-23,Friday,1995,4,0,0,0,https://letterboxd.com/nichtlegacy/film/friday/,,friday,film:46040,1VLO
-2025-05-22,How High,2001,4,0,0,0,https://letterboxd.com/nichtlegacy/film/how-high/,,how-high,film:47761,20fo
+2025-05-23,Friday,1995,4,1,0,0,https://letterboxd.com/nichtlegacy/film/friday/,,friday,film:46040,1VLO
+2025-05-22,How High,2001,4,1,0,0,https://letterboxd.com/nichtlegacy/film/how-high/,,how-high,film:47761,20fo
 2025-05-22,Scary Movie 4,2006,3,1,0,0,https://letterboxd.com/nichtlegacy/film/scary-movie-4/1/,,scary-movie-4,film:49433,24B4
 2025-05-21,End of Watch,2012,4,0,0,0,https://letterboxd.com/nichtlegacy/film/end-of-watch/,,end-of-watch,film:63462,2F5O
 2025-05-20,Disaster Movie,2008,3,0,0,0,https://letterboxd.com/nichtlegacy/film/disaster-movie/,,disaster-movie,film:43581,1Pnc
@@ -304,6 +309,7 @@ date,title,year,rating,rewatch,liked,reviewed,url,reviewUrl,slug,filmUid,lid
 2025-04-25,iHostage,2025,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/ihostage/,,ihostage,film:1258188,QN7y
 2025-04-24,The Brothers Solomon,2007,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/the-brothers-solomon/,,the-brothers-solomon,film:46575,1Xa6
 2025-04-24,Nacho Libre,2006,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/nacho-libre/,,nacho-libre,film:47242,1YTG
+2025-04-23,Hot Shots!,1991,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/hot-shots/,,hot-shots,film:47006,1YhC
 2025-04-23,Harold & Kumar Escape from Guantanamo Bay,2008,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/harold-kumar-escape-from-guantanamo-bay/,,harold-kumar-escape-from-guantanamo-bay,film:43976,1QoU
 2025-04-22,"Dude, Where's My Car?",2000,3.5,1,0,0,https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/1/,,dude-wheres-my-car,film:47562,1ZJi
 2025-04-21,Margin Call,2011,3,0,0,0,https://letterboxd.com/nichtlegacy/film/margin-call/,,margin-call,film:14887,CJ8
@@ -337,6 +343,7 @@ date,title,year,rating,rewatch,liked,reviewed,url,reviewUrl,slug,filmUid,lid
 2025-03-30,Napoleon Dynamite,2004,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/napoleon-dynamite/,,napoleon-dynamite,film:47867,20wu
 2025-03-30,Fanboys,2009,3,0,0,0,https://letterboxd.com/nichtlegacy/film/fanboys/,,fanboys,film:43809,1PXY
 2025-03-29,Going the Distance,2004,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/going-the-distance/,,going-the-distance,film:39640,1F7y
+2025-03-28,Den of Thieves 2: Pantera,2025,3,0,0,0,https://letterboxd.com/nichtlegacy/film/den-of-thieves-2-pantera/,,den-of-thieves-2-pantera,film:531894,mjHm
 2025-03-28,Bill & Ted's Excellent Adventure,1989,3.5,1,0,0,https://letterboxd.com/nichtlegacy/film/bill-teds-excellent-adventure/1/,,bill-teds-excellent-adventure,film:50894,28oI
 2025-03-28,The Waterboy,1998,3,0,0,0,https://letterboxd.com/nichtlegacy/film/the-waterboy/,,the-waterboy,film:46012,1VHi
 2025-03-27,White Men Can't Jump,1992,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/white-men-cant-jump/,,white-men-cant-jump,film:46491,1WWy
@@ -346,6 +353,7 @@ date,title,year,rating,rewatch,liked,reviewed,url,reviewUrl,slug,filmUid,lid
 2025-03-25,Trainspotting,1996,3,0,0,0,https://letterboxd.com/nichtlegacy/film/trainspotting/,,trainspotting,film:51497,29XY
 2025-03-24,Team America: World Police,2004,4,0,0,0,https://letterboxd.com/nichtlegacy/film/team-america-world-police/,,team-america-world-police,film:49531,24QS
 2025-03-23,Top Secret!,1984,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/top-secret/,,top-secret,film:47620,1ZSE
+2025-03-22,Spider-Man,2002,5,0,1,0,https://letterboxd.com/nichtlegacy/film/spider-man/,,spider-man,film:51561,2a8i
 2025-03-22,The Nutty Professor,1996,3,0,0,0,https://letterboxd.com/nichtlegacy/film/the-nutty-professor-1996/,,the-nutty-professor-1996,film:47267,1YXI
 2025-03-22,Extract,2009,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/extract/,,extract,film:44470,1RGA
 2025-03-22,The Girl Who Leapt Through Time,2006,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/the-girl-who-leapt-through-time/,,the-girl-who-leapt-through-time,film:43370,1OPa
@@ -376,7 +384,9 @@ date,title,year,rating,rewatch,liked,reviewed,url,reviewUrl,slug,filmUid,lid
 2025-03-04,Weathering with You,2019,4,0,0,0,https://letterboxd.com/nichtlegacy/film/weathering-with-you/,,weathering-with-you,film:496469,kPxE
 2025-03-03,Your Name.,2016,4.5,0,1,0,https://letterboxd.com/nichtlegacy/film/your-name/,,your-name,film:307684,cUqs
 2025-03-03,Not Another Teen Movie,2001,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/not-another-teen-movie/,,not-another-teen-movie,film:45337,1TWq
+2025-03-01,Due Date,2010,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/due-date/,,due-date,film:23321,YFs
 2025-03-01,The Wackness,2008,2,0,0,0,https://letterboxd.com/nichtlegacy/film/the-wackness/,,the-wackness,film:43426,1OYc
+2025-02-28,The Benchwarmers,2006,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/the-benchwarmers/,,the-benchwarmers,film:46680,1Xr2
 2025-02-28,Mr. Deeds,2002,3,0,0,0,https://letterboxd.com/nichtlegacy/film/mr-deeds/,,mr-deeds,film:50591,27BQ
 2025-02-27,Big Daddy,1999,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/big-daddy/,,big-daddy,film:47411,1ZkW
 2025-02-26,Strange Brew,1983,3,0,0,0,https://letterboxd.com/nichtlegacy/film/strange-brew/,,strange-brew,film:44230,1R3S
@@ -423,23 +433,27 @@ date,title,year,rating,rewatch,liked,reviewed,url,reviewUrl,slug,filmUid,lid
 2025-01-28,Happy Gilmore,1996,3.5,0,1,0,https://letterboxd.com/nichtlegacy/film/happy-gilmore/,,happy-gilmore,film:46987,1Yey
 2025-01-27,The SpongeBob SquarePants Movie,2004,4.5,1,0,0,https://letterboxd.com/nichtlegacy/film/the-spongebob-squarepants-movie/,,the-spongebob-squarepants-movie,film:44965,1SYq
 2025-01-27,High School,2010,4,1,0,0,https://letterboxd.com/nichtlegacy/film/high-school-2010/1/,,high-school-2010,film:34391,1rsW
+2025-01-25,21 & Over,2013,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/21-over/,,21-over,film:86802,3DOk
 2025-01-25,Sonic the Hedgehog 3,2024,4,0,0,0,https://letterboxd.com/nichtlegacy/film/sonic-the-hedgehog-3/,,sonic-the-hedgehog-3,film:844148,zq0U
 2025-01-24,Sonic the Hedgehog 2,2022,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/sonic-the-hedgehog-2/,,sonic-the-hedgehog-2,film:600103,pb8O
 2025-01-24,Geostorm,2017,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/geostorm/,,geostorm,film:198971,8lC6
 2025-01-22,Dogma,1999,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/dogma/,,dogma,film:50767,284e
+2025-01-21,Inherent Vice,2014,3,1,0,0,https://letterboxd.com/nichtlegacy/film/inherent-vice/1/,,inherent-vice,film:125830,5hla
 2025-01-21,Bridesmaids,2011,1.5,0,0,0,https://letterboxd.com/nichtlegacy/film/bridesmaids/,,bridesmaids,film:10442,rac
 2025-01-21,Without a Paddle,2004,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/without-a-paddle/,,without-a-paddle,film:45920,1Vss
+2025-01-20,Anchorman 2: The Legend Continues,2013,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/anchorman-2-the-legend-continues/,,anchorman-2-the-legend-continues,film:87949,3GNk
 2025-01-20,Anchorman: The Legend of Ron Burgundy,2004,3,1,0,0,https://letterboxd.com/nichtlegacy/film/anchorman-the-legend-of-ron-burgundy/1/,,anchorman-the-legend-of-ron-burgundy,film:47637,1ZVo
 2025-01-20,Toy Story 2,1999,3,0,0,0,https://letterboxd.com/nichtlegacy/film/toy-story-2/,,toy-story-2,film:51289,29qq
+2025-01-19,Despicable Me 4,2024,3.5,1,0,0,https://letterboxd.com/nichtlegacy/film/despicable-me-4/1/,,despicable-me-4,film:448506,iOLG
 2025-01-18,Monty Python and the Holy Grail,1975,3,0,0,0,https://letterboxd.com/nichtlegacy/film/monty-python-and-the-holy-grail/,,monty-python-and-the-holy-grail,film:51390,29GI
 2025-01-18,Toy Story,1995,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/toy-story/,,toy-story,film:51290,29qA
 2025-01-18,Good Will Hunting,1997,4.5,0,1,0,https://letterboxd.com/nichtlegacy/film/good-will-hunting/,,good-will-hunting,film:51621,2ahY
-2025-01-18,Pineapple Express,2008,4,0,1,0,https://letterboxd.com/nichtlegacy/film/pineapple-express/,,pineapple-express,film:46462,1WRS
+2025-01-18,Pineapple Express,2008,4,1,1,0,https://letterboxd.com/nichtlegacy/film/pineapple-express/,,pineapple-express,film:46462,1WRS
 2025-01-17,Deuce Bigalow: Male Gigolo,1999,3,0,0,0,https://letterboxd.com/nichtlegacy/film/deuce-bigalow-male-gigolo/,,deuce-bigalow-male-gigolo,film:46264,1WlW
 2025-01-16,Deuce Bigalow: European Gigolo,2005,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/deuce-bigalow-european-gigolo/,,deuce-bigalow-european-gigolo,film:45289,1TOG
 2025-01-16,Anchorman: The Legend of Ron Burgundy,2004,3,0,0,0,https://letterboxd.com/nichtlegacy/film/anchorman-the-legend-of-ron-burgundy/,,anchorman-the-legend-of-ron-burgundy,film:47637,1ZVo
 2025-01-15,The Naked Gun: From the Files of Police Squad!,1988,3,0,0,0,https://letterboxd.com/nichtlegacy/film/the-naked-gun-from-the-files-of-police-squad/,,the-naked-gun-from-the-files-of-police-squad,film:27284,18YE
-2025-01-15,Up in Smoke,1978,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/up-in-smoke-1978/,,up-in-smoke-1978,film:45287,1TOm
+2025-01-15,Up in Smoke,1978,3.5,1,0,0,https://letterboxd.com/nichtlegacy/film/up-in-smoke-1978/,,up-in-smoke-1978,film:45287,1TOm
 2025-01-14,Celebrity Sex Tape,2012,1,0,0,0,https://letterboxd.com/nichtlegacy/film/celebrity-sex-tape/,,celebrity-sex-tape,film:74110,36Ne
 2025-01-14,Office Space,1999,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/office-space/,,office-space,film:50991,28Em
 2025-01-13,The Wrong Trousers,1993,4,0,0,0,https://letterboxd.com/nichtlegacy/film/the-wrong-trousers/,,the-wrong-trousers,film:51586,2ack
@@ -470,51 +484,70 @@ date,title,year,rating,rewatch,liked,reviewed,url,reviewUrl,slug,filmUid,lid
 2024-12-31,There's Something About Mary,1998,3,0,0,0,https://letterboxd.com/nichtlegacy/film/theres-something-about-mary/,,theres-something-about-mary,film:51573,2aae
 2024-12-30,Jay and Silent Bob Strike Back,2001,3,0,0,0,https://letterboxd.com/nichtlegacy/film/jay-and-silent-bob-strike-back/,,jay-and-silent-bob-strike-back,film:50355,26ZM
 2024-12-29,Lethal Seduction,2015,1,0,0,0,https://letterboxd.com/nichtlegacy/film/lethal-seduction-2015/,,lethal-seduction-2015,film:278664,bGVO
+2024-12-27,Wet Hot American Summer,2001,2.5,1,0,0,https://letterboxd.com/nichtlegacy/film/wet-hot-american-summer/1/,,wet-hot-american-summer,film:50465,27hw
 2024-12-27,Smile 2,2024,3,0,0,0,https://letterboxd.com/nichtlegacy/film/smile-2-2024/,,smile-2-2024,film:992360,FDA4
+2024-12-26,Good Burger,1997,3.5,1,0,0,https://letterboxd.com/nichtlegacy/film/good-burger/1/,,good-burger,film:42794,1Nkg
 2024-12-26,Smiley Face,2007,4,1,1,0,https://letterboxd.com/nichtlegacy/film/smiley-face/3/,,smiley-face,film:44082,1QG0
 2024-12-26,Die Hard,1988,3.5,0,1,0,https://letterboxd.com/nichtlegacy/film/die-hard/,,die-hard,film:51556,2a7u
 2024-12-24,Tenacious D in The Pick of Destiny,2006,3,0,0,0,https://letterboxd.com/nichtlegacy/film/tenacious-d-in-the-pick-of-destiny/,,tenacious-d-in-the-pick-of-destiny,film:50458,27go
 2024-12-22,Super Troopers,2001,3,1,0,0,https://letterboxd.com/nichtlegacy/film/super-troopers/1/,,super-troopers,film:24933,12Rs
 2024-12-22,The Nice Guys,2016,3,1,0,0,https://letterboxd.com/nichtlegacy/film/the-nice-guys/1/,,the-nice-guys,film:216301,94Hg
 2024-12-21,The Big Lebowski,1998,4.5,1,1,0,https://letterboxd.com/nichtlegacy/film/the-big-lebowski/1/,,the-big-lebowski,film:51935,2b6C
-2024-12-21,Horrible Bosses,2011,2,0,0,0,https://letterboxd.com/nichtlegacy/film/horrible-bosses/,,horrible-bosses,film:14285,Ba2
-2024-12-20,Zoolander 2,2016,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/zoolander-2/,,zoolander-2,film:257397,aNBE
+2024-12-21,Horrible Bosses,2011,2,1,0,0,https://letterboxd.com/nichtlegacy/film/horrible-bosses/,,horrible-bosses,film:14285,Ba2
+2024-12-20,Zoolander 2,2016,2.5,1,0,0,https://letterboxd.com/nichtlegacy/film/zoolander-2/,,zoolander-2,film:257397,aNBE
 2024-12-19,National Treasure: Book of Secrets,2007,3,0,0,0,https://letterboxd.com/nichtlegacy/film/national-treasure-book-of-secrets/,,national-treasure-book-of-secrets,film:48220,21rq
+2024-12-17,Don't Be a Menace to South Central While Drinking Your Juice in the Hood,1996,3,1,0,0,https://letterboxd.com/nichtlegacy/film/dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood/2/,,dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood,film:46067,1VQa
 2024-12-15,Harry Potter and the Goblet of Fire,2005,4,0,1,0,https://letterboxd.com/nichtlegacy/film/harry-potter-and-the-goblet-of-fire/,,harry-potter-and-the-goblet-of-fire,film:51450,29Qo
 2024-12-14,Palm Springs,2020,3,0,0,0,https://letterboxd.com/nichtlegacy/film/palm-springs-2020/,,palm-springs-2020,film:515467,lCXQ
 2024-12-14,Carry-On,2024,3,0,0,0,https://letterboxd.com/nichtlegacy/film/carry-on-2024/,,carry-on-2024,film:905876,C0B2
-2024-12-13,Jobs,2013,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/jobs/,,jobs,film:91952,3RcY
-2024-12-11,Suck Me Shakespeer,2013,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/suck-me-shakespeer/,,suck-me-shakespeer,film:163417,6R7A
+2024-12-13,Jobs,2013,3.5,1,0,0,https://letterboxd.com/nichtlegacy/film/jobs/,,jobs,film:91952,3RcY
+2024-12-12,Smiley Face,2007,4.5,1,0,0,https://letterboxd.com/nichtlegacy/film/smiley-face/7/,,smiley-face,film:44082,1QG0
+2024-12-11,Suck Me Shakespeer,2013,2.5,1,0,0,https://letterboxd.com/nichtlegacy/film/suck-me-shakespeer/1/,,suck-me-shakespeer,film:163417,6R7A
 2024-12-11,Youth in Revolt,2009,2,0,0,0,https://letterboxd.com/nichtlegacy/film/youth-in-revolt/,,youth-in-revolt,film:37957,1AK6
+2024-12-10,Ali G Indahouse,2002,3,0,0,0,https://letterboxd.com/nichtlegacy/film/ali-g-indahouse/,,ali-g-indahouse,film:47294,1Z24
+2024-12-10,Jackass 4.5,2022,3.5,1,0,0,https://letterboxd.com/nichtlegacy/film/jackass-45/1/,,jackass-45,film:744926,vfTm
+2024-12-09,Super Troopers 2,2018,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/super-troopers-2/,,super-troopers-2,film:15614,ECo
 2024-12-09,Jackass Forever,2022,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/jackass-forever/,,jackass-forever,film:581946,opUg
+2024-12-07,Smiley Face,2007,4.5,1,0,0,https://letterboxd.com/nichtlegacy/film/smiley-face/6/,,smiley-face,film:44082,1QG0
+2024-12-07,Spring Breakers,2012,3,0,0,0,https://letterboxd.com/nichtlegacy/film/spring-breakers/,,spring-breakers,film:96109,421s
+2024-12-06,Up in Smoke,1978,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/up-in-smoke-1978/2/,,up-in-smoke-1978,film:45287,1TOm
 2024-12-06,Being John Malkovich,1999,3,0,0,0,https://letterboxd.com/nichtlegacy/film/being-john-malkovich/,,being-john-malkovich,film:51618,2ahu
 2024-12-05,The Girl Next Door,2004,2,0,0,0,https://letterboxd.com/nichtlegacy/film/the-girl-next-door-2004/,,the-girl-next-door-2004,film:46081,1VSq
 2024-12-05,Meet the Spartans,2008,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/meet-the-spartans/,,meet-the-spartans,film:48074,213S
-2024-12-04,Scary Movie 3,2003,2,0,0,0,https://letterboxd.com/nichtlegacy/film/scary-movie-3/,,scary-movie-3,film:49434,24Be
+2024-12-04,Scary Movie 3,2003,2,1,0,0,https://letterboxd.com/nichtlegacy/film/scary-movie-3/,,scary-movie-3,film:49434,24Be
 2024-12-04,Strange Wilderness,2008,3,0,0,0,https://letterboxd.com/nichtlegacy/film/strange-wilderness/,,strange-wilderness,film:43253,1Owi
 2024-12-03,Wet Hot American Summer,2001,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/wet-hot-american-summer/,,wet-hot-american-summer,film:50465,27hw
 2024-12-03,Good Burger,1997,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/good-burger/,,good-burger,film:42794,1Nkg
-2024-12-01,"Dude, Where's My Car?",2000,3,0,0,0,https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/,,dude-wheres-my-car,film:47562,1ZJi
+2024-12-01,"Dude, Where's My Car?",2000,3,1,0,0,https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/,,dude-wheres-my-car,film:47562,1ZJi
+2024-11-30,Freddy Got Fingered,2001,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/freddy-got-fingered/,,freddy-got-fingered,film:44084,1QGk
+2024-11-30,Friday,1995,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/friday/1/,,friday,film:46040,1VLO
 2024-11-30,Super Troopers,2001,3,0,0,0,https://letterboxd.com/nichtlegacy/film/super-troopers/,,super-troopers,film:24933,12Rs
+2024-11-29,National Lampoon's Van Wilder,2002,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/national-lampoons-van-wilder/,,national-lampoons-van-wilder,film:45290,1TOQ
 2024-11-28,Dumb and Dumber,1994,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/dumb-and-dumber/,,dumb-and-dumber,film:47705,206m
 2024-11-27,Hall Pass,2011,3,0,0,0,https://letterboxd.com/nichtlegacy/film/hall-pass/,,hall-pass,film:16583,H8G
 2024-11-27,Smiley Face,2007,4,1,1,0,https://letterboxd.com/nichtlegacy/film/smiley-face/2/,,smiley-face,film:44082,1QG0
 2024-11-27,Your Highness,2011,2,0,0,0,https://letterboxd.com/nichtlegacy/film/your-highness/,,your-highness,film:26239,16g6
+2024-11-26,How High,2001,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/how-high/1/,,how-high,film:47761,20fo
 2024-11-25,Inherent Vice,2014,3,0,0,0,https://letterboxd.com/nichtlegacy/film/inherent-vice/,,inherent-vice,film:125830,5hla
+2024-11-24,Paul,2011,3,0,0,0,https://letterboxd.com/nichtlegacy/film/paul-2011/,,paul-2011,film:25176,13uE
 2024-11-24,Harry Potter and the Prisoner of Azkaban,2004,4,0,1,0,https://letterboxd.com/nichtlegacy/film/harry-potter-and-the-prisoner-of-azkaban/,,harry-potter-and-the-prisoner-of-azkaban,film:51451,29Qy
-2024-11-23,Zoolander,2001,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/zoolander/,,zoolander,film:47198,1YMA
+2024-11-23,Zoolander,2001,3.5,1,0,0,https://letterboxd.com/nichtlegacy/film/zoolander/,,zoolander,film:47198,1YMA
 2024-11-21,Grandma's Boy,2006,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/grandmas-boy-2006/,,grandmas-boy-2006,film:46734,1XzK
 2024-11-20,The Nice Guys,2016,3,0,0,0,https://letterboxd.com/nichtlegacy/film/the-nice-guys/,,the-nice-guys,film:216301,94Hg
 2024-11-19,High School,2010,2,0,0,0,https://letterboxd.com/nichtlegacy/film/high-school-2010/,,high-school-2010,film:34391,1rsW
 2024-11-19,American Pie Presents: The Book of Love,2009,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/american-pie-presents-the-book-of-love/,,american-pie-presents-the-book-of-love,film:35567,1uwC
+2024-11-18,Superhero Movie,2008,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/superhero-movie/1/,,superhero-movie,film:44888,1SM0
 2024-11-18,American Pie Presents: Beta House,2007,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/american-pie-presents-beta-house/,,american-pie-presents-beta-house,film:47829,20qm
 2024-11-18,American Pie Presents: The Naked Mile,2006,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/american-pie-presents-the-naked-mile/,,american-pie-presents-the-naked-mile,film:47831,20qG
 2024-11-17,Harry Potter and the Chamber of Secrets,2002,4,0,1,0,https://letterboxd.com/nichtlegacy/film/harry-potter-and-the-chamber-of-secrets/,,harry-potter-and-the-chamber-of-secrets,film:51452,29QI
+2024-11-16,Don't Look Up,2021,3,0,0,0,https://letterboxd.com/nichtlegacy/film/dont-look-up-2021/,,dont-look-up-2021,film:572255,o0Hc
+2024-11-16,Pineapple Express,2008,4,0,1,0,https://letterboxd.com/nichtlegacy/film/pineapple-express/1/,,pineapple-express,film:46462,1WRS
+2024-11-15,Smiley Face,2007,4.5,1,0,0,https://letterboxd.com/nichtlegacy/film/smiley-face/5/,,smiley-face,film:44082,1QG0
 2024-11-15,The Number 23,2007,3,0,0,0,https://letterboxd.com/nichtlegacy/film/the-number-23/,,the-number-23,film:49641,258C
 2024-11-13,Burn After Reading,2008,3,0,0,0,https://letterboxd.com/nichtlegacy/film/burn-after-reading/,,burn-after-reading,film:49054,23BW
 2024-11-06,Wedding Crashers,2005,2,0,0,0,https://letterboxd.com/nichtlegacy/film/wedding-crashers/,,wedding-crashers,film:47078,1Yte
 2024-11-06,Taken 2,2012,3,0,0,0,https://letterboxd.com/nichtlegacy/film/taken-2/,,taken-2,film:69169,2TWi
-2024-11-05,Old School,2003,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/old-school/,,old-school,film:45116,1TmM
+2024-11-05,Old School,2003,2.5,1,0,0,https://letterboxd.com/nichtlegacy/film/old-school/,,old-school,film:45116,1TmM
 2024-11-04,Taken,2008,4,0,1,0,https://letterboxd.com/nichtlegacy/film/taken/,,taken,film:47648,1ZXa
 2024-11-04,Knocked Up,2007,3,0,0,0,https://letterboxd.com/nichtlegacy/film/knocked-up/,,knocked-up,film:49035,23yS
 2024-11-03,Dawn of the Dead,2004,3,0,0,0,https://letterboxd.com/nichtlegacy/film/dawn-of-the-dead-2004/,,dawn-of-the-dead-2004,film:51229,29gK
@@ -527,17 +560,18 @@ date,title,year,rating,rewatch,liked,reviewed,url,reviewUrl,slug,filmUid,lid
 2024-10-31,Terrifier 3,2024,3,0,0,0,https://letterboxd.com/nichtlegacy/film/terrifier-3/,,terrifier-3,film:932739,D8tM
 2024-10-30,Half Baked,1998,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/half-baked/,,half-baked,film:47108,1Yy4
 2024-10-30,Don't Be a Menace to South Central While Drinking Your Juice in the Hood,1996,4,0,1,0,https://letterboxd.com/nichtlegacy/film/dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood/,,dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood,film:46067,1VQa
-2024-10-29,Scary Movie 2,2001,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/scary-movie-2/,,scary-movie-2,film:49442,24Cw
+2024-10-29,Scary Movie 2,2001,3.5,1,0,0,https://letterboxd.com/nichtlegacy/film/scary-movie-2/,,scary-movie-2,film:49442,24Cw
 2024-10-29,Scary Movie,2000,3,1,1,0,https://letterboxd.com/nichtlegacy/film/scary-movie-2000/,,scary-movie-2000,film:49443,24CG
 2024-10-28,Scream 3,2000,3,0,0,0,https://letterboxd.com/nichtlegacy/film/scream-3/,,scream-3,film:49453,24Ei
 2024-10-28,Scream 2,1997,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/scream-2/,,scream-2,film:49454,24Es
+2024-10-27,Old School,2003,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/old-school/1/,,old-school,film:45116,1TmM
 2024-10-27,Undisputed,2002,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/undisputed/,,undisputed,film:42620,1MSc
 2024-10-25,Scream,1996,4,0,0,0,https://letterboxd.com/nichtlegacy/film/scream/,,scream,film:49455,24EC
 2024-10-25,The World's End,2013,3,1,0,0,https://letterboxd.com/nichtlegacy/film/the-worlds-end/1/,,the-worlds-end,film:86991,3EiO
 2024-10-24,Hot Fuzz,2007,3.5,1,0,0,https://letterboxd.com/nichtlegacy/film/hot-fuzz/,,hot-fuzz,film:49210,2416
-2024-10-23,Road Trip: Beer Pong,2009,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/road-trip-beer-pong/,,road-trip-beer-pong,film:38896,1Dby
+2024-10-23,Road Trip: Beer Pong,2009,2.5,1,0,0,https://letterboxd.com/nichtlegacy/film/road-trip-beer-pong/,,road-trip-beer-pong,film:38896,1Dby
 2024-10-23,Shaun of the Dead,2004,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/shaun-of-the-dead/,,shaun-of-the-dead,film:51405,29J8
-2024-10-22,Road Trip,2000,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/road-trip/,,road-trip,film:47307,1Z4a
+2024-10-22,Road Trip,2000,3.5,1,0,0,https://letterboxd.com/nichtlegacy/film/road-trip/,,road-trip,film:47307,1Z4a
 2024-10-21,It Chapter Two,2019,3,0,0,0,https://letterboxd.com/nichtlegacy/film/it-chapter-two/,,it-chapter-two,film:405545,h10u
 2024-10-20,EuroTrip,2004,4,0,0,0,https://letterboxd.com/nichtlegacy/film/eurotrip/,,eurotrip,film:47243,1YTQ
 2024-10-19,Get Smart,2008,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/get-smart/,,get-smart,film:45088,1Tig
@@ -556,24 +590,35 @@ date,title,year,rating,rewatch,liked,reviewed,url,reviewUrl,slug,filmUid,lid
 2024-09-27,Kick-Ass,2010,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/kick-ass/,,kick-ass,film:37354,1zaQ
 2024-09-26,Neighbors 2: Sorority Rising,2016,3,0,0,0,https://letterboxd.com/nichtlegacy/film/neighbors-2-sorority-rising/,,neighbors-2-sorority-rising,film:252216,aA80
 2024-09-25,Neighbors,2014,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/neighbors-2014/,,neighbors-2014,film:140512,5Txe
+2024-09-22,Step Brothers,2008,3,0,0,0,https://letterboxd.com/nichtlegacy/film/step-brothers/1/,,step-brothers,film:44768,1SsE
 2024-09-22,Smiley Face,2007,4,1,1,0,https://letterboxd.com/nichtlegacy/film/smiley-face/1/,,smiley-face,film:44082,1QG0
 2024-09-21,Pulp Fiction,1994,4,0,1,0,https://letterboxd.com/nichtlegacy/film/pulp-fiction/,,pulp-fiction,film:51444,29Pq
 2024-09-19,Incoming,2024,3,0,0,0,https://letterboxd.com/nichtlegacy/film/incoming-2024/,,incoming-2024,film:908689,C7UK
 2024-09-17,Late Night with the Devil,2023,4,0,1,0,https://letterboxd.com/nichtlegacy/film/late-night-with-the-devil/,,late-night-with-the-devil,film:843415,zo6G
+2024-09-16,Inside Out 2,2024,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/inside-out-2-2024/,,inside-out-2-2024,film:921578,CFrC
 2024-09-12,New Kids Turbo,2010,4,0,0,0,https://letterboxd.com/nichtlegacy/film/new-kids-turbo/,,new-kids-turbo,film:18828,MYM
 2024-09-12,Furiosa: A Mad Max Saga,2024,4,0,1,0,https://letterboxd.com/nichtlegacy/film/furiosa-a-mad-max-saga/,,furiosa-a-mad-max-saga,film:705221,tABk
 2024-09-07,Despicable Me 4,2024,4,0,0,0,https://letterboxd.com/nichtlegacy/film/despicable-me-4/,,despicable-me-4,film:448506,iOLG
 2024-09-07,Adventureland,2009,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/adventureland/,,adventureland,film:41477,1JTQ
 2024-09-02,Cats & Dogs,2001,4,0,0,0,https://letterboxd.com/nichtlegacy/film/cats-dogs/,,cats-dogs,film:45709,1UUq
-2024-08-30,The World's End,2013,4,0,0,0,https://letterboxd.com/nichtlegacy/film/the-worlds-end/,,the-worlds-end,film:86991,3EiO
+2024-08-30,The World's End,2013,4,1,0,0,https://letterboxd.com/nichtlegacy/film/the-worlds-end/,,the-worlds-end,film:86991,3EiO
 2024-08-28,Evil Bong,2006,3,0,0,0,https://letterboxd.com/nichtlegacy/film/evil-bong/,,evil-bong,film:46558,1X7m
+2024-08-25,The Big Lebowski,1998,4.5,1,0,0,https://letterboxd.com/nichtlegacy/film/the-big-lebowski/6/,,the-big-lebowski,film:51935,2b6C
+2024-08-24,"Dude, Where's My Car?",2000,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/4/,,dude-wheres-my-car,film:47562,1ZJi
 2024-08-24,21 Jump Street,2012,4,0,0,0,https://letterboxd.com/nichtlegacy/film/21-jump-street/,,21-jump-street,film:279,J0
 2024-08-17,Going in Style,2017,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/going-in-style-2017/,,going-in-style-2017,film:283209,bSKS
+2024-08-15,Den of Thieves,2018,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/den-of-thieves/,,den-of-thieves,film:381754,g17e
+2024-07-28,Behaving Badly,2014,2,0,0,0,https://letterboxd.com/nichtlegacy/film/behaving-badly/,,behaving-badly,film:182635,7F7g
+2024-07-08,Love & Other Drugs,2010,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/love-other-drugs/,,love-other-drugs,film:21801,UIi
+2024-06-23,The World's End,2013,3,0,0,0,https://letterboxd.com/nichtlegacy/film/the-worlds-end/2/,,the-worlds-end,film:86991,3EiO
+2024-06-22,Scary Movie 2,2001,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/scary-movie-2/1/,,scary-movie-2,film:49442,24Cw
+2024-06-04,Taxi,1998,3,0,0,0,https://letterboxd.com/nichtlegacy/film/taxi-1998/,,taxi-1998,film:50324,26UM
+2024-05-24,The Fall Guy,2024,3,0,0,0,https://letterboxd.com/nichtlegacy/film/the-fall-guy-2024/,,the-fall-guy-2024,film:667550,s0Bm
 2024-05-22,Cars 3,2017,3,0,0,0,https://letterboxd.com/nichtlegacy/film/cars-3/,,cars-3,film:184062,7IPq
 2024-05-20,The Man from Earth,2007,5,0,1,0,https://letterboxd.com/nichtlegacy/film/the-man-from-earth/,,the-man-from-earth,film:43952,1Ql2
 2024-05-18,Cars 2,2011,4,0,0,0,https://letterboxd.com/nichtlegacy/film/cars-2/,,cars-2,film:16560,H4Y
 2024-05-15,Godzilla × Kong: The New Empire,2024,4,0,0,0,https://letterboxd.com/nichtlegacy/film/godzilla-kong-the-new-empire/,,godzilla-kong-the-new-empire,film:739522,v1PK
-2024-05-13,Argylle,2024,3,0,0,0,https://letterboxd.com/nichtlegacy/film/argylle/,,argylle,film:763160,w1kk
+2024-05-13,Argylle,2024,3,1,0,0,https://letterboxd.com/nichtlegacy/film/argylle/,,argylle,film:763160,w1kk
 2024-05-05,Angels & Demons,2009,4,0,0,0,https://letterboxd.com/nichtlegacy/film/angels-demons/,,angels-demons,film:43882,1Q9K
 2024-05-04,Star Wars,1977,5,1,1,0,https://letterboxd.com/nichtlegacy/film/star-wars/,,star-wars,film:2706,72s
 2024-05-03,The Da Vinci Code,2006,4,0,1,0,https://letterboxd.com/nichtlegacy/film/the-da-vinci-code/,,the-da-vinci-code,film:51530,2a3i
@@ -609,4 +654,28 @@ date,title,year,rating,rewatch,liked,reviewed,url,reviewUrl,slug,filmUid,lid
 2024-03-24,Road House,2024,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/road-house-2024/,,road-house-2024,film:291213,cdzQ
 2024-03-23,Dune: Part Two,2024,4.5,0,1,0,https://letterboxd.com/nichtlegacy/film/dune-part-two/,,dune-part-two,film:617443,pUfA
 2024-03-20,Ready Player One,2018,5,1,1,0,https://letterboxd.com/nichtlegacy/film/ready-player-one/,,ready-player-one,film:261866,aZes
+2024-03-16,Hot Fuzz,2007,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/hot-fuzz/1/,,hot-fuzz,film:49210,2416
+2024-03-13,The Inbetweeners Movie,2011,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/the-inbetweeners-movie/,,the-inbetweeners-movie,film:59613,2v50
+2024-03-11,Waiting...,2005,3,0,0,0,https://letterboxd.com/nichtlegacy/film/waiting/,,waiting,film:47985,20Pw
+2024-03-09,The Butterfly Effect,2004,5,0,1,0,https://letterboxd.com/nichtlegacy/film/the-butterfly-effect/,,the-butterfly-effect,film:50654,27M0
+2024-03-07,Argylle,2024,3,0,0,0,https://letterboxd.com/nichtlegacy/film/argylle/1/,,argylle,film:763160,w1kk
+2024-03-06,Back to the Future,1985,4.5,0,1,0,https://letterboxd.com/nichtlegacy/film/back-to-the-future/1/,,back-to-the-future,film:51945,2b8e
+2024-03-04,Accepted,2006,3,0,0,0,https://letterboxd.com/nichtlegacy/film/accepted/,,accepted,film:46823,1XO6
+2024-03-03,Road Trip: Beer Pong,2009,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/road-trip-beer-pong/1/,,road-trip-beer-pong,film:38896,1Dby
+2024-03-02,Road Trip,2000,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/road-trip/1/,,road-trip,film:47307,1Z4a
+2024-02-28,American Wedding,2003,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/american-wedding/,,american-wedding,film:47833,20r0
+2024-02-24,Nobody,2021,3,0,0,0,https://letterboxd.com/nichtlegacy/film/nobody-2021/,,nobody-2021,film:542555,mLqS
 2024-02-22,Dune,2021,4.5,0,1,0,https://letterboxd.com/nichtlegacy/film/dune-2021/,,dune-2021,film:371378,fA7G
+2024-02-18,The Super Mario Bros. Movie,2023,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/the-super-mario-bros-movie/,,the-super-mario-bros-movie,film:432302,i8C8
+2024-02-02,The Equalizer 3,2023,4,0,0,0,https://letterboxd.com/nichtlegacy/film/the-equalizer-3/,,the-equalizer-3,film:831873,yU54
+2024-01-26,Zoolander 2,2016,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/zoolander-2/1/,,zoolander-2,film:257397,aNBE
+2024-01-05,Zoolander,2001,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/zoolander/1/,,zoolander,film:47198,1YMA
+2024-01-05,Pet Sematary,1989,3,0,0,0,https://letterboxd.com/nichtlegacy/film/pet-sematary/,,pet-sematary,film:47514,1ZBy
+2024-01-05,Scary Movie 3,2003,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/scary-movie-3/1/,,scary-movie-3,film:49434,24Be
+2024-01-01,Hardcore Henry,2015,3,0,0,0,https://letterboxd.com/nichtlegacy/film/hardcore-henry/,,hardcore-henry,film:252444,aAIM
+2023-12-27,Horrible Bosses,2011,2,0,0,0,https://letterboxd.com/nichtlegacy/film/horrible-bosses/1/,,horrible-bosses,film:14285,Ba2
+2023-12-21,Jurassic World Dominion,2022,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/jurassic-world-dominion/,,jurassic-world-dominion,film:437050,ikXW
+2023-12-19,The Social Network,2010,4,0,1,0,https://letterboxd.com/nichtlegacy/film/the-social-network/,,the-social-network,film:26711,17ue
+2023-12-12,Jobs,2013,3.5,0,0,0,https://letterboxd.com/nichtlegacy/film/jobs/1/,,jobs,film:91952,3RcY
+2023-12-02,A Very Harold & Kumar Christmas,2011,2.5,0,0,0,https://letterboxd.com/nichtlegacy/film/a-very-harold-kumar-christmas/,,a-very-harold-kumar-christmas,film:10675,rLM
+2023-11-27,Five Nights at Freddy's,2023,3,0,0,0,https://letterboxd.com/nichtlegacy/film/five-nights-at-freddys/,,five-nights-at-freddys,film:436948,ikHu
