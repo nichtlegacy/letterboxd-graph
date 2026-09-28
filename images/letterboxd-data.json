@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-27T20:52:58.144Z",
+  "generatedAt": "2026-09-28T04:29:05.176Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23747,23 +23747,8 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-27",
-    "films": [
-      {
-        "date": "2024-09-27",
-        "title": "Kick-Ass",
-        "year": "2010",
-        "rating": 3.5,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/kick-ass/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:37354",
-        "lid": "1zaQ",
-        "slug": "kick-ass"
-      }
-    ]
+    "date": "2026-09-28",
+    "films": []
   },
   "recent": [
     {
