@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-28T04:29:05.176Z",
+  "generatedAt": "2026-09-29T04:58:00.459Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,8 +18,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 482,
-    "daysActive": 336,
+    "films": 483,
+    "daysActive": 337,
     "streak": 34,
     "streakFilms": 49,
     "rewatches": 77,
@@ -13737,10 +13737,24 @@
       "date": "2026-09-27",
       "week": 91,
       "weekday": 0,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "The Ballad of Buster Scruggs",
+          "year": "2018",
+          "rating": 2.5,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-ballad-of-buster-scruggs/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:467061",
+          "lid": "jB2q",
+          "slug": "the-ballad-of-buster-scruggs"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/27/"
     },
@@ -23744,13 +23758,48 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/25/"
+    },
+    {
+      "date": "2026-09-27",
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "The Ballad of Buster Scruggs",
+          "year": "2018",
+          "rating": 2.5,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-ballad-of-buster-scruggs/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:467061",
+          "lid": "jB2q",
+          "slug": "the-ballad-of-buster-scruggs"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/27/"
     }
   ],
   "onThisDay": {
-    "date": "2026-09-28",
+    "date": "2026-09-29",
     "films": []
   },
   "recent": [
+    {
+      "date": "2026-09-27",
+      "title": "The Ballad of Buster Scruggs",
+      "year": "2018",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-ballad-of-buster-scruggs/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:467061",
+      "lid": "jB2q",
+      "slug": "the-ballad-of-buster-scruggs"
+    },
     {
       "date": "2026-09-25",
       "title": "The Mitchells vs. the Machines",
@@ -23960,23 +24009,23 @@
       "filmUid": "film:399504",
       "lid": "gLi8",
       "slug": "how-to-make-a-killing-2026"
-    },
-    {
-      "date": "2026-07-24",
-      "title": "Never Goin' Back",
-      "year": "2018",
-      "rating": 3,
-      "rewatch": false,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/never-goin-back/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:420473",
-      "lid": "hDQe",
-      "slug": "never-goin-back"
     }
   ],
   "diary": [
+    {
+      "date": "2026-09-27",
+      "title": "The Ballad of Buster Scruggs",
+      "year": "2018",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-ballad-of-buster-scruggs/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:467061",
+      "lid": "jB2q",
+      "slug": "the-ballad-of-buster-scruggs"
+    },
     {
       "date": "2026-09-25",
       "title": "The Mitchells vs. the Machines",
@@ -35586,33 +35635,33 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 90,
-      "distinctFilms": 85,
+      "entries": 91,
+      "distinctFilms": 86,
       "firstEntry": "2026-01-01",
-      "lastEntry": "2026-09-25",
-      "spanDays": 268,
-      "daysActive": 72,
+      "lastEntry": "2026-09-27",
+      "spanDays": 270,
+      "daysActive": 73,
       "multiFilmDays": 12,
       "rewatches": 21,
       "liked": 7,
-      "rated": 90,
+      "rated": 91,
       "releaseBreakdown": {
         "sameYear": 13,
-        "older": 77,
+        "older": 78,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 69,
+        "firstWatches": 70,
         "rewatches": 21
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 90
+        "notReviewed": 91
       },
       "averageRating": 3.3,
       "perDay": 0.34,
       "perWeek": 2.4,
-      "perMonth": 10.2,
+      "perMonth": 10.3,
       "streak": {
         "length": 6,
         "startDate": "2026-03-28",
@@ -35631,12 +35680,12 @@
       "perYear": [
         {
           "year": 2026,
-          "films": 90,
-          "days": 72
+          "films": 91,
+          "days": 73
         }
       ],
       "perWeekday": [
-        18,
+        19,
         9,
         6,
         9,
@@ -35653,7 +35702,7 @@
         4,
         12,
         6,
-        6,
+        7,
         0,
         0,
         0
@@ -35693,7 +35742,7 @@
         },
         {
           "month": "2026-09",
-          "count": 6
+          "count": 7
         }
       ],
       "weekSeries": [
@@ -35929,7 +35978,7 @@
           "week": 39,
           "start": "2026-09-21",
           "end": "2026-09-27",
-          "count": 1
+          "count": 2
         },
         {
           "week": 40,
@@ -36023,7 +36072,7 @@
         },
         {
           "rating": 2.5,
-          "count": 13
+          "count": 14
         },
         {
           "rating": 3,
@@ -36070,8 +36119,8 @@
         {
           "decade": 2010,
           "label": "2010s",
-          "count": 15,
-          "averageRating": 3.5
+          "count": 16,
+          "averageRating": 3
         },
         {
           "decade": 2020,
@@ -36181,47 +36230,47 @@
           "slug": "never-goin-back"
         },
         {
-          "n": 90,
+          "n": 91,
           "kind": "latest",
-          "date": "2026-09-25",
-          "title": "The Mitchells vs. the Machines",
-          "year": "2021",
+          "date": "2026-09-27",
+          "title": "The Ballad of Buster Scruggs",
+          "year": "2018",
           "rating": 2.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/the-mitchells-vs-the-machines/",
+          "url": "https://letterboxd.com/nichtlegacy/film/the-ballad-of-buster-scruggs/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:431888",
-          "lid": "i7xm",
-          "slug": "the-mitchells-vs-the-machines"
+          "filmUid": "film:467061",
+          "lid": "jB2q",
+          "slug": "the-ballad-of-buster-scruggs"
         }
       ]
     }
   },
   "allTime": {
     "scope": "all",
-    "films": 665,
-    "entries": 680,
-    "distinctFilms": 578,
+    "films": 666,
+    "entries": 681,
+    "distinctFilms": 579,
     "firstEntry": "2023-11-27",
-    "lastEntry": "2026-09-25",
-    "spanDays": 1034,
-    "daysActive": 479,
+    "lastEntry": "2026-09-27",
+    "spanDays": 1036,
+    "daysActive": 480,
     "multiFilmDays": 154,
     "rewatches": 119,
     "liked": 63,
-    "rated": 680,
+    "rated": 681,
     "releaseBreakdown": {
       "sameYear": 64,
-      "older": 616,
+      "older": 617,
       "other": 0
     },
     "watchBreakdown": {
-      "firstWatches": 561,
+      "firstWatches": 562,
       "rewatches": 119
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 679
+      "notReviewed": 680
     },
     "averageRating": 3.3,
     "perDay": 0.66,
@@ -36260,12 +36309,12 @@
       },
       {
         "year": 2026,
-        "films": 90,
-        "days": 72
+        "films": 91,
+        "days": 73
       }
     ],
     "perWeekday": [
-      102,
+      103,
       93,
       79,
       87,
@@ -36282,7 +36331,7 @@
       50,
       53,
       27,
-      35,
+      36,
       60,
       49,
       64
@@ -36426,7 +36475,7 @@
       },
       {
         "month": "2026-09",
-        "count": 6
+        "count": 7
       }
     ],
     "weekSeries": [],
@@ -36445,7 +36494,7 @@
       },
       {
         "rating": 2.5,
-        "count": 102
+        "count": 103
       },
       {
         "rating": 3,
@@ -36502,7 +36551,7 @@
       {
         "decade": 2010,
         "label": "2010s",
-        "count": 155,
+        "count": 156,
         "averageRating": 3
       },
       {
@@ -37279,18 +37328,18 @@
         "slug": "ford-v-ferrari"
       },
       {
-        "n": 680,
+        "n": 681,
         "kind": "latest",
-        "date": "2026-09-25",
-        "title": "The Mitchells vs. the Machines",
-        "year": "2021",
+        "date": "2026-09-27",
+        "title": "The Ballad of Buster Scruggs",
+        "year": "2018",
         "rating": 2.5,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-mitchells-vs-the-machines/",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-ballad-of-buster-scruggs/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:431888",
-        "lid": "i7xm",
-        "slug": "the-mitchells-vs-the-machines"
+        "filmUid": "film:467061",
+        "lid": "jB2q",
+        "slug": "the-ballad-of-buster-scruggs"
       }
     ]
   }
