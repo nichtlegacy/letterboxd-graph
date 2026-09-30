@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-29T04:58:00.459Z",
+  "generatedAt": "2026-09-30T04:44:30.484Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,8 +18,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 483,
-    "daysActive": 337,
+    "films": 484,
+    "daysActive": 338,
     "streak": 34,
     "streakFilms": 49,
     "rewatches": 77,
@@ -13762,10 +13762,24 @@
       "date": "2026-09-28",
       "week": 91,
       "weekday": 1,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Rushmore",
+          "year": "1998",
+          "rating": 2.5,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/rushmore/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:45203",
+          "lid": "1TAO",
+          "slug": "rushmore"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/28/"
     },
@@ -23779,13 +23793,48 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/27/"
+    },
+    {
+      "date": "2026-09-28",
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Rushmore",
+          "year": "1998",
+          "rating": 2.5,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/rushmore/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:45203",
+          "lid": "1TAO",
+          "slug": "rushmore"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/28/"
     }
   ],
   "onThisDay": {
-    "date": "2026-09-29",
+    "date": "2026-09-30",
     "films": []
   },
   "recent": [
+    {
+      "date": "2026-09-28",
+      "title": "Rushmore",
+      "year": "1998",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/rushmore/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:45203",
+      "lid": "1TAO",
+      "slug": "rushmore"
+    },
     {
       "date": "2026-09-27",
       "title": "The Ballad of Buster Scruggs",
@@ -23995,23 +24044,23 @@
       "filmUid": "film:386613",
       "lid": "gdKW",
       "slug": "masters-of-the-universe-2026"
-    },
-    {
-      "date": "2026-07-25",
-      "title": "How to Make a Killing",
-      "year": "2026",
-      "rating": 3,
-      "rewatch": false,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/how-to-make-a-killing-2026/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:399504",
-      "lid": "gLi8",
-      "slug": "how-to-make-a-killing-2026"
     }
   ],
   "diary": [
+    {
+      "date": "2026-09-28",
+      "title": "Rushmore",
+      "year": "1998",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/rushmore/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:45203",
+      "lid": "1TAO",
+      "slug": "rushmore"
+    },
     {
       "date": "2026-09-27",
       "title": "The Ballad of Buster Scruggs",
@@ -35635,28 +35684,28 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 91,
-      "distinctFilms": 86,
+      "entries": 92,
+      "distinctFilms": 87,
       "firstEntry": "2026-01-01",
-      "lastEntry": "2026-09-27",
-      "spanDays": 270,
-      "daysActive": 73,
+      "lastEntry": "2026-09-28",
+      "spanDays": 271,
+      "daysActive": 74,
       "multiFilmDays": 12,
       "rewatches": 21,
       "liked": 7,
-      "rated": 91,
+      "rated": 92,
       "releaseBreakdown": {
         "sameYear": 13,
-        "older": 78,
+        "older": 79,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 70,
+        "firstWatches": 71,
         "rewatches": 21
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 91
+        "notReviewed": 92
       },
       "averageRating": 3.3,
       "perDay": 0.34,
@@ -35680,13 +35729,13 @@
       "perYear": [
         {
           "year": 2026,
-          "films": 91,
-          "days": 73
+          "films": 92,
+          "days": 74
         }
       ],
       "perWeekday": [
         19,
-        9,
+        10,
         6,
         9,
         9,
@@ -35702,7 +35751,7 @@
         4,
         12,
         6,
-        7,
+        8,
         0,
         0,
         0
@@ -35742,7 +35791,7 @@
         },
         {
           "month": "2026-09",
-          "count": 7
+          "count": 8
         }
       ],
       "weekSeries": [
@@ -35984,7 +36033,7 @@
           "week": 40,
           "start": "2026-09-28",
           "end": "2026-10-04",
-          "count": 0
+          "count": 1
         },
         {
           "week": 41,
@@ -36072,7 +36121,7 @@
         },
         {
           "rating": 2.5,
-          "count": 14
+          "count": 15
         },
         {
           "rating": 3,
@@ -36107,7 +36156,7 @@
         {
           "decade": 1990,
           "label": "1990s",
-          "count": 15,
+          "count": 16,
           "averageRating": 3.5
         },
         {
@@ -36230,47 +36279,47 @@
           "slug": "never-goin-back"
         },
         {
-          "n": 91,
+          "n": 92,
           "kind": "latest",
-          "date": "2026-09-27",
-          "title": "The Ballad of Buster Scruggs",
-          "year": "2018",
+          "date": "2026-09-28",
+          "title": "Rushmore",
+          "year": "1998",
           "rating": 2.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/the-ballad-of-buster-scruggs/",
+          "url": "https://letterboxd.com/nichtlegacy/film/rushmore/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:467061",
-          "lid": "jB2q",
-          "slug": "the-ballad-of-buster-scruggs"
+          "filmUid": "film:45203",
+          "lid": "1TAO",
+          "slug": "rushmore"
         }
       ]
     }
   },
   "allTime": {
     "scope": "all",
-    "films": 666,
-    "entries": 681,
-    "distinctFilms": 579,
+    "films": 667,
+    "entries": 682,
+    "distinctFilms": 580,
     "firstEntry": "2023-11-27",
-    "lastEntry": "2026-09-27",
-    "spanDays": 1036,
-    "daysActive": 480,
+    "lastEntry": "2026-09-28",
+    "spanDays": 1037,
+    "daysActive": 481,
     "multiFilmDays": 154,
     "rewatches": 119,
     "liked": 63,
-    "rated": 681,
+    "rated": 682,
     "releaseBreakdown": {
       "sameYear": 64,
-      "older": 617,
+      "older": 618,
       "other": 0
     },
     "watchBreakdown": {
-      "firstWatches": 562,
+      "firstWatches": 563,
       "rewatches": 119
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 680
+      "notReviewed": 681
     },
     "averageRating": 3.3,
     "perDay": 0.66,
@@ -36309,13 +36358,13 @@
       },
       {
         "year": 2026,
-        "films": 91,
-        "days": 73
+        "films": 92,
+        "days": 74
       }
     ],
     "perWeekday": [
       103,
-      93,
+      94,
       79,
       87,
       93,
@@ -36331,7 +36380,7 @@
       50,
       53,
       27,
-      36,
+      37,
       60,
       49,
       64
@@ -36475,7 +36524,7 @@
       },
       {
         "month": "2026-09",
-        "count": 7
+        "count": 8
       }
     ],
     "weekSeries": [],
@@ -36494,7 +36543,7 @@
       },
       {
         "rating": 2.5,
-        "count": 103
+        "count": 104
       },
       {
         "rating": 3,
@@ -36539,7 +36588,7 @@
       {
         "decade": 1990,
         "label": "1990s",
-        "count": 104,
+        "count": 105,
         "averageRating": 3.5
       },
       {
@@ -37328,18 +37377,18 @@
         "slug": "ford-v-ferrari"
       },
       {
-        "n": 681,
+        "n": 682,
         "kind": "latest",
-        "date": "2026-09-27",
-        "title": "The Ballad of Buster Scruggs",
-        "year": "2018",
+        "date": "2026-09-28",
+        "title": "Rushmore",
+        "year": "1998",
         "rating": 2.5,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-ballad-of-buster-scruggs/",
+        "url": "https://letterboxd.com/nichtlegacy/film/rushmore/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:467061",
-        "lid": "jB2q",
-        "slug": "the-ballad-of-buster-scruggs"
+        "filmUid": "film:45203",
+        "lid": "1TAO",
+        "slug": "rushmore"
       }
     ]
   }
