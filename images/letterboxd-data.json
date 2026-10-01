@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-09-30T04:44:30.484Z",
+  "generatedAt": "2026-10-01T04:56:50.152Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23817,8 +23817,23 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-09-30",
-    "films": []
+    "date": "2026-10-01",
+    "films": [
+      {
+        "date": "2025-10-01",
+        "title": "Half Baked",
+        "year": "1998",
+        "rating": 4,
+        "rewatch": true,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/half-baked/3/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:47108",
+        "lid": "1Yy4",
+        "slug": "half-baked"
+      }
+    ]
   },
   "recent": [
     {
