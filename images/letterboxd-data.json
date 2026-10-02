@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-01T04:56:50.152Z",
+  "generatedAt": "2026-10-02T04:47:05.790Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23817,21 +23817,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-01",
+    "date": "2026-10-02",
     "films": [
       {
-        "date": "2025-10-01",
-        "title": "Half Baked",
-        "year": "1998",
+        "date": "2025-10-02",
+        "title": "Everything Everywhere All at Once",
+        "year": "2022",
         "rating": 4,
-        "rewatch": true,
+        "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/half-baked/3/",
+        "url": "https://letterboxd.com/nichtlegacy/film/everything-everywhere-all-at-once/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:47108",
-        "lid": "1Yy4",
-        "slug": "half-baked"
+        "filmUid": "film:474474",
+        "lid": "jUk4",
+        "slug": "everything-everywhere-all-at-once"
+      },
+      {
+        "date": "2025-10-02",
+        "title": "The Men Who Stare at Goats",
+        "year": "2009",
+        "rating": 3.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/the-men-who-stare-at-goats/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:46346",
+        "lid": "1Wza",
+        "slug": "the-men-who-stare-at-goats"
       }
     ]
   },
