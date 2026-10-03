@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-02T04:47:05.790Z",
+  "generatedAt": "2026-10-03T04:29:36.159Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23817,35 +23817,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-02",
+    "date": "2026-10-03",
     "films": [
       {
-        "date": "2025-10-02",
-        "title": "Everything Everywhere All at Once",
-        "year": "2022",
+        "date": "2025-10-03",
+        "title": "Snatch",
+        "year": "2000",
+        "rating": 3,
+        "rewatch": true,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/snatch/1/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:51943",
+        "lid": "2b7U",
+        "slug": "snatch"
+      },
+      {
+        "date": "2024-10-03",
+        "title": "Deadpool & Wolverine",
+        "year": "2024",
         "rating": 4,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/everything-everywhere-all-at-once/",
+        "url": "https://letterboxd.com/nichtlegacy/film/deadpool-wolverine/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:474474",
-        "lid": "jUk4",
-        "slug": "everything-everywhere-all-at-once"
-      },
-      {
-        "date": "2025-10-02",
-        "title": "The Men Who Stare at Goats",
-        "year": "2009",
-        "rating": 3.5,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-men-who-stare-at-goats/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:46346",
-        "lid": "1Wza",
-        "slug": "the-men-who-stare-at-goats"
+        "filmUid": "film:462870",
+        "lid": "jq8s",
+        "slug": "deadpool-wolverine"
       }
     ]
   },
