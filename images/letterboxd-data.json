@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-04T05:00:30.058Z",
+  "generatedAt": "2026-10-05T04:47:31.905Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23817,35 +23817,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-04",
+    "date": "2026-10-05",
     "films": [
       {
-        "date": "2025-10-04",
-        "title": "Men in Black II",
-        "year": "2002",
-        "rating": 3,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/men-in-black-ii/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:51513",
-        "lid": "2a0y",
-        "slug": "men-in-black-ii"
-      },
-      {
-        "date": "2024-10-04",
-        "title": "The Sitter",
-        "year": "2011",
+        "date": "2025-10-05",
+        "title": "The Fantastic 4: First Steps",
+        "year": "2025",
         "rating": 4,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-sitter/",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-fantastic-4-first-steps/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:8732",
-        "lid": "mIo",
-        "slug": "the-sitter"
+        "filmUid": "film:543967",
+        "lid": "mP6C",
+        "slug": "the-fantastic-4-first-steps"
       }
     ]
   },
