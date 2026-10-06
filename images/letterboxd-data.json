@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-05T04:47:31.905Z",
+  "generatedAt": "2026-10-06T05:34:20.445Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23817,21 +23817,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-05",
+    "date": "2026-10-06",
     "films": [
       {
-        "date": "2025-10-05",
-        "title": "The Fantastic 4: First Steps",
-        "year": "2025",
-        "rating": 4,
+        "date": "2025-10-06",
+        "title": "Muppets Most Wanted",
+        "year": "2014",
+        "rating": 3,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-fantastic-4-first-steps/",
+        "url": "https://letterboxd.com/nichtlegacy/film/muppets-most-wanted/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:543967",
-        "lid": "mP6C",
-        "slug": "the-fantastic-4-first-steps"
+        "filmUid": "film:110120",
+        "lid": "4Cti",
+        "slug": "muppets-most-wanted"
       }
     ]
   },
