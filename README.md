@@ -763,12 +763,6 @@ Then:
 
 A private repository needs a paid plan for Pages; a public one does not.
 
-The published page sets no cookies; it counts anonymous visits through a
-self-hosted Umami instance. The tag in the `<head>` of `site/index.html` and
-`site/diary.html` only records on `letterboxd.nichtlegacy.com`, so a copy
-served anywhere else counts nothing. Delete it, or swap in your own website ID
-and domain.
-
 To preview any of it locally, generate the images once and serve the build:
 
 ```bash
