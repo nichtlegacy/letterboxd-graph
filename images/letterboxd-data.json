@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-06T05:34:20.445Z",
+  "generatedAt": "2026-10-07T05:04:10.079Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23817,21 +23817,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-06",
+    "date": "2026-10-07",
     "films": [
       {
-        "date": "2025-10-06",
-        "title": "Muppets Most Wanted",
-        "year": "2014",
+        "date": "2025-10-07",
+        "title": "Fast Times at Ridgemont High",
+        "year": "1982",
         "rating": 3,
-        "rewatch": false,
+        "rewatch": true,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/muppets-most-wanted/",
+        "url": "https://letterboxd.com/nichtlegacy/film/fast-times-at-ridgemont-high/1/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:110120",
-        "lid": "4Cti",
-        "slug": "muppets-most-wanted"
+        "filmUid": "film:43969",
+        "lid": "1QnM",
+        "slug": "fast-times-at-ridgemont-high"
       }
     ]
   },
