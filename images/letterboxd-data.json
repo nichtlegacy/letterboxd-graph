@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-07T05:04:10.079Z",
+  "generatedAt": "2026-10-08T05:14:37.349Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23817,21 +23817,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-07",
+    "date": "2026-10-08",
     "films": [
       {
-        "date": "2025-10-07",
-        "title": "Fast Times at Ridgemont High",
-        "year": "1982",
-        "rating": 3,
-        "rewatch": true,
+        "date": "2025-10-08",
+        "title": "Muppet Treasure Island",
+        "year": "1996",
+        "rating": 2.5,
+        "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/fast-times-at-ridgemont-high/1/",
+        "url": "https://letterboxd.com/nichtlegacy/film/muppet-treasure-island/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:43969",
-        "lid": "1QnM",
-        "slug": "fast-times-at-ridgemont-high"
+        "filmUid": "film:45811",
+        "lid": "1VaS",
+        "slug": "muppet-treasure-island"
+      },
+      {
+        "date": "2024-10-08",
+        "title": "Smile",
+        "year": "2022",
+        "rating": 2,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/smile-2022/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:793883",
+        "lid": "xjfE",
+        "slug": "smile-2022"
       }
     ]
   },
