@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-09T05:17:33.525Z",
+  "generatedAt": "2026-10-10T05:01:58.907Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23817,21 +23817,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-09",
+    "date": "2026-10-10",
     "films": [
       {
-        "date": "2025-10-09",
-        "title": "Fantastic Mr. Fox",
-        "year": "2009",
+        "date": "2024-10-10",
+        "title": "21",
+        "year": "2008",
         "rating": 4,
-        "rewatch": false,
+        "rewatch": true,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/fantastic-mr-fox/",
+        "url": "https://letterboxd.com/nichtlegacy/film/21/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:46344",
-        "lid": "1WyQ",
-        "slug": "fantastic-mr-fox"
+        "filmUid": "film:47900",
+        "lid": "20BO",
+        "slug": "21"
       }
     ]
   },
