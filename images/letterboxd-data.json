@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-10T05:01:58.907Z",
+  "generatedAt": "2026-10-11T04:50:57.452Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23817,21 +23817,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-10",
+    "date": "2026-10-11",
     "films": [
       {
-        "date": "2024-10-10",
-        "title": "21",
-        "year": "2008",
-        "rating": 4,
-        "rewatch": true,
+        "date": "2025-10-11",
+        "title": "Weird: The Al Yankovic Story",
+        "year": "2022",
+        "rating": 3.5,
+        "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/21/",
+        "url": "https://letterboxd.com/nichtlegacy/film/weird-the-al-yankovic-story-2022/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:47900",
-        "lid": "20BO",
-        "slug": "21"
+        "filmUid": "film:833761",
+        "lid": "yYZA",
+        "slug": "weird-the-al-yankovic-story-2022"
       }
     ]
   },
