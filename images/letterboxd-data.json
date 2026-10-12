@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-11T04:50:57.452Z",
+  "generatedAt": "2026-10-12T05:05:52.929Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23817,21 +23817,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-11",
+    "date": "2026-10-12",
     "films": [
       {
-        "date": "2025-10-11",
-        "title": "Weird: The Al Yankovic Story",
-        "year": "2022",
-        "rating": 3.5,
-        "rewatch": false,
+        "date": "2024-10-12",
+        "title": "Terrifier",
+        "year": "2016",
+        "rating": 2.5,
+        "rewatch": true,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/weird-the-al-yankovic-story-2022/",
+        "url": "https://letterboxd.com/nichtlegacy/film/terrifier-2016/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:833761",
-        "lid": "yYZA",
-        "slug": "weird-the-al-yankovic-story-2022"
+        "filmUid": "film:354251",
+        "lid": "eRzg",
+        "slug": "terrifier-2016"
+      },
+      {
+        "date": "2024-10-12",
+        "title": "Logan Lucky",
+        "year": "2017",
+        "rating": 3,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/logan-lucky/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:333445",
+        "lid": "dZrs",
+        "slug": "logan-lucky"
       }
     ]
   },
