@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-13T06:05:31.898Z",
+  "generatedAt": "2026-10-14T04:08:40.150Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23817,21 +23817,63 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-13",
+    "date": "2026-10-14",
     "films": [
       {
-        "date": "2024-10-13",
-        "title": "Terrifier 2",
-        "year": "2022",
+        "date": "2025-10-14",
+        "title": "UHF",
+        "year": "1989",
+        "rating": 3,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/uhf/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:44849",
+        "lid": "1SFI",
+        "slug": "uhf"
+      },
+      {
+        "date": "2024-10-14",
+        "title": "Halloween",
+        "year": "2007",
         "rating": 3.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/terrifier-2/",
+        "url": "https://letterboxd.com/nichtlegacy/film/halloween/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:588907",
-        "lid": "oI10",
-        "slug": "terrifier-2"
+        "filmUid": "film:50543",
+        "lid": "27u6",
+        "slug": "halloween"
+      },
+      {
+        "date": "2024-10-14",
+        "title": "Green Street Hooligans 2",
+        "year": "2009",
+        "rating": 2.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/green-street-hooligans-2/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:42085",
+        "lid": "1LtU",
+        "slug": "green-street-hooligans-2"
+      },
+      {
+        "date": "2024-10-14",
+        "title": "Four Lions",
+        "year": "2010",
+        "rating": 4,
+        "rewatch": true,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/four-lions/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:26991",
+        "lid": "18do",
+        "slug": "four-lions"
       }
     ]
   },
