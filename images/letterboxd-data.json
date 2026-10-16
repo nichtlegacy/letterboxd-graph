@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-15T03:51:18.189Z",
+  "generatedAt": "2026-10-16T03:46:55.934Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -23817,21 +23817,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-15",
+    "date": "2026-10-16",
     "films": [
       {
-        "date": "2025-10-15",
-        "title": "Freakier Friday",
-        "year": "2025",
-        "rating": 4,
-        "rewatch": false,
+        "date": "2025-10-16",
+        "title": "The Grand Budapest Hotel",
+        "year": "2014",
+        "rating": 3.5,
+        "rewatch": true,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/freakier-friday/",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-grand-budapest-hotel/1/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:1013867",
-        "lid": "GxwW",
-        "slug": "freakier-friday"
+        "filmUid": "film:95113",
+        "lid": "3ZqO",
+        "slug": "the-grand-budapest-hotel"
       }
     ]
   },
