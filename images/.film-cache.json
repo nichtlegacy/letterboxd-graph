@@ -210,6 +210,12 @@
       "runtime": 121,
       "averageRating": 3.88,
       "fetchedAt": "2026-09-27T20:52:58.943Z"
+    },
+    "https://letterboxd.com/film/next-friday/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/4/6/1/9/8/46198-next-friday-0-600-0-900-crop.jpg?v=2ec656c1fa",
+      "runtime": 98,
+      "averageRating": 3.04,
+      "fetchedAt": "2026-10-17T03:36:47.625Z"
     }
   }
 }

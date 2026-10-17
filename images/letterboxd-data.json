@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-16T03:46:55.934Z",
+  "generatedAt": "2026-10-17T03:36:47.069Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,8 +18,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 484,
-    "daysActive": 338,
+    "films": 485,
+    "daysActive": 339,
     "streak": 34,
     "streakFilms": 49,
     "rewatches": 77,
@@ -13974,10 +13974,24 @@
       "date": "2026-10-16",
       "week": 93,
       "weekday": 5,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Next Friday",
+          "year": "2000",
+          "rating": 2.5,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/next-friday/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:46198",
+          "lid": "1Wbi",
+          "slug": "next-friday"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/16/"
     },
@@ -23814,28 +23828,77 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/28/"
+    },
+    {
+      "date": "2026-10-16",
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "Next Friday",
+          "year": "2000",
+          "rating": 2.5,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/next-friday/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:46198",
+          "lid": "1Wbi",
+          "slug": "next-friday"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/16/"
     }
   ],
   "onThisDay": {
-    "date": "2026-10-16",
+    "date": "2026-10-17",
     "films": [
       {
-        "date": "2025-10-16",
-        "title": "The Grand Budapest Hotel",
-        "year": "2014",
-        "rating": 3.5,
-        "rewatch": true,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-grand-budapest-hotel/1/",
+        "date": "2024-10-17",
+        "title": "It",
+        "year": "2017",
+        "rating": 3,
+        "rewatch": false,
+        "liked": true,
+        "url": "https://letterboxd.com/nichtlegacy/film/it-2017/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:95113",
-        "lid": "3ZqO",
-        "slug": "the-grand-budapest-hotel"
+        "filmUid": "film:276819",
+        "lid": "bC8e",
+        "slug": "it-2017"
+      },
+      {
+        "date": "2024-10-17",
+        "title": "The Prestige",
+        "year": "2006",
+        "rating": 4.5,
+        "rewatch": true,
+        "liked": true,
+        "url": "https://letterboxd.com/nichtlegacy/film/the-prestige/1/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:51147",
+        "lid": "293w",
+        "slug": "the-prestige"
       }
     ]
   },
   "recent": [
+    {
+      "date": "2026-10-16",
+      "title": "Next Friday",
+      "year": "2000",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/next-friday/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:46198",
+      "lid": "1Wbi",
+      "slug": "next-friday"
+    },
     {
       "date": "2026-09-28",
       "title": "Rushmore",
@@ -24045,23 +24108,23 @@
       "filmUid": "film:872871",
       "lid": "ACJE",
       "slug": "spider-man-brand-new-day"
-    },
-    {
-      "date": "2026-07-28",
-      "title": "Masters of the Universe",
-      "year": "2026",
-      "rating": 3,
-      "rewatch": false,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/masters-of-the-universe-2026/17/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:386613",
-      "lid": "gdKW",
-      "slug": "masters-of-the-universe-2026"
     }
   ],
   "diary": [
+    {
+      "date": "2026-10-16",
+      "title": "Next Friday",
+      "year": "2000",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/next-friday/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:46198",
+      "lid": "1Wbi",
+      "slug": "next-friday"
+    },
     {
       "date": "2026-09-28",
       "title": "Rushmore",
@@ -35699,33 +35762,33 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 92,
-      "distinctFilms": 87,
+      "entries": 93,
+      "distinctFilms": 88,
       "firstEntry": "2026-01-01",
-      "lastEntry": "2026-09-28",
-      "spanDays": 271,
-      "daysActive": 74,
+      "lastEntry": "2026-10-16",
+      "spanDays": 289,
+      "daysActive": 75,
       "multiFilmDays": 12,
       "rewatches": 21,
       "liked": 7,
-      "rated": 92,
+      "rated": 93,
       "releaseBreakdown": {
         "sameYear": 13,
-        "older": 79,
+        "older": 80,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 71,
+        "firstWatches": 72,
         "rewatches": 21
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 92
+        "notReviewed": 93
       },
       "averageRating": 3.3,
-      "perDay": 0.34,
-      "perWeek": 2.4,
-      "perMonth": 10.3,
+      "perDay": 0.32,
+      "perWeek": 2.3,
+      "perMonth": 9.8,
       "streak": {
         "length": 6,
         "startDate": "2026-03-28",
@@ -35737,15 +35800,15 @@
         "count": 3
       },
       "longestGap": {
-        "days": 15,
-        "from": "2026-06-03",
-        "to": "2026-06-19"
+        "days": 17,
+        "from": "2026-09-28",
+        "to": "2026-10-16"
       },
       "perYear": [
         {
           "year": 2026,
-          "films": 92,
-          "days": 74
+          "films": 93,
+          "days": 75
         }
       ],
       "perWeekday": [
@@ -35754,7 +35817,7 @@
         6,
         9,
         9,
-        16,
+        17,
         23
       ],
       "perMonthOfYear": [
@@ -35767,7 +35830,7 @@
         12,
         6,
         8,
-        0,
+        1,
         0,
         0
       ],
@@ -35807,6 +35870,10 @@
         {
           "month": "2026-09",
           "count": 8
+        },
+        {
+          "month": "2026-10",
+          "count": 1
         }
       ],
       "weekSeries": [
@@ -36060,7 +36127,7 @@
           "week": 42,
           "start": "2026-10-12",
           "end": "2026-10-18",
-          "count": 0
+          "count": 1
         },
         {
           "week": 43,
@@ -36136,7 +36203,7 @@
         },
         {
           "rating": 2.5,
-          "count": 15
+          "count": 16
         },
         {
           "rating": 3,
@@ -36177,8 +36244,8 @@
         {
           "decade": 2000,
           "label": "2000s",
-          "count": 23,
-          "averageRating": 3.5
+          "count": 24,
+          "averageRating": 3
         },
         {
           "decade": 2010,
@@ -36294,52 +36361,52 @@
           "slug": "never-goin-back"
         },
         {
-          "n": 92,
+          "n": 93,
           "kind": "latest",
-          "date": "2026-09-28",
-          "title": "Rushmore",
-          "year": "1998",
+          "date": "2026-10-16",
+          "title": "Next Friday",
+          "year": "2000",
           "rating": 2.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/rushmore/",
+          "url": "https://letterboxd.com/nichtlegacy/film/next-friday/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:45203",
-          "lid": "1TAO",
-          "slug": "rushmore"
+          "filmUid": "film:46198",
+          "lid": "1Wbi",
+          "slug": "next-friday"
         }
       ]
     }
   },
   "allTime": {
     "scope": "all",
-    "films": 667,
-    "entries": 682,
-    "distinctFilms": 580,
+    "films": 668,
+    "entries": 683,
+    "distinctFilms": 581,
     "firstEntry": "2023-11-27",
-    "lastEntry": "2026-09-28",
-    "spanDays": 1037,
-    "daysActive": 481,
+    "lastEntry": "2026-10-16",
+    "spanDays": 1055,
+    "daysActive": 482,
     "multiFilmDays": 154,
     "rewatches": 119,
     "liked": 63,
-    "rated": 682,
+    "rated": 683,
     "releaseBreakdown": {
       "sameYear": 64,
-      "older": 618,
+      "older": 619,
       "other": 0
     },
     "watchBreakdown": {
-      "firstWatches": 563,
+      "firstWatches": 564,
       "rewatches": 119
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 681
+      "notReviewed": 682
     },
     "averageRating": 3.3,
-    "perDay": 0.66,
-    "perWeek": 4.6,
-    "perMonth": 20,
+    "perDay": 0.65,
+    "perWeek": 4.5,
+    "perMonth": 19.7,
     "streak": {
       "length": 34,
       "startDate": "2025-01-27",
@@ -36373,8 +36440,8 @@
       },
       {
         "year": 2026,
-        "films": 92,
-        "days": 74
+        "films": 93,
+        "days": 75
       }
     ],
     "perWeekday": [
@@ -36383,7 +36450,7 @@
       79,
       87,
       93,
-      103,
+      104,
       123
     ],
     "perMonthOfYear": [
@@ -36396,7 +36463,7 @@
       53,
       27,
       37,
-      60,
+      61,
       49,
       64
     ],
@@ -36540,6 +36607,10 @@
       {
         "month": "2026-09",
         "count": 8
+      },
+      {
+        "month": "2026-10",
+        "count": 1
       }
     ],
     "weekSeries": [],
@@ -36558,7 +36629,7 @@
       },
       {
         "rating": 2.5,
-        "count": 104
+        "count": 105
       },
       {
         "rating": 3,
@@ -36609,7 +36680,7 @@
       {
         "decade": 2000,
         "label": "2000s",
-        "count": 253,
+        "count": 254,
         "averageRating": 3
       },
       {
@@ -37392,18 +37463,18 @@
         "slug": "ford-v-ferrari"
       },
       {
-        "n": 682,
+        "n": 683,
         "kind": "latest",
-        "date": "2026-09-28",
-        "title": "Rushmore",
-        "year": "1998",
+        "date": "2026-10-16",
+        "title": "Next Friday",
+        "year": "2000",
         "rating": 2.5,
-        "url": "https://letterboxd.com/nichtlegacy/film/rushmore/",
+        "url": "https://letterboxd.com/nichtlegacy/film/next-friday/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:45203",
-        "lid": "1TAO",
-        "slug": "rushmore"
+        "filmUid": "film:46198",
+        "lid": "1Wbi",
+        "slug": "next-friday"
       }
     ]
   }
