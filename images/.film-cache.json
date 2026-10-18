@@ -216,6 +216,54 @@
       "runtime": 98,
       "averageRating": 3.04,
       "fetchedAt": "2026-10-17T03:36:47.625Z"
+    },
+    "https://letterboxd.com/film/the-popes-exorcist/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/6/7/8/8/4/5/678845-the-pope-s-exorcist-0-600-0-900-crop.jpg?v=b488ccbfa8",
+      "runtime": 103,
+      "averageRating": 2.61,
+      "fetchedAt": "2026-10-18T03:43:26.445Z"
+    },
+    "https://letterboxd.com/film/minions-the-rise-of-gru/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/3/7/1/0/0/5/371005-minions-the-rise-of-gru-0-600-0-900-crop.jpg?v=ca97b9c24a",
+      "runtime": 87,
+      "averageRating": 3.15,
+      "fetchedAt": "2026-10-18T03:43:26.628Z"
+    },
+    "https://letterboxd.com/film/choose-or-die/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/7/5/3/8/7/2/753872-choose-or-die-0-600-0-900-crop.jpg?v=405ba2d63b",
+      "runtime": 85,
+      "averageRating": 1.99,
+      "fetchedAt": "2026-10-18T03:43:26.815Z"
+    },
+    "https://letterboxd.com/film/army-of-thieves/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/7/1/4/2/7/9/714279-army-of-thieves-0-600-0-900-crop.jpg?v=7a2e61004c",
+      "runtime": 128,
+      "averageRating": 2.92,
+      "fetchedAt": "2026-10-18T03:43:27.059Z"
+    },
+    "https://letterboxd.com/film/red-notice/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/4/4/1/8/5/8/441858-red-notice-0-600-0-900-crop.jpg?v=d2c7c01ef2",
+      "runtime": 118,
+      "averageRating": 2.51,
+      "fetchedAt": "2026-10-18T03:43:27.269Z"
+    },
+    "https://letterboxd.com/film/army-of-the-dead-2021/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/4/3/3/6/5/2/433652-army-of-the-dead-0-600-0-900-crop.jpg?v=a6fb93b0e3",
+      "runtime": 148,
+      "averageRating": 2.52,
+      "fetchedAt": "2026-10-18T03:43:27.368Z"
+    },
+    "https://letterboxd.com/film/american-murder-the-family-next-door/": {
+      "poster": "https://a.ltrbxd.com/resized/sm/upload/nz/ls/9j/bx/american%20m-0-600-0-900-crop.jpg?v=890d4489a7",
+      "runtime": 83,
+      "averageRating": 3.33,
+      "fetchedAt": "2026-10-18T03:43:27.551Z"
+    },
+    "https://letterboxd.com/film/roofman/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/1/1/2/5/0/3/3/1125033-roofman-0-600-0-900-crop.jpg?v=017b87fa71",
+      "runtime": 126,
+      "averageRating": 3.46,
+      "fetchedAt": "2026-10-18T03:43:27.781Z"
     }
   }
 }

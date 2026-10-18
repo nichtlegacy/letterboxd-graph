@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-17T15:30:35.146Z",
+  "generatedAt": "2026-10-18T03:43:25.729Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,11 +18,11 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 498,
-    "daysActive": 343,
+    "films": 499,
+    "daysActive": 344,
     "streak": 34,
     "streakFilms": 53,
-    "rewatches": 80,
+    "rewatches": 82,
     "liked": 31
   },
   "monthLabels": [
@@ -12896,7 +12896,7 @@
           "title": "Minions: The Rise of Gru",
           "year": "2022",
           "rating": 3,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/minions-the-rise-of-gru/",
           "reviewed": false,
@@ -14172,10 +14172,24 @@
       "date": "2026-10-17",
       "week": 93,
       "weekday": 6,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Roofman",
+          "year": "2025",
+          "rating": 3,
+          "rewatch": true,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/roofman/1/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:1125033",
+          "lid": "LcIW",
+          "slug": "roofman"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/17/"
     },
@@ -23800,7 +23814,7 @@
           "title": "Minions: The Rise of Gru",
           "year": "2022",
           "rating": 3,
-          "rewatch": false,
+          "rewatch": true,
           "liked": false,
           "url": "https://letterboxd.com/nichtlegacy/film/minions-the-rise-of-gru/",
           "reviewed": false,
@@ -24223,56 +24237,77 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/16/"
+    },
+    {
+      "date": "2026-10-17",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Roofman",
+          "year": "2025",
+          "rating": 3,
+          "rewatch": true,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/roofman/1/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:1125033",
+          "lid": "LcIW",
+          "slug": "roofman"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/17/"
     }
   ],
   "onThisDay": {
-    "date": "2026-10-17",
+    "date": "2026-10-18",
     "films": [
       {
-        "date": "2024-10-17",
-        "title": "It",
-        "year": "2017",
+        "date": "2025-10-18",
+        "title": "The A-Team",
+        "year": "2010",
         "rating": 3,
         "rewatch": false,
-        "liked": true,
-        "url": "https://letterboxd.com/nichtlegacy/film/it-2017/",
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/the-a-team/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:276819",
-        "lid": "bC8e",
-        "slug": "it-2017"
+        "filmUid": "film:29102",
+        "lid": "1dHS",
+        "slug": "the-a-team"
       },
       {
-        "date": "2024-10-17",
-        "title": "The Prestige",
-        "year": "2006",
-        "rating": 4.5,
-        "rewatch": true,
-        "liked": true,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-prestige/1/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:51147",
-        "lid": "293w",
-        "slug": "the-prestige"
-      },
-      {
-        "date": "2021-10-17",
-        "title": "The Hobbit: An Unexpected Journey",
-        "year": "2012",
+        "date": "2021-10-18",
+        "title": "The Hobbit: The Desolation of Smaug",
+        "year": "2013",
         "rating": 4,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-hobbit-an-unexpected-journey/",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-hobbit-the-desolation-of-smaug/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:16525",
-        "lid": "GZk",
-        "slug": "the-hobbit-an-unexpected-journey"
+        "filmUid": "film:8983",
+        "lid": "nmS",
+        "slug": "the-hobbit-the-desolation-of-smaug"
       }
     ]
   },
   "recent": [
+    {
+      "date": "2026-10-17",
+      "title": "Roofman",
+      "year": "2025",
+      "rating": 3,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/roofman/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:1125033",
+      "lid": "LcIW",
+      "slug": "roofman"
+    },
     {
       "date": "2026-10-16",
       "title": "Next Friday",
@@ -24482,23 +24517,23 @@
       "filmUid": "film:925555",
       "lid": "CPN4",
       "slug": "entergalactic"
-    },
-    {
-      "date": "2026-07-30",
-      "title": "Spider-Man: Brand New Day",
-      "year": "2026",
-      "rating": 4,
-      "rewatch": false,
-      "liked": true,
-      "url": "https://letterboxd.com/nichtlegacy/film/spider-man-brand-new-day/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:872871",
-      "lid": "ACJE",
-      "slug": "spider-man-brand-new-day"
     }
   ],
   "diary": [
+    {
+      "date": "2026-10-17",
+      "title": "Roofman",
+      "year": "2025",
+      "rating": 3,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/roofman/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:1125033",
+      "lid": "LcIW",
+      "slug": "roofman"
+    },
     {
       "date": "2026-10-16",
       "title": "Next Friday",
@@ -24812,7 +24847,7 @@
       "title": "Minions: The Rise of Gru",
       "year": "2022",
       "rating": 3,
-      "rewatch": false,
+      "rewatch": true,
       "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/minions-the-rise-of-gru/",
       "reviewed": false,
@@ -32456,7 +32491,7 @@
       "title": "John Wick: Chapter 4",
       "year": "2023",
       "rating": 5,
-      "rewatch": false,
+      "rewatch": true,
       "liked": true,
       "url": "https://letterboxd.com/nichtlegacy/film/john-wick-chapter-4/1/",
       "reviewed": false,
@@ -32702,6 +32737,20 @@
       "filmUid": "film:49443",
       "lid": "24CG",
       "slug": "scary-movie-2000"
+    },
+    {
+      "date": "2024-10-28",
+      "title": "Scream 4",
+      "year": "2011",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/scream-4/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:23586",
+      "lid": "Zmc",
+      "slug": "scream-4"
     },
     {
       "date": "2024-10-28",
@@ -33054,6 +33103,20 @@
       "slug": "deadpool-wolverine"
     },
     {
+      "date": "2024-09-29",
+      "title": "Gifted",
+      "year": "2017",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/gifted-2017/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:335666",
+      "lid": "e5dG",
+      "slug": "gifted-2017"
+    },
+    {
       "date": "2024-09-28",
       "title": "Diary of a Wimpy Kid",
       "year": "2010",
@@ -33080,6 +33143,20 @@
       "filmUid": "film:37354",
       "lid": "1zaQ",
       "slug": "kick-ass"
+    },
+    {
+      "date": "2024-09-26",
+      "title": "Ocean's Twelve",
+      "year": "2004",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/oceans-twelve/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:51888",
+      "lid": "2aZ2",
+      "slug": "oceans-twelve"
     },
     {
       "date": "2024-09-26",
@@ -33178,6 +33255,20 @@
       "filmUid": "film:908689",
       "lid": "C7UK",
       "slug": "incoming-2024"
+    },
+    {
+      "date": "2024-09-17",
+      "title": "Ocean's Eleven",
+      "year": "2001",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/oceans-eleven-2001/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:51890",
+      "lid": "2aZm",
+      "slug": "oceans-eleven-2001"
     },
     {
       "date": "2024-09-16",
@@ -33376,6 +33467,20 @@
       "slug": "21-jump-street"
     },
     {
+      "date": "2024-08-22",
+      "title": "The Interview",
+      "year": "2014",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-interview-2014/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:161002",
+      "lid": "6KQ4",
+      "slug": "the-interview-2014"
+    },
+    {
       "date": "2024-08-17",
       "title": "Going in Style",
       "year": "2017",
@@ -33402,6 +33507,62 @@
       "filmUid": "film:381754",
       "lid": "g17e",
       "slug": "den-of-thieves"
+    },
+    {
+      "date": "2024-08-14",
+      "title": "Final Destination 5",
+      "year": "2011",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/final-destination-5/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:10387",
+      "lid": "r1k",
+      "slug": "final-destination-5"
+    },
+    {
+      "date": "2024-08-09",
+      "title": "The Final Destination",
+      "year": "2009",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-final-destination/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:39351",
+      "lid": "1EmW",
+      "slug": "the-final-destination"
+    },
+    {
+      "date": "2024-08-08",
+      "title": "Final Destination 3",
+      "year": "2006",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/final-destination-3/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:47306",
+      "lid": "1Z40",
+      "slug": "final-destination-3"
+    },
+    {
+      "date": "2024-08-07",
+      "title": "Final Destination 2",
+      "year": "2003",
+      "rating": 3.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/final-destination-2/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:47237",
+      "lid": "1YSS",
+      "slug": "final-destination-2"
     },
     {
       "date": "2024-07-28",
@@ -33544,6 +33705,48 @@
       "slug": "scary-movie-2"
     },
     {
+      "date": "2024-06-19",
+      "title": "Spider-Man 3",
+      "year": "2007",
+      "rating": 4,
+      "rewatch": false,
+      "liked": true,
+      "url": "https://letterboxd.com/nichtlegacy/film/spider-man-3/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:51559",
+      "lid": "2a7Y",
+      "slug": "spider-man-3"
+    },
+    {
+      "date": "2024-06-17",
+      "title": "Spider-Man 2",
+      "year": "2004",
+      "rating": 4.5,
+      "rewatch": false,
+      "liked": true,
+      "url": "https://letterboxd.com/nichtlegacy/film/spider-man-2/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:51560",
+      "lid": "2a88",
+      "slug": "spider-man-2"
+    },
+    {
+      "date": "2024-06-14",
+      "title": "The Batman",
+      "year": "2022",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-batman/4/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:348914",
+      "lid": "eDGs",
+      "slug": "the-batman"
+    },
+    {
       "date": "2024-06-04",
       "title": "Taxi",
       "year": "1998",
@@ -33556,6 +33759,34 @@
       "filmUid": "film:50324",
       "lid": "26UM",
       "slug": "taxi-1998"
+    },
+    {
+      "date": "2024-06-01",
+      "title": "Inferno",
+      "year": "2016",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/inferno-2016/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:148297",
+      "lid": "6dMS",
+      "slug": "inferno-2016"
+    },
+    {
+      "date": "2024-05-26",
+      "title": "Who Am I",
+      "year": "2014",
+      "rating": 3.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/who-am-i-2014/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:209740",
+      "lid": "8ND2",
+      "slug": "who-am-i-2014"
     },
     {
       "date": "2024-05-24",
@@ -33584,6 +33815,20 @@
       "filmUid": "film:184062",
       "lid": "7IPq",
       "slug": "cars-3"
+    },
+    {
+      "date": "2024-05-20",
+      "title": "Men in Black",
+      "year": "1997",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/men-in-black/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:51514",
+      "lid": "2a0I",
+      "slug": "men-in-black"
     },
     {
       "date": "2024-05-20",
@@ -33640,6 +33885,20 @@
       "filmUid": "film:763160",
       "lid": "w1kk",
       "slug": "argylle"
+    },
+    {
+      "date": "2024-05-09",
+      "title": "6 Underground",
+      "year": "2019",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/6-underground/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:439717",
+      "lid": "irU6",
+      "slug": "6-underground"
     },
     {
       "date": "2024-05-08",
@@ -34216,6 +34475,20 @@
       "slug": "waiting"
     },
     {
+      "date": "2024-03-10",
+      "title": "Law Abiding Citizen",
+      "year": "2009",
+      "rating": 3.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/law-abiding-citizen/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:37688",
+      "lid": "1A2I",
+      "slug": "law-abiding-citizen"
+    },
+    {
       "date": "2024-03-09",
       "title": "The Butterfly Effect",
       "year": "2004",
@@ -34287,6 +34560,20 @@
     },
     {
       "date": "2024-03-02",
+      "title": "Spider-Man: Into the Spider-Verse",
+      "year": "2018",
+      "rating": 4.5,
+      "rewatch": false,
+      "liked": true,
+      "url": "https://letterboxd.com/nichtlegacy/film/spider-man-into-the-spider-verse/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:251943",
+      "lid": "azpY",
+      "slug": "spider-man-into-the-spider-verse"
+    },
+    {
+      "date": "2024-03-02",
       "title": "Road Trip",
       "year": "2000",
       "rating": 3.5,
@@ -34312,6 +34599,20 @@
       "filmUid": "film:47833",
       "lid": "20r0",
       "slug": "american-wedding"
+    },
+    {
+      "date": "2024-02-26",
+      "title": "13 Going on 30",
+      "year": "2004",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/13-going-on-30-3/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:46551",
+      "lid": "1X6e",
+      "slug": "13-going-on-30-3"
     },
     {
       "date": "2024-02-24",
@@ -34749,6 +35050,20 @@
     },
     {
       "date": "2023-10-31",
+      "title": "Halloween",
+      "year": "1978",
+      "rating": 3.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/halloween-1978/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:60298",
+      "lid": "2wRu",
+      "slug": "halloween-1978"
+    },
+    {
+      "date": "2023-10-31",
       "title": "Inception",
       "year": "2010",
       "rating": 4.5,
@@ -35042,6 +35357,20 @@
       "slug": "batman-begins"
     },
     {
+      "date": "2023-07-18",
+      "title": "Terminator: Dark Fate",
+      "year": "2019",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/terminator-dark-fate/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:217178",
+      "lid": "96YI",
+      "slug": "terminator-dark-fate"
+    },
+    {
       "date": "2023-06-25",
       "title": "Shiny_Flakes: The Teenage Drug Lord",
       "year": "2021",
@@ -35054,6 +35383,34 @@
       "filmUid": "film:764954",
       "lid": "w5ZG",
       "slug": "shiny_flakes-the-teenage-drug-lord"
+    },
+    {
+      "date": "2023-06-14",
+      "title": "Rush Hour 2",
+      "year": "2001",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/rush-hour-2/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:48919",
+      "lid": "23ga",
+      "slug": "rush-hour-2"
+    },
+    {
+      "date": "2023-06-11",
+      "title": "The Pope's Exorcist",
+      "year": "2023",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-popes-exorcist/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:678845",
+      "lid": "stZ8",
+      "slug": "the-popes-exorcist"
     },
     {
       "date": "2023-06-09",
@@ -35084,6 +35441,34 @@
       "slug": "17-again"
     },
     {
+      "date": "2023-05-30",
+      "title": "John Wick: Chapter 4",
+      "year": "2023",
+      "rating": 5,
+      "rewatch": false,
+      "liked": true,
+      "url": "https://letterboxd.com/nichtlegacy/film/john-wick-chapter-4/2/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:530882",
+      "lid": "mh48",
+      "slug": "john-wick-chapter-4"
+    },
+    {
+      "date": "2023-05-16",
+      "title": "The Accountant",
+      "year": "2016",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-accountant-2016/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:229981",
+      "lid": "9EhI",
+      "slug": "the-accountant-2016"
+    },
+    {
       "date": "2023-05-14",
       "title": "The Matrix Revolutions",
       "year": "2003",
@@ -35098,11 +35483,11 @@
       "slug": "the-matrix-revolutions"
     },
     {
-      "date": "2023-05-09",
+      "date": "2023-05-10",
       "title": "The Matrix Reloaded",
       "year": "2003",
       "rating": 3,
-      "rewatch": false,
+      "rewatch": true,
       "liked": false,
       "url": "https://letterboxd.com/nichtlegacy/film/the-matrix-reloaded/",
       "reviewed": false,
@@ -35110,6 +35495,48 @@
       "filmUid": "film:51517",
       "lid": "2a1c",
       "slug": "the-matrix-reloaded"
+    },
+    {
+      "date": "2023-05-09",
+      "title": "The Lord of the Rings: The Return of the King",
+      "year": "2003",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-lord-of-the-rings-the-return-of-the-king/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:51928",
+      "lid": "2b5u",
+      "slug": "the-lord-of-the-rings-the-return-of-the-king"
+    },
+    {
+      "date": "2023-05-08",
+      "title": "The Lord of the Rings: The Two Towers",
+      "year": "2002",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-lord-of-the-rings-the-two-towers/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:51929",
+      "lid": "2b5E",
+      "slug": "the-lord-of-the-rings-the-two-towers"
+    },
+    {
+      "date": "2023-05-07",
+      "title": "The Lord of the Rings: The Fellowship of the Ring",
+      "year": "2001",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-lord-of-the-rings-the-fellowship-of-the-ring/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:51930",
+      "lid": "2b5O",
+      "slug": "the-lord-of-the-rings-the-fellowship-of-the-ring"
     },
     {
       "date": "2023-05-07",
@@ -35124,6 +35551,76 @@
       "filmUid": "film:51518",
       "lid": "2a1m",
       "slug": "the-matrix"
+    },
+    {
+      "date": "2023-05-06",
+      "title": "Pokémon Detective Pikachu",
+      "year": "2019",
+      "rating": 3.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/pokemon-detective-pikachu/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:379626",
+      "lid": "fVA0",
+      "slug": "pokemon-detective-pikachu"
+    },
+    {
+      "date": "2023-04-26",
+      "title": "London Has Fallen",
+      "year": "2016",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/london-has-fallen/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:191074",
+      "lid": "814o",
+      "slug": "london-has-fallen"
+    },
+    {
+      "date": "2023-04-25",
+      "title": "The Hobbit: The Battle of the Five Armies",
+      "year": "2014",
+      "rating": 4,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-hobbit-the-battle-of-the-five-armies/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:96552",
+      "lid": "43aU",
+      "slug": "the-hobbit-the-battle-of-the-five-armies"
+    },
+    {
+      "date": "2023-04-24",
+      "title": "The Hobbit: The Desolation of Smaug",
+      "year": "2013",
+      "rating": 4,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-hobbit-the-desolation-of-smaug/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:8983",
+      "lid": "nmS",
+      "slug": "the-hobbit-the-desolation-of-smaug"
+    },
+    {
+      "date": "2023-04-22",
+      "title": "The Hobbit: An Unexpected Journey",
+      "year": "2012",
+      "rating": 4,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-hobbit-an-unexpected-journey/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:16525",
+      "lid": "GZk",
+      "slug": "the-hobbit-an-unexpected-journey"
     },
     {
       "date": "2023-03-30",
@@ -35196,6 +35693,62 @@
       "slug": "project-x-2012"
     },
     {
+      "date": "2023-01-28",
+      "title": "El Camino: A Breaking Bad Movie",
+      "year": "2019",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/el-camino-a-breaking-bad-movie/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:488575",
+      "lid": "kv0q",
+      "slug": "el-camino-a-breaking-bad-movie"
+    },
+    {
+      "date": "2022-12-20",
+      "title": "Ocean's Thirteen",
+      "year": "2007",
+      "rating": 3.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/oceans-thirteen/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:51761",
+      "lid": "2aEy",
+      "slug": "oceans-thirteen"
+    },
+    {
+      "date": "2022-12-20",
+      "title": "American Psycho",
+      "year": "2000",
+      "rating": 4,
+      "rewatch": false,
+      "liked": true,
+      "url": "https://letterboxd.com/nichtlegacy/film/american-psycho/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:51097",
+      "lid": "28Vs",
+      "slug": "american-psycho"
+    },
+    {
+      "date": "2022-12-10",
+      "title": "The Wolf of Wall Street",
+      "year": "2013",
+      "rating": 4,
+      "rewatch": false,
+      "liked": true,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-wolf-of-wall-street/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:86114",
+      "lid": "3C1m",
+      "slug": "the-wolf-of-wall-street"
+    },
+    {
       "date": "2022-11-27",
       "title": "Grown Ups",
       "year": "2010",
@@ -35208,6 +35761,62 @@
       "filmUid": "film:26196",
       "lid": "169a",
       "slug": "grown-ups"
+    },
+    {
+      "date": "2022-11-21",
+      "title": "Back to the Future Part III",
+      "year": "1990",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/back-to-the-future-part-iii/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:51856",
+      "lid": "2aTS",
+      "slug": "back-to-the-future-part-iii"
+    },
+    {
+      "date": "2022-10-28",
+      "title": "Back to the Future Part II",
+      "year": "1989",
+      "rating": 4.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/back-to-the-future-part-ii/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:51886",
+      "lid": "2aYI",
+      "slug": "back-to-the-future-part-ii"
+    },
+    {
+      "date": "2022-10-09",
+      "title": "Shutter Island",
+      "year": "2010",
+      "rating": 5,
+      "rewatch": false,
+      "liked": true,
+      "url": "https://letterboxd.com/nichtlegacy/film/shutter-island/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:45409",
+      "lid": "1U82",
+      "slug": "shutter-island"
+    },
+    {
+      "date": "2022-10-02",
+      "title": "Wanted",
+      "year": "2008",
+      "rating": 3.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/wanted-2008/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:47516",
+      "lid": "1ZBS",
+      "slug": "wanted-2008"
     },
     {
       "date": "2022-09-11",
@@ -35224,6 +35833,34 @@
       "slug": "jackass-25"
     },
     {
+      "date": "2022-08-27",
+      "title": "The Equalizer 2",
+      "year": "2018",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-equalizer-2/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:276253",
+      "lid": "bAEW",
+      "slug": "the-equalizer-2"
+    },
+    {
+      "date": "2022-08-01",
+      "title": "Dirty Grandpa",
+      "year": "2016",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/dirty-grandpa/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:218114",
+      "lid": "99pG",
+      "slug": "dirty-grandpa"
+    },
+    {
       "date": "2022-07-30",
       "title": "Jackass Presents: Bad Grandpa .5",
       "year": "2014",
@@ -35236,6 +35873,48 @@
       "filmUid": "film:197783",
       "lid": "8iwu",
       "slug": "jackass-presents-bad-grandpa-5"
+    },
+    {
+      "date": "2022-07-09",
+      "title": "Minions: The Rise of Gru",
+      "year": "2022",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/minions-the-rise-of-gru/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:371005",
+      "lid": "fz9w",
+      "slug": "minions-the-rise-of-gru"
+    },
+    {
+      "date": "2022-07-01",
+      "title": "The Cloverfield Paradox",
+      "year": "2018",
+      "rating": 3.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-cloverfield-paradox/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:319409",
+      "lid": "doVA",
+      "slug": "the-cloverfield-paradox"
+    },
+    {
+      "date": "2022-06-18",
+      "title": "District 9",
+      "year": "2009",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/district-9/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:40860",
+      "lid": "1Iik",
+      "slug": "district-9"
     },
     {
       "date": "2022-05-06",
@@ -35252,6 +35931,20 @@
       "slug": "the-lego-movie"
     },
     {
+      "date": "2022-04-26",
+      "title": "Harry Potter and the Half-Blood Prince",
+      "year": "2009",
+      "rating": 4,
+      "rewatch": false,
+      "liked": true,
+      "url": "https://letterboxd.com/nichtlegacy/film/harry-potter-and-the-half-blood-prince/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:51385",
+      "lid": "29FU",
+      "slug": "harry-potter-and-the-half-blood-prince"
+    },
+    {
       "date": "2022-04-22",
       "title": "Cloudy with a Chance of Meatballs",
       "year": "2009",
@@ -35266,6 +35959,48 @@
       "slug": "cloudy-with-a-chance-of-meatballs"
     },
     {
+      "date": "2022-04-18",
+      "title": "Choose or Die",
+      "year": "2022",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/choose-or-die/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:753872",
+      "lid": "vDag",
+      "slug": "choose-or-die"
+    },
+    {
+      "date": "2022-04-12",
+      "title": "The Emoji Movie",
+      "year": "2017",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-emoji-movie/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:313491",
+      "lid": "d9x4",
+      "slug": "the-emoji-movie"
+    },
+    {
+      "date": "2022-04-09",
+      "title": "Between Two Ferns: The Movie",
+      "year": "2019",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/between-two-ferns-the-movie/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:512847",
+      "lid": "lw9g",
+      "slug": "between-two-ferns-the-movie"
+    },
+    {
       "date": "2022-03-31",
       "title": "Sausage Party",
       "year": "2016",
@@ -35278,6 +36013,146 @@
       "filmUid": "film:157841",
       "lid": "6CCe",
       "slug": "sausage-party"
+    },
+    {
+      "date": "2022-03-28",
+      "title": "Eagle Eye",
+      "year": "2008",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/eagle-eye/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:44201",
+      "lid": "1QZc",
+      "slug": "eagle-eye"
+    },
+    {
+      "date": "2022-03-15",
+      "title": "Return of the Jedi",
+      "year": "1983",
+      "rating": 5,
+      "rewatch": false,
+      "liked": true,
+      "url": "https://letterboxd.com/nichtlegacy/film/return-of-the-jedi/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:50712",
+      "lid": "27Vm",
+      "slug": "return-of-the-jedi"
+    },
+    {
+      "date": "2022-03-07",
+      "title": "The Empire Strikes Back",
+      "year": "1980",
+      "rating": 5,
+      "rewatch": false,
+      "liked": true,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-empire-strikes-back/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:50713",
+      "lid": "27Vw",
+      "slug": "the-empire-strikes-back"
+    },
+    {
+      "date": "2022-03-06",
+      "title": "Star Wars",
+      "year": "1977",
+      "rating": 4.5,
+      "rewatch": false,
+      "liked": true,
+      "url": "https://letterboxd.com/nichtlegacy/film/star-wars/3/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:2706",
+      "lid": "72s",
+      "slug": "star-wars"
+    },
+    {
+      "date": "2022-02-06",
+      "title": "Ender's Game",
+      "year": "2013",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/enders-game/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:66563",
+      "lid": "2N9Y",
+      "slug": "enders-game"
+    },
+    {
+      "date": "2022-01-23",
+      "title": "Fantastic Beasts: The Crimes of Grindelwald",
+      "year": "2018",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/fantastic-beasts-the-crimes-of-grindelwald/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:268365",
+      "lid": "bg8G",
+      "slug": "fantastic-beasts-the-crimes-of-grindelwald"
+    },
+    {
+      "date": "2021-12-28",
+      "title": "Crazy for Fixi",
+      "year": "2016",
+      "rating": 2,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/crazy-for-fixi/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:337068",
+      "lid": "e8RO",
+      "slug": "crazy-for-fixi"
+    },
+    {
+      "date": "2021-12-28",
+      "title": "Passengers",
+      "year": "2016",
+      "rating": 4,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/passengers-2016/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:198992",
+      "lid": "8lFu",
+      "slug": "passengers-2016"
+    },
+    {
+      "date": "2021-11-18",
+      "title": "Army of Thieves",
+      "year": "2021",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/army-of-thieves/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:714279",
+      "lid": "tYai",
+      "slug": "army-of-thieves"
+    },
+    {
+      "date": "2021-11-15",
+      "title": "Red Notice",
+      "year": "2021",
+      "rating": 2,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/red-notice/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:441858",
+      "lid": "ixtq",
+      "slug": "red-notice"
     },
     {
       "date": "2021-10-19",
@@ -35322,6 +36197,216 @@
       "slug": "the-hobbit-an-unexpected-journey"
     },
     {
+      "date": "2021-10-11",
+      "title": "Zombieland: Double Tap",
+      "year": "2019",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/zombieland-double-tap/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:268380",
+      "lid": "bgb6",
+      "slug": "zombieland-double-tap"
+    },
+    {
+      "date": "2021-09-25",
+      "title": "Baby Driver",
+      "year": "2017",
+      "rating": 4,
+      "rewatch": false,
+      "liked": true,
+      "url": "https://letterboxd.com/nichtlegacy/film/baby-driver/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:268950",
+      "lid": "bhF2",
+      "slug": "baby-driver"
+    },
+    {
+      "date": "2021-09-23",
+      "title": "The Platform",
+      "year": "2019",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-platform/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:545985",
+      "lid": "mUm6",
+      "slug": "the-platform"
+    },
+    {
+      "date": "2021-08-31",
+      "title": "Game Night",
+      "year": "2018",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/game-night/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:378048",
+      "lid": "fRtu",
+      "slug": "game-night"
+    },
+    {
+      "date": "2021-08-15",
+      "title": "Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn)",
+      "year": "2020",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/birds-of-prey-and-the-fantabulous-emancipation-of-one-harley-quinn/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:426131",
+      "lid": "hSyO",
+      "slug": "birds-of-prey-and-the-fantabulous-emancipation-of-one-harley-quinn"
+    },
+    {
+      "date": "2021-08-05",
+      "title": "Looney Tunes: Back in Action",
+      "year": "2003",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/looney-tunes-back-in-action/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:45963",
+      "lid": "1Vzo",
+      "slug": "looney-tunes-back-in-action"
+    },
+    {
+      "date": "2021-07-23",
+      "title": "John Wick",
+      "year": "2014",
+      "rating": 5,
+      "rewatch": false,
+      "liked": true,
+      "url": "https://letterboxd.com/nichtlegacy/film/john-wick/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:172076",
+      "lid": "7dEc",
+      "slug": "john-wick"
+    },
+    {
+      "date": "2021-07-09",
+      "title": "The Big Short",
+      "year": "2015",
+      "rating": 3.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-big-short/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:246013",
+      "lid": "ajZw",
+      "slug": "the-big-short"
+    },
+    {
+      "date": "2021-07-04",
+      "title": "Joker",
+      "year": "2019",
+      "rating": 3.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/joker-2019/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:406775",
+      "lid": "h4cS",
+      "slug": "joker-2019"
+    },
+    {
+      "date": "2021-05-23",
+      "title": "Army of the Dead",
+      "year": "2021",
+      "rating": 2,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/army-of-the-dead-2021/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:433652",
+      "lid": "ic7S",
+      "slug": "army-of-the-dead-2021"
+    },
+    {
+      "date": "2021-05-20",
+      "title": "Penguins of Madagascar",
+      "year": "2014",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/penguins-of-madagascar-2014/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:194303",
+      "lid": "89tc",
+      "slug": "penguins-of-madagascar-2014"
+    },
+    {
+      "date": "2021-04-30",
+      "title": "Transporter 3",
+      "year": "2008",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/transporter-3/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:43931",
+      "lid": "1QhE",
+      "slug": "transporter-3"
+    },
+    {
+      "date": "2021-04-10",
+      "title": "Catch Me If You Can",
+      "year": "2002",
+      "rating": 4,
+      "rewatch": false,
+      "liked": true,
+      "url": "https://letterboxd.com/nichtlegacy/film/catch-me-if-you-can-2002/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:51484",
+      "lid": "29VS",
+      "slug": "catch-me-if-you-can-2002"
+    },
+    {
+      "date": "2021-04-03",
+      "title": "The Transporter",
+      "year": "2002",
+      "rating": 3.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/the-transporter/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:49510",
+      "lid": "24Nu",
+      "slug": "the-transporter"
+    },
+    {
+      "date": "2021-03-09",
+      "title": "Criminal",
+      "year": "2016",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/criminal-2016/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:229234",
+      "lid": "9Cle",
+      "slug": "criminal-2016"
+    },
+    {
       "date": "2021-03-07",
       "title": "Dumb and Dumberer: When Harry Met Lloyd",
       "year": "2003",
@@ -35348,6 +36433,48 @@
       "filmUid": "film:81811",
       "lid": "3qPk",
       "slug": "dumb-and-dumber-to"
+    },
+    {
+      "date": "2021-01-20",
+      "title": "Juno",
+      "year": "2007",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/juno/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:48051",
+      "lid": "210a",
+      "slug": "juno"
+    },
+    {
+      "date": "2020-11-27",
+      "title": "Pokémon the Movie: I Choose You!",
+      "year": "2017",
+      "rating": 3.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/pokemon-the-movie-i-choose-you/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:369801",
+      "lid": "fw1k",
+      "slug": "pokemon-the-movie-i-choose-you"
+    },
+    {
+      "date": "2020-11-04",
+      "title": "American Murder: The Family Next Door",
+      "year": "2020",
+      "rating": 2,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/american-murder-the-family-next-door/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:665136",
+      "lid": "rUk0",
+      "slug": "american-murder-the-family-next-door"
     },
     {
       "date": "2020-08-08",
@@ -35390,68 +36517,82 @@
       "filmUid": "film:57927",
       "lid": "2qH4",
       "slug": "american-reunion"
+    },
+    {
+      "date": "2020-07-03",
+      "title": "War Dogs",
+      "year": "2016",
+      "rating": 3.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/war-dogs-2016/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:235388",
+      "lid": "9SlO",
+      "slug": "war-dogs-2016"
     }
   ],
   "byYear": {
     "2020": {
       "scope": "year",
       "films": null,
-      "entries": 3,
-      "distinctFilms": 3,
-      "firstEntry": "2020-07-10",
-      "lastEntry": "2020-08-08",
-      "spanDays": 30,
-      "daysActive": 3,
+      "entries": 6,
+      "distinctFilms": 6,
+      "firstEntry": "2020-07-03",
+      "lastEntry": "2020-11-27",
+      "spanDays": 148,
+      "daysActive": 6,
       "multiFilmDays": 0,
       "rewatches": 0,
       "liked": 0,
-      "rated": 3,
+      "rated": 6,
       "releaseBreakdown": {
-        "sameYear": 0,
-        "older": 3,
+        "sameYear": 1,
+        "older": 5,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 3,
+        "firstWatches": 6,
         "rewatches": 0
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 3
+        "notReviewed": 6
       },
-      "averageRating": 2.3,
-      "perDay": 0.1,
-      "perWeek": 0.7,
-      "perMonth": 3,
+      "averageRating": 2.7,
+      "perDay": 0.04,
+      "perWeek": 0.3,
+      "perMonth": 1.2,
       "streak": {
         "length": 1,
-        "startDate": "2020-07-10",
-        "endDate": "2020-07-10",
+        "startDate": "2020-07-03",
+        "endDate": "2020-07-03",
         "films": 1
       },
       "busiestDay": {
-        "date": "2020-07-10",
+        "date": "2020-07-03",
         "count": 1
       },
       "longestGap": {
-        "days": 24,
-        "from": "2020-07-10",
-        "to": "2020-08-04"
+        "days": 87,
+        "from": "2020-08-08",
+        "to": "2020-11-04"
       },
       "perYear": [
         {
           "year": 2020,
-          "films": 3,
-          "days": 3
+          "films": 6,
+          "days": 6
         }
       ],
       "perWeekday": [
         0,
         0,
         1,
-        0,
-        0,
         1,
+        0,
+        3,
         1
       ],
       "perMonthOfYear": [
@@ -35461,20 +36602,32 @@
         0,
         0,
         0,
-        1,
+        2,
         2,
         0,
         0,
-        0,
+        2,
         0
       ],
       "monthSeries": [
         {
           "month": "2020-07",
-          "count": 1
+          "count": 2
         },
         {
           "month": "2020-08",
+          "count": 2
+        },
+        {
+          "month": "2020-09",
+          "count": 0
+        },
+        {
+          "month": "2020-10",
+          "count": 0
+        },
+        {
+          "month": "2020-11",
           "count": 2
         }
       ],
@@ -35639,7 +36792,7 @@
           "week": 27,
           "start": "2020-06-29",
           "end": "2020-07-05",
-          "count": 0
+          "count": 1
         },
         {
           "week": 28,
@@ -35747,7 +36900,7 @@
           "week": 45,
           "start": "2020-11-02",
           "end": "2020-11-08",
-          "count": 0
+          "count": 1
         },
         {
           "week": 46,
@@ -35765,7 +36918,7 @@
           "week": 48,
           "start": "2020-11-23",
           "end": "2020-11-29",
-          "count": 0
+          "count": 1
         },
         {
           "week": 49,
@@ -35801,10 +36954,14 @@
       "ratings": [
         {
           "rating": 2,
-          "count": 1
+          "count": 2
         },
         {
           "rating": 2.5,
+          "count": 2
+        },
+        {
+          "rating": 3.5,
           "count": 2
         }
       ],
@@ -35818,8 +36975,14 @@
         {
           "decade": 2010,
           "label": "2010s",
+          "count": 3,
+          "averageRating": 3
+        },
+        {
+          "decade": 2020,
+          "label": "2020s",
           "count": 1,
-          "averageRating": 2.5
+          "averageRating": 2
         }
       ],
       "mostRewatched": [],
@@ -35828,63 +36991,63 @@
         {
           "n": 1,
           "kind": "first",
-          "date": "2020-07-10",
-          "title": "American Reunion",
-          "year": "2012",
-          "rating": 2.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/american-reunion/",
+          "date": "2020-07-03",
+          "title": "War Dogs",
+          "year": "2016",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/war-dogs-2016/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:57927",
-          "lid": "2qH4",
-          "slug": "american-reunion"
+          "filmUid": "film:235388",
+          "lid": "9SlO",
+          "slug": "war-dogs-2016"
         },
         {
-          "n": 3,
+          "n": 6,
           "kind": "latest",
-          "date": "2020-08-08",
-          "title": "Jackass: The Movie",
-          "year": "2002",
-          "rating": 2.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/jackass-the-movie/",
+          "date": "2020-11-27",
+          "title": "Pokémon the Movie: I Choose You!",
+          "year": "2017",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/pokemon-the-movie-i-choose-you/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:47430",
-          "lid": "1Zo0",
-          "slug": "jackass-the-movie"
+          "filmUid": "film:369801",
+          "lid": "fw1k",
+          "slug": "pokemon-the-movie-i-choose-you"
         }
       ]
     },
     "2021": {
       "scope": "year",
       "films": null,
-      "entries": 5,
-      "distinctFilms": 5,
-      "firstEntry": "2021-03-07",
-      "lastEntry": "2021-10-19",
-      "spanDays": 227,
-      "daysActive": 4,
-      "multiFilmDays": 1,
+      "entries": 25,
+      "distinctFilms": 25,
+      "firstEntry": "2021-01-20",
+      "lastEntry": "2021-12-28",
+      "spanDays": 343,
+      "daysActive": 23,
+      "multiFilmDays": 2,
       "rewatches": 0,
-      "liked": 0,
-      "rated": 5,
+      "liked": 3,
+      "rated": 25,
       "releaseBreakdown": {
-        "sameYear": 0,
-        "older": 5,
+        "sameYear": 3,
+        "older": 22,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 5,
+        "firstWatches": 25,
         "rewatches": 0
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 5
+        "notReviewed": 25
       },
-      "averageRating": 3.6,
-      "perDay": 0.02,
-      "perWeek": 0.2,
-      "perMonth": 0.7,
+      "averageRating": 3.1,
+      "perDay": 0.07,
+      "perWeek": 0.5,
+      "perMonth": 2.2,
       "streak": {
         "length": 3,
         "startDate": "2021-10-17",
@@ -35896,52 +37059,60 @@
         "count": 2
       },
       "longestGap": {
-        "days": 223,
-        "from": "2021-03-07",
-        "to": "2021-10-17"
+        "days": 45,
+        "from": "2021-01-20",
+        "to": "2021-03-07"
       },
       "perYear": [
         {
           "year": 2021,
-          "films": 5,
-          "days": 4
+          "films": 25,
+          "days": 23
         }
       ],
       "perWeekday": [
+        6,
         3,
+        5,
         1,
-        1,
-        0,
-        0,
-        0,
-        0
+        4,
+        3,
+        3
       ],
       "perMonthOfYear": [
-        0,
-        0,
-        2,
-        0,
-        0,
-        0,
-        0,
-        0,
+        1,
         0,
         3,
+        3,
+        2,
         0,
-        0
+        3,
+        3,
+        2,
+        4,
+        2,
+        2
       ],
       "monthSeries": [
         {
+          "month": "2021-01",
+          "count": 1
+        },
+        {
+          "month": "2021-02",
+          "count": 0
+        },
+        {
           "month": "2021-03",
-          "count": 2
+          "count": 3
         },
         {
           "month": "2021-04",
-          "count": 0
+          "count": 3
         },
         {
           "month": "2021-05",
-          "count": 0
+          "count": 2
         },
         {
           "month": "2021-06",
@@ -35949,19 +37120,27 @@
         },
         {
           "month": "2021-07",
-          "count": 0
+          "count": 3
         },
         {
           "month": "2021-08",
-          "count": 0
+          "count": 3
         },
         {
           "month": "2021-09",
-          "count": 0
+          "count": 2
         },
         {
           "month": "2021-10",
-          "count": 3
+          "count": 4
+        },
+        {
+          "month": "2021-11",
+          "count": 2
+        },
+        {
+          "month": "2021-12",
+          "count": 2
         }
       ],
       "weekSeries": [
@@ -35987,7 +37166,7 @@
           "week": 4,
           "start": "2021-01-18",
           "end": "2021-01-24",
-          "count": 0
+          "count": 1
         },
         {
           "week": 5,
@@ -36029,7 +37208,7 @@
           "week": 11,
           "start": "2021-03-08",
           "end": "2021-03-14",
-          "count": 0
+          "count": 1
         },
         {
           "week": 12,
@@ -36047,13 +37226,13 @@
           "week": 14,
           "start": "2021-03-29",
           "end": "2021-04-04",
-          "count": 0
+          "count": 1
         },
         {
           "week": 15,
           "start": "2021-04-05",
           "end": "2021-04-11",
-          "count": 0
+          "count": 1
         },
         {
           "week": 16,
@@ -36071,7 +37250,7 @@
           "week": 18,
           "start": "2021-04-26",
           "end": "2021-05-02",
-          "count": 0
+          "count": 1
         },
         {
           "week": 19,
@@ -36089,7 +37268,7 @@
           "week": 21,
           "start": "2021-05-17",
           "end": "2021-05-23",
-          "count": 0
+          "count": 2
         },
         {
           "week": 22,
@@ -36125,13 +37304,13 @@
           "week": 27,
           "start": "2021-06-28",
           "end": "2021-07-04",
-          "count": 0
+          "count": 1
         },
         {
           "week": 28,
           "start": "2021-07-05",
           "end": "2021-07-11",
-          "count": 0
+          "count": 1
         },
         {
           "week": 29,
@@ -36143,7 +37322,7 @@
           "week": 30,
           "start": "2021-07-19",
           "end": "2021-07-25",
-          "count": 0
+          "count": 1
         },
         {
           "week": 31,
@@ -36155,13 +37334,13 @@
           "week": 32,
           "start": "2021-08-02",
           "end": "2021-08-08",
-          "count": 0
+          "count": 1
         },
         {
           "week": 33,
           "start": "2021-08-09",
           "end": "2021-08-15",
-          "count": 0
+          "count": 1
         },
         {
           "week": 34,
@@ -36179,7 +37358,7 @@
           "week": 36,
           "start": "2021-08-30",
           "end": "2021-09-05",
-          "count": 0
+          "count": 1
         },
         {
           "week": 37,
@@ -36197,7 +37376,7 @@
           "week": 39,
           "start": "2021-09-20",
           "end": "2021-09-26",
-          "count": 0
+          "count": 2
         },
         {
           "week": 40,
@@ -36215,7 +37394,7 @@
           "week": 42,
           "start": "2021-10-11",
           "end": "2021-10-17",
-          "count": 1
+          "count": 2
         },
         {
           "week": 43,
@@ -36245,7 +37424,7 @@
           "week": 47,
           "start": "2021-11-15",
           "end": "2021-11-21",
-          "count": 0
+          "count": 2
         },
         {
           "week": 48,
@@ -36281,31 +37460,53 @@
           "week": 53,
           "start": "2021-12-27",
           "end": "2022-01-02",
-          "count": 0
+          "count": 2
         }
       ],
       "ratings": [
         {
+          "rating": 2,
+          "count": 3
+        },
+        {
+          "rating": 2.5,
+          "count": 6
+        },
+        {
           "rating": 3,
-          "count": 2
+          "count": 6
+        },
+        {
+          "rating": 3.5,
+          "count": 3
         },
         {
           "rating": 4,
-          "count": 3
+          "count": 6
+        },
+        {
+          "rating": 5,
+          "count": 1
         }
       ],
       "decades": [
         {
           "decade": 2000,
           "label": "2000s",
-          "count": 1,
+          "count": 6,
           "averageRating": 3
         },
         {
           "decade": 2010,
           "label": "2010s",
+          "count": 15,
+          "averageRating": 3.5
+        },
+        {
+          "decade": 2020,
+          "label": "2020s",
           "count": 4,
-          "averageRating": 4
+          "averageRating": 2.5
         }
       ],
       "mostRewatched": [],
@@ -36314,116 +37515,124 @@
         {
           "n": 1,
           "kind": "first",
-          "date": "2021-03-07",
-          "title": "Dumb and Dumberer: When Harry Met Lloyd",
-          "year": "2003",
-          "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/dumb-and-dumberer-when-harry-met-lloyd/1/",
+          "date": "2021-01-20",
+          "title": "Juno",
+          "year": "2007",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/juno/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:46497",
-          "lid": "1WXw",
-          "slug": "dumb-and-dumberer-when-harry-met-lloyd"
+          "filmUid": "film:48051",
+          "lid": "210a",
+          "slug": "juno"
         },
         {
-          "n": 5,
-          "kind": "latest",
-          "date": "2021-10-19",
-          "title": "The Hobbit: The Battle of the Five Armies",
-          "year": "2014",
+          "n": 25,
+          "kind": "step",
+          "date": "2021-12-28",
+          "title": "Passengers",
+          "year": "2016",
           "rating": 4,
-          "url": "https://letterboxd.com/nichtlegacy/film/the-hobbit-the-battle-of-the-five-armies/",
+          "url": "https://letterboxd.com/nichtlegacy/film/passengers-2016/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:96552",
-          "lid": "43aU",
-          "slug": "the-hobbit-the-battle-of-the-five-armies"
+          "filmUid": "film:198992",
+          "lid": "8lFu",
+          "slug": "passengers-2016"
         }
       ]
     },
     "2022": {
       "scope": "year",
       "films": null,
-      "entries": 6,
-      "distinctFilms": 6,
-      "firstEntry": "2022-03-31",
-      "lastEntry": "2022-11-27",
-      "spanDays": 242,
-      "daysActive": 6,
-      "multiFilmDays": 0,
+      "entries": 28,
+      "distinctFilms": 28,
+      "firstEntry": "2022-01-23",
+      "lastEntry": "2022-12-20",
+      "spanDays": 332,
+      "daysActive": 27,
+      "multiFilmDays": 1,
       "rewatches": 0,
-      "liked": 0,
-      "rated": 6,
+      "liked": 7,
+      "rated": 28,
       "releaseBreakdown": {
-        "sameYear": 0,
-        "older": 6,
+        "sameYear": 2,
+        "older": 26,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 6,
+        "firstWatches": 28,
         "rewatches": 0
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 6
+        "notReviewed": 28
       },
-      "averageRating": 2.9,
-      "perDay": 0.02,
-      "perWeek": 0.2,
-      "perMonth": 0.8,
+      "averageRating": 3.5,
+      "perDay": 0.08,
+      "perWeek": 0.6,
+      "perMonth": 2.6,
       "streak": {
-        "length": 1,
-        "startDate": "2022-03-31",
-        "endDate": "2022-03-31",
-        "films": 1
+        "length": 2,
+        "startDate": "2022-03-06",
+        "endDate": "2022-03-07",
+        "films": 2
       },
       "busiestDay": {
-        "date": "2022-03-31",
-        "count": 1
+        "date": "2022-12-20",
+        "count": 2
       },
       "longestGap": {
-        "days": 84,
+        "days": 42,
         "from": "2022-05-06",
-        "to": "2022-07-30"
+        "to": "2022-06-18"
       },
       "perYear": [
         {
           "year": 2022,
-          "films": 6,
-          "days": 6
+          "films": 28,
+          "days": 27
         }
       ],
       "perWeekday": [
-        2,
-        0,
-        0,
+        7,
+        5,
+        5,
         0,
         1,
-        2,
-        1
+        4,
+        6
       ],
       "perMonthOfYear": [
-        0,
-        0,
         1,
         1,
+        5,
+        5,
         1,
-        0,
         1,
-        0,
+        3,
+        2,
         1,
-        0,
-        1,
-        0
+        3,
+        2,
+        3
       ],
       "monthSeries": [
         {
-          "month": "2022-03",
+          "month": "2022-01",
           "count": 1
         },
         {
-          "month": "2022-04",
+          "month": "2022-02",
           "count": 1
+        },
+        {
+          "month": "2022-03",
+          "count": 5
+        },
+        {
+          "month": "2022-04",
+          "count": 5
         },
         {
           "month": "2022-05",
@@ -36431,15 +37640,15 @@
         },
         {
           "month": "2022-06",
-          "count": 0
-        },
-        {
-          "month": "2022-07",
           "count": 1
         },
         {
+          "month": "2022-07",
+          "count": 3
+        },
+        {
           "month": "2022-08",
-          "count": 0
+          "count": 2
         },
         {
           "month": "2022-09",
@@ -36447,11 +37656,15 @@
         },
         {
           "month": "2022-10",
-          "count": 0
+          "count": 3
         },
         {
           "month": "2022-11",
-          "count": 1
+          "count": 2
+        },
+        {
+          "month": "2022-12",
+          "count": 3
         }
       ],
       "weekSeries": [
@@ -36477,7 +37690,7 @@
           "week": 4,
           "start": "2022-01-17",
           "end": "2022-01-23",
-          "count": 0
+          "count": 1
         },
         {
           "week": 5,
@@ -36489,7 +37702,7 @@
           "week": 6,
           "start": "2022-01-31",
           "end": "2022-02-06",
-          "count": 0
+          "count": 1
         },
         {
           "week": 7,
@@ -36513,19 +37726,19 @@
           "week": 10,
           "start": "2022-02-28",
           "end": "2022-03-06",
-          "count": 0
+          "count": 1
         },
         {
           "week": 11,
           "start": "2022-03-07",
           "end": "2022-03-13",
-          "count": 0
+          "count": 1
         },
         {
           "week": 12,
           "start": "2022-03-14",
           "end": "2022-03-20",
-          "count": 0
+          "count": 1
         },
         {
           "week": 13,
@@ -36537,31 +37750,31 @@
           "week": 14,
           "start": "2022-03-28",
           "end": "2022-04-03",
-          "count": 1
+          "count": 2
         },
         {
           "week": 15,
           "start": "2022-04-04",
           "end": "2022-04-10",
-          "count": 0
+          "count": 1
         },
         {
           "week": 16,
           "start": "2022-04-11",
           "end": "2022-04-17",
-          "count": 0
+          "count": 1
         },
         {
           "week": 17,
           "start": "2022-04-18",
           "end": "2022-04-24",
-          "count": 1
+          "count": 2
         },
         {
           "week": 18,
           "start": "2022-04-25",
           "end": "2022-05-01",
-          "count": 0
+          "count": 1
         },
         {
           "week": 19,
@@ -36603,7 +37816,7 @@
           "week": 25,
           "start": "2022-06-13",
           "end": "2022-06-19",
-          "count": 0
+          "count": 1
         },
         {
           "week": 26,
@@ -36615,13 +37828,13 @@
           "week": 27,
           "start": "2022-06-27",
           "end": "2022-07-03",
-          "count": 0
+          "count": 1
         },
         {
           "week": 28,
           "start": "2022-07-04",
           "end": "2022-07-10",
-          "count": 0
+          "count": 1
         },
         {
           "week": 29,
@@ -36645,7 +37858,7 @@
           "week": 32,
           "start": "2022-08-01",
           "end": "2022-08-07",
-          "count": 0
+          "count": 1
         },
         {
           "week": 33,
@@ -36663,7 +37876,7 @@
           "week": 35,
           "start": "2022-08-22",
           "end": "2022-08-28",
-          "count": 0
+          "count": 1
         },
         {
           "week": 36,
@@ -36693,13 +37906,13 @@
           "week": 40,
           "start": "2022-09-26",
           "end": "2022-10-02",
-          "count": 0
+          "count": 1
         },
         {
           "week": 41,
           "start": "2022-10-03",
           "end": "2022-10-09",
-          "count": 0
+          "count": 1
         },
         {
           "week": 42,
@@ -36717,7 +37930,7 @@
           "week": 44,
           "start": "2022-10-24",
           "end": "2022-10-30",
-          "count": 0
+          "count": 1
         },
         {
           "week": 45,
@@ -36741,7 +37954,7 @@
           "week": 48,
           "start": "2022-11-21",
           "end": "2022-11-27",
-          "count": 1
+          "count": 2
         },
         {
           "week": 49,
@@ -36753,7 +37966,7 @@
           "week": 50,
           "start": "2022-12-05",
           "end": "2022-12-11",
-          "count": 0
+          "count": 1
         },
         {
           "week": 51,
@@ -36765,7 +37978,7 @@
           "week": 52,
           "start": "2022-12-19",
           "end": "2022-12-25",
-          "count": 0
+          "count": 2
         },
         {
           "week": 53,
@@ -36777,28 +37990,64 @@
       "ratings": [
         {
           "rating": 2.5,
-          "count": 2
+          "count": 4
         },
         {
           "rating": 3,
-          "count": 3
+          "count": 9
         },
         {
           "rating": 3.5,
-          "count": 1
+          "count": 4
+        },
+        {
+          "rating": 4,
+          "count": 6
+        },
+        {
+          "rating": 4.5,
+          "count": 2
+        },
+        {
+          "rating": 5,
+          "count": 3
         }
       ],
       "decades": [
         {
+          "decade": 1970,
+          "label": "1970s",
+          "count": 1,
+          "averageRating": 4.5
+        },
+        {
+          "decade": 1980,
+          "label": "1980s",
+          "count": 3,
+          "averageRating": 5
+        },
+        {
+          "decade": 1990,
+          "label": "1990s",
+          "count": 1,
+          "averageRating": 4
+        },
+        {
           "decade": 2000,
           "label": "2000s",
-          "count": 2,
-          "averageRating": 2.5
+          "count": 8,
+          "averageRating": 3.5
         },
         {
           "decade": 2010,
           "label": "2010s",
-          "count": 4,
+          "count": 13,
+          "averageRating": 3.5
+        },
+        {
+          "decade": 2020,
+          "label": "2020s",
+          "count": 2,
           "averageRating": 3
         }
       ],
@@ -36808,20 +38057,20 @@
         {
           "n": 1,
           "kind": "first",
-          "date": "2022-03-31",
-          "title": "Sausage Party",
-          "year": "2016",
+          "date": "2022-01-23",
+          "title": "Fantastic Beasts: The Crimes of Grindelwald",
+          "year": "2018",
           "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/sausage-party/",
+          "url": "https://letterboxd.com/nichtlegacy/film/fantastic-beasts-the-crimes-of-grindelwald/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:157841",
-          "lid": "6CCe",
-          "slug": "sausage-party"
+          "filmUid": "film:268365",
+          "lid": "bg8G",
+          "slug": "fantastic-beasts-the-crimes-of-grindelwald"
         },
         {
-          "n": 6,
-          "kind": "latest",
+          "n": 25,
+          "kind": "step",
           "date": "2022-11-27",
           "title": "Grown Ups",
           "year": "2010",
@@ -36832,85 +38081,103 @@
           "filmUid": "film:26196",
           "lid": "169a",
           "slug": "grown-ups"
+        },
+        {
+          "n": 28,
+          "kind": "latest",
+          "date": "2022-12-20",
+          "title": "American Psycho",
+          "year": "2000",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/american-psycho/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:51097",
+          "lid": "28Vs",
+          "slug": "american-psycho"
         }
       ]
     },
     "2023": {
       "scope": "year",
       "films": null,
-      "entries": 50,
-      "distinctFilms": 50,
-      "firstEntry": "2023-02-17",
+      "entries": 65,
+      "distinctFilms": 65,
+      "firstEntry": "2023-01-28",
       "lastEntry": "2023-12-29",
-      "spanDays": 316,
-      "daysActive": 45,
-      "multiFilmDays": 4,
-      "rewatches": 0,
-      "liked": 6,
-      "rated": 50,
+      "spanDays": 336,
+      "daysActive": 58,
+      "multiFilmDays": 6,
+      "rewatches": 4,
+      "liked": 7,
+      "rated": 65,
       "releaseBreakdown": {
-        "sameYear": 1,
-        "older": 49,
+        "sameYear": 3,
+        "older": 62,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 50,
-        "rewatches": 0
+        "firstWatches": 61,
+        "rewatches": 4
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 50
+        "notReviewed": 65
       },
-      "averageRating": 3.1,
-      "perDay": 0.16,
-      "perWeek": 1.1,
-      "perMonth": 4.8,
+      "averageRating": 3.3,
+      "perDay": 0.19,
+      "perWeek": 1.4,
+      "perMonth": 5.9,
       "streak": {
-        "length": 3,
-        "startDate": "2023-09-17",
-        "endDate": "2023-09-19",
-        "films": 4
+        "length": 5,
+        "startDate": "2023-05-06",
+        "endDate": "2023-05-10",
+        "films": 6
       },
       "busiestDay": {
         "date": "2023-09-21",
         "count": 3
       },
       "longestGap": {
-        "days": 37,
-        "from": "2023-03-30",
-        "to": "2023-05-07"
+        "days": 35,
+        "from": "2023-09-25",
+        "to": "2023-10-31"
       },
       "perYear": [
         {
           "year": 2023,
-          "films": 50,
-          "days": 45
+          "films": 65,
+          "days": 58
         }
       ],
       "perWeekday": [
+        11,
         9,
-        7,
-        8,
-        2,
+        13,
+        5,
         11,
         6,
-        7
+        10
       ],
       "perMonthOfYear": [
-        0,
+        1,
         1,
         4,
-        0,
-        3,
-        3,
-        3,
+        4,
+        9,
+        5,
+        4,
         4,
         13,
-        1,
+        2,
         9,
         9
       ],
       "monthSeries": [
+        {
+          "month": "2023-01",
+          "count": 1
+        },
         {
           "month": "2023-02",
           "count": 1
@@ -36921,19 +38188,19 @@
         },
         {
           "month": "2023-04",
-          "count": 0
+          "count": 4
         },
         {
           "month": "2023-05",
-          "count": 3
+          "count": 9
         },
         {
           "month": "2023-06",
-          "count": 3
+          "count": 5
         },
         {
           "month": "2023-07",
-          "count": 3
+          "count": 4
         },
         {
           "month": "2023-08",
@@ -36945,7 +38212,7 @@
         },
         {
           "month": "2023-10",
-          "count": 1
+          "count": 2
         },
         {
           "month": "2023-11",
@@ -36985,7 +38252,7 @@
           "week": 5,
           "start": "2023-01-23",
           "end": "2023-01-29",
-          "count": 0
+          "count": 1
         },
         {
           "week": 6,
@@ -37057,31 +38324,31 @@
           "week": 17,
           "start": "2023-04-17",
           "end": "2023-04-23",
-          "count": 0
+          "count": 1
         },
         {
           "week": 18,
           "start": "2023-04-24",
           "end": "2023-04-30",
-          "count": 0
+          "count": 3
         },
         {
           "week": 19,
           "start": "2023-05-01",
           "end": "2023-05-07",
-          "count": 1
+          "count": 3
         },
         {
           "week": 20,
           "start": "2023-05-08",
           "end": "2023-05-14",
-          "count": 2
+          "count": 4
         },
         {
           "week": 21,
           "start": "2023-05-15",
           "end": "2023-05-21",
-          "count": 0
+          "count": 1
         },
         {
           "week": 22,
@@ -37093,19 +38360,19 @@
           "week": 23,
           "start": "2023-05-29",
           "end": "2023-06-04",
-          "count": 0
+          "count": 1
         },
         {
           "week": 24,
           "start": "2023-06-05",
           "end": "2023-06-11",
-          "count": 2
+          "count": 3
         },
         {
           "week": 25,
           "start": "2023-06-12",
           "end": "2023-06-18",
-          "count": 0
+          "count": 1
         },
         {
           "week": 26,
@@ -37135,7 +38402,7 @@
           "week": 30,
           "start": "2023-07-17",
           "end": "2023-07-23",
-          "count": 0
+          "count": 1
         },
         {
           "week": 31,
@@ -37225,7 +38492,7 @@
           "week": 45,
           "start": "2023-10-30",
           "end": "2023-11-05",
-          "count": 2
+          "count": 3
         },
         {
           "week": 46,
@@ -37287,26 +38554,36 @@
         },
         {
           "rating": 2.5,
-          "count": 11
+          "count": 13
         },
         {
           "rating": 3,
-          "count": 17
+          "count": 19
         },
         {
           "rating": 3.5,
-          "count": 4
+          "count": 6
         },
         {
           "rating": 4,
-          "count": 8
+          "count": 16
         },
         {
           "rating": 4.5,
           "count": 5
+        },
+        {
+          "rating": 5,
+          "count": 1
         }
       ],
       "decades": [
+        {
+          "decade": 1970,
+          "label": "1970s",
+          "count": 1,
+          "averageRating": 3.5
+        },
         {
           "decade": 1990,
           "label": "1990s",
@@ -37316,20 +38593,20 @@
         {
           "decade": 2000,
           "label": "2000s",
-          "count": 11,
+          "count": 15,
           "averageRating": 3.5
         },
         {
           "decade": 2010,
           "label": "2010s",
-          "count": 31,
+          "count": 39,
           "averageRating": 3
         },
         {
           "decade": 2020,
           "label": "2020s",
-          "count": 3,
-          "averageRating": 2.5
+          "count": 5,
+          "averageRating": 3
         }
       ],
       "mostRewatched": [],
@@ -37338,34 +38615,48 @@
         {
           "n": 1,
           "kind": "first",
-          "date": "2023-02-17",
-          "title": "Project X",
-          "year": "2012",
-          "rating": 4.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/project-x-2012/",
+          "date": "2023-01-28",
+          "title": "El Camino: A Breaking Bad Movie",
+          "year": "2019",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/el-camino-a-breaking-bad-movie/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:8933",
-          "lid": "neO",
-          "slug": "project-x-2012"
+          "filmUid": "film:488575",
+          "lid": "kv0q",
+          "slug": "el-camino-a-breaking-bad-movie"
         },
         {
           "n": 25,
           "kind": "step",
-          "date": "2023-09-21",
-          "title": "Bad Moms",
-          "year": "2016",
-          "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/bad-moms/",
+          "date": "2023-07-18",
+          "title": "Terminator: Dark Fate",
+          "year": "2019",
+          "rating": 2.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/terminator-dark-fate/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:311893",
-          "lid": "d5nk",
-          "slug": "bad-moms"
+          "filmUid": "film:217178",
+          "lid": "96YI",
+          "slug": "terminator-dark-fate"
         },
         {
           "n": 50,
           "kind": "step",
+          "date": "2023-11-16",
+          "title": "The Amazing Spider-Man",
+          "year": "2012",
+          "rating": 4.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-amazing-spider-man/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:50677",
+          "lid": "27PI",
+          "slug": "the-amazing-spider-man"
+        },
+        {
+          "n": 65,
+          "kind": "latest",
           "date": "2023-12-29",
           "title": "Spider-Man: Homecoming",
           "year": "2017",
@@ -37382,33 +38673,33 @@
     "2024": {
       "scope": "year",
       "films": null,
-      "entries": 216,
-      "distinctFilms": 183,
+      "entries": 235,
+      "distinctFilms": 202,
       "firstEntry": "2024-01-01",
       "lastEntry": "2024-12-31",
       "spanDays": 366,
-      "daysActive": 151,
-      "multiFilmDays": 50,
-      "rewatches": 48,
-      "liked": 38,
-      "rated": 216,
+      "daysActive": 166,
+      "multiFilmDays": 53,
+      "rewatches": 49,
+      "liked": 41,
+      "rated": 235,
       "releaseBreakdown": {
         "sameYear": 17,
-        "older": 199,
+        "older": 218,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 168,
-        "rewatches": 48
+        "firstWatches": 186,
+        "rewatches": 49
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 216
+        "notReviewed": 235
       },
       "averageRating": 3.4,
-      "perDay": 0.59,
-      "perWeek": 4.1,
-      "perMonth": 18,
+      "perDay": 0.64,
+      "perWeek": 4.5,
+      "perMonth": 19.5,
       "streak": {
         "length": 10,
         "startDate": "2024-04-26",
@@ -37420,37 +38711,37 @@
         "count": 5
       },
       "longestGap": {
-        "days": 17,
-        "from": "2024-06-04",
-        "to": "2024-06-22"
+        "days": 15,
+        "from": "2024-02-02",
+        "to": "2024-02-18"
       },
       "perYear": [
         {
           "year": 2024,
-          "films": 216,
-          "days": 151
+          "films": 235,
+          "days": 166
         }
       ],
       "perWeekday": [
+        37,
         34,
-        30,
-        23,
-        31,
-        32,
-        33,
-        33
+        24,
+        34,
+        36,
+        35,
+        35
       ],
       "perMonthOfYear": [
         9,
-        5,
-        16,
+        6,
+        18,
         22,
-        15,
-        4,
+        18,
+        8,
         7,
-        10,
         15,
-        32,
+        18,
+        33,
         40,
         41
       ],
@@ -37461,11 +38752,11 @@
         },
         {
           "month": "2024-02",
-          "count": 5
+          "count": 6
         },
         {
           "month": "2024-03",
-          "count": 16
+          "count": 18
         },
         {
           "month": "2024-04",
@@ -37473,11 +38764,11 @@
         },
         {
           "month": "2024-05",
-          "count": 15
+          "count": 18
         },
         {
           "month": "2024-06",
-          "count": 4
+          "count": 8
         },
         {
           "month": "2024-07",
@@ -37485,15 +38776,15 @@
         },
         {
           "month": "2024-08",
-          "count": 10
-        },
-        {
-          "month": "2024-09",
           "count": 15
         },
         {
+          "month": "2024-09",
+          "count": 18
+        },
+        {
           "month": "2024-10",
-          "count": 32
+          "count": 33
         },
         {
           "month": "2024-11",
@@ -37557,13 +38848,13 @@
           "week": 9,
           "start": "2024-02-26",
           "end": "2024-03-03",
-          "count": 3
+          "count": 5
         },
         {
           "week": 10,
           "start": "2024-03-04",
           "end": "2024-03-10",
-          "count": 4
+          "count": 5
         },
         {
           "week": 11,
@@ -37617,7 +38908,7 @@
           "week": 19,
           "start": "2024-05-06",
           "end": "2024-05-12",
-          "count": 1
+          "count": 2
         },
         {
           "week": 20,
@@ -37629,13 +38920,13 @@
           "week": 21,
           "start": "2024-05-20",
           "end": "2024-05-26",
-          "count": 3
+          "count": 5
         },
         {
           "week": 22,
           "start": "2024-05-27",
           "end": "2024-06-02",
-          "count": 0
+          "count": 1
         },
         {
           "week": 23,
@@ -37647,13 +38938,13 @@
           "week": 24,
           "start": "2024-06-10",
           "end": "2024-06-16",
-          "count": 0
+          "count": 1
         },
         {
           "week": 25,
           "start": "2024-06-17",
           "end": "2024-06-23",
-          "count": 2
+          "count": 4
         },
         {
           "week": 26,
@@ -37695,19 +38986,19 @@
           "week": 32,
           "start": "2024-08-05",
           "end": "2024-08-11",
-          "count": 0
+          "count": 3
         },
         {
           "week": 33,
           "start": "2024-08-12",
           "end": "2024-08-18",
-          "count": 2
+          "count": 3
         },
         {
           "week": 34,
           "start": "2024-08-19",
           "end": "2024-08-25",
-          "count": 3
+          "count": 4
         },
         {
           "week": 35,
@@ -37731,13 +39022,13 @@
           "week": 38,
           "start": "2024-09-16",
           "end": "2024-09-22",
-          "count": 5
+          "count": 6
         },
         {
           "week": 39,
           "start": "2024-09-23",
           "end": "2024-09-29",
-          "count": 5
+          "count": 7
         },
         {
           "week": 40,
@@ -37767,7 +39058,7 @@
           "week": 44,
           "start": "2024-10-28",
           "end": "2024-11-03",
-          "count": 14
+          "count": 15
         },
         {
           "week": 45,
@@ -37839,23 +39130,23 @@
         },
         {
           "rating": 2.5,
-          "count": 28
+          "count": 29
         },
         {
           "rating": 3,
-          "count": 61
+          "count": 67
         },
         {
           "rating": 3.5,
-          "count": 45
+          "count": 48
         },
         {
           "rating": 4,
-          "count": 47
+          "count": 54
         },
         {
           "rating": 4.5,
-          "count": 17
+          "count": 19
         },
         {
           "rating": 5,
@@ -37878,25 +39169,25 @@
         {
           "decade": 1990,
           "label": "1990s",
-          "count": 21,
-          "averageRating": 3.5
+          "count": 22,
+          "averageRating": 4
         },
         {
           "decade": 2000,
           "label": "2000s",
-          "count": 94,
+          "count": 103,
           "averageRating": 3.5
         },
         {
           "decade": 2010,
           "label": "2010s",
-          "count": 57,
+          "count": 65,
           "averageRating": 3
         },
         {
           "decade": 2020,
           "label": "2020s",
-          "count": 37,
+          "count": 38,
           "averageRating": 3.5
         }
       ],
@@ -38151,61 +39442,61 @@
         {
           "n": 50,
           "kind": "step",
-          "date": "2024-04-28",
-          "title": "The Rock",
-          "year": "1996",
-          "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/the-rock/",
+          "date": "2024-04-26",
+          "title": "Ted",
+          "year": "2012",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/ted/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:46810",
-          "lid": "1XM0",
-          "slug": "the-rock"
+          "filmUid": "film:57376",
+          "lid": "2pgc",
+          "slug": "ted"
         },
         {
           "n": 100,
           "kind": "step",
-          "date": "2024-09-25",
-          "title": "Neighbors",
-          "year": "2014",
-          "rating": 3.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/neighbors-2014/",
+          "date": "2024-08-27",
+          "title": "EuroTrip",
+          "year": "2004",
+          "rating": 4,
+          "url": "https://letterboxd.com/nichtlegacy/film/eurotrip/1/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:140512",
-          "lid": "5Txe",
-          "slug": "neighbors-2014"
+          "filmUid": "film:47243",
+          "lid": "1YTQ",
+          "slug": "eurotrip"
         },
         {
           "n": 150,
           "kind": "step",
-          "date": "2024-11-15",
-          "title": "Smiley Face",
-          "year": "2007",
-          "rating": 4.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/smiley-face/5/",
+          "date": "2024-10-30",
+          "title": "Half Baked",
+          "year": "1998",
+          "rating": 3.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/half-baked/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:44082",
-          "lid": "1QG0",
-          "slug": "smiley-face"
+          "filmUid": "film:47108",
+          "lid": "1Yy4",
+          "slug": "half-baked"
         },
         {
           "n": 200,
           "kind": "step",
-          "date": "2024-12-17",
-          "title": "Don't Be a Menace to South Central While Drinking Your Juice in the Hood",
-          "year": "1996",
-          "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood/2/",
+          "date": "2024-12-05",
+          "title": "The Girl Next Door",
+          "year": "2004",
+          "rating": 2,
+          "url": "https://letterboxd.com/nichtlegacy/film/the-girl-next-door-2004/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:46067",
-          "lid": "1VQa",
-          "slug": "dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood"
+          "filmUid": "film:46081",
+          "lid": "1VSq",
+          "slug": "the-girl-next-door-2004"
         },
         {
-          "n": 216,
+          "n": 235,
           "kind": "latest",
           "date": "2024-12-31",
           "title": "There's Something About Mary",
@@ -39060,33 +40351,33 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 95,
-      "distinctFilms": 90,
+      "entries": 96,
+      "distinctFilms": 91,
       "firstEntry": "2026-01-01",
-      "lastEntry": "2026-10-16",
-      "spanDays": 289,
-      "daysActive": 76,
+      "lastEntry": "2026-10-17",
+      "spanDays": 290,
+      "daysActive": 77,
       "multiFilmDays": 12,
-      "rewatches": 21,
+      "rewatches": 23,
       "liked": 7,
-      "rated": 95,
+      "rated": 96,
       "releaseBreakdown": {
         "sameYear": 14,
-        "older": 81,
+        "older": 82,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 74,
-        "rewatches": 21
+        "firstWatches": 73,
+        "rewatches": 23
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 95
+        "notReviewed": 96
       },
       "averageRating": 3.3,
       "perDay": 0.33,
       "perWeek": 2.3,
-      "perMonth": 10,
+      "perMonth": 10.1,
       "streak": {
         "length": 6,
         "startDate": "2026-03-28",
@@ -39105,8 +40396,8 @@
       "perYear": [
         {
           "year": 2026,
-          "films": 95,
-          "days": 76
+          "films": 96,
+          "days": 77
         }
       ],
       "perWeekday": [
@@ -39116,7 +40407,7 @@
         9,
         10,
         17,
-        23
+        24
       ],
       "perMonthOfYear": [
         19,
@@ -39128,7 +40419,7 @@
         12,
         6,
         8,
-        1,
+        2,
         0,
         0
       ],
@@ -39171,7 +40462,7 @@
         },
         {
           "month": "2026-10",
-          "count": 1
+          "count": 2
         }
       ],
       "weekSeries": [
@@ -39425,7 +40716,7 @@
           "week": 42,
           "start": "2026-10-12",
           "end": "2026-10-18",
-          "count": 1
+          "count": 2
         },
         {
           "week": 43,
@@ -39505,7 +40796,7 @@
         },
         {
           "rating": 3,
-          "count": 27
+          "count": 28
         },
         {
           "rating": 3.5,
@@ -39554,7 +40845,7 @@
         {
           "decade": 2020,
           "label": "2020s",
-          "count": 35,
+          "count": 36,
           "averageRating": 3.5
         }
       ],
@@ -39659,52 +40950,52 @@
           "slug": "minions-the-rise-of-gru"
         },
         {
-          "n": 95,
+          "n": 96,
           "kind": "latest",
-          "date": "2026-10-16",
-          "title": "Next Friday",
-          "year": "2000",
-          "rating": 2.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/next-friday/",
+          "date": "2026-10-17",
+          "title": "Roofman",
+          "year": "2025",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/roofman/1/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:46198",
-          "lid": "1Wbi",
-          "slug": "next-friday"
+          "filmUid": "film:1125033",
+          "lid": "LcIW",
+          "slug": "roofman"
         }
       ]
     }
   },
   "allTime": {
     "scope": "all",
-    "films": 738,
-    "entries": 778,
-    "distinctFilms": 667,
-    "firstEntry": "2020-07-10",
-    "lastEntry": "2026-10-16",
-    "spanDays": 2290,
-    "daysActive": 552,
-    "multiFilmDays": 169,
-    "rewatches": 128,
-    "liked": 75,
-    "rated": 778,
+    "films": 794,
+    "entries": 858,
+    "distinctFilms": 740,
+    "firstEntry": "2020-07-03",
+    "lastEntry": "2026-10-17",
+    "spanDays": 2298,
+    "daysActive": 624,
+    "multiFilmDays": 176,
+    "rewatches": 135,
+    "liked": 89,
+    "rated": 858,
     "releaseBreakdown": {
-      "sameYear": 66,
-      "older": 712,
+      "sameYear": 74,
+      "older": 784,
       "other": 0
     },
     "watchBreakdown": {
-      "firstWatches": 650,
-      "rewatches": 128
+      "firstWatches": 723,
+      "rewatches": 135
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 777
+      "notReviewed": 857
     },
     "averageRating": 3.3,
-    "perDay": 0.34,
-    "perWeek": 2.4,
-    "perMonth": 10.3,
+    "perDay": 0.37,
+    "perWeek": 2.6,
+    "perMonth": 11.4,
     "streak": {
       "length": 34,
       "startDate": "2025-01-27",
@@ -39716,35 +41007,35 @@
       "count": 5
     },
     "longestGap": {
-      "days": 223,
-      "from": "2021-03-07",
-      "to": "2021-10-17"
+      "days": 87,
+      "from": "2020-08-08",
+      "to": "2020-11-04"
     },
     "perYear": [
       {
         "year": 2020,
-        "films": 3,
-        "days": 3
-      },
-      {
-        "year": 2021,
-        "films": 5,
-        "days": 4
-      },
-      {
-        "year": 2022,
         "films": 6,
         "days": 6
       },
       {
+        "year": 2021,
+        "films": 25,
+        "days": 23
+      },
+      {
+        "year": 2022,
+        "films": 28,
+        "days": 27
+      },
+      {
         "year": 2023,
-        "films": 50,
-        "days": 45
+        "films": 65,
+        "days": 58
       },
       {
         "year": 2024,
-        "films": 216,
-        "days": 151
+        "films": 235,
+        "days": 166
       },
       {
         "year": 2025,
@@ -39753,37 +41044,37 @@
       },
       {
         "year": 2026,
-        "films": 95,
-        "days": 76
+        "films": 96,
+        "days": 77
       }
     ],
     "perWeekday": [
-      123,
-      108,
-      90,
-      97,
-      108,
-      118,
-      134
+      136,
+      121,
+      105,
+      105,
+      116,
+      127,
+      148
     ],
     "perMonthOfYear": [
-      86,
-      53,
-      85,
-      80,
-      67,
-      54,
-      63,
-      36,
-      52,
-      65,
-      65,
-      72
+      89,
+      55,
+      92,
+      91,
+      78,
+      61,
+      70,
+      46,
+      57,
+      72,
+      70,
+      77
     ],
     "monthSeries": [
       {
         "month": "2020-07",
-        "count": 1
+        "count": 2
       },
       {
         "month": "2020-08",
@@ -39799,7 +41090,7 @@
       },
       {
         "month": "2020-11",
-        "count": 0
+        "count": 2
       },
       {
         "month": "2020-12",
@@ -39807,7 +41098,7 @@
       },
       {
         "month": "2021-01",
-        "count": 0
+        "count": 1
       },
       {
         "month": "2021-02",
@@ -39815,15 +41106,15 @@
       },
       {
         "month": "2021-03",
-        "count": 2
+        "count": 3
       },
       {
         "month": "2021-04",
-        "count": 0
+        "count": 3
       },
       {
         "month": "2021-05",
-        "count": 0
+        "count": 2
       },
       {
         "month": "2021-06",
@@ -39831,43 +41122,43 @@
       },
       {
         "month": "2021-07",
-        "count": 0
-      },
-      {
-        "month": "2021-08",
-        "count": 0
-      },
-      {
-        "month": "2021-09",
-        "count": 0
-      },
-      {
-        "month": "2021-10",
         "count": 3
       },
       {
+        "month": "2021-08",
+        "count": 3
+      },
+      {
+        "month": "2021-09",
+        "count": 2
+      },
+      {
+        "month": "2021-10",
+        "count": 4
+      },
+      {
         "month": "2021-11",
-        "count": 0
+        "count": 2
       },
       {
         "month": "2021-12",
-        "count": 0
+        "count": 2
       },
       {
         "month": "2022-01",
-        "count": 0
+        "count": 1
       },
       {
         "month": "2022-02",
-        "count": 0
+        "count": 1
       },
       {
         "month": "2022-03",
-        "count": 1
+        "count": 5
       },
       {
         "month": "2022-04",
-        "count": 1
+        "count": 5
       },
       {
         "month": "2022-05",
@@ -39875,15 +41166,15 @@
       },
       {
         "month": "2022-06",
-        "count": 0
-      },
-      {
-        "month": "2022-07",
         "count": 1
       },
       {
+        "month": "2022-07",
+        "count": 3
+      },
+      {
         "month": "2022-08",
-        "count": 0
+        "count": 2
       },
       {
         "month": "2022-09",
@@ -39891,19 +41182,19 @@
       },
       {
         "month": "2022-10",
-        "count": 0
+        "count": 3
       },
       {
         "month": "2022-11",
-        "count": 1
+        "count": 2
       },
       {
         "month": "2022-12",
-        "count": 0
+        "count": 3
       },
       {
         "month": "2023-01",
-        "count": 0
+        "count": 1
       },
       {
         "month": "2023-02",
@@ -39915,19 +41206,19 @@
       },
       {
         "month": "2023-04",
-        "count": 0
+        "count": 4
       },
       {
         "month": "2023-05",
-        "count": 3
+        "count": 9
       },
       {
         "month": "2023-06",
-        "count": 3
+        "count": 5
       },
       {
         "month": "2023-07",
-        "count": 3
+        "count": 4
       },
       {
         "month": "2023-08",
@@ -39939,7 +41230,7 @@
       },
       {
         "month": "2023-10",
-        "count": 1
+        "count": 2
       },
       {
         "month": "2023-11",
@@ -39955,11 +41246,11 @@
       },
       {
         "month": "2024-02",
-        "count": 5
+        "count": 6
       },
       {
         "month": "2024-03",
-        "count": 16
+        "count": 18
       },
       {
         "month": "2024-04",
@@ -39967,11 +41258,11 @@
       },
       {
         "month": "2024-05",
-        "count": 15
+        "count": 18
       },
       {
         "month": "2024-06",
-        "count": 4
+        "count": 8
       },
       {
         "month": "2024-07",
@@ -39979,15 +41270,15 @@
       },
       {
         "month": "2024-08",
-        "count": 10
-      },
-      {
-        "month": "2024-09",
         "count": 15
       },
       {
+        "month": "2024-09",
+        "count": 18
+      },
+      {
         "month": "2024-10",
-        "count": 32
+        "count": 33
       },
       {
         "month": "2024-11",
@@ -40083,7 +41374,7 @@
       },
       {
         "month": "2026-10",
-        "count": 1
+        "count": 2
       }
     ],
     "weekSeries": [],
@@ -40098,31 +41389,31 @@
       },
       {
         "rating": 2,
-        "count": 35
+        "count": 39
       },
       {
         "rating": 2.5,
-        "count": 124
+        "count": 135
       },
       {
         "rating": 3,
-        "count": 222
+        "count": 241
       },
       {
         "rating": 3.5,
-        "count": 179
+        "count": 192
       },
       {
         "rating": 4,
-        "count": 147
+        "count": 171
       },
       {
         "rating": 4.5,
-        "count": 42
+        "count": 46
       },
       {
         "rating": 5,
-        "count": 14
+        "count": 19
       }
     ],
     "decades": [
@@ -40135,37 +41426,37 @@
       {
         "decade": 1970,
         "label": "1970s",
-        "count": 8,
+        "count": 10,
         "averageRating": 4
       },
       {
         "decade": 1980,
         "label": "1980s",
-        "count": 27,
+        "count": 30,
         "averageRating": 3.5
       },
       {
         "decade": 1990,
         "label": "1990s",
-        "count": 116,
+        "count": 118,
         "averageRating": 3.5
       },
       {
         "decade": 2000,
         "label": "2000s",
-        "count": 281,
+        "count": 305,
         "averageRating": 3
       },
       {
         "decade": 2010,
         "label": "2010s",
-        "count": 204,
+        "count": 242,
         "averageRating": 3
       },
       {
         "decade": 2020,
         "label": "2020s",
-        "count": 141,
+        "count": 152,
         "averageRating": 3.5
       }
     ],
@@ -40211,6 +41502,16 @@
         "averageRating": 3.5
       },
       {
+        "title": "Star Wars",
+        "year": "1977",
+        "url": "https://letterboxd.com/nichtlegacy/film/star-wars/3/",
+        "filmUid": "film:2706",
+        "lid": "72s",
+        "slug": "star-wars",
+        "views": 4,
+        "averageRating": 4.5
+      },
+      {
         "title": "Don't Be a Menace to South Central While Drinking Your Juice in the Hood",
         "year": "1996",
         "url": "https://letterboxd.com/nichtlegacy/film/dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood/",
@@ -40251,6 +41552,16 @@
         "averageRating": 3.5
       },
       {
+        "title": "John Wick: Chapter 4",
+        "year": "2023",
+        "url": "https://letterboxd.com/nichtlegacy/film/john-wick-chapter-4/2/",
+        "filmUid": "film:530882",
+        "lid": "mh48",
+        "slug": "john-wick-chapter-4",
+        "views": 3,
+        "averageRating": 5
+      },
+      {
         "title": "Nirvanna the Band the Show the Movie",
         "year": "2025",
         "url": "https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/",
@@ -40279,16 +41590,6 @@
         "slug": "scary-movie-2000",
         "views": 3,
         "averageRating": 3.5
-      },
-      {
-        "title": "Star Wars",
-        "year": "1977",
-        "url": "https://letterboxd.com/nichtlegacy/film/star-wars/",
-        "filmUid": "film:2706",
-        "lid": "72s",
-        "slug": "star-wars",
-        "views": 3,
-        "averageRating": 4.5
       },
       {
         "title": "Ted",
@@ -40611,16 +41912,6 @@
         "averageRating": 3.5
       },
       {
-        "title": "John Wick: Chapter 4",
-        "year": "2023",
-        "url": "https://letterboxd.com/nichtlegacy/film/john-wick-chapter-4/1/",
-        "filmUid": "film:530882",
-        "lid": "mh48",
-        "slug": "john-wick-chapter-4",
-        "views": 2,
-        "averageRating": 5
-      },
-      {
         "title": "Man on the Moon",
         "year": "1999",
         "url": "https://letterboxd.com/nichtlegacy/film/man-on-the-moon/",
@@ -40639,6 +41930,16 @@
         "slug": "mardi-gras-spring-break",
         "views": 2,
         "averageRating": 2.5
+      },
+      {
+        "title": "Minions: The Rise of Gru",
+        "year": "2022",
+        "url": "https://letterboxd.com/nichtlegacy/film/minions-the-rise-of-gru/1/",
+        "filmUid": "film:371005",
+        "lid": "fz9w",
+        "slug": "minions-the-rise-of-gru",
+        "views": 2,
+        "averageRating": 3
       },
       {
         "title": "Old School",
@@ -40669,6 +41970,16 @@
         "slug": "road-trip-beer-pong",
         "views": 2,
         "averageRating": 2.5
+      },
+      {
+        "title": "Roofman",
+        "year": "2025",
+        "url": "https://letterboxd.com/nichtlegacy/film/roofman/",
+        "filmUid": "film:1125033",
+        "lid": "LcIW",
+        "slug": "roofman",
+        "views": 2,
+        "averageRating": 3.5
       },
       {
         "title": "Scary Movie 2",
@@ -40811,6 +42122,36 @@
         "averageRating": 3.5
       },
       {
+        "title": "The Hobbit: An Unexpected Journey",
+        "year": "2012",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-hobbit-an-unexpected-journey/",
+        "filmUid": "film:16525",
+        "lid": "GZk",
+        "slug": "the-hobbit-an-unexpected-journey",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
+        "title": "The Hobbit: The Battle of the Five Armies",
+        "year": "2014",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-hobbit-the-battle-of-the-five-armies/",
+        "filmUid": "film:96552",
+        "lid": "43aU",
+        "slug": "the-hobbit-the-battle-of-the-five-armies",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
+        "title": "The Hobbit: The Desolation of Smaug",
+        "year": "2013",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-hobbit-the-desolation-of-smaug/",
+        "filmUid": "film:8983",
+        "lid": "nmS",
+        "slug": "the-hobbit-the-desolation-of-smaug",
+        "views": 2,
+        "averageRating": 4
+      },
+      {
         "title": "The Naked Gun",
         "year": "2025",
         "url": "https://letterboxd.com/nichtlegacy/film/the-naked-gun/",
@@ -40926,72 +42267,72 @@
       {
         "n": 1,
         "kind": "first",
-        "date": "2020-07-10",
-        "title": "American Reunion",
-        "year": "2012",
-        "rating": 2.5,
-        "url": "https://letterboxd.com/nichtlegacy/film/american-reunion/",
+        "date": "2020-07-03",
+        "title": "War Dogs",
+        "year": "2016",
+        "rating": 3.5,
+        "url": "https://letterboxd.com/nichtlegacy/film/war-dogs-2016/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:57927",
-        "lid": "2qH4",
-        "slug": "american-reunion"
+        "filmUid": "film:235388",
+        "lid": "9SlO",
+        "slug": "war-dogs-2016"
       },
       {
         "n": 250,
         "kind": "step",
-        "date": "2024-12-07",
-        "title": "Spring Breakers",
-        "year": "2012",
-        "rating": 3,
-        "url": "https://letterboxd.com/nichtlegacy/film/spring-breakers/",
+        "date": "2024-10-12",
+        "title": "Terrifier",
+        "year": "2016",
+        "rating": 2.5,
+        "url": "https://letterboxd.com/nichtlegacy/film/terrifier-2016/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:96109",
-        "lid": "421s",
-        "slug": "spring-breakers"
+        "filmUid": "film:354251",
+        "lid": "eRzg",
+        "slug": "terrifier-2016"
       },
       {
         "n": 500,
         "kind": "step",
-        "date": "2025-05-24",
-        "title": "Final Destination Bloodlines",
+        "date": "2025-03-28",
+        "title": "Den of Thieves 2: Pantera",
         "year": "2025",
-        "rating": 3.5,
-        "url": "https://letterboxd.com/nichtlegacy/film/final-destination-bloodlines/",
+        "rating": 3,
+        "url": "https://letterboxd.com/nichtlegacy/film/den-of-thieves-2-pantera/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:502622",
-        "lid": "l5y4",
-        "slug": "final-destination-bloodlines"
+        "filmUid": "film:531894",
+        "lid": "mjHm",
+        "slug": "den-of-thieves-2-pantera"
       },
       {
         "n": 750,
         "kind": "step",
-        "date": "2026-06-21",
-        "title": "Nirvanna the Band the Show the Movie",
-        "year": "2025",
-        "rating": 4,
-        "url": "https://letterboxd.com/nichtlegacy/film/nirvanna-the-band-the-show-the-movie/2/",
+        "date": "2025-12-21",
+        "title": "Muppets from Space",
+        "year": "1999",
+        "rating": 2.5,
+        "url": "https://letterboxd.com/nichtlegacy/film/muppets-from-space/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:1041012",
-        "lid": "HG9a",
-        "slug": "nirvanna-the-band-the-show-the-movie"
+        "filmUid": "film:46443",
+        "lid": "1WOO",
+        "slug": "muppets-from-space"
       },
       {
-        "n": 778,
+        "n": 858,
         "kind": "latest",
-        "date": "2026-10-16",
-        "title": "Next Friday",
-        "year": "2000",
-        "rating": 2.5,
-        "url": "https://letterboxd.com/nichtlegacy/film/next-friday/",
+        "date": "2026-10-17",
+        "title": "Roofman",
+        "year": "2025",
+        "rating": 3,
+        "url": "https://letterboxd.com/nichtlegacy/film/roofman/1/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:46198",
-        "lid": "1Wbi",
-        "slug": "next-friday"
+        "filmUid": "film:1125033",
+        "lid": "LcIW",
+        "slug": "roofman"
       }
     ]
   }
