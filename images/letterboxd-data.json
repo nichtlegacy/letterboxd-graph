@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-18T03:43:25.729Z",
+  "generatedAt": "2026-10-19T03:53:21.341Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,11 +18,11 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 499,
-    "daysActive": 344,
+    "films": 500,
+    "daysActive": 345,
     "streak": 34,
     "streakFilms": 53,
-    "rewatches": 82,
+    "rewatches": 83,
     "liked": 31
   },
   "monthLabels": [
@@ -14197,10 +14197,24 @@
       "date": "2026-10-18",
       "week": 94,
       "weekday": 0,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 1.5,
+      "films": [
+        {
+          "title": "Friday After Next",
+          "year": "2002",
+          "rating": 1.5,
+          "rewatch": true,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/friday-after-next/1/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:46241",
+          "lid": "1Wie",
+          "slug": "friday-after-next"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/18/"
     },
@@ -24258,42 +24272,105 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/17/"
+    },
+    {
+      "date": "2026-10-18",
+      "count": 1,
+      "ratingAvg": 1.5,
+      "films": [
+        {
+          "title": "Friday After Next",
+          "year": "2002",
+          "rating": 1.5,
+          "rewatch": true,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/friday-after-next/1/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:46241",
+          "lid": "1Wie",
+          "slug": "friday-after-next"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/18/"
     }
   ],
   "onThisDay": {
-    "date": "2026-10-18",
+    "date": "2026-10-19",
     "films": [
       {
-        "date": "2025-10-18",
-        "title": "The A-Team",
-        "year": "2010",
-        "rating": 3,
+        "date": "2025-10-19",
+        "title": "Riders of Justice",
+        "year": "2020",
+        "rating": 3.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-a-team/",
+        "url": "https://letterboxd.com/nichtlegacy/film/riders-of-justice/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:29102",
-        "lid": "1dHS",
-        "slug": "the-a-team"
+        "filmUid": "film:588840",
+        "lid": "oHQc",
+        "slug": "riders-of-justice"
       },
       {
-        "date": "2021-10-18",
-        "title": "The Hobbit: The Desolation of Smaug",
-        "year": "2013",
+        "date": "2025-10-19",
+        "title": "Drive",
+        "year": "2011",
+        "rating": 3.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/drive-2011/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:277",
+        "lid": "IG",
+        "slug": "drive-2011"
+      },
+      {
+        "date": "2024-10-19",
+        "title": "Get Smart",
+        "year": "2008",
+        "rating": 3.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/get-smart/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:45088",
+        "lid": "1Tig",
+        "slug": "get-smart"
+      },
+      {
+        "date": "2021-10-19",
+        "title": "The Hobbit: The Battle of the Five Armies",
+        "year": "2014",
         "rating": 4,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-hobbit-the-desolation-of-smaug/",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-hobbit-the-battle-of-the-five-armies/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:8983",
-        "lid": "nmS",
-        "slug": "the-hobbit-the-desolation-of-smaug"
+        "filmUid": "film:96552",
+        "lid": "43aU",
+        "slug": "the-hobbit-the-battle-of-the-five-armies"
       }
     ]
   },
   "recent": [
+    {
+      "date": "2026-10-18",
+      "title": "Friday After Next",
+      "year": "2002",
+      "rating": 1.5,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/friday-after-next/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:46241",
+      "lid": "1Wie",
+      "slug": "friday-after-next"
+    },
     {
       "date": "2026-10-17",
       "title": "Roofman",
@@ -24503,23 +24580,23 @@
       "filmUid": "film:717126",
       "lid": "u5zu",
       "slug": "the-ministry-of-ungentlemanly-warfare"
-    },
-    {
-      "date": "2026-08-07",
-      "title": "Entergalactic",
-      "year": "2022",
-      "rating": 3,
-      "rewatch": false,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/entergalactic/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:925555",
-      "lid": "CPN4",
-      "slug": "entergalactic"
     }
   ],
   "diary": [
+    {
+      "date": "2026-10-18",
+      "title": "Friday After Next",
+      "year": "2002",
+      "rating": 1.5,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/friday-after-next/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:46241",
+      "lid": "1Wie",
+      "slug": "friday-after-next"
+    },
     {
       "date": "2026-10-17",
       "title": "Roofman",
@@ -40351,28 +40428,28 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 96,
-      "distinctFilms": 91,
+      "entries": 97,
+      "distinctFilms": 92,
       "firstEntry": "2026-01-01",
-      "lastEntry": "2026-10-17",
-      "spanDays": 290,
-      "daysActive": 77,
+      "lastEntry": "2026-10-18",
+      "spanDays": 291,
+      "daysActive": 78,
       "multiFilmDays": 12,
-      "rewatches": 23,
+      "rewatches": 24,
       "liked": 7,
-      "rated": 96,
+      "rated": 97,
       "releaseBreakdown": {
         "sameYear": 14,
-        "older": 82,
+        "older": 83,
         "other": 0
       },
       "watchBreakdown": {
         "firstWatches": 73,
-        "rewatches": 23
+        "rewatches": 24
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 96
+        "notReviewed": 97
       },
       "averageRating": 3.3,
       "perDay": 0.33,
@@ -40396,12 +40473,12 @@
       "perYear": [
         {
           "year": 2026,
-          "films": 96,
-          "days": 77
+          "films": 97,
+          "days": 78
         }
       ],
       "perWeekday": [
-        20,
+        21,
         10,
         6,
         9,
@@ -40419,7 +40496,7 @@
         12,
         6,
         8,
-        2,
+        3,
         0,
         0
       ],
@@ -40462,7 +40539,7 @@
         },
         {
           "month": "2026-10",
-          "count": 2
+          "count": 3
         }
       ],
       "weekSeries": [
@@ -40716,7 +40793,7 @@
           "week": 42,
           "start": "2026-10-12",
           "end": "2026-10-18",
-          "count": 2
+          "count": 3
         },
         {
           "week": 43,
@@ -40787,6 +40864,10 @@
       ],
       "ratings": [
         {
+          "rating": 1.5,
+          "count": 1
+        },
+        {
           "rating": 2,
           "count": 2
         },
@@ -40833,7 +40914,7 @@
         {
           "decade": 2000,
           "label": "2000s",
-          "count": 24,
+          "count": 25,
           "averageRating": 3
         },
         {
@@ -40950,18 +41031,18 @@
           "slug": "minions-the-rise-of-gru"
         },
         {
-          "n": 96,
+          "n": 97,
           "kind": "latest",
-          "date": "2026-10-17",
-          "title": "Roofman",
-          "year": "2025",
-          "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/roofman/1/",
+          "date": "2026-10-18",
+          "title": "Friday After Next",
+          "year": "2002",
+          "rating": 1.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/friday-after-next/1/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:1125033",
-          "lid": "LcIW",
-          "slug": "roofman"
+          "filmUid": "film:46241",
+          "lid": "1Wie",
+          "slug": "friday-after-next"
         }
       ]
     }
@@ -40969,28 +41050,28 @@
   "allTime": {
     "scope": "all",
     "films": 794,
-    "entries": 858,
+    "entries": 859,
     "distinctFilms": 740,
     "firstEntry": "2020-07-03",
-    "lastEntry": "2026-10-17",
-    "spanDays": 2298,
-    "daysActive": 624,
+    "lastEntry": "2026-10-18",
+    "spanDays": 2299,
+    "daysActive": 625,
     "multiFilmDays": 176,
-    "rewatches": 135,
+    "rewatches": 136,
     "liked": 89,
-    "rated": 858,
+    "rated": 859,
     "releaseBreakdown": {
       "sameYear": 74,
-      "older": 784,
+      "older": 785,
       "other": 0
     },
     "watchBreakdown": {
       "firstWatches": 723,
-      "rewatches": 135
+      "rewatches": 136
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 857
+      "notReviewed": 858
     },
     "averageRating": 3.3,
     "perDay": 0.37,
@@ -41044,12 +41125,12 @@
       },
       {
         "year": 2026,
-        "films": 96,
-        "days": 77
+        "films": 97,
+        "days": 78
       }
     ],
     "perWeekday": [
-      136,
+      137,
       121,
       105,
       105,
@@ -41067,7 +41148,7 @@
       70,
       46,
       57,
-      72,
+      73,
       70,
       77
     ],
@@ -41374,7 +41455,7 @@
       },
       {
         "month": "2026-10",
-        "count": 2
+        "count": 3
       }
     ],
     "weekSeries": [],
@@ -41385,7 +41466,7 @@
       },
       {
         "rating": 1.5,
-        "count": 13
+        "count": 14
       },
       {
         "rating": 2,
@@ -41444,7 +41525,7 @@
       {
         "decade": 2000,
         "label": "2000s",
-        "count": 305,
+        "count": 306,
         "averageRating": 3
       },
       {
@@ -41820,6 +41901,16 @@
         "slug": "friday",
         "views": 2,
         "averageRating": 4
+      },
+      {
+        "title": "Friday After Next",
+        "year": "2002",
+        "url": "https://letterboxd.com/nichtlegacy/film/friday-after-next/",
+        "filmUid": "film:46241",
+        "lid": "1Wie",
+        "slug": "friday-after-next",
+        "views": 2,
+        "averageRating": 2.5
       },
       {
         "title": "Good Burger",
@@ -42321,18 +42412,18 @@
         "slug": "muppets-from-space"
       },
       {
-        "n": 858,
+        "n": 859,
         "kind": "latest",
-        "date": "2026-10-17",
-        "title": "Roofman",
-        "year": "2025",
-        "rating": 3,
-        "url": "https://letterboxd.com/nichtlegacy/film/roofman/1/",
+        "date": "2026-10-18",
+        "title": "Friday After Next",
+        "year": "2002",
+        "rating": 1.5,
+        "url": "https://letterboxd.com/nichtlegacy/film/friday-after-next/1/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:1125033",
-        "lid": "LcIW",
-        "slug": "roofman"
+        "filmUid": "film:46241",
+        "lid": "1Wie",
+        "slug": "friday-after-next"
       }
     ]
   }

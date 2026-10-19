@@ -264,6 +264,12 @@
       "runtime": 126,
       "averageRating": 3.46,
       "fetchedAt": "2026-10-18T03:43:27.781Z"
+    },
+    "https://letterboxd.com/film/friday-after-next/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/4/6/2/4/1/46241-friday-after-next-0-600-0-900-crop.jpg?v=da5c9dbf20",
+      "runtime": 85,
+      "averageRating": 2.92,
+      "fetchedAt": "2026-10-19T03:53:22.832Z"
     }
   }
 }
