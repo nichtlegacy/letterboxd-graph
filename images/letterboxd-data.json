@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-19T03:53:21.341Z",
+  "generatedAt": "2026-10-20T04:05:10.832Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24296,63 +24296,63 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-19",
+    "date": "2026-10-20",
     "films": [
       {
-        "date": "2025-10-19",
-        "title": "Riders of Justice",
-        "year": "2020",
-        "rating": 3.5,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/riders-of-justice/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:588840",
-        "lid": "oHQc",
-        "slug": "riders-of-justice"
-      },
-      {
-        "date": "2025-10-19",
-        "title": "Drive",
+        "date": "2025-10-20",
+        "title": "The Green Hornet",
         "year": "2011",
         "rating": 3.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/drive-2011/",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-green-hornet/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:277",
-        "lid": "IG",
-        "slug": "drive-2011"
+        "filmUid": "film:24179",
+        "lid": "10TQ",
+        "slug": "the-green-hornet"
       },
       {
-        "date": "2024-10-19",
-        "title": "Get Smart",
-        "year": "2008",
+        "date": "2025-10-20",
+        "title": "Austin Powers: The Spy Who Shagged Me",
+        "year": "1999",
+        "rating": 2,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/austin-powers-the-spy-who-shagged-me/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:51335",
+        "lid": "29xQ",
+        "slug": "austin-powers-the-spy-who-shagged-me"
+      },
+      {
+        "date": "2025-10-20",
+        "title": "Blade Runner",
+        "year": "1982",
         "rating": 3.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/get-smart/",
+        "url": "https://letterboxd.com/nichtlegacy/film/blade-runner/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:45088",
-        "lid": "1Tig",
-        "slug": "get-smart"
+        "filmUid": "film:51972",
+        "lid": "2bcA",
+        "slug": "blade-runner"
       },
       {
-        "date": "2021-10-19",
-        "title": "The Hobbit: The Battle of the Five Armies",
-        "year": "2014",
+        "date": "2024-10-20",
+        "title": "EuroTrip",
+        "year": "2004",
         "rating": 4,
-        "rewatch": false,
+        "rewatch": true,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-hobbit-the-battle-of-the-five-armies/",
+        "url": "https://letterboxd.com/nichtlegacy/film/eurotrip/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:96552",
-        "lid": "43aU",
-        "slug": "the-hobbit-the-battle-of-the-five-armies"
+        "filmUid": "film:47243",
+        "lid": "1YTQ",
+        "slug": "eurotrip"
       }
     ]
   },
