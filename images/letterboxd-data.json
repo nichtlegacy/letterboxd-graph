@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-20T04:05:10.832Z",
+  "generatedAt": "2026-10-21T03:53:52.738Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24296,63 +24296,49 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-20",
+    "date": "2026-10-21",
     "films": [
       {
-        "date": "2025-10-20",
-        "title": "The Green Hornet",
+        "date": "2025-10-21",
+        "title": "Goon",
+        "year": "2011",
+        "rating": 3,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/goon/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:61928",
+        "lid": "2B6o",
+        "slug": "goon"
+      },
+      {
+        "date": "2025-10-21",
+        "title": "Crazy, Stupid, Love.",
         "year": "2011",
         "rating": 3.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-green-hornet/",
+        "url": "https://letterboxd.com/nichtlegacy/film/crazy-stupid-love/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:24179",
-        "lid": "10TQ",
-        "slug": "the-green-hornet"
+        "filmUid": "film:15051",
+        "lid": "D9A",
+        "slug": "crazy-stupid-love"
       },
       {
-        "date": "2025-10-20",
-        "title": "Austin Powers: The Spy Who Shagged Me",
-        "year": "1999",
-        "rating": 2,
+        "date": "2024-10-21",
+        "title": "It Chapter Two",
+        "year": "2019",
+        "rating": 3,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/austin-powers-the-spy-who-shagged-me/",
+        "url": "https://letterboxd.com/nichtlegacy/film/it-chapter-two/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:51335",
-        "lid": "29xQ",
-        "slug": "austin-powers-the-spy-who-shagged-me"
-      },
-      {
-        "date": "2025-10-20",
-        "title": "Blade Runner",
-        "year": "1982",
-        "rating": 3.5,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/blade-runner/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:51972",
-        "lid": "2bcA",
-        "slug": "blade-runner"
-      },
-      {
-        "date": "2024-10-20",
-        "title": "EuroTrip",
-        "year": "2004",
-        "rating": 4,
-        "rewatch": true,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/eurotrip/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:47243",
-        "lid": "1YTQ",
-        "slug": "eurotrip"
+        "filmUid": "film:405545",
+        "lid": "h10u",
+        "slug": "it-chapter-two"
       }
     ]
   },
