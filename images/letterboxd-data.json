@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-21T03:53:52.738Z",
+  "generatedAt": "2026-10-22T03:54:13.771Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24296,49 +24296,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-21",
+    "date": "2026-10-22",
     "films": [
       {
-        "date": "2025-10-21",
-        "title": "Goon",
-        "year": "2011",
-        "rating": 3,
+        "date": "2025-10-22",
+        "title": "The Shawshank Redemption",
+        "year": "1994",
+        "rating": 4,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/goon/",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-shawshank-redemption/1/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:61928",
-        "lid": "2B6o",
-        "slug": "goon"
+        "filmUid": "film:51778",
+        "lid": "2aHi",
+        "slug": "the-shawshank-redemption"
       },
       {
-        "date": "2025-10-21",
-        "title": "Crazy, Stupid, Love.",
-        "year": "2011",
+        "date": "2024-10-22",
+        "title": "Road Trip",
+        "year": "2000",
         "rating": 3.5,
-        "rewatch": false,
+        "rewatch": true,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/crazy-stupid-love/",
+        "url": "https://letterboxd.com/nichtlegacy/film/road-trip/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:15051",
-        "lid": "D9A",
-        "slug": "crazy-stupid-love"
-      },
-      {
-        "date": "2024-10-21",
-        "title": "It Chapter Two",
-        "year": "2019",
-        "rating": 3,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/it-chapter-two/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:405545",
-        "lid": "h10u",
-        "slug": "it-chapter-two"
+        "filmUid": "film:47307",
+        "lid": "1Z4a",
+        "slug": "road-trip"
       }
     ]
   },
