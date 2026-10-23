@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-22T03:54:13.771Z",
+  "generatedAt": "2026-10-23T03:58:08.411Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24296,35 +24296,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-22",
+    "date": "2026-10-23",
     "films": [
       {
-        "date": "2025-10-22",
-        "title": "The Shawshank Redemption",
-        "year": "1994",
-        "rating": 4,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-shawshank-redemption/1/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:51778",
-        "lid": "2aHi",
-        "slug": "the-shawshank-redemption"
-      },
-      {
-        "date": "2024-10-22",
-        "title": "Road Trip",
-        "year": "2000",
-        "rating": 3.5,
+        "date": "2024-10-23",
+        "title": "Road Trip: Beer Pong",
+        "year": "2009",
+        "rating": 2.5,
         "rewatch": true,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/road-trip/",
+        "url": "https://letterboxd.com/nichtlegacy/film/road-trip-beer-pong/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:47307",
-        "lid": "1Z4a",
-        "slug": "road-trip"
+        "filmUid": "film:38896",
+        "lid": "1Dby",
+        "slug": "road-trip-beer-pong"
+      },
+      {
+        "date": "2024-10-23",
+        "title": "Shaun of the Dead",
+        "year": "2004",
+        "rating": 3.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/shaun-of-the-dead/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:51405",
+        "lid": "29J8",
+        "slug": "shaun-of-the-dead"
       }
     ]
   },
