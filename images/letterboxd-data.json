@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-23T03:58:08.411Z",
+  "generatedAt": "2026-10-24T03:52:34.134Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,8 +18,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 500,
-    "daysActive": 345,
+    "films": 503,
+    "daysActive": 348,
     "streak": 34,
     "streakFilms": 53,
     "rewatches": 83,
@@ -14222,10 +14222,24 @@
       "date": "2026-10-19",
       "week": 94,
       "weekday": 1,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Long Shot",
+          "year": "2019",
+          "rating": 3,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/long-shot-2019/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:391964",
+          "lid": "grG0",
+          "slug": "long-shot-2019"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/19/"
     },
@@ -14233,10 +14247,24 @@
       "date": "2026-10-20",
       "week": 94,
       "weekday": 2,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "I Love You Phillip Morris",
+          "year": "2009",
+          "rating": 2.5,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/i-love-you-phillip-morris/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:47478",
+          "lid": "1ZvK",
+          "slug": "i-love-you-phillip-morris"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/20/"
     },
@@ -14266,10 +14294,24 @@
       "date": "2026-10-23",
       "week": 94,
       "weekday": 5,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 1.5,
+      "films": [
+        {
+          "title": "Just Friends",
+          "year": "2005",
+          "rating": 1.5,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/just-friends/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:46609",
+          "lid": "1XfA",
+          "slug": "just-friends"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/23/"
     },
@@ -24293,42 +24335,147 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/18/"
+    },
+    {
+      "date": "2026-10-19",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "Long Shot",
+          "year": "2019",
+          "rating": 3,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/long-shot-2019/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:391964",
+          "lid": "grG0",
+          "slug": "long-shot-2019"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/19/"
+    },
+    {
+      "date": "2026-10-20",
+      "count": 1,
+      "ratingAvg": 2.5,
+      "films": [
+        {
+          "title": "I Love You Phillip Morris",
+          "year": "2009",
+          "rating": 2.5,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/i-love-you-phillip-morris/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:47478",
+          "lid": "1ZvK",
+          "slug": "i-love-you-phillip-morris"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/20/"
+    },
+    {
+      "date": "2026-10-23",
+      "count": 1,
+      "ratingAvg": 1.5,
+      "films": [
+        {
+          "title": "Just Friends",
+          "year": "2005",
+          "rating": 1.5,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/just-friends/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:46609",
+          "lid": "1XfA",
+          "slug": "just-friends"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/23/"
     }
   ],
   "onThisDay": {
-    "date": "2026-10-23",
+    "date": "2026-10-24",
     "films": [
       {
-        "date": "2024-10-23",
-        "title": "Road Trip: Beer Pong",
-        "year": "2009",
-        "rating": 2.5,
-        "rewatch": true,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/road-trip-beer-pong/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:38896",
-        "lid": "1Dby",
-        "slug": "road-trip-beer-pong"
-      },
-      {
-        "date": "2024-10-23",
-        "title": "Shaun of the Dead",
-        "year": "2004",
-        "rating": 3.5,
+        "date": "2025-10-24",
+        "title": "Whiplash",
+        "year": "2014",
+        "rating": 4.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/shaun-of-the-dead/",
+        "url": "https://letterboxd.com/nichtlegacy/film/whiplash-2014/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:51405",
-        "lid": "29J8",
-        "slug": "shaun-of-the-dead"
+        "filmUid": "film:171384",
+        "lid": "7bQA",
+        "slug": "whiplash-2014"
+      },
+      {
+        "date": "2024-10-24",
+        "title": "Hot Fuzz",
+        "year": "2007",
+        "rating": 3.5,
+        "rewatch": true,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/hot-fuzz/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:49210",
+        "lid": "2416",
+        "slug": "hot-fuzz"
       }
     ]
   },
   "recent": [
+    {
+      "date": "2026-10-23",
+      "title": "Just Friends",
+      "year": "2005",
+      "rating": 1.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/just-friends/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:46609",
+      "lid": "1XfA",
+      "slug": "just-friends"
+    },
+    {
+      "date": "2026-10-20",
+      "title": "I Love You Phillip Morris",
+      "year": "2009",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/i-love-you-phillip-morris/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:47478",
+      "lid": "1ZvK",
+      "slug": "i-love-you-phillip-morris"
+    },
+    {
+      "date": "2026-10-19",
+      "title": "Long Shot",
+      "year": "2019",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/long-shot-2019/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:391964",
+      "lid": "grG0",
+      "slug": "long-shot-2019"
+    },
     {
       "date": "2026-10-18",
       "title": "Friday After Next",
@@ -24510,51 +24657,51 @@
       "filmUid": "film:46067",
       "lid": "1VQa",
       "slug": "dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood"
-    },
-    {
-      "date": "2026-08-20",
-      "title": "Obsession",
-      "year": "2025",
-      "rating": 4,
-      "rewatch": false,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/obsession-2025/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:1234472",
-      "lid": "PNqo",
-      "slug": "obsession-2025"
-    },
-    {
-      "date": "2026-08-15",
-      "title": "Minions & Monsters",
-      "year": "2026",
-      "rating": 3,
-      "rewatch": false,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/minions-monsters-2026/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:1196808",
-      "lid": "Odry",
-      "slug": "minions-monsters-2026"
-    },
-    {
-      "date": "2026-08-09",
-      "title": "The Ministry of Ungentlemanly Warfare",
-      "year": "2024",
-      "rating": 3,
-      "rewatch": false,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/the-ministry-of-ungentlemanly-warfare/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:717126",
-      "lid": "u5zu",
-      "slug": "the-ministry-of-ungentlemanly-warfare"
     }
   ],
   "diary": [
+    {
+      "date": "2026-10-23",
+      "title": "Just Friends",
+      "year": "2005",
+      "rating": 1.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/just-friends/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:46609",
+      "lid": "1XfA",
+      "slug": "just-friends"
+    },
+    {
+      "date": "2026-10-20",
+      "title": "I Love You Phillip Morris",
+      "year": "2009",
+      "rating": 2.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/i-love-you-phillip-morris/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:47478",
+      "lid": "1ZvK",
+      "slug": "i-love-you-phillip-morris"
+    },
+    {
+      "date": "2026-10-19",
+      "title": "Long Shot",
+      "year": "2019",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/long-shot-2019/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:391964",
+      "lid": "grG0",
+      "slug": "long-shot-2019"
+    },
     {
       "date": "2026-10-18",
       "title": "Friday After Next",
@@ -40400,33 +40547,33 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 97,
-      "distinctFilms": 92,
+      "entries": 100,
+      "distinctFilms": 95,
       "firstEntry": "2026-01-01",
-      "lastEntry": "2026-10-18",
-      "spanDays": 291,
-      "daysActive": 78,
+      "lastEntry": "2026-10-23",
+      "spanDays": 296,
+      "daysActive": 81,
       "multiFilmDays": 12,
       "rewatches": 24,
       "liked": 7,
-      "rated": 97,
+      "rated": 100,
       "releaseBreakdown": {
         "sameYear": 14,
-        "older": 83,
+        "older": 86,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 73,
+        "firstWatches": 76,
         "rewatches": 24
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 97
+        "notReviewed": 100
       },
       "averageRating": 3.3,
-      "perDay": 0.33,
-      "perWeek": 2.3,
-      "perMonth": 10.1,
+      "perDay": 0.34,
+      "perWeek": 2.4,
+      "perMonth": 10.3,
       "streak": {
         "length": 6,
         "startDate": "2026-03-28",
@@ -40445,17 +40592,17 @@
       "perYear": [
         {
           "year": 2026,
-          "films": 97,
-          "days": 78
+          "films": 100,
+          "days": 81
         }
       ],
       "perWeekday": [
         21,
-        10,
-        6,
+        11,
+        7,
         9,
         10,
-        17,
+        18,
         24
       ],
       "perMonthOfYear": [
@@ -40468,7 +40615,7 @@
         12,
         6,
         8,
-        3,
+        6,
         0,
         0
       ],
@@ -40511,7 +40658,7 @@
         },
         {
           "month": "2026-10",
-          "count": 3
+          "count": 6
         }
       ],
       "weekSeries": [
@@ -40771,7 +40918,7 @@
           "week": 43,
           "start": "2026-10-19",
           "end": "2026-10-25",
-          "count": 0
+          "count": 3
         },
         {
           "week": 44,
@@ -40837,7 +40984,7 @@
       "ratings": [
         {
           "rating": 1.5,
-          "count": 1
+          "count": 2
         },
         {
           "rating": 2,
@@ -40845,11 +40992,11 @@
         },
         {
           "rating": 2.5,
-          "count": 17
+          "count": 18
         },
         {
           "rating": 3,
-          "count": 28
+          "count": 29
         },
         {
           "rating": 3.5,
@@ -40886,13 +41033,13 @@
         {
           "decade": 2000,
           "label": "2000s",
-          "count": 25,
+          "count": 27,
           "averageRating": 3
         },
         {
           "decade": 2010,
           "label": "2010s",
-          "count": 16,
+          "count": 17,
           "averageRating": 3
         },
         {
@@ -41003,47 +41150,47 @@
           "slug": "minions-the-rise-of-gru"
         },
         {
-          "n": 97,
-          "kind": "latest",
-          "date": "2026-10-18",
-          "title": "Friday After Next",
-          "year": "2002",
+          "n": 100,
+          "kind": "step",
+          "date": "2026-10-23",
+          "title": "Just Friends",
+          "year": "2005",
           "rating": 1.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/friday-after-next/1/",
+          "url": "https://letterboxd.com/nichtlegacy/film/just-friends/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:46241",
-          "lid": "1Wie",
-          "slug": "friday-after-next"
+          "filmUid": "film:46609",
+          "lid": "1XfA",
+          "slug": "just-friends"
         }
       ]
     }
   },
   "allTime": {
     "scope": "all",
-    "films": 794,
-    "entries": 859,
-    "distinctFilms": 740,
+    "films": 797,
+    "entries": 862,
+    "distinctFilms": 743,
     "firstEntry": "2020-07-03",
-    "lastEntry": "2026-10-18",
-    "spanDays": 2299,
-    "daysActive": 625,
+    "lastEntry": "2026-10-23",
+    "spanDays": 2304,
+    "daysActive": 628,
     "multiFilmDays": 176,
     "rewatches": 136,
     "liked": 89,
-    "rated": 859,
+    "rated": 862,
     "releaseBreakdown": {
       "sameYear": 74,
-      "older": 785,
+      "older": 788,
       "other": 0
     },
     "watchBreakdown": {
-      "firstWatches": 723,
+      "firstWatches": 726,
       "rewatches": 136
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 858
+      "notReviewed": 861
     },
     "averageRating": 3.3,
     "perDay": 0.37,
@@ -41097,17 +41244,17 @@
       },
       {
         "year": 2026,
-        "films": 97,
-        "days": 78
+        "films": 100,
+        "days": 81
       }
     ],
     "perWeekday": [
       137,
-      121,
-      105,
+      122,
+      106,
       105,
       116,
-      127,
+      128,
       148
     ],
     "perMonthOfYear": [
@@ -41120,7 +41267,7 @@
       70,
       46,
       57,
-      73,
+      76,
       70,
       77
     ],
@@ -41427,7 +41574,7 @@
       },
       {
         "month": "2026-10",
-        "count": 3
+        "count": 6
       }
     ],
     "weekSeries": [],
@@ -41438,7 +41585,7 @@
       },
       {
         "rating": 1.5,
-        "count": 14
+        "count": 15
       },
       {
         "rating": 2,
@@ -41446,11 +41593,11 @@
       },
       {
         "rating": 2.5,
-        "count": 135
+        "count": 136
       },
       {
         "rating": 3,
-        "count": 241
+        "count": 242
       },
       {
         "rating": 3.5,
@@ -41497,13 +41644,13 @@
       {
         "decade": 2000,
         "label": "2000s",
-        "count": 306,
+        "count": 308,
         "averageRating": 3
       },
       {
         "decade": 2010,
         "label": "2010s",
-        "count": 242,
+        "count": 243,
         "averageRating": 3
       },
       {
@@ -42384,18 +42531,18 @@
         "slug": "muppets-from-space"
       },
       {
-        "n": 859,
+        "n": 862,
         "kind": "latest",
-        "date": "2026-10-18",
-        "title": "Friday After Next",
-        "year": "2002",
+        "date": "2026-10-23",
+        "title": "Just Friends",
+        "year": "2005",
         "rating": 1.5,
-        "url": "https://letterboxd.com/nichtlegacy/film/friday-after-next/1/",
+        "url": "https://letterboxd.com/nichtlegacy/film/just-friends/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:46241",
-        "lid": "1Wie",
-        "slug": "friday-after-next"
+        "filmUid": "film:46609",
+        "lid": "1XfA",
+        "slug": "just-friends"
       }
     ]
   }

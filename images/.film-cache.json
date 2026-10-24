@@ -197,7 +197,7 @@
       "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/5/8/1/3/2/1058132-crime-101-0-600-0-900-crop.jpg?v=eaba4b3224",
       "runtime": 141,
       "averageRating": 3.09,
-      "fetchedAt": "2026-09-23T03:58:43.484Z"
+      "fetchedAt": "2026-10-24T03:52:35.594Z"
     },
     "https://letterboxd.com/film/five-nights-at-freddys/": {
       "poster": "https://a.ltrbxd.com/resized/film-poster/4/3/6/9/4/8/436948-five-nights-at-freddy-s-0-600-0-900-crop.jpg?v=6ff52485a8",
@@ -270,6 +270,24 @@
       "runtime": 85,
       "averageRating": 2.92,
       "fetchedAt": "2026-10-19T03:53:22.832Z"
+    },
+    "https://letterboxd.com/film/long-shot-2019/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/3/9/1/9/6/4/391964-long-shot-0-600-0-900-crop.jpg?v=02b970ed67",
+      "runtime": 125,
+      "averageRating": 3.24,
+      "fetchedAt": "2026-10-24T03:52:35.117Z"
+    },
+    "https://letterboxd.com/film/i-love-you-phillip-morris/": {
+      "poster": "https://a.ltrbxd.com/resized/sm/upload/77/fa/xg/69/qtAuWLGQ7N4PNQ6boZeqqoUY2l9-0-600-0-900-crop.jpg?v=d4b979fc93",
+      "runtime": 98,
+      "averageRating": 3.44,
+      "fetchedAt": "2026-10-24T03:52:35.217Z"
+    },
+    "https://letterboxd.com/film/just-friends/": {
+      "poster": "https://a.ltrbxd.com/resized/sm/upload/lg/b2/3t/em/n7gZuqiRSjgIkyqDIiLZ20qRgoi-0-600-0-900-crop.jpg?v=1c13794080",
+      "runtime": 94,
+      "averageRating": 2.61,
+      "fetchedAt": "2026-10-24T03:52:35.363Z"
     }
   }
 }
