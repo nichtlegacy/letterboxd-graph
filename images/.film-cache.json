@@ -288,6 +288,12 @@
       "runtime": 94,
       "averageRating": 2.61,
       "fetchedAt": "2026-10-24T03:52:35.363Z"
+    },
+    "https://letterboxd.com/film/barbershop/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/4/6/0/6/3/46063-barbershop-0-600-0-900-crop.jpg?v=aa0a00b870",
+      "runtime": 102,
+      "averageRating": 3.2,
+      "fetchedAt": "2026-10-25T03:51:37.177Z"
     }
   }
 }

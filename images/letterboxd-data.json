@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-24T03:52:34.134Z",
+  "generatedAt": "2026-10-25T03:51:36.057Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,7 +18,7 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 503,
+    "films": 504,
     "daysActive": 348,
     "streak": 34,
     "streakFilms": 53,
@@ -14294,9 +14294,22 @@
       "date": "2026-10-23",
       "week": 94,
       "weekday": 5,
-      "count": 1,
+      "count": 2,
       "ratingAvg": 1.5,
       "films": [
+        {
+          "title": "Barbershop",
+          "year": "2002",
+          "rating": 1.5,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/barbershop/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:46063",
+          "lid": "1VPw",
+          "slug": "barbershop"
+        },
         {
           "title": "Just Friends",
           "year": "2005",
@@ -14311,7 +14324,7 @@
           "slug": "just-friends"
         }
       ],
-      "level": 1,
+      "level": 2,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/23/"
     },
@@ -24380,9 +24393,22 @@
     },
     {
       "date": "2026-10-23",
-      "count": 1,
+      "count": 2,
       "ratingAvg": 1.5,
       "films": [
+        {
+          "title": "Barbershop",
+          "year": "2002",
+          "rating": 1.5,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/barbershop/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:46063",
+          "lid": "1VPw",
+          "slug": "barbershop"
+        },
         {
           "title": "Just Friends",
           "year": "2005",
@@ -24401,39 +24427,81 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-24",
+    "date": "2026-10-25",
     "films": [
       {
-        "date": "2025-10-24",
-        "title": "Whiplash",
-        "year": "2014",
-        "rating": 4.5,
+        "date": "2025-10-25",
+        "title": "Another Round",
+        "year": "2020",
+        "rating": 3.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/whiplash-2014/",
+        "url": "https://letterboxd.com/nichtlegacy/film/another-round/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:171384",
-        "lid": "7bQA",
-        "slug": "whiplash-2014"
+        "filmUid": "film:508246",
+        "lid": "lkba",
+        "slug": "another-round"
       },
       {
-        "date": "2024-10-24",
-        "title": "Hot Fuzz",
-        "year": "2007",
+        "date": "2025-10-25",
+        "title": "The Long Walk",
+        "year": "2025",
         "rating": 3.5,
-        "rewatch": true,
+        "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/hot-fuzz/",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-long-walk-2025/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:49210",
-        "lid": "2416",
-        "slug": "hot-fuzz"
+        "filmUid": "film:531316",
+        "lid": "mic8",
+        "slug": "the-long-walk-2025"
+      },
+      {
+        "date": "2024-10-25",
+        "title": "Scream",
+        "year": "1996",
+        "rating": 4,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/scream/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:49455",
+        "lid": "24EC",
+        "slug": "scream"
+      },
+      {
+        "date": "2024-10-25",
+        "title": "The World's End",
+        "year": "2013",
+        "rating": 3,
+        "rewatch": true,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/the-worlds-end/1/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:86991",
+        "lid": "3EiO",
+        "slug": "the-worlds-end"
       }
     ]
   },
   "recent": [
+    {
+      "date": "2026-10-23",
+      "title": "Barbershop",
+      "year": "2002",
+      "rating": 1.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/barbershop/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:46063",
+      "lid": "1VPw",
+      "slug": "barbershop"
+    },
     {
       "date": "2026-10-23",
       "title": "Just Friends",
@@ -24643,23 +24711,23 @@
       "filmUid": "film:47562",
       "lid": "1ZJi",
       "slug": "dude-wheres-my-car"
-    },
-    {
-      "date": "2026-08-28",
-      "title": "Don't Be a Menace to South Central While Drinking Your Juice in the Hood",
-      "year": "1996",
-      "rating": 3,
-      "rewatch": true,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood/1/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:46067",
-      "lid": "1VQa",
-      "slug": "dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood"
     }
   ],
   "diary": [
+    {
+      "date": "2026-10-23",
+      "title": "Barbershop",
+      "year": "2002",
+      "rating": 1.5,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/barbershop/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:46063",
+      "lid": "1VPw",
+      "slug": "barbershop"
+    },
     {
       "date": "2026-10-23",
       "title": "Just Friends",
@@ -40547,33 +40615,33 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 100,
-      "distinctFilms": 95,
+      "entries": 101,
+      "distinctFilms": 96,
       "firstEntry": "2026-01-01",
       "lastEntry": "2026-10-23",
       "spanDays": 296,
       "daysActive": 81,
-      "multiFilmDays": 12,
+      "multiFilmDays": 13,
       "rewatches": 24,
       "liked": 7,
-      "rated": 100,
+      "rated": 101,
       "releaseBreakdown": {
         "sameYear": 14,
-        "older": 86,
+        "older": 87,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 76,
+        "firstWatches": 77,
         "rewatches": 24
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 100
+        "notReviewed": 101
       },
-      "averageRating": 3.3,
+      "averageRating": 3.2,
       "perDay": 0.34,
       "perWeek": 2.4,
-      "perMonth": 10.3,
+      "perMonth": 10.4,
       "streak": {
         "length": 6,
         "startDate": "2026-03-28",
@@ -40592,7 +40660,7 @@
       "perYear": [
         {
           "year": 2026,
-          "films": 100,
+          "films": 101,
           "days": 81
         }
       ],
@@ -40602,7 +40670,7 @@
         7,
         9,
         10,
-        18,
+        19,
         24
       ],
       "perMonthOfYear": [
@@ -40615,7 +40683,7 @@
         12,
         6,
         8,
-        6,
+        7,
         0,
         0
       ],
@@ -40658,7 +40726,7 @@
         },
         {
           "month": "2026-10",
-          "count": 6
+          "count": 7
         }
       ],
       "weekSeries": [
@@ -40918,7 +40986,7 @@
           "week": 43,
           "start": "2026-10-19",
           "end": "2026-10-25",
-          "count": 3
+          "count": 4
         },
         {
           "week": 44,
@@ -40984,7 +41052,7 @@
       "ratings": [
         {
           "rating": 1.5,
-          "count": 2
+          "count": 3
         },
         {
           "rating": 2,
@@ -41033,7 +41101,7 @@
         {
           "decade": 2000,
           "label": "2000s",
-          "count": 27,
+          "count": 28,
           "averageRating": 3
         },
         {
@@ -41153,6 +41221,20 @@
           "n": 100,
           "kind": "step",
           "date": "2026-10-23",
+          "title": "Barbershop",
+          "year": "2002",
+          "rating": 1.5,
+          "url": "https://letterboxd.com/nichtlegacy/film/barbershop/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:46063",
+          "lid": "1VPw",
+          "slug": "barbershop"
+        },
+        {
+          "n": 101,
+          "kind": "latest",
+          "date": "2026-10-23",
           "title": "Just Friends",
           "year": "2005",
           "rating": 1.5,
@@ -41168,29 +41250,29 @@
   },
   "allTime": {
     "scope": "all",
-    "films": 797,
-    "entries": 862,
-    "distinctFilms": 743,
+    "films": 798,
+    "entries": 863,
+    "distinctFilms": 744,
     "firstEntry": "2020-07-03",
     "lastEntry": "2026-10-23",
     "spanDays": 2304,
     "daysActive": 628,
-    "multiFilmDays": 176,
+    "multiFilmDays": 177,
     "rewatches": 136,
     "liked": 89,
-    "rated": 862,
+    "rated": 863,
     "releaseBreakdown": {
       "sameYear": 74,
-      "older": 788,
+      "older": 789,
       "other": 0
     },
     "watchBreakdown": {
-      "firstWatches": 726,
+      "firstWatches": 727,
       "rewatches": 136
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 861
+      "notReviewed": 862
     },
     "averageRating": 3.3,
     "perDay": 0.37,
@@ -41244,7 +41326,7 @@
       },
       {
         "year": 2026,
-        "films": 100,
+        "films": 101,
         "days": 81
       }
     ],
@@ -41254,7 +41336,7 @@
       106,
       105,
       116,
-      128,
+      129,
       148
     ],
     "perMonthOfYear": [
@@ -41267,7 +41349,7 @@
       70,
       46,
       57,
-      76,
+      77,
       70,
       77
     ],
@@ -41574,7 +41656,7 @@
       },
       {
         "month": "2026-10",
-        "count": 6
+        "count": 7
       }
     ],
     "weekSeries": [],
@@ -41585,7 +41667,7 @@
       },
       {
         "rating": 1.5,
-        "count": 15
+        "count": 16
       },
       {
         "rating": 2,
@@ -41644,7 +41726,7 @@
       {
         "decade": 2000,
         "label": "2000s",
-        "count": 308,
+        "count": 309,
         "averageRating": 3
       },
       {
@@ -42531,7 +42613,7 @@
         "slug": "muppets-from-space"
       },
       {
-        "n": 862,
+        "n": 863,
         "kind": "latest",
         "date": "2026-10-23",
         "title": "Just Friends",
