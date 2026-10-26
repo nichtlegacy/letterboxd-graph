@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-25T03:51:36.057Z",
+  "generatedAt": "2026-10-26T03:55:20.635Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24427,63 +24427,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-25",
+    "date": "2026-10-26",
     "films": [
       {
-        "date": "2025-10-25",
-        "title": "Another Round",
-        "year": "2020",
-        "rating": 3.5,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/another-round/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:508246",
-        "lid": "lkba",
-        "slug": "another-round"
-      },
-      {
-        "date": "2025-10-25",
-        "title": "The Long Walk",
-        "year": "2025",
-        "rating": 3.5,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-long-walk-2025/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:531316",
-        "lid": "mic8",
-        "slug": "the-long-walk-2025"
-      },
-      {
-        "date": "2024-10-25",
-        "title": "Scream",
-        "year": "1996",
-        "rating": 4,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/scream/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:49455",
-        "lid": "24EC",
-        "slug": "scream"
-      },
-      {
-        "date": "2024-10-25",
-        "title": "The World's End",
+        "date": "2025-10-26",
+        "title": "Monsters University",
         "year": "2013",
-        "rating": 3,
-        "rewatch": true,
+        "rating": 3.5,
+        "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-worlds-end/1/",
+        "url": "https://letterboxd.com/nichtlegacy/film/monsters-university/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:86991",
-        "lid": "3EiO",
-        "slug": "the-worlds-end"
+        "filmUid": "film:4553",
+        "lid": "bQm",
+        "slug": "monsters-university"
       }
     ]
   },
