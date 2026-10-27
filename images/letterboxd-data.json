@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-26T03:55:20.635Z",
+  "generatedAt": "2026-10-27T04:17:08.132Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24427,21 +24427,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-26",
+    "date": "2026-10-27",
     "films": [
       {
-        "date": "2025-10-26",
-        "title": "Monsters University",
-        "year": "2013",
-        "rating": 3.5,
+        "date": "2024-10-27",
+        "title": "Old School",
+        "year": "2003",
+        "rating": 2.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/monsters-university/",
+        "url": "https://letterboxd.com/nichtlegacy/film/old-school/1/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:4553",
-        "lid": "bQm",
-        "slug": "monsters-university"
+        "filmUid": "film:45116",
+        "lid": "1TmM",
+        "slug": "old-school"
+      },
+      {
+        "date": "2024-10-27",
+        "title": "Undisputed",
+        "year": "2002",
+        "rating": 2.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/undisputed/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:42620",
+        "lid": "1MSc",
+        "slug": "undisputed"
       }
     ]
   },
