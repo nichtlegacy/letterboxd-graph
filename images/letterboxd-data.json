@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-27T04:17:08.132Z",
+  "generatedAt": "2026-10-28T04:46:41.958Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24427,35 +24427,63 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-27",
+    "date": "2026-10-28",
     "films": [
       {
-        "date": "2024-10-27",
-        "title": "Old School",
-        "year": "2003",
-        "rating": 2.5,
+        "date": "2024-10-28",
+        "title": "Scream 4",
+        "year": "2011",
+        "rating": 3,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/old-school/1/",
+        "url": "https://letterboxd.com/nichtlegacy/film/scream-4/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:45116",
-        "lid": "1TmM",
-        "slug": "old-school"
+        "filmUid": "film:23586",
+        "lid": "Zmc",
+        "slug": "scream-4"
       },
       {
-        "date": "2024-10-27",
-        "title": "Undisputed",
-        "year": "2002",
+        "date": "2024-10-28",
+        "title": "Scream 3",
+        "year": "2000",
+        "rating": 3,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/scream-3/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:49453",
+        "lid": "24Ei",
+        "slug": "scream-3"
+      },
+      {
+        "date": "2024-10-28",
+        "title": "Scream 2",
+        "year": "1997",
         "rating": 2.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/undisputed/",
+        "url": "https://letterboxd.com/nichtlegacy/film/scream-2/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:42620",
-        "lid": "1MSc",
-        "slug": "undisputed"
+        "filmUid": "film:49454",
+        "lid": "24Es",
+        "slug": "scream-2"
+      },
+      {
+        "date": "2022-10-28",
+        "title": "Back to the Future Part II",
+        "year": "1989",
+        "rating": 4.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/back-to-the-future-part-ii/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:51886",
+        "lid": "2aYI",
+        "slug": "back-to-the-future-part-ii"
       }
     ]
   },
