@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-10-29T04:58:25.781Z",
+  "generatedAt": "2026-10-30T04:57:44.964Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24427,35 +24427,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-10-29",
+    "date": "2026-10-30",
     "films": [
       {
-        "date": "2024-10-29",
-        "title": "Scary Movie 2",
-        "year": "2001",
+        "date": "2024-10-30",
+        "title": "Half Baked",
+        "year": "1998",
         "rating": 3.5,
         "rewatch": true,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2/",
+        "url": "https://letterboxd.com/nichtlegacy/film/half-baked/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:49442",
-        "lid": "24Cw",
-        "slug": "scary-movie-2"
+        "filmUid": "film:47108",
+        "lid": "1Yy4",
+        "slug": "half-baked"
       },
       {
-        "date": "2024-10-29",
-        "title": "Scary Movie",
-        "year": "2000",
-        "rating": 3,
-        "rewatch": true,
+        "date": "2024-10-30",
+        "title": "Don't Be a Menace to South Central While Drinking Your Juice in the Hood",
+        "year": "1996",
+        "rating": 4,
+        "rewatch": false,
         "liked": true,
-        "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-2000/",
+        "url": "https://letterboxd.com/nichtlegacy/film/dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:49443",
-        "lid": "24CG",
-        "slug": "scary-movie-2000"
+        "filmUid": "film:46067",
+        "lid": "1VQa",
+        "slug": "dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood"
       }
     ]
   },
