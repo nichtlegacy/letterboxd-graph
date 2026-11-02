@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-01T05:05:50.241Z",
+  "generatedAt": "2026-11-02T05:06:23.539Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24427,23 +24427,8 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-01",
-    "films": [
-      {
-        "date": "2024-11-01",
-        "title": "Harry Potter 20th Anniversary: Return to Hogwarts",
-        "year": "2022",
-        "rating": 4,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/harry-potter-20th-anniversary-return-to-hogwarts/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:809443",
-        "lid": "xXJk",
-        "slug": "harry-potter-20th-anniversary-return-to-hogwarts"
-      }
-    ]
+    "date": "2026-11-02",
+    "films": []
   },
   "recent": [
     {
