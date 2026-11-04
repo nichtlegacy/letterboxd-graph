@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-03T05:53:16.648Z",
+  "generatedAt": "2026-11-04T05:29:00.400Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24427,77 +24427,63 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-03",
+    "date": "2026-11-04",
     "films": [
       {
-        "date": "2025-11-03",
-        "title": "Babo: The Haftbefehl Story",
-        "year": "2025",
-        "rating": 3,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/babo-the-haftbefehl-story/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:1431727",
-        "lid": "Y4zI",
-        "slug": "babo-the-haftbefehl-story"
-      },
-      {
-        "date": "2024-11-03",
-        "title": "Dawn of the Dead",
-        "year": "2004",
-        "rating": 3,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/dawn-of-the-dead-2004/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:51229",
-        "lid": "29gK",
-        "slug": "dawn-of-the-dead-2004"
-      },
-      {
-        "date": "2024-11-03",
-        "title": "Harry Potter and the Philosopher's Stone",
-        "year": "2001",
+        "date": "2024-11-04",
+        "title": "Taken",
+        "year": "2008",
         "rating": 4,
         "rewatch": false,
         "liked": true,
-        "url": "https://letterboxd.com/nichtlegacy/film/harry-potter-and-the-philosophers-stone/",
+        "url": "https://letterboxd.com/nichtlegacy/film/taken/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:51453",
-        "lid": "29QS",
-        "slug": "harry-potter-and-the-philosophers-stone"
+        "filmUid": "film:47648",
+        "lid": "1ZXa",
+        "slug": "taken"
       },
       {
-        "date": "2024-11-03",
-        "title": "White Chicks",
-        "year": "2004",
-        "rating": 3.5,
+        "date": "2024-11-04",
+        "title": "Knocked Up",
+        "year": "2007",
+        "rating": 3,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/white-chicks/",
+        "url": "https://letterboxd.com/nichtlegacy/film/knocked-up/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:44750",
-        "lid": "1SpK",
-        "slug": "white-chicks"
+        "filmUid": "film:49035",
+        "lid": "23yS",
+        "slug": "knocked-up"
       },
       {
-        "date": "2024-11-03",
-        "title": "Blood and Bone",
-        "year": "2009",
+        "date": "2023-11-04",
+        "title": "Focus",
+        "year": "2015",
         "rating": 2.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/blood-and-bone/",
+        "url": "https://letterboxd.com/nichtlegacy/film/focus-2015/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:38041",
-        "lid": "1AXE",
-        "slug": "blood-and-bone"
+        "filmUid": "film:180414",
+        "lid": "7zl2",
+        "slug": "focus-2015"
+      },
+      {
+        "date": "2020-11-04",
+        "title": "American Murder: The Family Next Door",
+        "year": "2020",
+        "rating": 2,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/american-murder-the-family-next-door/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:665136",
+        "lid": "rUk0",
+        "slug": "american-murder-the-family-next-door"
       }
     ]
   },
