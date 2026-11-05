@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-04T05:29:00.400Z",
+  "generatedAt": "2026-11-05T05:48:39.540Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24427,63 +24427,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-04",
+    "date": "2026-11-05",
     "films": [
       {
-        "date": "2024-11-04",
-        "title": "Taken",
-        "year": "2008",
-        "rating": 4,
-        "rewatch": false,
-        "liked": true,
-        "url": "https://letterboxd.com/nichtlegacy/film/taken/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:47648",
-        "lid": "1ZXa",
-        "slug": "taken"
-      },
-      {
-        "date": "2024-11-04",
-        "title": "Knocked Up",
-        "year": "2007",
-        "rating": 3,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/knocked-up/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:49035",
-        "lid": "23yS",
-        "slug": "knocked-up"
-      },
-      {
-        "date": "2023-11-04",
-        "title": "Focus",
-        "year": "2015",
+        "date": "2024-11-05",
+        "title": "Old School",
+        "year": "2003",
         "rating": 2.5,
-        "rewatch": false,
+        "rewatch": true,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/focus-2015/",
+        "url": "https://letterboxd.com/nichtlegacy/film/old-school/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:180414",
-        "lid": "7zl2",
-        "slug": "focus-2015"
-      },
-      {
-        "date": "2020-11-04",
-        "title": "American Murder: The Family Next Door",
-        "year": "2020",
-        "rating": 2,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/american-murder-the-family-next-door/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:665136",
-        "lid": "rUk0",
-        "slug": "american-murder-the-family-next-door"
+        "filmUid": "film:45116",
+        "lid": "1TmM",
+        "slug": "old-school"
       }
     ]
   },
