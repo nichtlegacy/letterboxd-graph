@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-06T05:45:04.620Z",
+  "generatedAt": "2026-11-07T05:15:34.368Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24427,37 +24427,8 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-06",
-    "films": [
-      {
-        "date": "2024-11-06",
-        "title": "Wedding Crashers",
-        "year": "2005",
-        "rating": 2,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/wedding-crashers/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:47078",
-        "lid": "1Yte",
-        "slug": "wedding-crashers"
-      },
-      {
-        "date": "2024-11-06",
-        "title": "Taken 2",
-        "year": "2012",
-        "rating": 3,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/taken-2/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:69169",
-        "lid": "2TWi",
-        "slug": "taken-2"
-      }
-    ]
+    "date": "2026-11-07",
+    "films": []
   },
   "recent": [
     {
