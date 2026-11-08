@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-07T05:15:34.368Z",
+  "generatedAt": "2026-11-08T05:11:56.693Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,11 +18,11 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 504,
-    "daysActive": 348,
+    "films": 506,
+    "daysActive": 349,
     "streak": 34,
     "streakFilms": 53,
-    "rewatches": 83,
+    "rewatches": 84,
     "liked": 31
   },
   "monthLabels": [
@@ -14486,10 +14486,37 @@
       "date": "2026-11-07",
       "week": 96,
       "weekday": 6,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "Crazy, Stupid, Love.",
+          "year": "2011",
+          "rating": 3.5,
+          "rewatch": true,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/crazy-stupid-love/1/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:15051",
+          "lid": "D9A",
+          "slug": "crazy-stupid-love"
+        },
+        {
+          "title": "Pokémon: Giratina and the Sky Warrior",
+          "year": "2008",
+          "rating": 3,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/pokemon-giratina-and-the-sky-warrior/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:18098",
+          "lid": "L52",
+          "slug": "pokemon-giratina-and-the-sky-warrior"
+        }
+      ],
+      "level": 2,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/11/07/"
     },
@@ -24424,13 +24451,90 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/23/"
+    },
+    {
+      "date": "2026-11-07",
+      "count": 2,
+      "ratingAvg": 3.3,
+      "films": [
+        {
+          "title": "Crazy, Stupid, Love.",
+          "year": "2011",
+          "rating": 3.5,
+          "rewatch": true,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/crazy-stupid-love/1/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:15051",
+          "lid": "D9A",
+          "slug": "crazy-stupid-love"
+        },
+        {
+          "title": "Pokémon: Giratina and the Sky Warrior",
+          "year": "2008",
+          "rating": 3,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/pokemon-giratina-and-the-sky-warrior/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:18098",
+          "lid": "L52",
+          "slug": "pokemon-giratina-and-the-sky-warrior"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/11/07/"
     }
   ],
   "onThisDay": {
-    "date": "2026-11-07",
-    "films": []
+    "date": "2026-11-08",
+    "films": [
+      {
+        "date": "2025-11-08",
+        "title": "Joe Dirt",
+        "year": "2001",
+        "rating": 2.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/joe-dirt/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:45738",
+        "lid": "1UZ6",
+        "slug": "joe-dirt"
+      }
+    ]
   },
   "recent": [
+    {
+      "date": "2026-11-07",
+      "title": "Crazy, Stupid, Love.",
+      "year": "2011",
+      "rating": 3.5,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/crazy-stupid-love/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:15051",
+      "lid": "D9A",
+      "slug": "crazy-stupid-love"
+    },
+    {
+      "date": "2026-11-07",
+      "title": "Pokémon: Giratina and the Sky Warrior",
+      "year": "2008",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/pokemon-giratina-and-the-sky-warrior/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:18098",
+      "lid": "L52",
+      "slug": "pokemon-giratina-and-the-sky-warrior"
+    },
     {
       "date": "2026-10-23",
       "title": "Barbershop",
@@ -24626,37 +24730,37 @@
       "filmUid": "film:949053",
       "lid": "DOV4",
       "slug": "its-whats-inside"
-    },
-    {
-      "date": "2026-09-05",
-      "title": "Superbad",
-      "year": "2007",
-      "rating": 4,
-      "rewatch": true,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/superbad/1/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:47776",
-      "lid": "20hO",
-      "slug": "superbad"
-    },
-    {
-      "date": "2026-08-29",
-      "title": "Dude, Where's My Car?",
-      "year": "2000",
-      "rating": 3.5,
-      "rewatch": true,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/dude-wheres-my-car/3/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:47562",
-      "lid": "1ZJi",
-      "slug": "dude-wheres-my-car"
     }
   ],
   "diary": [
+    {
+      "date": "2026-11-07",
+      "title": "Crazy, Stupid, Love.",
+      "year": "2011",
+      "rating": 3.5,
+      "rewatch": true,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/crazy-stupid-love/1/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:15051",
+      "lid": "D9A",
+      "slug": "crazy-stupid-love"
+    },
+    {
+      "date": "2026-11-07",
+      "title": "Pokémon: Giratina and the Sky Warrior",
+      "year": "2008",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/pokemon-giratina-and-the-sky-warrior/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:18098",
+      "lid": "L52",
+      "slug": "pokemon-giratina-and-the-sky-warrior"
+    },
     {
       "date": "2026-10-23",
       "title": "Barbershop",
@@ -40558,33 +40662,33 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 101,
-      "distinctFilms": 96,
+      "entries": 103,
+      "distinctFilms": 98,
       "firstEntry": "2026-01-01",
-      "lastEntry": "2026-10-23",
-      "spanDays": 296,
-      "daysActive": 81,
-      "multiFilmDays": 13,
-      "rewatches": 24,
+      "lastEntry": "2026-11-07",
+      "spanDays": 311,
+      "daysActive": 82,
+      "multiFilmDays": 14,
+      "rewatches": 25,
       "liked": 7,
-      "rated": 101,
+      "rated": 103,
       "releaseBreakdown": {
         "sameYear": 14,
-        "older": 87,
+        "older": 89,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 77,
-        "rewatches": 24
+        "firstWatches": 78,
+        "rewatches": 25
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 101
+        "notReviewed": 103
       },
       "averageRating": 3.2,
-      "perDay": 0.34,
-      "perWeek": 2.4,
-      "perMonth": 10.4,
+      "perDay": 0.33,
+      "perWeek": 2.3,
+      "perMonth": 10.1,
       "streak": {
         "length": 6,
         "startDate": "2026-03-28",
@@ -40603,8 +40707,8 @@
       "perYear": [
         {
           "year": 2026,
-          "films": 101,
-          "days": 81
+          "films": 103,
+          "days": 82
         }
       ],
       "perWeekday": [
@@ -40614,7 +40718,7 @@
         9,
         10,
         19,
-        24
+        26
       ],
       "perMonthOfYear": [
         19,
@@ -40627,7 +40731,7 @@
         6,
         8,
         7,
-        0,
+        2,
         0
       ],
       "monthSeries": [
@@ -40670,6 +40774,10 @@
         {
           "month": "2026-10",
           "count": 7
+        },
+        {
+          "month": "2026-11",
+          "count": 2
         }
       ],
       "weekSeries": [
@@ -40941,7 +41049,7 @@
           "week": 45,
           "start": "2026-11-02",
           "end": "2026-11-08",
-          "count": 0
+          "count": 2
         },
         {
           "week": 46,
@@ -41007,11 +41115,11 @@
         },
         {
           "rating": 3,
-          "count": 29
+          "count": 30
         },
         {
           "rating": 3.5,
-          "count": 24
+          "count": 25
         },
         {
           "rating": 4,
@@ -41044,13 +41152,13 @@
         {
           "decade": 2000,
           "label": "2000s",
-          "count": 28,
+          "count": 29,
           "averageRating": 3
         },
         {
           "decade": 2010,
           "label": "2010s",
-          "count": 17,
+          "count": 18,
           "averageRating": 3
         },
         {
@@ -41175,47 +41283,47 @@
           "slug": "barbershop"
         },
         {
-          "n": 101,
+          "n": 103,
           "kind": "latest",
-          "date": "2026-10-23",
-          "title": "Just Friends",
-          "year": "2005",
-          "rating": 1.5,
-          "url": "https://letterboxd.com/nichtlegacy/film/just-friends/",
+          "date": "2026-11-07",
+          "title": "Pokémon: Giratina and the Sky Warrior",
+          "year": "2008",
+          "rating": 3,
+          "url": "https://letterboxd.com/nichtlegacy/film/pokemon-giratina-and-the-sky-warrior/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:46609",
-          "lid": "1XfA",
-          "slug": "just-friends"
+          "filmUid": "film:18098",
+          "lid": "L52",
+          "slug": "pokemon-giratina-and-the-sky-warrior"
         }
       ]
     }
   },
   "allTime": {
     "scope": "all",
-    "films": 798,
-    "entries": 863,
-    "distinctFilms": 744,
+    "films": 799,
+    "entries": 865,
+    "distinctFilms": 745,
     "firstEntry": "2020-07-03",
-    "lastEntry": "2026-10-23",
-    "spanDays": 2304,
-    "daysActive": 628,
-    "multiFilmDays": 177,
-    "rewatches": 136,
+    "lastEntry": "2026-11-07",
+    "spanDays": 2319,
+    "daysActive": 629,
+    "multiFilmDays": 178,
+    "rewatches": 137,
     "liked": 89,
-    "rated": 863,
+    "rated": 865,
     "releaseBreakdown": {
       "sameYear": 74,
-      "older": 789,
+      "older": 791,
       "other": 0
     },
     "watchBreakdown": {
-      "firstWatches": 727,
-      "rewatches": 136
+      "firstWatches": 728,
+      "rewatches": 137
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 862
+      "notReviewed": 864
     },
     "averageRating": 3.3,
     "perDay": 0.37,
@@ -41269,8 +41377,8 @@
       },
       {
         "year": 2026,
-        "films": 101,
-        "days": 81
+        "films": 103,
+        "days": 82
       }
     ],
     "perWeekday": [
@@ -41280,7 +41388,7 @@
       105,
       116,
       129,
-      148
+      150
     ],
     "perMonthOfYear": [
       89,
@@ -41293,7 +41401,7 @@
       46,
       57,
       77,
-      70,
+      72,
       77
     ],
     "monthSeries": [
@@ -41600,6 +41708,10 @@
       {
         "month": "2026-10",
         "count": 7
+      },
+      {
+        "month": "2026-11",
+        "count": 2
       }
     ],
     "weekSeries": [],
@@ -41622,11 +41734,11 @@
       },
       {
         "rating": 3,
-        "count": 242
+        "count": 243
       },
       {
         "rating": 3.5,
-        "count": 192
+        "count": 193
       },
       {
         "rating": 4,
@@ -41669,13 +41781,13 @@
       {
         "decade": 2000,
         "label": "2000s",
-        "count": 309,
+        "count": 310,
         "averageRating": 3
       },
       {
         "decade": 2010,
         "label": "2010s",
-        "count": 243,
+        "count": 244,
         "averageRating": 3
       },
       {
@@ -41933,6 +42045,16 @@
         "filmUid": "film:50894",
         "lid": "28oI",
         "slug": "bill-teds-excellent-adventure",
+        "views": 2,
+        "averageRating": 3.5
+      },
+      {
+        "title": "Crazy, Stupid, Love.",
+        "year": "2011",
+        "url": "https://letterboxd.com/nichtlegacy/film/crazy-stupid-love/",
+        "filmUid": "film:15051",
+        "lid": "D9A",
+        "slug": "crazy-stupid-love",
         "views": 2,
         "averageRating": 3.5
       },
@@ -42556,18 +42678,18 @@
         "slug": "muppets-from-space"
       },
       {
-        "n": 863,
+        "n": 865,
         "kind": "latest",
-        "date": "2026-10-23",
-        "title": "Just Friends",
-        "year": "2005",
-        "rating": 1.5,
-        "url": "https://letterboxd.com/nichtlegacy/film/just-friends/",
+        "date": "2026-11-07",
+        "title": "Pokémon: Giratina and the Sky Warrior",
+        "year": "2008",
+        "rating": 3,
+        "url": "https://letterboxd.com/nichtlegacy/film/pokemon-giratina-and-the-sky-warrior/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:46609",
-        "lid": "1XfA",
-        "slug": "just-friends"
+        "filmUid": "film:18098",
+        "lid": "L52",
+        "slug": "pokemon-giratina-and-the-sky-warrior"
       }
     ]
   }

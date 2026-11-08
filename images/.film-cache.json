@@ -294,6 +294,18 @@
       "runtime": 102,
       "averageRating": 3.2,
       "fetchedAt": "2026-10-25T03:51:37.177Z"
+    },
+    "https://letterboxd.com/film/crazy-stupid-love/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/1/5/0/5/1/15051-crazy-stupid-love--0-600-0-900-crop.jpg?v=262be4c415",
+      "runtime": 118,
+      "averageRating": 3.73,
+      "fetchedAt": "2026-11-08T05:11:57.513Z"
+    },
+    "https://letterboxd.com/film/pokemon-giratina-and-the-sky-warrior/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/1/8/0/9/8/18098-pokemon-giratina-and-the-sky-warrior-0-600-0-900-crop.jpg?v=56734a2943",
+      "runtime": 100,
+      "averageRating": 3.14,
+      "fetchedAt": "2026-11-08T05:11:57.682Z"
     }
   }
 }
