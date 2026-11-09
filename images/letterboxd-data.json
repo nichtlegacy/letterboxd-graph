@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-08T05:11:56.693Z",
+  "generatedAt": "2026-11-09T05:23:39.507Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24488,21 +24488,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-08",
+    "date": "2026-11-09",
     "films": [
       {
-        "date": "2025-11-08",
-        "title": "Joe Dirt",
-        "year": "2001",
-        "rating": 2.5,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/joe-dirt/",
+        "date": "2025-11-09",
+        "title": "Back to the Future",
+        "year": "1985",
+        "rating": 4.5,
+        "rewatch": true,
+        "liked": true,
+        "url": "https://letterboxd.com/nichtlegacy/film/back-to-the-future/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:45738",
-        "lid": "1UZ6",
-        "slug": "joe-dirt"
+        "filmUid": "film:51945",
+        "lid": "2b8e",
+        "slug": "back-to-the-future"
+      },
+      {
+        "date": "2024-11-09",
+        "title": "John Wick: Chapter 4",
+        "year": "2023",
+        "rating": 5,
+        "rewatch": true,
+        "liked": true,
+        "url": "https://letterboxd.com/nichtlegacy/film/john-wick-chapter-4/1/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:530882",
+        "lid": "mh48",
+        "slug": "john-wick-chapter-4"
       }
     ]
   },
