@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-09T05:23:39.507Z",
+  "generatedAt": "2026-11-10T06:35:21.899Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24488,35 +24488,49 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-09",
+    "date": "2026-11-10",
     "films": [
       {
-        "date": "2025-11-09",
-        "title": "Back to the Future",
-        "year": "1985",
-        "rating": 4.5,
+        "date": "2025-11-10",
+        "title": "The Amazing Spider-Man 2",
+        "year": "2014",
+        "rating": 3,
         "rewatch": true,
-        "liked": true,
-        "url": "https://letterboxd.com/nichtlegacy/film/back-to-the-future/",
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/the-amazing-spider-man-2/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:51945",
-        "lid": "2b8e",
-        "slug": "back-to-the-future"
+        "filmUid": "film:83215",
+        "lid": "3utM",
+        "slug": "the-amazing-spider-man-2"
       },
       {
-        "date": "2024-11-09",
-        "title": "John Wick: Chapter 4",
-        "year": "2023",
-        "rating": 5,
-        "rewatch": true,
-        "liked": true,
-        "url": "https://letterboxd.com/nichtlegacy/film/john-wick-chapter-4/1/",
+        "date": "2025-11-10",
+        "title": "John Wick: Chapter 3 – Parabellum",
+        "year": "2019",
+        "rating": 4.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/john-wick-chapter-3-parabellum/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:530882",
-        "lid": "mh48",
-        "slug": "john-wick-chapter-4"
+        "filmUid": "film:390039",
+        "lid": "gmFw",
+        "slug": "john-wick-chapter-3-parabellum"
+      },
+      {
+        "date": "2023-11-10",
+        "title": "Scary Movie 5",
+        "year": "2013",
+        "rating": 1.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-5/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:49432",
+        "lid": "24AU",
+        "slug": "scary-movie-5"
       }
     ]
   },
