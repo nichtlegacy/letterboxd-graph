@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-10T06:35:21.899Z",
+  "generatedAt": "2026-11-11T05:21:45.701Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24488,49 +24488,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-10",
+    "date": "2026-11-11",
     "films": [
       {
-        "date": "2025-11-10",
-        "title": "The Amazing Spider-Man 2",
-        "year": "2014",
-        "rating": 3,
-        "rewatch": true,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-amazing-spider-man-2/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:83215",
-        "lid": "3utM",
-        "slug": "the-amazing-spider-man-2"
-      },
-      {
-        "date": "2025-11-10",
-        "title": "John Wick: Chapter 3 – Parabellum",
-        "year": "2019",
-        "rating": 4.5,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/john-wick-chapter-3-parabellum/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:390039",
-        "lid": "gmFw",
-        "slug": "john-wick-chapter-3-parabellum"
-      },
-      {
-        "date": "2023-11-10",
-        "title": "Scary Movie 5",
+        "date": "2024-11-11",
+        "title": "Movie 43",
         "year": "2013",
-        "rating": 1.5,
+        "rating": 2.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/scary-movie-5/",
+        "url": "https://letterboxd.com/nichtlegacy/film/movie-43/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:49432",
-        "lid": "24AU",
-        "slug": "scary-movie-5"
+        "filmUid": "film:74355",
+        "lid": "37qK",
+        "slug": "movie-43"
       }
     ]
   },
