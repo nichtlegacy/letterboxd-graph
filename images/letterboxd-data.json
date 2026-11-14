@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-13T05:45:52.903Z",
+  "generatedAt": "2026-11-14T05:35:56.341Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24488,21 +24488,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-13",
+    "date": "2026-11-14",
     "films": [
       {
-        "date": "2024-11-13",
-        "title": "Burn After Reading",
-        "year": "2008",
-        "rating": 3,
-        "rewatch": false,
+        "date": "2024-11-14",
+        "title": "The Big Lebowski",
+        "year": "1998",
+        "rating": 4.5,
+        "rewatch": true,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/burn-after-reading/",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-big-lebowski/7/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:49054",
-        "lid": "23BW",
-        "slug": "burn-after-reading"
+        "filmUid": "film:51935",
+        "lid": "2b6C",
+        "slug": "the-big-lebowski"
       }
     ]
   },
