@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-14T05:35:56.341Z",
+  "generatedAt": "2026-11-15T05:33:32.586Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24488,21 +24488,77 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-14",
+    "date": "2026-11-15",
     "films": [
       {
-        "date": "2024-11-14",
-        "title": "The Big Lebowski",
-        "year": "1998",
+        "date": "2025-11-15",
+        "title": "They Came Together",
+        "year": "2014",
+        "rating": 2.5,
+        "rewatch": true,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/they-came-together/1/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:130912",
+        "lid": "5uyQ",
+        "slug": "they-came-together"
+      },
+      {
+        "date": "2025-11-15",
+        "title": "One Battle After Another",
+        "year": "2025",
+        "rating": 4.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/one-battle-after-another/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:951277",
+        "lid": "DUHM",
+        "slug": "one-battle-after-another"
+      },
+      {
+        "date": "2024-11-15",
+        "title": "Smiley Face",
+        "year": "2007",
         "rating": 4.5,
         "rewatch": true,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-big-lebowski/7/",
+        "url": "https://letterboxd.com/nichtlegacy/film/smiley-face/5/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:51935",
-        "lid": "2b6C",
-        "slug": "the-big-lebowski"
+        "filmUid": "film:44082",
+        "lid": "1QG0",
+        "slug": "smiley-face"
+      },
+      {
+        "date": "2024-11-15",
+        "title": "The Number 23",
+        "year": "2007",
+        "rating": 3,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/the-number-23/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:49641",
+        "lid": "258C",
+        "slug": "the-number-23"
+      },
+      {
+        "date": "2021-11-15",
+        "title": "Red Notice",
+        "year": "2021",
+        "rating": 2,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/red-notice/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:441858",
+        "lid": "ixtq",
+        "slug": "red-notice"
       }
     ]
   },
