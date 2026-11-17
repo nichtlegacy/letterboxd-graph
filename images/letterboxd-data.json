@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-16T05:33:04.706Z",
+  "generatedAt": "2026-11-17T07:10:22.495Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24488,49 +24488,49 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-16",
+    "date": "2026-11-17",
     "films": [
       {
-        "date": "2024-11-16",
-        "title": "Don't Look Up",
-        "year": "2021",
+        "date": "2025-11-17",
+        "title": "Grave of the Fireflies",
+        "year": "1988",
+        "rating": 3.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/grave-of-the-fireflies/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:44558",
+        "lid": "1RUM",
+        "slug": "grave-of-the-fireflies"
+      },
+      {
+        "date": "2024-11-17",
+        "title": "Hall Pass",
+        "year": "2011",
         "rating": 3,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/dont-look-up-2021/",
+        "url": "https://letterboxd.com/nichtlegacy/film/hall-pass/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:572255",
-        "lid": "o0Hc",
-        "slug": "dont-look-up-2021"
+        "filmUid": "film:16583",
+        "lid": "H8G",
+        "slug": "hall-pass"
       },
       {
-        "date": "2024-11-16",
-        "title": "Pineapple Express",
-        "year": "2008",
+        "date": "2024-11-17",
+        "title": "Harry Potter and the Chamber of Secrets",
+        "year": "2002",
         "rating": 4,
-        "rewatch": true,
-        "liked": true,
-        "url": "https://letterboxd.com/nichtlegacy/film/pineapple-express/1/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:46462",
-        "lid": "1WRS",
-        "slug": "pineapple-express"
-      },
-      {
-        "date": "2023-11-16",
-        "title": "The Amazing Spider-Man",
-        "year": "2012",
-        "rating": 4.5,
         "rewatch": false,
         "liked": true,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-amazing-spider-man/",
+        "url": "https://letterboxd.com/nichtlegacy/film/harry-potter-and-the-chamber-of-secrets/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:50677",
-        "lid": "27PI",
-        "slug": "the-amazing-spider-man"
+        "filmUid": "film:51452",
+        "lid": "29QI",
+        "slug": "harry-potter-and-the-chamber-of-secrets"
       }
     ]
   },
