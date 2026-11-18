@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-17T07:10:22.495Z",
+  "generatedAt": "2026-11-18T06:35:10.186Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -18,8 +18,8 @@
     "maxCount": 5
   },
   "stats": {
-    "films": 506,
-    "daysActive": 349,
+    "films": 507,
+    "daysActive": 350,
     "streak": 34,
     "streakFilms": 53,
     "rewatches": 84,
@@ -14623,10 +14623,24 @@
       "date": "2026-11-17",
       "week": 98,
       "weekday": 2,
-      "count": 0,
-      "ratingAvg": null,
-      "films": [],
-      "level": 0,
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "50/50",
+          "year": "2011",
+          "rating": 3,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/50-50/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:24177",
+          "lid": "10Tw",
+          "slug": "50-50"
+        }
+      ],
+      "level": 1,
       "inRange": true,
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/11/17/"
     },
@@ -24485,56 +24499,133 @@
         }
       ],
       "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/11/07/"
+    },
+    {
+      "date": "2026-11-17",
+      "count": 1,
+      "ratingAvg": 3,
+      "films": [
+        {
+          "title": "50/50",
+          "year": "2011",
+          "rating": 3,
+          "rewatch": false,
+          "liked": false,
+          "url": "https://letterboxd.com/nichtlegacy/film/50-50/",
+          "reviewed": false,
+          "reviewUrl": null,
+          "filmUid": "film:24177",
+          "lid": "10Tw",
+          "slug": "50-50"
+        }
+      ],
+      "url": "https://letterboxd.com/nichtlegacy/diary/films/for/2026/11/17/"
     }
   ],
   "onThisDay": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "films": [
       {
-        "date": "2025-11-17",
-        "title": "Grave of the Fireflies",
-        "year": "1988",
-        "rating": 3.5,
+        "date": "2025-11-18",
+        "title": "Borat Subsequent Moviefilm: Delivery of Prodigious Bribe to American Regime for Make Benefit Once Glorious Nation of Kazakhstan",
+        "year": "2020",
+        "rating": 2.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/grave-of-the-fireflies/",
+        "url": "https://letterboxd.com/nichtlegacy/film/borat-subsequent-moviefilm-delivery-of-prodigious/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:44558",
-        "lid": "1RUM",
-        "slug": "grave-of-the-fireflies"
+        "filmUid": "film:662656",
+        "lid": "rNS0",
+        "slug": "borat-subsequent-moviefilm-delivery-of-prodigious"
       },
       {
-        "date": "2024-11-17",
-        "title": "Hall Pass",
-        "year": "2011",
+        "date": "2024-11-18",
+        "title": "Superhero Movie",
+        "year": "2008",
+        "rating": 2.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/superhero-movie/1/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:44888",
+        "lid": "1SM0",
+        "slug": "superhero-movie"
+      },
+      {
+        "date": "2024-11-18",
+        "title": "American Pie Presents: Beta House",
+        "year": "2007",
+        "rating": 2.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/american-pie-presents-beta-house/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:47829",
+        "lid": "20qm",
+        "slug": "american-pie-presents-beta-house"
+      },
+      {
+        "date": "2024-11-18",
+        "title": "American Pie Presents: The Naked Mile",
+        "year": "2006",
+        "rating": 2.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/american-pie-presents-the-naked-mile/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:47831",
+        "lid": "20qG",
+        "slug": "american-pie-presents-the-naked-mile"
+      },
+      {
+        "date": "2023-11-18",
+        "title": "XOXO",
+        "year": "2016",
+        "rating": 4,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/xoxo-2016/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:282741",
+        "lid": "bRxo",
+        "slug": "xoxo-2016"
+      },
+      {
+        "date": "2021-11-18",
+        "title": "Army of Thieves",
+        "year": "2021",
         "rating": 3,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/hall-pass/",
+        "url": "https://letterboxd.com/nichtlegacy/film/army-of-thieves/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:16583",
-        "lid": "H8G",
-        "slug": "hall-pass"
-      },
-      {
-        "date": "2024-11-17",
-        "title": "Harry Potter and the Chamber of Secrets",
-        "year": "2002",
-        "rating": 4,
-        "rewatch": false,
-        "liked": true,
-        "url": "https://letterboxd.com/nichtlegacy/film/harry-potter-and-the-chamber-of-secrets/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:51452",
-        "lid": "29QI",
-        "slug": "harry-potter-and-the-chamber-of-secrets"
+        "filmUid": "film:714279",
+        "lid": "tYai",
+        "slug": "army-of-thieves"
       }
     ]
   },
   "recent": [
+    {
+      "date": "2026-11-17",
+      "title": "50/50",
+      "year": "2011",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/50-50/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:24177",
+      "lid": "10Tw",
+      "slug": "50-50"
+    },
     {
       "date": "2026-11-07",
       "title": "Crazy, Stupid, Love.",
@@ -24744,23 +24835,23 @@
       "filmUid": "film:41417",
       "lid": "1JKa",
       "slug": "sugar-spice"
-    },
-    {
-      "date": "2026-09-06",
-      "title": "It's What's Inside",
-      "year": "2024",
-      "rating": 4,
-      "rewatch": true,
-      "liked": false,
-      "url": "https://letterboxd.com/nichtlegacy/film/its-whats-inside/1/",
-      "reviewed": false,
-      "reviewUrl": null,
-      "filmUid": "film:949053",
-      "lid": "DOV4",
-      "slug": "its-whats-inside"
     }
   ],
   "diary": [
+    {
+      "date": "2026-11-17",
+      "title": "50/50",
+      "year": "2011",
+      "rating": 3,
+      "rewatch": false,
+      "liked": false,
+      "url": "https://letterboxd.com/nichtlegacy/film/50-50/",
+      "reviewed": false,
+      "reviewUrl": null,
+      "filmUid": "film:24177",
+      "lid": "10Tw",
+      "slug": "50-50"
+    },
     {
       "date": "2026-11-07",
       "title": "Crazy, Stupid, Love.",
@@ -40690,33 +40781,33 @@
     "2026": {
       "scope": "year",
       "films": null,
-      "entries": 103,
-      "distinctFilms": 98,
+      "entries": 104,
+      "distinctFilms": 99,
       "firstEntry": "2026-01-01",
-      "lastEntry": "2026-11-07",
-      "spanDays": 311,
-      "daysActive": 82,
+      "lastEntry": "2026-11-17",
+      "spanDays": 321,
+      "daysActive": 83,
       "multiFilmDays": 14,
       "rewatches": 25,
       "liked": 7,
-      "rated": 103,
+      "rated": 104,
       "releaseBreakdown": {
         "sameYear": 14,
-        "older": 89,
+        "older": 90,
         "other": 0
       },
       "watchBreakdown": {
-        "firstWatches": 78,
+        "firstWatches": 79,
         "rewatches": 25
       },
       "reviewBreakdown": {
         "reviewed": 0,
-        "notReviewed": 103
+        "notReviewed": 104
       },
       "averageRating": 3.2,
-      "perDay": 0.33,
+      "perDay": 0.32,
       "perWeek": 2.3,
-      "perMonth": 10.1,
+      "perMonth": 9.9,
       "streak": {
         "length": 6,
         "startDate": "2026-03-28",
@@ -40735,14 +40826,14 @@
       "perYear": [
         {
           "year": 2026,
-          "films": 103,
-          "days": 82
+          "films": 104,
+          "days": 83
         }
       ],
       "perWeekday": [
         21,
         11,
-        7,
+        8,
         9,
         10,
         19,
@@ -40759,7 +40850,7 @@
         6,
         8,
         7,
-        2,
+        3,
         0
       ],
       "monthSeries": [
@@ -40805,7 +40896,7 @@
         },
         {
           "month": "2026-11",
-          "count": 2
+          "count": 3
         }
       ],
       "weekSeries": [
@@ -41089,7 +41180,7 @@
           "week": 47,
           "start": "2026-11-16",
           "end": "2026-11-22",
-          "count": 0
+          "count": 1
         },
         {
           "week": 48,
@@ -41143,7 +41234,7 @@
         },
         {
           "rating": 3,
-          "count": 30
+          "count": 31
         },
         {
           "rating": 3.5,
@@ -41186,7 +41277,7 @@
         {
           "decade": 2010,
           "label": "2010s",
-          "count": 18,
+          "count": 19,
           "averageRating": 3
         },
         {
@@ -41311,52 +41402,52 @@
           "slug": "barbershop"
         },
         {
-          "n": 103,
+          "n": 104,
           "kind": "latest",
-          "date": "2026-11-07",
-          "title": "Pokémon: Giratina and the Sky Warrior",
-          "year": "2008",
+          "date": "2026-11-17",
+          "title": "50/50",
+          "year": "2011",
           "rating": 3,
-          "url": "https://letterboxd.com/nichtlegacy/film/pokemon-giratina-and-the-sky-warrior/",
+          "url": "https://letterboxd.com/nichtlegacy/film/50-50/",
           "reviewed": false,
           "reviewUrl": null,
-          "filmUid": "film:18098",
-          "lid": "L52",
-          "slug": "pokemon-giratina-and-the-sky-warrior"
+          "filmUid": "film:24177",
+          "lid": "10Tw",
+          "slug": "50-50"
         }
       ]
     }
   },
   "allTime": {
     "scope": "all",
-    "films": 799,
-    "entries": 865,
-    "distinctFilms": 745,
+    "films": 800,
+    "entries": 866,
+    "distinctFilms": 746,
     "firstEntry": "2020-07-03",
-    "lastEntry": "2026-11-07",
-    "spanDays": 2319,
-    "daysActive": 629,
+    "lastEntry": "2026-11-17",
+    "spanDays": 2329,
+    "daysActive": 630,
     "multiFilmDays": 178,
     "rewatches": 137,
     "liked": 89,
-    "rated": 865,
+    "rated": 866,
     "releaseBreakdown": {
       "sameYear": 74,
-      "older": 791,
+      "older": 792,
       "other": 0
     },
     "watchBreakdown": {
-      "firstWatches": 728,
+      "firstWatches": 729,
       "rewatches": 137
     },
     "reviewBreakdown": {
       "reviewed": 1,
-      "notReviewed": 864
+      "notReviewed": 865
     },
     "averageRating": 3.3,
     "perDay": 0.37,
     "perWeek": 2.6,
-    "perMonth": 11.4,
+    "perMonth": 11.3,
     "streak": {
       "length": 34,
       "startDate": "2025-01-27",
@@ -41405,14 +41496,14 @@
       },
       {
         "year": 2026,
-        "films": 103,
-        "days": 82
+        "films": 104,
+        "days": 83
       }
     ],
     "perWeekday": [
       137,
       122,
-      106,
+      107,
       105,
       116,
       129,
@@ -41429,7 +41520,7 @@
       46,
       57,
       77,
-      72,
+      73,
       77
     ],
     "monthSeries": [
@@ -41739,7 +41830,7 @@
       },
       {
         "month": "2026-11",
-        "count": 2
+        "count": 3
       }
     ],
     "weekSeries": [],
@@ -41762,7 +41853,7 @@
       },
       {
         "rating": 3,
-        "count": 243
+        "count": 244
       },
       {
         "rating": 3.5,
@@ -41815,7 +41906,7 @@
       {
         "decade": 2010,
         "label": "2010s",
-        "count": 244,
+        "count": 245,
         "averageRating": 3
       },
       {
@@ -42706,18 +42797,18 @@
         "slug": "muppets-from-space"
       },
       {
-        "n": 865,
+        "n": 866,
         "kind": "latest",
-        "date": "2026-11-07",
-        "title": "Pokémon: Giratina and the Sky Warrior",
-        "year": "2008",
+        "date": "2026-11-17",
+        "title": "50/50",
+        "year": "2011",
         "rating": 3,
-        "url": "https://letterboxd.com/nichtlegacy/film/pokemon-giratina-and-the-sky-warrior/",
+        "url": "https://letterboxd.com/nichtlegacy/film/50-50/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:18098",
-        "lid": "L52",
-        "slug": "pokemon-giratina-and-the-sky-warrior"
+        "filmUid": "film:24177",
+        "lid": "10Tw",
+        "slug": "50-50"
       }
     ]
   }

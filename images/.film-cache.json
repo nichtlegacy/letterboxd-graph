@@ -306,6 +306,12 @@
       "runtime": 100,
       "averageRating": 3.14,
       "fetchedAt": "2026-11-08T05:11:57.682Z"
+    },
+    "https://letterboxd.com/film/50-50/": {
+      "poster": "https://a.ltrbxd.com/resized/film-poster/2/4/1/7/7/24177-50-50-0-600-0-900-crop.jpg?v=ab24bb607e",
+      "runtime": 100,
+      "averageRating": 3.61,
+      "fetchedAt": "2026-11-18T06:35:12.156Z"
     }
   }
 }
