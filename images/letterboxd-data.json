@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-19T06:37:09.125Z",
+  "generatedAt": "2026-11-20T06:24:28.430Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24523,49 +24523,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-19",
+    "date": "2026-11-20",
     "films": [
       {
-        "date": "2024-11-19",
-        "title": "High School",
-        "year": "2010",
-        "rating": 2,
+        "date": "2024-11-20",
+        "title": "The Nice Guys",
+        "year": "2016",
+        "rating": 3,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/high-school-2010/",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-nice-guys/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:34391",
-        "lid": "1rsW",
-        "slug": "high-school-2010"
+        "filmUid": "film:216301",
+        "lid": "94Hg",
+        "slug": "the-nice-guys"
       },
       {
-        "date": "2024-11-19",
-        "title": "American Pie Presents: The Book of Love",
-        "year": "2009",
-        "rating": 2.5,
+        "date": "2023-11-20",
+        "title": "The Amazing Spider-Man 2",
+        "year": "2014",
+        "rating": 3,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/american-pie-presents-the-book-of-love/",
+        "url": "https://letterboxd.com/nichtlegacy/film/the-amazing-spider-man-2/1/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:35567",
-        "lid": "1uwC",
-        "slug": "american-pie-presents-the-book-of-love"
-      },
-      {
-        "date": "2023-11-19",
-        "title": "Jurassic Park",
-        "year": "1993",
-        "rating": 4,
-        "rewatch": false,
-        "liked": true,
-        "url": "https://letterboxd.com/nichtlegacy/film/jurassic-park/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:51733",
-        "lid": "2aA2",
-        "slug": "jurassic-park"
+        "filmUid": "film:83215",
+        "lid": "3utM",
+        "slug": "the-amazing-spider-man-2"
       }
     ]
   },
