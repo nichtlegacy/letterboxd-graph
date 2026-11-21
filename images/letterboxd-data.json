@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-20T06:24:28.430Z",
+  "generatedAt": "2026-11-21T06:14:18.193Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24523,35 +24523,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-20",
+    "date": "2026-11-21",
     "films": [
       {
-        "date": "2024-11-20",
-        "title": "The Nice Guys",
-        "year": "2016",
-        "rating": 3,
+        "date": "2024-11-21",
+        "title": "Grandma's Boy",
+        "year": "2006",
+        "rating": 3.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-nice-guys/",
+        "url": "https://letterboxd.com/nichtlegacy/film/grandmas-boy-2006/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:216301",
-        "lid": "94Hg",
-        "slug": "the-nice-guys"
+        "filmUid": "film:46734",
+        "lid": "1XzK",
+        "slug": "grandmas-boy-2006"
       },
       {
-        "date": "2023-11-20",
-        "title": "The Amazing Spider-Man 2",
-        "year": "2014",
-        "rating": 3,
+        "date": "2022-11-21",
+        "title": "Back to the Future Part III",
+        "year": "1990",
+        "rating": 4,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/the-amazing-spider-man-2/1/",
+        "url": "https://letterboxd.com/nichtlegacy/film/back-to-the-future-part-iii/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:83215",
-        "lid": "3utM",
-        "slug": "the-amazing-spider-man-2"
+        "filmUid": "film:51856",
+        "lid": "2aTS",
+        "slug": "back-to-the-future-part-iii"
       }
     ]
   },
