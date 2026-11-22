@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-21T06:14:18.193Z",
+  "generatedAt": "2026-11-22T05:48:05.704Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24523,35 +24523,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-21",
+    "date": "2026-11-22",
     "films": [
       {
-        "date": "2024-11-21",
-        "title": "Grandma's Boy",
-        "year": "2006",
-        "rating": 3.5,
+        "date": "2025-11-22",
+        "title": "Undercover Brother",
+        "year": "2002",
+        "rating": 2.5,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/grandmas-boy-2006/",
+        "url": "https://letterboxd.com/nichtlegacy/film/undercover-brother/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:46734",
-        "lid": "1XzK",
-        "slug": "grandmas-boy-2006"
-      },
-      {
-        "date": "2022-11-21",
-        "title": "Back to the Future Part III",
-        "year": "1990",
-        "rating": 4,
-        "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/back-to-the-future-part-iii/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:51856",
-        "lid": "2aTS",
-        "slug": "back-to-the-future-part-iii"
+        "filmUid": "film:44639",
+        "lid": "1S7Q",
+        "slug": "undercover-brother"
       }
     ]
   },
