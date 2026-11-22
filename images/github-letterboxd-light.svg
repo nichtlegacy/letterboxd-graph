@@ -1,8 +1,5 @@
 <svg width="1000" height="475" viewBox="0 0 1000 475" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.1"/>
-    </filter>
     <clipPath id="profileClip">
       <circle cx="40" cy="40" r="40"/>
     </clipPath>
@@ -70,7 +67,7 @@
   </defs>
   
   <!-- Main Card -->
-  <rect width="100%" height="100%" rx="12" fill="#ffffff" stroke="#d1d9e0" stroke-width="1" filter="url(#shadow)"/>
+  <rect width="100%" height="100%" rx="12" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
 
   <!-- Header Section -->
   <g transform="translate(25, 20)">
@@ -92,10 +89,10 @@
         <tspan fill="#656d76">@nichtlegacy</tspan>
       </a>
       <tspan dx="5" fill="#656d76">•</tspan>
-      <tspan dx="5" fill="#1f2328">629</tspan>
+      <tspan dx="5" fill="#1f2328">800</tspan>
       <tspan fill="#656d76"> Films</tspan>
       <tspan dx="5" fill="#656d76">•</tspan>
-      <tspan dx="5" fill="#1f2328">15</tspan>
+      <tspan dx="5" fill="#1f2328">16</tspan>
       <tspan fill="#656d76"> Followers</tspan>
     </text>
 
@@ -114,22 +111,22 @@
       <g class="year-tooltip" transform="translate(-5, -102)">
       <rect x="0" y="0" width="186" height="94" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
       <text x="93" y="15" font-size="11" font-weight="600" fill="#1f2328" text-anchor="middle">Films by Release Decade</text>
-        <text x="23" y="64" font-size="8" fill="#1f2328" text-anchor="middle">2</text>
-        <rect x="15" y="67" width="16" height="3" rx="2" fill="#30a14e"/>
+        <text x="23" y="65" font-size="8" fill="#1f2328" text-anchor="middle">2</text>
+        <rect x="15" y="68" width="16" height="2" rx="2" fill="#30a14e"/>
         <text x="23" y="84" font-size="7" fill="#1f2328" text-anchor="middle">1970s</text>
         <text x="49" y="66" font-size="8" fill="#1f2328" text-anchor="middle">1</text>
         <rect x="41" y="69" width="16" height="1" rx="2" fill="#30a14e"/>
         <text x="49" y="84" font-size="7" fill="#1f2328" text-anchor="middle">1980s</text>
-        <text x="75" y="49" font-size="8" fill="#1f2328" text-anchor="middle">14</text>
-        <rect x="67" y="52" width="16" height="18" rx="2" fill="#30a14e"/>
+        <text x="75" y="48" font-size="8" fill="#1f2328" text-anchor="middle">17</text>
+        <rect x="67" y="51" width="16" height="19" rx="2" fill="#30a14e"/>
         <text x="75" y="84" font-size="7" fill="#1f2328" text-anchor="middle">1990s</text>
-        <text x="101" y="44" font-size="8" fill="#1f2328" text-anchor="middle">18</text>
-        <rect x="93" y="47" width="16" height="23" rx="2" fill="#30a14e"/>
+        <text x="101" y="35" font-size="8" fill="#1f2328" text-anchor="middle">29</text>
+        <rect x="93" y="38" width="16" height="32" rx="2" fill="#30a14e"/>
         <text x="101" y="84" font-size="7" fill="#1f2328" text-anchor="middle">2000s</text>
-        <text x="127" y="48" font-size="8" fill="#1f2328" text-anchor="middle">15</text>
-        <rect x="119" y="51" width="16" height="19" rx="2" fill="#30a14e"/>
+        <text x="127" y="46" font-size="8" fill="#1f2328" text-anchor="middle">19</text>
+        <rect x="119" y="49" width="16" height="21" rx="2" fill="#30a14e"/>
         <text x="127" y="84" font-size="7" fill="#1f2328" text-anchor="middle">2010s</text>
-        <text x="153" y="27" font-size="8" fill="#1f2328" text-anchor="middle">31</text>
+        <text x="153" y="27" font-size="8" fill="#1f2328" text-anchor="middle">36</text>
         <rect x="145" y="30" width="16" height="40" rx="2" fill="#30a14e"/>
         <text x="153" y="84" font-size="7" fill="#1f2328" text-anchor="middle">2020s</text>
     </g>
@@ -137,7 +134,7 @@
 
     <!-- Movies with rating distribution tooltip -->
     <g class="movies-group" transform="translate(60, 5)">
-      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">81 Movies</text>
+      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">104 Movies</text>
       <g class="movies-tooltip" transform="translate(-30, -116)">
         <rect x="0" y="0" width="260" height="108" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
         <text x="130" y="15" font-size="11" font-weight="600" fill="#1f2328" text-anchor="middle">Rating Distribution</text>
@@ -147,61 +144,61 @@
         <text x="46" y="67" font-size="8" fill="#1f2328" text-anchor="middle"></text>
         <rect x="39" y="70" width="14" height="1" rx="2" fill="#9be9a8"/>
         <text x="46" y="84" font-size="7" fill="#1f2328" text-anchor="middle">1</text>
-        <text x="70" y="67" font-size="8" fill="#1f2328" text-anchor="middle"></text>
-        <rect x="63" y="70" width="14" height="1" rx="2" fill="#40c463"/>
+        <text x="70" y="63" font-size="8" fill="#1f2328" text-anchor="middle">3</text>
+        <rect x="63" y="66" width="14" height="4" rx="2" fill="#40c463"/>
         <text x="70" y="84" font-size="7" fill="#1f2328" text-anchor="middle">1.5</text>
-        <text x="94" y="65" font-size="8" fill="#1f2328" text-anchor="middle">1</text>
-        <rect x="87" y="68" width="14" height="2" rx="2" fill="#40c463"/>
+        <text x="94" y="64" font-size="8" fill="#1f2328" text-anchor="middle">2</text>
+        <rect x="87" y="67" width="14" height="3" rx="2" fill="#40c463"/>
         <text x="94" y="84" font-size="7" fill="#1f2328" text-anchor="middle">2</text>
-        <text x="118" y="47" font-size="8" fill="#1f2328" text-anchor="middle">12</text>
-        <rect x="111" y="50" width="14" height="20" rx="2" fill="#30a14e"/>
+        <text x="118" y="44" font-size="8" fill="#1f2328" text-anchor="middle">18</text>
+        <rect x="111" y="47" width="14" height="23" rx="2" fill="#30a14e"/>
         <text x="118" y="84" font-size="7" fill="#1f2328" text-anchor="middle">2.5</text>
-        <text x="142" y="27" font-size="8" fill="#1f2328" text-anchor="middle">24</text>
+        <text x="142" y="27" font-size="8" fill="#1f2328" text-anchor="middle">31</text>
         <rect x="135" y="30" width="14" height="40" rx="2" fill="#30a14e"/>
         <text x="142" y="84" font-size="7" fill="#1f2328" text-anchor="middle">3</text>
-        <text x="166" y="30" font-size="8" fill="#1f2328" text-anchor="middle">22</text>
-        <rect x="159" y="33" width="14" height="37" rx="2" fill="#216e39"/>
+        <text x="166" y="35" font-size="8" fill="#1f2328" text-anchor="middle">25</text>
+        <rect x="159" y="38" width="14" height="32" rx="2" fill="#216e39"/>
         <text x="166" y="84" font-size="7" fill="#1f2328" text-anchor="middle">3.5</text>
-        <text x="190" y="37" font-size="8" fill="#1f2328" text-anchor="middle">18</text>
-        <rect x="183" y="40" width="14" height="30" rx="2" fill="#216e39"/>
+        <text x="190" y="41" font-size="8" fill="#1f2328" text-anchor="middle">20</text>
+        <rect x="183" y="44" width="14" height="26" rx="2" fill="#216e39"/>
         <text x="190" y="84" font-size="7" fill="#1f2328" text-anchor="middle">4</text>
-        <text x="214" y="60" font-size="8" fill="#1f2328" text-anchor="middle">4</text>
-        <rect x="207" y="63" width="14" height="7" rx="2" fill="#216e39"/>
+        <text x="214" y="61" font-size="8" fill="#1f2328" text-anchor="middle">5</text>
+        <rect x="207" y="64" width="14" height="6" rx="2" fill="#216e39"/>
         <text x="214" y="84" font-size="7" fill="#1f2328" text-anchor="middle">4.5</text>
         <text x="238" y="67" font-size="8" fill="#1f2328" text-anchor="middle"></text>
         <rect x="231" y="70" width="14" height="1" rx="2" fill="#216e39"/>
         <text x="238" y="84" font-size="7" fill="#1f2328" text-anchor="middle">5</text>
         <line x1="12" y1="90" x2="248" y2="90" stroke="#d1d9e0" stroke-width="1"/>
-        <text x="130" y="102" font-size="10" font-weight="500" fill="#656d76" text-anchor="middle">Ø 3.3★ · 81 rated · ↻ 16 · ♥ 7</text>
+        <text x="130" y="102" font-size="10" font-weight="500" fill="#656d76" text-anchor="middle">Ø 3.2★ · 104 rated · ↻ 25 · ♥ 7</text>
       </g>
     </g>
 
     <!-- Days Active with hover tooltip -->
     <g class="days-active-group" transform="translate(170, 5)">
-      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">65 Days Active</text>
+      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">83 Days Active</text>
       <g class="days-active-tooltip" transform="translate(-20, -115)">
         <rect x="0" y="0" width="200" height="105" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
         <text x="100" y="18" font-size="11" font-weight="600" fill="#1f2328" text-anchor="middle">Weekly Distribution</text>
         
-        <text x="27" y="39" font-size="9" fill="#1f2328" text-anchor="middle">15</text>
-        <rect x="20" y="42" width="14" height="38" rx="2" fill="#30a14e"/>
+        <text x="27" y="41" font-size="9" fill="#1f2328" text-anchor="middle">21</text>
+        <rect x="20" y="44" width="14" height="36" rx="2" fill="#30a14e"/>
         <text x="27" y="100" font-size="9" fill="#1f2328" text-anchor="middle">S</text>
-        <text x="51" y="54" font-size="9" fill="#1f2328" text-anchor="middle">9</text>
-        <rect x="44" y="57" width="14" height="23" rx="2" fill="#30a14e"/>
+        <text x="51" y="58" font-size="9" fill="#1f2328" text-anchor="middle">11</text>
+        <rect x="44" y="61" width="14" height="19" rx="2" fill="#30a14e"/>
         <text x="51" y="100" font-size="9" fill="#1f2328" text-anchor="middle">M</text>
-        <text x="75" y="62" font-size="9" fill="#1f2328" text-anchor="middle">6</text>
-        <rect x="68" y="65" width="14" height="15" rx="2" fill="#30a14e"/>
+        <text x="75" y="63" font-size="9" fill="#1f2328" text-anchor="middle">8</text>
+        <rect x="68" y="66" width="14" height="14" rx="2" fill="#30a14e"/>
         <text x="75" y="100" font-size="9" fill="#1f2328" text-anchor="middle">T</text>
-        <text x="99" y="54" font-size="9" fill="#1f2328" text-anchor="middle">9</text>
-        <rect x="92" y="57" width="14" height="23" rx="2" fill="#30a14e"/>
+        <text x="99" y="61" font-size="9" fill="#1f2328" text-anchor="middle">9</text>
+        <rect x="92" y="64" width="14" height="16" rx="2" fill="#30a14e"/>
         <text x="99" y="100" font-size="9" fill="#1f2328" text-anchor="middle">W</text>
-        <text x="123" y="54" font-size="9" fill="#1f2328" text-anchor="middle">9</text>
-        <rect x="116" y="57" width="14" height="23" rx="2" fill="#30a14e"/>
+        <text x="123" y="60" font-size="9" fill="#1f2328" text-anchor="middle">10</text>
+        <rect x="116" y="63" width="14" height="17" rx="2" fill="#30a14e"/>
         <text x="123" y="100" font-size="9" fill="#1f2328" text-anchor="middle">T</text>
-        <text x="147" y="39" font-size="9" fill="#1f2328" text-anchor="middle">15</text>
-        <rect x="140" y="42" width="14" height="38" rx="2" fill="#30a14e"/>
+        <text x="147" y="44" font-size="9" fill="#1f2328" text-anchor="middle">19</text>
+        <rect x="140" y="47" width="14" height="33" rx="2" fill="#30a14e"/>
         <text x="147" y="100" font-size="9" fill="#1f2328" text-anchor="middle">F</text>
-        <text x="171" y="32" font-size="9" fill="#1f2328" text-anchor="middle">18</text>
+        <text x="171" y="32" font-size="9" fill="#1f2328" text-anchor="middle">26</text>
         <rect x="164" y="35" width="14" height="45" rx="2" fill="#30a14e"/>
         <text x="171" y="100" font-size="9" fill="#1f2328" text-anchor="middle">S</text>
       </g>
@@ -214,7 +211,7 @@
       <g class="streak-tooltip" transform="translate(0, -63)">
         <rect x="-10" y="0" width="180" height="54" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
         <text x="5" y="21" font-size="12" fill="#1f2328">2026-03-28 → 2026-04-02</text>
-        <text x="5" y="41" font-size="11" font-weight="500" fill="#656d76"><tspan fill="#f97316" font-weight="600">12</tspan> Movies watched</text>
+        <text x="5" y="41" font-size="11" font-weight="500" fill="#656d76"><tspan fill="#f97316" font-weight="600">13</tspan> Movies watched</text>
       </g>
     </g>
     <g transform="translate(800, 0)">
@@ -274,7 +271,25 @@
     <rect class="cell" x="153" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:99ms"/>
     <rect class="cell" x="170" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:110ms"/>
     <rect class="cell" x="187" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:121ms"/>
-    <rect class="cell" x="204" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:132ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/22/">
+        <rect class="cell"
+          x="204"
+          y="0"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:132ms"
+        />
+        <g class="tooltip-group" transform="translate(204, -64)">
+          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Sun, 22. Mar 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• ↻ Smiley Face (2007) - 4.5★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <g class="cell-group">
       <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/29/">
         <rect class="cell streak-cell streak-cell-2026"
@@ -283,12 +298,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#30a14e" style="animation-delay:143ms"
+          fill="#216e39" style="animation-delay:143ms"
         />
-        <g class="tooltip-group" transform="translate(221, -82)">
-          <rect x="0" y="0" width="245" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(221, -100)">
+          <rect x="0" y="0" width="245" height="92" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Sun, 29. Mar 2026: 2 movies watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Sun, 29. Mar 2026: 3 movies watched</tspan>
+            <tspan x="10" dy="18">• The Usual Suspects (1995) - 3.5★</tspan>
             <tspan x="10" dy="18">• Human Traffic (1999) - 3★</tspan>
             <tspan x="10" dy="18">• Zootopia 2 (2025) - 3.5★</tspan>
           </text>
@@ -436,7 +452,7 @@
             <tspan x="10" dy="22" font-weight="600">Sun, 19. Jul 2026: 3 movies watched</tspan>
             <tspan x="10" dy="18">• ↻ Jay and Silent Bob Strike Back (2001) - 3.5★</tspan>
             <tspan x="10" dy="18">• Minions (2015) - 3.5★</tspan>
-            <tspan x="10" dy="18">• Minions: The Rise of Gru (2022) - 3★</tspan>
+            <tspan x="10" dy="18">• ↻ Minions: The Rise of Gru (2022) - 3★</tspan>
           </text>
         </g>
       </a>
@@ -465,13 +481,85 @@
     <rect class="cell" x="561" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:363ms"/>
     <rect class="cell" x="578" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:374ms"/>
     <rect class="cell" x="595" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:385ms"/>
-    <rect class="cell" x="612" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:396ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/06/">
+        <rect class="cell"
+          x="612"
+          y="0"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:396ms"
+        />
+        <g class="tooltip-group" transform="translate(612, -64)">
+          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Sun, 6. Sep 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• ↻ It&apos;s What&apos;s Inside (2024) - 4★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="629" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:407ms"/>
-    <rect class="cell" x="646" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:418ms"/>
-    <rect class="cell" x="663" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:429ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/20/">
+        <rect class="cell"
+          x="646"
+          y="0"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:418ms"
+        />
+        <g class="tooltip-group" transform="translate(646, -64)">
+          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Sun, 20. Sep 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• Crime 101 (2026) - 3★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/27/">
+        <rect class="cell"
+          x="663"
+          y="0"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:429ms"
+        />
+        <g class="tooltip-group" transform="translate(631, -64)">
+          <rect x="0" y="0" width="308" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Sun, 27. Sep 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• The Ballad of Buster Scruggs (2018) - 2.5★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="680" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:440ms"/>
     <rect class="cell" x="697" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:451ms"/>
-    <rect class="cell" x="714" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:462ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/18/">
+        <rect class="cell"
+          x="714"
+          y="0"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:462ms"
+        />
+        <g class="tooltip-group" transform="translate(694, -64)">
+          <rect x="0" y="0" width="245" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Sun, 18. Oct 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• ↻ Friday After Next (2002) - 1.5★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="731" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:473ms"/>
     <rect class="cell" x="748" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:484ms"/>
     <rect class="cell" x="765" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:495ms"/>
@@ -542,10 +630,10 @@
           fill="#40c463" style="animation-delay:148ms"
         />
         <g class="tooltip-group" transform="translate(221, -47)">
-          <rect x="0" y="0" width="490" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <rect x="0" y="0" width="448" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Mon, 30. Mar 2026: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• Shriek If You Know What I Did Last Friday the Thirteenth (2000) - 2★</tspan>
+            <tspan x="10" dy="18">• Shriek If You Know What I Did Last Friday the 13th (2000) - 2★</tspan>
           </text>
         </g>
       </a>
@@ -665,10 +753,46 @@
     <rect class="cell" x="612" y="17" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:401ms"/>
     <rect class="cell" x="629" y="17" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:412ms"/>
     <rect class="cell" x="646" y="17" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:423ms"/>
-    <rect class="cell" x="663" y="17" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:434ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/28/">
+        <rect class="cell"
+          x="663"
+          y="17"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:434ms"
+        />
+        <g class="tooltip-group" transform="translate(663, -47)">
+          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Mon, 28. Sep 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• Rushmore (1998) - 2.5★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="680" y="17" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:445ms"/>
     <rect class="cell" x="697" y="17" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:456ms"/>
-    <rect class="cell" x="714" y="17" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:467ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/19/">
+        <rect class="cell"
+          x="714"
+          y="17"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:467ms"
+        />
+        <g class="tooltip-group" transform="translate(699, -47)">
+          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Mon, 19. Oct 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• Long Shot (2019) - 3★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="731" y="17" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:478ms"/>
     <rect class="cell" x="748" y="17" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:489ms"/>
     <rect class="cell" x="765" y="17" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:500ms"/>
@@ -794,11 +918,47 @@
     <rect class="cell" x="663" y="34" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:439ms"/>
     <rect class="cell" x="680" y="34" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:450ms"/>
     <rect class="cell" x="697" y="34" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:461ms"/>
-    <rect class="cell" x="714" y="34" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:472ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/20/">
+        <rect class="cell"
+          x="714"
+          y="34"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:472ms"
+        />
+        <g class="tooltip-group" transform="translate(652, -30)">
+          <rect x="0" y="0" width="287" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Tue, 20. Oct 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• I Love You Phillip Morris (2009) - 2.5★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="731" y="34" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:483ms"/>
     <rect class="cell" x="748" y="34" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:494ms"/>
     <rect class="cell" x="765" y="34" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:505ms"/>
-    <rect class="cell" x="782" y="34" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:516ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/11/17/">
+        <rect class="cell"
+          x="782"
+          y="34"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:516ms"
+        />
+        <g class="tooltip-group" transform="translate(699, -30)">
+          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Tue, 17. Nov 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• 50/50 (2011) - 3★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="799" y="34" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:527ms"/>
     <rect class="cell" x="816" y="34" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:538ms"/>
     <rect class="cell" x="833" y="34" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:549ms"/>
@@ -1096,7 +1256,25 @@
     <rect class="cell" x="272" y="68" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:196ms"/>
     <rect class="cell" x="289" y="68" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:207ms"/>
     <rect class="cell" x="306" y="68" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:218ms"/>
-    <rect class="cell" x="323" y="68" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:229ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/05/14/">
+        <rect class="cell"
+          x="323"
+          y="68"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:229ms"
+        />
+        <g class="tooltip-group" transform="translate(323, 4)">
+          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Thu, 14. May 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• The Muppet Show (2026) - 2.5★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="340" y="68" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:240ms"/>
     <rect class="cell" x="357" y="68" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:251ms"/>
     <rect class="cell" x="374" y="68" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:262ms"/>
@@ -1285,7 +1463,7 @@
           <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Fri, 17. Apr 2026: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• Step Brothers (2008) - 3★</tspan>
+            <tspan x="10" dy="18">• ↻ Step Brothers (2008) - 3★</tspan>
           </text>
         </g>
       </a>
@@ -1474,11 +1652,66 @@
     <rect class="cell" x="595" y="85" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:410ms"/>
     <rect class="cell" x="612" y="85" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:421ms"/>
     <rect class="cell" x="629" y="85" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:432ms"/>
-    <rect class="cell" x="646" y="85" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:443ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/25/">
+        <rect class="cell"
+          x="646"
+          y="85"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:443ms"
+        />
+        <g class="tooltip-group" transform="translate(617, 21)">
+          <rect x="0" y="0" width="322" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Fri, 25. Sep 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• The Mitchells vs. the Machines (2021) - 2.5★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="663" y="85" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:454ms"/>
     <rect class="cell" x="680" y="85" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:465ms"/>
-    <rect class="cell" x="697" y="85" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:476ms"/>
-    <rect class="cell" x="714" y="85" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:487ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/16/">
+        <rect class="cell"
+          x="697"
+          y="85"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:476ms"
+        />
+        <g class="tooltip-group" transform="translate(697, 21)">
+          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Fri, 16. Oct 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• Next Friday (2000) - 2.5★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/23/">
+        <rect class="cell"
+          x="714"
+          y="85"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#30a14e" style="animation-delay:487ms"
+        />
+        <g class="tooltip-group" transform="translate(694, 3)">
+          <rect x="0" y="0" width="245" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Fri, 23. Oct 2026: 2 movies watched</tspan>
+            <tspan x="10" dy="18">• Barbershop (2002) - 1.5★</tspan>
+            <tspan x="10" dy="18">• Just Friends (2005) - 1.5★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="731" y="85" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:498ms"/>
     <rect class="cell" x="748" y="85" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:509ms"/>
     <rect class="cell" x="765" y="85" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:520ms"/>
@@ -1555,12 +1788,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#30a14e" style="animation-delay:63ms"
+          fill="#216e39" style="animation-delay:63ms"
         />
-        <g class="tooltip-group" transform="translate(51, 20)">
-          <rect x="0" y="0" width="399" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(51, 2)">
+          <rect x="0" y="0" width="399" height="92" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Sat, 24. Jan 2026: 2 movies watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Sat, 24. Jan 2026: 3 movies watched</tspan>
+            <tspan x="10" dy="18">• High School High (1996) - 2★</tspan>
             <tspan x="10" dy="18">• Election (1999) - 3★</tspan>
             <tspan x="10" dy="18">• The SpongeBob Movie: Search for SquarePants (2025) - 4★</tspan>
           </text>
@@ -1646,7 +1880,25 @@
         </g>
       </a>
     </g>
-    <rect class="cell" x="187" y="102" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:151ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/21/">
+        <rect class="cell"
+          x="187"
+          y="102"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:151ms"
+        />
+        <g class="tooltip-group" transform="translate(187, 38)">
+          <rect x="0" y="0" width="273" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Sat, 21. Mar 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• ↻ Dude, Where&apos;s My Car? (2000) - 3.5★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <g class="cell-group">
       <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/03/28/">
         <rect class="cell streak-cell streak-cell-2026"
@@ -1779,16 +2031,90 @@
         </g>
       </a>
     </g>
-    <rect class="cell" x="595" y="102" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:415ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/05/">
+        <rect class="cell"
+          x="595"
+          y="102"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:415ms"
+        />
+        <g class="tooltip-group" transform="translate(595, 38)">
+          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Sat, 5. Sep 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• ↻ Superbad (2007) - 4★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="612" y="102" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:426ms"/>
-    <rect class="cell" x="629" y="102" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:437ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/09/19/">
+        <rect class="cell"
+          x="629"
+          y="102"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#30a14e" style="animation-delay:437ms"
+        />
+        <g class="tooltip-group" transform="translate(629, 20)">
+          <rect x="0" y="0" width="245" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Sat, 19. Sep 2026: 2 movies watched</tspan>
+            <tspan x="10" dy="18">• Yes Man (2008) - 3★</tspan>
+            <tspan x="10" dy="18">• Sugar &amp; Spice (2001) - 3★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="646" y="102" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:448ms"/>
     <rect class="cell" x="663" y="102" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:459ms"/>
     <rect class="cell" x="680" y="102" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:470ms"/>
-    <rect class="cell" x="697" y="102" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:481ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/10/17/">
+        <rect class="cell"
+          x="697"
+          y="102"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:481ms"
+        />
+        <g class="tooltip-group" transform="translate(697, 38)">
+          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Sat, 17. Oct 2026: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• ↻ Roofman (2025) - 3★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="714" y="102" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:492ms"/>
     <rect class="cell" x="731" y="102" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:503ms"/>
-    <rect class="cell" x="748" y="102" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:514ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2026/11/07/">
+        <rect class="cell"
+          x="748"
+          y="102"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#30a14e" style="animation-delay:514ms"
+        />
+        <g class="tooltip-group" transform="translate(582, 20)">
+          <rect x="0" y="0" width="357" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Sat, 7. Nov 2026: 2 movies watched</tspan>
+            <tspan x="10" dy="18">• ↻ Crazy, Stupid, Love. (2011) - 3.5★</tspan>
+            <tspan x="10" dy="18">• Pokémon: Giratina and the Sky Warrior (2008) - 3★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="765" y="102" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:525ms"/>
     <rect class="cell" x="782" y="102" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:536ms"/>
     <rect class="cell" x="799" y="102" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:547ms"/>
@@ -1814,16 +2140,16 @@
         <text x="75" y="61" font-size="8" fill="#1f2328" text-anchor="middle">21</text>
         <rect x="67" y="64" width="16" height="6" rx="2" fill="#30a14e"/>
         <text x="75" y="84" font-size="7" fill="#1f2328" text-anchor="middle">1980s</text>
-        <text x="101" y="47" font-size="8" fill="#1f2328" text-anchor="middle">71</text>
+        <text x="101" y="47" font-size="8" fill="#1f2328" text-anchor="middle">73</text>
         <rect x="93" y="50" width="16" height="20" rx="2" fill="#30a14e"/>
         <text x="101" y="84" font-size="7" fill="#1f2328" text-anchor="middle">1990s</text>
-        <text x="127" y="27" font-size="8" fill="#1f2328" text-anchor="middle">139</text>
+        <text x="127" y="27" font-size="8" fill="#1f2328" text-anchor="middle">147</text>
         <rect x="119" y="30" width="16" height="40" rx="2" fill="#30a14e"/>
         <text x="127" y="84" font-size="7" fill="#1f2328" text-anchor="middle">2000s</text>
-        <text x="153" y="43" font-size="8" fill="#1f2328" text-anchor="middle">83</text>
-        <rect x="145" y="46" width="16" height="24" rx="2" fill="#30a14e"/>
+        <text x="153" y="42" font-size="8" fill="#1f2328" text-anchor="middle">91</text>
+        <rect x="145" y="45" width="16" height="25" rx="2" fill="#30a14e"/>
         <text x="153" y="84" font-size="7" fill="#1f2328" text-anchor="middle">2010s</text>
-        <text x="179" y="49" font-size="8" fill="#1f2328" text-anchor="middle">62</text>
+        <text x="179" y="49" font-size="8" fill="#1f2328" text-anchor="middle">66</text>
         <rect x="171" y="52" width="16" height="18" rx="2" fill="#30a14e"/>
         <text x="179" y="84" font-size="7" fill="#1f2328" text-anchor="middle">2020s</text>
     </g>
@@ -1831,7 +2157,7 @@
 
     <!-- Movies with rating distribution tooltip -->
     <g class="movies-group" transform="translate(60, 5)">
-      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">381 Movies</text>
+      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">403 Movies</text>
       <g class="movies-tooltip" transform="translate(-30, -116)">
         <rect x="0" y="0" width="260" height="108" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
         <text x="130" y="15" font-size="11" font-weight="600" fill="#1f2328" text-anchor="middle">Rating Distribution</text>
@@ -1844,58 +2170,58 @@
         <text x="70" y="63" font-size="8" fill="#1f2328" text-anchor="middle">11</text>
         <rect x="63" y="66" width="14" height="4" rx="2" fill="#40c463"/>
         <text x="70" y="84" font-size="7" fill="#1f2328" text-anchor="middle">1.5</text>
-        <text x="94" y="61" font-size="8" fill="#1f2328" text-anchor="middle">16</text>
+        <text x="94" y="61" font-size="8" fill="#1f2328" text-anchor="middle">17</text>
         <rect x="87" y="64" width="14" height="6" rx="2" fill="#40c463"/>
         <text x="94" y="84" font-size="7" fill="#1f2328" text-anchor="middle">2</text>
-        <text x="118" y="46" font-size="8" fill="#1f2328" text-anchor="middle">56</text>
-        <rect x="111" y="49" width="14" height="21" rx="2" fill="#30a14e"/>
+        <text x="118" y="44" font-size="8" fill="#1f2328" text-anchor="middle">64</text>
+        <rect x="111" y="47" width="14" height="23" rx="2" fill="#30a14e"/>
         <text x="118" y="84" font-size="7" fill="#1f2328" text-anchor="middle">2.5</text>
-        <text x="142" y="27" font-size="8" fill="#1f2328" text-anchor="middle">107</text>
+        <text x="142" y="27" font-size="8" fill="#1f2328" text-anchor="middle">112</text>
         <rect x="135" y="30" width="14" height="40" rx="2" fill="#30a14e"/>
         <text x="142" y="84" font-size="7" fill="#1f2328" text-anchor="middle">3</text>
-        <text x="166" y="28" font-size="8" fill="#1f2328" text-anchor="middle">104</text>
-        <rect x="159" y="31" width="14" height="39" rx="2" fill="#216e39"/>
+        <text x="166" y="29" font-size="8" fill="#1f2328" text-anchor="middle">105</text>
+        <rect x="159" y="32" width="14" height="38" rx="2" fill="#216e39"/>
         <text x="166" y="84" font-size="7" fill="#1f2328" text-anchor="middle">3.5</text>
-        <text x="190" y="42" font-size="8" fill="#1f2328" text-anchor="middle">67</text>
+        <text x="190" y="42" font-size="8" fill="#1f2328" text-anchor="middle">69</text>
         <rect x="183" y="45" width="14" height="25" rx="2" fill="#216e39"/>
         <text x="190" y="84" font-size="7" fill="#1f2328" text-anchor="middle">4</text>
-        <text x="214" y="62" font-size="8" fill="#1f2328" text-anchor="middle">14</text>
+        <text x="214" y="62" font-size="8" fill="#1f2328" text-anchor="middle">15</text>
         <rect x="207" y="65" width="14" height="5" rx="2" fill="#216e39"/>
         <text x="214" y="84" font-size="7" fill="#1f2328" text-anchor="middle">4.5</text>
-        <text x="238" y="65" font-size="8" fill="#1f2328" text-anchor="middle">5</text>
-        <rect x="231" y="68" width="14" height="2" rx="2" fill="#216e39"/>
+        <text x="238" y="64" font-size="8" fill="#1f2328" text-anchor="middle">9</text>
+        <rect x="231" y="67" width="14" height="3" rx="2" fill="#216e39"/>
         <text x="238" y="84" font-size="7" fill="#1f2328" text-anchor="middle">5</text>
         <line x1="12" y1="90" x2="248" y2="90" stroke="#d1d9e0" stroke-width="1"/>
-        <text x="130" y="102" font-size="10" font-weight="500" fill="#656d76" text-anchor="middle">Ø 3.2★ · 381 rated · ↻ 48 · ♥ 19</text>
+        <text x="130" y="102" font-size="10" font-weight="500" fill="#656d76" text-anchor="middle">Ø 3.2★ · 403 rated · ↻ 59 · ♥ 24</text>
       </g>
     </g>
 
     <!-- Days Active with hover tooltip -->
     <g class="days-active-group" transform="translate(170, 5)">
-      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">263 Days Active</text>
+      <text x="0" y="15" font-size="14" font-weight="500" fill="#656d76">267 Days Active</text>
       <g class="days-active-tooltip" transform="translate(-20, -115)">
         <rect x="0" y="0" width="200" height="105" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
         <text x="100" y="18" font-size="11" font-weight="600" fill="#1f2328" text-anchor="middle">Weekly Distribution</text>
         
-        <text x="27" y="42" font-size="9" fill="#1f2328" text-anchor="middle">51</text>
-        <rect x="20" y="45" width="14" height="35" rx="2" fill="#30a14e"/>
+        <text x="27" y="41" font-size="9" fill="#1f2328" text-anchor="middle">55</text>
+        <rect x="20" y="44" width="14" height="36" rx="2" fill="#30a14e"/>
         <text x="27" y="100" font-size="9" fill="#1f2328" text-anchor="middle">S</text>
-        <text x="51" y="38" font-size="9" fill="#1f2328" text-anchor="middle">56</text>
+        <text x="51" y="38" font-size="9" fill="#1f2328" text-anchor="middle">60</text>
         <rect x="44" y="41" width="14" height="39" rx="2" fill="#30a14e"/>
         <text x="51" y="100" font-size="9" fill="#1f2328" text-anchor="middle">M</text>
-        <text x="75" y="43" font-size="9" fill="#1f2328" text-anchor="middle">49</text>
-        <rect x="68" y="46" width="14" height="34" rx="2" fill="#30a14e"/>
+        <text x="75" y="44" font-size="9" fill="#1f2328" text-anchor="middle">51</text>
+        <rect x="68" y="47" width="14" height="33" rx="2" fill="#30a14e"/>
         <text x="75" y="100" font-size="9" fill="#1f2328" text-anchor="middle">T</text>
-        <text x="99" y="42" font-size="9" fill="#1f2328" text-anchor="middle">50</text>
-        <rect x="92" y="45" width="14" height="35" rx="2" fill="#30a14e"/>
+        <text x="99" y="41" font-size="9" fill="#1f2328" text-anchor="middle">55</text>
+        <rect x="92" y="44" width="14" height="36" rx="2" fill="#30a14e"/>
         <text x="99" y="100" font-size="9" fill="#1f2328" text-anchor="middle">W</text>
-        <text x="123" y="40" font-size="9" fill="#1f2328" text-anchor="middle">54</text>
-        <rect x="116" y="43" width="14" height="37" rx="2" fill="#30a14e"/>
+        <text x="123" y="42" font-size="9" fill="#1f2328" text-anchor="middle">54</text>
+        <rect x="116" y="45" width="14" height="35" rx="2" fill="#30a14e"/>
         <text x="123" y="100" font-size="9" fill="#1f2328" text-anchor="middle">T</text>
-        <text x="147" y="38" font-size="9" fill="#1f2328" text-anchor="middle">56</text>
-        <rect x="140" y="41" width="14" height="39" rx="2" fill="#30a14e"/>
+        <text x="147" y="39" font-size="9" fill="#1f2328" text-anchor="middle">59</text>
+        <rect x="140" y="42" width="14" height="38" rx="2" fill="#30a14e"/>
         <text x="147" y="100" font-size="9" fill="#1f2328" text-anchor="middle">F</text>
-        <text x="171" y="32" font-size="9" fill="#1f2328" text-anchor="middle">65</text>
+        <text x="171" y="32" font-size="9" fill="#1f2328" text-anchor="middle">69</text>
         <rect x="164" y="35" width="14" height="45" rx="2" fill="#30a14e"/>
         <text x="171" y="100" font-size="9" fill="#1f2328" text-anchor="middle">S</text>
       </g>
@@ -1908,7 +2234,7 @@
       <g class="streak-tooltip" transform="translate(0, -63)">
         <rect x="-10" y="0" width="180" height="54" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
         <text x="5" y="21" font-size="12" fill="#1f2328">2025-01-27 → 2025-03-01</text>
-        <text x="5" y="41" font-size="11" font-weight="500" fill="#656d76"><tspan fill="#f97316" font-weight="600">47</tspan> Movies watched</text>
+        <text x="5" y="41" font-size="11" font-weight="500" fill="#656d76"><tspan fill="#f97316" font-weight="600">53</tspan> Movies watched</text>
       </g>
     </g>
     
@@ -1962,17 +2288,35 @@
           fill="#30a14e" style="animation-delay:202ms"
         />
         <g class="tooltip-group" transform="translate(34, -100)">
-          <rect x="0" y="0" width="252" height="92" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <rect x="0" y="0" width="266" height="92" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Sun, 12. Jan 2025: 3 movies watched</tspan>
-            <tspan x="10" dy="18">• John Wick: Chapter 4 (2023) - 5★ ♥</tspan>
+            <tspan x="10" dy="18">• ↻ John Wick: Chapter 4 (2023) - 5★ ♥</tspan>
             <tspan x="10" dy="18">• Scary Movie 4 (2006) - 1.5★</tspan>
             <tspan x="10" dy="18">• The Dukes of Hazzard (2005) - 3★</tspan>
           </text>
         </g>
       </a>
     </g>
-    <rect class="cell" x="51" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:213ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2025/01/19/">
+        <rect class="cell"
+          x="51"
+          y="0"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#9be9a8" style="animation-delay:213ms"
+        />
+        <g class="tooltip-group" transform="translate(51, -64)">
+          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Sun, 19. Jan 2025: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• ↻ Despicable Me 4 (2024) - 3.5★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="68" y="0" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:224ms"/>
     <g class="cell-group">
       <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2025/02/02/">
@@ -2001,12 +2345,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#30a14e" style="animation-delay:246ms"
+          fill="#216e39" style="animation-delay:246ms"
         />
-        <g class="tooltip-group" transform="translate(102, -100)">
-          <rect x="0" y="0" width="240" height="92" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(102, -118)">
+          <rect x="0" y="0" width="240" height="110" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Sun, 9. Feb 2025: 3 movies watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Sun, 9. Feb 2025: 4 movies watched</tspan>
+            <tspan x="10" dy="18">• The Wash (2001) - 2★</tspan>
             <tspan x="10" dy="18">• Detroit Rock City (1999) - 2.5★</tspan>
             <tspan x="10" dy="18">• Can&apos;t Hardly Wait (1998) - 1.5★</tspan>
             <tspan x="10" dy="18">• ↻ 21 Jump Street (2012) - 3.5★</tspan>
@@ -2203,7 +2548,7 @@
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Sun, 4. May 2025: 4 movies watched</tspan>
             <tspan x="10" dy="18">• ↻ Family Guy Presents: Something, Something, Something, Dark Side (2009) - 4★</tspan>
-            <tspan x="10" dy="18">• The Robot Chicken: Star Wars (2007) - 2.5★</tspan>
+            <tspan x="10" dy="18">• Robot Chicken: Star Wars (2007) - 2.5★</tspan>
             <tspan x="10" dy="18">• ↻ Family Guy Presents: Blue Harvest (2007) - 3.5★</tspan>
             <tspan x="10" dy="18">• ↻ Star Wars (1977) - 4.5★</tspan>
           </text>
@@ -2297,12 +2642,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#9be9a8" style="animation-delay:455ms"
+          fill="#40c463" style="animation-delay:455ms"
         />
-        <g class="tooltip-group" transform="translate(425, -64)">
-          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(425, -82)">
+          <rect x="0" y="0" width="406" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Sun, 22. Jun 2025: 1 movie watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Sun, 22. Jun 2025: 2 movies watched</tspan>
+            <tspan x="10" dy="18">• ↻ Harry Potter and the Philosopher&apos;s Stone (2001) - 4★ ♥</tspan>
             <tspan x="10" dy="18">• Donnie Darko (2001) - 4★</tspan>
           </text>
         </g>
@@ -2633,12 +2979,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#9be9a8" style="animation-delay:741ms"
+          fill="#40c463" style="animation-delay:741ms"
         />
-        <g class="tooltip-group" transform="translate(624, -64)">
-          <rect x="0" y="0" width="315" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(624, -82)">
+          <rect x="0" y="0" width="315" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Sun, 21. Dec 2025: 1 movie watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Sun, 21. Dec 2025: 2 movies watched</tspan>
+            <tspan x="10" dy="18">• Muppets from Space (1999) - 2.5★</tspan>
             <tspan x="10" dy="18">• The Secret Life of Walter Mitty (2013) - 3★</tspan>
           </text>
         </g>
@@ -2711,12 +3058,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#40c463" style="animation-delay:218ms"
+          fill="#30a14e" style="animation-delay:218ms"
         />
-        <g class="tooltip-group" transform="translate(51, -65)">
-          <rect x="0" y="0" width="371" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(51, -83)">
+          <rect x="0" y="0" width="371" height="92" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Mon, 20. Jan 2025: 2 movies watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Mon, 20. Jan 2025: 3 movies watched</tspan>
+            <tspan x="10" dy="18">• Anchorman 2: The Legend Continues (2013) - 2.5★</tspan>
             <tspan x="10" dy="18">• ↻ Anchorman: The Legend of Ron Burgundy (2004) - 3★</tspan>
             <tspan x="10" dy="18">• Toy Story 2 (1999) - 3★</tspan>
           </text>
@@ -2731,12 +3079,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#40c463" style="animation-delay:229ms"
+          fill="#30a14e" style="animation-delay:229ms"
         />
-        <g class="tooltip-group" transform="translate(68, -65)">
-          <rect x="0" y="0" width="343" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(68, -83)">
+          <rect x="0" y="0" width="343" height="92" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Mon, 27. Jan 2025: 2 movies watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Mon, 27. Jan 2025: 3 movies watched</tspan>
+            <tspan x="10" dy="18">• Hot Tub Time Machine (2010) - 3★</tspan>
             <tspan x="10" dy="18">• ↻ The SpongeBob SquarePants Movie (2004) - 4.5★</tspan>
             <tspan x="10" dy="18">• ↻ High School (2010) - 4★</tspan>
           </text>
@@ -3354,7 +3703,26 @@
         </g>
       </a>
     </g>
-    <rect class="cell" x="765" y="17" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:680ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2025/11/10/">
+        <rect class="cell"
+          x="765"
+          y="17"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#40c463" style="animation-delay:680ms"
+        />
+        <g class="tooltip-group" transform="translate(596, -65)">
+          <rect x="0" y="0" width="343" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Mon, 10. Nov 2025: 2 movies watched</tspan>
+            <tspan x="10" dy="18">• ↻ The Amazing Spider-Man 2 (2014) - 3★</tspan>
+            <tspan x="10" dy="18">• John Wick: Chapter 3 – Parabellum (2019) - 4.5★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <g class="cell-group">
       <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2025/11/17/">
         <rect class="cell"
@@ -3466,12 +3834,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#40c463" style="animation-delay:223ms"
+          fill="#30a14e" style="animation-delay:223ms"
         />
-        <g class="tooltip-group" transform="translate(51, -48)">
-          <rect x="0" y="0" width="245" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(51, -66)">
+          <rect x="0" y="0" width="245" height="92" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Tue, 21. Jan 2025: 2 movies watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Tue, 21. Jan 2025: 3 movies watched</tspan>
+            <tspan x="10" dy="18">• ↻ Inherent Vice (2014) - 3★</tspan>
             <tspan x="10" dy="18">• Bridesmaids (2011) - 1.5★</tspan>
             <tspan x="10" dy="18">• Without a Paddle (2004) - 3.5★</tspan>
           </text>
@@ -3816,12 +4185,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#9be9a8" style="animation-delay:432ms"
+          fill="#40c463" style="animation-delay:432ms"
         />
-        <g class="tooltip-group" transform="translate(374, -30)">
-          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(374, -48)">
+          <rect x="0" y="0" width="240" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Tue, 3. Jun 2025: 1 movie watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Tue, 3. Jun 2025: 2 movies watched</tspan>
+            <tspan x="10" dy="18">• Zombieland (2009) - 3★</tspan>
             <tspan x="10" dy="18">• ↻ The Stöned Age (1994) - 3.5★</tspan>
           </text>
         </g>
@@ -4132,7 +4502,7 @@
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Wed, 15. Jan 2025: 2 movies watched</tspan>
             <tspan x="10" dy="18">• The Naked Gun: From the Files of Police Squad! (1988) - 3★</tspan>
-            <tspan x="10" dy="18">• Up in Smoke (1978) - 3.5★</tspan>
+            <tspan x="10" dy="18">• ↻ Up in Smoke (1978) - 3.5★</tspan>
           </text>
         </g>
       </a>
@@ -4241,12 +4611,14 @@
           width="14"
           height="14"
           rx="2"
-          fill="#9be9a8" style="animation-delay:283ms"
+          fill="#30a14e" style="animation-delay:283ms"
         />
-        <g class="tooltip-group" transform="translate(136, -13)">
-          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(136, -49)">
+          <rect x="0" y="0" width="245" height="92" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Wed, 26. Feb 2025: 1 movie watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Wed, 26. Feb 2025: 3 movies watched</tspan>
+            <tspan x="10" dy="18">• The Longest Yard (2005) - 2.5★</tspan>
+            <tspan x="10" dy="18">• ↻ Grandma&apos;s Boy (2006) - 4★</tspan>
             <tspan x="10" dy="18">• Strange Brew (1983) - 3★</tspan>
           </text>
         </g>
@@ -4349,7 +4721,25 @@
         </g>
       </a>
     </g>
-    <rect class="cell" x="238" y="51" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:349ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2025/04/09/">
+        <rect class="cell"
+          x="238"
+          y="51"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#9be9a8" style="animation-delay:349ms"
+        />
+        <g class="tooltip-group" transform="translate(238, -13)">
+          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Wed, 9. Apr 2025: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• The House Bunny (2008) - 2.5★</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <g class="cell-group">
       <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2025/04/16/">
         <rect class="cell"
@@ -4381,12 +4771,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#9be9a8" style="animation-delay:371ms"
+          fill="#40c463" style="animation-delay:371ms"
         />
-        <g class="tooltip-group" transform="translate(272, -13)">
-          <rect x="0" y="0" width="399" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(272, -31)">
+          <rect x="0" y="0" width="399" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Wed, 23. Apr 2025: 1 movie watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Wed, 23. Apr 2025: 2 movies watched</tspan>
+            <tspan x="10" dy="18">• Hot Shots! (1991) - 2.5★</tspan>
             <tspan x="10" dy="18">• Harold &amp; Kumar Escape from Guantanamo Bay (2008) - 3.5★</tspan>
           </text>
         </g>
@@ -4752,7 +5143,25 @@
     <rect class="cell" x="748" y="51" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:679ms"/>
     <rect class="cell" x="765" y="51" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:690ms"/>
     <rect class="cell" x="782" y="51" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:701ms"/>
-    <rect class="cell" x="799" y="51" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:712ms"/>
+    <g class="cell-group">
+      <a href="https://letterboxd.com/nichtlegacy/diary/films/for/2025/11/26/">
+        <rect class="cell"
+          x="799"
+          y="51"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#9be9a8" style="animation-delay:712ms"
+        />
+        <g class="tooltip-group" transform="translate(699, -13)">
+          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+          <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
+            <tspan x="10" dy="22" font-weight="600">Wed, 26. Nov 2025: 1 movie watched</tspan>
+            <tspan x="10" dy="18">• Tenet (2020) - 5★ ♥</tspan>
+          </text>
+        </g>
+      </a>
+    </g>
     <rect class="cell" x="816" y="51" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:723ms"/>
     <rect class="cell" x="833" y="51" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:734ms"/>
     <rect class="cell" x="850" y="51" width="14" height="14" rx="2" fill="#ebedf0" style="animation-delay:745ms"/>
@@ -5163,7 +5572,7 @@
           <rect x="0" y="0" width="245" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Thu, 22. May 2025: 2 movies watched</tspan>
-            <tspan x="10" dy="18">• How High (2001) - 4★</tspan>
+            <tspan x="10" dy="18">• ↻ How High (2001) - 4★</tspan>
             <tspan x="10" dy="18">• ↻ Scary Movie 4 (2006) - 3★</tspan>
           </text>
         </g>
@@ -5183,7 +5592,7 @@
           <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Thu, 29. May 2025: 1 movie watched</tspan>
-            <tspan x="10" dy="18">• Superhero Movie (2008) - 2.5★</tspan>
+            <tspan x="10" dy="18">• ↻ Superhero Movie (2008) - 2.5★</tspan>
           </text>
         </g>
       </a>
@@ -5677,12 +6086,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#9be9a8" style="animation-delay:293ms"
+          fill="#40c463" style="animation-delay:293ms"
         />
-        <g class="tooltip-group" transform="translate(136, 21)">
-          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(136, 3)">
+          <rect x="0" y="0" width="245" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Fri, 28. Feb 2025: 1 movie watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Fri, 28. Feb 2025: 2 movies watched</tspan>
+            <tspan x="10" dy="18">• The Benchwarmers (2006) - 2.5★</tspan>
             <tspan x="10" dy="18">• Mr. Deeds (2002) - 3★</tspan>
           </text>
         </g>
@@ -5756,12 +6166,14 @@
           width="14"
           height="14"
           rx="2"
-          fill="#40c463" style="animation-delay:337ms"
+          fill="#216e39" style="animation-delay:337ms"
         />
-        <g class="tooltip-group" transform="translate(204, 3)">
-          <rect x="0" y="0" width="350" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(204, -33)">
+          <rect x="0" y="0" width="350" height="110" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Fri, 28. Mar 2025: 2 movies watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Fri, 28. Mar 2025: 4 movies watched</tspan>
+            <tspan x="10" dy="18">• Avengers: Infinity War (2018) - 5★ ♥</tspan>
+            <tspan x="10" dy="18">• Den of Thieves 2: Pantera (2025) - 3★</tspan>
             <tspan x="10" dy="18">• ↻ Bill &amp; Ted&apos;s Excellent Adventure (1989) - 3.5★</tspan>
             <tspan x="10" dy="18">• The Waterboy (1998) - 3★</tspan>
           </text>
@@ -5881,7 +6293,7 @@
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
             <tspan x="10" dy="22" font-weight="600">Fri, 23. May 2025: 2 movies watched</tspan>
             <tspan x="10" dy="18">• ↻ Up in Smoke (1978) - 4★</tspan>
-            <tspan x="10" dy="18">• Friday (1995) - 4★</tspan>
+            <tspan x="10" dy="18">• ↻ Friday (1995) - 4★</tspan>
           </text>
         </g>
       </a>
@@ -6322,7 +6734,7 @@
             <tspan x="10" dy="18">• Monty Python and the Holy Grail (1975) - 3★</tspan>
             <tspan x="10" dy="18">• Toy Story (1995) - 3.5★</tspan>
             <tspan x="10" dy="18">• Good Will Hunting (1997) - 4.5★ ♥</tspan>
-            <tspan x="10" dy="18">• Pineapple Express (2008) - 4★ ♥</tspan>
+            <tspan x="10" dy="18">• ↻ Pineapple Express (2008) - 4★ ♥</tspan>
           </text>
         </g>
       </a>
@@ -6335,12 +6747,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#9be9a8" style="animation-delay:243ms"
+          fill="#40c463" style="animation-delay:243ms"
         />
-        <g class="tooltip-group" transform="translate(51, 38)">
-          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(51, 20)">
+          <rect x="0" y="0" width="245" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Sat, 25. Jan 2025: 1 movie watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Sat, 25. Jan 2025: 2 movies watched</tspan>
+            <tspan x="10" dy="18">• 21 &amp; Over (2013) - 2.5★</tspan>
             <tspan x="10" dy="18">• Sonic the Hedgehog 3 (2024) - 4★</tspan>
           </text>
         </g>
@@ -6432,12 +6845,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#9be9a8" style="animation-delay:298ms"
+          fill="#40c463" style="animation-delay:298ms"
         />
-        <g class="tooltip-group" transform="translate(136, 38)">
-          <rect x="0" y="0" width="240" height="56" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(136, 20)">
+          <rect x="0" y="0" width="240" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Sat, 1. Mar 2025: 1 movie watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Sat, 1. Mar 2025: 2 movies watched</tspan>
+            <tspan x="10" dy="18">• Due Date (2010) - 2.5★</tspan>
             <tspan x="10" dy="18">• The Wackness (2008) - 2★</tspan>
           </text>
         </g>
@@ -6491,10 +6905,11 @@
           rx="2"
           fill="#216e39" style="animation-delay:331ms"
         />
-        <g class="tooltip-group" transform="translate(187, -16)">
-          <rect x="0" y="0" width="329" height="110" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(187, -34)">
+          <rect x="0" y="0" width="329" height="128" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Sat, 22. Mar 2025: 4 movies watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Sat, 22. Mar 2025: 5 movies watched</tspan>
+            <tspan x="10" dy="18">• Spider-Man (2002) - 5★ ♥</tspan>
             <tspan x="10" dy="18">• The Nutty Professor (1996) - 3★</tspan>
             <tspan x="10" dy="18">• Extract (2009) - 3.5★</tspan>
             <tspan x="10" dy="18">• The Girl Who Leapt Through Time (2006) - 3.5★</tspan>
@@ -6664,12 +7079,13 @@
           width="14"
           height="14"
           rx="2"
-          fill="#40c463" style="animation-delay:430ms"
+          fill="#30a14e" style="animation-delay:430ms"
         />
-        <g class="tooltip-group" transform="translate(340, 20)">
-          <rect x="0" y="0" width="308" height="74" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
+        <g class="tooltip-group" transform="translate(340, 2)">
+          <rect x="0" y="0" width="357" height="92" rx="6" fill="#ffffff" stroke="#d1d9e0" stroke-width="1"/>
           <text font-family="'Segoe UI', Inter, Arial, sans-serif" font-size="12" fill="#1f2328">
-            <tspan x="10" dy="22" font-weight="600">Sat, 24. May 2025: 2 movies watched</tspan>
+            <tspan x="10" dy="22" font-weight="600">Sat, 24. May 2025: 3 movies watched</tspan>
+            <tspan x="10" dy="18">• Spider-Man: Across the Spider-Verse (2023) - 5★ ♥</tspan>
             <tspan x="10" dy="18">• Things Are Tough All Over (1982) - 3★</tspan>
             <tspan x="10" dy="18">• Final Destination Bloodlines (2025) - 3.5★</tspan>
           </text>
