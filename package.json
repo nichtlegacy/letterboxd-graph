@@ -32,20 +32,20 @@
     "cheerio": "^1.0.0-rc.12",
     "node-fetch": "^3.3.2",
     "opentype.js": "^1.3.4",
-    "puppeteer": "^25.7.0",
+    "puppeteer": "^25.18.1",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
-    "sharp": "^0.35.3",
+    "sharp": "^0.35.5",
     "subset-font": "^2.5.0"
   },
   "overrides": {
     "cheerio": {
-      "undici": "6.28.0"
+      "undici": "6.29.1"
     },
     "glob": {
       "minimatch": "3.1.4"
     },
-    "brace-expansion": "1.1.18",
+    "brace-expansion": "1.1.22",
     "ip-address": "10.3.1",
     "js-yaml": "5.2.2",
     "ws": "8.21.1"
