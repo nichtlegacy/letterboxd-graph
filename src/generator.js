@@ -296,9 +296,6 @@ export async function generateSvg(entries, options = {}) {
   // Start building SVG
   let svg = `<svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.1"/>
-    </filter>
     <clipPath id="profileClip">
       <circle cx="40" cy="40" r="40"/>
     </clipPath>
@@ -382,7 +379,7 @@ export async function generateSvg(entries, options = {}) {
   </defs>
   
   <!-- Main Card -->
-  <rect width="100%" height="100%" rx="12" fill="${t.bg}" stroke="${t.cardBorder}" stroke-width="1" filter="url(#shadow)"/>
+  <rect width="100%" height="100%" rx="12" fill="${t.bg}" stroke="${t.cardBorder}" stroke-width="1"/>
 
   <!-- Header Section -->
   <g transform="translate(25, 20)">
@@ -654,9 +651,6 @@ export async function generateMultiYearSvg(entries, options = {}) {
   // Start building SVG
   let svg = `<svg width="${SVG_WIDTH}" height="${SVG_HEIGHT}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.1"/>
-    </filter>
     <clipPath id="profileClip">
       <circle cx="40" cy="40" r="40"/>
     </clipPath>
@@ -692,7 +686,7 @@ export async function generateMultiYearSvg(entries, options = {}) {
   </defs>
   
   <!-- Main Card -->
-  <rect width="100%" height="100%" rx="12" fill="${t.bg}" stroke="${t.cardBorder}" stroke-width="1" filter="url(#shadow)"/>
+  <rect width="100%" height="100%" rx="12" fill="${t.bg}" stroke="${t.cardBorder}" stroke-width="1"/>
 
   <!-- Header Section -->
   <g transform="translate(25, 20)">
