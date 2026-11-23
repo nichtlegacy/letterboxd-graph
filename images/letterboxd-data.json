@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-22T16:04:08.741Z",
+  "generatedAt": "2026-11-23T06:34:04.581Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24523,21 +24523,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-22",
+    "date": "2026-11-23",
     "films": [
       {
-        "date": "2025-11-22",
-        "title": "Undercover Brother",
-        "year": "2002",
-        "rating": 2.5,
-        "rewatch": false,
+        "date": "2024-11-23",
+        "title": "Zoolander",
+        "year": "2001",
+        "rating": 3.5,
+        "rewatch": true,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/undercover-brother/",
+        "url": "https://letterboxd.com/nichtlegacy/film/zoolander/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:44639",
-        "lid": "1S7Q",
-        "slug": "undercover-brother"
+        "filmUid": "film:47198",
+        "lid": "1YMA",
+        "slug": "zoolander"
+      },
+      {
+        "date": "2023-11-23",
+        "title": "The Lost World: Jurassic Park",
+        "year": "1997",
+        "rating": 3.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/the-lost-world-jurassic-park/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:51732",
+        "lid": "2azS",
+        "slug": "the-lost-world-jurassic-park"
       }
     ]
   },
