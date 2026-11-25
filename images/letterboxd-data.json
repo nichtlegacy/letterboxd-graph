@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-24T09:02:11.940Z",
+  "generatedAt": "2026-11-25T07:41:07.229Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24523,35 +24523,21 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-24",
+    "date": "2026-11-25",
     "films": [
       {
-        "date": "2024-11-24",
-        "title": "Paul",
-        "year": "2011",
+        "date": "2024-11-25",
+        "title": "Inherent Vice",
+        "year": "2014",
         "rating": 3,
         "rewatch": false,
         "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/paul-2011/",
+        "url": "https://letterboxd.com/nichtlegacy/film/inherent-vice/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:25176",
-        "lid": "13uE",
-        "slug": "paul-2011"
-      },
-      {
-        "date": "2024-11-24",
-        "title": "Harry Potter and the Prisoner of Azkaban",
-        "year": "2004",
-        "rating": 4,
-        "rewatch": false,
-        "liked": true,
-        "url": "https://letterboxd.com/nichtlegacy/film/harry-potter-and-the-prisoner-of-azkaban/",
-        "reviewed": false,
-        "reviewUrl": null,
-        "filmUid": "film:51451",
-        "lid": "29Qy",
-        "slug": "harry-potter-and-the-prisoner-of-azkaban"
+        "filmUid": "film:125830",
+        "lid": "5hla",
+        "slug": "inherent-vice"
       }
     ]
   },
