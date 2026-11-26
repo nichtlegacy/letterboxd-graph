@@ -6,7 +6,7 @@
     2026,
     2025
   ],
-  "generatedAt": "2026-11-25T07:41:07.229Z",
+  "generatedAt": "2026-11-26T07:30:29.151Z",
   "meta": {
     "weekStart": "sunday",
     "minYear": 2025,
@@ -24523,21 +24523,35 @@
     }
   ],
   "onThisDay": {
-    "date": "2026-11-25",
+    "date": "2026-11-26",
     "films": [
       {
-        "date": "2024-11-25",
-        "title": "Inherent Vice",
-        "year": "2014",
-        "rating": 3,
+        "date": "2025-11-26",
+        "title": "Tenet",
+        "year": "2020",
+        "rating": 5,
         "rewatch": false,
-        "liked": false,
-        "url": "https://letterboxd.com/nichtlegacy/film/inherent-vice/",
+        "liked": true,
+        "url": "https://letterboxd.com/nichtlegacy/film/tenet/",
         "reviewed": false,
         "reviewUrl": null,
-        "filmUid": "film:125830",
-        "lid": "5hla",
-        "slug": "inherent-vice"
+        "filmUid": "film:506032",
+        "lid": "leq4",
+        "slug": "tenet"
+      },
+      {
+        "date": "2024-11-26",
+        "title": "How High",
+        "year": "2001",
+        "rating": 3.5,
+        "rewatch": false,
+        "liked": false,
+        "url": "https://letterboxd.com/nichtlegacy/film/how-high/1/",
+        "reviewed": false,
+        "reviewUrl": null,
+        "filmUid": "film:47761",
+        "lid": "20fo",
+        "slug": "how-high"
       }
     ]
   },
